@@ -23,6 +23,10 @@ import Langlands.Statements.Maass
 import Langlands.Statements.Modularity
 import Langlands.Statements.Torus
 import Langlands.Statements.TorusInduced
+import Langlands.Tate.ArchimedeanFourier
+import Langlands.Tate.ArchimedeanGamma
+import Langlands.Tate.ArchimedeanParameter
+import Langlands.Tate.ArchimedeanZeta
 import Langlands.Torus.Induced
 import Langlands.Torus.Split
 import Langlands.WeilGroup.Ab
