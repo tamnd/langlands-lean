@@ -13,7 +13,9 @@ import Langlands.Statements.Modularity
 import Langlands.Statements.Torus
 import Langlands.Torus.Split
 import Langlands.WeilGroup.Ab
+import Langlands.WeilGroup.Degree
 import Langlands.WeilGroup.Dense
+import Langlands.WeilGroup.Inertia
 
 /-!
 # The Langlands program in Lean
