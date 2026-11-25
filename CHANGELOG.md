@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.1 (2026-11-25)
+
 ### Added
 
 - `Langlands/Statements/Torus.lean`: the statement `LocalLanglandsTorusSplit n`, the local Langlands correspondence for the split torus of rank n. The bijection is fixed: it is the composite with a local Artin map.
