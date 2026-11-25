@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- `comparator.json`, `Comparator/Challenge.lean` and `Comparator/Solution.lean`: the challenge for `lake comparator`, with the pinned statements of `localReciprocityGL1`, `Bridge.localExistence` and `localLanglandsTorusSplit`. The trust workflow has a new job that runs `lake comparator --paranoid`. This is row Q4 of the trust report.
+
 - `Langlands/Reciprocity/GL1.lean`: the proof `localReciprocityGL1` of the statement `LocalReciprocityGL1`. For each nonarchimedean local field there is exactly one local Artin map from the units of the field to the abelianized Weil group.
 - `Langlands/Reciprocity/Exists.lean`: the existence `exists_isLocalArtinMap`. The map is the inverse of the injection `toGaloisAb` composed with the absolute local Artin map of the port. The image of the units is the image of the inertia subgroup, and the map is continuous in both directions.
 - `Langlands/Reciprocity/Unique.lean`: the uniqueness `isLocalArtinMap_unique`, through the uniqueness of coherent families of finite Artin maps in the port.
