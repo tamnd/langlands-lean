@@ -59,11 +59,19 @@ sources:
     author_endorsement: false
   - title: A family of Calabi-Yau varieties and potential automorphy II
     authors: [Thomas Barnet-Lamb, David Geraghty, Michael Harris, Richard Taylor]
-    id: "langlands:BGHT11"
+    id: "langlands:BLGHT11"
     type: paper
     location: Publications of the Research Institute for Mathematical Sciences 47 (2011)
     relationship: background
     note: The source of SatoTate. Not formalized here yet.
+    author_endorsement: false
+  - title: n-yamaguchi-0729/ClassFieldTheory, commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565
+    authors: [Naganori Yamaguchi]
+    id: "langlands:nyll"
+    type: code
+    location: https://github.com/n-yamaguchi-0729/ClassFieldTheory
+    relationship: copied
+    note: The import closure of the theorem finiteAbelianLocalReciprocity is copied to Langlands/Ported/NYLL under the Apache License 2.0, with the changes for the Mathlib of v4.35.0 that manifests/ported.yaml lists.
     author_endorsement: false
   - title: google-deepmind/formal-conjectures, commit 9097e2f90e66d2f6244209cb1c07f7120d17ec53
     authors: [The Formal Conjectures Authors]
@@ -114,6 +122,10 @@ status:
     - name: Langlands.SatoTate
       kind: statement
       status: known
+    - name: Langlands.Bridge.finiteAbelianLocalReciprocity
+      kind: theorem
+      status: proved
+      note: Finite abelian local reciprocity. The proof is the port of n-yamaguchi-0729/ClassFieldTheory in Langlands/Ported/NYLL.
     - name: Langlands.Bridge.hasseWeil_rat_of_hasseWeilEllipticQ
       kind: theorem
       status: proved
