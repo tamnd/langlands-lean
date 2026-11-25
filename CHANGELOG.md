@@ -13,10 +13,13 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 - `Langlands/Ported/FormalConjectures/Wikipedia.lean`: the statements of modularity, Sato-Tate, Ramanujan-Petersson for $\tau$ and Hasse-Weil from formal-conjectures at commit 9097e2f, as `def ... : Prop`.
 - `Langlands/Bridge/FormalConjectures.lean`: `HasseWeilEllipticQ` implies the Hasse-Weil statement of formal-conjectures over $\mathbb{Q}$. The statement `modularity_conjecture` of formal-conjectures is false as stated, because it reads the coefficients in the parameter $q_N$ and not in $q_1$ (`not_modularity_conjecture`).
 - `manifests/ported.yaml`: the record of each ported source.
+- `Langlands/Ported/NYLL/`: the port of finite abelian local reciprocity from n-yamaguchi-0729/ClassFieldTheory at commit fc644f4. These are the 327 files of the import closure of `ClassFieldTheory.finiteAbelianLocalReciprocity`, with the Mathlib names of v4.35.0. The entry `nyll` of `manifests/ported.yaml` lists the changes.
+- `Langlands/Bridge/NYLL.lean`: `finiteAbelianLocalReciprocity` for a finite abelian extension in an algebraic closure, with the kernel given by `Langlands.normGroup`. This is the first theorem of the project with a full proof.
 - `manifests/statements.sha256`: the hashes of the three files of `Langlands/Statements/`. The workflow `check` now compares them (check F7 of spec 06.3).
 
 ### Changed
 
+- `formalization.yaml` uses the key `BLGHT11` for the paper of Barnet-Lamb, Geraghty, Harris and Taylor.
 - `formalization.yaml` lists the sources of the modularity statements, the copied statements of formal-conjectures, the classification and the status of each main result.
 
 ## v0.0.1 (2026-11-25)

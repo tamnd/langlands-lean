@@ -1,0 +1,248 @@
+/-
+Copyright (c) 2026 Naganori Yamaguchi (https://github.com/n-yamaguchi-0729). All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
+-/
+-- Ported from n-yamaguchi-0729/ClassFieldTheory at commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565, file `Nyll/ProCGroups/Topologies/ContinuousMulEquiv.lean`. The module prefix is `Langlands.Ported.NYLL` in place of `Nyll`. The changes for the Mathlib of the project pin are in manifests/ported.yaml.
+
+
+module
+
+public import Mathlib.Topology.Algebra.Group.ClosedSubgroup
+public import Mathlib.Algebra.Group.Subgroup.Map
+public import Mathlib.Algebra.Group.End
+public import Mathlib.GroupTheory.QuotientGroup.Basic
+public import Mathlib.Topology.Algebra.ContinuousMonoidHom
+public import Langlands.Ported.NYLL.ProCGroups.Topologies.ContinuousMonoidHom
+
+/-!
+# Continuous multiplicative equivalences
+
+This file constructs continuous multiplicative equivalences from inverse homomorphisms and from
+compact-to-Hausdorff bijections. It also gives the topological first-isomorphism equivalence from
+a quotient by the kernel to the range of a continuous homomorphism.
+-/
+
+@[expose] public section
+
+namespace ProCGroups
+
+namespace ContinuousMulEquiv
+
+universe u v
+
+section
+
+variable {G : Type u} {H : Type v}
+variable [Group G] [Group H]
+variable [TopologicalSpace G] [TopologicalSpace H]
+
+/-- Build a continuous multiplicative equivalence from inverse continuous homomorphisms. -/
+noncomputable def ofHomInv
+    (f : G →ₜ* H) (g : H →ₜ* G)
+    (hleft : Function.LeftInverse g f)
+    (hright : Function.RightInverse g f) :
+    G ≃ₜ* H :=
+  { toMulEquiv :=
+      { toFun := f
+        invFun := g
+        left_inv := hleft
+        right_inv := hright
+        map_mul' := f.map_mul }
+    continuous_toFun := f.continuous_toFun
+    continuous_invFun := g.continuous_toFun }
+
+/-- The continuous equivalence is evaluated by the corresponding comparison formula. -/
+@[simp] theorem ofHomInv_apply
+    (f : G →ₜ* H) (g : H →ₜ* G)
+    (hleft : Function.LeftInverse g f)
+    (hright : Function.RightInverse g f) (x : G) :
+    ofHomInv f g hleft hright x = f x :=
+  rfl
+
+end
+
+/--
+Upgrade a bijective continuous homomorphism from a compact topological group to a Hausdorff
+topological group to a continuous multiplicative equivalence.
+-/
+noncomputable def ofBijectiveCompactToT2
+    {G : Type u} {H : Type v}
+    [Group G] [TopologicalSpace G]
+    [Group H] [TopologicalSpace H]
+    [CompactSpace G] [T2Space H]
+    (φ : G →* H) (hφcont : Continuous φ)
+    (hφ : Function.Bijective φ) :
+    G ≃ₜ* H := by
+  let e : G ≃ H := Equiv.ofBijective φ hφ
+  let eh : G ≃ₜ H :=
+    e.toHomeomorphOfContinuousClosed hφcont (Continuous.isClosedMap hφcont)
+  exact ContinuousMulEquiv.mk' eh (by
+    intro x y
+    exact φ.map_mul x y)
+
+/--
+The composite map is computed pointwise by applying the constituent coordinate formulas in
+succession.
+-/
+@[simp 900] theorem ofBijectiveCompactToT2_apply
+    {G : Type u} {H : Type v}
+    [Group G] [TopologicalSpace G]
+    [Group H] [TopologicalSpace H]
+    [CompactSpace G] [T2Space H]
+    (φ : G →* H) (hφcont : Continuous φ)
+    (hφ : Function.Bijective φ) (x : G) :
+    ofBijectiveCompactToT2 φ hφcont hφ x = φ x := by
+  unfold ofBijectiveCompactToT2
+  rfl
+
+/-- Transport a jointly continuous action through an equivalence, after one
+fixed action on its target. The algebraic action is the existing `MulAut.congr`. -/
+theorem exists_conjugated_action
+    {Γ B H : Type*} [Group Γ] [Group B] [Group H]
+    [TopologicalSpace Γ] [TopologicalSpace B] [TopologicalSpace H]
+    (e₀ : B ≃ₜ* H) (R : Γ →* MulAut H)
+    (hR : Continuous (fun z : Γ × H => R z.1 z.2)) (α : Γ) :
+    ∃ (e : B ≃ₜ* H) (ρ : Γ →* MulAut B),
+      Continuous (fun z : Γ × B => ρ z.1 z.2) ∧
+      (∀ σ x, e (ρ σ x) = R σ (e x)) ∧
+      ∀ x, e x = R α⁻¹ (e₀ x) := by
+  have hc (σ : Γ) : Continuous (R σ) := by
+    have hp : Continuous (fun x : H => (σ, x)) :=
+      continuous_const.prodMk continuous_id
+    have hh := hR.comp hp
+    exact hh
+  have hinv : (R α⁻¹).symm = R α := by
+    change (R α⁻¹)⁻¹ = R α
+    rw [← map_inv, inv_inv]
+  let a : H ≃ₜ* H :=
+    { toMulEquiv := R α⁻¹
+      continuous_toFun := hc α⁻¹
+      continuous_invFun := by
+        change Continuous (R α⁻¹).symm
+        rw [hinv]
+        exact hc α }
+  let e := e₀.trans a
+  let ρ : Γ →* MulAut B := (MulAut.congr e.symm.toMulEquiv).toMonoidHom.comp R
+  refine ⟨e, ρ, ?_, ?_, fun _ => rfl⟩
+  · change Continuous (fun z : Γ × B => e.symm (R z.1 (e z.2)))
+    have hp : Continuous (fun z : Γ × B => (z.1, e z.2)) :=
+      continuous_fst.prodMk (e.continuous_toFun.comp continuous_snd)
+    exact e.symm.continuous_toFun.comp (hR.comp hp)
+  · intro σ x
+    change e (e.symm (R σ (e x))) = R σ (e x)
+    exact e.apply_symm_apply _
+
+end ContinuousMulEquiv
+
+namespace ContinuousMonoidHom
+
+universe u v
+
+/--
+The first isomorphism theorem for continuous monoid homomorphisms from a compact group to a
+Hausdorff group, with the quotient and range carrying their induced topologies.
+-/
+noncomputable def quotientKerContinuousMulEquivRange
+    {G : Type u} {H : Type v}
+    [Group G] [TopologicalSpace G] [CompactSpace G]
+    [Group H] [TopologicalSpace H] [T2Space H]
+    (f : G →ₜ* H) :
+    (G ⧸ (f.toMonoidHom.ker : Subgroup G)) ≃ₜ* f.toMonoidHom.range := by
+  let φ : (G ⧸ (f.toMonoidHom.ker : Subgroup G)) →* f.toMonoidHom.range :=
+    (QuotientGroup.quotientKerEquivRange f.toMonoidHom).toMonoidHom
+  have hφcont : Continuous φ := by
+    refine (QuotientGroup.isQuotientMap_mk f.toMonoidHom.ker).continuous_iff.2 ?_
+    convert (rangeRestrict f).continuous_toFun using 1
+    funext g
+    rfl
+  exact ContinuousMulEquiv.ofBijectiveCompactToT2 φ hφcont
+    (QuotientGroup.quotientKerEquivRange f.toMonoidHom).bijective
+
+/-- The quotient-by-kernel equivalence to the range sends a representative to its image. -/
+@[simp] theorem quotientKerContinuousMulEquivRange_mk
+    {G : Type u} {H : Type v}
+    [Group G] [TopologicalSpace G] [CompactSpace G]
+    [Group H] [TopologicalSpace H] [T2Space H]
+    (f : G →ₜ* H) (g : G) :
+    quotientKerContinuousMulEquivRange f
+        (QuotientGroup.mk' (f.toMonoidHom.ker : Subgroup G) g) =
+      f.toMonoidHom.rangeRestrict g :=
+  rfl
+
+/--
+Coercing the quotient-by-kernel equivalence to the codomain gives the original homomorphism
+value.
+-/
+@[simp] theorem coe_quotientKerContinuousMulEquivRange_mk
+    {G : Type u} {H : Type v}
+    [Group G] [TopologicalSpace G] [CompactSpace G]
+    [Group H] [TopologicalSpace H] [T2Space H]
+    (f : G →ₜ* H) (g : G) :
+    (quotientKerContinuousMulEquivRange f
+        (QuotientGroup.mk' (f.toMonoidHom.ker : Subgroup G) g) : H) = f g :=
+  rfl
+
+end ContinuousMonoidHom
+
+end ProCGroups
+
+namespace ClosedSubgroup
+
+variable {G H : Type*}
+  [Group G] [TopologicalSpace G]
+  [Group H] [TopologicalSpace H]
+
+/-- Transport a closed subgroup along a continuous multiplicative
+equivalence. -/
+noncomputable def mapContinuousMulEquiv
+    (e : G ≃ₜ* H) (S : ClosedSubgroup G) : ClosedSubgroup H where
+  toSubgroup := e.toMulEquiv.mapSubgroup S.toSubgroup
+  isClosed' := by
+    change IsClosed (e '' (S : Set G))
+    exact e.toHomeomorph.isClosedMap (S : Set G) S.isClosed'
+
+/-- A continuous multiplicative equivalence induces an order equivalence on
+closed subgroups. -/
+noncomputable def orderIsoMapContinuousMulEquiv
+    (e : G ≃ₜ* H) : ClosedSubgroup G ≃o ClosedSubgroup H where
+  toFun := mapContinuousMulEquiv e
+  invFun := mapContinuousMulEquiv e.symm
+  left_inv S := by
+    apply ClosedSubgroup.toSubgroup_injective
+    change
+      e.symm.toMulEquiv.mapSubgroup
+          (e.toMulEquiv.mapSubgroup S.toSubgroup) =
+        S.toSubgroup
+    exact e.toMulEquiv.mapSubgroup.left_inv S.toSubgroup
+  right_inv T := by
+    apply ClosedSubgroup.toSubgroup_injective
+    change
+      e.toMulEquiv.mapSubgroup
+          (e.symm.toMulEquiv.mapSubgroup T.toSubgroup) =
+        T.toSubgroup
+    exact e.toMulEquiv.mapSubgroup.right_inv T.toSubgroup
+  map_rel_iff' {S T} := by
+    change
+      e.toMulEquiv.mapSubgroup S.toSubgroup ≤
+          e.toMulEquiv.mapSubgroup T.toSubgroup ↔
+        S.toSubgroup ≤ T.toSubgroup
+    exact e.toMulEquiv.mapSubgroup.le_iff_le
+
+/-- The order-dual form of closed-subgroup transport. -/
+noncomputable def orderDualIsoMapContinuousMulEquiv
+    (e : G ≃ₜ* H) :
+    (ClosedSubgroup G)ᵒᵈ ≃o (ClosedSubgroup H)ᵒᵈ :=
+  (orderIsoMapContinuousMulEquiv e).dual
+
+/-- Transport carries the underlying closed set to its image under the equivalence. -/
+@[simp]
+theorem coe_mapContinuousMulEquiv
+    (e : G ≃ₜ* H) (S : ClosedSubgroup G) :
+    (mapContinuousMulEquiv e S : Set H) = e '' (S : Set G) := by
+  change
+    (↑(Subgroup.map e.toMonoidHom S.toSubgroup) : Set H) =
+      e.toMonoidHom '' (S : Set G)
+  exact Subgroup.coe_map e.toMonoidHom S.toSubgroup
+
+end ClosedSubgroup

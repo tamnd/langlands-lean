@@ -1,0 +1,227 @@
+/-
+Copyright (c) 2026 Naganori Yamaguchi (https://github.com/n-yamaguchi-0729). All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
+-/
+-- Ported from n-yamaguchi-0729/ClassFieldTheory at commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565, file `Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FiniteGaloisRealization.lean`. The module prefix is `Langlands.Ported.NYLL` in place of `Nyll`. The changes for the Mathlib of the project pin are in manifests/ported.yaml.
+
+
+module
+
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.FiniteAbelianCompositum
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Galois.NormalFieldRange
+public import Mathlib.SetTheory.Cardinal.Finite
+public import Mathlib.FieldTheory.SeparableClosure
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.SeparableClosureEmbedding
+public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finite.LocalReciprocity.GaloisExtensionQuotient
+
+/-!
+# Finite local reciprocity: realizing finite Galois extensions in a separable closure
+
+Every finite Galois extension `L/K` is embedded into the chosen separable
+closure of `K`.  Its image supplies the concrete closed subgroup used by the
+abstract class-field theory.  The resulting abstract fixed coefficient group
+is `Lˣ`, and the resulting abstract extension quotient is the actual
+`Gal(L/K)`.
+
+No perfectness hypothesis is imposed; this includes equal-characteristic
+local fields such as finite extensions of `𝔽_q((t))`.
+-/
+
+@[expose] public section
+
+namespace LocalClassFieldTheory
+open RamificationTheory CyclicCohomology KummerTheory
+
+
+
+noncomputable section
+
+universe u v
+
+variable (K : Type u) (L : Type v) [Field K] [Field L] [Algebra K L]
+  [FiniteDimensional K L] [IsGalois K L]
+
+/-! ## Realization relative to an explicit embedding -/
+
+/-- The closed fixing subgroup attached to an explicit realization of
+`L/K` in the separable closure. -/
+def finiteGaloisClosedFixingSubgroupOfEmbedding
+    (i : L →ₐ[K] SeparableClosure K) :
+    ClosedSubgroup (Gal(SeparableClosure K / K)) :=
+  closedFixingSubgroup K (SeparableClosure K)
+    (finiteGaloisFieldRangeOfEmbedding K L i)
+
+/-- The fixing subgroup of an embedded finite Galois extension is normal in the absolute
+subgroup. -/
+noncomputable instance finiteGaloisExtensionSubgroupOfEmbedding_normal
+    (i : L →ₐ[K] SeparableClosure K) :
+    (extensionSubgroup
+      (closedFixingSubgroup K (SeparableClosure K)
+        (⊥ : IntermediateField K (SeparableClosure K)))
+      (finiteGaloisClosedFixingSubgroupOfEmbedding K L i)
+      (fixingSubgroupLeBase K (SeparableClosure K)
+        (finiteGaloisFieldRangeOfEmbedding K L i))).Normal := by
+  change
+    (extensionSubgroup
+      (closedFixingSubgroup K (SeparableClosure K)
+        (⊥ : IntermediateField K (SeparableClosure K)))
+      (closedFixingSubgroup K (SeparableClosure K)
+        (finiteGaloisFieldRangeOfEmbedding K L i))
+      (fixingSubgroupLeBase K (SeparableClosure K)
+        (finiteGaloisFieldRangeOfEmbedding K L i))).Normal
+  infer_instance
+
+/-- The fixed coefficient group attached to an explicit realization is
+canonically the actual unit group `Lˣ`. -/
+def finiteGaloisUnitsEquivAbstractFixedOfEmbedding
+    (i : L →ₐ[K] SeparableClosure K) :
+    Additive Lˣ ≃+
+      ambientFixedAddSubgroup
+        (galoisAmbientUnitsRep K (SeparableClosure K))
+        (finiteGaloisClosedFixingSubgroupOfEmbedding K L i) :=
+  embeddedFieldUnitsEquivGaloisFixed K (SeparableClosure K) L i
+
+omit [FiniteDimensional K L] [IsGalois K L] in
+/-- The fixed-module equivalence sends a field unit to the unit induced by the chosen embedding. -/
+@[simp]
+theorem finiteGaloisUnitsEquivAbstractFixedOfEmbedding_coe
+    (i : L →ₐ[K] SeparableClosure K) (x : Lˣ) :
+    (finiteGaloisUnitsEquivAbstractFixedOfEmbedding K L i
+      (Additive.ofMul x)).1 =
+      Additive.ofMul (Units.map i.toRingHom.toMonoidHom x) :=
+  rfl
+
+/-- The abstract class-formation extension quotient attached to an explicit realization
+of `L/K` is the actual relative Galois group. -/
+def finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding
+    (i : L →ₐ[K] SeparableClosure K) :
+    ((closedFixingSubgroup K (SeparableClosure K)
+        (⊥ : IntermediateField K (SeparableClosure K))).toSubgroup ⧸
+      extensionSubgroup
+        (closedFixingSubgroup K (SeparableClosure K)
+          (⊥ : IntermediateField K (SeparableClosure K)))
+        (finiteGaloisClosedFixingSubgroupOfEmbedding K L i)
+        (fixingSubgroupLeBase K (SeparableClosure K)
+          (finiteGaloisFieldRangeOfEmbedding K L i))) ≃*
+      Gal(L / K) :=
+  (baseFixingExtensionQuotientEquivGaloisGroup K (SeparableClosure K)
+    (finiteGaloisFieldRangeOfEmbedding K L i)).trans
+      (AlgEquiv.autCongr
+        (finiteGaloisFieldRangeEquivOfEmbedding K L i)).symm
+
+/-- The subgroup attached to an explicit finite Galois realization has
+index equal to the ordinary field degree. -/
+theorem finiteGaloisExtensionSubgroupOfEmbedding_index_eq_finrank
+    (i : L →ₐ[K] SeparableClosure K) :
+    (extensionSubgroup
+      (closedFixingSubgroup K (SeparableClosure K)
+        (⊥ : IntermediateField K (SeparableClosure K)))
+      (finiteGaloisClosedFixingSubgroupOfEmbedding K L i)
+        (fixingSubgroupLeBase K (SeparableClosure K)
+          (finiteGaloisFieldRangeOfEmbedding K L i))).index =
+      Module.finrank K L := by
+  let : Finite
+      ((closedFixingSubgroup K (SeparableClosure K)
+          (⊥ : IntermediateField K (SeparableClosure K))).toSubgroup ⧸
+        extensionSubgroup
+          (closedFixingSubgroup K (SeparableClosure K)
+            (⊥ : IntermediateField K (SeparableClosure K)))
+          (finiteGaloisClosedFixingSubgroupOfEmbedding K L i)
+          (fixingSubgroupLeBase K (SeparableClosure K)
+            (finiteGaloisFieldRangeOfEmbedding K L i))) :=
+    Finite.of_equiv (Gal(L / K))
+      (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L i).symm.toEquiv
+  calc
+    _ = Nat.card
+        ((closedFixingSubgroup K (SeparableClosure K)
+            (⊥ : IntermediateField K (SeparableClosure K))).toSubgroup ⧸
+          extensionSubgroup
+            (closedFixingSubgroup K (SeparableClosure K)
+              (⊥ : IntermediateField K (SeparableClosure K)))
+            (finiteGaloisClosedFixingSubgroupOfEmbedding K L i)
+            (fixingSubgroupLeBase K (SeparableClosure K)
+              (finiteGaloisFieldRangeOfEmbedding K L i))) :=
+      Subgroup.index_eq_card _
+    _ = Nat.card (Gal(L / K)) :=
+      Nat.card_congr
+        (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L i).toEquiv
+    _ = Module.finrank K L := IsGalois.card_aut_eq_finrank K L
+
+/-! ## The chosen realization -/
+
+/-- The concrete closed subgroup of the absolute separable Galois group
+attached to `L/K`. -/
+def finiteGaloisClosedFixingSubgroup :
+    ClosedSubgroup (Gal(SeparableClosure K / K)) :=
+  finiteGaloisClosedFixingSubgroupOfEmbedding K L
+    (AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L)
+
+/-- The fixing subgroup of the canonical finite Galois realization is normal. -/
+instance finiteGaloisExtensionSubgroup_normal :
+    (extensionSubgroup
+      (closedFixingSubgroup K (SeparableClosure K)
+        (⊥ : IntermediateField K (SeparableClosure K)))
+      (finiteGaloisClosedFixingSubgroup K L)
+      (fixingSubgroupLeBase K (SeparableClosure K)
+        (AlgebraicNumberTheory.finiteGaloisFieldRange K L))).Normal := by
+  change
+    (extensionSubgroup
+      (closedFixingSubgroup K (SeparableClosure K)
+        (⊥ : IntermediateField K (SeparableClosure K)))
+      (closedFixingSubgroup K (SeparableClosure K)
+        (AlgebraicNumberTheory.finiteGaloisFieldRange K L))
+      (fixingSubgroupLeBase K (SeparableClosure K)
+        (AlgebraicNumberTheory.finiteGaloisFieldRange K L))).Normal
+  infer_instance
+
+/-- The actual coefficient group fixed by the concrete subgroup attached to
+`L/K` is canonically `Lˣ`. -/
+def finiteGaloisUnitsEquivAbstractFixed :
+    Additive Lˣ ≃+
+      ambientFixedAddSubgroup
+        (galoisAmbientUnitsRep K (SeparableClosure K))
+        (finiteGaloisClosedFixingSubgroup K L) :=
+  finiteGaloisUnitsEquivAbstractFixedOfEmbedding K L
+    (AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L)
+
+omit [FiniteDimensional K L] in
+/-- The canonical fixed-module equivalence sends a unit through the chosen embedding. -/
+@[simp]
+theorem finiteGaloisUnitsEquivAbstractFixed_coe (x : Lˣ) :
+    (finiteGaloisUnitsEquivAbstractFixed K L (Additive.ofMul x)).1 =
+      Additive.ofMul
+        (Units.map
+          (AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L).toRingHom.toMonoidHom
+            x) :=
+  rfl
+
+/-- For the concrete realization of `L/K`, the exact quotient used by
+the abstract class-formation framework is canonically the actual Galois group `Gal(L/K)`. -/
+def finiteGaloisAbstractQuotientEquivGaloisGroup :
+    ((closedFixingSubgroup K (SeparableClosure K)
+        (⊥ : IntermediateField K (SeparableClosure K))).toSubgroup ⧸
+      extensionSubgroup
+        (closedFixingSubgroup K (SeparableClosure K)
+          (⊥ : IntermediateField K (SeparableClosure K)))
+        (finiteGaloisClosedFixingSubgroup K L)
+        (fixingSubgroupLeBase K (SeparableClosure K)
+          (AlgebraicNumberTheory.finiteGaloisFieldRange K L))) ≃*
+      Gal(L / K) :=
+  finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L
+    (AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L)
+
+/-- The chosen realization has subgroup index equal to `[L : K]`. -/
+theorem finiteGaloisExtensionSubgroup_index_eq_finrank :
+    (extensionSubgroup
+      (closedFixingSubgroup K (SeparableClosure K)
+        (⊥ : IntermediateField K (SeparableClosure K)))
+      (finiteGaloisClosedFixingSubgroup K L)
+      (fixingSubgroupLeBase K (SeparableClosure K)
+        (AlgebraicNumberTheory.finiteGaloisFieldRange K L))).index =
+      Module.finrank K L :=
+  finiteGaloisExtensionSubgroupOfEmbedding_index_eq_finrank K L
+    (AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L)
+
+end
+end LocalClassFieldTheory
