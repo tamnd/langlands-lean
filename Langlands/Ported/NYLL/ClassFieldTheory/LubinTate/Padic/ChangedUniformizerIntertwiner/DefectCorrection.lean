@@ -16,8 +16,7 @@ public import Mathlib.RingTheory.PowerSeries.Trunc
 /-!
 # Changed-uniformizer defect correction
 
-This module computes how a degreewise correction changes the semilinear substitution defect and
-constructs the unique coefficient that kills that defect.
+This module computes how a degreewise correction changes the semilinear substitution defect and constructs the unique coefficient that kills that defect.
 -/
 
 
@@ -32,9 +31,7 @@ open LocalFieldTheory.DiscreteValuationField
 open LocalFieldTheory.DiscreteValuationField.Examples.Qp
 open SameUniformizer
 
-/-- The defect of a candidate changed-uniformizer intertwiner: the difference
-between its Frobenius-twisted multiplicative substitution and its
-changed-standard substitution. -/
+/-- The defect of a candidate changed-uniformizer intertwiner: the difference between its Frobenius-twisted multiplicative substitution and its changed-standard substitution. -/
 noncomputable def padicChangedUniformizerDefect
     (p : ℕ) [Fact p.Prime]
     (u : (padicLocalField p).valuationSubringˣ)
@@ -46,8 +43,7 @@ noncomputable def padicChangedUniformizerDefect
     PowerSeries.subst H
       (padicCompletedChangedStandardSeries p u)
 
-/-- Reduction modulo `p` commutes with coefficientwise Witt-vector Frobenius
-through residue-field Frobenius. -/
+/-- Reduction modulo `p` commutes with coefficientwise Witt-vector Frobenius through residue-field Frobenius. -/
 theorem padicChangedUniformizerFrobenius_map_constantCoeff
     (p : ℕ) [Fact p.Prime]
     (H : PowerSeries (padicCompletedUnramifiedWittRing p)) :
@@ -61,8 +57,7 @@ theorem padicChangedUniformizerFrobenius_map_constantCoeff
   simp [PowerSeries.coeff_map, WittVector.constantCoeff_apply,
     WittVector.coeff_frobenius_charP, frobenius_def]
 
-/-- The changed-uniformizer defect vanishes after coefficientwise reduction
-modulo `p`. -/
+/-- The changed-uniformizer defect vanishes after coefficientwise reduction modulo `p`. -/
 theorem padicChangedUniformizerDefect_map_constantCoeff
     (p : ℕ) [Fact p.Prime]
     (u : (padicLocalField p).valuationSubringˣ)
@@ -124,8 +119,7 @@ theorem padicChangedUniformizerDefect_map_constantCoeff
     PowerSeries.subst_X hHbar]
   exact sub_self _
 
-/-- Every coefficient of the changed-uniformizer defect is divisible by
-`p` in the completed unramified Witt ring. -/
+/-- Every coefficient of the changed-uniformizer defect is divisible by `p` in the completed unramified Witt ring. -/
 theorem padicChangedUniformizerDefect_coeff_mem_span_p
     (p : ℕ) [Fact p.Prime]
     (u : (padicLocalField p).valuationSubringˣ)
@@ -192,15 +186,14 @@ theorem padicCompletedMultiplicativeSeries_order
   constructor
   · rw [padicCompletedMultiplicativeSeries_coeff_one]
     exact
-      WittVector.p_nonzero p (AlgebraicClosure (ZMod p))
+      WittVector.p_ne_zero p (AlgebraicClosure (ZMod p))
   · intro i hi
     have hi0 : i = 0 := by omega
     subst i
     simpa [PowerSeries.coeff_zero_eq_constantCoeff_apply] using
       padicCompletedMultiplicativeSeries_constantCoeff p
 
-/-- The degree-`m` coefficient of the `m`-th power of the completed
-multiplicative series is `p ^ m`. -/
+/-- The degree-`m` coefficient of the `m`-th power of the completed multiplicative series is `p ^ m`. -/
 theorem padicCompletedMultiplicativeSeries_coeff_pow_self
     (p : ℕ) [Fact p.Prime] (m : ℕ) :
     PowerSeries.coeff m
@@ -325,8 +318,7 @@ private theorem padicChangedUniformizer_coeff_pow_add_monomial
   rw [map_sub, sub_eq_zero] at hcoeff
   exact hcoeff
 
-/-- Substituting the completed multiplicative series into a monomial scales
-its `m`-th power by the monomial coefficient. -/
+/-- Substituting the completed multiplicative series into a monomial scales its `m`-th power by the monomial coefficient. -/
 theorem padicChangedUniformizer_subst_monomial
     (p : ℕ) [Fact p.Prime]
     (m : ℕ) (c : padicCompletedUnramifiedWittRing p) :
@@ -449,8 +441,7 @@ private theorem padicChangedUniformizer_coeff_subst_changed_add_monomial
     padicChangedUniformizer_coeff_pow_add_monomial p H hH m hm c]
   ring
 
-/-- Adding a monomial in degree `m` changes the degree-`m` defect by the
-explicit Frobenius-linear correction term. -/
+/-- Adding a monomial in degree `m` changes the degree-`m` defect by the explicit Frobenius-linear correction term. -/
 theorem padicChangedUniformizerDefect_coeff_add_monomial
     (p : ℕ) [Fact p.Prime]
     (u : (padicLocalField p).valuationSubringˣ)
@@ -475,8 +466,7 @@ theorem padicChangedUniformizerDefect_coeff_add_monomial
   rw [padicChangedUniformizerDefect, map_sub]
   ring
 
-/-- The unique coefficient that corrects the changed-uniformizer defect in
-degree `m`. -/
+/-- The unique coefficient that corrects the changed-uniformizer defect in degree `m`. -/
 noncomputable def padicChangedUniformizerCorrectionCoefficient
     (p : ℕ) [Fact p.Prime]
     (u : (padicLocalField p).valuationSubringˣ)
@@ -490,8 +480,7 @@ noncomputable def padicChangedUniformizerCorrectionCoefficient
           padicCompletedUnramifiedWittRing p) *
         padicChangedUniformizerNormalizedDefect p u H hH m))
 
-/-- The correction coefficient satisfies its defining Frobenius fixed-point
-equation. -/
+/-- The correction coefficient satisfies its defining Frobenius fixed-point equation. -/
 theorem padicChangedUniformizerCorrectionCoefficient_spec
     (p : ℕ) [Fact p.Prime]
     (u : (padicLocalField p).valuationSubringˣ)
@@ -514,8 +503,7 @@ theorem padicChangedUniformizerCorrectionCoefficient_spec
           padicCompletedUnramifiedWittRing p) *
         padicChangedUniformizerNormalizedDefect p u H hH m))).1
 
-/-- Adding the correction coefficient in degree `m` kills the degree-`m`
-defect. -/
+/-- Adding the correction coefficient in degree `m` kills the degree-`m` defect. -/
 theorem padicChangedUniformizerCorrectionCoefficient_kills_defect
     (p : ℕ) [Fact p.Prime]
     (u : (padicLocalField p).valuationSubringˣ)
@@ -580,8 +568,7 @@ theorem padicChangedUniformizerCorrectionCoefficient_kills_defect
     hc', hpow]
   ring
 
-/-- Two one-variable power series have the same total truncation through
-degree `m` when their coefficients agree through degree `m`. -/
+/-- Two one-variable power series have the same total truncation through degree `m` when their coefficients agree through degree `m`. -/
 theorem powerSeries_truncTotal_succ_eq_of_coeff_eq_le
     {R : Type*} [CommRing R]
     {H H' : PowerSeries R} (m : ℕ)

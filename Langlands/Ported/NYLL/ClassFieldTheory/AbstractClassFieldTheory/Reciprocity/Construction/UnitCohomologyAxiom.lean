@@ -18,9 +18,7 @@ public import Langlands.Ported.NYLL.GaloisCohomology.Cyclic.NormKernelVanishing
 /-!
 # The abstract reciprocity construction: the unit-cohomology axiom
 
-The coefficient group in the unit-cohomology axiom is the actual unit subgroup `U_L`, with
-the action of the actual quotient `G_K / G_L`.  The two Tate groups are the
-homology objects of the finite-cyclic norm complexes.
+The coefficient group in the unit-cohomology axiom is the actual unit subgroup `U_L`, with the action of the actual quotient `G_K / G_L`.  The two Tate groups are the homology objects of the finite-cyclic norm complexes.
 -/
 
 @[expose] public section
@@ -43,8 +41,7 @@ section Generic
 
 variable {G : Type u} [Group G] [TopologicalSpace G]
 
-/-- A finite cyclic extension of a bundled finite abstract field.
-Cyclicity is intrinsic; computations supply their generator explicitly. -/
+/-- A finite cyclic extension of a bundled finite abstract field. Cyclicity is intrinsic; computations supply their generator explicitly. -/
 structure FiniteCyclicSubextension (K : FiniteAbstractField G)
     extends FiniteGaloisSubextension K.field where
   /-- The relative Galois quotient is cyclic, without a chosen generator. -/
@@ -66,8 +63,7 @@ theorem ext {E₁ E₂ : FiniteCyclicSubextension K}
       cases hL
       rfl
 
-/-- Forget cyclicity and normality, retaining the underlying finite
-abstract extension. -/
+/-- Forget cyclicity and normality, retaining the underlying finite abstract extension. -/
 @[implicit_reducible]
 def toFiniteAbstractExtension (E : FiniteCyclicSubextension K) :
     DegreeData.FiniteAbstractExtension G where
@@ -85,8 +81,7 @@ def IsTotallyRamified (E : FiniteCyclicSubextension K)
     (D : DegreeData G) : Prop :=
   E.toFiniteAbstractExtension.IsTotallyRamified D
 
-/-- Retain the finite-over-base endpoint bundles as well as the relative
-finite quotient. -/
+/-- Retain the finite-over-base endpoint bundles as well as the relative finite quotient. -/
 @[implicit_reducible]
 noncomputable def toFiniteAbstractFieldExtension
     (E : FiniteCyclicSubextension K) : FiniteAbstractFieldExtension G := by
@@ -115,8 +110,7 @@ noncomputable instance (E : FiniteCyclicSubextension K) :
     Fintype (K.field.toSubgroup ⧸ extensionSubgroup K.field E.field E.below) :=
   Fintype.ofFinite _
 
-/-- The fixed coefficient representation attached to a bundled cyclic
-extension. -/
+/-- The fixed coefficient representation attached to a bundled cyclic extension. -/
 noncomputable def fixedRepresentation (E : FiniteCyclicSubextension K)
     (A : Rep.{v} ℤ G) :
     Rep.{v} ℤ (K.field.toSubgroup ⧸ extensionSubgroup K.field E.field E.below) :=
@@ -129,8 +123,7 @@ end Generic
 variable {G : Type u} [Group G] [TopologicalSpace G]
 variable {D : DegreeData G} {A : Rep.{v} ℤ G}
 
-/-- A finite unramified cyclic extension with a chosen generator for the
-unramified norm and Frobenius computations. -/
+/-- A finite unramified cyclic extension with a chosen generator for the unramified norm and Frobenius computations. -/
 structure FiniteUnramifiedCyclicExtension
     (D : DegreeData G) (K : FiniteAbstractField G)
     extends FiniteCyclicSubextension K where
@@ -145,16 +138,14 @@ namespace FiniteUnramifiedCyclicExtension
 
 variable {K : FiniteAbstractField G}
 
-/-- Forget cyclic and unramified structure while retaining both finite
-endpoint fields and the relative finite quotient. -/
+/-- Forget cyclic and unramified structure while retaining both finite endpoint fields and the relative finite quotient. -/
 @[implicit_reducible]
 noncomputable def toFiniteAbstractFieldExtension
     (E : FiniteUnramifiedCyclicExtension D K) :
     FiniteAbstractFieldExtension G :=
   E.toFiniteCyclicSubextension.toFiniteAbstractFieldExtension
 
-/-- The unramified proof transported to the canonical finite field-extension
-bundle. -/
+/-- The unramified proof transported to the canonical finite field-extension bundle. -/
 theorem toFiniteAbstractFieldExtension_isUnramified
     (E : FiniteUnramifiedCyclicExtension D K) :
     E.toFiniteAbstractFieldExtension.IsUnramified D := by
@@ -184,8 +175,7 @@ noncomputable instance (E : FiniteUnramifiedCyclicExtension D K) :
 
 end FiniteUnramifiedCyclicExtension
 
-/-- The original universe-zero integer Tate API gives the same norm witnesses as the
-independent-universe integral owner. -/
+/-- The original universe-zero integer Tate API gives the same norm witnesses as the independent-universe integral owner. -/
 theorem exists_norm_eq_of_tateHZero_isZero
     {Q : Type} [Group Q] [Fintype Q]
     (M : Rep.{0} ℤ Q) (g : Q) (hg : ∀ x, x ∈ Subgroup.zpowers g)
@@ -196,9 +186,7 @@ theorem exists_norm_eq_of_tateHZero_isZero
 
 namespace ValuationData
 
-/-- Normalized valuation is invariant under the Galois action in a finite
-tower.  The proof uses transitivity of the actual norm and its invariance
-under the normal-extension action. -/
+/-- Normalized valuation is invariant under the Galois action in a finite tower.  The proof uses transitivity of the actual norm and its invariance under the normal-extension action. -/
 theorem valuationAt_normalExtensionAction
     (v : ValuationData D A) (E : FiniteAbstractFieldExtension G)
     (hnormal : (extensionSubgroup E.base.field E.field.field E.below).Normal)
@@ -289,7 +277,7 @@ noncomputable def unitRepresentationOverK
       map_one' := by
         ext u
         change A.ρ (1 : G) u.1.1 = u.1.1
-        simp only [map_one, Module.End.one_apply]
+        simp only [map_one, one_apply_eq_self]
       map_mul' := by
         intro k₁ k₂
         ext u
@@ -334,8 +322,7 @@ namespace FiniteUnramifiedCyclicExtension
 
 variable {K : FiniteAbstractField G}
 
-/-- The unit representation carried by a bundled finite unramified cyclic
-extension. -/
+/-- The unit representation carried by a bundled finite unramified cyclic extension. -/
 noncomputable def unitRepresentation
     (E : FiniteUnramifiedCyclicExtension D K) (v : ValuationData D A) :
     Rep.{v} ℤ (K.field.toSubgroup ⧸ extensionSubgroup K.field E.field E.below) :=
@@ -373,8 +360,7 @@ def unitInclusion
     apply Subtype.ext
     rfl
 
-/-- On underlying coefficients, the quotient action on `U_L` is the same
-coset action used in the relative norm. -/
+/-- On underlying coefficients, the quotient action on `U_L` is the same coset action used in the relative norm. -/
 theorem unitRepresentation_action_coe
     (v : ValuationData D A) (E : FiniteAbstractFieldExtension G)
     (hnormal : (extensionSubgroup E.base.field E.field.field E.below).Normal)
@@ -389,8 +375,7 @@ theorem unitRepresentation_action_coe
   rw [relativeCosetAction_mk]
   rfl
 
-/-- The representation norm on `U_L` is the relative field norm on
-underlying coefficients. -/
+/-- The representation norm on `U_L` is the relative field norm on underlying coefficients. -/
 theorem unitRepresentation_norm_coe
     (v : ValuationData D A) (E : FiniteAbstractFieldExtension G)
     (hnormal : (extensionSubgroup E.base.field E.field.field E.below).Normal)
@@ -424,8 +409,7 @@ theorem unitRepresentation_norm_coe
   intro q _
   exact v.unitRepresentation_action_coe E hnormal q u
 
-/-- Actual `H⁰=0` eliminator needed after the reciprocity construction: every unit of
-`K` is the relative norm of a unit of an unramified Galois extension `L`. -/
+/-- Actual `H⁰=0` eliminator needed after the reciprocity construction: every unit of `K` is the relative norm of a unit of an unramified Galois extension `L`. -/
 theorem exists_unit_relativeNorm_eq_of_tateHZero_isZero
     (v : ValuationData D A) (E : FiniteAbstractFieldExtension G)
     (hnormal : (extensionSubgroup E.base.field E.field.field E.below).Normal)
@@ -466,8 +450,7 @@ theorem exists_unit_relativeNorm_eq_of_tateHZero_isZero
           ((z.1 : ambientFixedAddSubgroup A E.field.field) : A.V)) hε
     _ = u.1.1 := rfl
 
-/-- Actual `H⁻¹=0` eliminator on units: a unit of relative norm zero is
-in the image of `g-1`. -/
+/-- Actual `H⁻¹=0` eliminator on units: a unit of relative norm zero is in the image of `g-1`. -/
 theorem exists_unit_sigma_sub_eq_of_tateHMinusOne_isZero
     (v : ValuationData D A) (E : FiniteAbstractFieldExtension G)
     (hnormal : (extensionSubgroup E.base.field E.field.field E.below).Normal)
@@ -488,12 +471,9 @@ theorem exists_unit_sigma_sub_eq_of_tateHMinusOne_isZero
   exact IntegralGroupCohomology.Universe.normKernel_of_tate_isZero
     U g hg hzero u hu
 
-/-- **the unit-cohomology axiom.** For every finite unramified Galois extension `L/K`,
-`H⁰(G(L/K),U_L)` and `H⁻¹(G(L/K),U_L)` vanish.
+/-- **the unit-cohomology axiom.** For every finite unramified Galois extension `L/K`, `H⁰(G(L/K),U_L)` and `H⁻¹(G(L/K),U_L)` vanish.
 
-This is a predicate on the abstract valuation datum.  It is the source axiom
-used in the subsequent proofs of independence and multiplicativity in ;
-it is not introduced as a Lean axiom. -/
+This is a predicate on the abstract valuation datum.  It is the source axiom used in the subsequent proofs of independence and multiplicativity in ; it is not introduced as a Lean axiom. -/
 def SatisfiesUnramifiedUnitCohomology
     (D : DegreeData G) (v : ValuationData D A) : Prop :=
   ∀ (K : FiniteAbstractField G)

@@ -43,24 +43,21 @@ open LocalFieldTheory.DiscreteValuationField
 open LocalFieldTheory.DiscreteValuationField.Examples.Qp
 
 -- Specialization at ℚ retains the generic comparison's `Algebra.id` owner.
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 @[reducible] noncomputable def rationalFinitePlaceCompletionRatAlgebra
     (v : HeightOneSpectrum (𝓞 ℚ)) :
     Algebra ℚ (HeightOneSpectrum.adicAbv ℚ v).Completion :=
-  UniformSpace.Completion.algebra (WithAbs (HeightOneSpectrum.adicAbv ℚ v)) ℚ
+  AbsoluteValue.Completion.instAlgebra (HeightOneSpectrum.adicAbv ℚ v)
 
 attribute [local instance] rationalFinitePlaceCompletionRatAlgebra
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicPrimeFact (q : Nat.Primes) : Fact q.1.Prime :=
   ⟨q.2⟩
 
 attribute [local instance] rationalCyclotomicPrimeFact
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicLevelNeZero (m : ℕ+) : NeZero (m : ℕ) :=
   ⟨m.ne_zero⟩
 
@@ -70,8 +67,7 @@ attribute [local instance]
   KummerTheory.rationalCyclotomicLevelFiniteDimensional
   KummerTheory.rationalCyclotomicLevelIsAbelianGalois
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 @[reducible]
 noncomputable def rationalFinitePlaceBaseNontriviallyNormedField
     (q : Nat.Primes) :
@@ -86,8 +82,7 @@ noncomputable def rationalFinitePlaceBaseNontriviallyNormedField
 
 attribute [local instance] rationalFinitePlaceBaseNontriviallyNormedField
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalFinitePlaceBaseLocallyCompactSpace
     (q : Nat.Primes) :
     LocallyCompactSpace
@@ -99,8 +94,7 @@ theorem rationalFinitePlaceBaseLocallyCompactSpace
 
 attribute [local instance] rationalFinitePlaceBaseLocallyCompactSpace
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalFinitePlaceBaseIsUltrametricDist
     (q : Nat.Primes) :
     IsUltrametricDist
@@ -114,8 +108,7 @@ theorem rationalFinitePlaceBaseIsUltrametricDist
 
 attribute [local instance] rationalFinitePlaceBaseIsUltrametricDist
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 @[reducible]
 noncomputable def rationalFinitePlaceBaseValued
     (q : Nat.Primes) :
@@ -130,8 +123,7 @@ noncomputable def rationalFinitePlaceBaseValued
 
 attribute [local instance] rationalFinitePlaceBaseValued
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 @[reducible]
 noncomputable def rationalFinitePlaceBaseValuativeRel
     (q : Nat.Primes) :
@@ -143,8 +135,7 @@ noncomputable def rationalFinitePlaceBaseValuativeRel
 
 attribute [local instance] rationalFinitePlaceBaseValuativeRel
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalFinitePlaceBaseValuationIsNontrivial
     (q : Nat.Primes) :
     (Valued.v :
@@ -160,8 +151,7 @@ theorem rationalFinitePlaceBaseValuationIsNontrivial
 
 attribute [local instance] rationalFinitePlaceBaseValuationIsNontrivial
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalFinitePlaceBaseValuationCompatible
     (q : Nat.Primes) :
     (Valued.v :
@@ -173,8 +163,7 @@ theorem rationalFinitePlaceBaseValuationCompatible
 
 attribute [local instance] rationalFinitePlaceBaseValuationCompatible
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalFinitePlaceBaseValuativeRelIsNontrivial
     (q : Nat.Primes) :
     ValuativeRel.IsNontrivial
@@ -189,8 +178,7 @@ theorem rationalFinitePlaceBaseValuativeRelIsNontrivial
 
 attribute [local instance] rationalFinitePlaceBaseValuativeRelIsNontrivial
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalFinitePlaceBaseIsValuativeTopology
     (q : Nat.Primes) :
     IsValuativeTopology
@@ -202,8 +190,7 @@ theorem rationalFinitePlaceBaseIsValuativeTopology
 
 attribute [local instance] rationalFinitePlaceBaseIsValuativeTopology
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalFinitePlaceBaseIsNonarchimedeanLocalField
     (q : Nat.Primes) :
     IsNonarchimedeanLocalField
@@ -214,8 +201,7 @@ theorem rationalFinitePlaceBaseIsNonarchimedeanLocalField
 
 attribute [local instance] rationalFinitePlaceBaseIsNonarchimedeanLocalField
 
-/-- The canonical nontrivially normed field structure on the completion of
-`ℚ` at the rational prime `p`, exposed for principal-prime constructions. -/
+/-- The canonical nontrivially normed field structure on the completion of `ℚ` at the rational prime `p`, exposed for principal-prime constructions. -/
 @[reducible]
 noncomputable def rationalPrimeFactorCompletionNontriviallyNormedField
     (p : Nat.Primes) :
@@ -249,8 +235,7 @@ noncomputable def rationalPrimeFactorCompletionValued
         (RayClass.rationalPrime p)).Completion ℝ≥0 :=
   rationalFinitePlaceBaseValued p
 
-/-- The valuative relation induced by the canonical valuation on the
-completion of `ℚ` at `p`. -/
+/-- The valuative relation induced by the canonical valuation on the completion of `ℚ` at `p`. -/
 @[reducible]
 noncomputable def rationalPrimeFactorCompletionValuativeRel
     (p : Nat.Primes) :
@@ -267,8 +252,7 @@ theorem rationalPrimeFactorCompletionValuationIsNontrivial
         (RayClass.rationalPrime p)).Completion ℝ≥0).IsNontrivial :=
   rationalFinitePlaceBaseValuationIsNontrivial p
 
-/-- The canonical valuation on the completion of `ℚ` at `p` is compatible
-with its field structure. -/
+/-- The canonical valuation on the completion of `ℚ` at `p` is compatible with its field structure. -/
 theorem rationalPrimeFactorCompletionValuationCompatible
     (p : Nat.Primes) :
     (Valued.v : Valuation
@@ -300,8 +284,7 @@ theorem rationalPrimeFactorCompletionIsNonarchimedeanLocalField
         (RayClass.rationalPrime p)).Completion :=
   rationalFinitePlaceBaseIsNonarchimedeanLocalField p
 
-/-- The positive conductor of the `n`-th ramified cyclotomic level at
-`p`. -/
+/-- The positive conductor of the `n`-th ramified cyclotomic level at `p`. -/
 def rationalCyclotomicPrincipalPrimeModulus
     (p : Nat.Primes) (n : ℕ) : ℕ+ :=
   ⟨p.1 ^ (n + 1), pow_pos p.2.pos (n + 1)⟩
@@ -319,8 +302,7 @@ abbrev RationalCyclotomicPrincipalPrimeLocalizedLevel
     (rationalCyclotomicPrincipalPrimeModulus p n)
     (RayClass.rationalPrime p)
 
-/-- The valuation ring of the absolute-value completion at `q`, identified
-with the standard p-adic integer ring `ℤ_q`. -/
+/-- The valuation ring of the absolute-value completion at `q`, identified with the standard p-adic integer ring `ℤ_q`. -/
 noncomputable def rationalFinitePlaceCompletionIntegerRingEquivPadicInt
     (q : Nat.Primes) :
     𝒪[(HeightOneSpectrum.adicAbv ℚ
@@ -338,8 +320,7 @@ noncomputable def rationalFinitePlaceCompletionIntegerRingEquivPadicInt
       (PadicInt.adicCompletionIntegersEquiv
         (𝓞 ℚ) q).symm.toRingEquiv
 
-/-- The absolute-value completion at the rational prime `q`, identified
-with the standard field `ℚ_q`. -/
+/-- The absolute-value completion at the rational prime `q`, identified with the standard field `ℚ_q`. -/
 noncomputable def rationalFinitePlaceCompletionRingEquivPadic
     (q : Nat.Primes) :
     (HeightOneSpectrum.adicAbv ℚ
@@ -359,8 +340,7 @@ theorem rationalFinitePlaceCompletionRingEquivPadic_algebraMap
   exact
     (rationalFinitePlaceCompletionRingEquivPadic q).toRingHom.map_rat_algebraMap a
 
-/-- The completion field equivalence and its restriction to valuation
-rings commute with the natural inclusions into the fields. -/
+/-- The completion field equivalence and its restriction to valuation rings commute with the natural inclusions into the fields. -/
 theorem rationalFinitePlaceCompletionIntegerRingEquivPadicInt_coe
     (q : Nat.Primes)
     (a :
@@ -380,8 +360,7 @@ theorem rationalFinitePlaceCompletionIntegerRingEquivPadicInt_coe
 
 open _root_.ValuationTheory.DiscreteValuationField.ValuedExtension
   (valuation_hasExtension_of_valuationSubring_equiv) in
-/-- The canonical rational-completion equivalence preserves the canonical
-valuations. -/
+/-- The canonical rational-completion equivalence preserves the canonical valuations. -/
 theorem
     rationalFinitePlaceCompletionRingEquivPadic_semilinearValuationCompatible
     (p : Nat.Primes) :
@@ -450,8 +429,7 @@ theorem
       ((padicDVRValuation_isEquiv_valuativeRelValuation
         p.1).comap (algebraMap F ℚ_[p.1]))
 
-/-- The rational prime, pulled back from `ℤ_q` to the valuation ring of
-the absolute-value completion at `q`. -/
+/-- The rational prime, pulled back from `ℤ_q` to the valuation ring of the absolute-value completion at `q`. -/
 noncomputable def rationalPrimeFinitePlaceInteger
     (q : Nat.Primes) :
     𝒪[(HeightOneSpectrum.adicAbv ℚ
@@ -459,8 +437,7 @@ noncomputable def rationalPrimeFinitePlaceInteger
   (rationalFinitePlaceCompletionIntegerRingEquivPadicInt q).symm
     (q.1 : ℤ_[q.1])
 
-/-- The pulled-back rational prime is irreducible in the completion
-valuation ring. -/
+/-- The pulled-back rational prime is irreducible in the completion valuation ring. -/
 theorem rationalPrimeFinitePlaceInteger_irreducible
     (q : Nat.Primes) :
     Irreducible (rationalPrimeFinitePlaceInteger q) := by
@@ -471,8 +448,7 @@ theorem rationalPrimeFinitePlaceInteger_irreducible
       ((PadicInt.prime_p :
         Prime (q.1 : ℤ_[q.1])).irreducible)
 
-/-- Coercing the pulled-back prime to the completion field gives the
-ordinary image of the rational number `q`. -/
+/-- Coercing the pulled-back prime to the completion field gives the ordinary image of the rational number `q`. -/
 theorem rationalPrimeFinitePlaceInteger_coe
     (q : Nat.Primes) :
     ((rationalPrimeFinitePlaceInteger q :
@@ -543,8 +519,7 @@ noncomputable def rationalPrimeFinitePlaceFieldUnit
         (rationalPrimeFinitePlaceInteger_irreducible q).ne_zero
           (Subtype.ext hzero))
 
-/-- In the inverse-standard local reciprocity normalization, the rational
-prime itself has normalized additive value `-1`. -/
+/-- In the inverse-standard local reciprocity normalization, the rational prime itself has normalized additive value `-1`. -/
 theorem rationalPrimeFinitePlaceFieldUnit_valuationMap
     (q : Nat.Primes) :
     IsNonarchimedeanLocalField.valuationMap
@@ -561,8 +536,7 @@ theorem rationalPrimeFinitePlaceFieldUnit_valuationMap
       (rationalPrimeFinitePlaceInteger_irreducible q)
       (rationalPrimeFinitePlaceFieldUnit q) rfl)
 
-/-- The rational `q`-unit part of `x`, pulled back from `ℤ_qˣ` to the
-valuation ring of the absolute-value completion. -/
+/-- The rational `q`-unit part of `x`, pulled back from `ℤ_qˣ` to the valuation ring of the absolute-value completion. -/
 noncomputable def rationalPrimeUnitFinitePlaceIntegerUnit
     (x : ℚˣ) (q : Nat.Primes) :
     𝒪[(HeightOneSpectrum.adicAbv ℚ
@@ -575,8 +549,7 @@ noncomputable def rationalPrimeUnitFinitePlaceIntegerUnit
       (rationalPrimeUnit x q).ne_zero
       (padicValRat_rationalPrimeUnit x q))
 
-/-- Forgetting the integrality proof from the pulled-back `q`-unit gives
-the ordinary image of the rational `q`-unit in the completion field. -/
+/-- Forgetting the integrality proof from the pulled-back `q`-unit gives the ordinary image of the rational `q`-unit in the completion field. -/
 theorem rationalPrimeUnitFinitePlaceIntegerUnit_coe
     (x : ℚˣ) (q : Nat.Primes) :
     (((rationalPrimeUnitFinitePlaceIntegerUnit x q :
@@ -649,8 +622,7 @@ theorem rationalPrimeUnitFinitePlaceIntegerUnit_coe
       exact (map_ratCast (algebraMap ℚ ℚ_[q.1])
         (rationalPrimeUnit x q : ℚ)).symm
 
-/-- The completion field unit underlying the pulled-back rational `q`-unit
-has normalized additive value zero. -/
+/-- The completion field unit underlying the pulled-back rational `q`-unit has normalized additive value zero. -/
 theorem rationalPrimeUnitFinitePlaceField_valuationMap
     (x : ℚˣ) (q : Nat.Primes) :
     IsNonarchimedeanLocalField.valuationMap
@@ -679,8 +651,7 @@ theorem rationalPrimeGeneratorUnit_coe (q : Nat.Primes) :
     (rationalPrimeGeneratorUnit q : ℚ) = q.1 :=
   rfl
 
-/-- Reattaching the removed `q`-power to the rational `q`-unit recovers
-the original rational field unit. -/
+/-- Reattaching the removed `q`-power to the rational `q`-unit recovers the original rational field unit. -/
 theorem rationalPrimeGeneratorUnit_zpow_mul_rationalPrimeUnit
     (x : ℚˣ) (q : Nat.Primes) :
     rationalPrimeGeneratorUnit q ^
@@ -691,8 +662,7 @@ theorem rationalPrimeGeneratorUnit_zpow_mul_rationalPrimeUnit
     ← mul_assoc, ← zpow_add]
   rw [add_neg_cancel, zpow_zero, one_mul]
 
-/-- The source unit in the absolute-value completion represented by the
-finite component of a rational principal idele. -/
+/-- The source unit in the absolute-value completion represented by the finite component of a rational principal idele. -/
 noncomputable def rationalPrincipalFinitePlaceInput
     (x : ℚˣ) (q : Nat.Primes) :
     (HeightOneSpectrum.adicAbv ℚ
@@ -703,9 +673,7 @@ noncomputable def rationalPrincipalFinitePlaceInput
       (RayClass.rationalPrime q)
       (IdeleGroup.principalIdele ℚ x))
 
-/-- The source unit represented by a principal finite component is the
-ordinary image of the rational field unit in the absolute-value
-completion. -/
+/-- The source unit represented by a principal finite component is the ordinary image of the rational field unit in the absolute-value completion. -/
 theorem rationalPrincipalFinitePlaceInput_eq_algebraMap
     (x : ℚˣ) (q : Nat.Primes) :
     rationalPrincipalFinitePlaceInput x q =
@@ -768,10 +736,7 @@ theorem rationalPrincipalFinitePlaceInput_eq_algebraMap
       exact
         (finitePlaceCompletionAlgEquiv (K := ℚ) v).commutes (x : ℚ)
 
-/-- The normalized local exponent of a rational principal finite
-component is the negative of the usual `q`-adic exponent.  The minus sign
-records the inverse-standard local reciprocity convention in which a
-prime element has normalized value `-1`. -/
+/-- The normalized local exponent of a rational principal finite component is the negative of the usual `q`-adic exponent.  The minus sign records the inverse-standard local reciprocity convention in which a prime element has normalized value `-1`. -/
 theorem rationalPrincipalFiniteComponent_valuationMap
     (x : ℚˣ) (q : Nat.Primes) :
     IsNonarchimedeanLocalField.valuationMap
@@ -829,8 +794,7 @@ theorem rationalPrincipalFiniteComponent_valuationMap
     rationalPrimeUnitFinitePlaceField_valuationMap]
   ring
 
-/-- The principal finite component of the rational prime itself has
-normalized local exponent `-1`. -/
+/-- The principal finite component of the rational prime itself has normalized local exponent `-1`. -/
 theorem rationalPrimePrincipalFiniteComponent_valuationMap
     (q : Nat.Primes) :
     IsNonarchimedeanLocalField.valuationMap
@@ -848,8 +812,7 @@ theorem rationalPrimePrincipalFiniteComponent_valuationMap
     rationalPrimeGeneratorUnit_coe,
     padicValRat.self q.2.one_lt]
 
-/-- A cyclotomic automorphism which raises the selected primitive root to
-the `q`-th power has cyclotomic character equal to the residue-prime unit. -/
+/-- A cyclotomic automorphism which raises the selected primitive root to the `q`-th power has cyclotomic character equal to the residue-prime unit. -/
 theorem rationalCyclotomicLevel_galEquivZMod_eq_unitOfCoprime
     (m : ℕ+) (q : Nat.Primes)
     (hq : ¬ q.1 ∣ (m : ℕ))
@@ -913,8 +876,7 @@ abbrev rationalCyclotomicArtinLocalizedField
     (m : ℕ+) (q : Nat.Primes) :=
   rationalCyclotomicLocalizedCompletion m (RayClass.rationalPrime q)
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 @[reducible]
 noncomputable def rationalCyclotomicArtinExtensionAlgebra
     (m : ℕ+) (q : Nat.Primes) :
@@ -925,8 +887,7 @@ noncomputable def rationalCyclotomicArtinExtensionAlgebra
 
 attribute [local instance] rationalCyclotomicArtinExtensionAlgebra
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 @[reducible]
 noncomputable def rationalCyclotomicArtinExtensionSMul
     (m : ℕ+) (q : Nat.Primes) :
@@ -936,8 +897,7 @@ noncomputable def rationalCyclotomicArtinExtensionSMul
 
 attribute [local instance] rationalCyclotomicArtinExtensionSMul
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 @[reducible]
 noncomputable def rationalCyclotomicArtinCompletionAlgebra
     (m : ℕ+) (q : Nat.Primes) :
@@ -950,8 +910,7 @@ noncomputable def rationalCyclotomicArtinCompletionAlgebra
 
 attribute [local instance] rationalCyclotomicArtinCompletionAlgebra
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 @[reducible]
 noncomputable def rationalCyclotomicArtinLocalizedAlgebra
     (m : ℕ+) (q : Nat.Primes) :
@@ -964,8 +923,7 @@ noncomputable def rationalCyclotomicArtinLocalizedAlgebra
 
 attribute [local instance] rationalCyclotomicArtinLocalizedAlgebra
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 @[instance_reducible]
 noncomputable def rationalCyclotomicArtinLocalizedGlobalAlgebra
     (m : ℕ+) (q : Nat.Primes) :
@@ -976,8 +934,7 @@ noncomputable def rationalCyclotomicArtinLocalizedGlobalAlgebra
 
 attribute [local instance] rationalCyclotomicArtinLocalizedGlobalAlgebra
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 @[instance_reducible]
 noncomputable def rationalCyclotomicArtinLocalizedGlobalSMul
     (m : ℕ+) (q : Nat.Primes) :
@@ -986,8 +943,7 @@ noncomputable def rationalCyclotomicArtinLocalizedGlobalSMul
 
 attribute [local instance] rationalCyclotomicArtinLocalizedGlobalSMul
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedScalarTower
     (m : ℕ+) (q : Nat.Primes) :
     IsScalarTower ℚ
@@ -997,8 +953,7 @@ theorem rationalCyclotomicArtinLocalizedScalarTower
 
 attribute [local instance] rationalCyclotomicArtinLocalizedScalarTower
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedFiniteDimensional
     (m : ℕ+) (q : Nat.Primes) :
     FiniteDimensional
@@ -1011,8 +966,7 @@ theorem rationalCyclotomicArtinLocalizedFiniteDimensional
 
 attribute [local instance] rationalCyclotomicArtinLocalizedFiniteDimensional
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedIsAbelianGalois
     (m : ℕ+) (q : Nat.Primes) :
     IsAbelianGalois
@@ -1027,8 +981,7 @@ theorem rationalCyclotomicArtinLocalizedIsAbelianGalois
 
 attribute [local instance] rationalCyclotomicArtinLocalizedIsAbelianGalois
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedIsSeparable
     (m : ℕ+) (q : Nat.Primes) :
     Algebra.IsSeparable
@@ -1038,8 +991,7 @@ theorem rationalCyclotomicArtinLocalizedIsSeparable
 
 attribute [local instance] rationalCyclotomicArtinLocalizedIsSeparable
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedIsCyclotomic
     (m : ℕ+) (q : Nat.Primes) :
     IsCyclotomicExtension {(m : ℕ)}
@@ -1050,8 +1002,7 @@ theorem rationalCyclotomicArtinLocalizedIsCyclotomic
 
 attribute [local instance] rationalCyclotomicArtinLocalizedIsCyclotomic
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinExtensionFiniteDimensional
     (m : ℕ+) (q : Nat.Primes) :
     FiniteDimensional
@@ -1065,8 +1016,7 @@ theorem rationalCyclotomicArtinExtensionFiniteDimensional
 
 attribute [local instance] rationalCyclotomicArtinExtensionFiniteDimensional
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinExtensionContinuousSMul
     (m : ℕ+) (q : Nat.Primes) :
     ContinuousSMul
@@ -1080,8 +1030,7 @@ theorem rationalCyclotomicArtinExtensionContinuousSMul
 
 attribute [local instance] rationalCyclotomicArtinExtensionContinuousSMul
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinExtensionLocallyCompact
     (m : ℕ+) (q : Nat.Primes) :
     LocallyCompactSpace
@@ -1092,8 +1041,7 @@ theorem rationalCyclotomicArtinExtensionLocallyCompact
 
 attribute [local instance] rationalCyclotomicArtinExtensionLocallyCompact
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedLocallyCompact
     (m : ℕ+) (q : Nat.Primes) :
     LocallyCompactSpace
@@ -1110,8 +1058,7 @@ theorem rationalCyclotomicArtinLocalizedLocallyCompact
 
 attribute [local instance] rationalCyclotomicArtinLocalizedLocallyCompact
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedIsUltrametricDist
     (m : ℕ+) (q : Nat.Primes) :
     IsUltrametricDist
@@ -1124,8 +1071,7 @@ theorem rationalCyclotomicArtinLocalizedIsUltrametricDist
 
 attribute [local instance] rationalCyclotomicArtinLocalizedIsUltrametricDist
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 @[instance_reducible]
 noncomputable def rationalCyclotomicArtinLocalizedValued
     (m : ℕ+) (q : Nat.Primes) :
@@ -1138,8 +1084,7 @@ noncomputable def rationalCyclotomicArtinLocalizedValued
 
 attribute [local instance] rationalCyclotomicArtinLocalizedValued
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 @[reducible]
 noncomputable def rationalCyclotomicArtinLocalizedValuativeRel
     (m : ℕ+) (q : Nat.Primes) :
@@ -1152,8 +1097,7 @@ noncomputable def rationalCyclotomicArtinLocalizedValuativeRel
 
 attribute [local instance] rationalCyclotomicArtinLocalizedValuativeRel
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedValuationCompatible
     (m : ℕ+) (q : Nat.Primes) :
     (Valued.v : Valuation
@@ -1162,8 +1106,7 @@ theorem rationalCyclotomicArtinLocalizedValuationCompatible
 
 attribute [local instance] rationalCyclotomicArtinLocalizedValuationCompatible
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedValuationHasExtension
     (m : ℕ+) (q : Nat.Primes) :
     Valuation.HasExtension
@@ -1179,8 +1122,7 @@ theorem rationalCyclotomicArtinLocalizedValuationHasExtension
 
 attribute [local instance] rationalCyclotomicArtinLocalizedValuationHasExtension
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedValuationIsNontrivial
     (m : ℕ+) (q : Nat.Primes) :
     (ValuativeRel.valuation
@@ -1193,8 +1135,7 @@ theorem rationalCyclotomicArtinLocalizedValuationIsNontrivial
 
 attribute [local instance] rationalCyclotomicArtinLocalizedValuationIsNontrivial
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedValuativeRelIsNontrivial
     (m : ℕ+) (q : Nat.Primes) :
     ValuativeRel.IsNontrivial
@@ -1205,8 +1146,7 @@ theorem rationalCyclotomicArtinLocalizedValuativeRelIsNontrivial
 
 attribute [local instance] rationalCyclotomicArtinLocalizedValuativeRelIsNontrivial
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedIsValuativeTopology
     (m : ℕ+) (q : Nat.Primes) :
     IsValuativeTopology
@@ -1216,8 +1156,7 @@ theorem rationalCyclotomicArtinLocalizedIsValuativeTopology
 
 attribute [local instance] rationalCyclotomicArtinLocalizedIsValuativeTopology
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedIsNonarchimedeanLocalField
     (m : ℕ+) (q : Nat.Primes) :
     IsNonarchimedeanLocalField
@@ -1228,8 +1167,7 @@ theorem rationalCyclotomicArtinLocalizedIsNonarchimedeanLocalField
 
 attribute [local instance] rationalCyclotomicArtinLocalizedIsNonarchimedeanLocalField
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 @[instance_reducible]
 noncomputable def rationalCyclotomicArtinLocalizedIntegerAlgebra
     (m : ℕ+) (q : Nat.Primes) :
@@ -1241,8 +1179,7 @@ noncomputable def rationalCyclotomicArtinLocalizedIntegerAlgebra
 
 attribute [local instance] rationalCyclotomicArtinLocalizedIntegerAlgebra
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedIsIntegralClosure
     (m : ℕ+) (q : Nat.Primes) :
     IsIntegralClosure
@@ -1259,8 +1196,7 @@ theorem rationalCyclotomicArtinLocalizedIsIntegralClosure
 
 attribute [local instance] rationalCyclotomicArtinLocalizedIsIntegralClosure
 
-/-- Canonical structure for the rational cyclotomic completion tower.
-Its instance registration is local to the finite-place calculation. -/
+/-- Canonical structure for the rational cyclotomic completion tower. Its instance registration is local to the finite-place calculation. -/
 theorem rationalCyclotomicArtinLocalizedIntegerModuleFinite
     (m : ℕ+) (q : Nat.Primes) :
     Module.Finite

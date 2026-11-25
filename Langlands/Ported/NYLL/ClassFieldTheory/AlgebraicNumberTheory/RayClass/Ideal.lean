@@ -27,9 +27,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele
 /-!
 # Ideals prime to a ray-class modulus
 
-This file defines the subgroup of fractional ideals prime to a modulus,
-connects it with the corresponding finite-idele higher-unit conditions, and
-develops the approximation maps used in ray-class ideal constructions.
+This file defines the subgroup of fractional ideals prime to a modulus, connects it with the corresponding finite-idele higher-unit conditions, and develops the approximation maps used in ray-class ideal constructions.
 -/
 
 
@@ -47,8 +45,7 @@ variable {K : Type*} [Field K] [NumberField K]
 
 namespace RayClass
 
-/-- Fractional ideals having valuation zero at every finite prime in the
-support of the modulus. -/
+/-- Fractional ideals having valuation zero at every finite prime in the support of the modulus. -/
 def primeToModulusIdeals (m : Modulus K) :
     Subgroup (NumberFieldFractionalIdealGroup K) :=
   ClassFieldTheory.FractionalIdealFactorization.primeTo (F := K) m.finitePart.support
@@ -62,8 +59,7 @@ theorem mem_primeToModulusIdeals_iff
           (I : FractionalIdeal (nonZeroDivisors (𝓞 K)) K) = 0 :=
   Iff.rfl
 
-/-- A finite prime outside the support of `m`, regarded as an element of
-the group of fractional ideals prime to `m`. -/
+/-- A finite prime outside the support of `m`, regarded as an element of the group of fractional ideals prime to `m`. -/
 def primeToModulusIdeal
     (m : Modulus K)
     (v : HeightOneSpectrum (𝓞 K))
@@ -71,8 +67,7 @@ def primeToModulusIdeal
     primeToModulusIdeals m :=
   ClassFieldTheory.FractionalIdealFactorization.primeToPrime m.finitePart.support v hv
 
-/-- Coercing a prime outside the modulus support recovers its prime
-fractional ideal. -/
+/-- Coercing a prime outside the modulus support recovers its prime fractional ideal. -/
 @[simp]
 theorem primeToModulusIdeal_coe
     (m : Modulus K)
@@ -83,8 +78,7 @@ theorem primeToModulusIdeal_coe
       finitePrimeFractionalIdeal v :=
   rfl
 
-/-- Finite ideles satisfying the higher-unit condition at every prime in
-the support of the modulus. -/
+/-- Finite ideles satisfying the higher-unit condition at every prime in the support of the modulus. -/
 def finitePrimeToModulusSubgroup (m : Modulus K) :
     Subgroup (FiniteIdeleGroup K) where
   carrier := {a | ∀ v, v ∈ m.finitePart.support →
@@ -95,8 +89,7 @@ def finitePrimeToModulusSubgroup (m : Modulus K) :
   inv_mem' ha v hv :=
     (ClassFieldTheory.rayLocalHigherUnitGroup v (m.finitePart v)).inv_mem (ha v hv)
 
-/-- Ideles satisfying the infinite positivity and finite higher-unit
-conditions of a modulus. -/
+/-- Ideles satisfying the infinite positivity and finite higher-unit conditions of a modulus. -/
 def idelePrimeToModulusSubgroup (m : Modulus K) :
     Subgroup (IdeleGroup K) :=
   IdeleGroup.partsSubgroup m.infiniteCongruenceSubgroup (finitePrimeToModulusSubgroup m)
@@ -131,8 +124,7 @@ def primeToIdealMap (m : Modulus K) :
     exact map_mul _ _ _
 
 open scoped Classical in
-/-- A finite idele with a prescribed valuation vector away from the
-support of a modulus and value one on its support. -/
+/-- A finite idele with a prescribed valuation vector away from the support of a modulus and value one on its support. -/
 def valuationVectorSectionPrimeTo
     (m : Modulus K)
   (e : HeightOneSpectrum (𝓞 K) →₀ ℤ) :
@@ -226,8 +218,7 @@ theorem ideleCongruenceSubgroup_le_primeTo
   intro a ha
   exact ⟨ha.1, fun v _ => ha.2 v⟩
 
-/-- The congruence subgroup, viewed inside the subgroup of ideles prime
-to the modulus. -/
+/-- The congruence subgroup, viewed inside the subgroup of ideles prime to the modulus. -/
 def congruenceSubgroupInPrimeTo (m : Modulus K) :
     Subgroup (idelePrimeToModulusSubgroup m) :=
   m.ideleCongruenceSubgroup.subgroupOf
@@ -264,8 +255,7 @@ theorem primeToIdealMap_ker (m : Modulus K) :
     intro v
     exact ClassFieldTheory.rayLocalHigherUnitGroup_le_integralUnits v (m.finitePart v) (ha.2 v)
 
-/-- The quotient of ideles prime to a modulus by the congruence subgroup,
-identified with fractional ideals prime to the modulus. -/
+/-- The quotient of ideles prime to a modulus by the congruence subgroup, identified with fractional ideals prime to the modulus. -/
 def quotientCongruenceEquivPrimeToIdeals (m : Modulus K) :
     idelePrimeToModulusSubgroup m ⧸
         congruenceSubgroupInPrimeTo m ≃*
@@ -274,15 +264,13 @@ def quotientCongruenceEquivPrimeToIdeals (m : Modulus K) :
   exact QuotientGroup.quotientKerEquivOfSurjective
     (primeToIdealMap m) (primeToIdealMap_surjective m)
 
-/-- Principal ideles satisfying the modulus conditions, considered inside
-`I_K^(m)`. -/
+/-- Principal ideles satisfying the modulus conditions, considered inside `I_K^(m)`. -/
 def principalSubgroupInPrimeTo (m : Modulus K) :
     Subgroup (idelePrimeToModulusSubgroup m) :=
   Subgroup.comap (idelePrimeToModulusSubgroup m).subtype
     (IdeleGroup.principalSubgroup K)
 
-/-- Principal ideals generated by a totally positive element congruent to
-one modulo the finite modulus. -/
+/-- Principal ideals generated by a totally positive element congruent to one modulo the finite modulus. -/
 def principalRayIdealSubgroup (m : Modulus K) :
     Subgroup (primeToModulusIdeals m) :=
   Subgroup.map (primeToIdealMap m)
@@ -325,16 +313,14 @@ theorem mem_principalRayIdealSubgroup_iff
 abbrev IdealRayClassGroup (m : Modulus K) :=
   primeToModulusIdeals m ⧸ principalRayIdealSubgroup m
 
-/-- The canonical projection from ideles prime to the modulus to the
-ideal-theoretic ray class group. -/
+/-- The canonical projection from ideles prime to the modulus to the ideal-theoretic ray class group. -/
 def idealRayProjection (m : Modulus K) :
     idelePrimeToModulusSubgroup m →*
       IdealRayClassGroup m :=
   (QuotientGroup.mk' (principalRayIdealSubgroup m)).comp
     (primeToIdealMap m)
 
-/-- The subgroup generated by congruence ideles and principal ideles
-inside the ideles prime to a modulus. -/
+/-- The subgroup generated by congruence ideles and principal ideles inside the ideles prime to a modulus. -/
 def raySubgroupInPrimeTo (m : Modulus K) :
     Subgroup (idelePrimeToModulusSubgroup m) :=
   congruenceSubgroupInPrimeTo m ⊔
@@ -385,8 +371,7 @@ theorem idealRayProjection_ker (m : Modulus K) :
       QuotientGroup.eq_one_iff]
     exact ⟨p, hp, rfl⟩
 
-/-- The quotient of ideles prime to the modulus by the full ray subgroup,
-identified with the ideal-theoretic ray class group. -/
+/-- The quotient of ideles prime to the modulus by the full ray subgroup, identified with the ideal-theoretic ray class group. -/
 def quotientRaySubgroupEquivIdealRayClassGroup
     (m : Modulus K) :
     idelePrimeToModulusSubgroup m ⧸
@@ -398,8 +383,7 @@ def quotientRaySubgroupEquivIdealRayClassGroup
       (idealRayProjection m)
       (idealRayProjection_surjective m))
 
-/-- The quotient equivalence induced by the ideal-ray projection evaluates on
-the class of a prime-to-modulus idele as the original projection. -/
+/-- The quotient equivalence induced by the ideal-ray projection evaluates on the class of a prime-to-modulus idele as the original projection. -/
 @[simp]
 theorem quotientRaySubgroupEquivIdealRayClassGroup_mk
     (m : Modulus K) (a : idelePrimeToModulusSubgroup m) :
@@ -574,17 +558,16 @@ theorem denseRange_approximationCompletionMap
     ∀ i, DenseRange (approximationCompletionMap m i)
   | Sum.inl v => denseRange_finiteApproximationCompletionMap v.1
   | Sum.inr w =>
-      InfinitePlace.Completion.denseRange_coe w
+      AbsoluteValue.Completion.denseRange_coe w.1
 
 theorem continuous_approximationCompletionMap
     (m : Modulus K) :
     ∀ i, Continuous (approximationCompletionMap m i)
   | Sum.inl v => continuous_finiteApproximationCompletionMap v.1
   | Sum.inr w =>
-      InfinitePlace.Completion.continuous_coe w
+      AbsoluteValue.Completion.continuous_coe w.1
 
-/-- The diagonal embedding into the finite product of the relevant
-completions. -/
+/-- The diagonal embedding into the finite product of the relevant completions. -/
 def approximationEmbedding (m : Modulus K) :
     K → (i : ApproximationPlace m) → approximationCompletion m i :=
   (Pi.map (approximationCompletionMap m)) ∘
@@ -616,8 +599,7 @@ theorem denseRange_approximationEmbedding (m : Modulus K) :
         (approximationAbsoluteValue_pairwise m))
       (.piMap (continuous_approximationCompletionMap m))
 
-/-- The open set of field elements whose ratio with a fixed unit lies in
-a prescribed open unit set. -/
+/-- The open set of field elements whose ratio with a fixed unit lies in a prescribed open unit set. -/
 def unitRatioSet
     {F : Type*} [Field F] (a : Fˣ) (U : Subgroup Fˣ) :
     Set F :=
@@ -680,8 +662,7 @@ theorem isOpen_approximationTarget
       · rw [Modulus.localInfiniteCongruenceSubgroup, dite_eq_right hw]
         exact isOpen_univ
 
-/-- The given idele itself lies in the product of its approximation
-neighborhoods. -/
+/-- The given idele itself lies in the product of its approximation neighborhoods. -/
 def approximationTargetPoint
     (m : Modulus K) (a : IdeleGroup K) :
     (i : ApproximationPlace m) → approximationCompletion m i
@@ -700,8 +681,7 @@ theorem approximationTargetPoint_mem
   | inr w =>
       exact val_mem_unitRatioSet _ _
 
-/-- Weak approximation in the precise open local cosets required by the
-modulus. -/
+/-- Weak approximation in the precise open local cosets required by the modulus. -/
 theorem exists_principal_quotient_mem_primeTo
     (m : Modulus K) (a : IdeleGroup K) :
     ∃ x : Kˣ,
@@ -732,7 +712,6 @@ theorem exists_principal_quotient_mem_primeTo
     intro hxzero
     apply Units.ne_zero y₀
     rw [hy₀x, hxzero, WithAbs.toAbs_zero, AbsoluteValue.Completion.coe_zero]
-    rfl
   let xu : Kˣ := Units.mk0 x hx0
   refine ⟨xu, ?_⟩
   constructor
@@ -796,8 +775,7 @@ theorem exists_principal_quotient_mem_primeTo
     rw [hprincipal]
     exact hy
 
-/-- Approximation identifies the idele group as
-`I_K = I_K^(m) Kˣ`. -/
+/-- Approximation identifies the idele group as `I_K = I_K^(m) Kˣ`. -/
 theorem idelePrimeToModulusSubgroup_sup_principalSubgroup
     (m : Modulus K) :
     idelePrimeToModulusSubgroup m ⊔
@@ -813,8 +791,7 @@ theorem idelePrimeToModulusSubgroup_sup_principalSubgroup
       IdeleGroup.principalIdele K x, ⟨x, rfl⟩, ?_⟩
   group
 
-/-- The natural map from the prime-to-`m` ideles to the full idelic
-ray-class quotient. -/
+/-- The natural map from the prime-to-`m` ideles to the full idelic ray-class quotient. -/
 def primeToRayClassProjection (m : Modulus K) :
     idelePrimeToModulusSubgroup m →*
       IdeleGroup K ⧸
@@ -928,8 +905,7 @@ theorem primeToRayClassProjection_surjective (m : Modulus K) :
         (m.ideleCongruenceSubgroup ⊔
           IdeleGroup.principalSubgroup K) a)).symm
 
-/-- Restricting the full idelic ray-class quotient to prime-to-`m`
-ideles is an equivalence. -/
+/-- Restricting the full idelic ray-class quotient to prime-to-`m` ideles is an equivalence. -/
 def quotientRaySubgroupEquivIdeleRayQuotient
     (m : Modulus K) :
     idelePrimeToModulusSubgroup m ⧸
@@ -943,8 +919,7 @@ def quotientRaySubgroupEquivIdeleRayQuotient
       (primeToRayClassProjection m)
       (primeToRayClassProjection_surjective m))
 
-/-- The quotient equivalence induced by the idelic ray projection evaluates
-on a prime-to-modulus idele class as the original projection. -/
+/-- The quotient equivalence induced by the idelic ray projection evaluates on a prime-to-modulus idele class as the original projection. -/
 @[simp]
 theorem quotientRaySubgroupEquivIdeleRayQuotient_mk
     (m : Modulus K) (a : idelePrimeToModulusSubgroup m) :
@@ -956,8 +931,7 @@ theorem quotientRaySubgroupEquivIdeleRayQuotient_mk
     QuotientGroup.quotientMulEquivOfEq_mk]
   exact QuotientGroup.kerLift_mk (primeToRayClassProjection m) a
 
-/-- The idelic and ideal-theoretic ray class
-groups are canonically multiplicatively equivalent. -/
+/-- The idelic and ideal-theoretic ray class groups are canonically multiplicatively equivalent. -/
 def rayClassGroupEquivIdealRayClassGroup
     (m : Modulus K) :
     RayClassGroup m ≃* IdealRayClassGroup m :=
@@ -965,9 +939,7 @@ def rayClassGroupEquivIdealRayClassGroup
     ((quotientRaySubgroupEquivIdeleRayQuotient m).symm.trans
       (quotientRaySubgroupEquivIdealRayClassGroup m))
 
-/-- The canonical idelic-to-ideal ray-class equivalence sends a
-prime-to-modulus idèle class to the ideal ray class of its fractional
-ideal. -/
+/-- The canonical idelic-to-ideal ray-class equivalence sends a prime-to-modulus idèle class to the ideal ray class of its fractional ideal. -/
 @[simp]
 theorem rayClassGroupEquivIdealRayClassGroup_mk_primeTo
     (m : RayClass.Modulus K)

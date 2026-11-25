@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.Reciprocity.FiniteIdeleArtin
 public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.Reciprocity.InfinitePlaceArtin
 public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.Cohomology.CofinitelySplitFiniteExtension
@@ -20,9 +19,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NormUnits
 /-!
 # The preliminary global Artin homomorphism
 
-For a finite abelian extension `L / K`, the global norm-residue symbol
-on ideles is the product of its archimedean and finite-place local
-Artin factors.
+For a finite abelian extension `L / K`, the global norm-residue symbol on ideles is the product of its archimedean and finite-place local Artin factors.
 -/
 
 
@@ -32,7 +29,6 @@ Artin factors.
 open scoped BigOperators IsMulCommutative NumberField
 
 attribute [local instance] AbsoluteValue.Completion.algebraOfLiesOver
-attribute [local instance] NumberField.InfinitePlace.Completion.algebraOfLiesOver
 open NumberField IsDedekindDomain
 open IdeleGroup
 
@@ -50,9 +46,7 @@ variable {K : Type u} {L : Type v}
     [Field L] [NumberField L] [Algebra K L]
     [IsAbelianGalois K L]
 
-/-- The preliminary global Artin homomorphism
-`[·, L / K] : I_K → Gal(L / K)`, defined as the product of all local
-Artin homomorphisms. -/
+/-- The preliminary global Artin homomorphism `[·, L / K] : I_K → Gal(L / K)`, defined as the product of all local Artin homomorphisms. -/
 noncomputable def globalArtinMonoidHom :
     IdeleGroup K →* (L ≃ₐ[K] L) :=
   infinitePlaceGlobalArtinMonoidHom
@@ -70,8 +64,7 @@ theorem globalArtinMonoidHom_continuous :
       (finitePlaceGlobalArtinMonoidHom_continuous
         (K := K) (L := L))
 
-/-- The preliminary global Artin symbol is the product of its actual
-archimedean and finite local factors. -/
+/-- The preliminary global Artin symbol is the product of its actual archimedean and finite local factors. -/
 theorem globalArtinMonoidHom_apply
     (a : IdeleGroup K) :
     globalArtinMonoidHom (K := K) (L := L) a =
@@ -92,10 +85,7 @@ theorem globalArtinMonoidHom_apply
   rw [MonoidHom.finsetProd_apply]
   rfl
 
-/-- The actual global Artin symbol after an ordinary idele norm, expanded
-simultaneously at all archimedean and finite places.  The factors are
-indexed by the genuine places upstairs, and use the ordinary LCFT field
-norm on the corresponding completions. -/
+/-- The actual global Artin symbol after an ordinary idele norm, expanded simultaneously at all archimedean and finite places.  The factors are indexed by the genuine places upstairs, and use the ordinary LCFT field norm on the corresponding completions. -/
 theorem globalArtinMonoidHom_norm_eq_place_products
     {M : Type w}
     [Field M] [NumberField M] [Algebra K M]
@@ -148,11 +138,7 @@ theorem globalArtinMonoidHom_norm_eq_place_products
     finitePlaceGlobalArtinMonoidHom_norm_eq_finprod]
 
 omit [NumberField K] [NumberField L] in
-/-- In an actual field diamond `K ⊂ K'`, `L ⊂ L'`, the standard
-restriction map distributes over every local factor of the upper global
-Artin symbol.  The vertical Galois map is exactly the composite supplied
-by mathlib: first restrict scalars from `K'` to `K`, then restrict the
-automorphism of `L'` to the normal subextension `L`. -/
+/-- In an actual field diamond `K ⊂ K'`, `L ⊂ L'`, the standard restriction map distributes over every local factor of the upper global Artin symbol.  The vertical Galois map is exactly the composite supplied by mathlib: first restrict scalars from `K'` to `K`, then restrict the automorphism of `L'` to the normal subextension `L`. -/
 theorem restrict_globalArtinMonoidHom_apply
     {K' : Type w} {L' : Type x}
     [Field K'] [NumberField K']
@@ -185,9 +171,7 @@ theorem restrict_globalArtinMonoidHom_apply
     (finitePlaceArtinFactors_hasFiniteMulSupport
       (K := K') (L := L') a)]
 
-/-- Norm--restriction for the actual global Artin homomorphism.  In a number-field
-diamond `K ⊂ K'`, `L ⊂ L'`, the ordinary idele norm and mathlib's standard
-restriction composite form a commuting square. -/
+/-- Norm--restriction for the actual global Artin homomorphism.  In a number-field diamond `K ⊂ K'`, `L ⊂ L'`, the ordinary idele norm and mathlib's standard restriction composite form a commuting square. -/
 theorem globalArtinMonoidHom_norm_restriction
     {K' : Type w} {L' : Type x}
     [Field K'] [NumberField K']
@@ -247,8 +231,7 @@ theorem globalArtinMonoidHom_norm_restriction
         a
   rw [hinfinite, hfinite]
 
-/-- For an abelian tower with fixed base field, the global Artin map
-commutes with the genuine restriction homomorphism. -/
+/-- For an abelian tower with fixed base field, the global Artin map commutes with the genuine restriction homomorphism. -/
 theorem globalArtinMonoidHom_restrict_tower
     {E : Type w}
     [Field E] [NumberField E]
@@ -304,8 +287,7 @@ theorem globalArtinMonoidHom_restrict_tower
         (K := K) (L := L) (E := E) v)
       (IdeleGroup.finiteComponent v a)
 
-/-- The global Artin symbol of an archimedean one-place idele is its
-local infinite-place Artin symbol. -/
+/-- The global Artin symbol of an archimedean one-place idele is its local infinite-place Artin symbol. -/
 @[simp]
 theorem globalArtinMonoidHom_infinitePlaceIdele
     (v : InfinitePlace K)
@@ -353,8 +335,7 @@ theorem globalArtinMonoidHom_infinitePlaceIdele
     rw [infinitePlaceIdele_finiteComponent, map_one]
   rw [hinfinite, hfinite, mul_one]
 
-/-- The global Artin symbol of a finite one-place idele is its local
-finite-place Artin symbol. -/
+/-- The global Artin symbol of a finite one-place idele is its local finite-place Artin symbol. -/
 @[simp]
 theorem globalArtinMonoidHom_finitePlaceIdele
     (v : HeightOneSpectrum (𝓞 K))
@@ -374,8 +355,7 @@ theorem globalArtinMonoidHom_finitePlaceIdele
   rw [infinitePlaceGlobalArtinMonoidHom_finitePlaceIdele,
     finitePlaceGlobalArtinMonoidHom_finitePlaceIdele, one_mul]
 
-/-- Every chosen finite-place decomposition group is contained in the
-image of the global Artin homomorphism. -/
+/-- Every chosen finite-place decomposition group is contained in the image of the global Artin homomorphism. -/
 theorem finitePlaceDecompositionGroup_le_globalArtinMonoidHom_range
     (v : HeightOneSpectrum (𝓞 K)) :
     finitePlaceDecompositionGroup
@@ -413,8 +393,7 @@ variable {K L : Type}
     [Field L] [NumberField L] [Algebra K L]
     [IsAbelianGalois K L]
 
-/-- The actual global Artin homomorphism of a finite abelian extension
-of number fields is surjective. -/
+/-- The actual global Artin homomorphism of a finite abelian extension of number fields is surjective. -/
 private theorem globalArtinMonoidHom_surjective_native :
     Function.Surjective
       (globalArtinMonoidHom
@@ -483,10 +462,7 @@ private theorem globalArtinMonoidHom_surjective_native :
 
 end NativeSurjectivity
 
-/-- The actual global Artin homomorphism is surjective for number fields in
-independent universes. The native proof supplies an idèle over compatible
-small models; the existing norm--restriction square returns a preimage for
-the original local-product Artin map. -/
+/-- The actual global Artin homomorphism is surjective for number fields in independent universes. The native proof supplies an idèle over compatible small models; the existing norm--restriction square returns a preimage for the original local-product Artin map. -/
 theorem globalArtinMonoidHom_surjective
     {K : Type u} {L : Type v}
     [Field K] [NumberField K]

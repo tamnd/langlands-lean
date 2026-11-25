@@ -18,11 +18,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finit
 /-!
 # Field-facing order reversal for finite abelian extensions
 
-This module realizes a finite abelian extension inside a fixed separable
-closure and packages it as an abstract finite abelian subextension. It then
-transports the abstract order reversal for norm subgroups back to ordinary
-field norms. The final lemmas record the standard open subgroups contained in
-the norm subgroup of a finite abelian extension.
+This module realizes a finite abelian extension inside a fixed separable closure and packages it as an abstract finite abelian subextension. It then transports the abstract order reversal for norm subgroups back to ordinary field norms. The final lemmas record the standard open subgroups contained in the norm subgroup of a finite abelian extension.
 -/
 
 
@@ -38,8 +34,7 @@ namespace LocalClassFieldTheory
 open LocalFieldTheory RamificationTheory CyclicCohomology KummerTheory
 open ClassFormation
 
-/-- A finite abelian extension, realized by an explicit embedding in the
-fixed separable closure, as an abstract finite abelian subextension. -/
+/-- A finite abelian extension, realized by an explicit embedding in the fixed separable closure, as an abstract finite abelian subextension. -/
 def finiteAbelianAbstractExtensionOfEmbedding
     (K : Type u) (L : Type v) [Field K] [Field L] [Algebra K L]
     [FiniteDimensional K L] [IsAbelianGalois K L]
@@ -66,9 +61,7 @@ def finiteAbelianAbstractExtensionOfEmbedding
             (inferInstance :
               IsMulCommutative (Gal(L / K))).is_comm.comm (e x) (e y) }
 
-/-- Under the canonical identification of the abstract base fixed units with
-`Kˣ`, the abstract norm subgroup of an embedded finite abelian extension is
-its ordinary field-norm subgroup. -/
+/-- Under the canonical identification of the abstract base fixed units with `Kˣ`, the abstract norm subgroup of an embedded finite abelian extension is its ordinary field-norm subgroup. -/
 theorem map_finiteAbelianAbstractExtension_normSubgroup_eq
     (K L : Type) [Field K] [Field L] [Algebra K L]
     [FiniteDimensional K L] [IsAbelianGalois K L]
@@ -88,8 +81,7 @@ theorem map_finiteAbelianAbstractExtension_normSubgroup_eq
   exact map_finiteNormSubgroup_eq_additiveNormSubgroup K
     (SeparableClosure K) (AlgHom.fieldRange i)
 
-/-- Reverse inclusion of ordinary norm subgroups produces an embedding of
-finite abelian extensions over the common local base field. -/
+/-- Reverse inclusion of ordinary norm subgroups produces an embedding of finite abelian extensions over the common local base field. -/
 theorem nonempty_algHom_of_normSubgroup_le
     (K L M : Type) [Field K] [Field L] [Field M]
     [Algebra K L] [Algebra K M]
@@ -127,16 +119,14 @@ theorem nonempty_algHom_of_normSubgroup_le
       (intrinsicFiniteAbstractBase K) AL AM).2 hAbs
   have hRange : AlgHom.fieldRange iL ≤ AlgHom.fieldRange iM := by
     rw [← InfiniteGalois.fixedField_fixingSubgroup (AlgHom.fieldRange iM)]
-    apply (IntermediateField.le_iff_le
+    apply (IntermediateField.le_fixedField_iff_le_fixingSubgroup
       (AlgHom.fieldRange iM).fixingSubgroup (AlgHom.fieldRange iL)).2
     exact hALAM
   exact ⟨(finiteGaloisFieldRangeEquivOfEmbedding K M iM).symm.toAlgHom.comp
     ((IntermediateField.inclusion hRange).comp
       (finiteGaloisFieldRangeEquivOfEmbedding K L iL).toAlgHom)⟩
 
-/-- For a prescribed prime element, the norm subgroup of a finite abelian
-extension contains a standard subgroup `⟨ϖᵈ⟩ Uⁿ` for some positive
-integers `d` and `n`. -/
+/-- For a prescribed prime element, the norm subgroup of a finite abelian extension contains a standard subgroup `⟨ϖᵈ⟩ Uⁿ` for some positive integers `d` and `n`. -/
 theorem exists_uniformizerPrincipalSubgroup_le_normSubgroup
     (K L : Type) [Field K] [Field L] [Algebra K L]
     [FiniteDimensional K L] [IsAbelianGalois K L]
@@ -150,11 +140,11 @@ theorem exists_uniformizerPrincipalSubgroup_le_normSubgroup
     apply Nat.finite_of_card_ne_zero
     rw [IsGalois.card_aut_eq_finrank K L]
     exact Nat.ne_of_gt Module.finrank_pos
-  let : Finite (Abelianization (Gal(L / K))) :=
-    Finite.of_surjective Abelianization.of QuotientGroup.mk_surjective
+  let : Finite (Group.Abelianization (Gal(L / K))) :=
+    Finite.of_surjective Group.Abelianization.of QuotientGroup.mk_surjective
   let : Finite (NormQuotient K L) :=
     Finite.of_equiv
-      (Abelianization (Gal(L / K)))
+      (Group.Abelianization (Gal(L / K)))
       (abelianizationEquivNormQuotient K L).toEquiv
   let : Finite (Kˣ ⧸ localNormSubgroup K L) := by
     change Finite (NormQuotient K L)
@@ -171,8 +161,7 @@ theorem exists_uniformizerPrincipalSubgroup_le_normSubgroup
       ((localNormSubgroup K L).pow_index_mem ϖ)
   · exact hUn
 
-/-- If the prescribed prime element is itself a norm, the norm subgroup
-contains a standard subgroup with uniformizer exponent one. -/
+/-- If the prescribed prime element is itself a norm, the norm subgroup contains a standard subgroup with uniformizer exponent one. -/
 theorem exists_uniformizerPrincipalSubgroup_one_le_normSubgroup
     (K L : Type) [Field K] [Field L] [Algebra K L]
     [FiniteDimensional K L] [IsAbelianGalois K L]

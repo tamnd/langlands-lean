@@ -16,13 +16,11 @@ public import Mathlib.GroupTheory.Transfer
 /-!
 # Transfer and relative augmentation quotients
 
-This file constructs the transfer on abelianizations and the concrete
-relative augmentation quotient
+This file constructs the transfer on abelianizations and the concrete relative augmentation quotient
 
 `(I_H + I_G I_H) / I_G I_H`.
 
-The two vertical augmentation maps in the transfer square are developed
-from the integral group rings themselves.
+The two vertical augmentation maps in the transfer square are developed from the integral group rings themselves.
 -/
 
 
@@ -45,33 +43,32 @@ variable {G : Type*} [Group G]
 /-- Transfer from `G` to the abelianization of a finite-index subgroup. -/
 noncomputable def transferToAbelianization
     (H : Subgroup G) [H.FiniteIndex] :
-    G →* Abelianization H :=
-  MonoidHom.transfer (Abelianization.of : H →* Abelianization H)
+    G →* Group.Abelianization H :=
+  MonoidHom.transfer (Group.Abelianization.of : H →* Group.Abelianization H)
 
 /-- The transfer factors through the abelianization of `G`. -/
 noncomputable def abelianizedTransfer
     (H : Subgroup G) [H.FiniteIndex] :
-    Abelianization G →* Abelianization H :=
-  Abelianization.lift (transferToAbelianization H)
+    Group.Abelianization G →* Group.Abelianization H :=
+  Group.Abelianization.lift (transferToAbelianization H)
 
 @[simp]
 theorem abelianizedTransfer_of
     (H : Subgroup G) [H.FiniteIndex] (g : G) :
-    abelianizedTransfer H (Abelianization.of g) =
+    abelianizedTransfer H (Group.Abelianization.of g) =
       transferToAbelianization H g :=
   rfl
 
-/-- The explicit transversal formula for the top horizontal map in
-the relative augmentation construction. -/
+/-- The explicit transversal formula for the top horizontal map in the relative augmentation construction. -/
 theorem abelianizedTransfer_of_eq_diff
     (H : Subgroup G) [H.FiniteIndex]
     (T : H.LeftTransversal) (g : G) :
-    abelianizedTransfer H (Abelianization.of g) =
+    abelianizedTransfer H (Group.Abelianization.of g) =
       Subgroup.leftTransversals.diff
-        (Abelianization.of : H →* Abelianization H)
+        (Group.Abelianization.of : H →* Group.Abelianization H)
         T (g • T) := by
   exact MonoidHom.transfer_def
-    (Abelianization.of : H →* Abelianization H) T g
+    (Group.Abelianization.of : H →* Group.Abelianization H) T g
 
 /-- The inclusion of the subgroup ring `ℤ[H]` into `ℤ[G]`. -/
 def subgroupRingMap (H : Subgroup G) :
@@ -138,8 +135,7 @@ def mixedProductInNumerator (H : Subgroup G) :
   add_mem' := (mixedAugmentationProduct H).add_mem
   neg_mem' := (mixedAugmentationProduct H).neg_mem
 
-/-- Membership in the mixed product after forgetting the relative-numerator
-subtype. -/
+/-- Membership in the mixed product after forgetting the relative-numerator subtype. -/
 @[simp]
 theorem mem_mixedProductInNumerator_iff
     (H : Subgroup G) (x : relativeAugmentationNumerator H) :
@@ -180,8 +176,7 @@ def relativeDeltaElement (H : Subgroup G) (h : H) :
     AddSubgroup.mem_sup_left
       (embeddedDelta_mem_embeddedSubgroupIdeal H h)⟩
 
-/-- The class of `h - 1` in
-`(I_H + I_G I_H) / I_G I_H`. -/
+/-- The class of `h - 1` in `(I_H + I_G I_H) / I_G I_H`. -/
 def relativeDeltaClass (H : Subgroup G) (h : H) :
     RelativeAugmentationQuotient H :=
   QuotientAddGroup.mk' (mixedProductInNumerator H)
@@ -241,14 +236,14 @@ def relativeDeltaMonoidHom (H : Subgroup G) :
 
 /-- The right vertical augmentation map in the relative augmentation construction. -/
 def relativeDeltaAbelianization (H : Subgroup G) :
-    Abelianization H →*
+    Group.Abelianization H →*
       Multiplicative (RelativeAugmentationQuotient H) :=
-  Abelianization.lift (relativeDeltaMonoidHom H)
+  Group.Abelianization.lift (relativeDeltaMonoidHom H)
 
 @[simp]
 theorem relativeDeltaAbelianization_of
     (H : Subgroup G) (h : H) :
-    relativeDeltaAbelianization H (Abelianization.of h) =
+    relativeDeltaAbelianization H (Group.Abelianization.of h) =
       Multiplicative.ofAdd (relativeDeltaClass H h) :=
   rfl
 
@@ -282,24 +277,23 @@ theorem transversalComponent_mul_right
   exact
     (mul_assoc ((T.2.toLeftFun g : G)⁻¹) g (h : G)).symm
 
-/-- A coefficient at `g` records its transversal `H`-component in
-`Hᵃᵇ`. -/
+/-- A coefficient at `g` records its transversal `H`-component in `Hᵃᵇ`. -/
 def transversalCoefficientToAbelianization
     (H : Subgroup G) (T : H.LeftTransversal) (g : G) :
-    ℤ →+ Additive (Abelianization H) where
+    ℤ →+ Additive (Group.Abelianization H) where
   toFun n :=
     n • Additive.ofMul
-      (Abelianization.of (transversalComponent H T g))
+      (Group.Abelianization.of (transversalComponent H T g))
   map_zero' := zero_zsmul _
   map_add' _ _ := add_zsmul _ _ _
 
 /-- Transversal linearization of `ℤ[G]` in `Hᵃᵇ`. -/
 def transversalLinearization
     (H : Subgroup G) (T : H.LeftTransversal) :
-    IntegralGroupRing G →+ Additive (Abelianization H) :=
+    IntegralGroupRing G →+ Additive (Group.Abelianization H) :=
   ((Finsupp.liftAddHom
       (α := G) (M := ℤ)
-      (N := Additive (Abelianization H)))
+      (N := Additive (Group.Abelianization H)))
       (transversalCoefficientToAbelianization H T)).comp
     MonoidAlgebra.coeffAddEquiv.toAddMonoidHom
 
@@ -310,17 +304,16 @@ theorem transversalLinearization_single
     transversalLinearization H T
         (MonoidAlgebra.single g n) =
       n • Additive.ofMul
-        (Abelianization.of (transversalComponent H T g)) := by
+        (Group.Abelianization.of (transversalComponent H T g)) := by
   exact Finsupp.liftAddHom_apply_single
     (transversalCoefficientToAbelianization H T) g n
 
-/-- On the embedded subgroup ideal, transversal linearization is the
-ordinary abelianization linearization. -/
+/-- On the embedded subgroup ideal, transversal linearization is the ordinary abelianization linearization. -/
 @[simp]
 theorem transversalLinearization_embeddedDelta
     (H : Subgroup G) (T : H.LeftTransversal) (h : H) :
     transversalLinearization H T (embeddedDelta H h) =
-      Additive.ofMul (Abelianization.of h) := by
+      Additive.ofMul (Group.Abelianization.of h) := by
   have hc :=
     transversalComponent_mul_right H T (1 : G) h
   rw [embeddedDelta_eq]
@@ -330,8 +323,7 @@ theorem transversalLinearization_embeddedDelta
       transversalComponent H T 1 * h by simpa using hc]
   simp only [map_mul, ofMul_mul, add_sub_cancel_left]
 
-/-- A basic generator of `I_G I_H` is killed by transversal
-linearization. -/
+/-- A basic generator of `I_G I_H` is killed by transversal linearization. -/
 theorem transversalLinearization_delta_mul_embeddedDelta
     (H : Subgroup G) (T : H.LeftTransversal)
     (g : G) (h : H) :
@@ -355,9 +347,7 @@ theorem transversalLinearization_delta_mul_embeddedDelta
         simpa using hc1]
   simp only [mul_one, map_mul, ofMul_mul, add_sub_add_right_eq_sub, sub_self]
 
-/-- Transversal linearization kills a product of an augmentation-zero
-element of `ℤ[G]` with an embedded augmentation-zero element of
-`ℤ[H]`. -/
+/-- Transversal linearization kills a product of an augmentation-zero element of `ℤ[G]` with an embedded augmentation-zero element of `ℤ[H]`. -/
 theorem transversalLinearization_mul_eq_zero
     (H : Subgroup G) (T : H.LeftTransversal)
     (x : IntegralGroupRing G) (hx : x ∈ ideal G)
@@ -406,12 +396,11 @@ theorem transversalLinearization_eq_zero_of_mem_mixed
   · intro x hx hlin
     rw [map_neg, hlin, neg_zero]
 
-/-- Transversal linearization restricted to
-`I_H + I_G I_H`. -/
+/-- Transversal linearization restricted to `I_H + I_G I_H`. -/
 def relativeLinearizationOnNumerator
     (H : Subgroup G) (T : H.LeftTransversal) :
     relativeAugmentationNumerator H →+
-      Additive (Abelianization H) where
+      Additive (Group.Abelianization H) where
   toFun x :=
     transversalLinearization H T
       (x : IntegralGroupRing G)
@@ -422,7 +411,7 @@ def relativeLinearizationOnNumerator
 def relativeQuotientLinearization
     (H : Subgroup G) (T : H.LeftTransversal) :
     RelativeAugmentationQuotient H →+
-      Additive (Abelianization H) :=
+      Additive (Group.Abelianization H) :=
   QuotientAddGroup.lift
     (mixedProductInNumerator H)
     (relativeLinearizationOnNumerator H T) (by
@@ -436,14 +425,14 @@ theorem relativeQuotientLinearization_deltaClass
     (H : Subgroup G) (T : H.LeftTransversal) (h : H) :
     relativeQuotientLinearization H T
         (relativeDeltaClass H h) =
-      Additive.ofMul (Abelianization.of h) := by
+      Additive.ofMul (Group.Abelianization.of h) := by
   exact transversalLinearization_embeddedDelta H T h
 
 /-- Multiplicative form of inverse relative linearization. -/
 def relativeQuotientLinearizationMonoidHom
     (H : Subgroup G) (T : H.LeftTransversal) :
     Multiplicative (RelativeAugmentationQuotient H) →*
-      Abelianization H :=
+      Group.Abelianization H :=
   (relativeQuotientLinearization H T).toMultiplicativeLeft
 
 @[simp]
@@ -451,13 +440,13 @@ theorem relativeQuotientLinearizationMonoidHom_deltaClass
     (H : Subgroup G) (T : H.LeftTransversal) (h : H) :
     relativeQuotientLinearizationMonoidHom H T
         (Multiplicative.ofAdd (relativeDeltaClass H h)) =
-      Abelianization.of h := by
+      Group.Abelianization.of h := by
   exact congrArg Additive.toMul
     (relativeQuotientLinearization_deltaClass H T h)
 
 theorem relativeQuotientLinearizationMonoidHom_deltaAbelianization
     (H : Subgroup G) (T : H.LeftTransversal)
-    (a : Abelianization H) :
+    (a : Group.Abelianization H) :
     relativeQuotientLinearizationMonoidHom H T
         (relativeDeltaAbelianization H a) =
       a := by
@@ -483,8 +472,7 @@ theorem relativeDeltaAbelianization_injective
       H T b] at h
   exact h
 
-/-- An embedded augmentation-ideal element, intrinsically valued in the
-relative numerator. -/
+/-- An embedded augmentation-ideal element, intrinsically valued in the relative numerator. -/
 def embeddedIdealElement
     (H : Subgroup G) (x : IntegralGroupRing H)
     (hx : x ∈ ideal H) :
@@ -494,8 +482,7 @@ def embeddedIdealElement
       (show subgroupRingMap H x ∈ embeddedSubgroupIdeal H from
         ⟨⟨x, hx⟩, rfl⟩)⟩
 
-/-- The coefficient expression supplies a preimage for every embedded
-augmentation-ideal element. -/
+/-- The coefficient expression supplies a preimage for every embedded augmentation-ideal element. -/
 theorem relativeDeltaAbelianization_deltaPreimage
     (H : Subgroup G) (x : IntegralGroupRing H)
     (hx : x ∈ ideal H) :
@@ -549,7 +536,7 @@ theorem relativeDeltaAbelianization_surjective
     Function.Surjective (relativeDeltaAbelianization H) := by
   intro q
   change
-    ∃ a : Abelianization H,
+    ∃ a : Group.Abelianization H,
       relativeDeltaAbelianization H a =
         Multiplicative.ofAdd (Multiplicative.toAdd q)
   refine
@@ -580,7 +567,7 @@ theorem relativeDeltaAbelianization_surjective
 /-- The right vertical isomorphism in the diagram of the relative augmentation construction. -/
 noncomputable def relativeDeltaAbelianizationEquiv
     (H : Subgroup G) :
-    Abelianization H ≃*
+    Group.Abelianization H ≃*
       Multiplicative (RelativeAugmentationQuotient H) :=
   MulEquiv.ofBijective (relativeDeltaAbelianization H)
     ⟨relativeDeltaAbelianization_injective H,
@@ -588,7 +575,7 @@ noncomputable def relativeDeltaAbelianizationEquiv
 
 @[simp]
 theorem relativeDeltaAbelianizationEquiv_apply
-    (H : Subgroup G) (a : Abelianization H) :
+    (H : Subgroup G) (a : Group.Abelianization H) :
     relativeDeltaAbelianizationEquiv H a =
       relativeDeltaAbelianization H a :=
   rfl
@@ -597,13 +584,11 @@ theorem relativeDeltaAbelianizationEquiv_apply
 theorem relativeDeltaAbelianizationEquiv_of
     (H : Subgroup G) (h : H) :
     relativeDeltaAbelianizationEquiv H
-        (Abelianization.of h) =
+        (Group.Abelianization.of h) =
       Multiplicative.ofAdd (relativeDeltaClass H h) :=
   rfl
 
-/-- The lower horizontal map in the relative augmentation construction, obtained from transfer
-through
-the two canonical augmentation isomorphisms. -/
+/-- The lower horizontal map in the relative augmentation construction, obtained from transfer through the two canonical augmentation isomorphisms. -/
 noncomputable def augmentationTransfer
     (H : Subgroup G) [H.FiniteIndex] :
     Multiplicative (Quotient G) →*
@@ -612,8 +597,7 @@ noncomputable def augmentationTransfer
     ((abelianizedTransfer H).comp
       (deltaAbelianizationEquiv G).symm.toMonoidHom)
 
-/-- Evaluation of the lower transfer map before using the augmentation
-isomorphism. -/
+/-- Evaluation of the lower transfer map before using the augmentation isomorphism. -/
 @[simp]
 theorem augmentationTransfer_apply
     (H : Subgroup G) [H.FiniteIndex]
@@ -627,7 +611,7 @@ theorem augmentationTransfer_apply
 /-- Commutativity of the transfer/augmentation square. -/
 theorem augmentationTransfer_deltaAbelianization
     (H : Subgroup G) [H.FiniteIndex]
-    (a : Abelianization G) :
+    (a : Group.Abelianization G) :
     augmentationTransfer H (deltaAbelianization G a) =
       relativeDeltaAbelianization H
         (abelianizedTransfer H a) := by
@@ -644,7 +628,7 @@ theorem augmentationTransfer_deltaClass
         (transferToAbelianization H g) := by
   rw [← deltaAbelianization_of]
   exact augmentationTransfer_deltaAbelianization H
-    (Abelianization.of g)
+    (Group.Abelianization.of g)
 
 /-- The representative of a left coset selected by `T`. -/
 def leftRepresentative
@@ -675,10 +659,10 @@ theorem leftRepresentative_mul_transferComponent
 theorem abelianizedTransfer_of_eq_prod_transferComponent
     (H : Subgroup G) [H.FiniteIndex]
     (T : H.LeftTransversal) (g : G) :
-    abelianizedTransfer H (Abelianization.of g) =
+    abelianizedTransfer H (Group.Abelianization.of g) =
       letI := H.fintypeQuotientOfFiniteIndex
       ∏ q : G ⧸ H,
-        Abelianization.of (transferComponent H T g q) := by
+        Group.Abelianization.of (transferComponent H T g q) := by
   let := H.fintypeQuotientOfFiniteIndex
   rw [abelianizedTransfer_of_eq_diff H T g]
   rfl
@@ -730,8 +714,7 @@ theorem sum_shifted_leftRepresentatives
           simp [transversalNormElement,
             Finset.mul_sum]
 
-/-- Multiplying an embedded augmentation difference by a transversal
-representative stays in `I_H + I_G I_H`. -/
+/-- Multiplying an embedded augmentation difference by a transversal representative stays in `I_H + I_G I_H`. -/
 theorem single_mul_embeddedDelta_mem_numerator
     (H : Subgroup G) (r : G) (h : H) :
     MonoidAlgebra.single r 1 * embeddedDelta H h ∈
@@ -781,8 +764,7 @@ theorem delta_mul_transversalNormElement_eq_sum
   rw [sum_shifted_leftRepresentatives H T g]
   simp [transversalNormElement, sub_mul, Finset.mul_sum]
 
-/-- The group-ring element `δg · ∑ρ` belongs to the relative
-augmentation numerator. -/
+/-- The group-ring element `δg · ∑ρ` belongs to the relative augmentation numerator. -/
 theorem delta_mul_transversalNormElement_mem_numerator
     (H : Subgroup G) [H.FiniteIndex]
     (T : H.LeftTransversal) (g : G) :
@@ -796,16 +778,14 @@ theorem delta_mul_transversalNormElement_mem_numerator
   exact single_mul_embeddedDelta_mem_numerator H
     (leftRepresentative H T q) (transferComponent H T g q)
 
-/-- A single summand in the norm formula, intrinsically valued in the
-relative numerator. -/
+/-- A single summand in the norm formula, intrinsically valued in the relative numerator. -/
 def singleMulEmbeddedDeltaElement
     (H : Subgroup G) (r : G) (h : H) :
     relativeAugmentationNumerator H :=
   ⟨MonoidAlgebra.single r 1 * embeddedDelta H h,
     single_mul_embeddedDelta_mem_numerator H r h⟩
 
-/-- Multiplying by a representative does not change an embedded
-augmentation class modulo `I_G I_H`. -/
+/-- Multiplying by a representative does not change an embedded augmentation class modulo `I_G I_H`. -/
 theorem mk_singleMulEmbeddedDeltaElement_eq_relativeDeltaClass
     (H : Subgroup G) (r : G) (h : H) :
     QuotientAddGroup.mk' (mixedProductInNumerator H)
@@ -849,8 +829,7 @@ def deltaNormClass
   QuotientAddGroup.mk' (mixedProductInNumerator H)
     (deltaNormElement H T g)
 
-/-- Evaluation of vanishing for the norm class in the concrete mixed
-augmentation product. -/
+/-- Evaluation of vanishing for the norm class in the concrete mixed augmentation product. -/
 theorem deltaNormClass_eq_zero_iff
     (H : Subgroup G) [H.FiniteIndex]
     (T : H.LeftTransversal) (g : G) :
@@ -860,8 +839,7 @@ theorem deltaNormClass_eq_zero_iff
         mixedAugmentationProduct H :=
   QuotientAddGroup.eq_zero_iff _
 
-/-- The sum of transfer-component augmentation classes is the class of
-`δg · ∑ρ`. -/
+/-- The sum of transfer-component augmentation classes is the class of `δg · ∑ρ`. -/
 theorem sum_relativeDeltaClass_transferComponent_eq_deltaNormClass
     (H : Subgroup G) [H.FiniteIndex]
     (T : H.LeftTransversal) (g : G) :
@@ -899,9 +877,7 @@ theorem sum_relativeDeltaClass_transferComponent_eq_deltaNormClass
           (delta_mul_transversalNormElement_eq_sum
             H T g).symm
 
-/-- **The norm-element formula.**
-On the class of `g-1`, the lower horizontal map is multiplication by
-the sum of a left transversal. -/
+/-- **The norm-element formula.** On the class of `g-1`, the lower horizontal map is multiplication by the sum of a left transversal. -/
 theorem augmentationTransfer_deltaClass_eq_deltaNorm
     (H : Subgroup G) [H.FiniteIndex]
     (T : H.LeftTransversal) (g : G) :
@@ -916,8 +892,7 @@ theorem augmentationTransfer_deltaClass_eq_deltaNorm
   exact congrArg Multiplicative.ofAdd
     (sum_relativeDeltaClass_transferComponent_eq_deltaNormClass H T g)
 
-/-- Multiplication of an arbitrary augmentation-zero group-ring element
-by the transversal norm stays in the relative numerator. -/
+/-- Multiplication of an arbitrary augmentation-zero group-ring element by the transversal norm stays in the relative numerator. -/
 theorem ideal_mul_transversalNormElement_mem_numerator
     (H : Subgroup G) [H.FiniteIndex]
     (T : H.LeftTransversal)
@@ -935,8 +910,7 @@ theorem ideal_mul_transversalNormElement_mem_numerator
       (delta_mul_transversalNormElement_mem_numerator
         H T g) (x.coeff g)
 
-/-- The group-ring norm multiple of `x`, intrinsically in the relative
-numerator. -/
+/-- The group-ring norm multiple of `x`, intrinsically in the relative numerator. -/
 def idealNormElement
     (H : Subgroup G) [H.FiniteIndex]
     (T : H.LeftTransversal)
@@ -995,8 +969,7 @@ theorem sum_deltaNormClass_eq_idealNormClass
             IntegralGroupRing G) :=
           rfl
 
-/-- **The full transfer/augmentation formula.**
-For every `x ∈ I_G`,
+/-- **The full transfer/augmentation formula.** For every `x ∈ I_G`,
 
 `S(x mod I_G²) = x · (∑ρ) mod I_G I_H`.
 -/

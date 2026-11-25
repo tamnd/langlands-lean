@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NormUnitsBaseChange
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.Relative.InfinitePlaceTensorNorm
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.Cohomology.SPlaces.LocalBlocks
@@ -27,11 +26,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.Completion.Tenso
 /-!
 # Archimedean Artin homomorphisms
 
-At a ramified infinite place, the local extension is complex over
-real.  Its Artin homomorphism sends the sign of a real unit to the
-corresponding complex-conjugation element of the decomposition group.
-At an unramified infinite place the decomposition group, and hence the
-local homomorphism, is trivial.
+At a ramified infinite place, the local extension is complex over real.  Its Artin homomorphism sends the sign of a real unit to the corresponding complex-conjugation element of the decomposition group. At an unramified infinite place the decomposition group, and hence the local homomorphism, is trivial.
 -/
 
 
@@ -41,7 +36,6 @@ local homomorphism, is trivial.
 open scoped BigOperators IsMulCommutative NumberField
 
 attribute [local instance] AbsoluteValue.Completion.algebraOfLiesOver
-attribute [local instance] NumberField.InfinitePlace.Completion.algebraOfLiesOver
 open NumberField IsDedekindDomain
 open IdeleGroup RelativeIdeleGroup
 
@@ -99,8 +93,7 @@ private theorem ramifiedInfinitePlaceConjugation_sq
         (K := K) w hRamified) x
 
 open scoped Classical in
-/-- The archimedean Artin homomorphism associated with a specified
-infinite place above the base place. -/
+/-- The archimedean Artin homomorphism associated with a specified infinite place above the base place. -/
 noncomputable def infinitePlaceArtinMonoidHomOfPlace
     (v : InfinitePlace K) (w : InfinitePlace L)
     (hw : w.comap (algebraMap K L) = v) :
@@ -161,8 +154,7 @@ theorem infinitePlaceArtinMonoidHomOfPlace_apply_of_isRamified
     MonoidHom.comp_apply]
   rfl
 
-/-- The actual local Artin homomorphism at an infinite place, using
-the infinite place of `L` already chosen by the local-block API. -/
+/-- The actual local Artin homomorphism at an infinite place, using the infinite place of `L` already chosen by the local-block API. -/
 noncomputable def chosenInfinitePlaceArtinMonoidHom
     (v : InfinitePlace K) :
     v.Completionˣ →* (L ≃ₐ[K] L) :=
@@ -192,11 +184,7 @@ theorem chosenInfinitePlaceArtinMonoidHom_sq
       exact ramifiedInfinitePlaceConjugation_sq w hunramified
 
 omit [NumberField K] [NumberField L] in
-/-- At a ramified real place, the actual chosen local Artin symbol of
-negative one is complex conjugation along the chosen infinite place
-upstairs.  The statement exposes the intrinsic property of the Artin
-value, without exposing the auxiliary conjugation chosen in its
-construction. -/
+/-- At a ramified real place, the actual chosen local Artin symbol of negative one is complex conjugation along the chosen infinite place upstairs.  The statement exposes the intrinsic property of the Artin value, without exposing the auxiliary conjugation chosen in its construction. -/
 theorem chosenInfinitePlaceArtinMonoidHom_neg_one_isConj_of_ramified
     (v : InfinitePlace K)
     (hRamified :
@@ -255,8 +243,7 @@ section AbelianTower
 variable [IsAbelianGalois K L]
 
 omit [NumberField K] [NumberField L] in
-/-- In an abelian extension, the archimedean Artin homomorphism is
-independent of the chosen infinite place above the base place. -/
+/-- In an abelian extension, the archimedean Artin homomorphism is independent of the chosen infinite place above the base place. -/
 theorem infinitePlaceArtinMonoidHomOfPlace_eq
     (v : InfinitePlace K)
     (w w' : InfinitePlace L)
@@ -343,8 +330,7 @@ theorem infinitePlaceArtinMonoidHomOfPlace_eq
     · exact hsigmaEq
 
 omit [NumberField K] [NumberField L] in
-/-- Archimedean Artin homomorphisms attached to specified places commute
-with restriction through an abelian tower. -/
+/-- Archimedean Artin homomorphisms attached to specified places commute with restriction through an abelian tower. -/
 theorem infinitePlaceArtinMonoidHomOfPlace_restrict_tower
     {E : Type w}
     [Field E] [NumberField E]
@@ -468,8 +454,7 @@ theorem infinitePlaceArtinMonoidHomOfPlace_restrict_tower
       · exact map_one (AlgEquiv.restrictNormalHom E)
       · simpa [sigmaR, sigmaL, sigmaE] using hsigmaREq
 
-/-- The norm from a complex archimedean completion to a real completion
-is positive under the canonical real coordinate. -/
+/-- The norm from a complex archimedean completion to a real completion is positive under the canonical real coordinate. -/
 theorem infinitePlace_normUnits_real_complex_pos
     {K' : Type w}
     [Field K'] [NumberField K'] [Algebra K K']
@@ -523,8 +508,7 @@ theorem infinitePlace_normUnits_real_complex_pos
   rw [Algebra.norm_complex_apply, Complex.normSq_pos]
   exact (map_ne_zero eComplex).2 (Units.ne_zero x)
 
-/-- The norm between real archimedean completions agrees with the
-transported local unit under their canonical real coordinates. -/
+/-- The norm between real archimedean completions agrees with the transported local unit under their canonical real coordinates. -/
 theorem infinitePlace_normUnits_real_real
     {K' : Type w}
     [Field K'] [NumberField K'] [Algebra K K']
@@ -582,8 +566,7 @@ theorem infinitePlace_normUnits_real_real
       eBase eExtension hCompatible x
 
 omit [NumberField L] in
-/-- The archimedean Artin map attached to specified places carries a
-local norm to the restriction of the upper Artin element. -/
+/-- The archimedean Artin map attached to specified places carries a local norm to the restriction of the upper Artin element. -/
 theorem infinitePlaceArtinMonoidHomOfPlace_norm_restriction
     {K' : Type w} {L' : Type x}
     [Field K'] [NumberField K']
@@ -804,8 +787,7 @@ theorem infinitePlaceArtinMonoidHomOfPlace_norm_restriction
       · simpa [sigmaRestricted, sigmaUpper, sigmaLower] using hSigmaEq
 
 omit [NumberField K] [NumberField L] in
-/-- Archimedean local factors commute with restriction in an abelian
-number-field tower. -/
+/-- Archimedean local factors commute with restriction in an abelian number-field tower. -/
 theorem chosenInfinitePlaceArtinMonoidHom_restrict_tower
     {E : Type w}
     [Field E] [NumberField E]
@@ -851,9 +833,7 @@ theorem chosenInfinitePlaceArtinMonoidHom_restrict_tower
           (L := E) v)
 
 omit [NumberField L] in
-/-- In an actual number-field diamond `K ⊂ K'`, `L ⊂ L'`, the
-archimedean local Artin factor commutes with the ordinary completion
-norm and with the standard restriction composite supplied by mathlib. -/
+/-- In an actual number-field diamond `K ⊂ K'`, `L ⊂ L'`, the archimedean local Artin factor commutes with the ordinary completion norm and with the standard restriction composite supplied by mathlib. -/
 theorem chosenInfinitePlaceArtinMonoidHom_norm_restriction
     {K' : Type w} {L' : Type x}
     [Field K'] [NumberField K']
@@ -1004,8 +984,7 @@ theorem chosenInfinitePlaceArtinMonoidHom_eq_one_of_isComplex
   rfl
 
 omit [NumberField K] [NumberField L] in
-/-- A positive element at a real place has trivial archimedean Artin
-symbol. -/
+/-- A positive element at a real place has trivial archimedean Artin symbol. -/
 theorem chosenInfinitePlaceArtinMonoidHom_eq_one_of_real_pos
     (v : InfinitePlace K) (hvReal : v.IsReal)
     (x : v.Completionˣ)
@@ -1065,9 +1044,7 @@ theorem chosenInfinitePlaceArtinMonoidHom_eq_one_of_real_pos
     rw [hsign']
     exact ite_eq_left rfl
 
-/-- The kernel of the actual Artin homomorphism at an infinite place
-is exactly the determinant-norm image on the corresponding tensor
-factor. -/
+/-- The kernel of the actual Artin homomorphism at an infinite place is exactly the determinant-norm image on the corresponding tensor factor. -/
 theorem chosenInfinitePlaceArtinMonoidHom_ker
     (v : InfinitePlace K) :
     MonoidHom.ker
@@ -1090,12 +1067,8 @@ theorem chosenInfinitePlaceArtinMonoidHom_ker
       (K := K) (L := L) v w hw]
   by_cases hUnramified : w.IsUnramified K
   · have hDegree :
-        Module.finrank v.Completion w.Completion = 1 := by
-      have h : @Module.finrank v.Completion w.Completion _ _
-          (NumberField.LiesOver.completionMap v w).toAlgebra.toModule = 1 :=
-        InfinitePlace.IsUnramified.finrank_eq_one v hUnramified
-      rw [← InfinitePlace.Completion.algebraOfLiesOver_eq_toAlgebra] at h
-      exact h
+        Module.finrank v.Completion w.Completion = 1 :=
+      InfinitePlace.IsUnramified.finrank_eq_one v hUnramified
     have hNormTop :
         localNormSubgroup
           v.Completion w.Completion = ⊤ := by
@@ -1273,8 +1246,7 @@ end Galois
 
 variable [IsAbelianGalois K L]
 
-/-- The product of the actual archimedean local Artin homomorphisms
-over the finite set of infinite places of `K`. -/
+/-- The product of the actual archimedean local Artin homomorphisms over the finite set of infinite places of `K`. -/
 noncomputable def infinitePlaceGlobalArtinMonoidHom :
     IdeleGroup K →* (L ≃ₐ[K] L) :=
   ∏ v : InfinitePlace K,
@@ -1311,9 +1283,7 @@ theorem infinitePlaceGlobalArtinMonoidHom_continuous :
         (IdeleGroup.infiniteComponentContinuous v).continuous
 
 omit [NumberField L] in
-/-- The archimedean Artin product after an idele norm is the product,
-over all infinite places upstairs, of the base local Artin maps applied
-to the corresponding local field norms. -/
+/-- The archimedean Artin product after an idele norm is the product, over all infinite places upstairs, of the base local Artin maps applied to the corresponding local field norms. -/
 theorem infinitePlaceGlobalArtinMonoidHom_norm_eq_prod
     {M : Type w}
     [Field M] [NumberField M] [Algebra K M]
@@ -1407,9 +1377,7 @@ theorem infinitePlaceGlobalArtinMonoidHom_norm_eq_prod
         factor
 
 omit [NumberField L] in
-/-- The archimedean part of the Artin norm--restriction field diamond.
-Restriction of the upper infinite Artin product is the lower infinite Artin
-product after the ordinary idele norm. -/
+/-- The archimedean part of the Artin norm--restriction field diamond. Restriction of the upper infinite Artin product is the lower infinite Artin product after the ordinary idele norm. -/
 theorem infinitePlaceGlobalArtinMonoidHom_norm_restriction
     {K' : Type w} {L' : Type x}
     [Field K'] [NumberField K']

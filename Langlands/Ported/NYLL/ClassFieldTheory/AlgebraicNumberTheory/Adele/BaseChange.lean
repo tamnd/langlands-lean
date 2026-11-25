@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Adele.RelativeBasic
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Adele.ComponentHom
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Adele.RestrictedRing
@@ -25,9 +24,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.Co
 /-!
 # Scalar extension from relative to ordinary adeles
 
-The relative-to-ordinary ring equivalence is the common scalar-extension
-map. Its unit-group map supplies the idele comparison, and its additive
-structure transports determinant norms in a field tower.
+The relative-to-ordinary ring equivalence is the common scalar-extension map. Its unit-group map supplies the idele comparison, and its additive structure transports determinant norms in a field tower.
 -/
 
 
@@ -50,8 +47,7 @@ variable
     [Field L] [NumberField L] [Algebra K L]
     [FiniteDimensional K L]
 
-/-- The finite local tensor algebra, decomposed into the concrete adic
-completions above the chosen base place. -/
+/-- The finite local tensor algebra, decomposed into the concrete adic completions above the chosen base place. -/
 noncomputable def finitePlaceTensorRingEquivAboveAdic
     (w : HeightOneSpectrum (𝓞 K)) :
     (w.adicCompletion K ⊗[K] L) ≃+*
@@ -97,8 +93,7 @@ noncomputable def finitePlaceTensorRingEquivAboveAdic
         (K := K) (L := L) w)
   exact e₁.trans (e₂.trans e₃)
 
-/-- Evaluation of the finite-place tensor equivalence at an extension of
-the given adic absolute value. -/
+/-- Evaluation of the finite-place tensor equivalence at an extension of the given adic absolute value. -/
 @[simp]
 theorem finitePlaceTensorRingEquivAboveAdic_apply_extension
     (w : HeightOneSpectrum (𝓞 K))
@@ -125,9 +120,7 @@ theorem finitePlaceTensorRingEquivAboveAdic_apply_extension
         (K := K) (L := L) w a x)
   exact Equiv.piCongrLeft_apply_apply P e f u
 
-/-- On a pure tensor, the finite-place relative-to-ordinary comparison
-is the canonical completion map on the local coefficient multiplied by
-the diagonal image of the extension-field factor. -/
+/-- On a pure tensor, the finite-place relative-to-ordinary comparison is the canonical completion map on the local coefficient multiplied by the diagonal image of the extension-field factor. -/
 theorem finitePlaceTensorRingEquivAboveAdic_tmul
     (w : HeightOneSpectrum (𝓞 K))
     (W : {W : HeightOneSpectrum (𝓞 L) //
@@ -155,8 +148,7 @@ theorem finitePlaceTensorRingEquivAboveAdic_tmul
     finitePlaceExtensionAdicCompletionRingEquiv_toCompletion]
   rfl
 
-/-- Reindex the archimedean relative-tensor product by concrete places
-above `w`, before replacing the completion wrappers. -/
+/-- Reindex the archimedean relative-tensor product by concrete places above `w`, before replacing the completion wrappers. -/
 noncomputable def infiniteCompletionRingProductReindexAbove
     (w : InfinitePlace K) :
     (∀ u : AbsoluteValueExtension w.1 L,
@@ -181,8 +173,7 @@ noncomputable def infiniteCompletionRingProductReindexAbove
         funext W
         rfl }
 
-/-- The archimedean local tensor algebra, decomposed into the concrete
-infinite completions above the chosen base place. -/
+/-- The archimedean local tensor algebra, decomposed into the concrete infinite completions above the chosen base place. -/
 noncomputable def infinitePlaceTensorRingEquivAbove
     (w : InfinitePlace K) :
     (w.Completion ⊗[K] L) ≃+*
@@ -199,11 +190,9 @@ noncomputable def infinitePlaceTensorRingEquivAbove
     ((completionTensorDecomposition_left
         (K := K) (L := L) w.1
         w.isNontrivial).toRingEquiv.trans
-      ((infiniteCompletionRingProductReindexAbove (K := K) (L := L) w).trans
-        (RingEquiv.piCongrRight fun W => (InfinitePlace.Completion.equiv W.1).symm)))
+      (infiniteCompletionRingProductReindexAbove (K := K) (L := L) w))
 
-/-- Evaluation of the infinite-place tensor equivalence at a place above
-the chosen base place. -/
+/-- Evaluation of the infinite-place tensor equivalence at a place above the chosen base place. -/
 @[simp]
 theorem infinitePlaceTensorRingEquivAbove_apply
     (w : InfinitePlace K)
@@ -212,15 +201,12 @@ theorem infinitePlaceTensorRingEquivAbove_apply
       infinitePlaceBelow (K := K) W = w}) :
     infinitePlaceTensorRingEquivAbove
         (K := K) (L := L) w z W =
-      InfinitePlace.Completion.ofCompletion
-        (completionTensorDecomposition_left w.1 w.isNontrivial
-          (infinitePlaceLocalTensorAlgEquiv (K := K) (L := L) w z)
-          (infinitePlaceAboveEquivExtension (K := K) (L := L) w W)) :=
+      completionTensorDecomposition_left w.1 w.isNontrivial
+        (infinitePlaceLocalTensorAlgEquiv (K := K) (L := L) w z)
+        (infinitePlaceAboveEquivExtension (K := K) (L := L) w W) :=
   rfl
 
-/-- On a pure tensor, the infinite-place relative-to-ordinary comparison
-is the canonical completion map on the local coefficient multiplied by
-the diagonal image of the extension-field factor. -/
+/-- On a pure tensor, the infinite-place relative-to-ordinary comparison is the canonical completion map on the local coefficient multiplied by the diagonal image of the extension-field factor. -/
 theorem infinitePlaceTensorRingEquivAbove_tmul
     (w : InfinitePlace K)
     (W : {W : InfinitePlace L //
@@ -232,21 +218,16 @@ theorem infinitePlaceTensorRingEquivAbove_tmul
     infinitePlaceTensorRingEquivAbove
         (K := K) (L := L) w
         (a ⊗ₜ[K] x) W =
-      InfinitePlace.Completion.absMap w W.1 a * algebraMap L W.1.Completion x := by
+      AbsoluteValue.Completion.map w.1 W.1.1 a * algebraMap L W.1.Completion x := by
   intro sharedOwner1
-  apply InfinitePlace.Completion.ext
-  rw [infinitePlaceTensorRingEquivAbove_apply, InfinitePlace.Completion.toCompletion_ofCompletion]
-  change completionTensorDecomposition_left w.1 w.isNontrivial (a.toCompletion ⊗ₜ[K] x)
+  rw [infinitePlaceTensorRingEquivAbove_apply]
+  change completionTensorDecomposition_left w.1 w.isNontrivial (a ⊗ₜ[K] x)
     (infinitePlaceAboveToExtension (K := K) (L := L) w W) = _
-  rw [completionTensorDecomposition_left_tmul_apply, InfinitePlace.Completion.toCompletion_mul,
-    InfinitePlace.Completion.toCompletion_absMap,
-    InfinitePlace.Completion.algebraMap_toCompletion]
-  change AbsoluteValue.Completion.map w.1 W.1.1 a.toCompletion *
-    AbsoluteValue.toCompletion W.1.1 x = _
+  rw [completionTensorDecomposition_left_tmul_apply]
+  change AbsoluteValue.Completion.map w.1 W.1.1 a * AbsoluteValue.toCompletion W.1.1 x = _
   rw [AbsoluteValue.toCompletion_eq_algebraMap]
 
-/-- Flatten the products over finite base places and places above them
-to the product over all finite places of the extension field. -/
+/-- Flatten the products over finite base places and places above them to the product over all finite places of the extension field. -/
 noncomputable def finitePlaceAbovePiRingEquiv :
     (∀ w : HeightOneSpectrum (𝓞 K),
       ∀ W : {W : HeightOneSpectrum (𝓞 L) //
@@ -272,8 +253,7 @@ noncomputable def finitePlaceAbovePiRingEquiv :
     funext W
     rfl
 
-/-- All finite local tensor rings, flattened to the concrete finite
-completion family of the extension field. -/
+/-- All finite local tensor rings, flattened to the concrete finite completion family of the extension field. -/
 noncomputable def relativeFiniteTensorPiRingEquiv :
     (∀ w : HeightOneSpectrum (𝓞 K),
       w.adicCompletion K ⊗[K] L) ≃+*
@@ -284,8 +264,7 @@ noncomputable def relativeFiniteTensorPiRingEquiv :
         (K := K) (L := L) w).trans
     (finitePlaceAbovePiRingEquiv (K := K) (L := L))
 
-/-- Coordinate formula for the relative finite tensor product
-equivalence. -/
+/-- Coordinate formula for the relative finite tensor product equivalence. -/
 @[simp]
 theorem relativeFiniteTensorPiRingEquiv_apply
     (x : ∀ w : HeightOneSpectrum (𝓞 K),
@@ -299,8 +278,7 @@ theorem relativeFiniteTensorPiRingEquiv_apply
         (x (finitePlaceBelow (K := K) W)) ⟨W, rfl⟩ :=
   rfl
 
-/-- Coordinate formula for the inverse relative finite tensor product
-equivalence. -/
+/-- Coordinate formula for the inverse relative finite tensor product equivalence. -/
 @[simp]
 theorem relativeFiniteTensorPiRingEquiv_symm_apply
     (y : ∀ W : HeightOneSpectrum (𝓞 L),
@@ -313,8 +291,7 @@ theorem relativeFiniteTensorPiRingEquiv_symm_apply
         (fun W => y W.1) :=
   rfl
 
-/-- Flatten the products over infinite base places and places above
-them to the product over all infinite places of the extension field. -/
+/-- Flatten the products over infinite base places and places above them to the product over all infinite places of the extension field. -/
 noncomputable def infinitePlaceAbovePiRingEquiv :
     (∀ w : InfinitePlace K,
       ∀ W : {W : InfinitePlace L //
@@ -339,8 +316,7 @@ noncomputable def infinitePlaceAbovePiRingEquiv :
     funext W
     rfl
 
-/-- All infinite local tensor rings, flattened to the concrete infinite
-completion family of the extension field. -/
+/-- All infinite local tensor rings, flattened to the concrete infinite completion family of the extension field. -/
 noncomputable def relativeInfiniteTensorPiRingEquiv :
     (∀ w : InfinitePlace K,
       w.Completion ⊗[K] L) ≃+*
@@ -350,8 +326,7 @@ noncomputable def relativeInfiniteTensorPiRingEquiv :
         (K := K) (L := L) w).trans
     (infinitePlaceAbovePiRingEquiv (K := K) (L := L))
 
-/-- Coordinate formula for the relative infinite tensor product
-equivalence. -/
+/-- Coordinate formula for the relative infinite tensor product equivalence. -/
 @[simp]
 theorem relativeInfiniteTensorPiRingEquiv_apply
     (x : ∀ w : InfinitePlace K,
@@ -365,8 +340,7 @@ theorem relativeInfiniteTensorPiRingEquiv_apply
         (x (infinitePlaceBelow (K := K) W)) ⟨W, rfl⟩ :=
   rfl
 
-/-- Coordinate formula for the inverse relative infinite tensor product
-equivalence. -/
+/-- Coordinate formula for the inverse relative infinite tensor product equivalence. -/
 @[simp]
 theorem relativeInfiniteTensorPiRingEquiv_symm_apply
     (y : ∀ W : InfinitePlace L, W.Completion)
@@ -378,8 +352,7 @@ theorem relativeInfiniteTensorPiRingEquiv_symm_apply
         (fun W => y W.1) :=
   rfl
 
-/-- Integrality in the relative-tensor factors is exactly integrality
-of every concrete finite completion coordinate. -/
+/-- Integrality in the relative-tensor factors is exactly integrality of every concrete finite completion coordinate. -/
 theorem relativeLocalTensorDecompositionIntegralAt_iff_aboveAdicRing
     (w : HeightOneSpectrum (𝓞 K))
     (x : w.adicCompletion K ⊗[K] L) :
@@ -415,8 +388,7 @@ theorem relativeLocalTensorDecompositionIntegralAt_iff_aboveAdicRing
         (K := K) (L := L) w u _).1 h
 
 omit [NumberField L] in
-/-- Outside its coefficient support, a relative adele finite component
-belongs to the fixed local basis lattice. -/
+/-- Outside its coefficient support, a relative adele finite component belongs to the fixed local basis lattice. -/
 theorem relativeAdele_finiteComponent_basisIntegral_of_notMem
     (z : RelativeAdeleRing K L)
     (w : HeightOneSpectrum (𝓞 K))
@@ -442,8 +414,7 @@ theorem relativeAdele_finiteComponent_basisIntegral_of_notMem
     relativeAdeleFiniteComponent_eq_sum_tmul_coefficients
       (K := K) (L := L) z w
 
-/-- A relative adele becomes integral in every concrete completion
-above almost every finite base place. -/
+/-- A relative adele becomes integral in every concrete completion above almost every finite base place. -/
 theorem relativeAdele_eventually_aboveAdicIntegral
     (z : RelativeAdeleRing K L) :
     ∀ᶠ w : HeightOneSpectrum (𝓞 K) in Filter.cofinite,
@@ -530,8 +501,7 @@ theorem relativeAdeleToAdele_finite
           (finitePlaceBelow (K := K) W) z) ⟨W, rfl⟩ :=
   rfl
 
-/-- Pull the finite coordinates of an ordinary adele back to the
-relative local tensor family. -/
+/-- Pull the finite coordinates of an ordinary adele back to the relative local tensor family. -/
 noncomputable def finiteAdeleRelativeTensorFamily
     (y : IsDedekindDomain.FiniteAdeleRing (𝓞 L) L) :
     ∀ w : HeightOneSpectrum (𝓞 K),
@@ -539,8 +509,7 @@ noncomputable def finiteAdeleRelativeTensorFamily
   (relativeFiniteTensorPiRingEquiv
     (K := K) (L := L)).symm (fun W => y W)
 
-/-- The pulled-back finite tensor family is basis-integral at almost
-every finite place. -/
+/-- The pulled-back finite tensor family is basis-integral at almost every finite place. -/
 theorem finiteAdeleRelativeTensorFamily_eventually_basisIntegral
     (y : IsDedekindDomain.FiniteAdeleRing (𝓞 L) L) :
     ∀ᶠ w : HeightOneSpectrum (𝓞 K) in Filter.cofinite,
@@ -598,8 +567,7 @@ noncomputable def adeleToRelativeAdele
     (adeleToRelativeLocalAdeleData
       (K := K) (L := L) y)
 
-/-- The infinite component of the relative adele reconstructed from an
-ordinary adele. -/
+/-- The infinite component of the relative adele reconstructed from an ordinary adele. -/
 @[simp]
 theorem adeleToRelativeAdele_infiniteComponent
     (y : NumberField.AdeleRing (𝓞 L) L)
@@ -615,8 +583,7 @@ theorem adeleToRelativeAdele_infiniteComponent
     relativeAdeleOfLocalData_infiniteComponent]
   rfl
 
-/-- The finite component of the relative adele reconstructed from an
-ordinary adele. -/
+/-- The finite component of the relative adele reconstructed from an ordinary adele. -/
 @[simp]
 theorem adeleToRelativeAdele_finiteComponent
     (y : NumberField.AdeleRing (𝓞 L) L)
@@ -632,8 +599,7 @@ theorem adeleToRelativeAdele_finiteComponent
     relativeAdeleOfLocalData_finiteComponent]
   rfl
 
-/-- Scalar extension identifies the relative adele ring over `K` with
-the ordinary adele ring of `L`. -/
+/-- Scalar extension identifies the relative adele ring over `K` with the ordinary adele ring of `L`. -/
 noncomputable def relativeAdeleBaseChangeRingEquiv :
     RelativeAdeleRing K L ≃+*
       NumberField.AdeleRing (𝓞 L) L where
@@ -841,8 +807,7 @@ noncomputable def relativeAdeleBaseChangeRingEquiv :
         map_mul]
       rfl
 
-/-- Finite-coordinate formula for scalar extension of a pure relative
-adele tensor. -/
+/-- Finite-coordinate formula for scalar extension of a pure relative adele tensor. -/
 @[simp]
 theorem relativeAdeleBaseChangeRingEquiv_finiteComponent_tmul
     (a : NumberField.AdeleRing (𝓞 K) K)
@@ -867,8 +832,7 @@ theorem relativeAdeleBaseChangeRingEquiv_finiteComponent_tmul
       (finitePlaceBelow (K := K) W) ⟨W, rfl⟩
       (a.2 (finitePlaceBelow (K := K) W)) x
 
-/-- Infinite-coordinate formula for scalar extension of a pure relative
-adele tensor. -/
+/-- Infinite-coordinate formula for scalar extension of a pure relative adele tensor. -/
 @[simp]
 theorem relativeAdeleBaseChangeRingEquiv_infiniteComponent_tmul
     (a : NumberField.AdeleRing (𝓞 K) K)
@@ -878,21 +842,20 @@ theorem relativeAdeleBaseChangeRingEquiv_infiniteComponent_tmul
     let : W.1.LiesOver v.1 := ⟨rfl⟩
     (relativeAdeleBaseChangeRingEquiv
         (K := K) (L := L) (a ⊗ₜ[K] x)).1 W =
-      InfinitePlace.Completion.absMap v W (a.1 v) *
+      AbsoluteValue.Completion.map v.1 W.1 (a.1 v) *
         algebraMap L W.Completion x := by
   intro v sharedOwner2
   change
     infinitePlaceTensorRingEquivAbove
         (K := K) (L := L) v
         (a.1 v ⊗ₜ[K] x) ⟨W, rfl⟩ =
-      InfinitePlace.Completion.absMap v W (a.1 v) *
+      AbsoluteValue.Completion.map v.1 W.1 (a.1 v) *
         algebraMap L W.Completion x
   exact
     infinitePlaceTensorRingEquivAbove_tmul
       (K := K) (L := L) v ⟨W, rfl⟩ (a.1 v) x
 
-/-- A diagonal extension-field element has its expected concrete
-finite component under the ring comparison. -/
+/-- A diagonal extension-field element has its expected concrete finite component under the ring comparison. -/
 theorem finitePlaceTensorRingEquivAboveAdic_tmul_one
     (w : HeightOneSpectrum (𝓞 K))
     (W : {W : HeightOneSpectrum (𝓞 L) //
@@ -911,8 +874,7 @@ theorem finitePlaceTensorRingEquivAboveAdic_tmul_one
     finitePlaceExtensionAdicCompletionRingEquiv_toCompletion]
   rfl
 
-/-- A diagonal extension-field element has its expected concrete
-archimedean component under the ring comparison. -/
+/-- A diagonal extension-field element has its expected concrete archimedean component under the ring comparison. -/
 theorem infinitePlaceTensorRingEquivAbove_tmul_one
     (w : InfinitePlace K)
     (W : {W : InfinitePlace L //
@@ -922,9 +884,7 @@ theorem infinitePlaceTensorRingEquivAbove_tmul_one
         (K := K) (L := L) w
         ((1 : w.Completion) ⊗ₜ[K] x) W =
       algebraMap L W.1.Completion x := by
-  apply InfinitePlace.Completion.ext
-  rw [infinitePlaceTensorRingEquivAbove_apply, InfinitePlace.Completion.toCompletion_ofCompletion,
-    InfinitePlace.Completion.algebraMap_toCompletion]
+  rw [infinitePlaceTensorRingEquivAbove_apply]
   change completionTensorDecomposition_left w.1 w.isNontrivial
     ((1 : w.1.Completion) ⊗ₜ[K] x)
     (infinitePlaceAboveToExtension (K := K) (L := L) w W) = _
@@ -932,8 +892,7 @@ theorem infinitePlaceTensorRingEquivAbove_tmul_one
   simp only [map_one, one_mul]
   exact AbsoluteValue.toCompletion_eq_algebraMap W.1.1 x
 
-/-- The ring comparison carries the diagonal copy of `L` to the
-ordinary diagonal adele. -/
+/-- The ring comparison carries the diagonal copy of `L` to the ordinary diagonal adele. -/
 theorem relativeAdeleBaseChangeRingEquiv_fieldInclusion
     (x : L) :
     relativeAdeleBaseChangeRingEquiv

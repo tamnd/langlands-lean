@@ -16,10 +16,7 @@ public import Mathlib.RingTheory.PowerSeries.Ideal
 /-!
 # The uniformizer norm identity: irreducibility of the equal-characteristic primitive polynomial
 
-The primitive level-`n+1` polynomial is lifted from `κ((T))` to `κ[[T]]`.
-Modulo `T` this lift is the single monomial `Y ^ ((q - 1) * q ^ n)`, while
-its constant coefficient is exactly `T`.  It is therefore Eisenstein at
-`(T)`, and Gauss's lemma gives irreducibility over `κ((T))`.
+The primitive level-`n+1` polynomial is lifted from `κ((T))` to `κ[[T]]`. Modulo `T` this lift is the single monomial `Y ^ ((q - 1) * q ^ n)`, while its constant coefficient is exactly `T`.  It is therefore Eisenstein at `(T)`, and Gauss's lemma gives irreducibility over `κ((T))`.
 -/
 
 
@@ -39,8 +36,7 @@ open LocalFieldTheory.DiscreteValuationField
 
 variable {K : Type u} [Field K]
 
-/-- The integral lift `Y ^ q + T * Y` of the equal-characteristic
-Lubin--Tate polynomial. -/
+/-- The integral lift `Y ^ q + T * Y` of the equal-characteristic Lubin--Tate polynomial. -/
 noncomputable def equalCharacteristicLubinTateIntegralPiPolynomial
     (F : LocalField.{u, v} K) :
     Polynomial F.residueField⟦X⟧ :=
@@ -268,7 +264,7 @@ theorem powerSeries_X_notMem_span_X_sq
     refine ⟨a, ?_⟩
     apply mul_left_cancel₀ (PowerSeries.X_ne_zero (R := k))
     simpa [pow_two, mul_assoc] using ha.symm
-  exact PowerSeries.X_prime.not_isUnit hunit
+  exact PowerSeries.prime_X.not_isUnit hunit
 
 /-- The integral primitive polynomial is Eisenstein at `(T)`. -/
 theorem equalCharacteristicLubinTateIntegralPrimitivePolynomial_isEisensteinAt
@@ -280,7 +276,7 @@ theorem equalCharacteristicLubinTateIntegralPrimitivePolynomial_isEisensteinAt
   have hmonic : Q.Monic :=
     equalCharacteristicLubinTateIntegralPrimitivePolynomial_monic F n
   refine hmonic.isEisensteinAt_of_mem_of_notMem
-    (Ideal.isPrime_span_singleton_of_prime PowerSeries.X_prime).ne_top ?_ ?_
+    (Ideal.isPrime_span_singleton_of_prime PowerSeries.prime_X).ne_top ?_ ?_
   · intro i hi
     rw [Ideal.mem_span_singleton, PowerSeries.X_dvd_iff]
     have hcoeff :
@@ -302,7 +298,7 @@ theorem equalCharacteristicLubinTateIntegralPrimitivePolynomial_irreducible
     (F : LocalField.{u, v} K) (n : ℕ) :
     Irreducible (equalCharacteristicLubinTateIntegralPrimitivePolynomial F n) := by
   apply (equalCharacteristicLubinTateIntegralPrimitivePolynomial_isEisensteinAt F n).irreducible
-    (Ideal.isPrime_span_singleton_of_prime PowerSeries.X_prime)
+    (Ideal.isPrime_span_singleton_of_prime PowerSeries.prime_X)
     (equalCharacteristicLubinTateIntegralPrimitivePolynomial_monic F n).isPrimitive
   rw [equalCharacteristicLubinTateIntegralPrimitivePolynomial_natDegree]
   exact Nat.mul_pos

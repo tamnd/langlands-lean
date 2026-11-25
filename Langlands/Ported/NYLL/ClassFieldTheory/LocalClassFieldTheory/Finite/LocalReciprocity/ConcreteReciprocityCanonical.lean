@@ -16,11 +16,7 @@ public import Mathlib.GroupTheory.Abelianization.Defs
 /-!
 # Finite local reciprocity: canonicity of local reciprocity
 
-The construction of local reciprocity realizes a finite Galois extension in
-a fixed separable closure.  This file proves that the transported reciprocity
-isomorphism is independent of that realization.  Two embeddings are extended
-to an automorphism of the separable closure, and
-the abstract reciprocity naturality theorem supplies the required naturality.
+The construction of local reciprocity realizes a finite Galois extension in a fixed separable closure.  This file proves that the transported reciprocity isomorphism is independent of that realization.  Two embeddings are extended to an automorphism of the separable closure, and the abstract reciprocity naturality theorem supplies the required naturality.
 -/
 
 @[expose] public section
@@ -46,8 +42,7 @@ attribute [local instance] intrinsicAbsoluteGaloisT2
 
 /-! ## Conjugating two realizations -/
 
-/-- An automorphism of the separable closure carrying the image of `i` to
-the image of `j`. -/
+/-- An automorphism of the separable closure carrying the image of `i` to the image of `j`. -/
 def finiteGaloisEmbeddingConjugator
     (i j : L →ₐ[K] SeparableClosure K) : intrinsicAbsoluteGalois K :=
   ((finiteGaloisFieldRangeEquivOfEmbedding K L i).symm.trans
@@ -102,8 +97,7 @@ theorem finiteGaloisFieldRange_conjugator
       (AlgHom.map_fieldRange i σ.toAlgHom).symm
 
 omit [FiniteDimensional K L] [IsGalois K L] in
-/-- With the right-exponent convention for abstract reciprocity, the conjugating
-element is the inverse of the automorphism carrying `i` to `j`. -/
+/-- With the right-exponent convention for abstract reciprocity, the conjugating element is the inverse of the automorphism carrying `i` to `j`. -/
 theorem finiteGaloisClosedFixingSubgroup_conjugator
     (i j : L →ₐ[K] SeparableClosure K) :
     conjugateClosedSubgroup
@@ -141,8 +135,7 @@ theorem finiteGaloisClosedFixingSubgroup_conjugator
     simp [σ, mul_assoc]
   exact congrArg (fun H : Subgroup (intrinsicAbsoluteGalois K) => H.carrier) hs
 
-/-- The abstract base field is the top subgroup and hence is fixed by every
-conjugation. -/
+/-- The abstract base field is the top subgroup and hence is fixed by every conjugation. -/
 theorem finiteGaloisBase_conjugator
     (σ : intrinsicAbsoluteGalois K) :
     conjugateClosedSubgroup (intrinsicAbstractBase K) σ = intrinsicAbstractBase K := by
@@ -197,8 +190,7 @@ noncomputable instance finiteGaloisExtensionQuotientOfEmbedding_finite
   baseFixingExtensionQuotient_finite K (SeparableClosure K)
     (finiteGaloisFieldRangeOfEmbedding K L i)
 
-/-- The representative in the base subgroup obtained by conjugating with
-the automorphism carrying `i` to `j`. -/
+/-- The representative in the base subgroup obtained by conjugating with the automorphism carrying `i` to `j`. -/
 def finiteGaloisConjugateBaseElement
     (i j : L →ₐ[K] SeparableClosure K) (τ : (intrinsicAbstractBase K).toSubgroup) :
     (intrinsicAbstractBase K).toSubgroup :=
@@ -288,9 +280,7 @@ theorem finiteNormQuotientCongr_finiteNormClass
   subst hFinite'
   rfl
 
-/-- Equality transport of both sides of the norm-residue symbol.  This is
-the dependent-type form of replacing equal abstract fields in the abstract
-reciprocity naturality theorem. -/
+/-- Equality transport of both sides of the norm-residue symbol.  This is the dependent-type form of replacing equal abstract fields in the abstract reciprocity naturality theorem. -/
 theorem normResidueSymbol_congr
     {Γ : Type u} [Group Γ] [TopologicalSpace Γ]
     (D : DegreeData Γ) (A : Rep.{v} ℤ Γ) (v : ValuationData D A)
@@ -337,7 +327,7 @@ theorem normResidueSymbol_congr
   dsimp only [extensionQuotientCongr, finiteNormQuotientCongr]
   apply AddMonoidHom.ext
   intro x
-  rw [abelianizationCongr_refl]
+  rw [Group.abelianizationCongr_refl]
   rfl
 
 section EmbeddingConjugation
@@ -437,7 +427,7 @@ private theorem finiteGaloisConjugationOfEmbeddings_apply_factor
 
 private theorem finiteGaloisConjugationOfEmbeddings_abelianization_factor
     (i j : L →ₐ[K] SeparableClosure K)
-    (z : Abelianization
+    (z : Group.Abelianization
       (finiteGaloisAbstractExtensionOfEmbedding K L i).extensionQuotient) :
     let hLK := fixingSubgroupLeBase K (SeparableClosure K)
       (finiteGaloisFieldRangeOfEmbedding K L i)
@@ -476,14 +466,14 @@ private theorem finiteGaloisConjugationOfEmbeddings_abelianization_factor
   intro x
   change
     (finiteGaloisConjugationOfEmbeddings K L i j).abelianizationCongr
-        (Abelianization.of x) =
-      c.abelianizationCongr (e.abelianizationCongr (Abelianization.of x))
-  exact (abelianizationCongr_of
+        (Group.Abelianization.of x) =
+      c.abelianizationCongr (e.abelianizationCongr (Group.Abelianization.of x))
+  exact (Group.abelianizationCongr_of
       (finiteGaloisConjugationOfEmbeddings K L i j) x).trans
-    ((congrArg Abelianization.of
+    ((congrArg Group.Abelianization.of
       (finiteGaloisConjugationOfEmbeddings_apply_factor K L i j x)).trans
-      ((abelianizationCongr_of c (e x)).symm.trans
-        (congrArg c.abelianizationCongr (abelianizationCongr_of e x).symm)))
+      ((Group.abelianizationCongr_of c (e x)).symm.trans
+        (congrArg c.abelianizationCongr (Group.abelianizationCongr_of e x).symm)))
 
 section EmbeddingNormConjugation
 
@@ -508,8 +498,7 @@ def finiteGaloisEmbeddingNormAddZeroClass
 
 attribute [local instance] finiteGaloisEmbeddingNormAddZeroClass
 
-/-- Conjugation on the finite norm quotients, rewritten so that both its
-source and target use the fixed concrete base subgroup. -/
+/-- Conjugation on the finite norm quotients, rewritten so that both its source and target use the fixed concrete base subgroup. -/
 def finiteGaloisNormConjugationOfEmbeddings
     (i j : L →ₐ[K] SeparableClosure K) :
     FiniteNormQuotient (intrinsicAbsoluteUnits K) (intrinsicAbstractBase K)
@@ -629,8 +618,7 @@ private theorem baseFixingExtensionQuotientEquivGaloisGroup_mk_apply
         τ.1 (E.val x) := by
       rw [AlgEquiv.restrictNormalHom_apply]
 
-/-- Formula for the quotient equivalence on a representative, expressed
-without mentioning the auxiliary fixed-field equality used internally. -/
+/-- Formula for the quotient equivalence on a representative, expressed without mentioning the auxiliary fixed-field equality used internally. -/
 @[simp]
 theorem finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding_mk_apply
     (K : Type*) (L : Type*) [Field K] [Field L] [Algebra K L]
@@ -654,8 +642,7 @@ theorem finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding_mk_apply
     _ = τ.1 (E.val (e x)) := hb
     _ = τ.1 (i x) := rfl
 
-/-- The explicit norm-quotient comparison sends a base-unit representative
-to the same representative in the ordinary field norm quotient. -/
+/-- The explicit norm-quotient comparison sends a base-unit representative to the same representative in the ordinary field norm quotient. -/
 @[simp]
 theorem finiteNormQuotientEquivEmbeddedNormQuotient_finiteNormClass_baseUnit
     (i : L →ₐ[K] SeparableClosure K) (x : Kˣ) :
@@ -696,10 +683,7 @@ theorem finiteNormQuotientEquivEmbeddedNormQuotient_finiteNormClass_baseUnit
         (normQuotientEquivOfNormSubgroupEq_normClass K (AlgHom.fieldRange i) L
           (localNormSubgroup_fieldRange_eq K (SeparableClosure K) L i) x)
 
-/-- Before specializing the local datum, the concrete norm-residue symbol is
-the abstract norm-residue class transported through the canonical quotient
-equivalence.  This pointwise transport formula expresses abstract
-restriction naturality as a statement about actual field automorphisms. -/
+/-- Before specializing the local datum, the concrete norm-residue symbol is the abstract norm-residue class transported through the canonical quotient equivalence.  This pointwise transport formula expresses abstract restriction naturality as a statement about actual field automorphisms. -/
 theorem concreteNormResidueSymbolOfEmbedding_eq_abstract
     (i : L →ₐ[K] SeparableClosure K)
     (D : DegreeData (intrinsicAbsoluteGalois K))
@@ -760,8 +744,7 @@ theorem concreteNormResidueSymbolOfEmbedding_eq_abstract
     K L i D v hcf).apply_symm_apply]
   exact (congrArg Additive.toMul hforward).symm
 
-/-- On a base unit, conjugation of finite norm classes is the identity after
-the target base subgroup is identified with the original base subgroup. -/
+/-- On a base unit, conjugation of finite norm classes is the identity after the target base subgroup is identified with the original base subgroup. -/
 @[simp]
 theorem finiteGaloisNormConjugationOfEmbeddings_finiteNormClass_baseUnit
     (i j : L →ₐ[K] SeparableClosure K) (x : Kˣ) :
@@ -838,11 +821,10 @@ theorem finiteGaloisNormConjugationOfEmbeddings_finiteNormClass_baseUnit
 
 /-! ## The two outer comparison squares -/
 
-/-- The concrete quotient identification is unchanged by conjugating the
-chosen realization. -/
+/-- The concrete quotient identification is unchanged by conjugating the chosen realization. -/
 theorem finiteGaloisAbstractQuotientEquivGaloisGroup_conjugation
     (i j : L →ₐ[K] SeparableClosure K)
-    (z : Abelianization
+    (z : Group.Abelianization
       (finiteGaloisAbstractExtensionOfEmbedding K L i).extensionQuotient) :
     (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L j).abelianizationCongr
         ((finiteGaloisConjugationOfEmbeddings K L i j).abelianizationCongr z) =
@@ -883,31 +865,31 @@ theorem finiteGaloisAbstractQuotientEquivGaloisGroup_conjugation
   calc
     (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L j).abelianizationCongr
         ((finiteGaloisConjugationOfEmbeddings K L i j).abelianizationCongr
-          (Abelianization.of q)) =
+          (Group.Abelianization.of q)) =
       (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L j).abelianizationCongr
-        (Abelianization.of
+        (Group.Abelianization.of
           (finiteGaloisConjugationOfEmbeddings K L i j q)) :=
       congrArg
         (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L j).abelianizationCongr
-        (abelianizationCongr_of
+        (Group.abelianizationCongr_of
           (finiteGaloisConjugationOfEmbeddings K L i j) q)
-    _ = Abelianization.of
+    _ = Group.Abelianization.of
         (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L j
           (finiteGaloisConjugationOfEmbeddings K L i j q)) :=
-      abelianizationCongr_of
+      Group.abelianizationCongr_of
         (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L j) _
-    _ = Abelianization.of
+    _ = Group.Abelianization.of
         (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L i q) :=
-      congrArg Abelianization.of hraw
+      congrArg Group.Abelianization.of hraw
     _ = (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L i).abelianizationCongr
-        (Abelianization.of q) :=
-      (abelianizationCongr_of
+        (Group.Abelianization.of q) :=
+      (Group.abelianizationCongr_of
         (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L i) q).symm
 
 /-- Additive form of the preceding source comparison. -/
 theorem finiteGaloisAbstractQuotientEquivGaloisGroup_conjugation_additive
     (i j : L →ₐ[K] SeparableClosure K)
-    (z : Additive (Abelianization
+    (z : Additive (Group.Abelianization
       (finiteGaloisAbstractExtensionOfEmbedding K L i).extensionQuotient)) :
     MulEquiv.toAdditive
         ((finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L j).abelianizationCongr)
@@ -920,8 +902,7 @@ theorem finiteGaloisAbstractQuotientEquivGaloisGroup_conjugation_additive
   exact finiteGaloisAbstractQuotientEquivGaloisGroup_conjugation
     K L i j z.toMul
 
-/-- The concrete norm-quotient identification is unchanged by conjugating
-the chosen realization. -/
+/-- The concrete norm-quotient identification is unchanged by conjugating the chosen realization. -/
 theorem finiteNormQuotientEquivEmbeddedNormQuotient_conjugation
     (i j : L →ₐ[K] SeparableClosure K)
     (a : FiniteNormQuotient (intrinsicAbsoluteUnits K) (intrinsicAbstractBase K)
@@ -965,8 +946,7 @@ theorem finiteNormQuotientEquivEmbeddedNormQuotient_conjugation
 
 /-! ## The abstract reciprocity naturality theorem and embedding independence -/
 
-/-- The final pointwise diagram chase: the source, middle, and target squares
-determine the transported value without any further unfolding. -/
+/-- The final pointwise diagram chase: the source, middle, and target squares determine the transported value without any further unfolding. -/
 private theorem reciprocityTransport_pointwise
     {A : Type u} {B : Type v} {C : Type w} {D : Type x} {E : Type y} {F : Type z}
     (q : A → B) (b : C → D)
@@ -990,8 +970,7 @@ private theorem reciprocityTransport_pointwise
     _ = nj (rj (q (si.symm x))) := congrArg nj (hforward (si.symm x))
     _ = nj (rj (sj.symm x)) := congrArg (fun z ↦ nj (rj z)) hq
 
-/-- The additive transported reciprocity equivalence is independent of the
-embedding into the fixed separable closure. -/
+/-- The additive transported reciprocity equivalence is independent of the embedding into the fixed separable closure. -/
 theorem concreteReciprocityAddEquivOfEmbedding_eq
     (i j : L →ₐ[K] SeparableClosure K)
     (D : DegreeData (intrinsicAbsoluteGalois K))
@@ -1028,7 +1007,7 @@ theorem concreteReciprocityAddEquivOfEmbedding_eq
     ((finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L i).abelianizationCongr)
   let sj := MulEquiv.toAdditive
     ((finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L j).abelianizationCongr)
-  have hsource (z : Additive (Abelianization Ei.extensionQuotient)) :
+  have hsource (z : Additive (Group.Abelianization Ei.extensionQuotient)) :
       sj (q z) = si z := by
     exact finiteGaloisAbstractQuotientEquivGaloisGroup_conjugation_additive
       K L i j z
@@ -1134,7 +1113,7 @@ theorem concreteReciprocityAddEquivOfEmbedding_eq
     exact hqfactor.trans (hcombined.trans
       (congrArg (D.normResidueSymbol (intrinsicAbsoluteUnits K) v hcf
         (intrinsicFiniteAbstractBase K) Ej) hbfactor.symm))
-  have hforward (z : Additive (Abelianization Ei.extensionQuotient)) :
+  have hforward (z : Additive (Group.Abelianization Ei.extensionQuotient)) :
       b (ri z) = rj (q z) := by
     have hz := DFunLike.congr_fun hinv (ri z)
     change q (ri.symm (ri z)) = rj.symm (b (ri z)) at hz
@@ -1166,8 +1145,7 @@ theorem concreteReciprocityEquivOfEmbedding_eq
     (Additive.ofMul x)
   exact congrArg Additive.toMul h
 
-/-- Consequently the norm-residue symbol is also independent of the chosen
-embedding. -/
+/-- Consequently the norm-residue symbol is also independent of the chosen embedding. -/
 theorem concreteNormResidueSymbolOfEmbedding_eq
     (i j : L →ₐ[K] SeparableClosure K)
     (D : DegreeData (intrinsicAbsoluteGalois K))

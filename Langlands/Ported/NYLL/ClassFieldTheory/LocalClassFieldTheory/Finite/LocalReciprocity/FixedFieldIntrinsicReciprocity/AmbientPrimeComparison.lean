@@ -15,8 +15,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finit
 /-!
 # Ambient prime comparison
 
-The local Artin map and the ambient embedded norm-residue construction
-agree on norm classes and therefore agree pointwise.
+The local Artin map and the ambient embedded norm-residue construction agree on norm classes and therefore agree pointwise.
 -/
 
 
@@ -34,8 +33,7 @@ open ClassFormation
 open scoped ValuativeRel
 open scoped IsMulCommutative
 
-/-- Every abelianized Galois element is simultaneously represented by the local
-Artin map and by the ambient embedded norm-residue construction. -/
+/-- Every abelianized Galois element is simultaneously represented by the local Artin map and by the ambient embedded norm-residue construction. -/
 theorem
     exists_localArtin_ambientEmbedded_prime
     (K : Type u₁) (F : Type u₂) (E : Type u₃)
@@ -51,7 +49,7 @@ theorem
     [FiniteDimensional F E] [IsAbelianGalois F E]
     (j : E →ₐ[K] SeparableClosure K)
     (e : ambientEmbeddedSeparableClosureEquiv K F E j)
-    (z : Abelianization Gal(E/F)) :
+    (z : Group.Abelianization Gal(E/F)) :
     ∃ x : Fˣ,
       localArtinMonoidHom F E x = z ∧
         ambientEmbeddedNormResidueAbelianElement K F E j e x = z := by
@@ -60,8 +58,7 @@ theorem
       ambientEmbeddedPrimeWitness_local K F E j e z,
       ambientEmbeddedPrimeWitness_ambient K F E j e z⟩
 
-/-- The ambient embedded norm-residue element depends only on the unit's norm
-class modulo norms from `E`. -/
+/-- The ambient embedded norm-residue element depends only on the unit's norm class modulo norms from `E`. -/
 theorem
     ambientEmbeddedNormResidueAbelianElement_eq_of_normClass_eq
     (K : Type u₁) (F : Type u₂) (E : Type u₃)
@@ -196,9 +193,7 @@ theorem
               H₀ J₀ hJH (Additive.ofMul xF0))))
   rw [hambientSame]
 
-/-- For an embedded finite abelian local extension, the abelian local Artin
-map agrees pointwise with the ambient norm-residue element transported through
-a separable-closure equivalence. -/
+/-- For an embedded finite abelian local extension, the abelian local Artin map agrees pointwise with the ambient norm-residue element transported through a separable-closure equivalence. -/
 theorem
     abelianLocalArtin_eq_ambientEmbeddedNormResidueSymbol_of_equiv
     (K : Type u₁) (F : Type u₂) (E : Type u₃)
@@ -259,11 +254,11 @@ theorem
     ambientEmbeddedNormResidueAbelianElement_eq_of_normClass_eq
       K F E j e a x hnormClass
   change
-    (Abelianization.equivOfComm (H := Gal(E / F))).symm
+    (Group.Abelianization.equivOfComm (H := Gal(E / F))).symm
         (localArtinMonoidHom F E a) =
-      (Abelianization.equivOfComm (H := Gal(E / F))).symm
+      (Group.Abelianization.equivOfComm (H := Gal(E / F))).symm
         (ambientEmbeddedNormResidueAbelianElement K F E j e a)
-  apply congrArg (Abelianization.equivOfComm (H := Gal(E / F))).symm
+  apply congrArg (Group.Abelianization.equivOfComm (H := Gal(E / F))).symm
   calc
     localArtinMonoidHom F E a =
         ambientEmbeddedNormResidueAbelianElement K F E j e x :=

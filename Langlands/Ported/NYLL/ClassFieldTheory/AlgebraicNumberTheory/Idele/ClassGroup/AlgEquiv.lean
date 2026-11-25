@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Adele.Equiv
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.Equiv
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.ClassGroup.NormComparison
@@ -28,18 +27,13 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele
 /-!
 # Relative idele classes under an isomorphic realization
 
-If two finite extensions of a number field are isomorphic over the base,
-their tensor-product presentations of the relative adeles are canonically
-isomorphic.  This file descends that canonical isomorphism to relative
-ideles and idele classes and records compatibility with the determinant
-norm.
+If two finite extensions of a number field are isomorphic over the base, their tensor-product presentations of the relative adeles are canonically isomorphic.  This file descends that canonical isomorphism to relative ideles and idele classes and records compatibility with the determinant norm.
 
 The construction is the direct tensor-product congruence
 
 `𝔸_K ⊗[K] L ≃ 𝔸_K ⊗[K] M`
 
-induced by an algebra equivalence `L ≃ₐ[K] M`.  In particular, no second
-model of relative adeles or of the idele-class norm is introduced.
+induced by an algebra equivalence `L ≃ₐ[K] M`.  In particular, no second model of relative adeles or of the idele-class norm is introduced.
 -/
 
 
@@ -63,8 +57,7 @@ variable
     [Field L] [Algebra K L]
     [Field M] [Algebra K M]
 
-/-- The canonical transport of relative ideles along an isomorphic
-realization of the top field. -/
+/-- The canonical transport of relative ideles along an isomorphic realization of the top field. -/
 noncomputable def relativeIdeleCongr
     (e : L ≃ₐ[K] M) :
     RelativeIdeleGroup K L ≃*
@@ -83,16 +76,14 @@ theorem relativeIdeleCongr_coe
           (a : RelativeAdeleRing K L) :=
   rfl
 
-/-- For an automorphism of the top field, canonical relative-idele
-transport is the actual Galois action. -/
+/-- For an automorphism of the top field, canonical relative-idele transport is the actual Galois action. -/
 theorem relativeIdeleCongr_eq_smul
     (σ : L ≃ₐ[K] L)
     (a : RelativeIdeleGroup K L) :
     relativeIdeleCongr (K := K) σ a = σ • a :=
   rfl
 
-/-- Transport of relative ideles sends a principal idele to the principal
-idele of the transported field unit. -/
+/-- Transport of relative ideles sends a principal idele to the principal idele of the transported field unit. -/
 @[simp]
 theorem relativeIdeleCongr_principalIdele
     (e : L ≃ₐ[K] M)
@@ -108,8 +99,7 @@ theorem relativeIdeleCongr_principalIdele
       (1 : NumberField.AdeleRing (𝓞 K) K) ⊗ₜ[K] e (x : L)
   rfl
 
-/-- The canonical transport identifies the two principal-relative-idele
-subgroups. -/
+/-- The canonical transport identifies the two principal-relative-idele subgroups. -/
 theorem relativeIdelePrincipalSubgroup_map_congr
     (e : L ≃ₐ[K] M) :
     (RelativeIdeleGroup.principalSubgroup K L).map
@@ -132,8 +122,7 @@ theorem relativeIdelePrincipalSubgroup_map_congr
         relativeIdeleCongr_principalIdele
           (K := K) e x⟩
 
-/-- The relative idele class group is unchanged when the top field is
-replaced by an isomorphic realization. -/
+/-- The relative idele class group is unchanged when the top field is replaced by an isomorphic realization. -/
 noncomputable def relativeIdeleClassCongr
     (e : L ≃ₐ[K] M) :
     RelativeIdeleGroup.ClassGroup K L ≃*
@@ -157,9 +146,7 @@ theorem relativeIdeleClassCongr_mk
         (relativeIdeleCongr (K := K) e a) :=
   rfl
 
-/-- Transporting a relative idèle class along an equivalence and then
-embedding it into a third relative idèle class group is the same as
-embedding along the composite field embedding. -/
+/-- Transporting a relative idèle class along an equivalence and then embedding it into a third relative idèle class group is the same as embedding along the composite field embedding. -/
 theorem RelativeIdeleGroup.classEmbedding_relativeIdeleClassCongr
     {N : Type*} [Field N] [Algebra K N]
     [FiniteDimensional K L] [FiniteDimensional K M]
@@ -206,8 +193,7 @@ theorem RelativeIdeleGroup.classEmbedding_relativeIdeleClassCongr
   | add x y hx hy =>
       simpa only [map_add] using congrArg₂ (· + ·) hx hy
 
-/-- The determinant norm on relative ideles is invariant under replacement
-of the top field by an isomorphic realization. -/
+/-- The determinant norm on relative ideles is invariant under replacement of the top field by an isomorphic realization. -/
 @[simp]
 theorem relativeIdeleCongr_norm
     (e : L ≃ₐ[K] M)
@@ -233,8 +219,7 @@ section Norm
 
 variable [FiniteDimensional K L] [FiniteDimensional K M]
 
-/-- The descended idele-class norm is invariant under the canonical
-transport of the relative idele class group. -/
+/-- The descended idele-class norm is invariant under the canonical transport of the relative idele class group. -/
 @[simp]
 theorem relativeIdeleClassCongr_ideleClassNorm
     (e : L ≃ₐ[K] M)
@@ -252,8 +237,7 @@ theorem relativeIdeleClassCongr_ideleClassNorm
         (RelativeIdeleGroup.norm K L a)
   rw [relativeIdeleCongr_norm (K := K) e a]
 
-/-- Isomorphic realizations of a finite extension have the same actual
-idele-class norm subgroup in the base idele class group. -/
+/-- Isomorphic realizations of a finite extension have the same actual idele-class norm subgroup in the base idele class group. -/
 theorem ideleClassNorm_range_algEquiv
     (e : L ≃ₐ[K] M) :
     (RelativeIdeleGroup.classNorm K M).range =
@@ -277,8 +261,7 @@ theorem ideleClassNorm_range_algEquiv
         relativeIdeleClassCongr_ideleClassNorm
           (K := K) e d⟩
 
-/-- The idele-class norm index is invariant under an isomorphic realization
-of the top field. -/
+/-- The idele-class norm index is invariant under an isomorphic realization of the top field. -/
 theorem ideleClassNorm_index_algEquiv
     (e : L ≃ₐ[K] M) :
     (RelativeIdeleGroup.classNorm K M).range.index =
@@ -295,8 +278,7 @@ variable
     [Field K] [NumberField K] [Algebra ℚ K]
     [Field M] [NumberField M] [Algebra ℚ M]
 
-/-- The permutation of finite places induced by an equivalence of number
-fields. -/
+/-- The permutation of finite places induced by an equivalence of number fields. -/
 noncomputable def finitePlaceCongr
     (e : K ≃ₐ[ℚ] M) :
     HeightOneSpectrum (𝓞 K) ≃
@@ -327,8 +309,7 @@ theorem finitePlaceBelow_eq_finitePlaceCongr_symm
   apply HeightOneSpectrum.ext
   rfl
 
-/-- The canonical map between corresponding finite completions induced by
-an equivalence of number fields. -/
+/-- The canonical map between corresponding finite completions induced by an equivalence of number fields. -/
 noncomputable def finitePlaceAdicCompletionCongrHom
     (e : K ≃ₐ[ℚ] M)
     (W : HeightOneSpectrum (𝓞 M)) :
@@ -340,8 +321,7 @@ noncomputable def finitePlaceAdicCompletionCongrHom
       ((finitePlaceCongr e).symm W)
       ⟨W, finitePlaceBelow_eq_finitePlaceCongr_symm e W⟩
 
-/-- On finite coordinates, canonical adelic transport is the completion
-map at the corresponding finite places. -/
+/-- On finite coordinates, canonical adelic transport is the completion map at the corresponding finite places. -/
 theorem adeleCongr_finiteComponent
     (e : K ≃ₐ[ℚ] M)
     (a : NumberField.AdeleRing (𝓞 K) K)
@@ -453,14 +433,11 @@ theorem adeleCongr_finiteComponent
       exact hcomponent
         (finitePlaceBelow (K := ℚ) w) hq rfl
 
-/-- The canonical transport of ordinary ideles along an equivalence of
-number fields.  It is obtained from the existing relative-idele transport
-over `ℚ` and the canonical relative-to-ordinary base-change equivalences. -/
+/-- The canonical transport of ordinary ideles along an equivalence of number fields.  It is obtained from the existing relative-idele transport over `ℚ` and the canonical relative-to-ordinary base-change equivalences. -/
 noncomputable abbrev ideleCongr (e : K ≃ₐ[ℚ] M) : IdeleGroup K ≃* IdeleGroup M :=
   NumberField.IdeleGroup.congr e
 
-/-- The relative-to-ordinary scalar-extension comparison is natural for
-transport of relative ideles along an equivalence of their top fields. -/
+/-- The relative-to-ordinary scalar-extension comparison is natural for transport of relative ideles along an equivalence of their top fields. -/
 theorem relativeIdeleBaseChangeMulEquiv_relativeIdeleCongr
     (e : K ≃ₐ[ℚ] M)
     (a : RelativeIdeleGroup ℚ K) :
@@ -477,9 +454,7 @@ theorem relativeIdeleBaseChangeMulEquiv_relativeIdeleCongr
     relativeAdeleBaseChangeRingEquiv_relativeAdeleCongr
       e (a : RelativeAdeleRing ℚ K)
 
-/-- Under the actual Galois action on relative ideles, the
-relative-to-ordinary scalar-extension comparison is equivariant for the
-canonical transport of ordinary ideles. -/
+/-- Under the actual Galois action on relative ideles, the relative-to-ordinary scalar-extension comparison is equivariant for the canonical transport of ordinary ideles. -/
 theorem relativeIdeleBaseChangeMulEquiv_smul_congr
     {E : Type*} [Field E] [NumberField E] [Algebra ℚ E]
     (σ : E ≃ₐ[ℚ] E)
@@ -494,8 +469,7 @@ theorem relativeIdeleBaseChangeMulEquiv_smul_congr
     relativeIdeleBaseChangeMulEquiv_relativeIdeleCongr
       σ a
 
-/-- On finite coordinates, canonical idelic transport is the completion
-map at the corresponding finite places. -/
+/-- On finite coordinates, canonical idelic transport is the completion map at the corresponding finite places. -/
 @[simp]
 theorem ideleCongr_finiteComponent
     (e : K ≃ₐ[ℚ] M)
@@ -539,8 +513,7 @@ private theorem finitePlaceCongr_ramificationIdx
       (by rw [hmap]; exact W.isPrime.ne_top)
       (by rw [hmap]; exact W.ne_bot)
 
-/-- Normalized local orders are unchanged by transport along a
-number-field equivalence. -/
+/-- Normalized local orders are unchanged by transport along a number-field equivalence. -/
 theorem ideleCongr_localOrder
     (e : K ≃ₐ[ℚ] M)
     (a : IdeleGroup K)
@@ -574,8 +547,7 @@ theorem ideleCongr_localOrder
       ⟨W, hW⟩
       (IdeleGroup.finiteComponent w a)
 
-/-- An idele is integral at every finite place exactly when its transport
-along a number-field equivalence is. -/
+/-- An idele is integral at every finite place exactly when its transport along a number-field equivalence is. -/
 theorem ideleCongr_mem_integralAtFinitePlaces_iff
     (e : K ≃ₐ[ℚ] M)
     (a : IdeleGroup K) :
@@ -617,8 +589,7 @@ theorem ideleCongr_mem_integralAtFinitePlaces_iff
           ((finitePlaceCongr e).symm W) a)).2
         (h ((finitePlaceCongr e).symm W))
 
-/-- Transport along a number-field equivalence identifies the subgroups
-of ideles integral at every finite place. -/
+/-- Transport along a number-field equivalence identifies the subgroups of ideles integral at every finite place. -/
 theorem ideleIntegralAtFinitePlaces_map_congr
     (e : K ≃ₐ[ℚ] M) :
     (IdeleGroup.integralAtFinitePlaces (K := K)).map
@@ -638,8 +609,7 @@ theorem ideleIntegralAtFinitePlaces_map_congr
           e a).1 (by simpa [a] using hb)
     · exact (ideleCongr e).apply_symm_apply b
 
-/-- Transport along a number-field equivalence carries the diagonal idele
-to the diagonal idele of the transported field unit. -/
+/-- Transport along a number-field equivalence carries the diagonal idele to the diagonal idele of the transported field unit. -/
 @[simp]
 theorem ideleCongr_principalIdele
     (e : K ≃ₐ[ℚ] M)
@@ -650,8 +620,7 @@ theorem ideleCongr_principalIdele
   apply Units.ext
   exact adeleCongr_algebraMap e (x : K)
 
-/-- The ordinary principal-idele subgroups are identified by transport
-along a number-field equivalence. -/
+/-- The ordinary principal-idele subgroups are identified by transport along a number-field equivalence. -/
 theorem idelePrincipalSubgroup_map_congr
     (e : K ≃ₐ[ℚ] M) :
     (IdeleGroup.principalSubgroup K).map
@@ -672,8 +641,7 @@ theorem idelePrincipalSubgroup_map_congr
         ⟨x, rfl⟩,
         ideleCongr_principalIdele e x⟩
 
-/-- Transport along a number-field equivalence identifies the subgroups
-defining the ordinary ideal-class quotients. -/
+/-- Transport along a number-field equivalence identifies the subgroups defining the ordinary ideal-class quotients. -/
 theorem ordinaryIdealClassSubgroup_map_congr
     (e : K ≃ₐ[ℚ] M) :
     (IdeleGroup.ordinaryIdealClassSubgroup (K := K)).map
@@ -698,8 +666,7 @@ noncomputable abbrev ideleClassCongr
     IdeleClassGroup K ≃* IdeleClassGroup M :=
   NumberField.IdeleClassGroup.congr e
 
-/-- The ordinary idele-class transport is induced by `ideleCongr` on
-quotient representatives. -/
+/-- The ordinary idele-class transport is induced by `ideleCongr` on quotient representatives. -/
 @[simp]
 theorem ideleClassCongr_mk
     (e : K ≃ₐ[ℚ] M)
@@ -710,9 +677,7 @@ theorem ideleClassCongr_mk
         (ideleCongr e a) :=
   NumberField.IdeleClassGroup.congr_mk e a
 
-/-- The relative-to-ordinary scalar-extension comparison is natural for
-transport of relative idèle classes along an equivalence of their top
-fields. -/
+/-- The relative-to-ordinary scalar-extension comparison is natural for transport of relative idèle classes along an equivalence of their top fields. -/
 theorem
     relativeIdeleClassBaseChangeMulEquiv_relativeIdeleClassCongr
     (e : K ≃ₐ[ℚ] M)
@@ -750,9 +715,7 @@ local instance :
       (RelativeIdeleGroup.ClassGroup ℚ E) :=
   RelativeIdeleGroup.Cohomology.ideleClassMulDistribMulAction ℚ E
 
-/-- The actual Galois action on relative idele classes becomes canonical
-ordinary idele-class transport under the relative-to-ordinary
-scalar-extension comparison. -/
+/-- The actual Galois action on relative idele classes becomes canonical ordinary idele-class transport under the relative-to-ordinary scalar-extension comparison. -/
 theorem relativeIdeleClassBaseChangeMulEquiv_smul_congr
     (σ : E ≃ₐ[ℚ] E)
     (c : RelativeIdeleGroup.ClassGroup ℚ E) :
@@ -781,9 +744,7 @@ theorem relativeIdeleClassBaseChangeMulEquiv_smul_congr
 
 end GaloisBaseChangeNaturality
 
-/-- On idele class groups, transport identifies the images of the
-ordinary ideal-class subgroups.  This is the subgroup-level naturality
-used by the small Hilbert class field. -/
+/-- On idele class groups, transport identifies the images of the ordinary ideal-class subgroups.  This is the subgroup-level naturality used by the small Hilbert class field. -/
 theorem ordinaryIdealClassSubgroup_image_map_ideleClassCongr
     (e : K ≃ₐ[ℚ] M) :
     (Subgroup.map
@@ -819,8 +780,8 @@ private theorem
       infinitePlaceBelow_self (K := K) W
     let : W.1.LiesOver V.1 := ⟨rfl⟩
     change
-      InfinitePlace.Completion.absMap
-          V W (a.1 V) =
+      AbsoluteValue.Completion.map
+          V.1 W.1 (a.1 V) =
         a.1 W
     subst V
     exact
@@ -855,8 +816,7 @@ private theorem
   rw [RingEquiv.apply_symm_apply,
     relativeAdeleBaseChangeRingEquiv_self_tmul_one]
 
-/-- Scalar extension from `ℚ` to a realization algebra-equivalent to
-`ℚ` is the canonical transport of ordinary adele rings. -/
+/-- Scalar extension from `ℚ` to a realization algebra-equivalent to `ℚ` is the canonical transport of ordinary adele rings. -/
 theorem rationalAdeleExtension_eq_adeleCongr
     (e : ℚ ≃ₐ[ℚ] M)
     (a : NumberField.AdeleRing (𝓞 ℚ) ℚ) :
@@ -876,8 +836,7 @@ theorem rationalAdeleExtension_eq_adeleCongr
   rw [relativeAdeleBaseChangeRingEquiv_self_symm_apply]
   simp only [relativeAdeleCongr_tmul, map_one]
 
-/-- Scalar extension from `ℚ` to a realization algebra-equivalent to
-`ℚ` is the canonical transport of ordinary ideles. -/
+/-- Scalar extension from `ℚ` to a realization algebra-equivalent to `ℚ` is the canonical transport of ordinary ideles. -/
 theorem rationalIdeleExtension_eq_ideleCongr
     (e : ℚ ≃ₐ[ℚ] M) :
     IdeleGroup.extension ℚ M =
@@ -891,8 +850,7 @@ theorem rationalIdeleExtension_eq_ideleCongr
     rationalAdeleExtension_eq_adeleCongr e
       (a : NumberField.AdeleRing (𝓞 ℚ) ℚ)
 
-/-- Scalar extension from `ℚ` to a realization algebra-equivalent to
-`ℚ` is the canonical transport of ordinary idele classes. -/
+/-- Scalar extension from `ℚ` to a realization algebra-equivalent to `ℚ` is the canonical transport of ordinary idele classes. -/
 theorem rationalIdeleClassExtension_eq_ideleClassCongr
     (e : ℚ ≃ₐ[ℚ] M) :
     ideleClassExtension ℚ M =
@@ -918,10 +876,7 @@ variable
     [Field K'] [NumberField K']
     [Field L'] [NumberField L'] [Algebra K' L']
 
-/-- The tensor-product map induced by compatible equivalences of both
-fields in a finite extension.  The coefficient-ring equivalence is kept
-explicit so the inverse uses that exact equivalence rather than a second
-choice. -/
+/-- The tensor-product map induced by compatible equivalences of both fields in a finite extension.  The coefficient-ring equivalence is kept explicit so the inverse uses that exact equivalence rather than a second choice. -/
 noncomputable def relativeAdeleMapOfCompatibleEquiv
     (eK : K ≃ₐ[ℚ] K')
     (eA :
@@ -1012,8 +967,7 @@ private theorem relativeAdeleMapOfCompatibleEquiv_tmul
     Algebra.TensorProduct.tmul_mul_tmul,
     mul_one, one_mul]
 
-/-- Compatible equivalences of number-field extensions induce the
-canonical equivalence of their relative adele rings. -/
+/-- Compatible equivalences of number-field extensions induce the canonical equivalence of their relative adele rings. -/
 noncomputable def relativeAdeleCongrOfAlgEquiv
     (eK : K ≃ₐ[ℚ] K')
     (eL : L ≃ₐ[ℚ] L')
@@ -1144,8 +1098,7 @@ theorem relativeAdeleCongrOfAlgEquiv_tmul
     eK (adeleCongr eK)
     (adeleCongr_algebraMap eK) eL h a x
 
-/-- Compatible equivalences of number-field extensions induce the
-canonical equivalence of their relative idele groups. -/
+/-- Compatible equivalences of number-field extensions induce the canonical equivalence of their relative idele groups. -/
 noncomputable def relativeIdeleCongrOfAlgEquiv
     (eK : K ≃ₐ[ℚ] K')
     (eL : L ≃ₐ[ℚ] L')
@@ -1176,8 +1129,7 @@ theorem relativeIdeleCongrOfAlgEquiv_principalIdele
       (1 : NumberField.AdeleRing (𝓞 K') K') ⊗ₜ[K'] eL (x : L)
   rw [relativeAdeleCongrOfAlgEquiv_tmul, map_one]
 
-/-- The semilinear relative-idele transport identifies the principal
-subgroups. -/
+/-- The semilinear relative-idele transport identifies the principal subgroups. -/
 theorem relativeIdelePrincipalSubgroup_map_congrOfAlgEquiv
     (eK : K ≃ₐ[ℚ] K')
     (eL : L ≃ₐ[ℚ] L')
@@ -1204,8 +1156,7 @@ theorem relativeIdelePrincipalSubgroup_map_congrOfAlgEquiv
         relativeIdeleCongrOfAlgEquiv_principalIdele
           eK eL h x⟩
 
-/-- Compatible equivalences of number-field extensions induce the
-canonical equivalence of their existing relative idele class groups. -/
+/-- Compatible equivalences of number-field extensions induce the canonical equivalence of their existing relative idele class groups. -/
 noncomputable def relativeIdeleClassCongrOfAlgEquiv
     (eK : K ≃ₐ[ℚ] K')
     (eL : L ≃ₐ[ℚ] L')
@@ -1244,8 +1195,7 @@ variable
     [FiniteDimensional K' L']
 
 omit [FiniteDimensional K L] [FiniteDimensional K' L'] in
-/-- Determinant norms on relative adele rings commute with compatible
-equivalences of both fields in the extension. -/
+/-- Determinant norms on relative adele rings commute with compatible equivalences of both fields in the extension. -/
 theorem relativeAdeleCongrOfAlgEquiv_norm
     (eK : K ≃ₐ[ℚ] K')
     (eL : L ≃ₐ[ℚ] L')
@@ -1282,8 +1232,7 @@ theorem relativeAdeleCongrOfAlgEquiv_norm
   simpa using congrArg (adeleCongr eK) hnorm
 
 omit [FiniteDimensional K L] [FiniteDimensional K' L'] in
-/-- The relative idele norm commutes with compatible equivalences of
-number-field extensions. -/
+/-- The relative idele norm commutes with compatible equivalences of number-field extensions. -/
 theorem relativeIdeleCongrOfAlgEquiv_norm
     (eK : K ≃ₐ[ℚ] K')
     (eL : L ≃ₐ[ℚ] L')
@@ -1302,8 +1251,7 @@ theorem relativeIdeleCongrOfAlgEquiv_norm
 variable [IsGalois K L] [IsGalois K' L']
 
 omit [IsGalois K L] [IsGalois K' L'] in
-/-- The descended relative idele-class norm commutes with compatible
-equivalences of number-field extensions. -/
+/-- The descended relative idele-class norm commutes with compatible equivalences of number-field extensions. -/
 @[simp]
 theorem relativeIdeleClassCongrOfAlgEquiv_ideleClassNorm
     (eK : K ≃ₐ[ℚ] K')
@@ -1327,9 +1275,7 @@ theorem relativeIdeleClassCongrOfAlgEquiv_ideleClassNorm
     (relativeIdeleCongrOfAlgEquiv_norm eK eL h a)
 
 omit [IsGalois K L] [IsGalois K' L'] in
-/-- Under compatible equivalences of number-field extensions, the
-relative class-norm subgroup is carried exactly to the relative
-class-norm subgroup of the transported extension. -/
+/-- Under compatible equivalences of number-field extensions, the relative class-norm subgroup is carried exactly to the relative class-norm subgroup of the transported extension. -/
 theorem relativeIdeleClassNorm_range_map_congrOfAlgEquiv
     (eK : K ≃ₐ[ℚ] K')
     (eL : L ≃ₐ[ℚ] L')
@@ -1360,9 +1306,7 @@ theorem relativeIdeleClassNorm_range_map_congrOfAlgEquiv
 
 omit [FiniteDimensional K L] [FiniteDimensional K' L']
   [IsGalois K L] [IsGalois K' L'] in
-/-- Under compatible equivalences of finite Galois number-field
-extensions, the ordinary class-norm subgroup is carried exactly to the
-ordinary class-norm subgroup of the transported extension. -/
+/-- Under compatible equivalences of finite Galois number-field extensions, the ordinary class-norm subgroup is carried exactly to the ordinary class-norm subgroup of the transported extension. -/
 theorem ordinaryIdeleClassNorm_range_map_congrOfAlgEquiv
     (eK : K ≃ₐ[ℚ] K')
     (eL : L ≃ₐ[ℚ] L')
@@ -1381,9 +1325,7 @@ theorem ordinaryIdeleClassNorm_range_map_congrOfAlgEquiv
       eK eL h
 
 -- Fix the canonical commutativity proof used by the norm-range quotients.
-/-- Compatible equivalences of finite Galois number-field extensions
-induce the canonical equivalence of their ordinary idele-class norm
-quotients. -/
+/-- Compatible equivalences of finite Galois number-field extensions induce the canonical equivalence of their ordinary idele-class norm quotients. -/
 noncomputable def ordinaryIdeleClassNormQuotientCongrOfAlgEquiv
     (eK : K ≃ₐ[ℚ] K')
     (eL : L ≃ₐ[ℚ] L')
@@ -1403,8 +1345,7 @@ noncomputable def ordinaryIdeleClassNormQuotientCongrOfAlgEquiv
 
 omit [FiniteDimensional K L] [FiniteDimensional K' L']
   [IsGalois K L] [IsGalois K' L'] in
-/-- On an ordinary idele-class representative, transport of norm
-quotients is induced by the existing idele-class transport. -/
+/-- On an ordinary idele-class representative, transport of norm quotients is induced by the existing idele-class transport. -/
 @[simp]
 theorem ordinaryIdeleClassNormQuotientCongrOfAlgEquiv_mk
     (eK : K ≃ₐ[ℚ] K')
@@ -1422,8 +1363,7 @@ theorem ordinaryIdeleClassNormQuotientCongrOfAlgEquiv_mk
         (ideleClassCongr eK c) :=
   rfl
 
-/-- The inverse transport of actual norm quotients sends a representative
-through the inverse of the same idele-class equivalence. -/
+/-- The inverse transport of actual norm quotients sends a representative through the inverse of the same idele-class equivalence. -/
 @[simp]
 theorem ordinaryIdeleClassNormQuotientCongrOfAlgEquiv_symm_mk
     {K₀ : Type u} {L₀ : Type v} {K₁ : Type w} {L₁ : Type x}

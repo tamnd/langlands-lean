@@ -16,19 +16,13 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.Topology.AdicCon
 /-!
 # The coefficient source for the p-adic changed-uniformizer intertwiner
 
-Let `k` be an algebraic closure of `ZMod p`.  The Witt ring `W(k)` is the
-integer ring of the completed maximal-unramified coefficient field used in
-the changed-uniformizer construction. Mathlib's `WittVector.frobeniusRotation` supplies the
-actual unit `ε ∈ W(k)ˣ` satisfying
+Let `k` be an algebraic closure of `ZMod p`.  The Witt ring `W(k)` is the integer ring of the completed maximal-unramified coefficient field used in the changed-uniformizer construction. Mathlib's `WittVector.frobeniusRotation` supplies the actual unit `ε ∈ W(k)ˣ` satisfying
 
 `φ(ε) = ε u`
 
-for every p-adic integer unit `u`.  This is precisely the linear-coefficient
-equation for the semilinear changed-uniformizer intertwiner.
+for every p-adic integer unit `u`.  This is precisely the linear-coefficient equation for the semilinear changed-uniformizer intertwiner.
 
-No second p-adic integer ring or Frobenius is introduced here: the base map
-uses mathlib's equivalence `W(ZMod p) ≃+* ℤ_[p]`, and `φ` is
-`WittVector.frobenius`.
+No second p-adic integer ring or Frobenius is introduced here: the base map uses mathlib's equivalence `W(ZMod p) ≃+* ℤ_[p]`, and `φ` is `WittVector.frobenius`.
 -/
 
 
@@ -42,9 +36,7 @@ namespace LubinTate
 open LocalFieldTheory.DiscreteValuationField
 open LocalFieldTheory.DiscreteValuationField.Examples.Qp
 
-/-- The canonical Witt integer ring over an algebraic closure of the
-residue field.  This is the coefficient ring used for the mixed-characteristic
-completed-unramified descent. -/
+/-- The canonical Witt integer ring over an algebraic closure of the residue field.  This is the coefficient ring used for the mixed-characteristic completed-unramified descent. -/
 abbrev padicCompletedUnramifiedWittRing (p : ℕ) [Fact p.Prime] :=
   WittVector p (AlgebraicClosure (ZMod p))
 
@@ -69,8 +61,7 @@ theorem padicIntToCompletedUnramifiedWittRing_frobenius
     WittVector.map_coeff]
   rw [← map_pow, ZMod.pow_card]
 
-/-- The chosen valuation ring of `ℚ_[p]` maps canonically into the
-completed-unramified Witt ring. -/
+/-- The chosen valuation ring of `ℚ_[p]` maps canonically into the completed-unramified Witt ring. -/
 noncomputable def padicValuationSubringToCompletedUnramifiedWittRing
     (p : ℕ) [Fact p.Prime] :
     (padicLocalField p).valuationSubring →+*
@@ -81,8 +72,7 @@ noncomputable def padicValuationSubringToCompletedUnramifiedWittRing
     (padicIntToCompletedUnramifiedWittRing p).comp
       (padicIntEquivValuationSubring p).symm.toRingHom
 
-/-- The canonical map from the valuation ring of `ℚ_[p]` sends its standard
-uniformizer to the Witt-vector prime. -/
+/-- The canonical map from the valuation ring of `ℚ_[p]` sends its standard uniformizer to the Witt-vector prime. -/
 @[simp]
 theorem padicValuationSubringToCompletedUnramifiedWittRing_uniformizer
     (p : ℕ) [Fact p.Prime] :
@@ -143,13 +133,12 @@ theorem padicChangedUniformizerRotation_coeff_zero_ne_zero
         (padicValuationUnitToCompletedUnramifiedWittUnit p u))).coeff 0 ≠ 0 := by
   simpa only [WittVector.frobeniusRotation,
     WittVector.coeff_mk, WittVector.frobeniusRotationCoeff] using
-    (WittVector.RecursionBase.solution_nonzero p
+    (WittVector.RecursionBase.solution_ne_zero p
       (completedUnramifiedWittUnit_coeff_zero_ne_zero p 1)
       (completedUnramifiedWittUnit_coeff_zero_ne_zero p
         (padicValuationUnitToCompletedUnramifiedWittUnit p u)))
 
-/-- The actual unit `ε` used as the linear coefficient of the p-adic
-changed-uniformizer intertwiner. -/
+/-- The actual unit `ε` used as the linear coefficient of the p-adic changed-uniformizer intertwiner. -/
 noncomputable def padicChangedUniformizerLinearCoefficient
     (p : ℕ) [Fact p.Prime]
     (u : (padicLocalField p).valuationSubringˣ) :
@@ -180,8 +169,7 @@ private theorem padicChangedUniformizerLinearCoefficient_coe
           (padicValuationUnitToCompletedUnramifiedWittUnit p u)))
       (padicChangedUniformizerRotation_coeff_zero_ne_zero p u))
 
-/-- The linear coefficient satisfies the semilinear equation
-`φ(ε) = ε u`. -/
+/-- The linear coefficient satisfies the semilinear equation `φ(ε) = ε u`. -/
 theorem padicChangedUniformizerLinearCoefficient_frobenius
     (p : ℕ) [Fact p.Prime]
     (u : (padicLocalField p).valuationSubringˣ) :
@@ -260,9 +248,7 @@ private theorem padicChangedUniformizerCoefficientOperator_maps_pow_succ
   rw [pow_succ, mul_comm (I ^ n) I]
   exact hmul
 
-/-- Every coefficient equation of degree at least two in the p-adic
-semilinear intertwiner has a unique solution in the completed-unramified
-Witt ring. -/
+/-- Every coefficient equation of degree at least two in the p-adic semilinear intertwiner has a unique solution in the completed-unramified Witt ring. -/
 theorem existsUnique_padicChangedUniformizerCoefficient
     (p : ℕ) [Fact p.Prime]
     (u : (padicLocalField p).valuationSubringˣ)

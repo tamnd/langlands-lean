@@ -15,15 +15,9 @@ public import Langlands.Ported.NYLL.GaloisCohomology.Cyclic.IntegralRepUniverse
 /-!
 # The abstract reciprocity theorem: actual reduction maps
 
-This file isolates the field- and quotient-theoretic content of the three
-reductions.  In particular, the Sylow reduction uses an
-intermediate field which need not be normal over the base.  We therefore
-construct its norm map without a normality assumption on the intermediate
-extension.
+This file isolates the field- and quotient-theoretic content of the three reductions.  In particular, the Sylow reduction uses an intermediate field which need not be normal over the base.  We therefore construct its norm map without a normality assumption on the intermediate extension.
 
-The reciprocity homomorphisms themselves belong to the finite reciprocity equivalence.  The
-lemmas below only construct the actual arrows and prove the algebraic diagram
-chases which will be applied to those homomorphisms.
+The reciprocity homomorphisms themselves belong to the finite reciprocity equivalence.  The lemmas below only construct the actual arrows and prove the algebraic diagram chases which will be applied to those homomorphisms.
 -/
 
 @[expose] public section
@@ -49,9 +43,7 @@ namespace FiniteGaloisSubextension
 
 variable {K : ClosedSubgroup G}
 
-/-- The norm arrow
-`A_M / N_{L/M} A_L → A_K / N_{L/K} A_L` for the actual intermediate
-field cut out by `S ≤ G(L/K)`.  No normality of `M/K` is used. -/
+/-- The norm arrow `A_M / N_{L/M} A_L → A_K / N_{L/K} A_L` for the actual intermediate field cut out by `S ≤ G(L/K)`.  No normality of `M/K` is used. -/
 def intermediateNormMap (A : Rep.{v} ℤ G) (L : FiniteGaloisSubextension K)
     (S : Subgroup L.extensionQuotient) :
     let M := L.intermediateField S
@@ -99,8 +91,7 @@ theorem intermediateNormMap_finiteNormClass (A : Rep.{v} ℤ G)
     (L.intermediateField S) L.field L.field L.below
     (L.field_le_intermediateField S) (L.intermediateField_le_base S) le_rfl a
 
-/-- Inclusion of fixed elements, descended to the two actual norm
-quotients.  This is the map `i` in the Sylow argument. -/
+/-- Inclusion of fixed elements, descended to the two actual norm quotients.  This is the map `i` in the Sylow argument. -/
 def intermediateNormQuotientInclusion (A : Rep.{v} ℤ G)
     (L : FiniteGaloisSubextension K) (S : Subgroup L.extensionQuotient) :
     let : Finite (K.toSubgroup ⧸
@@ -125,8 +116,7 @@ def intermediateNormQuotientInclusion (A : Rep.{v} ℤ G)
     L.field (L.field_le_intermediateField S)
       (L.intermediateField_le_base S)
 
-/-- Representative formula for the inclusion used in the Sylow
-reduction. -/
+/-- Representative formula for the inclusion used in the Sylow reduction. -/
 @[simp]
 theorem intermediateNormQuotientInclusion_finiteNormClass (A : Rep.{v} ℤ G)
     (L : FiniteGaloisSubextension K) (S : Subgroup L.extensionQuotient)
@@ -156,8 +146,7 @@ theorem intermediateNormQuotientInclusion_finiteNormClass (A : Rep.{v} ℤ G)
     (L.intermediateField S) L.field (L.field_le_intermediateField S)
       (L.intermediateField_le_base S) a
 
-/-- The exact identity `N_{M/K} ∘ i = [M:K]`, now for an
-arbitrary (possibly nonnormal) intermediate field. -/
+/-- The exact identity `N_{M/K} ∘ i = [M:K]`, now for an arbitrary (possibly nonnormal) intermediate field. -/
 theorem intermediateNormMap_comp_inclusion (A : Rep.{v} ℤ G)
     (L : FiniteGaloisSubextension K) (S : Subgroup L.extensionQuotient) :
     let : Finite (K.toSubgroup ⧸
@@ -219,8 +208,7 @@ namespace FiniteGaloisSubextension
 
 variable {K : ClosedSubgroup G}
 
-/-- The inclusion `G(L/M) → G(L/K)` for the actual intermediate field,
-obtained from `G(L/M) ≃ S` followed by the subgroup inclusion. -/
+/-- The inclusion `G(L/M) → G(L/K)` for the actual intermediate field, obtained from `G(L/M) ≃ S` followed by the subgroup inclusion. -/
 def lowerInclusionHom (L : FiniteGaloisSubextension K)
     (S : Subgroup L.extensionQuotient) :
     (L.intermediateField S).toSubgroup ⧸
@@ -257,9 +245,7 @@ theorem lowerQuotient_isCyclic (L : FiniteGaloisSubextension K)
           (L.field_le_intermediateField S)) :=
   (L.lowerQuotientEquiv S).isCyclic.2 inferInstance
 
-/-- The actual restriction arrow `G(L/K) → G(M/K)` attached to a normal
-subgroup `S ◁ G(L/K)`, expressed through the third-isomorphism
-identification constructed in `IntermediateExtension`. -/
+/-- The actual restriction arrow `G(L/K) → G(M/K)` attached to a normal subgroup `S ◁ G(L/K)`, expressed through the third-isomorphism identification constructed in `IntermediateExtension`. -/
 def upperRestrictionHom (L : FiniteGaloisSubextension K)
     (S : Subgroup L.extensionQuotient) [S.Normal] :
     L.extensionQuotient →*
@@ -315,8 +301,7 @@ theorem upperRestrictionHom_eq_one_iff (L : FiniteGaloisSubextension K)
     exact (congrArg (L.upperQuotientEquiv S) hmk).trans
       (L.upperQuotientEquiv S).map_one
 
-/-- Exactness of the actual upper row for an intermediate field, in
-additive form for direct use with the reciprocity homomorphisms. -/
+/-- Exactness of the actual upper row for an intermediate field, in additive form for direct use with the reciprocity homomorphisms. -/
 theorem intermediateGalois_exact (L : FiniteGaloisSubextension K)
     (S : Subgroup L.extensionQuotient) [S.Normal] :
     Function.Exact
@@ -344,8 +329,7 @@ theorem intermediateGalois_exact (L : FiniteGaloisSubextension K)
       L.extensionQuotient) ∈ S
     exact Subtype.property _
 
-/-- The maximal abelian intermediate field in the first reduction is the
-actual field cut out by the commutator subgroup of `G(L/K)`. -/
+/-- The maximal abelian intermediate field in the first reduction is the actual field cut out by the commutator subgroup of `G(L/K)`. -/
 def abelianIntermediateField (L : FiniteGaloisSubextension K) :
     ClosedSubgroup G :=
   L.intermediateField (commutator L.extensionQuotient)
@@ -371,17 +355,14 @@ def abelianRestrictionHom (L : FiniteGaloisSubextension K) :
           (commutator L.extensionQuotient)) :=
   L.upperRestrictionHom (commutator L.extensionQuotient)
 
-/-- The first reduction's exact upper-row assertion: the kernel of
-restriction to `L^ab` is the commutator subgroup. -/
+/-- The first reduction's exact upper-row assertion: the kernel of restriction to `L^ab` is the commutator subgroup. -/
 theorem abelianRestrictionHom_eq_one_iff
     (L : FiniteGaloisSubextension K) (q : L.extensionQuotient) :
     L.abelianRestrictionHom q = 1 ↔
       q ∈ commutator L.extensionQuotient :=
   L.upperRestrictionHom_eq_one_iff (commutator L.extensionQuotient) q
 
-/-- A jointly faithful family of quotient coordinates gives a jointly
-faithful family of actual restriction maps to the corresponding
-intermediate fields. -/
+/-- A jointly faithful family of quotient coordinates gives a jointly faithful family of actual restriction maps to the corresponding intermediate fields. -/
 theorem upperRestrictionHom_jointlyFaithful
     (L : FiniteGaloisSubextension K)
     {I : Type*} {C : I → Type*} [∀ i, Group (C i)]
@@ -403,8 +384,7 @@ theorem upperRestrictionHom_jointlyFaithful
     intro i
     exact map_one _
 
-/-- For a coordinate homomorphism, the actual restriction map has exactly
-the same kernel. -/
+/-- For a coordinate homomorphism, the actual restriction map has exactly the same kernel. -/
 theorem upperRestrictionHom_ker_factor
     (L : FiniteGaloisSubextension K) {C : Type*} [Group C]
     (f : L.extensionQuotient →* C) (q : L.extensionQuotient) :
@@ -412,10 +392,7 @@ theorem upperRestrictionHom_ker_factor
   rw [L.upperRestrictionHom_eq_one_iff (MonoidHom.ker f) q]
   exact MonoidHom.mem_ker
 
-/-- A finite abelian `G(L/K)` supplies the actual cyclic intermediate
-extensions used in the second reduction.  The coordinate kernels have
-trivial intersection, and the corresponding groups `G(Mᵢ/K)` are finite
-cyclic. -/
+/-- A finite abelian `G(L/K)` supplies the actual cyclic intermediate extensions used in the second reduction.  The coordinate kernels have trivial intersection, and the corresponding groups `G(Mᵢ/K)` are finite cyclic. -/
 theorem exists_cyclicIntermediateFields
     (L : FiniteGaloisSubextension K)
     [IsMulCommutative L.extensionQuotient] :
@@ -453,16 +430,14 @@ theorem exists_cyclicIntermediateFields
 
 /-! ## The maximal unramified subextension in the third reduction -/
 
-/-- The inertia subgroup of `G(L/K)`: the image of `I_K` in the actual
-finite quotient.  Its fixed field is `L ∩ K̃` in the notation of. -/
+/-- The inertia subgroup of `G(L/K)`: the image of `I_K` in the actual finite quotient.  Its fixed field is `L ∩ K̃` in the notation of. -/
 def inertiaImage (D : DegreeData G) (L : FiniteGaloisSubextension K) :
     Subgroup L.extensionQuotient :=
   (D.fieldInertiaWithin K).map
     (QuotientGroup.mk' (extensionSubgroup K L.field L.below))
 
 omit [IsTopologicalGroup G] in
-/-- The inertia image is normal, since it is the image of the normal
-inertia subgroup under a surjective quotient map. -/
+/-- The inertia image is normal, since it is the image of the normal inertia subgroup under a surjective quotient map. -/
 theorem inertiaImage_normal (D : DegreeData G)
     (L : FiniteGaloisSubextension K) : (L.inertiaImage D).Normal := by
   exact (inferInstance : (D.fieldInertiaWithin K).Normal).map
@@ -511,8 +486,7 @@ theorem maximalUnramifiedSubextension_isUnramified
     exact hkS
   exact ⟨k, hkP, rfl⟩
 
-/-- The complementary extension `L/M` is totally ramified, i.e.
-`f_{L/M}=1`. -/
+/-- The complementary extension `L/M` is totally ramified, i.e. `f_{L/M}=1`. -/
 theorem maximalUnramifiedSubextension_isTotallyRamified
     (D : DegreeData G) (L : FiniteGaloisSubextension K) :
     (DegreeData.AbstractExtension.mk L.field
@@ -546,9 +520,7 @@ theorem maximalUnramifiedSubextension_isTotallyRamified
     (D.mem_fieldInertiaWithin_iff K i).1 hiI
   simp [hdegree]
 
-/-- Maximality: every unramified intermediate extension of `L/K` is
-contained in the field cut out by the inertia image.  In subgroup order this
-is the displayed inclusion. -/
+/-- Maximality: every unramified intermediate extension of `L/K` is contained in the field cut out by the inertia image.  In subgroup order this is the displayed inclusion. -/
 theorem maximalUnramifiedSubextension_le_of_isUnramified
     (D : DegreeData G) (L : FiniteGaloisSubextension K)
     (N : ClosedSubgroup G)
@@ -594,10 +566,7 @@ namespace FiniteGaloisSubextension
 
 variable {K : ClosedSubgroup G}
 
-/-- In the cyclic case, the lower norm arrow for
-`L / (L ∩ K̃) / K` is injective by the order calculation from.
-This specializes the actual cardinality proof in the reciprocity reduction exact row to the
-inertia-image intermediate field. -/
+/-- In the cyclic case, the lower norm arrow for `L / (L ∩ K̃) / K` is injective by the order calculation from. This specializes the actual cardinality proof in the reciprocity reduction exact row to the inertia-image intermediate field. -/
 theorem maximalUnramified_normMap_injective
     (A : Rep.{v} ℤ G) (hcf : SatisfiesClassFieldAxiom A)
     (D : DegreeData G) (L : FiniteGaloisSubextension K)
@@ -654,10 +623,7 @@ theorem maximalUnramified_normMap_injective
 
 end FiniteGaloisSubextension
 
-/-- The diagram chase used twice in the first reduction.  The
-middle vertical arrow is surjective when the two outside vertical arrows
-are surjective, the top-right arrow is surjective, and the bottom row is
-exact. -/
+/-- The diagram chase used twice in the first reduction.  The middle vertical arrow is surjective when the two outside vertical arrows are surjective, the top-right arrow is surjective, and the bottom row is exact. -/
 theorem abstractReciprocity_surjective_of_exact_diagram
     {Q₀ Q Q₁ B₀ B B₁ : Type*}
     [AddGroup Q₀] [AddGroup Q] [AddGroup Q₁]
@@ -692,9 +658,7 @@ theorem abstractReciprocity_surjective_of_exact_diagram
     _ = (b - r q) + r q := by rw [hb₀]
     _ = b := sub_add_cancel b (r q)
 
-/-- The diagram chase in the third reduction.  If both outside
-reciprocity arrows are bijective and the first lower arrow is injective,
-then the middle reciprocity arrow is bijective. -/
+/-- The diagram chase in the third reduction.  If both outside reciprocity arrows are bijective and the first lower arrow is injective, then the middle reciprocity arrow is bijective. -/
 theorem abstractReciprocity_bijective_of_exact_diagram
     {Q₀ Q Q₁ B₀ B B₁ : Type*}
     [AddGroup Q₀] [AddGroup Q] [AddGroup Q₁]
@@ -736,9 +700,7 @@ theorem abstractReciprocity_bijective_of_exact_diagram
     simpa using hr₀zero
   rw [← hq₀, hq₀zero, map_zero]
 
-/-- Every additive homomorphism from a group into an abelian group kills
-the commutator subgroup.  This is the automatic inclusion in the kernel
-statement of the first reduction. -/
+/-- Every additive homomorphism from a group into an abelian group kills the commutator subgroup.  This is the automatic inclusion in the kernel statement of the first reduction. -/
 theorem abstractReciprocity_commutator_mem_kernel
     {Q : Type*} {B : Type*} [Group Q] [AddCommGroup B]
     (r : Additive Q →+ B) (q : Q)
@@ -749,14 +711,11 @@ theorem abstractReciprocity_commutator_mem_kernel
       map_one' := r.map_zero
       map_mul' := r.map_add }
   have hker : q ∈ rMul.ker :=
-    Abelianization.commutator_subset_ker rMul hq
+    Group.Abelianization.commutator_le_ker rMul hq
   change Multiplicative.ofAdd (r (Additive.ofMul q)) = 1 at hker
   exact Multiplicative.ofAdd.injective (by simpa using hker)
 
-/-- Exact remaining kernel calculation in the first reduction.  For the
-actual maximal abelian intermediate field, commutativity of the right square
-and injectivity of its reciprocity arrow identify the kernel of the middle
-arrow with the commutator subgroup. -/
+/-- Exact remaining kernel calculation in the first reduction.  For the actual maximal abelian intermediate field, commutativity of the right square and injectivity of its reciprocity arrow identify the kernel of the middle arrow with the commutator subgroup. -/
 theorem abstractReciprocity_abelianReduction_kernel
     {K : ClosedSubgroup G} {B : Type*} {C : Type*}
     [AddCommGroup B] [AddCommGroup C]
@@ -788,11 +747,7 @@ theorem abstractReciprocity_abelianReduction_kernel
     exact (L.abelianRestrictionHom_eq_one_iff q).1 hres
   · exact abstractReciprocity_commutator_mem_kernel r q
 
-/-- The kernel argument in the second reduction.  Injectivity of
-the reciprocity arrows for a jointly faithful family of cyclic quotients
-forces injectivity of the original arrow.  All horizontal maps are the
-actual restrictions to the intermediate fields cut out by the coordinate
-kernels. -/
+/-- The kernel argument in the second reduction.  Injectivity of the reciprocity arrows for a jointly faithful family of cyclic quotients forces injectivity of the original arrow.  All horizontal maps are the actual restrictions to the intermediate fields cut out by the coordinate kernels. -/
 theorem abstractReciprocity_cyclicFactors_injective
     {K : ClosedSubgroup G} {I : Type*} {C : I → Type*}
     [∀ i, Group (C i)]

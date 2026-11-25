@@ -34,13 +34,12 @@ open scoped IsMulCommutative ValuativeRel
 
 private theorem abelianizationCongr_trans_apply
     {G : Type*} {H : Type*} {I : Type*} [Group G] [Group H] [Group I]
-    (e : G ≃* H) (f : H ≃* I) (z : Abelianization G) :
+    (e : G ≃* H) (f : H ≃* I) (z : Group.Abelianization G) :
     (e.trans f).abelianizationCongr z =
       f.abelianizationCongr (e.abelianizationCongr z) :=
-  (Abelianization.map_map_apply e.toMonoidHom (g := f.toMonoidHom) (x := z)).symm
+  (Group.Abelianization.map_map_apply e.toMonoidHom (g := f.toMonoidHom) (x := z)).symm
 
-/-- A compatible restriction of concrete embedded Galois actions induces the
-corresponding restriction map on ambient finite quotient representatives. -/
+/-- A compatible restriction of concrete embedded Galois actions induces the corresponding restriction map on ambient finite quotient representatives. -/
 theorem AmbientEmbeddedFixedFieldPresentation.quotientRestriction
     (K : Type u₁) (K' : Type u₂) (L : Type u₃) (L' : Type u₄)
     [Field K] [ValuativeRel K] [TopologicalSpace K]
@@ -96,15 +95,15 @@ theorem AmbientEmbeddedFixedFieldPresentation.quotientRestriction
     (hcompat : ∀ (τ : Gal(L' / K')) (x : L),
       jLower (restrictActual τ x) =
         jUpper (τ (algebraMap L L' x)))
-    (z : Abelianization
+    (z : Group.Abelianization
       (upper.base.field.toSubgroup ⧸
         extensionSubgroup upper.base.field upper.extension.field
           upper.extension.below)) :
     restrictActual
-        ((Abelianization.equivOfComm (H := Gal(L' / K'))).symm
+        ((Group.Abelianization.equivOfComm (H := Gal(L' / K'))).symm
           ((upper.extension.extensionQuotientMulEquiv.symm.trans
             upper.quotientEquiv).abelianizationCongr z)) =
-      (Abelianization.equivOfComm (H := Gal(L / K))).symm
+      (Group.Abelianization.equivOfComm (H := Gal(L / K))).symm
         ((lower.extension.extensionQuotientMulEquiv.symm.trans
           lower.quotientEquiv).abelianizationCongr
           (normResidueNaturalityAbelianizedRestriction
@@ -122,18 +121,18 @@ theorem AmbientEmbeddedFixedFieldPresentation.quotientRestriction
   obtain ⟨sigma, rfl⟩ := QuotientGroup.mk_surjective q
   change
     restrictActual
-        ((Abelianization.equivOfComm (H := Gal(L' / K'))).symm
+        ((Group.Abelianization.equivOfComm (H := Gal(L' / K'))).symm
           (qUpper.abelianizationCongr
-            (Abelianization.of (QuotientGroup.mk sigma)))) =
-      (Abelianization.equivOfComm (H := Gal(L / K))).symm
+            (Group.Abelianization.of (QuotientGroup.mk sigma)))) =
+      (Group.Abelianization.equivOfComm (H := Gal(L / K))).symm
         (qLower.abelianizationCongr
           (normResidueNaturalityAbelianizedRestriction
             lower.base.field upper.base.field
             lower.extension.field upper.extension.field
             lower.extension.below upper.extension.below
-            hH'H hJ'J (Abelianization.of (QuotientGroup.mk sigma))))
+            hH'H hJ'J (Group.Abelianization.of (QuotientGroup.mk sigma))))
   rw [normResidueNaturalityAbelianizedRestriction_of_mk,
-    abelianizationCongr_of, abelianizationCongr_of]
+    Group.abelianizationCongr_of, Group.abelianizationCongr_of]
   change
     restrictActual (qUpper (QuotientGroup.mk sigma)) =
       qLower (QuotientGroup.mk (Subgroup.inclusion hH'H sigma))
@@ -201,8 +200,7 @@ theorem AmbientEmbeddedFixedFieldPresentation.quotientRestriction
           (Subgroup.inclusion hH'H sigma)) x) := by
       rw [hqLower_mk]
 
-/-- The actual abstract fixed-field norm-residue symbols commute with norm and
-restriction through the canonical quotient equivalences of the presentations. -/
+/-- The actual abstract fixed-field norm-residue symbols commute with norm and restriction through the canonical quotient equivalences of the presentations. -/
 theorem AmbientEmbeddedFixedFieldPresentation.fixedFieldNormResidueTransport
     (K : Type u₁) (K' : Type u₂) (L : Type u₃) (L' : Type u₄)
     [Field K] [ValuativeRel K] [TopologicalSpace K]
@@ -402,8 +400,7 @@ theorem AmbientEmbeddedFixedFieldPresentation.fixedFieldNormResidueTransport
     aUpper, aLower, symbolUpper, symbolLower] using
     hrawActual
 
-/-- Canonical ambient fixed-field norm-residue values commute with restriction
-and norm in an arbitrary finite square of nonarchimedean local fields. -/
+/-- Canonical ambient fixed-field norm-residue values commute with restriction and norm in an arbitrary finite square of nonarchimedean local fields. -/
 theorem ambientEmbeddedNormResidueElement_norm_restriction
     (K : Type u₁) (K' : Type u₂) (L : Type u₃) (L' : Type u₄)
     [Field K] [ValuativeRel K] [TopologicalSpace K]
@@ -596,11 +593,11 @@ theorem ambientEmbeddedNormResidueElement_norm_restriction
         K K' L L' lower upper hH'H hJ'J
         hbase a
   have htarget
-      (z : Abelianization upper.extension.extensionQuotient) :
+      (z : Group.Abelianization upper.extension.extensionQuotient) :
       restrictActual
-          ((Abelianization.equivOfComm (H := Gal(L' / K'))).symm
+          ((Group.Abelianization.equivOfComm (H := Gal(L' / K'))).symm
             (upper.quotientEquiv.abelianizationCongr z)) =
-        (Abelianization.equivOfComm (H := Gal(L / K))).symm
+        (Group.Abelianization.equivOfComm (H := Gal(L / K))).symm
           (lower.quotientEquiv.abelianizationCongr
             (lower.extension.extensionQuotientMulEquiv.abelianizationCongr.symm
               (normResidueNaturalityAbelianizedRestriction
@@ -608,7 +605,7 @@ theorem ambientEmbeddedNormResidueElement_norm_restriction
                 (upper.extension.extensionQuotientMulEquiv.abelianizationCongr
                   z)))) := by
     simpa only [abelianizationCongr_trans_apply,
-      ← abelianizationCongr_symm,
+      ← Group.abelianizationCongr_symm,
       MulEquiv.symm_apply_apply] using
       AmbientEmbeddedFixedFieldPresentation.quotientRestriction
         K K' L L' lower upper hH'H hJ'J restrictActual hbase hcompat
@@ -632,16 +629,16 @@ theorem ambientEmbeddedNormResidueElement_norm_restriction
             ((upper.extension.extensionQuotientMulEquiv.symm.trans
               upper.fixedFieldQuotientEquiv).abelianizationCongr.symm
               upperSymbolValue) := by
-        simp only [← abelianizationCongr_trans,
-          ← abelianizationCongr_symm, MulEquiv.symm_trans_apply,
+        simp only [← Group.abelianizationCongr_trans,
+          ← Group.abelianizationCongr_symm, MulEquiv.symm_trans_apply,
           MulEquiv.symm_symm, upperQuotientValue]
       _ = (lower.extension.extensionQuotientMulEquiv.symm.trans
             lower.fixedFieldQuotientEquiv).abelianizationCongr.symm
             lowerSymbolValue := hraw
       _ = lower.extension.extensionQuotientMulEquiv.abelianizationCongr
             lowerQuotientValue := by
-        simp only [← abelianizationCongr_trans,
-          ← abelianizationCongr_symm, MulEquiv.symm_trans_apply,
+        simp only [← Group.abelianizationCongr_trans,
+          ← Group.abelianizationCongr_symm, MulEquiv.symm_trans_apply,
           MulEquiv.symm_symm, lowerQuotientValue]
   have hupperEval :
       upper.normResidueAbelianElement a =
@@ -664,17 +661,17 @@ theorem ambientEmbeddedNormResidueElement_norm_restriction
       ambientEmbeddedNormResidueAbelianElement]
     change
       restrictActual
-          ((Abelianization.equivOfComm (H := Gal(L' / K'))).symm
+          ((Group.Abelianization.equivOfComm (H := Gal(L' / K'))).symm
             (upper.normResidueAbelianElement a)) =
-        (Abelianization.equivOfComm (H := Gal(L / K))).symm
+        (Group.Abelianization.equivOfComm (H := Gal(L / K))).symm
           (lower.normResidueAbelianElement aNorm)
     rw [hupperEval, hlowerEval]
     calc
       restrictActual
-          ((Abelianization.equivOfComm (H := Gal(L' / K'))).symm
+          ((Group.Abelianization.equivOfComm (H := Gal(L' / K'))).symm
             (upper.quotientEquiv.abelianizationCongr
               upperQuotientValue)) =
-        (Abelianization.equivOfComm (H := Gal(L / K))).symm
+        (Group.Abelianization.equivOfComm (H := Gal(L / K))).symm
             (lower.quotientEquiv.abelianizationCongr
               (lower.extension.extensionQuotientMulEquiv.abelianizationCongr.symm
                 (normResidueNaturalityAbelianizedRestriction
@@ -682,20 +679,19 @@ theorem ambientEmbeddedNormResidueElement_norm_restriction
                   (upper.extension.extensionQuotientMulEquiv.abelianizationCongr
                     upperQuotientValue)))) :=
         htarget upperQuotientValue
-      _ = (Abelianization.equivOfComm (H := Gal(L / K))).symm
+      _ = (Group.Abelianization.equivOfComm (H := Gal(L / K))).symm
             (lower.quotientEquiv.abelianizationCongr
               lowerQuotientValue) :=
         congrArg
           (fun z =>
-            (Abelianization.equivOfComm (H := Gal(L / K))).symm
+            (Group.Abelianization.equivOfComm (H := Gal(L / K))).symm
               (lower.quotientEquiv.abelianizationCongr z))
           hambient
   change
     restrictActual ambientUpper = ambientLower
   exact htransport
 
-/-- The actual finite abelian local Artin maps satisfy norm--restriction
-naturality in an arbitrary finite square of nonarchimedean local fields. -/
+/-- The actual finite abelian local Artin maps satisfy norm--restriction naturality in an arbitrary finite square of nonarchimedean local fields. -/
 theorem abelianLocalArtinMonoidHom_norm_restriction
     (K : Type u₁) (K' : Type u₂) (L : Type u₃) (L' : Type u₄)
     [Field K] [ValuativeRel K] [TopologicalSpace K]

@@ -14,10 +14,7 @@ public import Langlands.Ported.NYLL.GaloisCohomology.Cyclic.IntegralRepUniverse
 /-!
 # Abstract reciprocity, maximal-unramified reciprocity
 
-The maximal-unramified norm-residue symbol is realized by the
-valuation--Frobenius map whose restriction to every finite unramified
-extension is the inverse of the unramified norm-quotient equivalence.  This file first proves that
-finite compatibility and then records the two formulas.
+The maximal-unramified norm-residue symbol is realized by the valuation--Frobenius map whose restriction to every finite unramified extension is the inverse of the unramified norm-quotient equivalence.  This file first proves that finite compatibility and then records the two formulas.
 -/
 
 
@@ -37,9 +34,7 @@ variable {D : DegreeData G} {A : Rep.{v} ℤ G}
 
 namespace ValuationData
 
-/-- On every finite unramified quotient, the maximal-unramified symbol is
-the inverse of the actual reciprocity equivalence of the unramified norm-quotient equivalence.
-This is the inverse-limit compatibility used to define the infinite symbol. -/
+/-- On every finite unramified quotient, the maximal-unramified symbol is the inverse of the actual reciprocity equivalence of the unramified norm-quotient equivalence. This is the inverse-limit compatibility used to define the infinite symbol. -/
 theorem maximalUnramifiedNormResidueSymbol_finiteRestriction
     (v : ValuationData D A) (hAxiom : v.SatisfiesUnramifiedUnitCohomology D)
     [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
@@ -63,10 +58,7 @@ theorem maximalUnramifiedNormResidueSymbol_finiteRestriction
       (v.unramifiedReciprocity_frobenius_image hAxiom
         K L.field L.below hUnramified) a).symm
 
-/-- For a finite unramified extension, the restriction of the
-maximal-unramified norm-residue symbol is exactly the finite abstract
-norm-residue symbol.  This is the source-level bridge from maximal
-unramified reciprocity to the finite reciprocity theorem. -/
+/-- For a finite unramified extension, the restriction of the maximal-unramified norm-residue symbol is exactly the finite abstract norm-residue symbol.  This is the source-level bridge from maximal unramified reciprocity to the finite reciprocity theorem. -/
 theorem normResidueSymbol_finiteNormClass_eq_maximalUnramifiedRestriction
     (v : ValuationData D A) (hcf : SatisfiesClassFieldAxiom A)
     [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
@@ -80,7 +72,7 @@ theorem normResidueSymbol_finiteNormClass_eq_maximalUnramifiedRestriction
     D.normResidueSymbol A v hcf K L
         (finiteNormClass A K.field L.field L.below a) =
       Additive.ofMul
-        (Abelianization.of
+        (Group.Abelianization.of
           (DegreeData.finiteUnramifiedRestriction D
             (K.toFiniteResidueAbstractField D) L hUnramified
             (maximalUnramifiedNormResidueSymbol v K a).toMul)) := by

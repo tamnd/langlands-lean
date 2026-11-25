@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NormUnitsBaseChange
 public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.GlobalClassFields.AbelianConductorRamification
 public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.GlobalClassFields.AbelianLocalConductorComparison
@@ -28,16 +27,9 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Class
 /-!
 # Exact finite ramification loci for abelian norm data
 
-For a finite abelian extension, the modulus constructed from the
-actual chosen local norm groups has support exactly the ramified finite
-places.  At the archimedean places, the determinant-norm image is the
-whole local multiplicative group exactly when the extension is
-unramified at infinity.
+For a finite abelian extension, the modulus constructed from the actual chosen local norm groups has support exactly the ramified finite places.  At the archimedean places, the determinant-norm image is the whole local multiplicative group exactly when the extension is unramified at infinity.
 
-The finite statement is deliberately about the locally constructed
-norm modulus.  Identifying it with the minimal narrow finite conductor also
-requires the compatibility between the actual global norm-residue map
-and the chosen local Artin map on one-place ideles.
+The finite statement is deliberately about the locally constructed norm modulus.  Identifying it with the minimal narrow finite conductor also requires the compatibility between the actual global norm-residue map and the chosen local Artin map on one-place ideles.
 -/
 
 
@@ -47,7 +39,6 @@ and the chosen local Artin map on one-place ideles.
 open scoped NumberField
 
 attribute [local instance] AbsoluteValue.Completion.algebraOfLiesOver
-attribute [local instance] NumberField.InfinitePlace.Completion.algebraOfLiesOver
 
 noncomputable section
 
@@ -119,11 +110,7 @@ private theorem
         (K := K) (L := L) v) x
   exact hcompat.symm.trans hglobal
 
-/-- The modulus obtained from the actual chosen local norm groups is
-bounded by the minimal narrow finite conductor.  The substantive input is the
-finite-place local--global compatibility theorem: a one-place idele
-class is a global class norm exactly when its local component is a norm
-from the chosen completion. -/
+/-- The modulus obtained from the actual chosen local norm groups is bounded by the minimal narrow finite conductor.  The substantive input is the finite-place local--global compatibility theorem: a one-place idele class is a global class norm exactly when its local component is a norm from the chosen completion. -/
 theorem ideleClassNormDefiningModulus_le_narrowFiniteConductor :
     ideleClassNormDefiningModulus (K := K) (L := L) ≤
       ideleClassNormNarrowFiniteConductor (K := K) (L := L) := by
@@ -134,9 +121,7 @@ theorem ideleClassNormDefiningModulus_le_narrowFiniteConductor :
       (narrowFiniteHigherUnitGroup_le_chosenFinitePlaceLocalNormSubgroup
         (K := K) (L := L))
 
-/-- The minimal narrow finite conductor of an actual finite abelian extension
-is exactly the modulus obtained from its actual chosen local norm
-groups. -/
+/-- The minimal narrow finite conductor of an actual finite abelian extension is exactly the modulus obtained from its actual chosen local norm groups. -/
 theorem ideleClassNorm_narrowFiniteConductor_eq_normDefiningModulus :
     ideleClassNormNarrowFiniteConductor (K := K) (L := L) =
       ideleClassNormDefiningModulus (K := K) (L := L) :=
@@ -146,11 +131,7 @@ theorem ideleClassNorm_narrowFiniteConductor_eq_normDefiningModulus :
     (ideleClassNormDefiningModulus_le_narrowFiniteConductor
       (K := K) (L := L))
 
-/-- At every finite place, the corresponding exponent of the minimal
-narrow finite conductor is exactly the local conductor exponent of the
-genuine chosen localized extension.  Thus the narrow finite conductor is
-the finite product of its actual local conductors, encoded pointwise in
-`RayClass.Modulus`. -/
+/-- At every finite place, the corresponding exponent of the minimal narrow finite conductor is exactly the local conductor exponent of the genuine chosen localized extension.  Thus the narrow finite conductor is the finite product of its actual local conductors, encoded pointwise in `RayClass.Modulus`. -/
 theorem
     ideleClassNorm_narrowFiniteConductor_apply_eq_chosenLocalConductorExponent
     (v : HeightOneSpectrum (𝓞 K)) :
@@ -172,9 +153,7 @@ theorem
       ideleClassNormLocalHigherUnitExponent_eq_localConductorExponent
         (K := K) (L := L) v
 
-/-- For a finite abelian extension, the support of the modulus obtained
-from the actual chosen local norm subgroups is precisely the set of
-ramified finite places of the base field. -/
+/-- For a finite abelian extension, the support of the modulus obtained from the actual chosen local norm subgroups is precisely the set of ramified finite places of the base field. -/
 theorem
     ideleClassNormDefiningModulus_support_eq_ramifiedBaseFinitePlaces :
     (ideleClassNormDefiningModulus
@@ -211,8 +190,7 @@ theorem
       exact hP.over.symm
     · exact hchosen
 
-/-- The actual local norm modulus vanishes exactly when no finite base
-place ramifies. -/
+/-- The actual local norm modulus vanishes exactly when no finite base place ramifies. -/
 theorem
     ideleClassNormDefiningModulus_eq_zero_iff_ramifiedBaseFinitePlaces_eq_empty :
     ideleClassNormDefiningModulus (K := K) (L := L) = 0 ↔
@@ -222,8 +200,7 @@ theorem
     ← Finsupp.support_eq_empty,
     ideleClassNormDefiningModulus_support_eq_ramifiedBaseFinitePlaces]
 
-/-- The actual local norm modulus vanishes exactly when the extension
-is unramified at every finite place upstairs. -/
+/-- The actual local norm modulus vanishes exactly when the extension is unramified at every finite place upstairs. -/
 theorem
     ideleClassNormDefiningModulus_eq_zero_iff_all_finitePlaces_unramified :
     ideleClassNormDefiningModulus (K := K) (L := L) = 0 ↔
@@ -251,8 +228,7 @@ theorem
     obtain ⟨P, _hP, hP_ramified⟩ := hv
     exact hP_ramified (hunramified P)
 
-/-- The support of the minimal narrow finite conductor of a finite abelian
-extension is exactly its finite ramification locus. -/
+/-- The support of the minimal narrow finite conductor of a finite abelian extension is exactly its finite ramification locus. -/
 theorem
     ideleClassNorm_narrowFiniteConductor_support_eq_ramifiedBaseFinitePlaces :
     (ideleClassNormNarrowFiniteConductor
@@ -263,8 +239,7 @@ theorem
     ideleClassNorm_narrowFiniteConductor_eq_normDefiningModulus,
     ideleClassNormDefiningModulus_support_eq_ramifiedBaseFinitePlaces]
 
-/-- The minimal narrow finite conductor vanishes exactly when the extension
-is unramified at every finite place upstairs. -/
+/-- The minimal narrow finite conductor vanishes exactly when the extension is unramified at every finite place upstairs. -/
 theorem
     ideleClassNorm_narrowFiniteConductor_eq_zero_iff_all_finitePlaces_unramified :
     ideleClassNormNarrowFiniteConductor (K := K) (L := L) = 0 ↔
@@ -275,8 +250,7 @@ theorem
     ideleClassNormDefiningModulus_eq_zero_iff_all_finitePlaces_unramified]
 
 omit [FiniteDimensional K L] in
-/-- A ramified real-to-complex completion makes the corresponding
-archimedean tensor norm subgroup proper. -/
+/-- A ramified real-to-complex completion makes the corresponding archimedean tensor norm subgroup proper. -/
 private theorem infiniteTensorNormSubgroup_ne_top_of_isRamified
     (v : InfinitePlace K)
     (w : InfinitePlace L)
@@ -378,9 +352,7 @@ private theorem infiniteTensorNormSubgroup_ne_top_of_isRamified
   exact hNegativeOne (hzNegativeOne ▸ hz)
 
 omit [FiniteDimensional K L] in
-/-- At a base infinite place, the determinant-norm image is the whole
-local multiplicative group exactly when the extension is unramified
-above that place. -/
+/-- At a base infinite place, the determinant-norm image is the whole local multiplicative group exactly when the extension is unramified above that place. -/
 theorem infiniteTensorNormSubgroup_eq_top_iff_isUnramifiedIn
     (v : InfinitePlace K) :
     _root_.infiniteTensorNormSubgroup
@@ -422,17 +394,12 @@ theorem infiniteTensorNormSubgroup_eq_top_iff_isUnramifiedIn
         (x : v.Completion)
     rw [
       Algebra.norm_algebraMap,
-      show Module.finrank v.Completion w.Completion = 1 by
-        have h : @Module.finrank v.Completion w.Completion _ _
-            (NumberField.LiesOver.completionMap v w).toAlgebra.toModule = 1 :=
-          InfinitePlace.IsUnramified.finrank_eq_one v hunramified
-        rw [← InfinitePlace.Completion.algebraOfLiesOver_eq_toAlgebra] at h
-        exact h,
+      InfinitePlace.IsUnramified.finrank_eq_one
+        v hunramified,
       pow_one]
 
 open scoped Classical in
-/-- The infinite part of the full conductor of an idèle-class norm range is
-exactly the set of ramified real places. -/
+/-- The infinite part of the full conductor of an idèle-class norm range is exactly the set of ramified real places. -/
 theorem ideleClassNormFullConductor_infinitePart_eq_realRamificationLocus :
     (ideleClassNormConductorialSubgroup
         (K := K) (L := L)).fullConductor.infinitePart =
@@ -478,9 +445,7 @@ theorem ideleClassNormFullConductor_infinitePart_eq_realRamificationLocus :
         (K := K) (L := L) v.1
 
 omit [FiniteDimensional K L] in
-/-- A finite abelian number-field extension is unramified at every
-infinite place exactly when every archimedean tensor determinant-norm
-image is the whole local multiplicative group. -/
+/-- A finite abelian number-field extension is unramified at every infinite place exactly when every archimedean tensor determinant-norm image is the whole local multiplicative group. -/
 theorem
     infiniteTensorNormSubgroups_eq_top_iff_isUnramifiedAtInfinitePlaces :
     (∀ v : InfinitePlace K,
@@ -502,14 +467,9 @@ theorem
       infiniteTensorNormSubgroup_eq_top_of_isUnramifiedAtInfinitePlaces
         (K := K) (L := L) v
 
-/-- In the repository's modulus convention, the finite conductor is
-zero and every archimedean determinant-norm image is the full local
-group exactly when the extension is unramified at every finite and
-infinite place.
+/-- In the repository's modulus convention, the finite conductor is zero and every archimedean determinant-norm image is the full local group exactly when the extension is unramified at every finite and infinite place.
 
-This combines the finite support of the narrow finite conductor with the
-separate archimedean clause, so no ramification place is omitted by
-the fact that `RayClass.Modulus` records only finite exponents. -/
+This combines the finite support of the narrow finite conductor with the separate archimedean clause, so no ramification place is omitted by the fact that `RayClass.Modulus` records only finite exponents. -/
 theorem
     ideleClassNorm_everywhereUnramified_iff_conductor_zero_and_infiniteNorms_top :
     ((∀ P : HeightOneSpectrum (𝓞 L),
@@ -540,8 +500,7 @@ variable
 open _root_.GlobalClassFieldTheory.GlobalClassFields (
   ideleClassNorm_narrowFiniteConductor_apply_eq_chosenLocalConductorExponent
 ) in
-/-- The finite exponent of the full norm conductor is the local conductor
-exponent at the chosen completion above the place. -/
+/-- The finite exponent of the full norm conductor is the local conductor exponent at the chosen completion above the place. -/
 theorem abelianFullConductor_finiteExponent_eq_localConductorExponent
     (v : HeightOneSpectrum (𝓞 K)) :
     (GlobalClassFieldTheory.GlobalClassFields.ideleClassNormConductorialSubgroup
@@ -559,8 +518,7 @@ open _root_.GlobalClassFieldTheory.GlobalClassFields (
   ideleClassNormLocalHigherUnitExponent_eq_localConductorExponent
   ideleClassNormLocalHigherUnitExponent_eq_zero_iff_chosenFinitePlaceIsUnramified
 ) in
-/-- A finite place has conductor exponent zero precisely when the chosen
-local extension is unramified. -/
+/-- A finite place has conductor exponent zero precisely when the chosen local extension is unramified. -/
 theorem abelianFullConductor_finiteExponent_eq_zero_iff_unramified
     (v : HeightOneSpectrum (𝓞 K)) :
     (GlobalClassFieldTheory.GlobalClassFields.ideleClassNormConductorialSubgroup
@@ -577,8 +535,7 @@ theorem abelianFullConductor_finiteExponent_eq_zero_iff_unramified
 open _root_.GlobalClassFieldTheory.GlobalClassFields (
   ideleClassNormFullConductor_infinitePart_eq_realRamificationLocus
 ) in
-/-- A real place belongs to the full norm conductor exactly when it
-ramifies, equivalently complexifies, in the extension. -/
+/-- A real place belongs to the full norm conductor exactly when it ramifies, equivalently complexifies, in the extension. -/
 theorem abelianFullConductor_mem_infinitePart_iff_realRamified
     (v : RayClass.RealPlace K) :
     v ∈

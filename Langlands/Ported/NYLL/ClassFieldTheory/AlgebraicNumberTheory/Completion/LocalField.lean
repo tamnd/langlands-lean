@@ -10,7 +10,8 @@ module
 public import Mathlib.LinearAlgebra.FreeModule.IdealQuotient
 public import Mathlib.NumberTheory.LocalField.Basic
 public import Mathlib.NumberTheory.NumberField.Completion.FinitePlace
-public import Mathlib.RingTheory.DedekindDomain.AdicValuation
+public import Mathlib.RingTheory.DedekindDomain.AdicValuation.Completion
+public import Mathlib.RingTheory.DedekindDomain.AdicValuation.Valuation
 public import Mathlib.Topology.Algebra.Group.Units
 public import Mathlib.Topology.Algebra.Valued.LocallyCompact
 public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NonarchimedeanLocalField.ValuedTopology
@@ -18,8 +19,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NonarchimedeanL
 /-!
 # The canonical local field at a finite number-field place
 
-Residue-field comparison and properness supply the local-field structure for
-its distinguished valuation. These facts depend only on the completion.
+Residue-field comparison and properness supply the local-field structure for its distinguished valuation. These facts depend only on the completion.
 -/
 
 @[expose] public section
@@ -31,8 +31,7 @@ noncomputable section
 
 variable (K : Type*) [Field K] [NumberField K]
 
-/-- An element integral at a finite place can be approximated by an
-algebraic integer to positive valuation. -/
+/-- An element integral at a finite place can be approximated by an algebraic integer to positive valuation. -/
 theorem exists_ringOfIntegers_approximation
     (v : HeightOneSpectrum (𝓞 K)) (y : K)
     (hy : v.valuation K y ≤ 1) :
@@ -74,8 +73,7 @@ universe u
 
 variable {K : Type u} [Field K] [NumberField K]
 
-/-- The residue field of the adic completion at `v` is the global
-ring-of-integers quotient by `v`. -/
+/-- The residue field of the adic completion at `v` is the global ring-of-integers quotient by `v`. -/
 noncomputable def ringOfIntegersQuotientEquivAdicResidueField
     (v : HeightOneSpectrum (𝓞 K)) :
     (𝓞 K ⧸ v.asIdeal) ≃+*
@@ -237,8 +235,7 @@ noncomputable def ringOfIntegersQuotientEquivAdicResidueField
 
 end GlobalClassFieldTheory.ClassFieldAxiom
 
-/-- The residue field of a number-field completion at a finite place is
-finite. -/
+/-- The residue field of a number-field completion at a finite place is finite. -/
 theorem finite_adicCompletion_residueField
     (v : HeightOneSpectrum (𝓞 K)) :
     Finite (Valued.ResidueField (v.adicCompletion K)) := by
@@ -249,8 +246,7 @@ theorem finite_adicCompletion_residueField
       (K := K) v).toEquiv
 
 open _root_.Valued.integer in
-/-- Every nonarchimedean completion of a number field is a proper metric
-space. -/
+/-- Every nonarchimedean completion of a number field is a proper metric space. -/
 instance adicCompletionProperSpace
     (v : HeightOneSpectrum (𝓞 K)) :
     ProperSpace (v.adicCompletion K) := by
@@ -277,8 +273,7 @@ namespace ClassFieldTheory
 
 universe u
 
-/-- The valuation relation induced by the canonical discrete valuation on
-the completion at a finite place. -/
+/-- The valuation relation induced by the canonical discrete valuation on the completion at a finite place. -/
 @[reducible]
 def finitePlaceCompletionValuativeRel
     (F : Type u) [Field F] [NumberField F]
@@ -287,8 +282,7 @@ def finitePlaceCompletionValuativeRel
   ValuativeRel.ofValuation
     (Valued.v : Valuation (v.adicCompletion F) (WithZero (Multiplicative ℤ)))
 
-/-- The canonical finite adic completion is a nonarchimedean local field for
-its distinguished valuation. -/
+/-- The canonical finite adic completion is a nonarchimedean local field for its distinguished valuation. -/
 theorem finitePlaceCompletionIsNonarchimedeanLocalField
     (F : Type u) [Field F] [NumberField F]
     (v : HeightOneSpectrum (𝓞 F)) :

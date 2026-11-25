@@ -19,9 +19,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.Co
 /-!
 # Integral comparison for local tensor decompositions
 
-This module identifies integrality and units in a finite-place tensor factor
-with the corresponding componentwise conditions in the completions above that
-place.
+This module identifies integrality and units in a finite-place tensor factor with the corresponding componentwise conditions in the completions above that place.
 -/
 
 
@@ -45,8 +43,7 @@ variable
 
 section LocalTensorDecompositionIntegralComparison
 
-/-- The discriminant of the globally integral scaled relative basis,
-viewed as an algebraic integer of the base field. -/
+/-- The discriminant of the globally integral scaled relative basis, viewed as an algebraic integer of the base field. -/
 noncomputable def scaledRelativeBasisDiscriminantInteger :
     𝓞 K :=
   ⟨Algebra.discr K
@@ -88,8 +85,7 @@ theorem scaledRelativeBasisDiscriminantIdeal_ne_bot :
   exact scaledRelativeBasisDiscriminantInteger_ne_zero
     (K := K) (L := L)
 
-/-- Finite set of places at which the scaled relative basis has
-nonunit discriminant. -/
+/-- Finite set of places at which the scaled relative basis has nonunit discriminant. -/
 noncomputable def scaledRelativeBasisDiscriminantBadPlaces :
     Finset (HeightOneSpectrum (𝓞 K)) :=
   (Ideal.finite_factors
@@ -145,8 +141,7 @@ theorem adicAbv_scaledRelativeBasisDiscriminant_eq_one_of_notMem
   exact (FinitePlace.norm_embedding w
     (scaledRelativeBasisDiscriminantInteger (K := K) (L := L) : K)).symm.trans hnorm
 
-/-- The finite set controlling both the integral lattice and the
-inverse discriminant needed for the Cramer-rule converse. -/
+/-- The finite set controlling both the integral lattice and the inverse discriminant needed for the Cramer-rule converse. -/
 noncomputable def integralTensorComparisonBadPlaces :
     Finset (HeightOneSpectrum (𝓞 K)) := by
   classical
@@ -167,8 +162,7 @@ theorem mem_integralTensorComparisonBadPlaces_iff
   simp [integralTensorComparisonBadPlaces]
 
 omit [NumberField L] [FiniteDimensional K L] in
-/-- A coefficient in the concrete base valuation ring maps to the
-valuation ring of every completion above it. -/
+/-- A coefficient in the concrete base valuation ring maps to the valuation ring of every completion above it. -/
 theorem finitePlaceLocalTensorDecomposition_coefficient_mem_integers
     (w : HeightOneSpectrum (𝓞 K))
     (wL : AbsoluteValueExtension
@@ -207,8 +201,7 @@ theorem finitePlaceLocalTensorDecomposition_coefficient_mem_integers
       norm_le_one_of_mem_adicCompletionIntegers
         (K := K) w c.property
 
-/-- Away from the bad set, every chosen relative basis vector maps to
-the valuation ring in each local completion factor. -/
+/-- Away from the bad set, every chosen relative basis vector maps to the valuation ring in each local completion factor. -/
 theorem finitePlaceLocalTensorDecomposition_basis_mem_integers_of_notMem
     (w : HeightOneSpectrum (𝓞 K))
     (hw : w ∉ integralTensorBadPlaces
@@ -226,13 +219,11 @@ theorem finitePlaceLocalTensorDecomposition_basis_mem_integers_of_notMem
             K w) wL) := by
   rw [mem_absoluteValueCompletionIntegers_iff]
   simpa [AbsoluteValue.toCompletion_apply,
-    AbsoluteValue.Completion.norm_coe, WithAbs.norm_toAbs_eq, RingEquiv.apply_symm_apply] using
+    AbsoluteValue.Completion.norm_coe, RingEquiv.apply_symm_apply] using
       relativeExtensionBasis_absoluteValue_le_one_of_notMem
         (K := K) (L := L) w hw wL i
 
-/-- The chosen-basis integral lattice maps into the actual product of
-completion valuation rings under the local tensor decomposition, away from the finite
-bad set. -/
+/-- The chosen-basis integral lattice maps into the actual product of completion valuation rings under the local tensor decomposition, away from the finite bad set. -/
 theorem relativeBasisIntegralAt_imp_localTensorDecompositionIntegral_of_notMem
     (w : HeightOneSpectrum (𝓞 K))
     (hw : w ∉ integralTensorBadPlaces
@@ -279,8 +270,7 @@ theorem relativeBasisIntegralAt_imp_localTensorDecompositionIntegral_of_notMem
       finitePlaceLocalTensorDecomposition_basis_mem_integers_of_notMem
         (K := K) (L := L) w hw wL i
 
-/-- Consequently, basis integrality of a tensor unit and its inverse
-is genuine integrality in every local tensor factor. -/
+/-- Consequently, basis integrality of a tensor unit and its inverse is genuine integrality in every local tensor factor. -/
 theorem relativeBasisIntegralUnitAt_imp_localTensorDecompositionIntegralUnit_of_notMem
     (w : HeightOneSpectrum (𝓞 K))
     (hw : w ∉ integralTensorBadPlaces
@@ -295,9 +285,7 @@ theorem relativeBasisIntegralUnitAt_imp_localTensorDecompositionIntegralUnit_of_
     relativeBasisIntegralAt_imp_localTensorDecompositionIntegral_of_notMem
       (K := K) (L := L) w hw hx.2⟩
 
-/-- Local tensor integrality forces the coordinates in the
-base-changed scaled basis to be integral.  The proof takes traces
-componentwise and recovers the coordinates by Cramer's rule. -/
+/-- Local tensor integrality forces the coordinates in the base-changed scaled basis to be integral.  The proof takes traces componentwise and recovers the coordinates by Cramer's rule. -/
 theorem scaledRelativeTensorCoordinates_isIntegral_of_localTensorDecompositionIntegral
     (w : HeightOneSpectrum (𝓞 K))
     (hw : w ∉ scaledRelativeBasisDiscriminantBadPlaces
@@ -368,7 +356,7 @@ theorem scaledRelativeTensorCoordinates_isIntegral_of_localTensorDecompositionIn
     rw [mem_absoluteValueCompletionIntegers_iff]
     simpa [AbsoluteValue.toCompletionAlgHom,
       AbsoluteValue.toCompletion_apply,
-      AbsoluteValue.Completion.norm_coe, WithAbs.norm_toAbs_eq, RingEquiv.apply_symm_apply] using
+      AbsoluteValue.Completion.norm_coe, RingEquiv.apply_symm_apply] using
         scaledRelativeExtensionBasis_absoluteValue_le_one
           (K := K) (L := L) vK hvK wL i
   have hM :
@@ -452,9 +440,7 @@ theorem scaledRelativeTensorCoordinates_isIntegral_of_localTensorDecompositionIn
   exact basis_coord_isIntegral_of_integral_traces
     bA hM ht hdiscInv hdiscne i
 
-/-- The concrete tensor comparison sends a scaled-basis summand to
-the corresponding original-basis summand, with the global scale
-absorbed into its coefficient. -/
+/-- The concrete tensor comparison sends a scaled-basis summand to the corresponding original-basis summand, with the global scale absorbed into its coefficient. -/
 theorem finitePlaceLocalTensorAlgEquiv_scaled_basis_smul
     (w : HeightOneSpectrum (𝓞 K))
     (a :
@@ -478,9 +464,7 @@ theorem finitePlaceLocalTensorAlgEquiv_scaled_basis_smul
     ← TensorProduct.smul_tmul, Algebra.smul_def, mul_comm]
   rfl
 
-/-- Outside the lattice and discriminant bad places, integrality of
-all local tensor components implies integrality in the original
-relative basis. -/
+/-- Outside the lattice and discriminant bad places, integrality of all local tensor components implies integrality in the original relative basis. -/
 theorem localTensorDecompositionIntegral_imp_relativeBasisIntegralAt_of_notMem
     (w : HeightOneSpectrum (𝓞 K))
     (hw : w ∉ integralTensorComparisonBadPlaces
@@ -603,8 +587,7 @@ theorem localTensorDecompositionIntegral_imp_relativeBasisIntegralAt_of_notMem
       intro i _
       rw [finitePlaceLocalTensorAlgEquiv_scaled_basis_smul]
 
-/-- The same converse for tensor units, applied to the unit and its
-inverse. -/
+/-- The same converse for tensor units, applied to the unit and its inverse. -/
 theorem localTensorDecompositionIntegralUnit_imp_relativeBasisIntegralUnitAt_of_notMem
     (w : HeightOneSpectrum (𝓞 K))
     (hw : w ∉ integralTensorComparisonBadPlaces
@@ -618,8 +601,7 @@ theorem localTensorDecompositionIntegralUnit_imp_relativeBasisIntegralUnitAt_of_
     localTensorDecompositionIntegral_imp_relativeBasisIntegralAt_of_notMem
       (K := K) (L := L) w hw hx.2⟩
 
-/-- Away from one explicit finite bad set, basis integrality is
-equivalent to integrality in every local tensor factor. -/
+/-- Away from one explicit finite bad set, basis integrality is equivalent to integrality in every local tensor factor. -/
 theorem relativeBasisIntegralAt_iff_localTensorDecompositionIntegral_of_notMem
     (w : HeightOneSpectrum (𝓞 K))
     (hw : w ∉ integralTensorComparisonBadPlaces
@@ -658,8 +640,7 @@ theorem relativeBasisIntegralUnitAt_iff_localTensorDecompositionIntegralUnit_of_
 end LocalTensorDecompositionIntegralComparison
 
 omit [NumberField L] in
-/-- An intrinsic finite restricted family has integral chosen-basis coordinates
-for its value and inverse outside a finite set of places. -/
+/-- An intrinsic finite restricted family has integral chosen-basis coordinates for its value and inverse outside a finite set of places. -/
 theorem RelativeFiniteIdeleData.eventually_basisIntegralUnit
     (a : RelativeFiniteIdeleData (K := K) (L := L)) :
     ∀ᶠ w : HeightOneSpectrum (𝓞 K) in Filter.cofinite,
@@ -700,9 +681,7 @@ theorem RelativeFiniteIdeleData.eventually_inverse_integral
     relativeBasisIntegralAt_repr_mem w _ hw.2 i
 
 omit [NumberField L] in
-/-- Assemble the canonical finite restricted product from coefficientwise
-integrality of a family and its inverse. The comparison discards only the
-proved finite discriminant and denominator set. -/
+/-- Assemble the canonical finite restricted product from coefficientwise integrality of a family and its inverse. The comparison discards only the proved finite discriminant and denominator set. -/
 noncomputable def RelativeFiniteIdeleData.ofBasisData
     (f : ∀ w : HeightOneSpectrum (𝓞 K), (w.adicCompletion K ⊗[K] L)ˣ)
     (h : ∀ i : RelativeAdeleBasisIndex (K := K) (L := L),

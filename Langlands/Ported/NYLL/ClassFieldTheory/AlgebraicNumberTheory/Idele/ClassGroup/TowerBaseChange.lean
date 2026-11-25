@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Adele.FiniteLocalFactor
 
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.ClassGroup.Tower
@@ -21,10 +20,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele
 /-!
 # The fixed-bottom tower model and the actual intermediate-field model
 
-For a tower `K ⊂ M ⊂ L`, `IdeleClassTower` presents the ideles of `L`
-as units of `(𝔸_K ⊗[K] M) ⊗[M] L`.  Here we compare that presentation
-with the actual relative idele group `𝔸_M ⊗[M] L`, by passing through
-the ordinary ideles of `L`.
+For a tower `K ⊂ M ⊂ L`, `IdeleClassTower` presents the ideles of `L` as units of `(𝔸_K ⊗[K] M) ⊗[M] L`.  Here we compare that presentation with the actual relative idele group `𝔸_M ⊗[M] L`, by passing through the ordinary ideles of `L`.
 -/
 
 
@@ -67,8 +63,7 @@ local instance
 
 section RingComparison
 
-/-- The ring-level relative-to-ordinary comparison, regarded as an
-equivalence of `M`-algebras. -/
+/-- The ring-level relative-to-ordinary comparison, regarded as an equivalence of `M`-algebras. -/
 noncomputable def intermediateRelativeAdeleBaseChangeAlgEquiv :
     RelativeAdeleRing K M ≃ₐ[M]
       NumberField.AdeleRing (𝓞 M) M :=
@@ -105,9 +100,7 @@ theorem towerActualRelativeAdeleRingEquiv_tmul
   rfl
 
 omit [NumberField L] [FiniteDimensional M L] in
-/-- Passing from the fixed-bottom tower presentation to the actual
-relative adele ring over the intermediate field intertwines
-conjugation by an automorphism of the top field. -/
+/-- Passing from the fixed-bottom tower presentation to the actual relative adele ring over the intermediate field intertwines conjugation by an automorphism of the top field. -/
 theorem towerActualRelativeAdeleRingEquiv_unflatten_conjugation
     (σ : L ≃ₐ[M] L)
     (z : RelativeAdeleRing K L) :
@@ -307,26 +300,23 @@ private theorem relativeAdeleBaseChangeRingEquiv_tower_infiniteComponent
               [hVv : V.1.LiesOver v'.1]
               [hWV : W.1.LiesOver V.1]
               [hWv : W.1.LiesOver v.1] :
-              InfinitePlace.Completion.absMap
-                    V W
-                    (InfinitePlace.Completion.absMap
-                        v' V (a.1 v') *
+              AbsoluteValue.Completion.map
+                    V.1 W.1
+                    (AbsoluteValue.Completion.map
+                        v'.1 V.1 (a.1 v') *
                       algebraMap M V.Completion m) *
                   algebraMap L W.Completion x =
-                InfinitePlace.Completion.absMap
-                    v W (a.1 v) *
+                AbsoluteValue.Completion.map
+                    v.1 W.1 (a.1 v) *
                   algebraMap L W.Completion
                     (algebraMap M L m * x) := by
             subst v'
             have hm :
-                InfinitePlace.Completion.absMap
-                    V W
+                AbsoluteValue.Completion.map
+                    V.1 W.1
                     (algebraMap M V.Completion m) =
                   algebraMap L W.Completion
                     (algebraMap M L m) := by
-              apply InfinitePlace.Completion.ext
-              change AbsoluteValue.Completion.map V.1 W.1 (algebraMap M V.1.Completion m) =
-                algebraMap L W.1.Completion (algebraMap M L m)
               simpa only [AbsoluteValue.Completion.algebraMap_def, WithAbs.algebraMap_right_apply,
                 Algebra.algebraMap_self_apply, WithAbs.map_apply, WithAbs.ofAbs_toAbs] using
                 (AbsoluteValue.Completion.map_coe V.1 W.1 (WithAbs.toAbs V.1 m))
@@ -345,8 +335,8 @@ private theorem relativeAdeleBaseChangeRingEquiv_tower_infiniteComponent
             relativeAdeleBaseChangeRingEquiv_infiniteComponent_tmul
               (K := M) (L := L)]
           change
-            InfinitePlace.Completion.absMap
-                V W
+            AbsoluteValue.Completion.map
+                V.1 W.1
                 ((relativeAdeleBaseChangeRingEquiv
                   (K := K) (L := M) (a ⊗ₜ[K] m)).1 V) *
               algebraMap L W.Completion x =
@@ -362,9 +352,7 @@ private theorem relativeAdeleBaseChangeRingEquiv_tower_infiniteComponent
             (hWV := ⟨rfl⟩)
             (hWv := ⟨rfl⟩)
 
-/-- Passing from the fixed-bottom tower presentation to ordinary adeles
-is independent of whether one first changes to the actual relative
-presentation over the intermediate field. -/
+/-- Passing from the fixed-bottom tower presentation to ordinary adeles is independent of whether one first changes to the actual relative presentation over the intermediate field. -/
 theorem relativeAdeleBaseChangeRingEquiv_tower
     (z : TowerRelativeAdeleRing K M L) :
     relativeAdeleBaseChangeRingEquiv
@@ -390,8 +378,7 @@ section IdeleComparison
 
 section ViaOrdinary
 
-/-- The comparison through ordinary ideles, recording the compatibility
-with the original fixed-bottom flattening construction. -/
+/-- The comparison through ordinary ideles, recording the compatibility with the original fixed-bottom flattening construction. -/
 noncomputable def towerRelativeIdeleViaOrdinaryMulEquiv :
     TowerRelativeIdeleGroup K M L ≃*
       RelativeIdeleGroup M L :=
@@ -415,17 +402,14 @@ theorem towerRelativeIdeleViaOrdinaryMulEquiv_apply
 
 end ViaOrdinary
 
-/-- The fixed-bottom tower presentation of the ideles of `L` is
-canonically equivalent to the actual relative idele group over `M`,
-using the underlying adele-ring scalar-extension equivalence. -/
+/-- The fixed-bottom tower presentation of the ideles of `L` is canonically equivalent to the actual relative idele group over `M`, using the underlying adele-ring scalar-extension equivalence. -/
 noncomputable def towerRelativeIdeleBaseChangeMulEquiv :
     TowerRelativeIdeleGroup K M L ≃*
       RelativeIdeleGroup M L :=
   Units.mapEquiv
     (towerActualRelativeAdeleRingEquiv K M L).toMulEquiv
 
-/-- The ring-level tower coherence identifies the direct
-tower-to-actual comparison with the comparison through ordinary ideles. -/
+/-- The ring-level tower coherence identifies the direct tower-to-actual comparison with the comparison through ordinary ideles. -/
 theorem towerRelativeIdeleBaseChangeMulEquiv_eq_viaOrdinary
     (a : TowerRelativeIdeleGroup K M L) :
     towerRelativeIdeleBaseChangeMulEquiv K M L a =
@@ -445,8 +429,7 @@ theorem towerRelativeIdeleBaseChangeMulEquiv_eq_viaOrdinary
     relativeAdeleBaseChangeRingEquiv_tower
       K M L (a : TowerRelativeAdeleRing K M L)
 
-/-- Scalar extension from the tower presentation to ordinary ideles is
-the same along the direct and intermediate-field routes. -/
+/-- Scalar extension from the tower presentation to ordinary ideles is the same along the direct and intermediate-field routes. -/
 theorem relativeIdeleBaseChangeMulEquiv_tower
     (a : TowerRelativeIdeleGroup K M L) :
     relativeIdeleBaseChangeMulEquiv
@@ -477,8 +460,7 @@ theorem towerRelativeIdeleBaseChangeMulEquiv_principalIdele
   rw [towerActualRelativeAdeleRingEquiv_tmul, map_one]
 
 omit [NumberField L] [FiniteDimensional M L] in
-/-- The tower-to-actual comparison transports the restricted
-bottom-field conjugation to conjugation over the intermediate field. -/
+/-- The tower-to-actual comparison transports the restricted bottom-field conjugation to conjugation over the intermediate field. -/
 theorem towerRelativeIdeleBaseChangeMulEquiv_unflatten_conjugation
     (σ : L ≃ₐ[M] L)
     (a : RelativeIdeleGroup K L) :
@@ -496,9 +478,7 @@ theorem towerRelativeIdeleBaseChangeMulEquiv_unflatten_conjugation
 
 omit [NumberField L] [Algebra K L] [IsScalarTower K M L]
     [FiniteDimensional M L] in
-/-- Extending an idele from the intermediate relative adele ring into
-the tower and then passing to the actual `M`-relative presentation is
-the ordinary relative class-field-theoretic inclusion. -/
+/-- Extending an idele from the intermediate relative adele ring into the tower and then passing to the actual `M`-relative presentation is the ordinary relative class-field-theoretic inclusion. -/
 theorem towerRelativeIdeleBaseChangeMulEquiv_includeLeft
     (a : RelativeIdeleGroup K M) :
     towerRelativeIdeleBaseChangeMulEquiv K M L
@@ -520,8 +500,7 @@ theorem towerRelativeIdeleBaseChangeMulEquiv_includeLeft
 
 omit [NumberField L] [Algebra K L] [IsScalarTower K M L]
     [FiniteDimensional M L] in
-/-- The comparison maps tower principal ideles exactly onto the actual
-relative principal-ideles subgroup over `M`. -/
+/-- The comparison maps tower principal ideles exactly onto the actual relative principal-ideles subgroup over `M`. -/
 theorem towerPrincipalSubgroup_map_baseChange :
     (TowerRelativeIdeleGroup.principalSubgroup K M L).map
         (towerRelativeIdeleBaseChangeMulEquiv K M L) =
@@ -535,8 +514,7 @@ theorem towerPrincipalSubgroup_map_baseChange :
     (towerRelativeIdeleBaseChangeMulEquiv_principalIdele
       K M L x)
 
-/-- The fixed-bottom tower class group is canonically the actual
-relative idele class group of `L/M`. -/
+/-- The fixed-bottom tower class group is canonically the actual relative idele class group of `L/M`. -/
 noncomputable def towerRelativeIdeleClassBaseChangeMulEquiv :
     TowerRelativeIdeleGroup.ClassGroup K M L ≃*
       RelativeIdeleGroup.ClassGroup M L :=
@@ -559,9 +537,7 @@ theorem towerRelativeIdeleClassBaseChangeMulEquiv_mk
         (towerRelativeIdeleBaseChangeMulEquiv K M L a) :=
   rfl
 
-/-- Scalar extension from a fixed-bottom tower class group to the
-ordinary top-field idele class group is independent of the intermediate
-presentation. -/
+/-- Scalar extension from a fixed-bottom tower class group to the ordinary top-field idele class group is independent of the intermediate presentation. -/
 theorem relativeIdeleClassBaseChangeMulEquiv_tower
     (c : RelativeIdeleGroup.ClassGroup K L) :
     relativeIdeleClassBaseChangeMulEquiv
@@ -594,9 +570,7 @@ theorem relativeIdeleClassBaseChangeMulEquiv_tower
       (relativeIdeleBaseChangeMulEquiv_tower K M L a)
 
 omit [NumberField L] [FiniteDimensional M L] in
-/-- The class-group comparison transports the Galois action obtained
-by restricting scalars from the bottom field to the natural action
-over the intermediate field. -/
+/-- The class-group comparison transports the Galois action obtained by restricting scalars from the bottom field to the natural action over the intermediate field. -/
 theorem towerRelativeIdeleClassBaseChangeMulEquiv_smul
     (σ : L ≃ₐ[M] L)
     (c : RelativeIdeleGroup.ClassGroup K L) :
@@ -630,8 +604,7 @@ end IdeleComparison
 
 section NormComparison
 
-/-- The actual finite component of the tower model after the
-intermediate adele-ring comparison. -/
+/-- The actual finite component of the tower model after the intermediate adele-ring comparison. -/
 noncomputable def towerActualFiniteComponent
     (W : HeightOneSpectrum (𝓞 M)) :
     TowerRelativeIdeleGroup K M L →*
@@ -643,8 +616,7 @@ noncomputable def towerActualFiniteComponent
           K M).toAlgHom)
       (AlgHom.id M L)).toRingHom
 
-/-- The actual archimedean component of the tower model after the
-intermediate adele-ring comparison. -/
+/-- The actual archimedean component of the tower model after the intermediate adele-ring comparison. -/
 noncomputable def towerActualInfiniteComponent
     (W : InfinitePlace M) :
     TowerRelativeIdeleGroup K M L →*
@@ -658,8 +630,7 @@ noncomputable def towerActualInfiniteComponent
 
 omit [NumberField L] [Algebra K L] [IsScalarTower K M L]
     [FiniteDimensional M L] in
-/-- Finite-component identification for the norm-compatible tower
-comparison. -/
+/-- Finite-component identification for the norm-compatible tower comparison. -/
 @[simp]
 theorem towerRelativeIdeleBaseChangeMulEquiv_finiteComponent
     (W : HeightOneSpectrum (𝓞 M))
@@ -689,8 +660,7 @@ theorem towerRelativeIdeleBaseChangeMulEquiv_finiteComponent
 
 omit [NumberField L] [Algebra K L] [IsScalarTower K M L]
     [FiniteDimensional M L] in
-/-- Archimedean-component identification for the norm-compatible tower
-comparison. -/
+/-- Archimedean-component identification for the norm-compatible tower comparison. -/
 @[simp]
 theorem towerRelativeIdeleBaseChangeMulEquiv_infiniteComponent
     (W : InfinitePlace M)
@@ -718,8 +688,7 @@ theorem towerRelativeIdeleBaseChangeMulEquiv_infiniteComponent
       simp [towerActualRelativeAdeleRingEquiv_tmul,
         relativeAdeleInfiniteComponent_tmul]
 
-/-- Evaluation of the fixed-bottom relative adele ring at one exact
-finite extension of a place of `K`, as an `M`-algebra map. -/
+/-- Evaluation of the fixed-bottom relative adele ring at one exact finite extension of a place of `K`, as an `M`-algebra map. -/
 noncomputable def towerIntermediateFiniteComponentAlgHom
     (w : HeightOneSpectrum (𝓞 K))
     (uM : AbsoluteValueExtension
@@ -749,8 +718,7 @@ noncomputable def towerIntermediateFiniteComponentAlgHom
         rw [hOne, map_one, map_one, one_mul]
         rfl }
 
-/-- The local tensor component of a tower idele at an exact finite
-extension place of `M`. -/
+/-- The local tensor component of a tower idele at an exact finite extension place of `M`. -/
 noncomputable def towerIntermediateFiniteComponent
     (w : HeightOneSpectrum (𝓞 K))
     (uM : AbsoluteValueExtension
@@ -762,8 +730,7 @@ noncomputable def towerIntermediateFiniteComponent
       (towerIntermediateFiniteComponentAlgHom K M w uM)
       (AlgHom.id M L)).toRingHom
 
-/-- Evaluation of a relative idele over `K` at the same exact finite
-extension place of `M`. -/
+/-- Evaluation of a relative idele over `K` at the same exact finite extension place of `M`. -/
 noncomputable def intermediateFiniteComponent
     (w : HeightOneSpectrum (𝓞 K))
     (uM : AbsoluteValueExtension
@@ -773,8 +740,7 @@ noncomputable def intermediateFiniteComponent
     (towerIntermediateFiniteComponentAlgHom K M w uM).toRingHom
 
 omit [NumberField M] [NumberField L] [Algebra K L] [IsScalarTower K M L] in
-/-- Determinant norm commutes with the exact finite-place component of
-the fixed-bottom tower model. -/
+/-- Determinant norm commutes with the exact finite-place component of the fixed-bottom tower model. -/
 theorem towerIntermediateFiniteComponent_norm
     (w : HeightOneSpectrum (𝓞 K))
     (uM : AbsoluteValueExtension
@@ -793,8 +759,7 @@ theorem towerIntermediateFiniteComponent_norm
 
 omit [NumberField L] [Algebra K L] [IsScalarTower K M L]
     [FiniteDimensional M L] in
-/-- The actual relative-idele norm is the tower determinant norm after
-the intermediate relative-to-ordinary adele comparison. -/
+/-- The actual relative-idele norm is the tower determinant norm after the intermediate relative-to-ordinary adele comparison. -/
 theorem towerRelativeIdeleBaseChangeMulEquiv_norm
     (a : TowerRelativeIdeleGroup K M L) :
     relativeIdeleBaseChangeMulEquiv
@@ -852,9 +817,7 @@ end NormComparison
 section ClassNormComparison
 
 omit [NumberField L] [Algebra K L] [IsScalarTower K M L] in
-/-- After both relative presentations are replaced by the ordinary
-idele class groups, the fixed-bottom tower class norm is the actual
-class norm for `L/M`. -/
+/-- After both relative presentations are replaced by the ordinary idele class groups, the fixed-bottom tower class norm is the actual class norm for `L/M`. -/
 theorem towerRelativeIdeleClassBaseChangeMulEquiv_classNorm
     (c : TowerRelativeIdeleGroup.ClassGroup K M L) :
     relativeIdeleClassBaseChangeMulEquiv
@@ -869,9 +832,7 @@ theorem towerRelativeIdeleClassBaseChangeMulEquiv_classNorm
     (towerRelativeIdeleBaseChangeMulEquiv_norm K M L a)
 
 omit [NumberField L] [Algebra K L] [IsScalarTower K M L] in
-/-- The fixed-bottom tower norm subgroup becomes exactly the actual
-`L/M` class-norm subgroup after base change to the ordinary class group
-of `M`. -/
+/-- The fixed-bottom tower norm subgroup becomes exactly the actual `L/M` class-norm subgroup after base change to the ordinary class group of `M`. -/
 theorem towerClassNorm_range_map_baseChange :
     (TowerRelativeIdeleGroup.classNorm K M L).range.map
         (relativeIdeleClassBaseChangeMulEquiv
@@ -904,8 +865,7 @@ theorem towerClassNorm_range_map_baseChange :
         ⟨(towerRelativeIdeleClassBaseChangeMulEquiv
             K M L).symm d, rfl⟩, h⟩
 
-/-- The fixed-bottom quotient `C_M / N_{L/M} C_L` is canonically the
-ordinary idele-class norm quotient for the actual extension `L/M`. -/
+/-- The fixed-bottom quotient `C_M / N_{L/M} C_L` is canonically the ordinary idele-class norm quotient for the actual extension `L/M`. -/
 noncomputable def intermediateClassNormQuotientBaseChangeMulEquiv :
     IntermediateClassNormQuotient K M L ≃*
       RelativeIdeleGroup.ClassNormQuotient M L :=
@@ -967,11 +927,7 @@ theorem ordinaryIdeleClassNorm_tower (c : IdeleClassGroup L) :
   rw [_root_.ideleClassNorm_mk, _root_.ideleClassNorm_mk, _root_.ideleClassNorm_mk,
     ordinaryIdeleNorm_tower K M L a]
 
-/-- In an arbitrary finite tower of number fields, every ordinary
-idele-class norm from the top field is already a norm from the
-intermediate field.  No normality hypothesis is needed: this is
-determinant-norm transitivity transported from the fixed-bottom tower
-presentation to the ordinary idele class groups. -/
+/-- In an arbitrary finite tower of number fields, every ordinary idele-class norm from the top field is already a norm from the intermediate field.  No normality hypothesis is needed: this is determinant-norm transitivity transported from the fixed-bottom tower presentation to the ordinary idele class groups. -/
 theorem ordinaryIdeleClassNorm_range_le_of_tower :
     (_root_.ideleClassNorm K L).range ≤
       (_root_.ideleClassNorm K M).range := by

@@ -17,15 +17,9 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.Reci
 /-!
 # Transfer input for the principal ideal theorem
 
-The Galois correspondence realizes a subgroup `S ≤ Gal(M / K)` as an
-intermediate field.  The transfer construction independently realizes
-`Gal(M / M^S)` as a subgroup of `Gal(M / K)`.  The first theorem below
-identifies these two actual subgroups.
+The Galois correspondence realizes a subgroup `S ≤ Gal(M / K)` as an intermediate field.  The transfer construction independently realizes `Gal(M / M^S)` as a subgroup of `Gal(M / K)`.  The first theorem below identifies these two actual subgroups.
 
-For `S` equal to the commutator subgroup, this identification puts the
-transfer used by reciprocity in exactly the form covered by Witt's transfer
-theorem.  Consequently that transfer is trivial.  No class-field
-realization or norm-subgroup equality is assumed here.
+For `S` equal to the commutator subgroup, this identification puts the transfer used by reciprocity in exactly the form covered by Witt's transfer theorem.  Consequently that transfer is trivial.  No class-field realization or norm-subgroup equality is assumed here.
 -/
 
 
@@ -46,8 +40,7 @@ variable {G : Type u} [Group G] [TopologicalSpace G]
   [IsTopologicalGroup G]
 variable {K : ClosedSubgroup G}
 
-/-- The subgroup used by transfer for the intermediate field cut out by
-`S` is exactly `S`, not merely an abstractly isomorphic copy. -/
+/-- The subgroup used by transfer for the intermediate field cut out by `S` is exactly `S`, not merely an abstractly isomorphic copy. -/
 theorem transferIntermediateSubgroup_eq_galoisCorrespondenceSubgroup
     (M : FiniteGaloisSubextension K)
     (S : Subgroup M.extensionQuotient) :
@@ -81,9 +74,7 @@ theorem transferIntermediateSubgroup_eq_galoisCorrespondenceSubgroup
           (QuotientGroup.mk z : M.extensionQuotient))
         (Subtype.ext (by rfl))
 
-/-- For the maximal abelian intermediate field of `M / K`, the transfer
-appearing in transfer--norm naturality is trivial.  This is the precise
-group-theoretic input needed for principalization. -/
+/-- For the maximal abelian intermediate field of `M / K`, the transfer appearing in transfer--norm naturality is trivial.  This is the precise group-theoretic input needed for principalization. -/
 theorem commutatorIntermediateTransfer_eq_one
     (M : FiniteGaloisSubextension K) :
     let S := commutator M.extensionQuotient
@@ -125,25 +116,25 @@ theorem commutatorIntermediateTransfer_eq_one
     MulEquiv.subgroupCongr hH
   change
     e.symm.abelianizationCongr.toMonoidHom.comp
-        (Abelianization.lift
+        (Group.Abelianization.lift
           (MonoidHom.transfer
-            (Abelianization.of : H →*
-              Abelianization H))) =
+            (Group.Abelianization.of : H →*
+              Group.Abelianization H))) =
       1
   have hresult :
       e.symm.abelianizationCongr.toMonoidHom.comp
-        (Abelianization.lift
+        (Group.Abelianization.lift
           (MonoidHom.transfer
-            (Abelianization.of : H →* Abelianization H))) =
+            (Group.Abelianization.of : H →* Group.Abelianization H))) =
         1 := by
     have hcongr :
         c.abelianizationCongr.toMonoidHom.comp
-            (Abelianization.lift
+            (Group.Abelianization.lift
               (MonoidHom.transfer
-                (Abelianization.of : H →* Abelianization H))) =
-          Abelianization.lift
+                (Group.Abelianization.of : H →* Group.Abelianization H))) =
+          Group.Abelianization.lift
             (MonoidHom.transfer
-              (Abelianization.of : S →* Abelianization S)) := by
+              (Group.Abelianization.of : S →* Group.Abelianization S)) := by
       exact @abelianization_transfer_congr_subgroup
         M.extensionQuotient inferInstance H S hH
         hHFiniteIndex hSFiniteIndex
@@ -151,36 +142,36 @@ theorem commutatorIntermediateTransfer_eq_one
     intro a
     change
       e.symm.abelianizationCongr
-          (Abelianization.lift
+          (Group.Abelianization.lift
             (MonoidHom.transfer
-              (Abelianization.of : H →*
-                Abelianization H)) a) =
+              (Group.Abelianization.of : H →*
+                Group.Abelianization H)) a) =
         1
-    rw [← _root_.abelianizationCongr_symm]
+    rw [← Group.abelianizationCongr_symm]
     apply e.abelianizationCongr.injective
     simp only [e.abelianizationCongr.apply_symm_apply, map_one]
     apply c.abelianizationCongr.injective
     simp only [map_one]
     calc
       c.abelianizationCongr
-          (Abelianization.lift
+          (Group.Abelianization.lift
             (MonoidHom.transfer
-              (Abelianization.of : H →*
-                Abelianization H)) a) =
-        Abelianization.lift
+              (Group.Abelianization.of : H →*
+                Group.Abelianization H)) a) =
+        Group.Abelianization.lift
             (MonoidHom.transfer
-              (Abelianization.of :
-                S →* Abelianization S)) a := by
+              (Group.Abelianization.of :
+                S →* Group.Abelianization S)) a := by
           change
             c.abelianizationCongr.toMonoidHom
-                (Abelianization.lift
+                (Group.Abelianization.lift
                   (MonoidHom.transfer
-                    (Abelianization.of : H →*
-                      Abelianization H)) a) =
-              Abelianization.lift
+                    (Group.Abelianization.of : H →*
+                      Group.Abelianization H)) a) =
+              Group.Abelianization.lift
                 (MonoidHom.transfer
-                  (Abelianization.of :
-                    S →* Abelianization S)) a
+                  (Group.Abelianization.of :
+                    S →* Group.Abelianization S)) a
           exact DFunLike.congr_fun hcongr a
       _ =
           GroupTheory.Transfer.Witt.commutatorTransfer
@@ -198,10 +189,7 @@ variable {Γ : Type uG}
   [IsTopologicalGroup Γ] [CompactSpace Γ] [T2Space Γ]
   [TotallyDisconnectedSpace Γ]
 
-/-- The fixed-field inclusion from a base field to the intermediate field
-cut out by the commutator vanishes on the corresponding finite norm
-quotients.  This is the capitulation statement supplied by reciprocity and
-Witt transfer, before specializing the class formation to ideles. -/
+/-- The fixed-field inclusion from a base field to the intermediate field cut out by the commutator vanishes on the corresponding finite norm quotients.  This is the capitulation statement supplied by reciprocity and Witt transfer, before specializing the class formation to ideles. -/
 theorem intermediateNormQuotientInclusion_commutator_eq_zero
     (D : DegreeData Γ) (A : Rep.{uA} ℤ Γ)
     (v : ValuationData D A)

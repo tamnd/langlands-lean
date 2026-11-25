@@ -18,9 +18,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.Co
 /-!
 # Scalar extension from relative to ordinary ideles
 
-The idele scalar-extension map is induced by the canonical relative adele
-ring equivalence. The local tensor formulas describe its infinite and finite
-components in the ordinary idele presentation.
+The idele scalar-extension map is induced by the canonical relative adele ring equivalence. The local tensor formulas describe its infinite and finite components in the ordinary idele presentation.
 -/
 
 
@@ -43,8 +41,7 @@ variable
     [Field L] [NumberField L] [Algebra K L]
     [FiniteDimensional K L]
 
-/-- Reindex the relative completion product by actual infinite
-places above `w`. -/
+/-- Reindex the relative completion product by actual infinite places above `w`. -/
 noncomputable def infiniteCompletionProductReindexAbove
     (w : InfinitePlace K) :
     (∀ u : AbsoluteValueExtension w.1 L,
@@ -65,8 +62,7 @@ noncomputable def infiniteCompletionProductReindexAbove
         funext W
         rfl }
 
-/-- Replace the absolute-value completion in every factor by mathlib's
-concrete infinite-place completion. -/
+/-- Replace the absolute-value completion in every factor by mathlib's concrete infinite-place completion. -/
 noncomputable def infiniteCompletionProductEquivAbove
     (w : InfinitePlace K) :
     (∀ u : AbsoluteValueExtension w.1 L,
@@ -78,10 +74,9 @@ noncomputable def infiniteCompletionProductEquivAbove
     (K := K) (L := L) w).trans
     (MulEquiv.piCongrRight fun W =>
       Units.mapEquiv
-        (InfinitePlace.Completion.equiv W.1).symm.toMulEquiv)
+        (RingEquiv.refl W.1.Completion).symm.toMulEquiv)
 
-/-- The canonical local tensor decomposition for the actual archimedean tensor component, with
-codomain indexed by concrete infinite places above the base place. -/
+/-- The canonical local tensor decomposition for the actual archimedean tensor component, with codomain indexed by concrete infinite places above the base place. -/
 noncomputable def infinitePlaceTensorUnitsEquivAbove
     (w : InfinitePlace K) :
     (w.Completion ⊗[K] L)ˣ ≃*
@@ -100,8 +95,7 @@ noncomputable def infinitePlaceTensorUnitsEquivAbove
         (infiniteCompletionProductEquivAbove
           (K := K) (L := L) w))
 
-/-- Evaluation formula for the archimedean relative-to-ordinary
-comparison at a concrete infinite place above the base place. -/
+/-- Evaluation formula for the archimedean relative-to-ordinary comparison at a concrete infinite place above the base place. -/
 @[simp]
 theorem infinitePlaceTensorUnitsEquivAbove_apply
     (w : InfinitePlace K)
@@ -111,7 +105,7 @@ theorem infinitePlaceTensorUnitsEquivAbove_apply
     infinitePlaceTensorUnitsEquivAbove
         (K := K) (L := L) w z W =
       Units.mapEquiv
-          (InfinitePlace.Completion.equiv W.1).symm.toMulEquiv
+          (RingEquiv.refl W.1.Completion).symm.toMulEquiv
         (localTensorUnitsEquivCompletionProduct
           w.1 w.isNontrivial
           (infinitePlaceLocalTensorUnitsEquiv
@@ -121,9 +115,7 @@ theorem infinitePlaceTensorUnitsEquivAbove_apply
   rfl
 
 omit [NumberField K] [NumberField L] [FiniteDimensional K L] in
-/-- After replacing the concrete completion by the underlying
-absolute-value completion, scalar extension of a local unit is the pure
-tensor with right factor one. -/
+/-- After replacing the concrete completion by the underlying absolute-value completion, scalar extension of a local unit is the pure tensor with right factor one. -/
 @[simp]
 theorem infinitePlaceLocalTensorUnitsEquiv_infiniteLocalIdeleInclusion_coe
     (w : InfinitePlace K) (x : w.Completionˣ) :
@@ -136,8 +128,7 @@ theorem infinitePlaceLocalTensorUnitsEquiv_infiniteLocalIdeleInclusion_coe
           (x : w.Completion) ⊗ₜ[K] (1 : L) := by
   rfl
 
-/-- On a diagonal extension-field unit, the infinite local
-relative-to-ordinary comparison is the ordinary diagonal embedding. -/
+/-- On a diagonal extension-field unit, the infinite local relative-to-ordinary comparison is the ordinary diagonal embedding. -/
 theorem infinitePlaceTensorUnitsEquivAbove_localFieldIdeleInclusion
     (w : InfinitePlace K)
     (W : {W : InfinitePlace L //
@@ -153,17 +144,15 @@ theorem infinitePlaceTensorUnitsEquivAbove_localFieldIdeleInclusion
   rw [infinitePlaceTensorUnitsEquivAbove_apply]
   apply Units.ext
   simp only [Units.coe_map]
-  apply InfinitePlace.Completion.ext
   change completionTensorDecomposition_left w.1 w.isNontrivial
     ((1 : w.1.Completion) ⊗ₜ[K] (x : L))
     (infinitePlaceAboveEquivExtension (K := K) (L := L) w W) =
-      algebraMap L W.1.1.Completion (x : L)
+      algebraMap L W.1.Completion (x : L)
   rw [completionTensorDecomposition_left_tmul_apply]
   simp only [map_one, one_mul]
   exact AbsoluteValue.toCompletion_eq_algebraMap W.1.1 (x : L)
 
-/-- Flatten the products over base infinite places and places above them
-to the product over all infinite places of `L`. -/
+/-- Flatten the products over base infinite places and places above them to the product over all infinite places of `L`. -/
 noncomputable def infinitePlaceAbovePiMulEquiv :
     (∀ w : InfinitePlace K,
       ∀ W : {W : InfinitePlace L //
@@ -185,8 +174,7 @@ noncomputable def infinitePlaceAbovePiMulEquiv :
     funext W
     rfl
 
-/-- The unrestricted product of all archimedean tensor-unit factors is
-the product of the concrete archimedean local unit groups of `L`. -/
+/-- The unrestricted product of all archimedean tensor-unit factors is the product of the concrete archimedean local unit groups of `L`. -/
 noncomputable def relativeInfiniteTensorPiMulEquiv :
     (∀ w : InfinitePlace K,
       (w.Completion ⊗[K] L)ˣ) ≃*
@@ -197,8 +185,7 @@ noncomputable def relativeInfiniteTensorPiMulEquiv :
     (infinitePlaceAbovePiMulEquiv
       (K := K) (L := L))
 
-/-- Evaluation of the archimedean tensor-product comparison at an
-infinite place of the extension field. -/
+/-- Evaluation of the archimedean tensor-product comparison at an infinite place of the extension field. -/
 @[simp]
 theorem relativeInfiniteTensorPiMulEquiv_apply
     (f : ∀ w : InfinitePlace K, (w.Completion ⊗[K] L)ˣ)
@@ -210,8 +197,7 @@ theorem relativeInfiniteTensorPiMulEquiv_apply
         (f (infinitePlaceBelow (K := K) W))
         ⟨W, rfl⟩ := rfl
 
-/-- The archimedean relative tensor factors form the ordinary infinite
-idele group of `L`. -/
+/-- The archimedean relative tensor factors form the ordinary infinite idele group of `L`. -/
 noncomputable def relativeInfiniteIdeleMulEquiv :
     (∀ w : InfinitePlace K,
       (w.Completion ⊗[K] L)ˣ) ≃*
@@ -239,8 +225,7 @@ noncomputable def relativeLocalIdeleDataSplitMulEquiv :
         RelativeFiniteIdeleData (K := K) (L := L)) :=
   MulEquiv.refl _
 
-/-- The finite local unit comparison is induced by the corresponding
-ring equivalence. -/
+/-- The finite local unit comparison is induced by the corresponding ring equivalence. -/
 theorem finitePlaceTensorUnitsEquivAboveAdic_coe
     (w : HeightOneSpectrum (𝓞 K))
     (x : (w.adicCompletion K ⊗[K] L)ˣ)
@@ -260,8 +245,7 @@ theorem finitePlaceTensorUnitsEquivAboveAdic_coe
     finitePlaceTensorRingEquivAboveAdic_apply_extension]
   rfl
 
-/-- The flattened finite unit comparison is induced by the flattened
-finite ring comparison. -/
+/-- The flattened finite unit comparison is induced by the flattened finite ring comparison. -/
 theorem relativeFiniteTensorPiMulEquiv_coe
     (x : ∀ w : HeightOneSpectrum (𝓞 K),
       (w.adicCompletion K ⊗[K] L)ˣ)

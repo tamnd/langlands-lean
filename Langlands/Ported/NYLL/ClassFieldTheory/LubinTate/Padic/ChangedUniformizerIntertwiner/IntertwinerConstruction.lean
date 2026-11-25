@@ -12,8 +12,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LubinTate.Padic.ChangedUnif
 /-!
 # Changed-uniformizer intertwiner construction
 
-This module builds compatible finite-degree approximations, assembles the changed-uniformizer
-intertwiner, proves its functional equation, and establishes uniqueness.
+This module builds compatible finite-degree approximations, assembles the changed-uniformizer intertwiner, proves its functional equation, and establishes uniqueness.
 -/
 
 
@@ -133,8 +132,7 @@ private theorem
       (padicChangedUniformizerApproximation p u n).constantCoeff_eq_zero
       (n + 2) (by omega)
 
-/-- The actual semilinear changed-uniformizer series over the completed
-unramified Witt ring. -/
+/-- The actual semilinear changed-uniformizer series over the completed unramified Witt ring. -/
 noncomputable def padicChangedUniformizerIntertwiner
     (p : ℕ) [Fact p.Prime]
     (u : (padicLocalField p).valuationSubringˣ) :
@@ -357,9 +355,7 @@ private theorem padicChangedUniformizerDefect_coeff_succ_succ
     _ = 0 :=
       padicChangedUniformizerApproximation_succ_defect_coeff p u n
 
-/-- The completed changed standard series after the actual intertwiner is
-the Frobenius transform of the intertwiner after the multiplicative
-series. This is the first changed-uniformizer identity. -/
+/-- The completed changed standard series after the actual intertwiner is the Frobenius transform of the intertwiner after the multiplicative series. This is the first changed-uniformizer identity. -/
 theorem padicChangedUniformizerIntertwiner_functionalEquation
     (p : ℕ) [Fact p.Prime]
     (u : (padicLocalField p).valuationSubringˣ) :
@@ -416,8 +412,7 @@ theorem padicChangedUniformizerIntertwiner_functionalEquation
           rw [show n + 1 + 1 = n + 2 by omega,
             padicChangedUniformizerDefect_coeff_succ_succ, neg_zero]
 
-/-- A zero-constant-coefficient solution of the changed-uniformizer
-functional equation is determined by its linear coefficient. -/
+/-- A zero-constant-coefficient solution of the changed-uniformizer functional equation is determined by its linear coefficient. -/
 theorem padicChangedUniformizerIntertwiner_unique
     (p : ℕ) [Fact p.Prime]
     (u : (padicLocalField p).valuationSubringˣ)
@@ -527,7 +522,7 @@ theorem padicChangedUniformizerIntertwiner_unique
       let V : (padicCompletedUnramifiedWittRing p)ˣ :=
         padicValuationUnitToCompletedUnramifiedWittUnit p u
       have hpne : (p : padicCompletedUnramifiedWittRing p) ≠ 0 :=
-        WittVector.p_nonzero p (AlgebraicClosure (ZMod p))
+        WittVector.p_ne_zero p (AlgebraicClosure (ZMod p))
       have hpow :
           (p : padicCompletedUnramifiedWittRing p) ^ m =
             (p : padicCompletedUnramifiedWittRing p) ^ (m - 1) *

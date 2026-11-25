@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NormUnitsBaseChange
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Completion.FinitePlaceModel
 
@@ -30,9 +29,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NormUnits
 /-!
 # Continuity of the global idele norm
 
-The norm on ideles in a finite number-field extension is continuous. The
-proof works first on the open chart with integral finite components and then
-uses the topological-group structure to obtain continuity everywhere.
+The norm on ideles in a finite number-field extension is continuous. The proof works first on the open chart with integral finite components and then uses the topological-group structure to obtain continuity everywhere.
 -/
 
 
@@ -42,7 +39,6 @@ uses the topological-group structure to obtain continuity everywhere.
 open scoped BigOperators NumberField
 
 attribute [local instance] AbsoluteValue.Completion.algebraOfLiesOver
-attribute [local instance] NumberField.InfinitePlace.Completion.algebraOfLiesOver
 open NumberField IsDedekindDomain
 
 noncomputable section
@@ -59,8 +55,7 @@ variable
     [Field L] [NumberField L]
     [Algebra K L] [FiniteDimensional K L]
 
-/-- A concrete finite-place local norm carries concrete integer units to
-concrete integer units. -/
+/-- A concrete finite-place local norm carries concrete integer units to concrete integer units. -/
 theorem finitePlace_normUnits_mem_integerUnits
     (v₀ : HeightOneSpectrum (𝓞 K))
     (W : {W : HeightOneSpectrum (𝓞 L) //
@@ -211,7 +206,7 @@ private noncomputable def integralInfiniteNormComponents
         _root_.infinitePlaceBelow (K := K) W = v₀},
         Algebra v₀.Completion W.1.Completion :=
       fun W =>
-        InfinitePlace.Completion.algebraOfLiesOver v₀ W.1
+        AbsoluteValue.Completion.algebraOfLiesOver v₀.1 W.1.1
     exact
       ∏ W : {W : InfinitePlace L //
           _root_.infinitePlaceBelow (K := K) W = v₀},
@@ -228,7 +223,7 @@ private theorem infinitePlace_normUnits_continuous
     let : W.1.1.LiesOver v₀.1 :=
       ⟨congrArg (fun q : InfinitePlace K => q.1) W.2⟩
     let : Algebra v₀.Completion W.1.Completion :=
-      InfinitePlace.Completion.algebraOfLiesOver v₀ W.1
+      AbsoluteValue.Completion.algebraOfLiesOver v₀.1 W.1.1
     Continuous
       (LocalFieldTheory.normUnits v₀.Completion W.1.Completion) := by
   intro sharedOwner1 sharedOwner2
@@ -482,8 +477,7 @@ private theorem infinitePlace_normUnits_continuous
         ((LocalFieldTheory.normUnits_continuous_of_finiteDimensional ℂ ℂ).comp
           hExtensionUnitsContinuous)
 
-/-- The archimedean local norm product is continuous on the
-integral-idele chart. -/
+/-- The archimedean local norm product is continuous on the integral-idele chart. -/
 private theorem integralInfiniteNormComponents_continuous :
     Continuous (integralInfiniteNormComponents K L) := by
   rw [continuous_pi_iff]
@@ -498,7 +492,7 @@ private theorem integralInfiniteNormComponents_continuous :
       _root_.infinitePlaceBelow (K := K) W = v₀},
       Algebra v₀.Completion W.1.Completion :=
     fun W =>
-      InfinitePlace.Completion.algebraOfLiesOver v₀ W.1
+      AbsoluteValue.Completion.algebraOfLiesOver v₀.1 W.1.1
   apply continuous_finsetProd Finset.univ
   intro W _
   exact
@@ -507,8 +501,7 @@ private theorem integralInfiniteNormComponents_continuous :
       ((continuous_apply W.1).comp
         (ContinuousMulEquiv.piUnits.continuous.comp continuous_fst))
 
-/-- The open chart consisting of arbitrary infinite components and integral
-finite components. -/
+/-- The open chart consisting of arbitrary infinite components and integral finite components. -/
 private def integralIdeleEmbedding
     (F : Type w) [Field F] [NumberField F] :
     (InfiniteIdeleGroup F ×
@@ -533,8 +526,7 @@ private theorem integralIdeleEmbedding_isOpenEmbedding
       (Topology.IsOpenEmbedding.id.prodMap
         (RestrictedProduct.isOpenEmbedding_structureMap (isOpen_finiteLocalUnits F)))
 
-/-- The finite part of the norm on the integral chart is the restricted
-product structure map of the finite local norm products. -/
+/-- The finite part of the norm on the integral chart is the restricted product structure map of the finite local norm products. -/
 private theorem norm_integralIdeleEmbedding_finite
     (a :
       InfiniteIdeleGroup L ×
@@ -581,8 +573,7 @@ private theorem norm_integralIdeleEmbedding_finite
   simp only [integralIdeleEmbedding, finiteComponent_apply, finiteCoordinates_ofComponents]
   rfl
 
-/-- The infinite part of the norm on the integral chart is the product of
-the archimedean local norms. -/
+/-- The infinite part of the norm on the integral chart is the product of the archimedean local norms. -/
 private theorem norm_integralIdeleEmbedding_infinite
     (a :
       InfiniteIdeleGroup L ×

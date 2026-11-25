@@ -41,21 +41,13 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NonarchimedeanL
 /-!
 # The Hasse norm principle: the concrete local-global map
 
-This file proves the Hasse norm principle on the actual idele and field norm
-maps.  The local condition is expressed canonically:
-at a place `v` it is the image of the determinant norm on
-`K_v ⊗[K] L`.  At finite places this is the chosen completion norm
-subgroup by
-`_root_.finitePlaceLocalTensorNorm_range_eq_chosenLocalNormSubgroup`.
+This file proves the Hasse norm principle on the actual idele and field norm maps.  The local condition is expressed canonically: at a place `v` it is the image of the determinant norm on `K_v ⊗[K] L`.  At finite places this is the chosen completion norm subgroup by `_root_.finitePlaceLocalTensorNorm_range_eq_chosenLocalNormSubgroup`.
 
 The resulting homomorphism
 
 `Kˣ / N(Lˣ) ⟶ I_K / I_K,loc-norm`
 
-is the concrete diagonal local-norm map.  Its injectivity is exactly the
-Hasse norm principle.  The global-to-local inclusion and this equivalence
-are independent of the global class-field axiom; the reverse inclusion
-follows from degree-minus-one Tate-cohomology vanishing.
+is the concrete diagonal local-norm map.  Its injectivity is exactly the Hasse norm principle.  The global-to-local inclusion and this equivalence are independent of the global class-field axiom; the reverse inclusion follows from degree-minus-one Tate-cohomology vanishing.
 -/
 
 
@@ -76,9 +68,7 @@ namespace GlobalClassFieldTheory.ClassFieldAxiom
 open CategoryTheory
 open CyclicCohomology.ProfiniteCohomology.Herbrand
 
-/-- Ideles whose component at every infinite place lies in the image of
-the determinant norm on the corresponding archimedean local tensor
-algebra. -/
+/-- Ideles whose component at every infinite place lies in the image of the determinant norm on the corresponding archimedean local tensor algebra. -/
 def allInfinitePlaceLocalNormCondition
     {K : Type u} {L : Type v}
     [Field K] [NumberField K]
@@ -91,8 +81,7 @@ def allInfinitePlaceLocalNormCondition
         (v.Completion ⊗[K] L) →* v.Completion)).range.comap
       (IdeleGroup.infiniteComponent v)
 
-/-- The simultaneous determinant-norm condition at every finite and
-infinite place. -/
+/-- The simultaneous determinant-norm condition at every finite and infinite place. -/
 def allPlaceLocalNormCondition
     {K : Type u} {L : Type v}
     [Field K] [NumberField K]
@@ -102,8 +91,7 @@ def allPlaceLocalNormCondition
   allFinitePlaceLocalNormCondition (K := K) (L := L) ⊓
     allInfinitePlaceLocalNormCondition (K := K) (L := L)
 
-/-- Every global relative-idele norm is a local determinant norm at every
-place. -/
+/-- Every global relative-idele norm is a local determinant norm at every place. -/
 theorem relativeIdeleNorm_range_le_allPlaceLocalNormCondition
     {K : Type u} {L : Type v}
     [Field K] [NumberField K]
@@ -124,10 +112,7 @@ theorem relativeIdeleNorm_range_le_allPlaceLocalNormCondition
       (RelativeIdeleGroup.infiniteComponent_norm
         (K := K) (L := L) v b).symm⟩
 
-/-- An idele is a relative-idele norm exactly when every one of its
-finite and infinite components is a determinant norm.  The nontrivial
-reverse inclusion uses the restricted-product preimage construction:
-integral local preimages are chosen at almost every finite place. -/
+/-- An idele is a relative-idele norm exactly when every one of its finite and infinite components is a determinant norm.  The nontrivial reverse inclusion uses the restricted-product preimage construction: integral local preimages are chosen at almost every finite place. -/
 theorem relativeIdeleNorm_range_eq_allPlaceLocalNormCondition
     {K : Type u} {L : Type v}
     [Field K] [NumberField K]
@@ -234,7 +219,8 @@ theorem isNormAtInfinitePlace_iff
           (Algebra.norm w.Completion :
             (w.Completion ⊗[K] L) →* w.Completion)).range := by
   have hcast : algebraMap K w.Completion (x : K) = ((x : K) : w.Completion) := by
-    rw [InfinitePlace.Completion.algebraMap_apply]
+    rw [AbsoluteValue.Completion.algebraMap_def, WithAbs.algebraMap_right_apply,
+      Algebra.algebraMap_self_apply]
   have hcomponent := (IdeleGroup.infiniteComponent_principalIdele x w).trans hcast.symm
   constructor
   · rintro ⟨y, hy⟩
@@ -307,9 +293,7 @@ theorem globalFieldNormSubgroup_le_everywhereLocalFieldNormSubgroup
     (ClassFieldTheory.globalNorm_isEverywhereLocalNorm K L x
       ((isFieldNorm_iff_mem_globalFieldNormSubgroup K L x).mpr hx))
 
-/-- The map
-`H⁰(G, P_L) → H⁰(G, I_L)` induced by the actual inclusion of principal
-relative ideles. -/
+/-- The map `H⁰(G, P_L) → H⁰(G, I_L)` induced by the actual inclusion of principal relative ideles. -/
 noncomputable def principalIdeleHerbrandH0Map_native
     (K L : Type)
     [Field K] [NumberField K]
@@ -366,8 +350,7 @@ private theorem principalIdeleHerbrandH0Map_native_mk
       (RelativeIdeleGroup.principalSubgroup K L).subtype
       (RelativeIdeleGroup.Cohomology.principalIdeleSubtype_equivariant K L) a)
 
-/-- Inclusion of the actual principal ideles induces a map on the fixed
-point quotients in independent universes. -/
+/-- Inclusion of the actual principal ideles induces a map on the fixed point quotients in independent universes. -/
 noncomputable def principalIdeleHerbrandH0Map
     (K : Type u) (L : Type v)
     [Field K] [NumberField K] [Field L] [NumberField L] [Algebra K L]
@@ -413,8 +396,7 @@ theorem principalIdeleHerbrandH0Map_mk
   intro hI hP a
   rfl
 
-/-- The original native Tate map is precisely the map on actual fixed
-point quotient classes, so its connecting-map exactness is retained. -/
+/-- The original native Tate map is precisely the map on actual fixed point quotient classes, so its connecting-map exactness is retained. -/
 theorem principalIdeleHerbrandH0Map_eq_native
     (K L : Type)
     [Field K] [NumberField K] [Field L] [NumberField L] [Algebra K L]
@@ -436,9 +418,7 @@ attribute [local instance]
   RelativeIdeleGroup.Cohomology.principalIdeleMulDistribMulAction
   RelativeIdeleGroup.Cohomology.ideleClassMulDistribMulAction
 
-/-- The low-degree connecting homomorphism
-`H⁻¹(G, C_L) → H⁰(G, P_L)` attached to
-`1 → P_L → I_L → C_L → 1`. -/
+/-- The low-degree connecting homomorphism `H⁻¹(G, C_L) → H⁰(G, P_L)` attached to `1 → P_L → I_L → C_L → 1`. -/
 noncomputable def ideleClassToPrincipalConnecting
     (K L : Type)
     [Field K] [NumberField K]
@@ -467,9 +447,7 @@ noncomputable def ideleClassToPrincipalConnecting
   exact eP.toMonoidHom.comp <|
     (TateCohomology.δ hS (-1)).hom.toAddMonoidHom.toMultiplicative
 
-/-- Exactness of the concrete low-degree sequence: the image of
-`H⁻¹(G,C_L)` is precisely the kernel of
-`H⁰(G,P_L) → H⁰(G,I_L)`. -/
+/-- Exactness of the concrete low-degree sequence: the image of `H⁻¹(G,C_L)` is precisely the kernel of `H⁰(G,P_L) → H⁰(G,I_L)`. -/
 theorem ideleClassToPrincipalConnecting_range_eq_ker
     (K L : Type)
     [Field K] [NumberField K]
@@ -516,8 +494,7 @@ theorem ideleClassToPrincipalConnecting_range_eq_ker
 
 end IdeleClassConnecting
 
-/-- Degree-zero Tate cohomology of the actual field-unit action is the
-concrete global norm quotient `Kˣ / N_{L/K}(Lˣ)`. -/
+/-- Degree-zero Tate cohomology of the actual field-unit action is the concrete global norm quotient `Kˣ / N_{L/K}(Lˣ)`. -/
 noncomputable def fieldUnitsHerbrandH0EquivGlobalNormQuotient
     (K : Type u) (L : Type v)
     [Field K] [NumberField K] [Field L] [NumberField L] [Algebra K L]
@@ -528,8 +505,7 @@ noncomputable def fieldUnitsHerbrandH0EquivGlobalNormQuotient
   exact (CyclicCohomology.herbrandH0UnitsEquivNormQuotient K L).trans
     (LocalFieldTheory.normQuotientConcreteEquiv K L)
 
-/-- The comparison sends an actual fixed unit to the original norm class
-of its descended base-field unit. -/
+/-- The comparison sends an actual fixed unit to the original norm class of its descended base-field unit. -/
 theorem fieldUnitsHerbrandH0EquivGlobalNormQuotient_mk
     (K : Type u) (L : Type v)
     [Field K] [NumberField K] [Field L] [NumberField L] [Algebra K L]
@@ -544,8 +520,7 @@ theorem fieldUnitsHerbrandH0EquivGlobalNormQuotient_mk
   intro hAction a
   rfl
 
-/-- The map on degree-zero Tate cohomology induced by the actual diagonal
-embedding `Lˣ → I_L`. -/
+/-- The map on degree-zero Tate cohomology induced by the actual diagonal embedding `Lˣ → I_L`. -/
 noncomputable def fieldUnitsToRelativeIdeleHerbrandH0
     (K : Type u) (L : Type v)
     [Field K] [NumberField K]
@@ -566,8 +541,7 @@ noncomputable def fieldUnitsToRelativeIdeleHerbrandH0
       (fieldUnitsHerbrandH0EquivPrincipalIdeles
         K L).toMonoidHom
 
-/-- A base-field unit, regarded as a Galois-fixed unit of the extension
-field. -/
+/-- A base-field unit, regarded as a Galois-fixed unit of the extension field. -/
 noncomputable def baseFieldUnitAsFixedUnit
     (K : Type u) (L : Type v)
     [Field K] [NumberField K]
@@ -585,9 +559,7 @@ noncomputable def baseFieldUnitAsFixedUnit
   change σ (algebraMap K L (x : K)) = algebraMap K L (x : K)
   exact σ.commutes (x : K)
 
-/-- If the principal idele of a base-field unit is an actual relative
-idele norm, its field-unit Tate class maps trivially to relative-idele
-Tate cohomology. -/
+/-- If the principal idele of a base-field unit is an actual relative idele norm, its field-unit Tate class maps trivially to relative-idele Tate cohomology. -/
 theorem fieldUnitsHerbrandH0_map_baseFieldUnit_eq_one_of_mem_norm
     (K : Type u) (L : Type v)
     [Field K] [NumberField K]
@@ -655,9 +627,7 @@ theorem fieldUnitsHerbrandH0_map_baseFieldUnit_eq_one_of_mem_norm
       principalIdeleHerbrandH0Map_mk K L aP
   exact hmap.trans hmk
 
-/-- The connecting map in the low-degree sequence, with its target
-transported from principal ideles back to the actual field-unit
-cohomology. -/
+/-- The connecting map in the low-degree sequence, with its target transported from principal ideles back to the actual field-unit cohomology. -/
 noncomputable def ideleClassToFieldUnitsConnecting
     (K L : Type)
     [Field K] [NumberField K]
@@ -684,8 +654,7 @@ noncomputable def ideleClassToFieldUnitsConnecting
       K L).symm.toMonoidHom.comp
         (ideleClassToPrincipalConnecting K L)
 
-/-- Exactness after replacing `H⁰(G,P_L)` by the canonically equivalent
-field-unit cohomology `H⁰(G,Lˣ)`. -/
+/-- Exactness after replacing `H⁰(G,P_L)` by the canonically equivalent field-unit cohomology `H⁰(G,Lˣ)`. -/
 theorem ideleClassToFieldUnitsConnecting_range_eq_ker
     (K L : Type)
     [Field K] [NumberField K]
@@ -735,8 +704,7 @@ theorem ideleClassToFieldUnitsConnecting_range_eq_ker
         (ideleClassToPrincipalConnecting K L c) = q
     rw [hc, e.symm_apply_apply]
 
-/-- Vanishing of `H⁻¹(G,C_L)` makes the diagonal map from field-unit
-cohomology to idele cohomology injective. -/
+/-- Vanishing of `H⁻¹(G,C_L)` makes the diagonal map from field-unit cohomology to idele cohomology injective. -/
 theorem fieldUnitsToRelativeIdeleHerbrandH0_injective_of_subsingleton
     (K L : Type)
     [Field K] [NumberField K]
@@ -771,8 +739,7 @@ theorem fieldUnitsToRelativeIdeleHerbrandH0_injective_of_subsingleton
     subst q
     exact ⟨1, map_one _⟩
 
-/-- Vanishing of `H⁻¹(G,C_L)` gives the reverse inclusion in the Hasse norm
-principle through the concrete low-degree sequence. -/
+/-- Vanishing of `H⁻¹(G,C_L)` gives the reverse inclusion in the Hasse norm principle through the concrete low-degree sequence. -/
 theorem everywhereLocalFieldNormSubgroup_le_global_of_subsingleton
     (K L : Type)
     [Field K] [NumberField K]
@@ -840,9 +807,7 @@ theorem everywhereLocalFieldNormSubgroup_le_global_of_subsingleton
       _ = Units.map (algebraMap K L).toMonoidHom x := rfl
   exact congrArg Units.val hUnits
 
-/-- The concrete diagonal local-norm map.  Its source is the global norm
-quotient, while its target kills precisely those ideles satisfying every
-local norm condition. -/
+/-- The concrete diagonal local-norm map.  Its source is the global norm quotient, while its target kills precisely those ideles satisfying every local norm condition. -/
 noncomputable def hasseNormDiagonal
     (K : Type u) (L : Type v)
     [Field K] [NumberField K]
@@ -856,8 +821,7 @@ noncomputable def hasseNormDiagonal
     (IdeleGroup.principalIdele K)
     globalFieldNormSubgroup_le_everywhereLocalFieldNormSubgroup
 
-/-- The Hasse norm diagonal sends the class of a field unit to the class
-of its principal idele. -/
+/-- The Hasse norm diagonal sends the class of a field unit to the class of its principal idele. -/
 @[simp]
 theorem hasseNormDiagonal_mk
     {K : Type u} {L : Type v}
@@ -872,8 +836,7 @@ theorem hasseNormDiagonal_mk
         (IdeleGroup.principalIdele K x) :=
   rfl
 
-/-- Injectivity of the concrete diagonal is exactly the missing
-local-to-global inclusion. -/
+/-- Injectivity of the concrete diagonal is exactly the missing local-to-global inclusion. -/
 theorem hasseNormDiagonal_injective_iff
     {K : Type u} {L : Type v}
     [Field K] [NumberField K]
@@ -929,8 +892,7 @@ theorem hasseNormDiagonal_injective_iff_subgroup_eq
         globalFieldNormSubgroup_le_everywhereLocalFieldNormSubgroup h,
       fun h => h ▸ le_rfl⟩
 
-/-- Degree-minus-one Tate-cohomology vanishing makes the concrete diagonal
-local-norm map injective. -/
+/-- Degree-minus-one Tate-cohomology vanishing makes the concrete diagonal local-norm map injective. -/
 theorem hasseNormDiagonal_injective_of_subsingleton
     (K L : Type)
     [Field K] [NumberField K]
@@ -948,8 +910,7 @@ theorem hasseNormDiagonal_injective_of_subsingleton
     (everywhereLocalFieldNormSubgroup_le_global_of_subsingleton
       K L)
 
-/-- Hasse's norm theorem as equality of the actual global norm subgroup
-and the subgroup of elements that are norms at every place. -/
+/-- Hasse's norm theorem as equality of the actual global norm subgroup and the subgroup of elements that are norms at every place. -/
 theorem hasseNormPrinciple_of_subsingleton
     (K L : Type)
     [Field K] [NumberField K]
@@ -967,10 +928,7 @@ theorem hasseNormPrinciple_of_subsingleton
   (hasseNormDiagonal_injective_iff_subgroup_eq.mp
     (hasseNormDiagonal_injective_of_subsingleton K L))
 
-/-- For a finite cyclic extension, the concrete diagonal from the global
-field-norm quotient to the simultaneous local norm quotient is injective.
-The cyclic idele-class calculation supplies the required degree-minus-one
-Tate-cohomology vanishing. -/
+/-- For a finite cyclic extension, the concrete diagonal from the global field-norm quotient to the simultaneous local norm quotient is injective. The cyclic idele-class calculation supplies the required degree-minus-one Tate-cohomology vanishing. -/
 theorem hasseNormDiagonal_injective_cyclic_native
     (K L : Type)
     [Field K] [NumberField K]
@@ -992,8 +950,7 @@ theorem hasseNormDiagonal_injective_cyclic_native
       K L sigma hsigma
   exact hasseNormDiagonal_injective_of_subsingleton K L
 
-/-- Hasse's norm theorem for a finite cyclic extension: an element of
-`Kˣ` is a global norm from `L` exactly when it is a norm at every place. -/
+/-- Hasse's norm theorem for a finite cyclic extension: an element of `Kˣ` is a global norm from `L` exactly when it is a norm at every place. -/
 theorem hasseNormPrinciple_cyclic_native
     (K L : Type)
     [Field K] [NumberField K]
@@ -1005,9 +962,7 @@ theorem hasseNormPrinciple_cyclic_native
   hasseNormDiagonal_injective_iff_subgroup_eq.mp
     (hasseNormDiagonal_injective_cyclic_native K L)
 
-/-- The native Tate proof applies to the actual extension in independent
-universes: compatible small models transport every completion tensor norm
-and the original global norm witness. -/
+/-- The native Tate proof applies to the actual extension in independent universes: compatible small models transport every completion tensor norm and the original global norm witness. -/
 theorem hasseNormPrinciple_cyclic
     (K : Type u) (L : Type v)
     [Field K] [NumberField K] [Field L] [NumberField L] [Algebra K L]

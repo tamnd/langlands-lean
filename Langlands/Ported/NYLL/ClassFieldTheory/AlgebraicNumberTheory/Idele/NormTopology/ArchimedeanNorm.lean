@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NormUnitsBaseChange
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.AbsoluteNormCore
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.Extension.IdeleNorm
@@ -22,8 +21,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.Completion.Tenso
 /-!
 # Archimedean behavior of idele norms
 
-The positive archimedean norm, and consequently the absolute idele norm, is
-preserved by the ordinary norm in a finite number-field extension.
+The positive archimedean norm, and consequently the absolute idele norm, is preserved by the ordinary norm in a finite number-field extension.
 -/
 
 
@@ -33,7 +31,6 @@ preserved by the ordinary norm in a finite number-field extension.
 open scoped BigOperators NumberField
 
 attribute [local instance] AbsoluteValue.Completion.algebraOfLiesOver
-attribute [local instance] NumberField.InfinitePlace.Completion.algebraOfLiesOver
 open NumberField IsDedekindDomain
 
 noncomputable section
@@ -74,9 +71,7 @@ private theorem nnnormUnitHom_real_normUnits_complex
     abs_of_nonneg (Complex.normSq_nonneg _),
     Complex.normSq_eq_norm_sq]
 
-/-- At an infinite place, the positive norm of a local field norm, with
-the base multiplicity, is the positive norm upstairs with the upstairs
-multiplicity. -/
+/-- At an infinite place, the positive norm of a local field norm, with the base multiplicity, is the positive norm upstairs with the upstairs multiplicity. -/
 private theorem nnnormUnitHom_normUnits_infinitePlace
     (v₀ : InfinitePlace K)
     (W : InfinitePlace L)
@@ -342,7 +337,7 @@ theorem archimedeanNorm_norm
         _root_.infinitePlaceBelow (K := K) W = v₀}),
       Algebra v₀.Completion W.1.Completion :=
     fun v₀ W =>
-      InfinitePlace.Completion.algebraOfLiesOver v₀ W.1
+      AbsoluteValue.Completion.algebraOfLiesOver v₀.1 W.1.1
   rw [NumberField.InfiniteAdeleRing.absoluteNorm_apply,
     NumberField.InfiniteAdeleRing.absoluteNorm_apply]
   change

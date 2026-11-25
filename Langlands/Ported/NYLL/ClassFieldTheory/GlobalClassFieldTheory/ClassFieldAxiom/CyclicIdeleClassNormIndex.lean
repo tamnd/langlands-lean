@@ -40,15 +40,11 @@ public import Langlands.Ported.NYLL.GaloisCohomology.Cyclic.Herbrand.HerbrandLow
 /-!
 # The global class-field axiom
 
-This file proves the cyclic idele-class norm-index formula.  The first
-input is the `H⁻¹` calculation for the principal-idele term in
+This file proves the cyclic idele-class norm-index formula.  The first input is the `H⁻¹` calculation for the principal-idele term in
 
 `1 → Lˣ → I_L → C_L → 1`.
 
-For a cyclic extension this term vanishes by Hilbert 90.  The result below
-is transported through the actual low-degree Tate comparison and then
-through the equivariant identification of `Lˣ` with the subgroup of
-principal relative ideles.
+For a cyclic extension this term vanishes by Hilbert 90.  The result below is transported through the actual low-degree Tate comparison and then through the equivariant identification of `Lˣ` with the subgroup of principal relative ideles.
 -/
 
 
@@ -66,10 +62,7 @@ open scoped NumberField
 open CyclicCohomology
 open CyclicCohomology.ProfiniteCohomology.Herbrand
 
-/-- Every degree-zero Tate class is annihilated by the order of the
-acting group.  For a fixed representative `a`, its group norm is
-`a ^ |G|`.  This exponent observation drives the prime-degree descent
-step. -/
+/-- Every degree-zero Tate class is annihilated by the order of the acting group.  For a fixed representative `a`, its group norm is `a ^ |G|`.  This exponent observation drives the prime-degree descent step. -/
 theorem herbrandH0_pow_card_eq_one
     {G : Type u} {A : Type v}
     [Group G] [Fintype G]
@@ -94,8 +87,7 @@ theorem herbrandH0_pow_card_eq_one
     _ = (a : A) ^ Fintype.card G := by
       rw [Finset.prod_const, Finset.card_univ]
 
-/-- Specialization of the exponent calculation to the actual relative
-idele class group. -/
+/-- Specialization of the exponent calculation to the actual relative idele class group. -/
 theorem ideleClassHerbrandH0_pow_finrank_eq_one
     (K : Type u) (L : Type v)
     [Field K] [NumberField K]
@@ -116,8 +108,7 @@ theorem ideleClassHerbrandH0_pow_finrank_eq_one
 
 section NormQuotientCommutativity
 
-/-- The concrete class-norm quotient `C_K / N C_L` has exponent dividing
-`[L:K]`. -/
+/-- The concrete class-norm quotient `C_K / N C_L` has exponent dividing `[L:K]`. -/
 theorem ideleClassNormQuotient_pow_finrank_eq_one
     (K : Type u) (L : Type v)
     [Field K] [NumberField K]
@@ -134,10 +125,7 @@ theorem ideleClassNormQuotient_pow_finrank_eq_one
   simpa only [map_pow, e.apply_symm_apply, map_one] using
     congrArg e h
 
-/-- If a commutative group has exponent dividing `p`, then every
-`d`-power map with `d` coprime to `p` is injective.  In the prime-degree
-argument, `p` is the extension degree and `d` is the roots-of-unity
-base-change degree. -/
+/-- If a commutative group has exponent dividing `p`, then every `d`-power map with `d` coprime to `p` is injective.  In the prime-degree argument, `p` is the extension degree and `d` is the roots-of-unity base-change degree. -/
 theorem pow_injective_of_exponent_of_coprime
     {A : Type u} [CommGroup A]
     (p d : ℕ)
@@ -163,8 +151,7 @@ theorem pow_injective_of_exponent_of_coprime
     orderOf_eq_one_iff.mp (Nat.dvd_one.mp horder_gcd)
   exact mul_inv_eq_one.mp hxy_one
 
-/-- On the actual class-norm quotient, every power coprime to the
-extension degree is injective. -/
+/-- On the actual class-norm quotient, every power coprime to the extension degree is injective. -/
 theorem ideleClassNormQuotient_pow_injective_of_coprime
     (K : Type u) (L : Type v)
     [Field K] [NumberField K]
@@ -193,14 +180,11 @@ theorem ideleClassNormQuotient_pow_injective_of_coprime
     ((map_pow e.symm x d).symm.trans (congrArg e.symm hxy)).trans
       (map_pow e.symm y d)
 
-/-- Source-producing form of the roots-of-unity base-change step.  For a
-pushout square `N = M ⊗[K] L`, if `[M:K]` is coprime
-to `[L:K]`, the induced map
+/-- Source-producing form of the roots-of-unity base-change step.  For a pushout square `N = M ⊗[K] L`, if `[M:K]` is coprime to `[L:K]`, the induced map
 
 `C_K / N_{L/K}C_L → C_M / N_{N/M}C_N`
 
-is injective.  The target is expressed in the fixed-bottom-field tower
-model, so no unproved identification `𝔸_K ⊗_K M ≃ 𝔸_M` is assumed. -/
+is injective.  The target is expressed in the fixed-bottom-field tower model, so no unproved identification `𝔸_K ⊗_K M ≃ 𝔸_M` is assumed. -/
 theorem pushoutNormQuotientMap_injective_of_coprime
     (K : Type u) (M : Type v) (L : Type w) (N : Type x)
     [Field K] [NumberField K]
@@ -231,11 +215,9 @@ local instance cyclicNormRelative_isMulCommutative
     IsMulCommutative (RelativeIdeleGroup.ClassGroup A B) :=
   ⟨⟨fun a b => mul_comm a b⟩⟩
 
-/-- The pushout map with its target changed from the fixed-bottom tower
-presentation to the actual norm quotient `C_M / N_{N/M} C_N`.
+/-- The pushout map with its target changed from the fixed-bottom tower presentation to the actual norm quotient `C_M / N_{N/M} C_N`.
 
-Only the Galois hypothesis on the auxiliary extension `M/K` is needed
-for this last comparison. -/
+Only the Galois hypothesis on the auxiliary extension `M/K` is needed for this last comparison. -/
 noncomputable def actualPushoutNormQuotientMap
     (K : Type u) (M : Type v) (L : Type w) (N : Type x)
     [Field K] [NumberField K]
@@ -255,8 +237,7 @@ noncomputable def actualPushoutNormQuotientMap
     intermediateClassNormQuotientBaseChangeMulEquiv
       K M N (pushoutNormQuotientMap K M L N q)
 
-/-- The actual pushout norm-quotient map sends a quotient representative
-to the corresponding base-changed representative. -/
+/-- The actual pushout norm-quotient map sends a quotient representative to the corresponding base-changed representative. -/
 @[simp]
 theorem actualPushoutNormQuotientMap_mk
     (K : Type u) (M : Type v) (L : Type w) (N : Type x)
@@ -294,8 +275,7 @@ theorem actualPushoutNormQuotientMap_mk
   rw [pushoutNormQuotientMap_mk,
     intermediateClassNormQuotientBaseChangeMulEquiv_mk]
 
-/-- Actual-target form of the injective roots-of-unity base-change
-step. -/
+/-- Actual-target form of the injective roots-of-unity base-change step. -/
 theorem actualPushoutNormQuotientMap_injective_of_coprime
     (K : Type u) (M : Type v) (L : Type w) (N : Type x)
     [Field K] [NumberField K]
@@ -322,8 +302,7 @@ theorem actualPushoutNormQuotientMap_injective_of_coprime
     (intermediateClassNormQuotientBaseChangeMulEquiv K M N).injective
   exact hxy
 
-/-- Cardinal consequence with the actual `N/M` norm quotient as
-target. -/
+/-- Cardinal consequence with the actual `N/M` norm quotient as target. -/
 theorem ideleClassNormQuotient_card_le_actualPushout
     (K : Type u) (M : Type v) (L : Type w) (N : Type x)
     [Field K] [NumberField K]
@@ -348,10 +327,7 @@ theorem ideleClassNormQuotient_card_le_actualPushout
     (actualPushoutNormQuotientMap_injective_of_coprime
       K M L N hcoprime)
 
-/-- Prime-degree upper bound.  After adjoining the `p`-th roots of unity,
-the prime-power Kummer calculation gives norm index `p` for the concrete
-cyclotomic pushout.  Coprimality of the cyclotomic degree then makes the
-actual pushout map on norm quotients injective. -/
+/-- Prime-degree upper bound.  After adjoining the `p`-th roots of unity, the prime-power Kummer calculation gives norm index `p` for the concrete cyclotomic pushout.  Coprimality of the cyclotomic degree then makes the actual pushout map on norm quotients injective. -/
 private theorem ideleClassNorm_index_le_prime_of_finrank_eq_native
     (K L : Type)
     [Field K] [NumberField K]
@@ -472,7 +448,7 @@ private theorem relativeIdeleClassNorm_index_eq_finrank_cyclic_native
   classical
   induction hfinrank : Module.finrank K L using
       Nat.strong_induction_on generalizing K L with
-  | h degree ih =>
+  | ind degree ih =>
     by_cases hdegreeOne : Module.finrank K L = 1
     · have hsurjective :
           Function.Surjective
@@ -617,10 +593,7 @@ private theorem relativeIdeleClassNorm_index_eq_finrank_cyclic_native
           (K := K) (L := L) sigma hsigma
       exact (le_antisymm hUpper hLower).trans hfinrank
 
-/-- The ordinary idele-class norm has index equal to the degree for every
-finite cyclic extension, independently of the universes of its fields.
-The native Tate calculation is applied to compatible small models; the
-actual norm subgroup is transported by the same field equivalences. -/
+/-- The ordinary idele-class norm has index equal to the degree for every finite cyclic extension, independently of the universes of its fields. The native Tate calculation is applied to compatible small models; the actual norm subgroup is transported by the same field equivalences. -/
 theorem ideleClassNorm_index_eq_finrank_cyclic
     (K : Type u) (L : Type v)
     [Field K] [NumberField K]
@@ -669,8 +642,7 @@ private theorem ordinaryIdeleClassNorm_range_eq_cohomology
       (RelativeIdeleGroup.classNorm K L).range :=
   ordinaryIdeleClassNorm_range_eq_relative
 
-/-- The relative-coordinate norm subgroup has the same index in the
-original fields as the ordinary norm subgroup, in independent universes. -/
+/-- The relative-coordinate norm subgroup has the same index in the original fields as the ordinary norm subgroup, in independent universes. -/
 theorem relativeIdeleClassNorm_index_eq_finrank_cyclic
     (K : Type u) (L : Type v)
     [Field K] [NumberField K]
@@ -682,8 +654,7 @@ theorem relativeIdeleClassNorm_index_eq_finrank_cyclic
   rw [← ordinaryIdeleClassNorm_range_eq_cohomology K L]
   exact ideleClassNorm_index_eq_finrank_cyclic K L
 
-/-- The original prime-degree norm bound for independent original fields.
-The native Kummer argument remains the private supplier of cyclic reciprocity. -/
+/-- The original prime-degree norm bound for independent original fields. The native Kummer argument remains the private supplier of cyclic reciprocity. -/
 theorem ideleClassNorm_index_le_prime_of_finrank_eq
     (K : Type u) (L : Type v)
     [Field K] [NumberField K]
@@ -696,8 +667,7 @@ theorem ideleClassNorm_index_le_prime_of_finrank_eq
     isCyclic_of_prime_card ((IsGalois.card_aut_eq_finrank K L).trans hdegree)
   exact ((relativeIdeleClassNorm_index_eq_finrank_cyclic K L).trans hdegree).le
 
-/-- Finiteness propagation through the actual tower norm-quotient
-sequence. -/
+/-- Finiteness propagation through the actual tower norm-quotient sequence. -/
 theorem relativeIdeleClassNormQuotient_finite_of_actual_tower
     (K : Type u) (M : Type v) (L : Type w)
     [Field K] [NumberField K]
@@ -743,9 +713,7 @@ theorem relativeIdeleClassNormQuotient_finite_of_actual_tower
       (towerCompositeClassNormQuotientEquiv
         K M L).toEquiv
 
-/-- The relative-coordinate presentation of the idele-class norm quotient
-is finite and has cardinality at most
-the extension degree for every finite abelian Galois extension. -/
+/-- The relative-coordinate presentation of the idele-class norm quotient is finite and has cardinality at most the extension degree for every finite abelian Galois extension. -/
 private theorem
     relativeIdeleClassNormQuotient_finite_and_card_le_finrank_abelian_native
     (K L : Type)
@@ -758,7 +726,7 @@ private theorem
   classical
   induction hfinrank : Module.finrank K L using
       Nat.strong_induction_on generalizing K L with
-  | h degree ih =>
+  | ind degree ih =>
     by_cases hdegreeOne : Module.finrank K L = 1
     · have hAutCard :
           Nat.card (L ≃ₐ[K] L) = 1 := by
@@ -874,10 +842,7 @@ private theorem
             Module.finrank_mul_finrank K M L]
         _ = degree := hfinrank
 
-/-- The actual relative norm quotient is finite and bounded by the extension
-degree for independent field universes. Compatible field equivalences transport
-the same ordinary norm quotient, then the original relative-range comparison
-restores the specified coordinate presentation. -/
+/-- The actual relative norm quotient is finite and bounded by the extension degree for independent field universes. Compatible field equivalences transport the same ordinary norm quotient, then the original relative-range comparison restores the specified coordinate presentation. -/
 theorem relativeIdeleClassNormQuotient_finite_and_card_le_finrank_abelian
     (K : Type u) (L : Type v)
     [Field K] [NumberField K]
@@ -925,8 +890,7 @@ theorem relativeIdeleClassNormQuotient_finite_and_card_le_finrank_abelian
   simpa only [RelativeIdeleGroup.ClassNormQuotient,
     ordinaryIdeleClassNorm_range_eq_cohomology] using hordinary
 
-/-- Finiteness of the actual ordinary idele-class norm quotient of a finite
-abelian Galois extension. -/
+/-- Finiteness of the actual ordinary idele-class norm quotient of a finite abelian Galois extension. -/
 theorem ideleClassNormQuotient_finite_abelian
     (K : Type u) (L : Type v)
     [Field K] [NumberField K]
@@ -940,9 +904,7 @@ theorem ideleClassNormQuotient_finite_abelian
     (relativeIdeleClassNormQuotient_finite_and_card_le_finrank_abelian
       K L).1
 
-/-- Degree upper bound for the cardinality of the actual ordinary
-idele-class norm quotient of a finite abelian Galois
-extension. -/
+/-- Degree upper bound for the cardinality of the actual ordinary idele-class norm quotient of a finite abelian Galois extension. -/
 theorem ideleClassNormQuotient_card_le_finrank_abelian
     (K : Type u) (L : Type v)
     [Field K] [NumberField K]
@@ -957,11 +919,7 @@ theorem ideleClassNormQuotient_card_le_finrank_abelian
     (relativeIdeleClassNormQuotient_finite_and_card_le_finrank_abelian
       K L).2
 
-/-- The cardinalities of the actual Herbrand models of the low Tate groups
-for a finite cyclic extension.  The canonical Herbrand support
-gives the Herbrand quotient `|G|`; the norm-index theorem supplies the
-matching upper bound for `H⁰`, so the standard low-degree cardinal lemma
-forces `H⁻¹` to have one element. -/
+/-- The cardinalities of the actual Herbrand models of the low Tate groups for a finite cyclic extension.  The canonical Herbrand support gives the Herbrand quotient `|G|`; the norm-index theorem supplies the matching upper bound for `H⁰`, so the standard low-degree cardinal lemma forces `H⁻¹` to have one element. -/
 theorem ideleClass_lowDegree_card_eq_finrank_cyclic
     (K L : Type)
     [Field K] [NumberField K]
@@ -1032,8 +990,7 @@ theorem ideleClass_lowDegree_card_eq_finrank_cyclic
       sigma (Module.finrank K L) Module.finrank_pos
       hQuotient hH0.le
 
-/-- Finiteness and cardinalities of the actual low-degree Tate cohomology
-groups of the relative idele class representation. -/
+/-- Finiteness and cardinalities of the actual low-degree Tate cohomology groups of the relative idele class representation. -/
 theorem ideleClass_tate_lowDegree_finite_card_eq_finrank_cyclic
     (K L : Type)
     [Field K] [NumberField K]
@@ -1150,8 +1107,7 @@ theorem ideleClass_tate_lowDegree_finite_card_eq_finrank_cyclic
             1
         exact hHerbrand.2
 
-/-- The degree-minus-one vanishing conclusion in the exact multiplicative
-form consumed by the Hasse norm principle. -/
+/-- The degree-minus-one vanishing conclusion in the exact multiplicative form consumed by the Hasse norm principle. -/
 theorem ideleClass_tateHMinusOne_subsingleton_cyclic
     (K L : Type)
     [Field K] [NumberField K]
@@ -1179,8 +1135,7 @@ theorem ideleClass_tateHMinusOne_subsingleton_cyclic
           (RelativeIdeleGroup.ClassGroup K L)) (-1))
   exact (Nat.card_eq_one_iff_unique.mp h.2.2.2).1
 
-/-- Hilbert 90 makes the actual multiplicative `H⁻¹(G,Lˣ)` a
-subsingleton for a supplied cyclic generator. -/
+/-- Hilbert 90 makes the actual multiplicative `H⁻¹(G,Lˣ)` a subsingleton for a supplied cyclic generator. -/
 theorem fieldUnitsHerbrandHMinusOne_subsingleton
     (K L : Type)
     [Field K] [Field L] [Algebra K L]
@@ -1224,8 +1179,7 @@ theorem fieldUnitsHerbrandHMinusOne_card_eq_one
   exact Nat.card_eq_one_iff_unique.mpr
     ⟨inferInstance, ⟨1⟩⟩
 
-/-- Transport Hilbert 90 from field units to the actual subgroup of
-principal relative ideles. -/
+/-- Transport Hilbert 90 from field units to the actual subgroup of principal relative ideles. -/
 theorem principalIdelesHerbrandHMinusOne_subsingleton
     (K L : Type)
     [Field K] [NumberField K]
@@ -1255,8 +1209,7 @@ theorem principalIdelesHerbrandHMinusOne_subsingleton
   apply e.symm.injective
   exact Subsingleton.elim (e.symm x) (e.symm y)
 
-/-- Cardinal form for the principal-idele term in the class-group exact
-sequence. -/
+/-- Cardinal form for the principal-idele term in the class-group exact sequence. -/
 theorem principalIdelesHerbrandHMinusOne_card_eq_one
     (K L : Type)
     [Field K] [NumberField K]

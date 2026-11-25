@@ -19,10 +19,7 @@ public import Mathlib.RingTheory.Polynomial.Vieta
 /-!
 # Monic Hensel factor lifting
 
-This file isolates the algebraic condition used in the factor-lifting criterion.
-The condition is the exact condition: a monic polynomial whose
-reduction is a product of relatively prime monic polynomials has monic factors
-with exactly those reductions.
+This file isolates the algebraic condition used in the factor-lifting criterion. The condition is the exact condition: a monic polynomial whose reduction is a product of relatively prime monic polynomials has monic factors with exactly those reductions.
 -/
 
 @[expose] public section
@@ -36,9 +33,7 @@ open ValuationTheory.DiscreteValuationField
 
 universe u
 
-/-- Multiplicative nonarchimedean Vieta bound.  If every entry of `s` has
-valuation at most `B`, with `B ≥ 1`, every coefficient of the corresponding
-monic product is bounded by `B ^ |s|`. -/
+/-- Multiplicative nonarchimedean Vieta bound.  If every entry of `s` has valuation at most `B`, with `B ≥ 1`, every coefficient of the corresponding monic product is bounded by `B ^ |s|`. -/
 theorem valuation_coeff_prod_X_sub_C_le_pow_card
     {L Γ : Type*} [Field L] [LinearOrderedCommGroupWithZero Γ]
     (w : Valuation L Γ) (B : Γ) (hB : 1 ≤ B) (s : Multiset L)
@@ -108,8 +103,7 @@ theorem valuation_coeff_prod_X_sub_C_le_pow_card
             _ ≤ B ^ (s.card + 1) :=
               max_le (hqj.trans hpow_step) hterm
 
-/-- If all elements of a multiset have valuation `t`, the valuation of their
-product is `t` to the cardinality. -/
+/-- If all elements of a multiset have valuation `t`, the valuation of their product is `t` to the cardinality. -/
 theorem valuation_multiset_prod_eq_pow_card_of_eq
     {L Γ : Type*} [Field L] [LinearOrderedCommGroupWithZero Γ]
     (w : Valuation L Γ) (t : Γ) (s : Multiset L)
@@ -126,8 +120,7 @@ theorem valuation_multiset_prod_eq_pow_card_of_eq
         hα, ih hs', pow_succ]
       ac_rfl
 
-/-- The elementary-symmetric recursion in a form convenient for valuation
-estimates. -/
+/-- The elementary-symmetric recursion in a form convenient for valuation estimates. -/
 theorem esymm_cons_succ
     {R : Type*} [CommRing R] (a : R) (s : Multiset R) (n : ℕ) :
     (a ::ₘ s).esymm (n + 1) = s.esymm (n + 1) + a * s.esymm n := by
@@ -164,8 +157,7 @@ theorem valuation_esymm_le_pow
               (mul_le_mul' (hs a (Multiset.mem_cons_self a s))
                 (ih (fun b hb => hs b (Multiset.mem_cons_of_mem hb)) n))
 
-/-- Strict elementary-symmetric bound when every entry is strictly below
-the target value. -/
+/-- Strict elementary-symmetric bound when every entry is strictly below the target value. -/
 theorem valuation_esymm_lt_pow
     {L Γ : Type*} [Field L] [LinearOrderedCommGroupWithZero Γ]
     (w : Valuation L Γ) (t : Γ) (ht : t ≠ 0) (s : Multiset L)
@@ -190,8 +182,7 @@ theorem valuation_esymm_lt_pow
               (fun b hb => (hs b (Multiset.mem_cons_of_mem hb)).le) n)
             (zero_le : 0 ≤ w a) ((zero_lt_iff).2 (pow_ne_zero n ht)))
 
-/-- If every entry has value at most one and one entry has value below one,
-then the product has value below one. -/
+/-- If every entry has value at most one and one entry has value below one, then the product has value below one. -/
 theorem valuation_multiset_prod_lt_one_of_mem_lt_one
     {L Γ : Type*} [Field L] [LinearOrderedCommGroupWithZero Γ]
     (w : Valuation L Γ) (s : Multiset L) {a : L}
@@ -213,9 +204,7 @@ theorem valuation_multiset_prod_lt_one_of_mem_lt_one
     hprodle t (fun b hb => hs b (Multiset.mem_cons_of_mem hb))
   exact mul_lt_one_of_lt_of_le halt htprod
 
-/-- The boundary elementary symmetric function is dominated by the unique
-term using all roots of maximal value.  This is the valuation-theoretic
-coefficient calculation in Artin's Nart transform. -/
+/-- The boundary elementary symmetric function is dominated by the unique term using all roots of maximal value.  This is the valuation-theoretic coefficient calculation in Artin's Nart transform. -/
 theorem valuation_esymm_eq_pow_card_add_of_eq_of_lt
     {L Γ : Type*} [Field L] [LinearOrderedCommGroupWithZero Γ]
     (w : Valuation L Γ) (t : Γ) (ht : t ≠ 0)
@@ -272,10 +261,7 @@ theorem valuation_esymm_eq_pow_card_add_of_eq_of_lt
   exact (hstrong seq hseq).1
 
 open _root_.AlgebraicNumberTheory.Valuations in
-/-- Over a valuation ring, Gauss-primitivity is also detected by nonzero
-reduction.  The finite set of nonzero coefficients has a divisibility-minimal
-coefficient; if every coefficient reduced to zero, that nonunit would divide
-the whole polynomial, contradicting primitivity. -/
+/-- Over a valuation ring, Gauss-primitivity is also detected by nonzero reduction.  The finite set of nonzero coefficients has a divisibility-minimal coefficient; if every coefficient reduced to zero, that nonunit would divide the whole polynomial, contradicting primitivity. -/
 theorem residue_ne_zero_of_isPrimitive_valuationSubring
     {K : Type u} [Field K] (V : ValuationSubring K)
     {p : Polynomial V} (hp : p.IsPrimitive) :
@@ -695,10 +681,7 @@ theorem exists_mixed_residual_minpoly_of_irreducible_roots_unequal
 
 
 
-/-- If a primitive polynomial has nonunit leading and constant coefficients,
-the roots of its irreducible fraction-field image cannot all have the same
-value under an extension valuation.  This is the Vieta estimate at the start
-of Artin's proof of the factor-lifting criterion. -/
+/-- If a primitive polynomial has nonunit leading and constant coefficients, the roots of its irreducible fraction-field image cannot all have the same value under an extension valuation.  This is the Vieta estimate at the start of Artin's proof of the factor-lifting criterion. -/
 theorem not_all_roots_same_valuation_of_primitive_irreducible_endpoints_nonunit
     {K L : Type*} [Field K] [Field L] [Algebra K L]
     (V : ValuationSubring K) (B : ValuationSubring L)
@@ -840,9 +823,7 @@ theorem not_all_roots_same_valuation_of_primitive_irreducible_endpoints_nonunit
     rw [hcoeffTarget] at this
     exact lt_irrefl 1 this
 
-/-- The monic residual coprime-factor lifting property appearing in
-the factor-lifting criterion.  Both residual factors and both lifted factors are monic, and
-both residual identities are retained. -/
+/-- The monic residual coprime-factor lifting property appearing in the factor-lifting criterion.  Both residual factors and both lifted factors are monic, and both residual identities are retained. -/
 def MonicResidualCoprimeFactorLifting
     {K : Type u} [Field K] (V : ValuationSubring K) : Prop :=
   ∀ {f : Polynomial V}
@@ -857,11 +838,7 @@ def MonicResidualCoprimeFactorLifting
                   G.map (IsLocalRing.residue V) = gbar ∧
                     H.map (IsLocalRing.residue V) = hbar
 
-/-- the primitive factorization definition's primitive factorization property contains, in
-particular, the exact monic lifting property of the factor-lifting criterion.  The factors
-returned by the primitive factorization definition are normalized by the mutually inverse leading
-coefficients; their reductions stay fixed because both leading coefficients
-reduce to `1`. -/
+/-- the primitive factorization definition's primitive factorization property contains, in particular, the exact monic lifting property of the factor-lifting criterion.  The factors returned by the primitive factorization definition are normalized by the mutually inverse leading coefficients; their reductions stay fixed because both leading coefficients reduce to `1`. -/
 theorem monicResidualCoprimeFactorLifting_of_henselFactorization
     {K : Type u} [Field K] {V : ValuationSubring K}
     (hhensel : HenselFactorizationProperty V) :
@@ -924,8 +901,7 @@ theorem monicResidualCoprimeFactorLifting_of_henselFactorization
   · simp [G', Polynomial.map_mul, hGmap, hHleadResidue]
   · simp [H', Polynomial.map_mul, hHmap, hGleadResidue]
 
-/-- A factor of positive degree and degree strictly below the product rules
-out irreducibility over a field. -/
+/-- A factor of positive degree and degree strictly below the product rules out irreducibility over a field. -/
 theorem not_irreducible_of_factor_natDegree_lt
     {K : Type u} [Field K] {f g h : Polynomial K}
     (hfactor : f = g * h)
@@ -945,10 +921,7 @@ theorem not_irreducible_of_factor_natDegree_lt
         Polynomial.natDegree_eq_zero_of_isUnit hhunit, Nat.add_zero]
     exact (Nat.ne_of_lt hglt) hdegree.symm
 
-/-- The zero-slope contradiction in Artin's proof of the factor-lifting criterion.
-A nonconstant coprime residual splitting of a monic polynomial lifts to a
-genuine factor of intermediate degree, so its image in the fraction field is
-not irreducible. -/
+/-- The zero-slope contradiction in Artin's proof of the factor-lifting criterion. A nonconstant coprime residual splitting of a monic polynomial lifts to a genuine factor of intermediate degree, so its image in the fraction field is not irreducible. -/
 theorem MonicResidualCoprimeFactorLifting.not_irreducible_map
     {K : Type u} [Field K] {V : ValuationSubring K}
     (hlift : MonicResidualCoprimeFactorLifting V)
@@ -993,8 +966,7 @@ theorem MonicResidualCoprimeFactorLifting.not_irreducible_map
   · rw [hGkdegree, hfkdegree, hfdegree]
     exact Nat.lt_add_of_pos_right hhpos
 
-/-- A monic polynomial irreducible over the fraction field cannot have a
-coprime residual splitting into two positive-degree monic factors. -/
+/-- A monic polynomial irreducible over the fraction field cannot have a coprime residual splitting into two positive-degree monic factors. -/
 theorem MonicResidualCoprimeFactorLifting.irreducible_monic_reduction_coprime_factor_degree_zero
     {K : Type u} [Field K] {V : ValuationSubring K}
     (hlift : MonicResidualCoprimeFactorLifting V)
@@ -1071,9 +1043,7 @@ theorem MonicResidualCoprimeFactorLifting.false_of_residue_constant_zero_and_non
     (hlift.not_irreducible_map hQmonic hXmonic hRmonic
       hfactorX hcoprime (by simpa using hrpos) hRpos) hQirr
 
-/-- Artin's Nart-transform conclusion: under exact monic lifting, the roots
-of an irreducible polynomial in any finite normal splitting extension all
-have the same value. -/
+/-- Artin's Nart-transform conclusion: under exact monic lifting, the roots of an irreducible polynomial in any finite normal splitting extension all have the same value. -/
 theorem MonicResidualCoprimeFactorLifting.irreducible_roots_same_valuation
     {K L : Type*} [Field K] [Field L] [Algebra K L] [Normal K L]
     {V : ValuationSubring K} (B : ValuationSubring L)
@@ -1094,15 +1064,12 @@ theorem MonicResidualCoprimeFactorLifting.irreducible_roots_same_valuation
 
 
 
-/-- Exact monic coprime-factor lifting supplies the usual simple-root
-Henselian structure. This is an intermediate consequence only; the
-factor-lifting criterion below continues to the stronger primitive factorization statement of
-the primitive factorization definition. -/
+/-- Exact monic coprime-factor lifting supplies the usual simple-root Henselian structure. This is an intermediate consequence only; the factor-lifting criterion below continues to the stronger primitive factorization statement of the primitive factorization definition. -/
 theorem henselianRing_of_monicResidualCoprimeFactorLifting
     {K : Type u} [Field K] {V : ValuationSubring K}
     (hlift : MonicResidualCoprimeFactorLifting V) :
     HenselianRing V (IsLocalRing.maximalIdeal V) where
-  jac := (IsLocalRing.jacobson_eq_maximalIdeal ⊥ bot_ne_top).ge
+  jac := (IsLocalRing.ringJacobson_eq_maximalIdeal V).ge
   is_henselian := by
     intro f hf a0 hroot hsimple
     let fbar : Polynomial (IsLocalRing.ResidueField V) :=

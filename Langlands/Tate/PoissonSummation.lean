@@ -511,7 +511,7 @@ theorem _root_.SchwartzMap.tsum_add_intPoint_mul_eq_tsum_fourier
   have hg : ∀ w, 𝓕 g w = 𝓕 f (w - y) := by
     intro w
     rw [SchwartzMap.fourier_coe, Real.fourier_eq', Real.fourier_eq']
-    congr 1 with v
+    refine MeasureTheory.integral_congr_ae (Filter.Eventually.of_forall fun v => ?_)
     simp only [g, smul_eq_mul]
     rw [mul_comm (f v), ← mul_assoc, ← Complex.exp_add, inner_sub_right]
     congr 2

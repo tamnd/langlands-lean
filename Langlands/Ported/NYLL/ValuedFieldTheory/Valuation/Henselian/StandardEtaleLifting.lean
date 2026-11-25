@@ -13,10 +13,7 @@ public import Mathlib.RingTheory.Etale.StandardEtale
 /-!
 # Lifting points of standard étale algebras
 
-The simple-root condition for a Henselian pair lifts a residue point of a
-standard étale algebra to the base ring. The defining monic polynomial and
-its derivative condition supply the Hensel input, and the Jacobson condition
-makes the localization denominator invertible at the lifted root.
+The simple-root condition for a Henselian pair lifts a residue point of a standard étale algebra to the base ring. The defining monic polynomial and its derivative condition supply the Hensel input, and the Jacobson condition makes the localization denominator invertible at the lifted root.
 -/
 
 @[expose] public section
@@ -25,8 +22,7 @@ namespace ValuationTheory.Henselian
 
 variable {R : Type*} [CommRing R] {I : Ideal R} [HenselianRing R I]
 
-/-- A point of a standard étale algebra modulo a Henselian ideal lifts to
-a point over the original ring. -/
+/-- A point of a standard étale algebra modulo a Henselian ideal lifts to a point over the original ring. -/
 theorem exists_standardEtale_lift
     (P : StandardEtalePair R) (σ : P.Ring →ₐ[R] R ⧸ I) :
     ∃ τ : P.Ring →ₐ[R] R, (Ideal.Quotient.mkₐ R I).comp τ = σ := by
@@ -48,7 +44,7 @@ theorem exists_standardEtale_lift
     exact (Ideal.Quotient.eq.mpr hacongr).trans ha₀
   have hdenom : IsUnit (Polynomial.aeval a P.g) := by
     let : IsLocalHom (Ideal.Quotient.mk I) :=
-      isLocalHom_of_le_jacobson_bot I HenselianRing.jac
+      isLocalHom_of_le_jacobson HenselianRing.jac
     apply IsUnit.of_map (Ideal.Quotient.mk I)
     change IsUnit (q (Polynomial.aeval a P.g))
     rw [← Polynomial.aeval_algHom_apply, hqa]
@@ -59,8 +55,7 @@ theorem exists_standardEtale_lift
   rw [AlgHom.comp_apply, P.lift_X]
   exact hqa
 
-/-- A residue point of an algebra admitting a standard étale presentation
-lifts over a Henselian pair. -/
+/-- A residue point of an algebra admitting a standard étale presentation lifts over a Henselian pair. -/
 theorem exists_isStandardEtale_lift
     {S : Type*} [CommRing S] [Algebra R S] [Algebra.IsStandardEtale R S]
     (σ : S →ₐ[R] R ⧸ I) :

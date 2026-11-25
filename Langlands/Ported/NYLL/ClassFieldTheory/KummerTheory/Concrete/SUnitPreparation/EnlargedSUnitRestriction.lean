@@ -13,8 +13,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.KummerTheory.Concrete.SUnit
 /-!
 # Restriction from an enlarged S-unit Kummer extension
 
-The concrete embedding and Galois restriction map, its fixing subgroup, and the cyclic fixed fields
-attached to kernel elements.
+The concrete embedding and Galois restriction map, its fixing subgroup, and the cyclic fixed fields attached to kernel elements.
 -/
 
 
@@ -32,8 +31,7 @@ namespace KummerTheory
 variable {K : Type*} [Field K]
     [numberFieldK : NumberField K]
 
-/-- The actual field containment `L ≤ N` for finite S-unit preparation, after producing
-the required finite enlargement of `S`. -/
+/-- The actual field containment `L ≤ N` for finite S-unit preparation, after producing the required finite enlargement of `S`. -/
 theorem le_fullSUnitKummerExtension_of_enlargedS
     {Omega : Type*} [Field Omega] [Algebra K Omega]
     [IsSepClosure K Omega]
@@ -63,8 +61,7 @@ theorem le_fullSUnitKummerExtension_of_enlargedS
   rw [hgenerate]
   exact hx
 
-/-- The actual inclusion algebra `E → N` supplied by the source-produced
-containment above. -/
+/-- The actual inclusion algebra `E → N` supplied by the source-produced containment above. -/
 @[reducible]
 noncomputable def enlargedSUnitKummerAlgebra
     {Omega : Type*} [Field Omega] [Algebra K Omega]
@@ -85,8 +82,7 @@ noncomputable def enlargedSUnitKummerAlgebra
     (le_fullSUnitKummerExtension_of_enlargedS
       (K := K) (Omega := Omega) E n hmu hexponent S)).toAlgebra
 
-/-- Restriction from the full `S`-unit Kummer extension `N` to the actual
-extension `E ≤ N` produced above. -/
+/-- Restriction from the full `S`-unit Kummer extension `N` to the actual extension `E ≤ N` produced above. -/
 noncomputable def enlargedSUnitKummerRestrictionHom
     {Omega : Type*} [Field Omega] [Algebra K Omega]
     [IsSepClosure K Omega]
@@ -147,8 +143,7 @@ theorem enlargedSUnitKummerRestrictionHom_surjective
     (AlgEquiv.restrictNormalHom_surjective
       (F := K) (K₁ := E) (E := N))
 
-/-- The actual embedded copy of `E` inside the full `S`-unit Kummer
-extension `N`. -/
+/-- The actual embedded copy of `E` inside the full `S`-unit Kummer extension `N`. -/
 noncomputable def enlargedSUnitKummerEmbeddedExtension
     {Omega : Type*} [Field Omega] [Algebra K Omega]
     [IsSepClosure K Omega]
@@ -175,8 +170,7 @@ noncomputable def enlargedSUnitKummerEmbeddedExtension
   let : IsScalarTower K E N := by infer_instance
   exact (IsScalarTower.toAlgHom K E N).fieldRange
 
-/-- The kernel of restriction is precisely the subgroup fixing the
-concrete embedded copy of `E` in `N`. -/
+/-- The kernel of restriction is precisely the subgroup fixing the concrete embedded copy of `E` in `N`. -/
 theorem enlargedSUnitKummerRestrictionHom_ker_eq_fixingSubgroup
     {Omega : Type*} [Field Omega] [Algebra K Omega]
     [IsSepClosure K Omega]
@@ -238,8 +232,7 @@ theorem enlargedSUnitKummerRestrictionHom_ker_eq_fixingSubgroup
       (AlgEquiv.restrictNormal_commutes sigma E x).trans
         (hsigma (algebraMap E N x) ⟨x, rfl⟩)
 
-/-- The field fixed by the concrete restriction kernel is exactly the
-embedded copy of `E`. -/
+/-- The field fixed by the concrete restriction kernel is exactly the embedded copy of `E`. -/
 theorem fixedField_enlargedSUnitKummerRestrictionHom_ker
     {Omega : Type*} [Field Omega] [Algebra K Omega]
     [IsSepClosure K Omega]
@@ -281,9 +274,7 @@ theorem fixedField_enlargedSUnitKummerRestrictionHom_ker
         (K := K) (Omega := Omega) E n hmu
         hexponent S)
 
-/-- For an element `sigma` of the relative Galois subgroup
-`Gal(N/E)`, this is the actual cyclic fixed field
-`N_sigma = N ^ ⟨sigma⟩` used in the prime construction of the finite S-unit preparation argument. -/
+/-- For an element `sigma` of the relative Galois subgroup `Gal(N/E)`, this is the actual cyclic fixed field `N_sigma = N ^ ⟨sigma⟩` used in the prime construction of the finite S-unit preparation argument. -/
 noncomputable def enlargedSUnitKummerCyclicFixedField
     {Omega : Type*} [Field Omega] [Algebra K Omega]
     [IsSepClosure K Omega]
@@ -311,8 +302,7 @@ noncomputable def enlargedSUnitKummerCyclicFixedField
           (enlargeByFiniteKummerRadicalSupport
             (K := K) (L := E) n hmu S)/K)))
 
-/-- The embedded extension `E` lies in every cyclic fixed field attached
-to an element of `Gal(N/E)`. -/
+/-- The embedded extension `E` lies in every cyclic fixed field attached to an element of `Gal(N/E)`. -/
 theorem enlargedSUnitKummerEmbeddedExtension_le_cyclicFixedField
     {Omega : Type*} [Field Omega] [Algebra K Omega]
     [IsSepClosure K Omega]
@@ -333,7 +323,7 @@ theorem enlargedSUnitKummerEmbeddedExtension_le_cyclicFixedField
       enlargedSUnitKummerCyclicFixedField
         (K := K) (Omega := Omega) E n hmu
         hexponent S sigma := by
-  apply (IntermediateField.le_iff_le _ _).2
+  apply (IntermediateField.le_fixedField_iff_le_fixingSubgroup _ _).2
   rw [
     ← enlargedSUnitKummerRestrictionHom_ker_eq_fixingSubgroup
       (K := K) (Omega := Omega) E n hmu
@@ -477,8 +467,7 @@ theorem enlargedSUnitKummerCyclicFixedField_isCyclic
     (IntermediateField.subgroupEquivAlgEquiv P).isCyclic.mp
       hP
 
-/-- The order of every relative automorphism divides the Kummer
-exponent `n`. -/
+/-- The order of every relative automorphism divides the Kummer exponent `n`. -/
 theorem orderOf_enlargedSUnitKummerRestrictionKernel_dvd
     {Omega : Type*} [Field Omega] [Algebra K Omega]
     [IsSepClosure K Omega]
@@ -511,8 +500,7 @@ theorem orderOf_enlargedSUnitKummerRestrictionKernel_dvd
           (enlargeByFiniteKummerRadicalSupport
             (K := K) (L := E) n hmu S)/K)))
 
-/-- If `n = p^v`, then the cyclic degree attached to every relative
-automorphism is a power of `p`. -/
+/-- If `n = p^v`, then the cyclic degree attached to every relative automorphism is a power of `p`. -/
 theorem exists_orderOf_enlargedSUnitKummerRestrictionKernel_eq_prime_pow
     {Omega : Type*} [Field Omega] [Algebra K Omega]
     [IsSepClosure K Omega]
@@ -544,8 +532,7 @@ theorem exists_orderOf_enlargedSUnitKummerRestrictionKernel_eq_prime_pow
       (K := K) (Omega := Omega) E n hmu
       hexponent S sigma
 
-/-- A nonidentity relative automorphism gives a genuinely nontrivial
-cyclic subextension. -/
+/-- A nonidentity relative automorphism gives a genuinely nontrivial cyclic subextension. -/
 theorem enlargedSUnitKummerCyclicFixedField_ne_top
     {Omega : Type*} [Field Omega] [Algebra K Omega]
     [IsSepClosure K Omega]
@@ -577,8 +564,7 @@ theorem enlargedSUnitKummerCyclicFixedField_ne_top
   rw [htop, IntermediateField.finrank_top] at hdegree
   exact hsigma (orderOf_eq_one_iff.mp hdegree.symm)
 
-/-- In the prime-power case, a nonidentity relative automorphism has
-order `p^k` with positive exponent. -/
+/-- In the prime-power case, a nonidentity relative automorphism has order `p^k` with positive exponent. -/
 theorem exists_pos_orderOf_enlargedSUnitKummerRestrictionKernel_eq_prime_pow
     {Omega : Type*} [Field Omega] [Algebra K Omega]
     [IsSepClosure K Omega]

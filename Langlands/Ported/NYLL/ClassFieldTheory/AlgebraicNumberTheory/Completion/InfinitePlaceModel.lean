@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceCompletion
 public import Mathlib.NumberTheory.NumberField.Completion.InfinitePlace
 public import Mathlib.RingTheory.TensorProduct.Maps
 public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.Completion
@@ -36,19 +35,14 @@ variable
     [Field L] [NumberField L] [Algebra K L]
     [FiniteDimensional K L]
 
-/-- The wrapper completion at an infinite place as a `K`-algebra
-equivalence with the underlying absolute-value completion. -/
+/-- The wrapper completion at an infinite place as a `K`-algebra equivalence with the underlying absolute-value completion. -/
 def infinitePlaceCompletionAlgEquiv
     (w : InfinitePlace K) :
     w.Completion ≃ₐ[K] w.1.Completion :=
-  AlgEquiv.ofRingEquiv (f := InfinitePlace.Completion.equiv w)
-    (InfinitePlace.Completion.algebraMap_toCompletion w K)
+  AlgEquiv.refl
 
-open NumberField.LiesOver in
 omit [NumberField L] in
-/-- The canonical comparisons from concrete infinite-place completions to
-absolute-value completions commute with the completion maps in a tower of
-number fields. -/
+/-- The canonical comparisons from concrete infinite-place completions to absolute-value completions commute with the completion maps in a tower of number fields. -/
 theorem infinitePlaceCompletionAlgEquiv_algebraMap
     (v : InfinitePlace K) (w : InfinitePlace L)
     (hw : w.comap (algebraMap K L) = v) :
@@ -68,11 +62,9 @@ theorem infinitePlaceCompletionAlgEquiv_algebraMap
   intro hLiesOver u completionAlgebra
   apply RingHom.ext
   intro x
-  change AbsoluteValue.Completion.map v.1 w.1 x.toCompletion = _
-  exact (InfinitePlace.Completion.toCompletion_completionMap v w x).symm
+  rfl
 
-/-- Base change of the first tensor factor from the concrete
-archimedean completion to the absolute-value completion. -/
+/-- Base change of the first tensor factor from the concrete archimedean completion to the absolute-value completion. -/
 noncomputable def infinitePlaceLocalTensorAlgEquiv
     (w : InfinitePlace K) :
     w.Completion ⊗[K] L ≃ₐ[K]
@@ -82,8 +74,7 @@ noncomputable def infinitePlaceLocalTensorAlgEquiv
     (AlgEquiv.refl : L ≃ₐ[K] L)
 
 omit [NumberField K] [NumberField L] [FiniteDimensional K L] in
-/-- The concrete-to-absolute completion comparison acts componentwise
-on a pure tensor. -/
+/-- The concrete-to-absolute completion comparison acts componentwise on a pure tensor. -/
 @[simp]
 theorem infinitePlaceLocalTensorAlgEquiv_tmul
     (w : InfinitePlace K) (a : w.Completion) (x : L) :

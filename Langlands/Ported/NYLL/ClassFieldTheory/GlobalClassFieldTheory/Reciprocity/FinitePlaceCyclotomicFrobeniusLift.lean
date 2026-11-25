@@ -35,15 +35,9 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.No
 /-!
 # Decomposition-compatible cyclotomic Frobenius lifts
 
-The finite-place reduction in the local--global compatibility theorem
-uses automorphisms in a specified decomposition group, not arbitrary
-lifts in the ambient absolute Galois group.
+The finite-place reduction in the local--global compatibility theorem uses automorphisms in a specified decomposition group, not arbitrary lifts in the ambient absolute Galois group.
 
-This file begins with the source map needed for that construction.
-For a normal intermediate field, restriction maps the decomposition
-group upstairs onto the decomposition group of the restricted
-valuation.  The proof uses the actual valuation-conjugacy correction
-in `absoluteValueDecompositionGroup_map_restrictNormalHom`.
+This file begins with the source map needed for that construction. For a normal intermediate field, restriction maps the decomposition group upstairs onto the decomposition group of the restricted valuation.  The proof uses the actual valuation-conjugacy correction in `absoluteValueDecompositionGroup_map_restrictNormalHom`.
 -/
 
 
@@ -92,12 +86,9 @@ variable
     [Algebra K L] [Algebra L Ω] [Algebra K Ω]
     [IsScalarTower K L Ω] [Normal K L]
 
-/-- Restriction along a normal intermediate field, as a homomorphism
-between the decomposition groups of a valuation and its restriction.
+/-- Restriction along a normal intermediate field, as a homomorphism between the decomposition groups of a valuation and its restriction.
 
-Unlike an unrestricted Galois restriction, the codomain records the
-valuation-stabilizer condition, which is the condition needed to
-transport local Artin symbols through a global field tower. -/
+Unlike an unrestricted Galois restriction, the codomain records the valuation-stabilizer condition, which is the condition needed to transport local Artin symbols through a global field tower. -/
 noncomputable def absoluteValueDecompositionGroupRestrictionHom
     (wΩ : AbsoluteValue Ω ℝ) :
     absoluteValueDecompositionGroup K wΩ →*
@@ -135,13 +126,9 @@ noncomputable def absoluteValueDecompositionGroupRestrictionHom
         (AlgEquiv.restrictNormalHom
           (F := K) (K₁ := Ω) L) τ.1 η.1
 
-/-- Restriction from a Galois overfield is surjective on the actual
-decomposition groups of a nontrivial valuation.
+/-- Restriction from a Galois overfield is surjective on the actual decomposition groups of a nontrivial valuation.
 
-The preimage is obtained by first extending the requested
-automorphism and then correcting it by an automorphism fixing the
-normal intermediate field.  Thus the resulting lift genuinely
-stabilizes the specified valuation upstairs. -/
+The preimage is obtained by first extending the requested automorphism and then correcting it by an automorphism fixing the normal intermediate field.  Thus the resulting lift genuinely stabilizes the specified valuation upstairs. -/
 theorem absoluteValueDecompositionGroupRestrictionHom_surjective
     [IsGalois K Ω]
     (vK : AbsoluteValue K ℝ)
@@ -165,16 +152,9 @@ theorem absoluteValueDecompositionGroupRestrictionHom_surjective
   apply Subtype.ext
   exact hτσ
 
-/-- The infinite global Artin symbol of a finite one-place idèle
-stabilizes every chosen extension of that finite place to an abelian
-Galois overfield.
+/-- The infinite global Artin symbol of a finite one-place idèle stabilizes every chosen extension of that finite place to an abelian Galois overfield.
 
-The proof is genuinely inverse-limit in nature.  For each element of
-the overfield, we pass to the finite Galois closure it generates.  The
-restriction of the infinite Artin symbol is then the finite chosen local
-Artin symbol, whose image is the finite decomposition group.  Independence
-of the exact extension in the abelian finite layer returns the valuation
-stabilizer statement upstairs. -/
+The proof is genuinely inverse-limit in nature.  For each element of the overfield, we pass to the finite Galois closure it generates.  The restriction of the infinite Artin symbol is then the finite chosen local Artin symbol, whose image is the finite decomposition group.  Independence of the exact extension in the abelian finite layer returns the valuation stabilizer statement upstairs. -/
 theorem
     infiniteGlobalArtinMonoidHom_finitePlaceIdele_mem_absoluteValueDecompositionGroup
     {F : Type u} {A : Type v}
@@ -268,8 +248,7 @@ section FiniteCyclotomicBaseChange
 variable
     {F : Type*} [Field F] [NumberField F]
 
-/-- Restriction from a finite cyclotomic compositum over a number
-field to its rational cyclotomic layer. -/
+/-- Restriction from a finite cyclotomic compositum over a number field to its rational cyclotomic layer. -/
 noncomputable def
     numberFieldCyclotomicZHatFiniteCompositumRestriction
     (E :
@@ -283,9 +262,7 @@ noncomputable def
       ℚ E F
         (numberFieldCyclotomicZHatFiniteCompositum F E)
 
-/-- Restriction to the rational factor is injective on the actual
-finite compositum: an automorphism fixing both generating fields fixes
-their supremum. -/
+/-- Restriction to the rational factor is injective on the actual finite compositum: an automorphism fixing both generating fields fixes their supremum. -/
 theorem
     numberFieldCyclotomicZHatFiniteCompositumRestriction_injective
     (E :
@@ -422,9 +399,7 @@ theorem
   apply hrB
   rw [← hcomm σ, ← hcomm τ, hστ]
 
-/-- The Galois group of the finite compositum is canonically the
-subgroup of the rational finite-layer Galois group fixing the actual
-intersection with the number field. -/
+/-- The Galois group of the finite compositum is canonically the subgroup of the rational finite-layer Galois group fixing the actual intersection with the number field. -/
 noncomputable def
     numberFieldCyclotomicZHatFiniteCompositumGalEquivFixingSubgroup
     (E :
@@ -455,8 +430,7 @@ noncomputable def
     eRange.trans
       (MulEquiv.subgroupCongr hrange)
 
-/-- The finite compositum Galois group and the intersection-fixing
-subgroup have the same cardinality. -/
+/-- The finite compositum Galois group and the intersection-fixing subgroup have the same cardinality. -/
 theorem
     numberFieldCyclotomicZHatFiniteCompositum_galois_card
     (E :
@@ -472,9 +446,7 @@ theorem
 
 end FiniteCyclotomicBaseChange
 
-/-- Restriction from the full actual cyclotomic `ZHat`-compositum over
-a number field has image exactly the subgroup fixing the genuine
-intersection with the rational cyclotomic `ZHat`-field. -/
+/-- Restriction from the full actual cyclotomic `ZHat`-compositum over a number field has image exactly the subgroup fixing the genuine intersection with the rational cyclotomic `ZHat`-field. -/
 theorem numberFieldCyclotomicZHatCompositumRestriction_range
     (F : Type*) [Field F] [NumberField F] :
     (numberFieldCyclotomicZHatCompositumRestriction F).range =
@@ -628,8 +600,7 @@ theorem numberFieldCyclotomicZHatCompositumRestriction_range
           E.fixingSubgroup)
         hfixedField
 
-/-- The genuine cyclotomic `ZHat` coordinate on the full compositum
-over a number field. -/
+/-- The genuine cyclotomic `ZHat` coordinate on the full compositum over a number field. -/
 noncomputable def numberFieldCyclotomicZHatCompositumCoordinate
     (F : Type*) [Field F] [NumberField F] :
     Gal(numberFieldCyclotomicZHatCompositum F / F) →*
@@ -637,8 +608,7 @@ noncomputable def numberFieldCyclotomicZHatCompositumCoordinate
   rationalCyclotomicZHatFieldGalEquivZHat.toMonoidHom.comp
     (numberFieldCyclotomicZHatCompositumRestriction F)
 
-/-- The genuine cyclotomic coordinate on the full compositum is
-injective. -/
+/-- The genuine cyclotomic coordinate on the full compositum is injective. -/
 theorem numberFieldCyclotomicZHatCompositumCoordinate_injective
     (F : Type*) [Field F] [NumberField F] :
     Function.Injective
@@ -646,8 +616,7 @@ theorem numberFieldCyclotomicZHatCompositumCoordinate_injective
   rationalCyclotomicZHatFieldGalEquivZHat.injective.comp
     (numberFieldCyclotomicZHatCompositumRestriction_injective F)
 
-/-- The actual cyclotomic `ZHat`-compositum over every number field
-has torsion-free Galois group. -/
+/-- The actual cyclotomic `ZHat`-compositum over every number field has torsion-free Galois group. -/
 noncomputable instance
     numberFieldCyclotomicZHatCompositumGal_isMulTorsionFree
     (F : Type*) [Field F] [NumberField F] :
@@ -657,9 +626,7 @@ noncomputable instance
     (numberFieldCyclotomicZHatCompositumCoordinate F)
     (numberFieldCyclotomicZHatCompositumCoordinate_injective F)
 
-/-- The image of the actual cyclotomic compositum over `F` is precisely
-`f_F ZHat`, where `f_F` is the degree of the genuine intersection
-`F ∩ ℚ̃`. -/
+/-- The image of the actual cyclotomic compositum over `F` is precisely `f_F ZHat`, where `f_F` is the degree of the genuine intersection `F ∩ ℚ̃`. -/
 theorem
     numberFieldCyclotomicZHatCompositumCoordinate_range_toAddSubgroup
     (F : Type*) [Field F] [NumberField F] :
@@ -673,13 +640,9 @@ theorem
     rationalCyclotomicZHatFieldGal_fixingSubgroup_image_eq_mulNat_range
       F
 
-/-- A surjective restriction map admits positive cyclotomic-degree
-lifts as soon as the degrees contributed by its kernel have finite
-index in `ZHat`.
+/-- A surjective restriction map admits positive cyclotomic-degree lifts as soon as the degrees contributed by its kernel have finite index in `ZHat`.
 
-This is the group-theoretic core of the decomposition-compatible
-Frobenius lift: the initial preimage is corrected inside the genuine
-restriction kernel, so its prescribed image is unchanged. -/
+This is the group-theoretic core of the decomposition-compatible Frobenius lift: the initial preimage is corrected inside the genuine restriction kernel, so its prescribed image is unchanged. -/
 theorem exists_positiveZHatDegree_lift_of_surjective
     {D A : Type*} [Group D] [Group A]
     (restriction : D →* A)
@@ -717,13 +680,9 @@ theorem exists_positiveZHatDegree_lift_of_surjective
     rw [hdk']
     abel
 
-/-- Two homomorphisms out of a finite commutative group agree once
-they agree on every primary component.
+/-- Two homomorphisms out of a finite commutative group agree once they agree on every primary component.
 
-This is the precise prime-power reduction used in the finite-place
-argument.  It is proved from the actual direct-product decomposition
-by the Sylow subgroups; no cyclicity hypothesis on the whole group is
-introduced. -/
+This is the precise prime-power reduction used in the finite-place argument.  It is proved from the actual direct-product decomposition by the Sylow subgroups; no cyclicity hypothesis on the whole group is introduced. -/
 theorem MonoidHom.ext_of_eq_on_finitePrimaryComponents
     {G A : Type*}
     [CommGroup G] [Finite G]
@@ -799,7 +758,7 @@ theorem MonoidHom.ext_of_eq_on_finitePrimaryComponents
     have hz :
         z ∈ CommGroup.primaryComponent G p.1 := by
       obtain ⟨n, hn⟩ :=
-        P.isPGroup' (y p P)
+        P.isPGroup (y p P)
       refine ⟨n, ?_⟩
       have hu : u ^ p.1 ^ n = 1 := by
         dsimp only [u]
@@ -819,9 +778,7 @@ theorem MonoidHom.ext_of_eq_on_finitePrimaryComponents
   rw [hy]
   simp only [map_prod, hfactor]
 
-/-- Every individual `p`-adic coordinate of the profinite integers is
-surjective.  This is extracted from the genuine Chinese-remainder
-equivalence `ZHat ≃ ∏ p, ℤ_p`. -/
+/-- Every individual `p`-adic coordinate of the profinite integers is surjective.  This is extracted from the genuine Chinese-remainder equivalence `ZHat ≃ ∏ p, ℤ_p`. -/
 theorem zHatToPadicInt_surjective
     (p : Nat.Primes) :
     Function.Surjective (zHatToPadicInt p) := by
@@ -836,8 +793,7 @@ theorem zHatToPadicInt_surjective
   simpa only [zHatToProfiniteIntegerPrimeProduct_apply,
     y, Pi.single_eq_same] using hp
 
-/-- The genuine `p`-adic cyclotomic coordinate on the actual Galois
-group of the rational cyclotomic `ZHat`-extension. -/
+/-- The genuine `p`-adic cyclotomic coordinate on the actual Galois group of the rational cyclotomic `ZHat`-extension. -/
 noncomputable def rationalCyclotomicPadicCoordinate
     (p : Nat.Primes) :
     (rationalCyclotomicZHatField ≃ₐ[ℚ]
@@ -856,8 +812,7 @@ noncomputable def rationalCyclotomicPadicCoordinate
       (ContinuousMonoidHom.toContinuousMonoidHom
         rationalCyclotomicZHatFieldGalEquivZHat)
 
-/-- The rational cyclotomic `p`-adic coordinate is obtained by applying the
-canonical `ZHat`-to-`ℤ_p` coordinate to the cyclotomic character. -/
+/-- The rational cyclotomic `p`-adic coordinate is obtained by applying the canonical `ZHat`-to-`ℤ_p` coordinate to the cyclotomic character. -/
 @[simp]
 theorem rationalCyclotomicPadicCoordinate_apply
     (p : Nat.Primes)
@@ -871,14 +826,9 @@ theorem rationalCyclotomicPadicCoordinate_apply
           (rationalCyclotomicZHatFieldGalEquivZHat σ)) :=
   rfl
 
-/-- The `p`-adic cyclotomic coordinate on the actual decomposition
-group of an arbitrary absolute value of the number-field cyclotomic
-`ZHat`-compositum.
+/-- The `p`-adic cyclotomic coordinate on the actual decomposition group of an arbitrary absolute value of the number-field cyclotomic `ZHat`-compositum.
 
-This is the restriction of the genuine compositum Galois group to the
-rational cyclotomic factor, followed by its actual `ℤ_p` coordinate.
-The source is the valuation stabilizer itself, rather than an abstract
-copy of a local Galois group. -/
+This is the restriction of the genuine compositum Galois group to the rational cyclotomic factor, followed by its actual `ℤ_p` coordinate. The source is the valuation stabilizer itself, rather than an abstract copy of a local Galois group. -/
 noncomputable def
     numberFieldCyclotomicPadicDecompositionCoordinate
     (F : Type u) [Field F] [NumberField F]
@@ -896,8 +846,7 @@ noncomputable def
       ((numberFieldCyclotomicZHatCompositumRestriction_continuous
         (K := F)).comp continuous_subtype_val)
 
-/-- The decomposition-group coordinate is the rational cyclotomic coordinate
-of the restricted global automorphism. -/
+/-- The decomposition-group coordinate is the rational cyclotomic coordinate of the restricted global automorphism. -/
 @[simp]
 theorem numberFieldCyclotomicPadicDecompositionCoordinate_apply
     (F : Type u) [Field F] [NumberField F]
@@ -911,9 +860,7 @@ theorem numberFieldCyclotomicPadicDecompositionCoordinate_apply
         (numberFieldCyclotomicZHatCompositumRestriction F σ.1) :=
   rfl
 
-/-- On an actual global Artin symbol lying in a decomposition group,
-the decomposition coordinate is the `p`-adic coordinate of the
-rational cyclotomic idèle value of the ordinary field norm. -/
+/-- On an actual global Artin symbol lying in a decomposition group, the decomposition coordinate is the `p`-adic coordinate of the rational cyclotomic idèle value of the ordinary field norm. -/
 theorem
     numberFieldCyclotomicPadicDecompositionCoordinate_infiniteGlobalArtin
     (F : Type u) [Field F] [NumberField F]
@@ -941,9 +888,7 @@ theorem
     rationalCyclotomicZHatIdeleValue_apply]
   rfl
 
-/-- The image of a cyclotomic `p`-adic decomposition coordinate is
-closed.  This is the compact image of the actual closed decomposition
-group in the Krull topology. -/
+/-- The image of a cyclotomic `p`-adic decomposition coordinate is closed.  This is the compact image of the actual closed decomposition group in the Krull topology. -/
 theorem
     numberFieldCyclotomicPadicDecompositionCoordinate_range_isClosed
     (F : Type u) [Field F] [NumberField F]
@@ -965,9 +910,7 @@ theorem
       (numberFieldCyclotomicPadicDecompositionCoordinate
         F wC p).continuous_toFun).isClosed
 
-/-- Reduction of the full cyclotomic character of a rational one-place
-idèle whose component is a power of a principal local component.  The
-result is the same power of the genuine chosen local Artin character. -/
+/-- Reduction of the full cyclotomic character of a rational one-place idèle whose component is a power of a principal local component.  The result is the same power of the genuine chosen local Artin character. -/
 theorem
     rationalCyclotomicCharacterPrimeProduct_finitePlaceIdele_principalComponent_toZModPow
     (p q : Nat.Primes) (k d : ℕ) (x : ℚˣ) :
@@ -998,9 +941,7 @@ theorem
       (rationalCyclotomicPrincipalFinitePlaceCharacter_chosenArtin_spec
         p k x q).symm
 
-/-- At the place `p`, the full `p`-adic cyclotomic character of the
-one-place idèle obtained from the rational unit `p + 1` is the direct
-unit `p + 1`, with the prescribed local-degree power. -/
+/-- At the place `p`, the full `p`-adic cyclotomic character of the one-place idèle obtained from the rational unit `p + 1` is the direct unit `p + 1`, with the prescribed local-degree power. -/
 theorem
     rationalCyclotomicCharacterPrimeProduct_finitePlaceIdele_primeSucc
     (p : Nat.Primes) (d : ℕ) :
@@ -1069,9 +1010,7 @@ theorem
   simp only [htoZModPow] at hredVal
   simpa only [x, Units.val_pow_eq_pow_val, map_pow] using hredVal
 
-/-- Away from `p`, the full `p`-adic cyclotomic character of the
-rational-prime one-place idèle is inverse arithmetic Frobenius, again
-with the prescribed local-degree power. -/
+/-- Away from `p`, the full `p`-adic cyclotomic character of the rational-prime one-place idèle is inverse arithmetic Frobenius, again with the prescribed local-degree power. -/
 theorem
     rationalCyclotomicCharacterPrimeProduct_finitePlaceIdele_primeAway
     (p q : Nat.Primes) (hqp : q ≠ p) (d : ℕ) :
@@ -1140,16 +1079,9 @@ theorem
   simpa only [x, hcoprime, Units.val_pow_eq_pow_val,
     Units.val_inv_eq_inv_val] using hredVal
 
-/-- The image of the actual decomposition group has a nonzero
-`p`-adic cyclotomic coordinate.
+/-- The image of the actual decomposition group has a nonzero `p`-adic cyclotomic coordinate.
 
-The witness is a genuine one-place idèle over `F`.  Its component is
-obtained by extending a rational completion unit to the chosen place:
-at residue characteristic `p` we use `p + 1`, and away from `p` we use
-the rational residue prime.  The ordinary idèle norm is the corresponding
-positive local-degree power.  The direct-unit and inverse-Frobenius
-local formulas show that its full `p`-adic cyclotomic character is
-non-torsion, so its torsion-free coordinate cannot vanish. -/
+The witness is a genuine one-place idèle over `F`.  Its component is obtained by extending a rational completion unit to the chosen place: at residue characteristic `p` we use `p + 1`, and away from `p` we use the rational residue prime.  The ordinary idèle norm is the corresponding positive local-degree power.  The direct-unit and inverse-Frobenius local formulas show that its full `p`-adic cyclotomic character is non-torsion, so its torsion-free coordinate cannot vanish. -/
 theorem
     numberFieldCyclotomicPadicDecompositionCoordinate_range_toAddSubgroup_ne_bot
     (F : Type u) [Field F] [NumberField F]
@@ -1325,9 +1257,7 @@ theorem
       (congrArg Multiplicative.ofAdd
         (AddSubgroup.mem_bot.mp hmem))
 
-/-- The actual `p`-adic coordinate of a finite-place decomposition
-group has finite index in `ℤ_[p]`.  This is the precise nonvanishing
-input used to correct a Frobenius lift inside the restriction kernel. -/
+/-- The actual `p`-adic coordinate of a finite-place decomposition group has finite index in `ℤ_[p]`.  This is the precise nonvanishing input used to correct a Frobenius lift inside the restriction kernel. -/
 theorem
     numberFieldCyclotomicPadicDecompositionCoordinate_range_index_ne_zero
     (F : Type u) [Field F] [NumberField F]
@@ -1361,8 +1291,7 @@ theorem
     AddSubgroup.quotient_finite_of_isOpen H hopen
   exact H.index_ne_zero_of_finite
 
-/-- The finite-index conclusion depends only on the valuation
-class of the chosen absolute value on the cyclotomic compositum. -/
+/-- The finite-index conclusion depends only on the valuation class of the chosen absolute value on the cyclotomic compositum. -/
 theorem
     numberFieldCyclotomicPadicDecompositionCoordinate_range_index_ne_zero_of_isEquiv
     (F : Type u) [Field F] [NumberField F]
@@ -1407,13 +1336,9 @@ theorem
     numberFieldCyclotomicPadicDecompositionCoordinate_range_index_ne_zero
       F v wC' p
 
-/-- The finite-index conclusion for an arbitrary representative of the
-valuation class above `v`.
+/-- The finite-index conclusion for an arbitrary representative of the valuation class above `v`.
 
-The hypothesis only compares the restriction of the chosen absolute value
-with the normalized `v`-adic absolute value.  We raise the chosen
-nonarchimedean absolute value to the unique positive normalizing exponent,
-obtaining an exact extension without changing its decomposition group. -/
+The hypothesis only compares the restriction of the chosen absolute value with the normalized `v`-adic absolute value.  We raise the chosen nonarchimedean absolute value to the unique positive normalizing exponent, obtaining an exact extension without changing its decomposition group. -/
 theorem
     numberFieldCyclotomicPadicDecompositionCoordinate_range_index_ne_zero_of_base_isEquiv
     (F : Type u) [Field F] [NumberField F]
@@ -1525,8 +1450,7 @@ noncomputable def rationalCyclotomicPadicKernel
       isClosed_singleton.preimage
         (rationalCyclotomicPadicCoordinate p).continuous_toFun
 
-/-- The closed `p`-adic coordinate kernel is normal because it is the
-kernel of a group homomorphism. -/
+/-- The closed `p`-adic coordinate kernel is normal because it is the kernel of a group homomorphism. -/
 instance rationalCyclotomicPadicKernel_normal
     (p : Nat.Primes) :
     (rationalCyclotomicPadicKernel p).toSubgroup.Normal := by
@@ -1534,9 +1458,7 @@ instance rationalCyclotomicPadicKernel_normal
     (rationalCyclotomicPadicCoordinate p).toMonoidHom.ker.Normal
   exact MonoidHom.normal_ker _
 
-/-- The `p`-primary cyclotomic field inside the rational cyclotomic
-`ZHat`-extension.  Its defining subgroup is the kernel of the actual
-coordinate to `ℤ_p`. -/
+/-- The `p`-primary cyclotomic field inside the rational cyclotomic `ZHat`-extension.  Its defining subgroup is the kernel of the actual coordinate to `ℤ_p`. -/
 abbrev rationalCyclotomicPadicFieldWithinZHat
     (p : Nat.Primes) :
     IntermediateField ℚ rationalCyclotomicZHatField :=
@@ -1556,8 +1478,7 @@ noncomputable instance
     IsGalois.of_fixedField_normal_subgroup
       (rationalCyclotomicPadicKernel p).toSubgroup
 
-/-- The canonical algebra maps through the internal `p`-primary fixed
-field form a scalar tower. -/
+/-- The canonical algebra maps through the internal `p`-primary fixed field form a scalar tower. -/
 instance rationalCyclotomicPadicFieldWithinZHat_scalarTower
     (p : Nat.Primes) :
     IsScalarTower ℚ (rationalCyclotomicPadicFieldWithinZHat p)
@@ -1565,16 +1486,14 @@ instance rationalCyclotomicPadicFieldWithinZHat_scalarTower
   apply IsScalarTower.of_algebraMap_eq'
   rfl
 
-/-- The actual `p`-primary cyclotomic field in the fixed rational
-separable closure. -/
+/-- The actual `p`-primary cyclotomic field in the fixed rational separable closure. -/
 def rationalCyclotomicPadicField
     (p : Nat.Primes) :
     IntermediateField ℚ (SeparableClosure ℚ) :=
   IntermediateField.lift
     (rationalCyclotomicPadicFieldWithinZHat p)
 
-/-- The actual `p`-primary field is contained in the cyclotomic
-`ZHat`-extension. -/
+/-- The actual `p`-primary field is contained in the cyclotomic `ZHat`-extension. -/
 theorem rationalCyclotomicPadicField_le_cyclotomicZHatField
     (p : Nat.Primes) :
     rationalCyclotomicPadicField p ≤
@@ -1582,8 +1501,7 @@ theorem rationalCyclotomicPadicField_le_cyclotomicZHatField
   IntermediateField.lift_le
     (rationalCyclotomicPadicFieldWithinZHat p)
 
-/-- The fixing subgroup of the internal `p`-primary field is exactly
-the kernel of the `p`-adic cyclotomic coordinate. -/
+/-- The fixing subgroup of the internal `p`-primary field is exactly the kernel of the `p`-adic cyclotomic coordinate. -/
 theorem rationalCyclotomicPadicFieldWithinZHat_fixingSubgroup
     (p : Nat.Primes) :
     (rationalCyclotomicPadicFieldWithinZHat p).fixingSubgroup =
@@ -1592,9 +1510,7 @@ theorem rationalCyclotomicPadicFieldWithinZHat_fixingSubgroup
     InfiniteGalois.fixingSubgroup_fixedField
       (rationalCyclotomicPadicKernel p)
 
-/-- The Galois group of the internal `p`-primary cyclotomic field is
-the actual additive group of `p`-adic integers, written
-multiplicatively. -/
+/-- The Galois group of the internal `p`-primary cyclotomic field is the actual additive group of `p`-adic integers, written multiplicatively. -/
 noncomputable def
     rationalCyclotomicPadicFieldWithinZHatGalEquivPadicInt
     (p : Nat.Primes) :
@@ -1607,8 +1523,7 @@ noncomputable def
       (rationalCyclotomicPadicCoordinate p).toMonoidHom
       (rationalCyclotomicPadicCoordinate_surjective p))
 
-/-- Under the `ℤ_p` coordinate, restriction to the internal
-`p`-primary field is exactly the original cyclotomic coordinate. -/
+/-- Under the `ℤ_p` coordinate, restriction to the internal `p`-primary field is exactly the original cyclotomic coordinate. -/
 theorem
     rationalCyclotomicPadicFieldWithinZHatGalEquivPadicInt_restrict
     (p : Nat.Primes)
@@ -1633,8 +1548,7 @@ theorem
   rw [e.symm_apply_apply]
   rfl
 
-/-- The actual `p`-primary cyclotomic field is an abelian Galois
-extension of `ℚ`. -/
+/-- The actual `p`-primary cyclotomic field is an abelian Galois extension of `ℚ`. -/
 noncomputable instance
     rationalCyclotomicPadicField_isAbelianGalois
     (p : Nat.Primes) :
@@ -1648,8 +1562,7 @@ noncomputable instance
         (rationalCyclotomicPadicField_le_cyclotomicZHatField p))
       rationalCyclotomicZHatField_isAbelianGalois
 
-/-- Reduction from `p`-adic integers to a finite `p`-power quotient is
-surjective. -/
+/-- Reduction from `p`-adic integers to a finite `p`-power quotient is surjective. -/
 theorem padicIntToZModPow_surjective
     (p : Nat.Primes) (n : ℕ) :
     Function.Surjective
@@ -1665,8 +1578,7 @@ theorem padicIntToZModPow_surjective
           (p := p.1) n) x.val
     _ = x := ZMod.natCast_zmod_val x
 
-/-- The finite `p^n` cyclotomic coordinate on the genuine
-cyclotomic `ZHat` Galois group. -/
+/-- The finite `p^n` cyclotomic coordinate on the genuine cyclotomic `ZHat` Galois group. -/
 noncomputable def rationalCyclotomicPadicReduction
     (p : Nat.Primes) (n : ℕ) :
     (rationalCyclotomicZHatField ≃ₐ[ℚ]
@@ -1677,8 +1589,7 @@ noncomputable def rationalCyclotomicPadicReduction
         (p := p.1) n).toAddMonoidHom).comp
     (rationalCyclotomicPadicCoordinate p).toMonoidHom
 
-/-- Finite cyclotomic reduction is obtained by reducing the `p`-adic
-cyclotomic coordinate modulo `p^n`. -/
+/-- Finite cyclotomic reduction is obtained by reducing the `p`-adic cyclotomic coordinate modulo `p^n`. -/
 @[simp]
 theorem rationalCyclotomicPadicReduction_apply
     (p : Nat.Primes) (n : ℕ)
@@ -1709,8 +1620,7 @@ theorem rationalCyclotomicPadicReduction_surjective
   rw [rationalCyclotomicPadicReduction_apply, hσ]
   exact ha
 
-/-- The closed subgroup cutting out the finite `p^n` cyclotomic
-layer. -/
+/-- The closed subgroup cutting out the finite `p^n` cyclotomic layer. -/
 noncomputable def rationalCyclotomicPadicLevelKernel
     (p : Nat.Primes) (n : ℕ) :
     ClosedSubgroup
@@ -1779,16 +1689,14 @@ noncomputable def rationalCyclotomicPadicLevelKernel
         RingHom.mem_ker]]
     exact hspan.preimage hc
 
-/-- The finite-coordinate kernel is normal because it is the kernel of
-a group homomorphism. -/
+/-- The finite-coordinate kernel is normal because it is the kernel of a group homomorphism. -/
 instance rationalCyclotomicPadicLevelKernel_normal
     (p : Nat.Primes) (n : ℕ) :
     (rationalCyclotomicPadicLevelKernel p n).toSubgroup.Normal := by
   change (rationalCyclotomicPadicReduction p n).ker.Normal
   exact MonoidHom.normal_ker _
 
-/-- The finite-coordinate kernel is open in the cyclotomic Galois
-group. -/
+/-- The finite-coordinate kernel is open in the cyclotomic Galois group. -/
 theorem rationalCyclotomicPadicLevelKernel_isOpen
     (p : Nat.Primes) (n : ℕ) :
     IsOpen
@@ -1824,8 +1732,7 @@ theorem rationalCyclotomicPadicLevelKernel_isOpen
     q.ker.isOpen_of_isClosed_of_finiteIndex
       (rationalCyclotomicPadicLevelKernel p n).isClosed'
 
-/-- The genuine finite cyclotomic `p^n` layer inside the actual
-cyclotomic `ZHat`-extension. -/
+/-- The genuine finite cyclotomic `p^n` layer inside the actual cyclotomic `ZHat`-extension. -/
 noncomputable abbrev rationalCyclotomicPadicFiniteLevel
     (p : Nat.Primes) (n : ℕ) :
     FiniteGaloisIntermediateField
@@ -1845,15 +1752,13 @@ noncomputable abbrev rationalCyclotomicPadicFiniteLevel
       rationalCyclotomicPadicLevelKernel_isOpen p n
   isGalois := by infer_instance
 
-/-- The bundled finite `p^n` layer exposes its constructed Galois
-instance across the opaque field definition. -/
+/-- The bundled finite `p^n` layer exposes its constructed Galois instance across the opaque field definition. -/
 noncomputable instance rationalCyclotomicPadicFiniteLevel_isGalois
     (p : Nat.Primes) (n : ℕ) :
     IsGalois ℚ (rationalCyclotomicPadicFiniteLevel p n) :=
   (rationalCyclotomicPadicFiniteLevel p n).isGalois
 
-/-- The canonical algebra maps through the finite `p^n` layer form a
-scalar tower. -/
+/-- The canonical algebra maps through the finite `p^n` layer form a scalar tower. -/
 instance rationalCyclotomicPadicFiniteLevel_scalarTower
     (p : Nat.Primes) (n : ℕ) :
     IsScalarTower ℚ (rationalCyclotomicPadicFiniteLevel p n)
@@ -1861,8 +1766,7 @@ instance rationalCyclotomicPadicFiniteLevel_scalarTower
   apply IsScalarTower.of_algebraMap_eq'
   rfl
 
-/-- The Galois group of the finite `p^n` cyclotomic level is the
-actual cyclic group `ZMod (p^n)`. -/
+/-- The Galois group of the finite `p^n` cyclotomic level is the actual cyclic group `ZMod (p^n)`. -/
 noncomputable def
     rationalCyclotomicPadicFiniteLevelGalEquivZMod
     (p : Nat.Primes) (n : ℕ) :
@@ -1875,8 +1779,7 @@ noncomputable def
       (rationalCyclotomicPadicReduction p n)
       (rationalCyclotomicPadicReduction_surjective p n))
 
-/-- Restriction to a finite `p^n` level is exactly reduction of the
-genuine `p`-adic cyclotomic coordinate modulo `p^n`. -/
+/-- Restriction to a finite `p^n` level is exactly reduction of the genuine `p`-adic cyclotomic coordinate modulo `p^n`. -/
 theorem
     rationalCyclotomicPadicFiniteLevelGalEquivZMod_restrict
     (p : Nat.Primes) (n : ℕ)
@@ -1901,8 +1804,7 @@ theorem
   rw [e.symm_apply_apply]
   rfl
 
-/-- The Galois group of the base-changed finite `p`-primary
-cyclotomic layer, embedded in its genuine `ZMod (p^n)` coordinate. -/
+/-- The Galois group of the base-changed finite `p`-primary cyclotomic layer, embedded in its genuine `ZMod (p^n)` coordinate. -/
 noncomputable def
     numberFieldCyclotomicPadicFiniteCompositumCoordinate
     (F : Type*) [Field F] [NumberField F]
@@ -1916,9 +1818,7 @@ noncomputable def
       (F := F)
       (rationalCyclotomicPadicFiniteLevel p n))
 
-/-- The finite base-changed cyclotomic coordinate is injective.  Thus
-the actual compositum Galois group is realized as a subgroup of the
-cyclic `p`-power coordinate, with no abstract replacement field. -/
+/-- The finite base-changed cyclotomic coordinate is injective.  Thus the actual compositum Galois group is realized as a subgroup of the cyclic `p`-power coordinate, with no abstract replacement field. -/
 theorem
     numberFieldCyclotomicPadicFiniteCompositumCoordinate_injective
     (F : Type*) [Field F] [NumberField F]
@@ -1931,10 +1831,7 @@ theorem
       (F := F)
       (rationalCyclotomicPadicFiniteLevel p n))
 
-/-- Every actual finite base-changed `p`-primary cyclotomic layer has
-cyclic Galois group.  The statement is about the genuine compositum
-over `F`: cyclicity follows by embedding its Galois group into the
-standard cyclic `ZMod (p^n)` coordinate. -/
+/-- Every actual finite base-changed `p`-primary cyclotomic layer has cyclic Galois group.  The statement is about the genuine compositum over `F`: cyclicity follows by embedding its Galois group into the standard cyclic `ZMod (p^n)` coordinate. -/
 theorem
     numberFieldCyclotomicPadicFiniteCompositum_isCyclic
     (F : Type*) [Field F] [NumberField F]
@@ -1948,8 +1845,7 @@ theorem
     (numberFieldCyclotomicPadicFiniteCompositumCoordinate_injective
       F p n)
 
-/-- The degree of the genuine finite `p^n` cyclotomic level is
-exactly `p^n`. -/
+/-- The degree of the genuine finite `p^n` cyclotomic level is exactly `p^n`. -/
 theorem rationalCyclotomicPadicFiniteLevel_finrank
     (p : Nat.Primes) (n : ℕ) :
     Module.finrank ℚ

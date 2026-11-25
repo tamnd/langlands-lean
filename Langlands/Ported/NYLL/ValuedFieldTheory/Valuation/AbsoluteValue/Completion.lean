@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.AbsoluteValueCompletion
 public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.Extension
 public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.Nonarchimedean
 public import Mathlib.Analysis.Normed.Field.Instances
@@ -17,12 +16,7 @@ public import Mathlib.Analysis.Normed.Unbundled.RingSeminorm
 /-!
 # Completions of absolute-valued fields
 
-This file supplies the canonical absolute value, completion maps, density,
-and complete-target universal property for real-valued absolute values.  An
-extension is expressed directly by AbsoluteValue.Extends; no extra
-container is introduced.  The base-to-completion algebra instance is the
-canonical one inherited from WithAbs; algebras between different completions
-remain explicit.
+This file supplies the canonical absolute value, completion maps, density, and complete-target universal property for real-valued absolute values.  An extension is expressed directly by AbsoluteValue.Extends; no extra container is introduced.  The base-to-completion algebra instance is the canonical one inherited from WithAbs; algebras between different completions remain explicit.
 -/
 
 @[expose] public section
@@ -41,8 +35,7 @@ noncomputable def completionAbsoluteValue
     AbsoluteValue vK.Completion ℝ :=
   NormedField.toAbsoluteValue vK.Completion
 
-/-- The extended absolute value on the completion agrees with the original value
-on embedded elements. -/
+/-- The extended absolute value on the completion agrees with the original value on embedded elements. -/
 @[simp]
 theorem completionAbsoluteValue_coe
     {K : Type u} [Field K] (vK : AbsoluteValue K ℝ) (x : K) :
@@ -51,8 +44,7 @@ theorem completionAbsoluteValue_coe
   rw [Completion.algebraMap_def, Completion.norm_coe, WithAbs.algebraMap_right_apply,
     WithAbs.ofAbs_toAbs, Algebra.algebraMap_self_apply]
 
-/-- The uniformity defined by the completion absolute value is the native
-completion uniformity. -/
+/-- The uniformity defined by the completion absolute value is the native completion uniformity. -/
 theorem completionAbsoluteValue_uniformSpace_eq
     {K : Type u} [Field K] (vK : AbsoluteValue K ℝ) :
     (completionAbsoluteValue vK).uniformSpace =
@@ -149,8 +141,7 @@ theorem baseToExtensionCompletion_isometry
   AddMonoidHomClass.isometry_of_norm _
     (baseToExtensionCompletion_norm vK wL hw)
 
-/-- The isometric embedding between completions induced by an exact extension
-of absolute values. -/
+/-- The isometric embedding between completions induced by an exact extension of absolute values. -/
 noncomputable def completionMap
     {K : Type u} {L : Type v} [Field K] [Field L] [Algebra K L]
     (vK : AbsoluteValue K ℝ) (wL : AbsoluteValue L ℝ)
@@ -159,8 +150,7 @@ noncomputable def completionMap
   let : wL.LiesOver vK := ⟨AbsoluteValue.ext hw⟩
   exact Completion.map vK wL
 
-/-- On the canonical copy of the base field, the map between completions is
-the original algebra map followed by the canonical completion map. -/
+/-- On the canonical copy of the base field, the map between completions is the original algebra map followed by the canonical completion map. -/
 @[simp]
 theorem completionMap_coe
     {K : Type u} {L : Type v} [Field K] [Field L] [Algebra K L]
@@ -181,8 +171,7 @@ theorem completionMap_isometry
   let : wL.LiesOver vK := ⟨AbsoluteValue.ext hw⟩
   exact Completion.isometry_map vK wL
 
-/-- The algebra structure on the extension completion induced by the
-completion map.  It is deliberately explicit rather than a global instance. -/
+/-- The algebra structure on the extension completion induced by the completion map.  It is deliberately explicit rather than a global instance. -/
 @[reducible] noncomputable def completionAlgebra
     {K : Type u} {L : Type v} [Field K] [Field L] [Algebra K L]
     (vK : AbsoluteValue K ℝ) (wL : AbsoluteValue L ℝ)
@@ -200,8 +189,7 @@ theorem completionAlgebra_algebraMap
         (completionAlgebra vK wL hw) x = completionMap vK wL hw x :=
   rfl
 
-/-- The algebra structure on an extension completion induced by the dense
-copy of the extension field.  It is deliberately explicit. -/
+/-- The algebra structure on an extension completion induced by the dense copy of the extension field.  It is deliberately explicit. -/
 @[reducible] noncomputable def extensionCompletionAlgebra
     {K : Type u} {L : Type v} [Field K] [Field L] [Algebra K L]
     (wL : AbsoluteValue L ℝ) :
@@ -256,8 +244,7 @@ theorem completionAbsoluteValue_isNonarchimedean
   exact hvK.apply_natCast_le_one
     (by rw [vK.map_zero, vK.map_one]; exact zero_le_one) vK.map_one
 
-/-- A nonarchimedean absolute value and its completion absolute value have the
-same range. -/
+/-- A nonarchimedean absolute value and its completion absolute value have the same range. -/
 theorem completionAbsoluteValue_range_eq
     {K : Type u} [Field K] (vK : AbsoluteValue K ℝ)
     (hvK : IsNonarchimedean (vK : K → ℝ)) :
@@ -326,8 +313,7 @@ theorem toCompleteTargetRingHom_isometry
   AddMonoidHomClass.isometry_of_norm _
     (toCompleteTargetRingHom_norm vK vD i hi)
 
-/-- A value-preserving embedding into a complete target extends uniquely from
-the field to its metric completion. -/
+/-- A value-preserving embedding into a complete target extends uniquely from the field to its metric completion. -/
 noncomputable def completionMapToCompleteTarget
     (vK : AbsoluteValue K ℝ) (vD : AbsoluteValue D ℝ)
     [CompleteSpace (WithAbs vD)]
@@ -350,8 +336,7 @@ private theorem completionMapToCompleteTarget_withAbs_coe
     (toCompleteTargetRingHom vK vD i)
     (toCompleteTargetRingHom_isometry vK vD i hi).continuous x
 
-/-- The extension map to a complete target agrees with the original map on
-embedded source elements. -/
+/-- The extension map to a complete target agrees with the original map on embedded source elements. -/
 @[simp]
 theorem completionMapToCompleteTarget_coe
     (vK : AbsoluteValue K ℝ) (vD : AbsoluteValue D ℝ)
@@ -373,8 +358,7 @@ theorem completionMapToCompleteTarget_isometry
   (toCompleteTargetRingHom_isometry vK vD i hi).completion_extension.comp
     (Completion.isometry_toCompletion vK)
 
-/-- A continuous map from the completion is determined by its restriction to
-the canonical dense copy of the source field. -/
+/-- A continuous map from the completion is determined by its restriction to the canonical dense copy of the source field. -/
 theorem completionMapToCompleteTarget_eq_of_coe_eq
     (vK : AbsoluteValue K ℝ) (vD : AbsoluteValue D ℝ)
     [CompleteSpace (WithAbs vD)]
@@ -403,8 +387,7 @@ section CompleteTargetTower
 variable {K : Type u} {L : Type v} {D : Type w}
 variable [Field K] [Field L] [Field D] [Algebra K L]
 
-/-- Dense-point compatibility for extending `L → D` and first embedding the
-completed base in the completion of `L`. -/
+/-- Dense-point compatibility for extending `L → D` and first embedding the completed base in the completion of `L`. -/
 @[simp]
 theorem completionMapToCompleteTarget_comp_completionMap_coe
     (vK : AbsoluteValue K ℝ) (wL : AbsoluteValue L ℝ)
@@ -418,8 +401,7 @@ theorem completionMapToCompleteTarget_comp_completionMap_coe
   rw [completionMap_coe, toCompletion_eq_algebraMap,
     completionMapToCompleteTarget_coe]
 
-/-- Two continuous maps out of the completed base agree if they agree on the
-original base field after passage through the extension completion. -/
+/-- Two continuous maps out of the completed base agree if they agree on the original base field after passage through the extension completion. -/
 theorem completionMapToCompleteTarget_comp_completionMap_eq_of_coe_eq
     (vK : AbsoluteValue K ℝ) (wL : AbsoluteValue L ℝ)
     (hw : Extends vK wL) (vD : AbsoluteValue D ℝ)

@@ -16,12 +16,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finit
 /-!
 # Kernels attached to finite abelian subextensions
 
-Every finite abelian subextension of the fixed separable closure determines
-an open normal subgroup of the absolute topological abelianization.  This
-module identifies its pullback along the absolute Artin map with the ordinary
-norm subgroup.  The finite local existence theorem then shows that these
-pullbacks are cofinal among the open finite-index subgroups of the local
-multiplicative group.
+Every finite abelian subextension of the fixed separable closure determines an open normal subgroup of the absolute topological abelianization.  This module identifies its pullback along the absolute Artin map with the ordinary norm subgroup.  The finite local existence theorem then shows that these pullbacks are cofinal among the open finite-index subgroups of the local multiplicative group.
 -/
 
 
@@ -43,8 +38,7 @@ section PureRestriction
 
 variable (K : Type u) [Field K]
 
-/-- Restriction from the absolute topological abelianization to the Galois
-group of a finite abelian subextension. -/
+/-- Restriction from the absolute topological abelianization to the Galois group of a finite abelian subextension. -/
 noncomputable def absoluteAbelianRestriction
     (E : IntermediateField K (SeparableClosure K))
     [FiniteDimensional K E] [IsAbelianGalois K E] :
@@ -52,7 +46,7 @@ noncomputable def absoluteAbelianRestriction
   let r : intrinsicAbsoluteGalois K →* Gal(E / K) :=
     AlgEquiv.restrictNormalHom E
   have hcomm : commutator (intrinsicAbsoluteGalois K) ≤ r.ker :=
-    Abelianization.commutator_subset_ker r
+    Group.Abelianization.commutator_le_ker r
   have hkerClosed : IsClosed (r.ker : Set (intrinsicAbsoluteGalois K)) := by
     rw [IntermediateField.restrictNormalHom_ker]
     exact IntermediateField.fixingSubgroup_isClosed E
@@ -84,8 +78,7 @@ theorem absoluteAbelianRestriction_mk
       AlgEquiv.restrictNormalHom E σ :=
   rfl
 
-/-- Restriction to a finite Galois subextension is onto after passing to the
-absolute topological abelianization. -/
+/-- Restriction to a finite Galois subextension is onto after passing to the absolute topological abelianization. -/
 theorem absoluteAbelianRestriction_surjective
     (E : IntermediateField K (SeparableClosure K))
     [FiniteDimensional K E] [IsAbelianGalois K E] :
@@ -118,8 +111,7 @@ theorem mem_absoluteAbelianRestrictionKernel_iff
       absoluteAbelianRestriction K E x = 1 :=
   Iff.rfl
 
-/-- Pulling the restriction kernel back to the absolute Galois group gives
-the fixing subgroup of the original finite subextension. -/
+/-- Pulling the restriction kernel back to the absolute Galois group gives the fixing subgroup of the original finite subextension. -/
 theorem absoluteFiniteQuotientPreimage_restrictionKernel
     (E : IntermediateField K (SeparableClosure K))
     [FiniteDimensional K E] [IsAbelianGalois K E] :
@@ -134,8 +126,7 @@ theorem absoluteFiniteQuotientPreimage_restrictionKernel
     ← IntermediateField.restrictNormalHom_ker E]
   rfl
 
-/-- The finite field cut out by the restriction kernel is the original
-finite abelian subextension. -/
+/-- The finite field cut out by the restriction kernel is the original finite abelian subextension. -/
 theorem absoluteFiniteQuotientField_restrictionKernel
     (E : IntermediateField K (SeparableClosure K))
     [FiniteDimensional K E] [IsAbelianGalois K E] :
@@ -155,8 +146,7 @@ variable (K : Type u) [Field K]
 variable [ValuativeRel K] [TopologicalSpace K]
   [IsNonarchimedeanLocalField K]
 
-/-- Pulling a finite restriction kernel back along the absolute local Artin
-map gives exactly the norm subgroup of that finite abelian extension. -/
+/-- Pulling a finite restriction kernel back along the absolute local Artin map gives exactly the norm subgroup of that finite abelian extension. -/
 theorem separableAbsoluteLocalArtinMap_preimage_restrictionKernel
     (E : IntermediateField K (SeparableClosure K))
     [FiniteDimensional K E] [IsAbelianGalois K E] :
@@ -195,10 +185,7 @@ theorem separableAbsoluteLocalArtinMap_preimage_restrictionKernel
           separableAbsoluteLocalArtinMap_finiteProjection K N a
       _ = 1 := MonoidHom.mem_ker.mp hker
 
-/-- The pullbacks of finite abelian restriction kernels are cofinal among
-the open finite-index normal subgroups of `Kˣ`.  This is the arithmetic
-input for injectivity of the canonical map from the topological profinite
-completion. -/
+/-- The pullbacks of finite abelian restriction kernels are cofinal among the open finite-index normal subgroups of `Kˣ`.  This is the arithmetic input for injectivity of the canonical map from the topological profinite completion. -/
 theorem separableAbsoluteLocalArtinMap_preimage_cofinal
     (H : OpenFiniteIndexNormalSubgroup Kˣ) :
     ∃ N : OpenNormalSubgroup (localAbsoluteAbelianProfinite K),

@@ -16,10 +16,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NonarchimedeanL
 /-!
 # The completed theta-intertwining theorem: normalization of a changed Laurent uniformizer
 
-The parameter `aT`, with `a` a power-series unit, is a prime element of the
-canonical Laurent integer ring.  Consequently its inverse has normalized
-additive value one.  This is the concrete prime certificate used in the
-changed-level norm argument.
+The parameter `aT`, with `a` a power-series unit, is a prime element of the canonical Laurent integer ring.  Consequently its inverse has normalized additive value one.  This is the concrete prime certificate used in the changed-level norm argument.
 -/
 
 
@@ -60,8 +57,7 @@ theorem equalCharacteristicChangedLaurentUniformizerInteger_coe
     equalCharacteristicLaurentValuativeRel F
   rfl
 
-/-- Multiplying `T` by a power-series unit preserves primality in the
-canonical Laurent integer ring. -/
+/-- Multiplying `T` by a power-series unit preserves primality in the canonical Laurent integer ring. -/
 theorem equalCharacteristicChangedLaurentUniformizerInteger_irreducible
     (F : LocalField.{u, v} K) (a : F.residueField⟦X⟧ˣ) :
     letI := equalCharacteristicLaurentValuativeRel F
@@ -73,7 +69,7 @@ theorem equalCharacteristicChangedLaurentUniformizerInteger_irreducible
       ((a : F.residueField⟦X⟧) * PowerSeries.X))
   have hprime : Irreducible
       ((a : F.residueField⟦X⟧) * PowerSeries.X) :=
-    (irreducible_isUnit_mul a.isUnit).2 PowerSeries.X_irreducible
+    (irreducible_isUnit_mul a.isUnit).2 PowerSeries.irreducible_X
   exact hprime.map
     (powerSeriesEquivLaurentValuativeInteger F.residueField)
 

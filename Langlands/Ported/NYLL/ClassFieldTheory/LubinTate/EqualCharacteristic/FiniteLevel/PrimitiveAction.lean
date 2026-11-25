@@ -15,10 +15,7 @@ public import Mathlib.FieldTheory.Finite.Basic
 /-!
 # The uniformizer norm identity: the unit action on primitive division points
 
-The genuine truncated Lubin--Tate bracket attached to a unit power series
-sends a primitive level-`n+1` point to another root of the same Eisenstein
-polynomial.  This is the source of the finite-level Galois action; no
-automorphism or normality is assumed here.
+The genuine truncated Lubin--Tate bracket attached to a unit power series sends a primitive level-`n+1` point to another root of the same Eisenstein polynomial.  This is the source of the finite-level Galois action; no automorphism or normality is assumed here.
 -/
 
 
@@ -39,8 +36,7 @@ open LocalFieldTheory.DiscreteValuationField
 
 variable {K : Type u} [Field K]
 
-/-- On a level-one torsion point, every longer bracket only sees the
-constant coefficient of the power series. -/
+/-- On a level-one torsion point, every longer bracket only sees the constant coefficient of the power series. -/
 theorem equalCharacteristicLubinTateAmbientBracket_apply_of_levelOne_torsion
     (F : LocalField.{u, v} K)
     {A : Type*} [Field A] [CharP A F.residueCharacteristic]
@@ -63,8 +59,7 @@ theorem equalCharacteristicLubinTateAmbientBracket_apply_of_levelOne_torsion
           F ι t (m + 1) a x hxm,
         ih]
 
-/-- Applying `e^n` after a bracket scales the level-one predecessor of any
-primitive level-`n+1` point by the bracket's constant coefficient. -/
+/-- Applying `e^n` after a bracket scales the level-one predecessor of any primitive level-`n+1` point by the bracket's constant coefficient. -/
 theorem equalCharacteristicLubinTateAmbientPrimitive_iterate_bracket
     (F : LocalField.{u, v} K)
     {A : Type*} [Field A] [CharP A F.residueCharacteristic]
@@ -83,8 +78,7 @@ theorem equalCharacteristicLubinTateAmbientPrimitive_iterate_bracket
   rw [Nat.add_comm 1 n]
   exact hx
 
-/-- Applying `e^n` after a unit bracket scales the primitive level-one
-predecessor by the unit's constant coefficient. -/
+/-- Applying `e^n` after a unit bracket scales the primitive level-one predecessor by the unit's constant coefficient. -/
 theorem chosenEqualCharacteristicLubinTatePrimitiveRoot_iterate_bracket
     (F : LocalField.{u, v} K)
     [CharP K F.residueCharacteristic]
@@ -113,8 +107,7 @@ theorem powerSeries_unit_coeff_zero_ne_zero
   rw [PowerSeries.coeff_zero_eq_constantCoeff_apply]
   exact (PowerSeries.isUnit_iff_constantCoeff.mp a.isUnit).ne_zero
 
-/-- The ambient bracket is additive in its power-series coordinate, in
-subtraction form. -/
+/-- The ambient bracket is additive in its power-series coordinate, in subtraction form. -/
 theorem equalCharacteristicLubinTateAmbientBracket_sub
     (F : LocalField.{u, v} K)
     {A : Type*} [Field A] [CharP A F.residueCharacteristic]
@@ -137,9 +130,7 @@ theorem equalCharacteristicLubinTateAmbientBracket_sub
   rw [(PowerSeries.coeff (R := F.residueField) i).map_sub a b,
     ι.map_sub, sub_mul]
 
-/-- Faithfulness of the truncated bracket on any primitive level-`n+1`
-point.  This is the intrinsic Lubin--Tate statement used both before and
-after passage to the completed maximal-unramified base. -/
+/-- Faithfulness of the truncated bracket on any primitive level-`n+1` point.  This is the intrinsic Lubin--Tate statement used both before and after passage to the completed maximal-unramified base. -/
 theorem equalCharacteristicLubinTateAmbientPrimitive_bracket_eq_coeff
     (F : LocalField.{u, v} K)
     {A : Type*} [Field A] [CharP A F.residueCharacteristic]
@@ -154,7 +145,7 @@ theorem equalCharacteristicLubinTateAmbientPrimitive_bracket_eq_coeff
     ∀ i ≤ n, PowerSeries.coeff i a = PowerSeries.coeff i b := by
   intro i hi
   induction i using Nat.strong_induction_on with
-  | h i ih =>
+  | ind i ih =>
       let d := a - b
       have hdx :
           equalCharacteristicLubinTateAmbientBracket F ι t (n + 1) d x = 0 := by
@@ -210,8 +201,7 @@ theorem equalCharacteristicLubinTateAmbientPrimitive_bracket_eq_coeff
         simpa using hcoeffMap
       simpa [d, sub_eq_zero] using hcoeff
 
-/-- Faithfulness on a primitive level-`n+1` point: equality of two bracket
-images forces equality of all coefficients visible at that level. -/
+/-- Faithfulness on a primitive level-`n+1` point: equality of two bracket images forces equality of all coefficients visible at that level. -/
 theorem chosenEqualCharacteristicLubinTatePrimitiveRoot_bracket_eq_coeff
     (F : LocalField.{u, v} K)
     [CharP K F.residueCharacteristic]
@@ -234,8 +224,7 @@ theorem chosenEqualCharacteristicLubinTatePrimitiveRoot_bracket_eq_coeff
     (chosenEqualCharacteristicLubinTatePrimitiveRoot_not_torsion_pred F n)
     a b hbracket
 
-/-- Every unit bracket of the chosen primitive point is again a root of
-the primitive division polynomial. -/
+/-- Every unit bracket of the chosen primitive point is again a root of the primitive division polynomial. -/
 theorem equalCharacteristicLubinTatePrimitivePolynomial_isRoot_bracket
     (F : LocalField.{u, v} K)
     [CharP K F.residueCharacteristic]

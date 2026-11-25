@@ -13,7 +13,6 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Ramification.HilbertRamifi
 public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.AlgebraicLocalization
 public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.Completion
 public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.Completion.ExtensionFactorClassification
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 
 /-!
 # Infinite places above a finite extension
@@ -60,8 +59,7 @@ variable {M : Type*}
 
 omit [NumberField K] [NumberField L] [NumberField M]
     [FiniteDimensional K L] in
-/-- Restriction of infinite places is transitive in a tower of number
-fields. -/
+/-- Restriction of infinite places is transitive in a tower of number fields. -/
 @[simp]
 theorem infinitePlaceBelow_infinitePlaceBelow
     (W : InfinitePlace L) :
@@ -75,8 +73,7 @@ theorem infinitePlaceBelow_infinitePlaceBelow
 end InfinitePlaceTower
 
 omit [NumberField K] in
-/-- The map on infinite-place completions induced by the identity field
-extension is the identity map. -/
+/-- The map on infinite-place completions induced by the identity field extension is the identity map. -/
 @[simp]
 theorem infinitePlaceCompletionMap_self_apply
     (W : InfinitePlace K)
@@ -84,19 +81,18 @@ theorem infinitePlaceCompletionMap_self_apply
     let : W.1.LiesOver W.1 :=
       ⟨congrArg (fun q : InfinitePlace K => q.1)
         (infinitePlaceBelow_self (K := K) W)⟩
-    InfinitePlace.Completion.absMap W W x = x := by
+    AbsoluteValue.Completion.map W.1 W.1 x = x := by
   intro sharedOwner1
-  refine InfinitePlace.Completion.induction_on W x ?_ ?_
-  · exact isClosed_eq (InfinitePlace.Completion.continuous_absMap W W) continuous_id
+  refine AbsoluteValue.Completion.induction_on x ?_ ?_
+  · exact isClosed_eq (AbsoluteValue.Completion.continuous_map W.1 W.1) continuous_id
   · intro y
-    rw [InfinitePlace.Completion.absMap_coe W W]
+    rw [AbsoluteValue.Completion.map_coe W.1 W.1]
     apply congrArg (fun z : WithAbs W.1 => (z : W.Completion))
     apply (WithAbs.equiv W.1).injective
     change algebraMap K K (WithAbs.equiv W.1 y) = WithAbs.equiv W.1 y
     exact Algebra.algebraMap_self_apply _
 
-/-- Completion maps at infinite places compose in a tower of number
-fields. -/
+/-- Completion maps at infinite places compose in a tower of number fields. -/
 theorem infinitePlaceCompletionMap_comp_apply
     {M : Type*}
     [Field M] [NumberField M]
@@ -116,14 +112,13 @@ theorem infinitePlaceCompletionMap_comp_apply
           (K := K) (M := M) (L := L) W)⟩
     let : W.1.LiesOver V.1 := ⟨rfl⟩
     let : W.1.LiesOver v.1 := ⟨rfl⟩
-    InfinitePlace.Completion.absMap V W
-        (InfinitePlace.Completion.absMap v V x) =
-      InfinitePlace.Completion.absMap v W x := by
+    AbsoluteValue.Completion.map V.1 W.1
+        (AbsoluteValue.Completion.map v.1 V.1 x) =
+      AbsoluteValue.Completion.map v.1 W.1 x := by
   intro V v reusedStructure3 reusedStructure4 reusedStructure5
-  exact InfinitePlace.Completion.absMap_absMap v V W x
+  exact AbsoluteValue.Completion.map_map v.1 V.1 W.1 x
 
-/-- An infinite place above `w`, regarded as an exact extension of the
-underlying absolute value. -/
+/-- An infinite place above `w`, regarded as an exact extension of the underlying absolute value. -/
 def infinitePlaceAboveToExtension
     (w : InfinitePlace K)
     (W : {W : InfinitePlace L //
@@ -136,9 +131,7 @@ def infinitePlaceAboveToExtension
   exact h
 
 omit [NumberField K] [NumberField L] [FiniteDimensional K L] in
-/-- For a finite Galois extension, every extension of an infinite-place
-absolute value is represented by an infinite place above the base
-place. -/
+/-- For a finite Galois extension, every extension of an infinite-place absolute value is represented by an infinite place above the base place. -/
 theorem
     infinitePlaceAboveToExtension_surjective_of_isGalois
     [IsGalois K L]
@@ -173,8 +166,7 @@ theorem
   apply Subtype.ext
   rfl
 
-/-- Infinite places of `L` above `w` are exactly the exact extensions of
-the absolute value represented by `w`. -/
+/-- Infinite places of `L` above `w` are exactly the exact extensions of the absolute value represented by `w`. -/
 noncomputable def infinitePlaceAboveEquivExtension
     (w : InfinitePlace K) :
     {W : InfinitePlace L //
@@ -240,8 +232,7 @@ noncomputable def infinitePlaceAboveEquivExtension
     rw [hWMval]
     exact uOverL.2 x
 
-/-- The absolute value underlying the extension corresponding to an
-infinite place above `w`. -/
+/-- The absolute value underlying the extension corresponding to an infinite place above `w`. -/
 @[simp]
 theorem infinitePlaceAboveEquivExtension_apply_val
     (w : InfinitePlace K)

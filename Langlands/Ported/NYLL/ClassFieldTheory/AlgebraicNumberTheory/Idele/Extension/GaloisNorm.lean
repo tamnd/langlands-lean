@@ -16,9 +16,7 @@ public import Mathlib.RingTheory.TensorProduct.MvPolynomial
 /-!
 # The Galois product formula for the relative idele norm
 
-This file proves that, in the tensor-product presentation
-`𝔸_L = 𝔸_K ⊗_K L`, extension of the determinant norm back to `𝔸_L`
-is the product of all Galois conjugates.
+This file proves that, in the tensor-product presentation `𝔸_L = 𝔸_K ⊗_K L`, extension of the determinant norm back to `𝔸_L` is the product of all Galois conjugates.
 -/
 
 @[expose] public section
@@ -38,9 +36,7 @@ variable
     [Field K] [Field L] [Algebra K L]
     [FiniteDimensional K L]
 
-/-- The determinant norm as a homogeneous polynomial in the coordinates
-of a basis.  Keeping this polynomial over the ground field is what makes
-the Galois product formula stable under arbitrary scalar extension. -/
+/-- The determinant norm as a homogeneous polynomial in the coordinates of a basis.  Keeping this polynomial over the ground field is what makes the Galois product formula stable under arbitrary scalar extension. -/
 def normPolynomial
     {ι : Type w} [Fintype ι] [DecidableEq ι]
     (b : Module.Basis ι K L) : MvPolynomial ι K :=
@@ -59,8 +55,7 @@ theorem eval_normPolynomial
     (LinearMap.det_eq_sign_charpoly_coeff
       ((Algebra.lmul K L) x))).symm
 
-/-- The linear polynomial whose value at the coordinates of `x` is the
-`σ`-conjugate of `x`. -/
+/-- The linear polynomial whose value at the coordinates of `x` is the `σ`-conjugate of `x`. -/
 def conjugatePolynomial
     {ι : Type w} [Fintype ι] [DecidableEq ι]
     (b : Module.Basis ι K L) (σ : L ≃ₐ[K] L) :
@@ -88,8 +83,7 @@ theorem eval_conjugatePolynomial
       rw [map_sum]
     _ = σ x := by rw [b.sum_repr]
 
-/-- The product of the universal conjugates, written as a polynomial over
-the splitting field. -/
+/-- The product of the universal conjugates, written as a polynomial over the splitting field. -/
 def galoisProductPolynomial
     {ι : Type w} [Fintype ι] [DecidableEq ι]
     (b : Module.Basis ι K L) :
@@ -106,8 +100,7 @@ theorem eval_galoisProductPolynomial
       ∏ σ : L ≃ₐ[K] L, σ x := by
   simp only [galoisProductPolynomial, map_prod, eval_conjugatePolynomial]
 
-/-- The universal determinant norm polynomial becomes the product of the
-universal Galois conjugates after extending its coefficients to `L`. -/
+/-- The universal determinant norm polynomial becomes the product of the universal Galois conjugates after extending its coefficients to `L`. -/
 theorem map_normPolynomial_eq_galoisProductPolynomial
     [IsGalois K L] [Infinite K]
     {ι : Type w} [Fintype ι] [DecidableEq ι]
@@ -141,8 +134,7 @@ theorem map_normPolynomial_eq_galoisProductPolynomial
     exact Algebra.norm_eq_prod_automorphisms K x
 
 omit [FiniteDimensional K L] in
-/-- Base change carries the regular representation of `L/K` to the regular
-representation of `A ⊗[K] L` over `A`. -/
+/-- Base change carries the regular representation of `L/K` to the regular representation of `A ⊗[K] L` over `A`. -/
 theorem baseChangedLmul_eq
     (A : Type w) [CommRing A] [Algebra K A] :
     LinearMap.tensorProduct K A L L ∘ₗ
@@ -164,13 +156,12 @@ theorem baseChangedLmul_eq
             LinearMap.baseChange_tmul, AlgHom.toLinearMap_apply, Algebra.coe_lmul_eq_mul,
             TensorProduct.AlgebraTensorModule.lift_apply, TensorProduct.lift.tmul,
             LinearMap.coe_restrictScalars, LinearMap.coe_mk, AddHom.coe_mk, LinearMap.smul_apply,
-            LinearMap.baseChangeHom_apply, Algebra.smul_def, Module.End.mul_apply,
+            LinearMap.baseChangeHom_apply, Algebra.smul_def, mul_apply_eq_comp,
             LinearMap.mul_apply_apply, Module.algebraMap_end_apply,
             Algebra.TensorProduct.algebraMap_apply, Algebra.algebraMap_self, RingHom.id_apply,
             Algebra.TensorProduct.tmul_mul_tmul, mul_comm, mul_one]
 
-/-- Evaluation of the universal norm polynomial after arbitrary scalar
-extension is the determinant norm on the scalar-extended algebra. -/
+/-- Evaluation of the universal norm polynomial after arbitrary scalar extension is the determinant norm on the scalar-extended algebra. -/
 theorem eval₂_normPolynomial_baseChange
     (A : Type*) [CommRing A] [Algebra K A] [Nontrivial A]
     {ι : Type w} [Fintype ι] [DecidableEq ι]
@@ -200,8 +191,7 @@ theorem eval₂_normPolynomial_baseChange
     Module.finrank_baseChange]
   rfl
 
-/-- Galois conjugation after scalar extension to an arbitrary commutative
-`K`-algebra. -/
+/-- Galois conjugation after scalar extension to an arbitrary commutative `K`-algebra. -/
 def scalarConjugation
     (A : Type*) [CommRing A] [Algebra K A]
     (σ : L ≃ₐ[K] L) :
@@ -218,8 +208,7 @@ theorem scalarConjugation_tmul
   rfl
 
 omit [FiniteDimensional K L] in
-/-- Evaluating a universal conjugate polynomial at the coordinates of a
-base-changed element gives its actual scalar-extended conjugate. -/
+/-- Evaluating a universal conjugate polynomial at the coordinates of a base-changed element gives its actual scalar-extended conjugate. -/
 theorem eval₂_conjugatePolynomial_baseChange
     (A : Type*) [CommRing A] [Algebra K A]
     {ι : Type w} [Fintype ι] [DecidableEq ι]
@@ -259,9 +248,7 @@ theorem eval₂_conjugatePolynomial_baseChange
     _ = scalarConjugation (K := K) (L := L) A σ z := by
       rw [(Algebra.TensorProduct.basis A b).sum_repr]
 
-/-- The full scalar-extension formula: extending
-the determinant norm back to a Galois algebra is the product of all
-Galois conjugates.  The coefficient algebra `A` is arbitrary. -/
+/-- The full scalar-extension formula: extending the determinant norm back to a Galois algebra is the product of all Galois conjugates.  The coefficient algebra `A` is arbitrary. -/
 theorem includeLeft_norm_eq_prod_scalarConjugations
     [IsGalois K L] [Infinite K]
     (A : Type*) [CommRing A] [Algebra K A] [Nontrivial A]
@@ -323,9 +310,7 @@ theorem scalarConjugation_baseAdele_apply
       conjugation K L σ z :=
   rfl
 
-/-- In full adèle form, the base extension of the
-determinant norm of an arbitrary relative adèle is the product of all of
-its Galois conjugates. -/
+/-- In full adèle form, the base extension of the determinant norm of an arbitrary relative adèle is the product of all of its Galois conjugates. -/
 theorem adeleInclusion_norm_eq_prod_conjugates
     [NumberField K] [IsGalois K L]
     (z : RelativeAdeleRing K L) :
@@ -345,9 +330,7 @@ theorem adeleInclusion_norm_eq_prod_conjugates
       (K := K) (L := L)
       (NumberField.AdeleRing (𝓞 K) K) z)
 
-/-- In full idèle form,
-`i_{L/K}(N_{L/K}(a)) = ∏_{σ ∈ Gal(L/K)} σ(a)` for every relative
-idèle `a`. -/
+/-- In full idèle form, `i_{L/K}(N_{L/K}(a)) = ∏_{σ ∈ Gal(L/K)} σ(a)` for every relative idèle `a`. -/
 theorem inclusion_norm_eq_prod_conjugates
     [NumberField K] [IsGalois K L]
     (a : RelativeIdeleGroup K L) :

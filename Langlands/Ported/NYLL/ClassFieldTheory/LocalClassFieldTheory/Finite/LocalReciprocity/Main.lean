@@ -16,10 +16,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finit
 /-!
 # Finite local reciprocity: the local reciprocity law
 
-The residue Frobenius datum, the normalized henselian valuation, and the
-class-field axiom constructed over the fixed separable closure are inserted
-into the abstract reciprocity theorem.  The resulting isomorphism is independent of the
-embedding used to realize the finite Galois extension in that closure.
+The residue Frobenius datum, the normalized henselian valuation, and the class-field axiom constructed over the fixed separable closure are inserted into the abstract reciprocity theorem.  The resulting isomorphism is independent of the embedding used to realize the finite Galois extension in that closure.
 -/
 
 @[expose] public section
@@ -38,23 +35,17 @@ variable (K : Type u) (L : Type v) [Field K] [Field L] [Algebra K L]
   [ValuativeRel K] [TopologicalSpace K] [IsNonarchimedeanLocalField K]
   [FiniteDimensional K L] [IsGalois K L]
 
-/-- **Finite local reciprocity (Local Reciprocity Law).**  For every finite Galois
-extension of nonarchimedean local fields, reciprocity gives the canonical
-isomorphism
-`G(L/K)ᵃᵇ ≃ Kˣ / N_{L/K}(Lˣ)`.
+/-- **Finite local reciprocity (Local Reciprocity Law).**  For every finite Galois extension of nonarchimedean local fields, reciprocity gives the canonical isomorphism `G(L/K)ᵃᵇ ≃ Kˣ / N_{L/K}(Lˣ)`.
 
-The coefficient module used in the construction is
-`(SeparableClosure K)ˣ`, in the fixed-separable-closure model. -/
+The coefficient module used in the construction is `(SeparableClosure K)ˣ`, in the fixed-separable-closure model. -/
 noncomputable def abelianizationEquivNormQuotient :
-    Abelianization (Gal(L / K)) ≃* NormQuotient K L :=
+    Group.Abelianization (Gal(L / K)) ≃* NormQuotient K L :=
   concreteReciprocityEquiv K L
     (localResidueDatum K)
     (localHenselianValuation K)
     (separableClosureUnits_isClassFormation K)
 
-/-- The isomorphism in the finite local reciprocity construction is independent of the embedding
-used to
-realize `L/K` inside the fixed separable closure. -/
+/-- The isomorphism in the finite local reciprocity construction is independent of the embedding used to realize `L/K` inside the fixed separable closure. -/
 private theorem abelianizationEquivNormQuotient_eq_of_embedding
     (i : L →ₐ[K] SeparableClosure K) :
     abelianizationEquivNormQuotient K L =
@@ -69,17 +60,13 @@ private theorem abelianizationEquivNormQuotient_eq_of_embedding
       (localHenselianValuation K)
       (separableClosureUnits_isClassFormation K))
 
-/-- The local norm-residue symbol is the inverse of reciprocity, preceded by
-the quotient map from `Kˣ`. -/
+/-- The local norm-residue symbol is the inverse of reciprocity, preceded by the quotient map from `Kˣ`. -/
 noncomputable def localArtinMonoidHom :
-    Kˣ →* Abelianization (Gal(L / K)) :=
+    Kˣ →* Group.Abelianization (Gal(L / K)) :=
   (abelianizationEquivNormQuotient K L).symm.toMonoidHom.comp
     (normClass K L)
 
-/-- The canonical local norm-residue symbol can be computed using any
-explicit realization of the finite Galois extension in the fixed separable
-closure.  This is the symbol-level form of the embedding independence in
-the finite local reciprocity construction. -/
+/-- The canonical local norm-residue symbol can be computed using any explicit realization of the finite Galois extension in the fixed separable closure.  This is the symbol-level form of the embedding independence in the finite local reciprocity construction. -/
 theorem localArtinMonoidHom_eq_of_embedding
     (i : L →ₐ[K] SeparableClosure K) :
     localArtinMonoidHom K L =
@@ -104,8 +91,7 @@ theorem localArtinMonoidHom_surjective :
   (abelianizationEquivNormQuotient K L).symm.surjective.comp
     (QuotientGroup.mk'_surjective (localNormSubgroup K L))
 
-/-- The kernel of the local norm-residue symbol is exactly the norm
-subgroup `N_{L/K}(Lˣ)`. -/
+/-- The kernel of the local norm-residue symbol is exactly the norm subgroup `N_{L/K}(Lˣ)`. -/
 theorem localArtinMonoidHom_ker :
     (localArtinMonoidHom K L).ker = localNormSubgroup K L := by
   ext x

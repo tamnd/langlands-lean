@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Adele.Equiv
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.ClassGroup.AlgEquiv
 public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.GlobalClassFields.BigHilbertClassField
@@ -21,12 +20,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.RayCl
 /-!
 # Naturality of the big Hilbert class field
 
-An equivalence of number fields preserves both finite integrality and
-positivity at the real infinite places.  Consequently the actual
-idele-class transport carries the big-Hilbert norm subgroup exactly onto
-the corresponding subgroup of the target field.  This gives canonical
-transport on the big-Hilbert reciprocity quotient and on the narrow class
-group, with formulas on genuine idele representatives.
+An equivalence of number fields preserves both finite integrality and positivity at the real infinite places.  Consequently the actual idele-class transport carries the big-Hilbert norm subgroup exactly onto the corresponding subgroup of the target field.  This gives canonical transport on the big-Hilbert reciprocity quotient and on the narrow class group, with formulas on genuine idele representatives.
 -/
 
 
@@ -36,7 +30,6 @@ group, with formulas on genuine idele representatives.
 open scoped NumberField TensorProduct
 
 attribute [local instance] AbsoluteValue.Completion.algebraOfLiesOver
-attribute [local instance] NumberField.InfinitePlace.Completion.algebraOfLiesOver
 
 noncomputable section
 
@@ -62,8 +55,8 @@ private noncomputable def infinitePlaceCompletionCongrHom
   letI : W.1.LiesOver v.1 :=
     ⟨rfl⟩
   exact
-    InfinitePlace.Completion.absMap
-      v W
+    AbsoluteValue.Completion.map
+      v.1 W.1
 
 private theorem infinitePlaceCompletionCongrHom_algebraMap
     (e : K ≃ₐ[ℚ] M)
@@ -79,14 +72,11 @@ private theorem infinitePlaceCompletionCongrHom_algebraMap
   let : W.1.LiesOver v.1 :=
     ⟨rfl⟩
   change
-    InfinitePlace.Completion.absMap
-        v W
+    AbsoluteValue.Completion.map
+        v.1 W.1
         (algebraMap K v.Completion x) =
       algebraMap M W.Completion
         (algebraMap K M x)
-  apply InfinitePlace.Completion.ext
-  change AbsoluteValue.Completion.map v.1 W.1 (algebraMap K v.1.Completion x) =
-    algebraMap M W.1.Completion (algebraMap K M x)
   simpa only [AbsoluteValue.Completion.algebraMap_def, WithAbs.algebraMap_right_apply,
     Algebra.algebraMap_self_apply, WithAbs.map_apply, WithAbs.ofAbs_toAbs] using
     (AbsoluteValue.Completion.map_coe v.1 W.1 (WithAbs.toAbs v.1 x))
@@ -112,8 +102,8 @@ private theorem
   change
     (relativeAdeleBaseChangeRingEquiv
         (K := ℚ) (L := M) (b ⊗ₜ[ℚ] e x)).1 W =
-      InfinitePlace.Completion.absMap
-        v W
+      AbsoluteValue.Completion.map
+        v.1 W.1
         ((relativeAdeleBaseChangeRingEquiv
           (K := ℚ) (L := K) (b ⊗ₜ[ℚ] x)).1 v)
   let qv :=
@@ -136,8 +126,8 @@ private theorem
   let : W.1.LiesOver qv.1 :=
     ⟨congrArg (fun q : InfinitePlace ℚ => q.1) hq.symm⟩
   have hxMap :
-      InfinitePlace.Completion.absMap
-          v W
+      AbsoluteValue.Completion.map
+          v.1 W.1
           (algebraMap K v.Completion x) =
         algebraMap M W.Completion (e x) := by
     simpa only [infinitePlaceCompletionCongrHom] using
@@ -146,22 +136,22 @@ private theorem
       (qv' : InfinitePlace ℚ)
       (h : qv' = qW)
       [v.1.LiesOver qv'.1] :
-      InfinitePlace.Completion.absMap
-            qW W (b.1 qW) *
+      AbsoluteValue.Completion.map
+            qW.1 W.1 (b.1 qW) *
           algebraMap M W.Completion (e x) =
-        InfinitePlace.Completion.absMap
-            v W
-            (InfinitePlace.Completion.absMap
-                qv' v (b.1 qv') *
+        AbsoluteValue.Completion.map
+            v.1 W.1
+            (AbsoluteValue.Completion.map
+                qv'.1 v.1 (b.1 qv') *
               algebraMap K v.Completion x) := by
     subst qv'
     have hcomp :
-        InfinitePlace.Completion.absMap
-            v W
-            (InfinitePlace.Completion.absMap
-              qW v (b.1 qW)) =
-          InfinitePlace.Completion.absMap
-            qW W (b.1 qW) := by
+        AbsoluteValue.Completion.map
+            v.1 W.1
+            (AbsoluteValue.Completion.map
+              qW.1 v.1 (b.1 qW)) =
+          AbsoluteValue.Completion.map
+            qW.1 W.1 (b.1 qW) := by
       convert
         (infinitePlaceCompletionMap_comp_apply
           (K := ℚ) (M := K) (L := M) W (b.1 qW)) using 1
@@ -252,12 +242,12 @@ private theorem
       W (hW.comap e.toRingHom)
   have hComplex :
       InfinitePlace.Completion.extensionEmbedding W
-          (InfinitePlace.Completion.absMap
-            v W x) =
+          (AbsoluteValue.Completion.map
+            v.1 W.1 x) =
         InfinitePlace.Completion.extensionEmbedding v x := by
     have h := InfinitePlace.Completion.liesOver_extensionEmbedding_apply
       (v := v) (w := W) (φ := InfinitePlace.Completion.extensionEmbedding W) (x := x)
-    rwa [InfinitePlace.Completion.algebraMap_apply_of_liesOver v W] at h
+    rwa [AbsoluteValue.Completion.algebraMap_apply_of_liesOver v.1 W.1] at h
   apply Complex.ofReal_injective
   simpa only [
     InfinitePlace.Completion.extensionEmbeddingOfIsReal_apply,
@@ -432,9 +422,7 @@ private theorem narrowDenominator_map_ideleCongr
       IdeleGroup.principalSubgroup M
   exact idelePrincipalSubgroup_map_congr e
 
-/-- Transport of actual idele classes along a number-field equivalence
-carries the big-Hilbert norm subgroup exactly onto the big-Hilbert norm
-subgroup of the target field. -/
+/-- Transport of actual idele classes along a number-field equivalence carries the big-Hilbert norm subgroup exactly onto the big-Hilbert norm subgroup of the target field. -/
 theorem bigHilbertClassFieldNormSubgroup_map_ideleClassCongr
     (e : K ≃ₐ[ℚ] M) :
     (bigHilbertClassFieldNormSubgroup (K := K)).map
@@ -464,8 +452,7 @@ theorem bigHilbertClassFieldNormSubgroup_map_ideleClassCongr
     simpa only [RayClass.narrowDenominator] using
       narrowDenominator_map_ideleCongr e]
 
-/-- The canonical equivalence of big-Hilbert reciprocity quotients
-induced by an equivalence of number fields. -/
+/-- The canonical equivalence of big-Hilbert reciprocity quotients induced by an equivalence of number fields. -/
 noncomputable def bigHilbertClassFieldQuotientCongr
     (e : K ≃ₐ[ℚ] M) :
     (IdeleClassGroup K ⧸
@@ -478,8 +465,7 @@ noncomputable def bigHilbertClassFieldQuotientCongr
     (ideleClassCongr e)
     (bigHilbertClassFieldNormSubgroup_map_ideleClassCongr e)
 
-/-- The big-Hilbert quotient equivalence is induced on representatives
-by the actual transport of idele classes. -/
+/-- The big-Hilbert quotient equivalence is induced on representatives by the actual transport of idele classes. -/
 @[simp]
 theorem bigHilbertClassFieldQuotientCongr_mk
     (e : K ≃ₐ[ℚ] M)
@@ -492,8 +478,7 @@ theorem bigHilbertClassFieldQuotientCongr_mk
         (ideleClassCongr e c) :=
   rfl
 
-/-- Canonical transport of narrow ideal classes determined by the
-big-Hilbert reciprocity quotient. -/
+/-- Canonical transport of narrow ideal classes determined by the big-Hilbert reciprocity quotient. -/
 noncomputable def bigHilbertNarrowClassGroupCongr
     (e : K ≃ₐ[ℚ] M) :
     RayClass.NarrowClassGroup K ≃*
@@ -504,8 +489,7 @@ noncomputable def bigHilbertNarrowClassGroupCongr
       (bigHilbertClassFieldQuotientEquivNarrowClassGroup
         (K := M)))
 
-/-- Naturality of the canonical identification of the big-Hilbert
-reciprocity quotient with the narrow class group. -/
+/-- Naturality of the canonical identification of the big-Hilbert reciprocity quotient with the narrow class group. -/
 @[simp]
 theorem bigHilbertClassFieldQuotientEquivNarrowClassGroup_naturality
     (e : K ≃ₐ[ℚ] M)
@@ -520,8 +504,7 @@ theorem bigHilbertClassFieldQuotientEquivNarrowClassGroup_naturality
   simp only [bigHilbertNarrowClassGroupCongr,
     MulEquiv.trans_apply, MulEquiv.symm_apply_apply]
 
-/-- Homomorphism form of naturality for the big-Hilbert
-quotient--narrow-class-group identification. -/
+/-- Homomorphism form of naturality for the big-Hilbert quotient--narrow-class-group identification. -/
 theorem
     bigHilbertClassFieldQuotientEquivNarrowClassGroup_naturality_hom
     (e : K ≃ₐ[ℚ] M) :
@@ -538,8 +521,7 @@ theorem
     bigHilbertClassFieldQuotientEquivNarrowClassGroup_naturality
       (K := K) (M := M) e q
 
-/-- On an idele representative, canonical transport of narrow ideal
-classes is represented by the transported idele itself. -/
+/-- On an idele representative, canonical transport of narrow ideal classes is represented by the transported idele itself. -/
 @[simp]
 theorem bigHilbertNarrowClassGroupCongr_mk
     (e : K ≃ₐ[ℚ] M)
@@ -579,8 +561,7 @@ theorem bigHilbertNarrowClassGroupCongr_mk
         ideleClassCongr_mk,
         bigHilbertClassFieldQuotientEquivNarrowClassGroup_mk]
 
-/-- Homomorphism form of naturality for narrow ideal classes under the
-big-Hilbert narrow-class-group transport. -/
+/-- Homomorphism form of naturality for narrow ideal classes under the big-Hilbert narrow-class-group transport. -/
 theorem bigHilbertNarrowClassGroupCongr_naturality
     (e : K ≃ₐ[ℚ] M) :
     (bigHilbertNarrowClassGroupCongr e).toMonoidHom.comp

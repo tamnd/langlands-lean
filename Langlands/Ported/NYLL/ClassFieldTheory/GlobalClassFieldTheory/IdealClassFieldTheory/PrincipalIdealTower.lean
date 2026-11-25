@@ -16,11 +16,7 @@ public import Langlands.Ported.NYLL.GaloisCohomology.Cyclic.NormKernelVanishing
 /-!
 # Galois structure on a conjugate-stable abelian tower
 
-The principal ideal theorem uses two successive finite abelian class fields.
-The upper field is Galois over the original base once its absolute Galois
-subgroup is stable under conjugation by the base subgroup.  This file packages
-that actual subgroup statement as a finite Galois subextension, so that the
-commutator-intermediate-field and transfer APIs can be applied to the tower.
+The principal ideal theorem uses two successive finite abelian class fields. The upper field is Galois over the original base once its absolute Galois subgroup is stable under conjugation by the base subgroup.  This file packages that actual subgroup statement as a finite Galois subextension, so that the commutator-intermediate-field and transfer APIs can be applied to the tower.
 -/
 
 
@@ -43,9 +39,7 @@ section Conjugation
 
 variable [ContinuousMul G]
 
-/-- Conjugation by an element of a closed subgroup preserves that
-subgroup.  This is the subgroup form of the fact that every field
-automorphism over the base fixes the base field setwise. -/
+/-- Conjugation by an element of a closed subgroup preserves that subgroup.  This is the subgroup form of the fact that every field automorphism over the base fixes the base field setwise. -/
 theorem conjugateClosedSubgroup_eq_self_of_mem
     (K : ClosedSubgroup G) {s : G} (hs : s ∈ K) :
     conjugateClosedSubgroup K s = K := by
@@ -61,8 +55,7 @@ theorem conjugateClosedSubgroup_eq_self_of_mem
   · intro hx
     exact K.mul_mem (K.mul_mem hs hx) (K.inv_mem hs)
 
-/-- Conjugating both endpoints of a finite abelian extension produces
-the actual conjugate finite abelian extension. -/
+/-- Conjugating both endpoints of a finite abelian extension produces the actual conjugate finite abelian extension. -/
 def conjugateFiniteAbelianSubextension
     (L : FiniteAbelianSubextension K) (s : G) :
     FiniteAbelianSubextension (conjugateClosedSubgroup K s) where
@@ -101,9 +94,7 @@ theorem conjugateFiniteAbelianSubextension_field
       conjugateClosedSubgroup L.field s :=
   rfl
 
-/-- Two successive finite abelian extensions form a finite Galois extension
-over the original base when the top-field subgroup is stable under conjugation
-by every element of the base subgroup. -/
+/-- Two successive finite abelian extensions form a finite Galois extension over the original base when the top-field subgroup is stable under conjugation by every element of the base subgroup. -/
 def galoisSubextensionOfConjugateStableAbelianTower
     (L : FiniteAbelianSubextension K)
     (M : FiniteAbelianSubextension L.field)
@@ -155,8 +146,7 @@ section MaximalAbelianIntermediate
 
 variable [IsTopologicalGroup G]
 
-/-- The intermediate field fixed by the commutator of a finite Galois
-extension, bundled as the actual maximal finite abelian subextension. -/
+/-- The intermediate field fixed by the commutator of a finite Galois extension, bundled as the actual maximal finite abelian subextension. -/
 def maximalAbelianSubextension
     (P : FiniteGaloisSubextension K) :
     FiniteAbelianSubextension K :=
@@ -171,12 +161,9 @@ theorem maximalAbelianSubextension_field
   FiniteGaloisSubextension.intermediateFiniteAbelianOfCommutatorLe_field
     P (commutator P.extensionQuotient) le_rfl
 
-/-- Every finite abelian intermediate extension of a finite Galois
-extension is contained in the commutator-fixed intermediate field.
+/-- Every finite abelian intermediate extension of a finite Galois extension is contained in the commutator-fixed intermediate field.
 
-In subgroup order the displayed inclusion is reversed: the subgroup
-representing the maximal abelian intermediate field lies inside the
-subgroup representing the given abelian intermediate field. -/
+In subgroup order the displayed inclusion is reversed: the subgroup representing the maximal abelian intermediate field lies inside the subgroup representing the given abelian intermediate field. -/
 theorem abelianIntermediateField_le_of_finiteAbelianIntermediate
     (P : FiniteGaloisSubextension K)
     (L : FiniteAbelianSubextension K)
@@ -206,7 +193,7 @@ theorem abelianIntermediateField_le_of_finiteAbelianIntermediate
       (commutator P.extensionQuotient) k).1 hk
   have hrestriction :
       restriction (P.extensionQuotientMk k) = 1 :=
-    Abelianization.commutator_subset_ker restriction hkcomm
+    Group.Abelianization.commutator_le_ker restriction hkcomm
   change
     (QuotientGroup.mk k :
       K.toSubgroup ⧸
@@ -216,8 +203,7 @@ theorem abelianIntermediateField_le_of_finiteAbelianIntermediate
     (mem_extensionSubgroup_iff K L.field L.below k).1
       ((QuotientGroup.eq_one_iff k).1 hrestriction)
 
-/-- In field order, every finite abelian intermediate extension lies below
-the maximal abelian subextension cut out by the commutator. -/
+/-- In field order, every finite abelian intermediate extension lies below the maximal abelian subextension cut out by the commutator. -/
 theorem finiteAbelianIntermediate_le_maximalAbelianSubextension
     (P : FiniteGaloisSubextension K)
     (L : FiniteAbelianSubextension K)

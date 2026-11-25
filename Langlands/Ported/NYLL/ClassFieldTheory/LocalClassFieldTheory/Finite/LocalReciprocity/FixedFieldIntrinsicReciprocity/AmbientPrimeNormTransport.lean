@@ -15,9 +15,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finit
 /-!
 # Valuation-one units and abstract prime norm-residue transport
 
-This module transports valuation-one units and norm classes through
-compatible field equivalences, and evaluates abstract fixed-field
-norm-residue symbols on transported prime norms.
+This module transports valuation-one units and norm classes through compatible field equivalences, and evaluates abstract fixed-field norm-residue symbols on transported prime norms.
 -/
 
 
@@ -34,8 +32,7 @@ open LocalFieldTheory RamificationTheory CyclicCohomology KummerTheory
 open ClassFormation
 open scoped ValuativeRel
 
-/-- A valuation-subring-preserving ring equivalence carries some unit of
-valuation one to a unit of valuation one. -/
+/-- A valuation-subring-preserving ring equivalence carries some unit of valuation one to a unit of valuation one. -/
 theorem exists_valuationOne_unit_of_ringEquiv
     (L : Type u₁) (M : Type u₂)
     [Field L] [ValuativeRel L] [TopologicalSpace L]
@@ -98,8 +95,7 @@ theorem exists_valuationOne_unit_of_ringEquiv
         M piOM hpiOM uM huM
   exact ⟨pL, hpLvalue, hpMvalue⟩
 
-/-- A chosen valuation-one unit whose image under a valuation-compatible
-ring equivalence also has valuation one. -/
+/-- A chosen valuation-one unit whose image under a valuation-compatible ring equivalence also has valuation one. -/
 noncomputable def chosenValuationOneUnitOfRingEquiv
     (L : Type u₁) (M : Type u₂)
     [Field L] [ValuativeRel L] [TopologicalSpace L]
@@ -131,8 +127,7 @@ theorem chosenValuationOneUnitOfRingEquiv_source
   (Classical.choose_spec
     (exists_valuationOne_unit_of_ringEquiv L M phi hmem)).1
 
-/-- The image of the chosen transported unit has valuation one in the
-target field. -/
+/-- The image of the chosen transported unit has valuation one in the target field. -/
 theorem chosenValuationOneUnitOfRingEquiv_target
     (L : Type u₁) (M : Type u₂)
     [Field L] [ValuativeRel L] [TopologicalSpace L]
@@ -150,9 +145,7 @@ theorem chosenValuationOneUnitOfRingEquiv_target
   (Classical.choose_spec
     (exists_valuationOne_unit_of_ringEquiv L M phi hmem)).2
 
-/-- Compatible ring equivalences between finite extensions preserve
-valuation-subring membership when their separable-closure transport preserves
-the local valuation subrings. -/
+/-- Compatible ring equivalences between finite extensions preserve valuation-subring membership when their separable-closure transport preserves the local valuation subrings. -/
 theorem valuationSubring_mem_iff_of_separableClosureRingEquiv
     (F : Type u₁) (K : Type u₂) (L : Type u₃) (M : Type u₄)
     [Field F] [ValuativeRel F] [TopologicalSpace F]
@@ -215,8 +208,7 @@ theorem normClass_mapEquiv
   rw [← map_div, hy]
   exact hnorm
 
-/-- A unit of valuation one in an abstract fixed field determines a prime
-element for the ambient local henselian valuation datum. -/
+/-- A unit of valuation one in an abstract fixed field determines a prime element for the ambient local henselian valuation datum. -/
 theorem
     localHenselianValuation_isPrimeElement_abstractFixedField
     (K : Type u₁) [Field K] [ValuativeRel K] [TopologicalSpace K]
@@ -257,9 +249,7 @@ theorem
   rw [hp]
   exact (Int.castRingHom ZHat).map_one'
 
-/-- Under the canonical fixed-field unit identifications, the abstract
-relative norm from an intrinsic fixed field is the ordinary field norm on
-units. -/
+/-- Under the canonical fixed-field unit identifications, the abstract relative norm from an intrinsic fixed field is the ordinary field norm on units. -/
 theorem
     relativeNorm_intrinsicAbstractBase_abstractFixedFieldUnit
     (F : Type u₁) [Field F]
@@ -326,8 +316,7 @@ theorem
         (Additive.ofMul (normUnits F L p)) at hnorm
   exact htransport.symm.trans hnorm
 
-/-- Translating an abstract relative fixed-field unit through the fixed-field
-unit equivalences sends its abstract relative norm to its ordinary field norm. -/
+/-- Translating an abstract relative fixed-field unit through the fixed-field unit equivalences sends its abstract relative norm to its ordinary field norm. -/
 theorem
     relativeNorm_preimage_abstractRelativeFixedFieldUnit
     (K : Type u₁) [Field K]
@@ -387,8 +376,7 @@ theorem
     (abstractFixedFieldUnitsEquivGaloisFixed
       K (SeparableClosure K) H).symm_apply_apply]
 
-/-- Evaluates the abstract fixed-field norm-residue symbol on the norm of a
-prime element as the abelianized restriction of its Frobenius element. -/
+/-- Evaluates the abstract fixed-field norm-residue symbol on the norm of a prime element as the abelianized restriction of its Frobenius element. -/
 theorem
     abstractFixedFieldNormResidueSymbol_eq_of_primeNorm
     (K : Type u₁) [Field K] [ValuativeRel K] [TopologicalSpace K]
@@ -442,7 +430,7 @@ theorem
           ((abstractExtensionQuotientEquivGaloisGroup
             K (SeparableClosure K) H.field J hJH hJnormal
             ).abelianizationCongr
-            (Abelianization.of
+            (Group.Abelianization.of
               ((localResidueDatum K).frobeniusRestriction
                 (H.toFiniteResidueAbstractField (localResidueDatum K))
                 J hJH sigma))) := by
@@ -521,13 +509,11 @@ theorem
                 H.field S hSH pi)))) =
       Additive.ofMul
         (qH.abelianizationCongr
-          (Abelianization.of qAmbient)) at hsymbol
+          (Group.Abelianization.of qAmbient)) at hsymbol
   rw [hx] at hsymbol
   exact hsymbol
 
-/-- Transporting a valuation-one unit and its norm through compatible ring
-equivalences evaluates the ambient fixed-field norm-residue symbol at the
-associated Frobenius restriction. -/
+/-- Transporting a valuation-one unit and its norm through compatible ring equivalences evaluates the ambient fixed-field norm-residue symbol at the associated Frobenius restriction. -/
 theorem
     abstractFixedFieldNormResidueSymbol_eq_of_transportedValuationOneUnit
     (K : Type u₁) (F : Type u₂) (L : Type u₃)
@@ -600,7 +586,7 @@ theorem
           ((abstractExtensionQuotientEquivGaloisGroup
             K (SeparableClosure K) H.field J hJH hJnormal
             ).abelianizationCongr
-            (Abelianization.of
+            (Group.Abelianization.of
               ((localResidueDatum K).frobeniusRestriction
                 (H.toFiniteResidueAbstractField (localResidueDatum K))
                 J hJH sigma))) := by

@@ -17,16 +17,9 @@ public import Mathlib.RingTheory.PowerSeries.Evaluation
 # The equal-characteristic completed-unramified construction: the completed maximal-unramified
 field in equal characteristic
 
-For a finite field `k`, the equal-characteristic model of the completion of
-the maximal unramified extension of `k((T))` is
-`(AlgebraicClosure k)((T))`.  This file equips that field with the genuine
-coefficientwise arithmetic Frobenius over `k((T))`.
+For a finite field `k`, the equal-characteristic model of the completion of the maximal unramified extension of `k((T))` is `(AlgebraicClosure k)((T))`.  This file equips that field with the genuine coefficientwise arithmetic Frobenius over `k((T))`.
 
-This is the equal-characteristic specialization of the completed-unramified
-source in the equal-characteristic completed-unramified construction.  In particular, the
-Frobenius below is an actual algebra
-equivalence; it is not a theorem-shaped replacement for later theta
-evaluation or norm-subgroup arguments.
+This is the equal-characteristic specialization of the completed-unramified source in the equal-characteristic completed-unramified construction.  In particular, the Frobenius below is an actual algebra equivalence; it is not a theorem-shaped replacement for later theta evaluation or norm-subgroup arguments.
 -/
 
 
@@ -45,8 +38,7 @@ namespace EqualCharacteristic
 
 variable (k : Type u) [Field k] [Finite k]
 
-/-- The valuation balls in a valued integer ring, expressed as genuine
-ideals, form its neighbourhood basis at zero. -/
+/-- The valuation balls in a valued integer ring, expressed as genuine ideals, form its neighbourhood basis at zero. -/
 theorem valuedInteger_hasBasis_ltIdeal
     {K : Type u} {Γ : Type v} [Field K]
     [LinearOrderedCommGroupWithZero Γ] [Valued K Γ] :
@@ -71,8 +63,7 @@ theorem valuedInteger_hasBasis_ltIdeal
   exact (Valuation.restrict_lt_iff_lt_embedding
       (v := (Valued.v : Valuation K Γ)) (x := (x : K)) (g := γ.1))
 
-/-- The native topology on a valued integer ring is linear: its valuation
-balls are ideals. -/
+/-- The native topology on a valued integer ring is linear: its valuation balls are ideals. -/
 theorem valuedIntegerLinearTopology
     {K : Type u} {Γ : Type v} [Field K]
     [LinearOrderedCommGroupWithZero Γ] [Valued K Γ] :
@@ -80,16 +71,14 @@ theorem valuedIntegerLinearTopology
   IsLinearTopology.mk_of_hasBasis (Valued.integer K)
     (valuedInteger_hasBasis_ltIdeal (K := K))
 
-/-- A closed valued integer ring inherits completeness from its fraction
-field. -/
+/-- A closed valued integer ring inherits completeness from its fraction field. -/
 theorem valuedIntegerCompleteSpace
     {K : Type u} {Γ : Type v} [Field K]
     [LinearOrderedCommGroupWithZero Γ] [Valued K Γ] [CompleteSpace K] :
     CompleteSpace (Valued.integer K) :=
   (Valued.isClosed_integer K).completeSpace_coe
 
-/-- The induced uniformity on a valued integer ring is compatible with its
-additive group. -/
+/-- The induced uniformity on a valued integer ring is compatible with its additive group. -/
 theorem valuedIntegerIsUniformAddGroup
     {K : Type u} {Γ : Type v} [Field K]
     [LinearOrderedCommGroupWithZero Γ] [Valued K Γ] :
@@ -105,8 +94,7 @@ omit [Finite k] in
 noncomputable local instance equalCharacteristicCoefficientUniformSpace :
     UniformSpace (AlgebraicClosure k) := ⊥
 
-/-- The fixed elements of arithmetic Frobenius in the algebraic closure are
-exactly the embedded elements of the finite coefficient field. -/
+/-- The fixed elements of arithmetic Frobenius in the algebraic closure are exactly the embedded elements of the finite coefficient field. -/
 theorem equalCharacteristicCoefficientFrobenius_fixed_iff
     (x : AlgebraicClosure k) :
     equalCharacteristicCoefficientFrobenius k x = x ↔
@@ -131,7 +119,7 @@ theorem equalCharacteristicCoefficientFrobenius_fixed_iff
     have hpolyne :
         (Polynomial.X ^ Nat.card k - Polynomial.X : k[X]) ≠ 0 := by
       rw [Nat.card_eq_fintype_card]
-      exact FiniteField.X_pow_card_sub_X_ne_zero (K' := k) Fintype.one_lt_card
+      exact Polynomial.X_pow_sub_X_ne_zero (R := k) Fintype.one_lt_card
     have hminsplit : (minpoly k x).Splits :=
       hsplit.of_dvd hpolyne hdiv
     exact hxint.mem_range_algebraMap_of_minpoly_splits (K := k) (by
@@ -139,8 +127,7 @@ theorem equalCharacteristicCoefficientFrobenius_fixed_iff
   · rintro ⟨a, rfl⟩
     exact (equalCharacteristicCoefficientFrobenius k).commutes a
 
-/-- The equal-characteristic model of the completed maximal unramified
-extension of `k((T))`. -/
+/-- The equal-characteristic model of the completed maximal unramified extension of `k((T))`. -/
 def equalCharacteristicCompletedUnramifiedField :=
   (AlgebraicClosure k)⸨X⸩
 
@@ -162,8 +149,7 @@ instance equalCharacteristicCompletedUnramifiedField_completeSpace :
   change CompleteSpace ((AlgebraicClosure k)⸨X⸩)
   infer_instance
 
-/-- Comparison with the Laurent-series model underlying the completed
-unramified field. -/
+/-- Comparison with the Laurent-series model underlying the completed unramified field. -/
 def equalCharacteristicCompletedUnramifiedFieldEquivLaurentSeries :
     equalCharacteristicCompletedUnramifiedField k ≃+*
       (AlgebraicClosure k)⸨X⸩ :=
@@ -214,8 +200,7 @@ theorem equalCharacteristicCompletedUnramifiedFieldCoeff_ofLaurentSeries
   rfl
 
 omit [Finite k] in
-/-- Two named completed-unramified elements are equal when all Laurent
-coefficients agree. -/
+/-- Two named completed-unramified elements are equal when all Laurent coefficients agree. -/
 @[ext]
 theorem equalCharacteristicCompletedUnramifiedField_ext
     {x y : equalCharacteristicCompletedUnramifiedField k}
@@ -244,8 +229,7 @@ noncomputable instance equalCharacteristicCompletedUnramifiedAlgebra :
     Algebra k⸨X⸩ (equalCharacteristicCompletedUnramifiedField k) :=
   laurentSeriesCoefficientAlgebra
 
-/-- The named completed-unramified Laurent field is the fraction field of its
-power-series integer ring. -/
+/-- The named completed-unramified Laurent field is the fraction field of its power-series integer ring. -/
 instance equalCharacteristicCompletedUnramifiedIsFractionRing :
     IsFractionRing (AlgebraicClosure k)⟦X⟧
       (equalCharacteristicCompletedUnramifiedField k) := by
@@ -281,8 +265,7 @@ theorem equalCharacteristicCompletedUnramifiedFieldCoeff_algebraMap_laurentSerie
       algebraMap k (AlgebraicClosure k) (f.coeff m)
   rw [laurentSeriesCoefficientMap_coeff]
 
-/-- Arithmetic Frobenius on the completed maximal-unramified Laurent field,
-acting coefficientwise and fixing the Laurent-series base `k((T))`. -/
+/-- Arithmetic Frobenius on the completed maximal-unramified Laurent field, acting coefficientwise and fixing the Laurent-series base `k((T))`. -/
 noncomputable def equalCharacteristicCompletedUnramifiedFrobenius :
     equalCharacteristicCompletedUnramifiedField k ≃ₐ[k⸨X⸩]
       equalCharacteristicCompletedUnramifiedField k :=
@@ -374,8 +357,7 @@ theorem equalCharacteristicCompletedUnramifiedFrobenius_continuous :
   rw [equalCharacteristicCompletedUnramifiedFrobenius_valuation]
   exact hx
 
-/-- On the integer ring `(AlgebraicClosure k)[[T]]`, Laurent Frobenius is
-the coefficientwise power-series Frobenius constructed for theta. -/
+/-- On the integer ring `(AlgebraicClosure k)[[T]]`, Laurent Frobenius is the coefficientwise power-series Frobenius constructed for theta. -/
 theorem equalCharacteristicCompletedUnramifiedFrobenius_algebraMap_powerSeries
     (f : (AlgebraicClosure k)⟦X⟧) :
     equalCharacteristicCompletedUnramifiedFrobenius k
@@ -409,8 +391,7 @@ theorem equalCharacteristicCompletedUnramifiedFrobenius_algebraMap_powerSeries
       rw [PowerSeries.coeff_coe, PowerSeries.coeff_coe]
       simp [hcard]
 
-/-- Every coefficient of a Frobenius-fixed completed Laurent series comes
-from the original finite coefficient field. -/
+/-- Every coefficient of a Frobenius-fixed completed Laurent series comes from the original finite coefficient field. -/
 theorem equalCharacteristicCompletedUnramified_fixed_coeff_mem_range
     (x : equalCharacteristicCompletedUnramifiedField k)
     (hx : equalCharacteristicCompletedUnramifiedFrobenius k x = x)
@@ -429,8 +410,7 @@ theorem equalCharacteristicCompletedUnramified_fixed_coeff_mem_range
   rw [equalCharacteristicCompletedUnramifiedFrobenius_coeff] at hcoeff
   exact hcoeff
 
-/-- A chosen coefficient in `k` lifting one coefficient of a
-Frobenius-fixed completed Laurent series. -/
+/-- A chosen coefficient in `k` lifting one coefficient of a Frobenius-fixed completed Laurent series. -/
 noncomputable def equalCharacteristicCompletedUnramifiedFixedCoeff
     (x : equalCharacteristicCompletedUnramifiedField k)
     (hx : equalCharacteristicCompletedUnramifiedFrobenius k x = x)
@@ -482,8 +462,7 @@ theorem equalCharacteristicCompletedUnramifiedFixedPreimage_coeff
   rw [equalCharacteristicCompletedUnramifiedFixedPreimage]
   exact congrFun HahnSeries.coeff_ofSuppBddBelow m
 
-/-- The fixed field of coefficientwise Frobenius is exactly the embedded
-Laurent-series base `k((T))`. -/
+/-- The fixed field of coefficientwise Frobenius is exactly the embedded Laurent-series base `k((T))`. -/
 theorem equalCharacteristicCompletedUnramifiedFrobenius_fixed_iff
     (x : equalCharacteristicCompletedUnramifiedField k) :
     equalCharacteristicCompletedUnramifiedFrobenius k x = x ↔
@@ -510,10 +489,7 @@ theorem equalCharacteristicCompletedUnramifiedFrobenius_uniformizer :
     simp [equalCharacteristicCompletedUnramifiedFieldSingle]
   · simp [equalCharacteristicCompletedUnramifiedFieldSingle, h, hcard]
 
-/-- Evaluation of an outer power series with coefficients in
-`(AlgebraicClosure k)[[T]]` at a topologically nilpotent point of the
-completed-unramified integer ring.  This is the analytic evaluation map
-needed for the theta series in the completed theta-intertwining theorem. -/
+/-- Evaluation of an outer power series with coefficients in `(AlgebraicClosure k)[[T]]` at a topologically nilpotent point of the completed-unramified integer ring.  This is the analytic evaluation map needed for the theta series in the completed theta-intertwining theorem. -/
 noncomputable def equalCharacteristicPowerSeriesToCompletedInteger :
     (AlgebraicClosure k)⟦X⟧ →+*
       Valued.integer (equalCharacteristicCompletedUnramifiedField k) := by
@@ -549,8 +525,7 @@ noncomputable def equalCharacteristicCompletedIntegerEvaluation
   exact PowerSeries.eval₂Hom
     (equalCharacteristicPowerSeriesToCompletedInteger_continuous k) ha
 
-/-- The Laurent uniformizer, viewed in the completed-unramified integer
-ring. -/
+/-- The Laurent uniformizer, viewed in the completed-unramified integer ring. -/
 noncomputable def equalCharacteristicCompletedIntegerUniformizer :
     Valued.integer (equalCharacteristicCompletedUnramifiedField k) :=
   equalCharacteristicPowerSeriesToCompletedInteger k PowerSeries.X

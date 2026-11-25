@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NormUnitsBaseChange
 public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.ClassFormation.ArchimedeanNormQuotient
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.NormApproximation.InfinitePlaces
@@ -18,10 +17,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.Completion.Finit
 /-!
 # The norm image of an archimedean tensor factor
 
-For a finite Galois extension `L / K`, the determinant-norm image on
-`K_v ⊗[K] L` is the field-norm subgroup of any completion of `L` above
-the infinite place `v`.  This is the archimedean counterpart of the
-finite-place tensor-norm comparison.
+For a finite Galois extension `L / K`, the determinant-norm image on `K_v ⊗[K] L` is the field-norm subgroup of any completion of `L` above the infinite place `v`.  This is the archimedean counterpart of the finite-place tensor-norm comparison.
 -/
 
 
@@ -32,8 +28,6 @@ open scoped NumberField TensorProduct
 
 attribute [local instance] AbsoluteValue.Completion.algebraOfLiesOver
 open NumberField
-
-attribute [local instance] InfinitePlace.Completion.algebraOfLiesOver
 
 noncomputable section
 
@@ -48,8 +42,7 @@ variable {K : Type u} {L : Type v}
     [Field L] [NumberField L] [Algebra K L]
     [IsGalois K L]
 
-/-- The determinant-norm image on the actual archimedean tensor factor
-is the field-norm subgroup of any completion above the base place. -/
+/-- The determinant-norm image on the actual archimedean tensor factor is the field-norm subgroup of any completion above the base place. -/
 theorem infiniteTensorNormSubgroup_eq_localNormSubgroup
     (v : InfinitePlace K) (w : InfinitePlace L)
     (hw : w.comap (algebraMap K L) = v) :
@@ -166,11 +159,11 @@ theorem infiniteTensorNormSubgroup_eq_localNormSubgroup
     eLocalized.toRingEquiv.trans eWField.symm
   have hLocalized (x : v.1.Completion) :
       eExtension (algebraMap v.1.Completion E x) =
-        InfinitePlace.Completion.ofCompletion (AbsoluteValue.completionMap v.1 u.1 u.2 x) := by
+        AbsoluteValue.completionMap v.1 u.1 u.2 x := by
     change eWField.symm (eLocalized (algebraMap v.1.Completion E x)) = _
     rw [eLocalized.commutes]; rfl
   let : Algebra v.Completion w.Completion :=
-    InfinitePlace.Completion.algebraOfLiesOver v w
+    AbsoluteValue.Completion.algebraOfLiesOver v.1 w.1
   have hCompatible :
       RingHom.comp
           (algebraMap v.Completion w.Completion)
@@ -181,7 +174,7 @@ theorem infiniteTensorNormSubgroup_eq_localNormSubgroup
     intro x
     change algebraMap v.Completion w.Completion (eBase x) =
       eExtension (algebraMap v.1.Completion E x)
-    rw [hLocalized, InfinitePlace.Completion.algebraMap_apply_of_liesOver v w]; rfl
+    rw [hLocalized, AbsoluteValue.Completion.algebraMap_apply_of_liesOver v.1 w.1]; rfl
   have hNormTransport := localNormSubgroup_map_ringEquiv eBase eExtension hCompatible
   rw [hTensorTransport,
     localTensorNormSubgroup_eq_localNormSubgroup

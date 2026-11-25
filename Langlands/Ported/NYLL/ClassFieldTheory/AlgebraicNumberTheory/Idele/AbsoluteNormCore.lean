@@ -14,8 +14,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Numbe
 /-!
 # Absolute norms on the standard adele-unit carriers
 
-The finite valuation vector and archimedean unit projections define the same
-prime-norm convention on the finite, infinite, and full standard carriers.
+The finite valuation vector and archimedean unit projections define the same prime-norm convention on the finite, infinite, and full standard carriers.
 -/
 
 @[expose] public section
@@ -30,7 +29,7 @@ variable {K : Type*} [Field K] [NumberField K]
 /-- The norm of a unit in a normed field, as a positive real unit. -/
 def nnnormUnitHom (F : Type*) [NormedField F] :
     Fˣ →* ℝ≥0ˣ :=
-  Units.map (nnnormHom : F →*₀ ℝ≥0).toMonoidHom
+  Units.map (nnNormHom : F →*₀ ℝ≥0).toMonoidHom
 
 @[simp]
 theorem nnnormUnitHom_val (F : Type*) [NormedField F] (x : Fˣ) :
@@ -75,8 +74,7 @@ end IsDedekindDomain.FiniteAdeleRing
 
 namespace NumberField.IdeleGroup
 
-/-- The absolute norm on the standard adele-unit carrier. Finite uniformizers
-contribute their prime norms, and the archimedean factor occurs inversely. -/
+/-- The absolute norm on the standard adele-unit carrier. Finite uniformizers contribute their prime norms, and the archimedean factor occurs inversely. -/
 def absoluteNorm : IdeleGroup (𝓞 K) K →* ℝ≥0ˣ :=
   MonoidHom.mk'
     (fun a => FiniteAdeleRing.absoluteNorm (finitePart a) *

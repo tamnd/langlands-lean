@@ -17,16 +17,9 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LubinTate.EqualCharacterist
 /-!
 # The completed theta-intertwining theorem: primitive action for the changed completed level
 
-The theta relation in the completed theta-intertwining theorem uses the source parameter `u⁻¹T`.
-We first
-prove, genuinely by Eisenstein over `(AlgebraicClosure κ)[[T]]`, that its
-primitive polynomial stays irreducible over the completed maximal-unramified
-Laurent field.  We then enumerate its roots by source Lubin--Tate unit
-brackets and show that every such primitive point generates the splitting
-field.
+The theta relation in the completed theta-intertwining theorem uses the source parameter `u⁻¹T`. We first prove, genuinely by Eisenstein over `(AlgebraicClosure κ)[[T]]`, that its primitive polynomial stays irreducible over the completed maximal-unramified Laurent field.  We then enumerate its roots by source Lubin--Tate unit brackets and show that every such primitive point generates the splitting field.
 
-The theta unit `u` and a source Lubin--Tate bracket unit `a` are deliberately
-kept as distinct parameters.  Repository index `n` is division level `n + 1`.
+The theta unit `u` and a source Lubin--Tate bracket unit `a` are deliberately kept as distinct parameters.  Repository index `n` is division level `n + 1`.
 -/
 
 
@@ -49,8 +42,7 @@ variable {K : Type u} [Field K]
 
 attribute [local instance] equalCharacteristicCompletedLevelBaseAlgebra
 
-/-- The image of the source unit `u⁻¹` in
-`(AlgebraicClosure κ)[[T]]`. -/
+/-- The image of the source unit `u⁻¹` in `(AlgebraicClosure κ)[[T]]`. -/
 noncomputable def equalCharacteristicChangedCompletedSourceUnit
     (F : LocalField.{u, v} K) (u : F.residueField⟦X⟧ˣ) :
     (AlgebraicClosure F.residueField)⟦X⟧ˣ :=
@@ -59,8 +51,7 @@ noncomputable def equalCharacteristicChangedCompletedSourceUnit
       (algebraMap F.residueField (AlgebraicClosure F.residueField)))
     (equalCharacteristicThetaSourceUnit u)
 
-/-- The integral primitive polynomial for source parameter `u⁻¹T`,
-after coefficientwise extension to `(AlgebraicClosure κ)[[T]]`. -/
+/-- The integral primitive polynomial for source parameter `u⁻¹T`, after coefficientwise extension to `(AlgebraicClosure κ)[[T]]`. -/
 noncomputable def equalCharacteristicChangedCompletedIntegralPrimitivePolynomial
     (F : LocalField.{u, v} K) (u : F.residueField⟦X⟧ˣ) (n : ℕ) :
     Polynomial (AlgebraicClosure F.residueField)⟦X⟧ :=
@@ -86,8 +77,7 @@ theorem equalCharacteristicChangedCompletedIntegralPrimitivePolynomial_natDegree
       (equalCharacteristicThetaSourceUnit u) n).natDegree_map,
     equalCharacteristicChangedIntegralPrimitivePolynomial_natDegree]
 
-/-- Passage from the changed integral polynomial to Laurent series agrees
-with the completed coefficientwise base change. -/
+/-- Passage from the changed integral polynomial to Laurent series agrees with the completed coefficientwise base change. -/
 theorem equalCharacteristicChangedCompletedIntegralPrimitivePolynomial_map
     (F : LocalField.{u, v} K) (u : F.residueField⟦X⟧ˣ) (n : ℕ) :
     (equalCharacteristicChangedCompletedIntegralPrimitivePolynomial F u n).map
@@ -100,8 +90,7 @@ theorem equalCharacteristicChangedCompletedIntegralPrimitivePolynomial_map
     ← Polynomial.map_map]
   rfl
 
-/-- Modulo `T`, the completed changed primitive polynomial is its single
-leading monomial. -/
+/-- Modulo `T`, the completed changed primitive polynomial is its single leading monomial. -/
 theorem equalCharacteristicChangedCompletedIntegralPrimitivePolynomial_map_constantCoeff
     (F : LocalField.{u, v} K) (u : F.residueField⟦X⟧ˣ) (n : ℕ) :
     (equalCharacteristicChangedCompletedIntegralPrimitivePolynomial F u n).map
@@ -126,8 +115,7 @@ theorem equalCharacteristicChangedCompletedIntegralPrimitivePolynomial_map_const
     equalCharacteristicChangedIntegralPrimitivePolynomial_map_constantCoeff,
     Polynomial.map_pow, Polynomial.map_X]
 
-/-- The constant coefficient is the mapped unit times `T`, rather than
-merely `T`; this is the point at which the source `u⁻¹T` matters. -/
+/-- The constant coefficient is the mapped unit times `T`, rather than merely `T`; this is the point at which the source `u⁻¹T` matters. -/
 theorem equalCharacteristicChangedCompletedIntegralPrimitivePolynomial_coeff_zero
     (F : LocalField.{u, v} K) (u : F.residueField⟦X⟧ˣ) (n : ℕ) :
     (equalCharacteristicChangedCompletedIntegralPrimitivePolynomial F u n).coeff 0 =
@@ -164,8 +152,7 @@ private theorem equalCharacteristicChangedCompletedIntegralUniformizer_notMem_sp
   exact powerSeries_X_notMem_span_X_sq
     (AlgebraicClosure F.residueField) hmul
 
-/-- The completed integral source polynomial is genuinely Eisenstein at
-`(T)`. -/
+/-- The completed integral source polynomial is genuinely Eisenstein at `(T)`. -/
 theorem equalCharacteristicChangedCompletedIntegralPrimitivePolynomial_isEisensteinAt
     (F : LocalField.{u, v} K) (u : F.residueField⟦X⟧ˣ) (n : ℕ) :
     (equalCharacteristicChangedCompletedIntegralPrimitivePolynomial F u n).IsEisensteinAt
@@ -177,7 +164,7 @@ theorem equalCharacteristicChangedCompletedIntegralPrimitivePolynomial_isEisenst
   have hmonic : Q.Monic :=
     equalCharacteristicChangedCompletedIntegralPrimitivePolynomial_monic F u n
   refine hmonic.isEisensteinAt_of_mem_of_notMem
-    (Ideal.isPrime_span_singleton_of_prime PowerSeries.X_prime).ne_top ?_ ?_
+    (Ideal.isPrime_span_singleton_of_prime PowerSeries.prime_X).ne_top ?_ ?_
   · intro i hi
     rw [Ideal.mem_span_singleton, PowerSeries.X_dvd_iff]
     have hcoeff :
@@ -207,7 +194,7 @@ theorem equalCharacteristicChangedCompletedIntegralPrimitivePolynomial_irreducib
   apply
     (equalCharacteristicChangedCompletedIntegralPrimitivePolynomial_isEisensteinAt
       F u n).irreducible
-      (Ideal.isPrime_span_singleton_of_prime PowerSeries.X_prime)
+      (Ideal.isPrime_span_singleton_of_prime PowerSeries.prime_X)
       (equalCharacteristicChangedCompletedIntegralPrimitivePolynomial_monic
         F u n).isPrimitive
   rw [equalCharacteristicChangedCompletedIntegralPrimitivePolynomial_natDegree]
@@ -216,8 +203,7 @@ theorem equalCharacteristicChangedCompletedIntegralPrimitivePolynomial_irreducib
       (Finite.one_lt_card : 1 < Nat.card F.residueField))
     (Nat.pow_pos Nat.card_pos)
 
-/-- The source primitive polynomial remains irreducible over the completed
-maximal-unramified Laurent field. -/
+/-- The source primitive polynomial remains irreducible over the completed maximal-unramified Laurent field. -/
 theorem equalCharacteristicChangedCompletedPrimitivePolynomial_irreducible
     (F : LocalField.{u, v} K) (u : F.residueField⟦X⟧ˣ) (n : ℕ) :
     Irreducible (equalCharacteristicChangedCompletedPrimitivePolynomial F u n) := by
@@ -275,8 +261,7 @@ theorem equalCharacteristicChangedCompletedPrimitiveRoot_ne_zero
       (equalCharacteristicChangedCompletedPrimitiveRoot F u n) = 0
   rw [hzero, map_zero]
 
-/-- The source LT bracket image attached to a bracket unit `a`.  The theta
-unit is the separate parameter `u`. -/
+/-- The source LT bracket image attached to a bracket unit `a`.  The theta unit is the separate parameter `u`. -/
 noncomputable def equalCharacteristicChangedCompletedUnitRoot
     (F : LocalField.{u, v} K)
     [CharP K F.residueCharacteristic]
@@ -365,8 +350,7 @@ private theorem equalCharacteristicChangedActionPrimitivePolynomial_eval₂
     equalCharacteristicChangedActionPiPolynomialIterate_eval₂,
     Polynomial.eval₂_C]
 
-/-- Every source LT unit bracket of the chosen point is again a root of the
-completed source primitive polynomial. -/
+/-- Every source LT unit bracket of the chosen point is again a root of the completed source primitive polynomial. -/
 theorem equalCharacteristicChangedCompletedUnitRoot_isRoot
     (F : LocalField.{u, v} K)
     [CharP K F.residueCharacteristic]
@@ -422,8 +406,7 @@ theorem equalCharacteristicChangedCompletedUnitRoot_isRoot
   rw [ht]
   exact hzEquation
 
-/-- A source LT bracket is a polynomial expression in its input over the
-completed-unramified base. -/
+/-- A source LT bracket is a polynomial expression in its input over the completed-unramified base. -/
 theorem equalCharacteristicChangedCompletedAmbientBracket_mem_adjoin
     (F : LocalField.{u, v} K)
     [CharP K F.residueCharacteristic]
@@ -539,8 +522,7 @@ theorem equalCharacteristicChangedCompletedUnitParameterRootSet_injective
   apply equalCharacteristicChangedCompletedUnitParameterRoot_injective F u n
   exact congrArg Subtype.val hab
 
-/-- The completed changed primitive polynomial has the expected number of
-roots in its splitting field. -/
+/-- The completed changed primitive polynomial has the expected number of roots in its splitting field. -/
 theorem equalCharacteristicChangedCompletedPrimitiveRootSet_natCard
     (F : LocalField.{u, v} K) (u : F.residueField⟦X⟧ˣ) (n : ℕ) :
     Nat.card
@@ -567,8 +549,7 @@ theorem equalCharacteristicChangedCompletedUnitParameterRootSet_bijective
       (equalCharacteristicLubinTateUnitParameter_natCard F n).trans
         (equalCharacteristicChangedCompletedPrimitiveRootSet_natCard F u n).symm⟩
 
-/-- Every visible parameter root is a source bracket polynomial in the
-chosen primitive point. -/
+/-- Every visible parameter root is a source bracket polynomial in the chosen primitive point. -/
 theorem equalCharacteristicChangedCompletedUnitParameterRoot_mem_adjoin
     (F : LocalField.{u, v} K)
     [CharP K F.residueCharacteristic]
@@ -610,8 +591,7 @@ theorem equalCharacteristicChangedCompletedUnitParameterRoot_mem_adjoin
   rw [equalCharacteristicLubinTateAmbientBracket_apply]
   exact S.sum_mem fun i _ ↦ S.mul_mem (hcoeff _) (hiterate i)
 
-/-- Every root lies in the subfield generated by the chosen primitive
-point. -/
+/-- Every root lies in the subfield generated by the chosen primitive point. -/
 theorem equalCharacteristicChangedCompletedPrimitiveRootSet_subset_adjoin
     (F : LocalField.{u, v} K)
     [CharP K F.residueCharacteristic]
@@ -635,8 +615,7 @@ theorem equalCharacteristicChangedCompletedPrimitiveRootSet_subset_adjoin
   rw [← hay]
   exact equalCharacteristicChangedCompletedUnitParameterRoot_mem_adjoin F u n a
 
-/-- The chosen primitive source point generates its completed splitting
-field. -/
+/-- The chosen primitive source point generates its completed splitting field. -/
 theorem equalCharacteristicChangedCompletedPrimitiveRoot_adjoin_eq_top
     (F : LocalField.{u, v} K)
     [CharP K F.residueCharacteristic]
@@ -660,8 +639,7 @@ theorem equalCharacteristicChangedCompletedPrimitiveRoot_adjoin_eq_top
   rw [equalCharacteristicChangedCompletedPrimitivePolynomial_adjoin_rootSet] at hall
   exact top_unique hall
 
-/-- Every source LT unit bracket of the primitive point is itself a
-primitive generator of the completed level field. -/
+/-- Every source LT unit bracket of the primitive point is itself a primitive generator of the completed level field. -/
 theorem equalCharacteristicChangedCompletedUnitRoot_adjoin_eq_top
     (F : LocalField.{u, v} K)
     [CharP K F.residueCharacteristic]
@@ -719,8 +697,7 @@ theorem equalCharacteristicChangedCompletedUnitRoot_adjoin_eq_top
       at hle
   exact top_unique hle
 
-/-- The chosen changed primitive point is integral over the completed
-maximal-unramified base. -/
+/-- The chosen changed primitive point is integral over the completed maximal-unramified base. -/
 theorem equalCharacteristicChangedCompletedPrimitiveRoot_isIntegral
     (F : LocalField.{u, v} K) (u : F.residueField⟦X⟧ˣ) (n : ℕ) :
     IsIntegral
@@ -731,8 +708,7 @@ theorem equalCharacteristicChangedCompletedPrimitiveRoot_isIntegral
   rw [← Polynomial.eval_map]
   exact equalCharacteristicChangedCompletedPrimitiveRoot_isRoot F u n
 
-/-- The completed source primitive polynomial is the minimal polynomial of
-the chosen primitive point. -/
+/-- The completed source primitive polynomial is the minimal polynomial of the chosen primitive point. -/
 theorem equalCharacteristicChangedCompletedPrimitiveRoot_minpoly
     (F : LocalField.{u, v} K) (u : F.residueField⟦X⟧ˣ) (n : ℕ) :
     minpoly (equalCharacteristicCompletedUnramifiedField F.residueField)

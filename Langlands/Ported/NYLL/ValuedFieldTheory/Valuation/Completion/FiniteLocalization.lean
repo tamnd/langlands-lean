@@ -17,10 +17,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.Co
 /-!
 # Finite localizations inside metric completions
 
-For a finite extension `L / K`, the localization `L K_v` inside
-the metric completion `L_w` is already all of `L_w`.  The proof uses no
-separability: the image of `K_v ⊗_K L` is finite-dimensional and closed,
-but contains the dense copy of `L`.
+For a finite extension `L / K`, the localization `L K_v` inside the metric completion `L_w` is already all of `L_w`.  The proof uses no separability: the image of `K_v ⊗_K L` is finite-dimensional and closed, but contains the dense copy of `L`.
 -/
 
 @[expose] public section
@@ -34,8 +31,7 @@ universe u v
 
 open scoped TensorProduct
 
-/-- The nontriviality convention supplies the corresponding
-nontrivially normed field structure on `K_v`. -/
+/-- The nontriviality convention supplies the corresponding nontrivially normed field structure on `K_v`. -/
 @[reducible] noncomputable def absoluteValueExtension_completionNontriviallyNormedField
     {K : Type u} [Field K] (vK : AbsoluteValue K ℝ)
     (hvK : vK.IsNontrivial) :
@@ -45,8 +41,7 @@ nontrivially normed field structure on `K_v`. -/
       ⟨x, hx0, hx1⟩
     exact ⟨x, hx0, hx1⟩)
 
-/-- The completion `L_w` is a normed algebra over `K_v`: its scalar map is
-the isometric completion map supplied by the valuation-extension theorem. -/
+/-- The completion `L_w` is a normed algebra over `K_v`: its scalar map is the isometric completion map supplied by the valuation-extension theorem. -/
 @[reducible] noncomputable def absoluteValueExtension_completionNormedAlgebra
     {K : Type u} {L : Type v} [Field K] [Field L] [Algebra K L]
     (vK : AbsoluteValue K ℝ) (w : AbsoluteValueExtension vK L) :
@@ -89,8 +84,7 @@ theorem absoluteValueExtension_localizationTensorHom_tmul
   intro sharedOwner1
   rfl
 
-/-- For a finite extension, the canonical map `K_v ⊗_K L → L_w` is
-surjective. -/
+/-- For a finite extension, the canonical map `K_v ⊗_K L → L_w` is surjective. -/
 theorem absoluteValueExtension_localizationTensorHom_surjective
     {K : Type u} {L : Type v} [Field K] [Field L] [Algebra K L]
     [FiniteDimensional K L]
@@ -111,7 +105,7 @@ theorem absoluteValueExtension_localizationTensorHom_surjective
   let : Module.Finite vK.Completion f.toLinearMap.range :=
     Module.Finite.range f.toLinearMap
   have hrangeClosed : IsClosed (f.toLinearMap.range : Set w.1.Completion) :=
-    Submodule.closed_of_finiteDimensional
+    Submodule.isClosed_of_finiteDimensional
       (𝕜 := vK.Completion) f.toLinearMap.range
   have hdense : DenseRange
       (AbsoluteValue.toCompletion w.1) :=
@@ -134,8 +128,7 @@ theorem absoluteValueExtension_localizationTensorHom_surjective
     trivial
   exact closure_minimal hrange hrangeClosed hx
 
-/-- For a finite extension, the localization `L K_v` inside the
-metric completion is the whole completion `L_w`. -/
+/-- For a finite extension, the localization `L K_v` inside the metric completion is the whole completion `L_w`. -/
 theorem absoluteValueExtension_finiteLocalization_eq_top
     {K : Type u} {L : Type v} [Field K] [Field L] [Algebra K L]
     [FiniteDimensional K L]
@@ -169,8 +162,7 @@ universe u v
 
 open scoped TensorProduct
 
-/-- The algebraic localization of an extension inside the completion selected
-by an extended absolute value. -/
+/-- The algebraic localization of an extension inside the completion selected by an extended absolute value. -/
 abbrev LocalizedCompletion
     {K : Type u} {L : Type v}
     [Field K] [Field L] [Algebra K L]
@@ -181,8 +173,7 @@ abbrev LocalizedCompletion
 variable {K : Type u} {L : Type v}
     [Field K] [Field L] [Algebra K L] [FiniteDimensional K L]
 
-/-- The algebraic localization of a finite extension is finite-dimensional
-over the completed base field. -/
+/-- The algebraic localization of a finite extension is finite-dimensional over the completed base field. -/
 theorem localizedCompletionModuleFinite
     (vK : AbsoluteValue K ℝ) (hvK : vK.IsNontrivial)
     (w : AbsoluteValueExtension vK L) :
@@ -207,8 +198,7 @@ theorem localizedCompletionModuleFinite
     (AbsoluteValue.algebraicLocalization vK w.1 w.2).val.toLinearMap
     (AbsoluteValue.algebraicLocalization vK w.1 w.2).val.injective
 
-/-- In finite degree the algebraic localization is canonically the whole
-metric completion. -/
+/-- In finite degree the algebraic localization is canonically the whole metric completion. -/
 noncomputable def localizedCompletionEquivCompletion
     (vK : AbsoluteValue K ℝ) (hvK : vK.IsNontrivial)
     (w : AbsoluteValueExtension vK L) :

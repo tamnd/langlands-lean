@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NormUnitsBaseChange
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Adele.FiniteLocalFactor
 
@@ -26,11 +25,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.Completion.Tenso
 /-!
 # Local components of the ordinary idele norm
 
-The ordinary idele norm is transported from the determinant norm on the
-relative idele group. At each place, the canonical local tensor decomposition identifies that
-determinant with the product of the ordinary field norms on the completion
-factors above the place.  These are the concrete finite- and infinite-place
-forms of the local idele norm formula.
+The ordinary idele norm is transported from the determinant norm on the relative idele group. At each place, the canonical local tensor decomposition identifies that determinant with the product of the ordinary field norms on the completion factors above the place.  These are the concrete finite- and infinite-place forms of the local idele norm formula.
 -/
 
 
@@ -40,7 +35,6 @@ forms of the local idele norm formula.
 open scoped BigOperators NumberField TensorProduct
 
 attribute [local instance] AbsoluteValue.Completion.algebraOfLiesOver
-attribute [local instance] NumberField.InfinitePlace.Completion.algebraOfLiesOver
 open NumberField IsDedekindDomain
 
 noncomputable section
@@ -56,8 +50,7 @@ variable
     [Field K] [NumberField K]
     [Field L] [NumberField L] [Algebra K L]
 
-/-- The relative-tensor coordinate form underlying the public finite-place
-formula below. -/
+/-- The relative-tensor coordinate form underlying the public finite-place formula below. -/
 private theorem finiteComponent_norm_eq_prod_extensions
     (v : HeightOneSpectrum (𝓞 K))
     (a : IdeleGroup L) :
@@ -170,11 +163,7 @@ private theorem finiteComponent_norm_eq_prod_extensions
       intro w _
       rfl
 
-/-- The finite-place form of the ordinary idele norm. Each factor
-is the mathlib field norm of the actual idele component at the concrete
-finite place corresponding to an exact extension of `v`; the existing
-completion equivalence is used only to put that component in the canonical
-absolute-value completion. -/
+/-- The finite-place form of the ordinary idele norm. Each factor is the mathlib field norm of the actual idele component at the concrete finite place corresponding to an exact extension of `v`; the existing completion equivalence is used only to put that component in the canonical absolute-value completion. -/
 private theorem finiteComponent_norm_eq_prod_completion
     (v : HeightOneSpectrum (𝓞 K))
     (a : IdeleGroup L) :
@@ -322,10 +311,7 @@ private theorem finiteComponent_norm_eq_prod_completion
             (finitePlaceExtensionEquivAbove
               (K := K) (L := L) v w).1 a)).symm
 
-/-- The finite-place form of the ordinary idele norm, entirely in
-the concrete adic completions.  Thus the component at `v` is the product
-of the ordinary field norms of the components at all finite places above
-`v`. -/
+/-- The finite-place form of the ordinary idele norm, entirely in the concrete adic completions.  Thus the component at `v` is the product of the ordinary field norms of the components at all finite places above `v`. -/
 private theorem finiteComponent_norm_eq_prod_exact_index
     (v : HeightOneSpectrum (𝓞 K))
     (a : IdeleGroup L) :
@@ -496,9 +482,7 @@ private theorem finiteComponent_norm_eq_prod_exact_index
                 (K := K) (L := L) v w).1 a)
       exact hNorm
 
-/-- The finite-place form of the ordinary idele norm. The
-component at `v` is the product of the ordinary field norms of the actual
-idele components at the finite places above `v`. -/
+/-- The finite-place form of the ordinary idele norm. The component at `v` is the product of the ordinary field norms of the actual idele components at the finite places above `v`. -/
 theorem finiteComponent_norm_eq_prod
     (v : HeightOneSpectrum (𝓞 K))
     (a : IdeleGroup L) :
@@ -582,8 +566,7 @@ theorem finiteComponent_norm_eq_prod
               (finiteComponent W.1 a))
           (fun _ => rfl)
 
-/-- The absolute-value-extension-coordinate form underlying the public
-archimedean formula below. -/
+/-- The absolute-value-extension-coordinate form underlying the public archimedean formula below. -/
 private theorem infiniteComponent_norm_eq_prod_extensions
     (v : InfinitePlace K)
     (a : IdeleGroup L) :
@@ -697,8 +680,7 @@ private theorem infiniteComponent_norm_eq_prod_extensions
       intro w _
       rfl
 
-/-- The completion-coordinate form underlying the public archimedean
-formula below, already reindexed by concrete infinite places. -/
+/-- The completion-coordinate form underlying the public archimedean formula below, already reindexed by concrete infinite places. -/
 private theorem infiniteComponent_norm_eq_prod_completion
     (v : InfinitePlace K)
     (a : IdeleGroup L) :
@@ -745,7 +727,7 @@ private theorem infiniteComponent_norm_eq_prod_completion
           _root_.infinitePlaceBelow (K := K) W = v},
         Units.map (Algebra.norm vK.Completion)
           (Units.mapEquiv
-            (InfinitePlace.Completion.equiv W.1).toMulEquiv
+            (RingEquiv.refl W.1.Completion).toMulEquiv
             (infiniteComponent W.1 a)) := by
   intro vK hvK
   classical
@@ -803,7 +785,7 @@ private theorem infiniteComponent_norm_eq_prod_completion
           _root_.infinitePlaceBelow (K := K) W = v},
         Units.map (Algebra.norm vK.Completion)
           (Units.mapEquiv
-            (InfinitePlace.Completion.equiv W.1).toMulEquiv
+            (RingEquiv.refl W.1.Completion).toMulEquiv
             (infiniteComponent W.1 a))
   calc
     Units.mapEquiv
@@ -831,7 +813,7 @@ private theorem infiniteComponent_norm_eq_prod_completion
           _root_.infinitePlaceBelow (K := K) W = v},
         Units.map (Algebra.norm vK.Completion)
           (Units.mapEquiv
-            (InfinitePlace.Completion.equiv W.1).toMulEquiv
+            (RingEquiv.refl W.1.Completion).toMulEquiv
             (infiniteComponent W.1 a)) := by
       apply Finset.prod_congr rfl
       intro W _
@@ -879,15 +861,13 @@ private theorem infiniteComponent_norm_eq_prod_completion
         at hcomponentFixed
       apply
         (Units.mapEquiv
-          (InfinitePlace.Completion.equiv W.1).symm.toMulEquiv).injective
+          (RingEquiv.refl W.1.Completion).symm.toMulEquiv).injective
       rw [hcomponentFixed]
       apply Units.ext
       exact
-        ((InfinitePlace.Completion.equiv W.1).symm_apply_apply _).symm
+        ((RingEquiv.refl W.1.Completion).symm_apply_apply _).symm
 
-/-- The archimedean form of the ordinary idele norm. The component
-at `v` is the product of the ordinary field norms of the actual idele
-components at the infinite places above `v`. -/
+/-- The archimedean form of the ordinary idele norm. The component at `v` is the product of the ordinary field norms of the actual idele components at the infinite places above `v`. -/
 theorem infiniteComponent_norm_eq_prod
     (v : InfinitePlace K)
     (a : IdeleGroup L) :
@@ -957,7 +937,7 @@ theorem infiniteComponent_norm_eq_prod
             _root_.infinitePlaceBelow (K := K) W = v},
           Units.map (Algebra.norm vK.Completion)
             (Units.mapEquiv
-              (InfinitePlace.Completion.equiv W.1).toMulEquiv
+              (RingEquiv.refl W.1.Completion).toMulEquiv
               (infiniteComponent W.1 a))) := by
       exact
         congrArg (Units.mapEquiv eBase.symm.toMulEquiv) hcompletion
@@ -966,24 +946,28 @@ theorem infiniteComponent_norm_eq_prod
         Units.mapEquiv eBase.symm.toMulEquiv
           (Units.map (Algebra.norm vK.Completion)
             (Units.mapEquiv
-              (InfinitePlace.Completion.equiv W.1).toMulEquiv
+              (RingEquiv.refl W.1.Completion).toMulEquiv
               (infiniteComponent W.1 a))) := by
       rw [map_prod]
     _ = ∏ W : {W : InfinitePlace L // _root_.infinitePlaceBelow (K := K) W = v},
         @LocalFieldTheory.normUnits v.Completion W.1.Completion _ _
-          (InfinitePlace.Completion.algebraOfLiesOver v W.1)
+          (AbsoluteValue.Completion.algebraOfLiesOver v.1 W.1.1)
           (infiniteComponent W.1 a) := by
       apply Finset.prod_congr rfl
       intro W _
-      let canonical := InfinitePlace.Completion.algebraOfLiesOver v W.1
-      apply Units.ext
-      change eBase.symm (Algebra.norm vK.Completion
-          (InfinitePlace.Completion.equiv W.1 (infiniteComponent W.1 a : W.1.Completion))) =
-        @Algebra.norm v.Completion W.1.Completion _ _ canonical
-          (infiniteComponent W.1 a : W.1.Completion)
-      exact (@Algebra.norm_eq_of_equiv_equiv v.Completion W.1.Completion vK.Completion
-        W.1.1.Completion _ _ _ _ canonical (AbsoluteValue.completionAlgebra vK W.1.1 (eAbove W).2)
-        eBase.toRingEquiv (InfinitePlace.Completion.equiv W.1)
-        (RingHom.ext fun _ => rfl) _).symm
+      let canonical := AbsoluteValue.Completion.algebraOfLiesOver v.1 W.1.1
+      have hAlgebra : AbsoluteValue.completionAlgebra vK W.1.1 (eAbove W).2 = canonical := by
+        apply Algebra.algebra_ext
+        intro x
+        let : Algebra v.Completion W.1.Completion := canonical
+        exact (AbsoluteValue.completionAlgebra_algebraMap vK W.1.1 (eAbove W).2 x).trans
+          (AbsoluteValue.Completion.algebraMap_apply_of_liesOver v.1 W.1.1 x).symm
+      change
+        @LocalFieldTheory.normUnits v.Completion W.1.Completion _ _
+            (AbsoluteValue.completionAlgebra vK W.1.1 (eAbove W).2)
+            (infiniteComponent W.1 a) =
+          @LocalFieldTheory.normUnits v.Completion W.1.Completion _ _ canonical
+            (infiniteComponent W.1 a)
+      rw [hAlgebra]
 
 end IdeleGroup

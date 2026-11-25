@@ -72,7 +72,7 @@ noncomputable def sepAbRestrict (F : IntermediateField K (SeparableClosure K))
     [FiniteDimensional K F] [IsAbelianGalois K F] :
     TopologicalAbelianization Gal(SeparableClosure K/K) →* Gal(F/K) :=
   QuotientGroup.lift _ (AlgEquiv.restrictNormalHom F)
-    (Subgroup.topologicalClosure_minimal _ (Abelianization.commutator_subset_ker _)
+    (Subgroup.topologicalClosure_minimal _ (Group.Abelianization.commutator_le_ker _)
       (by rw [IntermediateField.restrictNormalHom_ker]; exact F.fixingSubgroup_isClosed))
 
 theorem sepAbRestrict_mk (F : IntermediateField K (SeparableClosure K))
@@ -150,8 +150,7 @@ noncomputable def sepIncl (F : IntermediateField K (SeparableClosure K)) :
     F →ₐ[K] AlgebraicClosure K :=
   (separableClosure K (AlgebraicClosure K)).val.comp F.val
 
-/-- A lift `g` of `art x` acts on a finite abelian subextension `F` of `K^sep` as the
-finite Artin symbol. -/
+/-- A lift `g` of `art x` acts on a finite abelian subextension `F` of `K^sep` as the finite Artin symbol. -/
 theorem apply_sepIncl_of_mk_eq_art (F : IntermediateField K (SeparableClosure K))
     [FiniteDimensional K F] [IsAbelianGalois K F] (x : Kˣ) (g : Field.absoluteGaloisGroup K)
     (hg : (QuotientGroup.mk g : Field.absoluteGaloisGroupAbelianization K) = art K x) (z : F) :
@@ -298,7 +297,7 @@ theorem mem_range_of_pow_eq {L : Type*} [Field L] [Fintype L] (f : L →+* resid
   classical
   by_contra hne
   set Z : Finset (residueFieldBar K) := insert y (Finset.univ.image f)
-  have hp := FiniteField.X_pow_card_sub_X_ne_zero (residueFieldBar K) hN1
+  have hp := Polynomial.X_pow_sub_X_ne_zero (R := residueFieldBar K) hN1
   have hsub : Z.val ⊆ (X ^ N - X : (residueFieldBar K)[X]).roots := by
     intro a ha
     rw [mem_roots hp, IsRoot.def, eval_sub, eval_pow, eval_X, sub_eq_zero]

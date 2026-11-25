@@ -16,9 +16,7 @@ public import Mathlib.RepresentationTheory.Rep.Basic
 /-!
 # Powers and fixed points of an integer representation
 
-These two pure action laws depend only on the actual representation, independently of the
-universes of its acting group and coefficient carrier. Their existing public names are retained
-in this lower owner, without any class-field or cohomology import or duplicate alias.
+These two pure action laws depend only on the actual representation, independently of the universes of its acting group and coefficient carrier. Their existing public names are retained in this lower owner, without any class-field or cohomology import or duplicate alias.
 -/
 
 @[expose] public section
@@ -27,16 +25,14 @@ universe u v
 
 namespace ClassFormation
 
-/-- Powers in a representation are the iterates of the corresponding
-action map. -/
+/-- Powers in a representation are the iterates of the corresponding action map. -/
 theorem rep_action_pow_eq_iterate {R : Type u} [Group R]
     (B : Rep.{v} ℤ R) (g : R) (n : ℕ) (x : B.V) :
     B.ρ (g ^ n) x = ((B.ρ g)^[n]) x := by
   let : Module ℤ B.V := B.hV2
-  rw [map_pow, Module.End.pow_apply]
+  rw [map_pow, FunLike.coe_pow_eq_iterate]
 
-/-- Every nonnegative power fixes an element fixed by the original group
-element. -/
+/-- Every nonnegative power fixes an element fixed by the original group element. -/
 theorem rep_action_pow_fixed {R : Type u} [Group R]
     (B : Rep.{v} ℤ R) (g : R) (x : B.V) (hx : B.ρ g x = x) (n : ℕ) :
     B.ρ (g ^ n) x = x := by
