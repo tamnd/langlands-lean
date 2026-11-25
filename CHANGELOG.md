@@ -6,6 +6,9 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- `Langlands/Statements/TorusInduced.lean` and `Langlands/Torus/Induced.lean`: the statement `LocalLanglandsTorusInduced` and its proof `localLanglandsTorusInduced`. For a finite extension L of K, the characters of the units of L correspond to the classes in the first cohomology of the Weil group of K with values in the coinduced module. The relation uses a local Artin map of L and Shapiro's isomorphism.
+- `Langlands/WeilGroup/Embedding.lean`: the Weil group is Hausdorff, and `weilEquiv` is an isomorphism of topological groups from the Weil group of L to its image in the Weil group of K.
+
 - `Langlands/WeilGroup/Restrict.lean`: for a finite extension L of K in the algebraic closure, the subgroup of the Weil group of K that fixes L is open, of finite index, and normal when L is normal over K. The map `weilHom` from the Weil group of L to the Weil group of K is injective and continuous, with this subgroup as its image. It multiplies the degree by the residue degree of L over K.
 
 - `comparator.json`, `Comparator/Challenge.lean` and `Comparator/Solution.lean`: the challenge for `lake comparator`, with the pinned statements of `localReciprocityGL1`, `Bridge.localExistence` and `localLanglandsTorusSplit`. The trust workflow has a new job that runs `lake comparator --paranoid`. This is row Q4 of the trust report.

@@ -4,7 +4,8 @@
   "theorem_names": [
     "Langlands.localReciprocityGL1",
     "Langlands.Bridge.localExistence",
-    "Langlands.localLanglandsTorusSplit"
+    "Langlands.localLanglandsTorusSplit",
+    "Langlands.localLanglandsTorusInduced"
   ],
   "definition_names": [],
   "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
