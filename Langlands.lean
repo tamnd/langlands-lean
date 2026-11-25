@@ -18,11 +18,15 @@ import Langlands.Reciprocity.Unique
 import Langlands.Statements.Basic
 import Langlands.Statements.ClassField
 import Langlands.Statements.Galois
+import Langlands.Statements.GodementJacquet
 import Langlands.Statements.Hecke
+import Langlands.Statements.LocalLanglands
 import Langlands.Statements.Maass
 import Langlands.Statements.Modularity
+import Langlands.Statements.Smooth
 import Langlands.Statements.Torus
 import Langlands.Statements.TorusInduced
+import Langlands.Statements.WeilDeligne
 import Langlands.Tate.ArchimedeanFourier
 import Langlands.Tate.ArchimedeanGamma
 import Langlands.Tate.ArchimedeanParameter

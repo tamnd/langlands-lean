@@ -162,6 +162,22 @@ status:
       kind: statement
       status: known
       note: Artin's conjecture for odd two-dimensional representations over Q, with the newform of weight one. The theorem of Khare and Wintenberger and of Kisin.
+    - name: Langlands.LocalLanglandsGL
+      kind: statement
+      status: known
+      note: The local Langlands correspondence for GL(n), the existence part, with the conditions of Henniart on GL(1), the central character, twists, the contragredient and the standard L-factors. The conditions on the epsilon factors and on the L-factors of pairs are not in the statement yet, so it does not determine the correspondence on the supercuspidal representations.
+    - name: Langlands.LocalLanglandsGL2
+      kind: statement
+      status: known
+      note: The local Langlands correspondence for GL(2), with the explicit parameters of the subrepresentations of the principal series and of the twists of the Steinberg representation. The epsilon factors are not in the statement yet.
+    - name: Langlands.LocalLanglandsSL2
+      kind: statement
+      status: known
+      note: The L-packets of SL(2) as the restrictions of the irreducible representations of GL(2), in the form of Labesse and Langlands. The parametrization of a packet by the component group is not in the statement.
+    - name: Langlands.JacquetLanglandsGL2
+      kind: statement
+      status: known
+      note: The local Jacquet-Langlands correspondence between the discrete series of GL(2) and the irreducible representations of the units of the quaternion division algebra, characterized by the character identity with the sign -1 on the regular elliptic elements.
     - name: Langlands.SelbergEigenvalue
       kind: statement
       status: open
