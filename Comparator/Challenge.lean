@@ -4,6 +4,7 @@ Released under the Apache 2.0 licence as described in the file LICENSE.
 -/
 import Langlands.Statements.ClassField
 import Langlands.Statements.Torus
+import Langlands.Statements.TorusInduced
 
 /-!
 # The challenge for `lake comparator`
@@ -20,5 +21,7 @@ theorem localReciprocityGL1 : LocalReciprocityGL1.{u} := sorry
 theorem Bridge.localExistence : LocalExistence.{u} := sorry
 
 theorem localLanglandsTorusSplit (n : ℕ) : LocalLanglandsTorusSplit.{u} n := sorry
+
+theorem localLanglandsTorusInduced : LocalLanglandsTorusInduced.{u} := sorry
 
 end Langlands

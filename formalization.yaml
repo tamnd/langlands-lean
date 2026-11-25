@@ -98,6 +98,10 @@ status:
       kind: statement
       status: known
       note: The local Langlands correspondence for the split torus of rank n, through a local Artin map. It is proved by Langlands.localLanglandsTorusSplit.
+    - name: Langlands.LocalLanglandsTorusInduced
+      kind: statement
+      status: known
+      note: The local Langlands correspondence for the induced torus Res_{L/K} G_m, through a local Artin map of L and Shapiro's isomorphism. It is proved by Langlands.localLanglandsTorusInduced.
     - name: Langlands.LocalExistence
       kind: statement
       status: known
@@ -235,3 +239,23 @@ status:
     - name: Langlands.WeilGroup.degree_weilHom
       kind: theorem
       status: proved
+    - name: Langlands.WeilGroup.t2Space_weilGroup
+      kind: instance
+      status: proved
+    - name: Langlands.WeilGroup.weilHom_mem_inertia_iff
+      kind: theorem
+      status: proved
+    - name: Langlands.WeilGroup.weilEquiv
+      kind: definition
+      status: proved
+      note: The Weil group of a finite extension L of K is isomorphic as a topological group to the open subgroup of the Weil group of K that fixes L.
+    - name: Langlands.WeilGroup.isEmbedding_weilHom
+      kind: theorem
+      status: proved
+    - name: Langlands.WeilGroup.restrictSubgroup_bot
+      kind: theorem
+      status: proved
+    - name: Langlands.localLanglandsTorusInduced
+      kind: theorem
+      status: proved
+      note: The proof uses only that the local Artin map of L is an isomorphism of topological groups, Shapiro's lemma, and the isomorphism weilEquiv.

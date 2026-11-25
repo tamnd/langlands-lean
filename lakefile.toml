@@ -17,3 +17,4 @@ name = "Langlands"
 
 [[lean_lib]]
 name = "Comparator"
+roots = ["Comparator.Challenge", "Comparator.Solution"]

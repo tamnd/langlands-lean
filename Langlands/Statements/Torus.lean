@@ -19,7 +19,7 @@ Let $T = \mathbb{G}_m^n$ be the split torus of rank $n$ over a nonarchimedean lo
 
 An abstract isomorphism between the two groups of characters says nothing, because both groups are very large. The statement fixes the bijection: it is the composite with $\mathrm{rec}_K$. This is the normalization of Langlands for tori, in the geometric convention of `Langlands.IsLocalArtinMap`.
 
-The induced tori $\mathrm{Res}_{L/K} \mathbb{G}_m$ need the Weil group of $L$ as an open subgroup of $W_K$ and Shapiro's lemma for continuous cohomology. They come in a later file.
+The induced tori $\mathrm{Res}_{L/K} \mathbb{G}_m$ need the Weil group of $L$ as an open subgroup of $W_K$ and Shapiro's lemma for continuous cohomology. They are in `Langlands.Statements.TorusInduced`.
 
 ## References
 

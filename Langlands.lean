@@ -15,10 +15,13 @@ import Langlands.Statements.Basic
 import Langlands.Statements.ClassField
 import Langlands.Statements.Modularity
 import Langlands.Statements.Torus
+import Langlands.Statements.TorusInduced
+import Langlands.Torus.Induced
 import Langlands.Torus.Split
 import Langlands.WeilGroup.Ab
 import Langlands.WeilGroup.Degree
 import Langlands.WeilGroup.Dense
+import Langlands.WeilGroup.Embedding
 import Langlands.WeilGroup.Inertia
 import Langlands.WeilGroup.Restrict
 
