@@ -18,6 +18,7 @@ import Langlands.Reciprocity.Unique
 import Langlands.Statements.Automorphic
 import Langlands.Statements.Basic
 import Langlands.Statements.ClassField
+import Langlands.Statements.FunctionField
 import Langlands.Statements.FundamentalLemma
 import Langlands.Statements.Galois
 import Langlands.Statements.GlobalGL
