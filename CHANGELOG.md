@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.3 (2026-11-26)
+
 ### Added
 
 - `Langlands/Hecke/Rational.lean`: the proof `heckeFunctionalEquationAt_rat` of Hecke's theorem for Q. A Hecke character of Q is a primitive Dirichlet character times a power of the idele norm. Its completed L-function is the completed Dirichlet L-function at a shifted point, and the functional equation, the root number and the poles come from Mathlib.
