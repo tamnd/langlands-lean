@@ -10,6 +10,7 @@ import Langlands.Fidelity.ClassField
 import Langlands.Fidelity.Galois
 import Langlands.Fidelity.Maass
 import Langlands.Fidelity.Modularity
+import Langlands.Hecke.Rational
 import Langlands.Ported.FormalConjectures.Wikipedia
 import Langlands.Reciprocity.Exists
 import Langlands.Reciprocity.GL1
