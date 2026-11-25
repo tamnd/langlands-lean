@@ -34,6 +34,9 @@ import Langlands.Tate.ArchimedeanZeta
 import Langlands.Tate.NonArchimedeanFourier
 import Langlands.Tate.NonArchimedeanMeasure
 import Langlands.Tate.NonArchimedeanZeta
+import Langlands.Tate.PoissonLattice
+import Langlands.Tate.PoissonSummation
+import Langlands.Tate.PoissonTheta
 import Langlands.Torus.Induced
 import Langlands.Torus.Split
 import Langlands.WeilGroup.Ab

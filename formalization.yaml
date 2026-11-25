@@ -222,6 +222,14 @@ status:
       kind: theorem
       status: proved
       note: For an additive character of the completion with conductor exponent d, the Fourier transform of the characteristic function of the integers is the characteristic function of the ball of radius q^d. The measure gives the integers the volume 1.
+    - name: SchwartzMap.tsum_add_zlattice_eq
+      kind: theorem
+      status: proved
+      note: The Poisson summation formula for a Schwartz function on a full lattice in a finite dimensional real inner product space, with the covolume of the lattice and the dual lattice.
+    - name: Langlands.Tate.tsum_zlattice_gaussian
+      kind: theorem
+      status: proved
+      note: The theta transformation formula for a full lattice. The theta series of the lattice at t is the inverse of the covolume times t^(-n/2) times the theta series of the dual lattice at 1/t.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
