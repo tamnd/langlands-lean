@@ -23,7 +23,7 @@ Let $K$ be a number field with ring of integers $\mathcal{O}_K$. For a maximal i
 
 For a good place $v$ the special fiber $\mathcal{X}_v$ is a smooth proper variety over the finite field $k(v)$. Its zeta function is
 $$Z(\mathcal{X}_v, T) = \exp\Big( \sum_{m \ge 1} |\mathcal{X}_v(\mathbb{F}_{N(v)^m})| \frac{T^m}{m} \Big) = \prod_{x} (1 - T^{\deg x})^{-1},$$
-where $x$ runs over the closed points of $\mathcal{X}_v$ and $\deg x = [k(x) : k(v)]$. By the work of Dwork and Grothendieck it is a rational function of $T$. By Deligne it is $\prod_i P_i(T)^{(-1)^{i+1}}$, where $P_i$ is the characteristic polynomial of the Frobenius on $H^i_{et}$ and its roots have absolute value $N(v)^{-i/2}$.
+where $x$ runs over the closed points of $\mathcal{X}_v$ and $\deg x = [k(x) : k(v)]$. By the work of Dwork and Grothendieck it is a rational function of $T$. By Grothendieck it is $\prod_i P_i(T)^{(-1)^{i+1}}$ with $P_i(T) = \det(1 - T \, \mathrm{Frob}_v \mid H^i_{et})$, and by Deligne the roots of $P_i$ have absolute value $N(v)^{-i/2}$.
 
 The Hasse-Weil zeta function, in the form of Serre, is the product of these factors at $T = N(v)^{-s}$:
 $$\zeta_X(s) = \prod_{v \text{ good}} Z(\mathcal{X}_v, N(v)^{-s}) = \prod_{x} (1 - N(x)^{-s})^{-1},$$
