@@ -94,6 +94,10 @@ status:
       kind: statement
       status: known
       note: Local class field theory as the local Langlands correspondence for GL(1). This is a definition of a proposition. The package does not prove it yet.
+    - name: Langlands.LocalLanglandsTorusSplit
+      kind: statement
+      status: known
+      note: The local Langlands correspondence for the split torus of rank n, through a local Artin map. It is proved by Langlands.localLanglandsTorusSplit.
     - name: Langlands.LocalExistence
       kind: statement
       status: known
@@ -138,6 +142,10 @@ status:
       kind: theorem
       status: proved
       note: The map from the abelianization of the Weil group to the abelianization of the absolute Galois group is injective.
+    - name: Langlands.localLanglandsTorusSplit
+      kind: theorem
+      status: proved
+      note: The proof uses only that the local Artin map is an isomorphism of topological groups. With LocalReciprocityGL1 it gives the correspondence for split tori.
     - name: Langlands.Bridge.hasseWeil_rat_of_hasseWeilEllipticQ
       kind: theorem
       status: proved

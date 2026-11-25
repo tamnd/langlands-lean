@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- `Langlands/Statements/Torus.lean`: the statement `LocalLanglandsTorusSplit n`, the local Langlands correspondence for the split torus of rank n. The bijection is fixed: it is the composite with a local Artin map.
+- `Langlands/Torus/Split.lean`: the proof `localLanglandsTorusSplit`, and `WeilGroup.Ab.lift`, which factors a continuous homomorphism to a commutative Hausdorff group through the abelianization of the Weil group.
 - `Langlands/WeilGroup/Dense.lean`: the ring `integers K` is local, so each element of the absolute Galois group fixes its maximal ideal. The absolute Galois group is compact, also in characteristic p. The map to the Galois group of the residue field is continuous, surjective and open. The Weil group is dense in the absolute Galois group (`denseRange_toGalois`).
 - `Langlands/WeilGroup/Ab.lean`: the map `toGaloisAb` from the abelianization of the Weil group to the abelianization of the absolute Galois group is continuous and injective, and `mem_range_toGaloisAb` gives its range. The topological abelianization of the Weil group is Hausdorff.
 
