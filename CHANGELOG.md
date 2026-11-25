@@ -6,6 +6,7 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- `Langlands/Statements/Hecke.lean`: Hecke characters of a number field, their conductor, the finite L-function as an Euler product, the archimedean Gamma factors and the completed L-function. The statement `HeckeFunctionalEquation` gives the meromorphic continuation and the functional equation of the completed L-function. The statement `ArchimedeanParametersExist` gives the archimedean parameters. Neither statement is proved yet.
 - `Langlands/Statements/TorusInduced.lean` and `Langlands/Torus/Induced.lean`: the statement `LocalLanglandsTorusInduced` and its proof `localLanglandsTorusInduced`. For a finite extension L of K, the characters of the units of L correspond to the classes in the first cohomology of the Weil group of K with values in the coinduced module. The relation uses a local Artin map of L and Shapiro's isomorphism.
 - `Langlands/WeilGroup/Embedding.lean`: the Weil group is Hausdorff, and `weilEquiv` is an isomorphism of topological groups from the Weil group of L to its image in the Weil group of K.
 

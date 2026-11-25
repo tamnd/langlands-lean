@@ -114,6 +114,14 @@ status:
     - name: Langlands.KroneckerWeber
       kind: statement
       status: known
+    - name: Langlands.HeckeFunctionalEquation
+      kind: statement
+      status: known
+      note: Hecke's theorem as proved in Tate's thesis. The completed L-function of a Hecke character has a meromorphic continuation and a functional equation with a root number of absolute value one. The archimedean parameters are hypotheses.
+    - name: Langlands.ArchimedeanParametersExist
+      kind: statement
+      status: known
+      note: Each Hecke character has archimedean parameters at each infinite place. This shows that HeckeFunctionalEquation is not vacuous.
     - name: Langlands.ModularityEllipticQ
       kind: statement
       status: known
