@@ -2,7 +2,7 @@ name: trust
 
 # Replay each declaration of the package in the Lean kernel, in a fresh environment, with leanchecker of the toolchain. The replay covers the imports too, Mathlib included. leanchecker uses the kernel of Lean itself, so it finds an environment that a tactic or a metaprogram has changed, but it is not an independent kernel.
 #
-# The job lean4lean checks each declaration of the package Langlands again with lean4lean, a type checker for Lean written in Lean. It checks the declarations of each module and takes the imports of the module as correct, so it does not check Mathlib again. lean4lean follows the design of the C++ kernel, so it is a second implementation but not an independent design. This is check Q3 of spec 14.
+# The job lean4lean checks each declaration of the package Langlands again with lean4lean, a type checker for Lean written in Lean. The program scripts/L4LPackage.lean loads the external imports of the package one time and gives all the declarations of the package to the replay of lean4lean. It takes the declarations of Mathlib as correct, so it does not check Mathlib again. The command `lean4lean Langlands` loads one environment for each module in parallel, and for more than a thousand modules the runner does not have sufficient memory. lean4lean follows the design of the C++ kernel, so it is a second implementation but not an independent design. This is check Q3 of spec 14.
 #
 # The job comparator runs `lake comparator --paranoid` with comparator.json. It checks that each proved top theorem has exactly the type of its pinned statement in Comparator/Challenge.lean and uses only the permitted axioms. With --paranoid it also runs the external checkers that come with Lean. This is check Q4 of spec 14, and a second part of check Q3.
 #
@@ -47,7 +47,7 @@ jobs:
   lean4lean:
     name: lean4lean on the modules of Langlands
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 350
     env:
       # The last commit of lean4lean on the toolchain v4.35.0 of this package.
       LEAN4LEAN_REV: b3ad4b39d94526395d2f39682208c7bd6fb0c1f3
@@ -69,16 +69,14 @@ jobs:
         run: |
           git clone -q https://github.com/digama0/lean4lean "$RUNNER_TEMP/lean4lean"
           git -C "$RUNNER_TEMP/lean4lean" checkout -q "$LEAN4LEAN_REV"
+          cp scripts/L4LPackage.lean "$RUNNER_TEMP/lean4lean/"
+          printf '\n[[lean_exe]]\nname = "l4lpackage"\nroot = "L4LPackage"\nsupportInterpreter = true\n' >> "$RUNNER_TEMP/lean4lean/lakefile.toml"
           cd "$RUNNER_TEMP/lean4lean"
-          lake build lean4lean
+          lake build l4lpackage
       - name: check
         run: |
           start=$(date +%s)
-          mods=$( (echo Langlands; find Langlands -name '*.lean' | sed 's/\.lean$//; s#/#.#g') | sort)
-          for m in $mods; do
-            echo "== $m"
-            lake env "$RUNNER_TEMP/lean4lean/.lake/build/bin/lean4lean" "$m"
-          done
+          lake env "$RUNNER_TEMP/lean4lean/.lake/build/bin/l4lpackage" Langlands
           echo "the check took $(( $(date +%s) - start )) s"
 
   nanoda:
