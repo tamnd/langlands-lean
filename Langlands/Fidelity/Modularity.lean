@@ -13,6 +13,7 @@ This file has checks F2 and F3 of spec 06.3 for the statements of `Langlands.Sta
 * `Langlands.Fidelity.satoTate_total_mass`: the Sato-Tate measure $\frac{2}{\pi} \sin^2 \theta \, d\theta$ has total mass 1 on $[0, \pi]$. A wrong constant in `SatoTate` makes the statement false for $\alpha = 0$ and $\beta = \pi$, and this lemma rules that out.
 * `Langlands.Fidelity.hasCMOverQ_congruentNumber`: the curve $y^2 = x^3 - x$ has $j = 1728$, so it has complex multiplication by $\mathbb{Z}[i]$ in the sense of `HasCMOverQ`.
 * `Langlands.Fidelity.not_hasCMOverQ_X0_11`: the curve $X_0(11)$, $y^2 + y = x^3 - x^2 - 10x - 20$, has $j = -122023936/161051$ and no complex multiplication. So the hypothesis of `SatoTate` is not empty.
+* `Langlands.Fidelity.satoTate_full` (F2): the conclusion of `SatoTate` holds for the interval $[0, \pi]$ and each elliptic curve.
 * `Langlands.Fidelity.not_satoTateUniform` (F3): `SatoTate` contradicts the variant with the uniform measure $d\theta / \pi$. The two limits differ on $[0, \pi/4]$ for $X_0(11)$. So the measure in the statement does work.
 * `Langlands.Fidelity.modularitySemistableQ_of_modularityEllipticQ` (F2): `ModularityEllipticQ` implies `ModularitySemistableQ`, as the published theorems do.
 -/
@@ -64,6 +65,29 @@ theorem not_hasCMOverQ_X0_11 : ¬ HasCMOverQ X0_11 := by
   rw [HasCMOverQ, X0_11_j]
   simp only [cmJInvariants, Set.mem_insert_iff, Set.mem_singleton_iff]
   norm_num
+
+/-- **F2 for `SatoTate`.** For the interval $[0, \pi]$ the conclusion of `SatoTate` holds for each elliptic curve, because each angle is in $[0, \pi]$ and the measure has total mass 1. -/
+theorem satoTate_full (E : WeierstrassCurve ℚ) [E.IsElliptic] :
+    Tendsto
+      (fun x : ℕ =>
+        (Nat.card {p : ℕ // p.Prime ∧ p ≤ x ∧ satoTateAngle E p ∈ Set.Icc 0 π} : ℝ) /
+          Nat.card {p : ℕ // p.Prime ∧ p ≤ x})
+      atTop (𝓝 ((2 / π) * ∫ θ in (0 : ℝ)..π, Real.sin θ ^ 2)) := by
+  rw [satoTate_total_mass]
+  refine tendsto_const_nhds.congr' ?_
+  filter_upwards [eventually_ge_atTop 2] with x hx
+  have hset : {p : ℕ // p.Prime ∧ p ≤ x ∧ satoTateAngle E p ∈ Set.Icc 0 π} =
+      {p : ℕ // p.Prime ∧ p ≤ x} := by
+    congr 1
+    ext p
+    simp only [satoTateAngle, Set.mem_Icc, Real.arccos_nonneg, Real.arccos_le_pi, and_true]
+  have hfin : Finite {p : ℕ // p.Prime ∧ p ≤ x} :=
+    (Set.finite_Iic x).subset (fun p hp => hp.2) |>.to_subtype
+  have hpos : 0 < Nat.card {p : ℕ // p.Prime ∧ p ≤ x} :=
+    have : Nonempty {p : ℕ // p.Prime ∧ p ≤ x} := ⟨⟨2, Nat.prime_two, hx⟩⟩
+    Nat.card_pos
+  rw [hset, div_self]
+  exact_mod_cast hpos.ne'
 
 /-- The variant of `SatoTate` with the uniform measure $d\theta / \pi$ in place of the Sato-Tate measure. -/
 def SatoTateUniform : Prop :=

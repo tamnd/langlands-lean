@@ -15,6 +15,7 @@ This file has the checks F2 (positive instances) and F3 (negative instances) of 
 * `Langlands.Fidelity.kroneckerWeber_bot`: the conclusion of `KroneckerWeber` holds for the trivial extension of $\mathbb{Q}$.
 * `Langlands.Fidelity.finiteAbelian_of_localReciprocityGL1` (F2): `LocalReciprocityGL1` implies finite abelian local reciprocity, which the NYLL port proves (`Langlands.Bridge.finiteAbelianLocalReciprocity`). So the statement agrees with a known theorem.
 * `Langlands.Fidelity.not_existsUnique_unnormalized` (F3): without the condition at a uniformizer, the reciprocity map is never unique, because $x \mapsto \mathrm{rec}(x)^{-1}$ is a second solution. So the condition `IsLocalArtinMap.uniformizer` is necessary for the uniqueness in `LocalReciprocityGL1`. The proof uses no hypothesis.
+* `Langlands.Fidelity.isArtinMap_bot` (F2): the trivial map is an Artin map for the trivial extension of a number field. So the conditions of `IsArtinMap` are not contradictory.
 * `Langlands.Fidelity.isArtinMap_iff_isArtinMapArith_invArt` (F3): a map is an Artin map in the geometric normalization if and only if $x \mapsto \mathrm{art}(x^{-1})$ is an Artin map in the arithmetic normalization. So the two normalizations are different conditions on the same map, and `GlobalReciprocity` fixes the geometric one.
 
 The positive instance `KroneckerWeber` from `GlobalReciprocity` of spec 06.3 needs the conductor of a character and the ray class fields of $\mathbb{Q}$. It is a target of milestone S2.
@@ -171,6 +172,40 @@ theorem isArtinMap_iff_isArtinMapArith_invArt (L : IntermediateField F (Algebrai
       exact ⟨x⁻¹, by rw [← hx, hinv, map_inv]⟩
     · have := h.frobenius v w hw hun ϖ hϖ
       rwa [hinv] at this
+
+/-- Each integer of the trivial extension $\bot$ of $F$ comes from an integer of $F$. -/
+theorem exists_algebraMap_ringOfIntegers_bot (x : 𝓞 (⊥ : IntermediateField F (AlgebraicClosure F))) :
+    ∃ a : 𝓞 F, algebraMap (𝓞 F) (𝓞 (⊥ : IntermediateField F (AlgebraicClosure F))) a = x := by
+  obtain ⟨k, hk⟩ := IntermediateField.mem_bot.mp (x : (⊥ : IntermediateField F (AlgebraicClosure F))).2
+  have hint : IsIntegral ℤ k := by
+    have hx : IsIntegral ℤ ((x : (⊥ : IntermediateField F (AlgebraicClosure F))) : AlgebraicClosure F) :=
+      (x.2).map (IsScalarTower.toAlgHom ℤ (⊥ : IntermediateField F (AlgebraicClosure F)) (AlgebraicClosure F))
+    rw [← hk] at hx
+    exact (isIntegral_algHom_iff (IsScalarTower.toAlgHom ℤ F (AlgebraicClosure F)) (algebraMap F _).injective).mp hx
+  refine ⟨⟨k, hint⟩, ?_⟩
+  apply Subtype.ext
+  apply Subtype.ext
+  exact hk
+
+/-- The Galois group of the trivial extension has one element. -/
+instance subsingleton_gal_bot : Subsingleton Gal((⊥ : IntermediateField F (AlgebraicClosure F))/F) := by
+  refine ⟨fun f g => AlgEquiv.ext fun x => ?_⟩
+  obtain ⟨k, hk⟩ := IntermediateField.mem_bot.mp x.2
+  have : x = algebraMap F (⊥ : IntermediateField F (AlgebraicClosure F)) k := Subtype.ext hk.symm
+  rw [this, f.commutes, g.commutes]
+
+/-- **F2 for `GlobalReciprocity`.** The trivial map is an Artin map for the trivial extension. The condition at each prime is the congruence $a^q \equiv a$ modulo $v$, for $a \in \mathcal{O}_F$ and $q = |\mathcal{O}_F / v|$. So the conditions of `IsArtinMap` are not contradictory. -/
+theorem isArtinMap_bot : IsArtinMap F (⊥ : IntermediateField F (AlgebraicClosure F)) 1 := by
+  refine ⟨continuous_const, fun g => ⟨1, Subsingleton.elim _ _⟩, fun v w _ hw _ ϖ _ => ?_⟩
+  intro x
+  obtain ⟨a, rfl⟩ := exists_algebraMap_ringOfIntegers_bot F x
+  simp only [MonoidHom.one_apply, inv_one, MulSemiringAction.toAlgHom_apply, one_smul]
+  rw [← map_pow, ← map_sub, ← Ideal.mem_comap, ← Ideal.under_def, ← hw.over,
+    ← Ideal.Quotient.eq_zero_iff_mem, map_sub, map_pow]
+  have : v.asIdeal.IsMaximal := v.isMaximal
+  letI := Ideal.Quotient.field v.asIdeal
+  have := Fintype.ofFinite (𝓞 F ⧸ v.asIdeal)
+  rw [Nat.card_eq_fintype_card, FiniteField.pow_card, sub_self]
 
 end Global
 
