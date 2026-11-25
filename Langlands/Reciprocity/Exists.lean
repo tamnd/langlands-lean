@@ -306,7 +306,7 @@ theorem mem_range_of_pow_eq {L : Type*} [Field L] [Fintype L] (f : L →+* resid
     · obtain ⟨b, -, rfl⟩ := Finset.mem_image.mp ha
       rw [← map_pow, ← hN, FiniteField.pow_card]
   have h1 := card_le_degree_of_subset_roots hsub
-  rw [FiniteField.X_pow_card_sub_X_natDegree_eq _ hN1] at h1
+  rw [Polynomial.natDegree_X_pow_sub_X hN1] at h1
   have h2 : Z.card = N + 1 := by
     rw [Finset.card_insert_of_notMem, Finset.card_image_of_injective _ f.injective,
       Finset.card_univ, hN]
@@ -513,10 +513,10 @@ theorem rec₀_surjective : Function.Surjective (rec₀ K) := by
 /-! ### Topology -/
 
 /-- The units of `𝒪_K` inside `Kˣ`. -/
-def S : Set Kˣ := Set.range (integerUnitsToFieldUnits K)
+noncomputable def S : Set Kˣ := Set.range (integerUnitsToFieldUnits K)
 
 /-- The image of inertia in `W_K^{ab}`. -/
-def I : Set (Ab K) := QuotientGroup.mk '' (inertia K : Set (WeilGroup K))
+noncomputable def I : Set (Ab K) := QuotientGroup.mk '' (inertia K : Set (WeilGroup K))
 
 theorem isCompact_S : IsCompact (S K) := isCompact_range (integerUnitsToFieldUnits_continuous K)
 

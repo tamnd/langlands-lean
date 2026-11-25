@@ -299,7 +299,7 @@ theorem continuousOn_ramifiedIntegrand {χ : (v.adicCompletion K)ˣ →* ℂˣ} 
     ((continuous_addChar v ψ d h1).comp (continuous_const_mul c)).continuousOn
   have hp : ContinuousOn (fun x : v.adicCompletion K => (‖x‖ : ℂ) ^ (1 - s)) {0}ᶜ := by
     intro x hx
-    have hx0 : x ≠ 0 := hx
+    have hx0 : x ≠ 0 := Set.mem_compl_singleton_iff.1 hx
     refine ContinuousAt.continuousWithinAt ?_
     exact ContinuousAt.comp (f := fun y : v.adicCompletion K => ((‖y‖ : ℝ) : ℂ)) (x := x)
       (continuousAt_cpow_const (Complex.ofReal_mem_slitPlane.2 (norm_pos_iff.2 hx0)))
