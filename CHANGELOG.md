@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.0.1 (2026-11-25)
+
 ### Added
 
 - The package `Langlands` on Lean v4.35.0 and Mathlib v4.35.0.
