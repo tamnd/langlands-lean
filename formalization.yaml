@@ -178,6 +178,34 @@ status:
       kind: statement
       status: known
       note: The local Jacquet-Langlands correspondence between the discrete series of GL(2) and the irreducible representations of the units of the quaternion division algebra, characterized by the character identity with the sign -1 on the regular elliptic elements.
+    - name: Langlands.RamanujanGL
+      kind: statement
+      status: open
+      note: The Ramanujan conjecture for GL(n) over a number field at the unramified places. Each Satake parameter of a bounded cusp form that is a Hecke eigenform has absolute value one.
+    - name: Langlands.FunctorialityGL
+      kind: statement
+      status: open
+      note: Langlands functoriality for an algebraic representation r of GL(n) into GL(m), at the unramified places. Each cusp form that is a Hecke eigenform has an isobaric lift whose Satake parameters are the eigenvalues of r at the Satake parameters of the form.
+    - name: Langlands.SymPowerFunctoriality
+      kind: statement
+      status: known
+      note: The symmetric power functoriality of Newton and Thorne. For a normalized eigenform of weight k at least 2 without complex multiplication, each symmetric power has a cuspidal lift to GL(n+1) over Q, at the unramified places.
+    - name: Langlands.BaseChangeCyclic
+      kind: statement
+      status: known
+      note: Cyclic base change of Arthur and Clozel for an extension of prime degree, at the unramified places.
+    - name: Langlands.HasseWeil
+      kind: statement
+      status: open
+      note: The Hasse-Weil zeta function of a proper model over the integers of a number field with a smooth generic fiber has a meromorphic continuation to the complex plane. The functional equation is not in the statement.
+    - name: Langlands.FundamentalLemma
+      kind: statement
+      status: known
+      note: The fundamental lemma of Laumon and Ngo for the Lie algebra of a unitary group and an endoscopic group U(n1) x U(n2), for a large residue characteristic.
+    - name: Langlands.FontaineMazurGL2Q
+      kind: statement
+      status: known
+      note: The theorem of Kisin on the conjecture of Fontaine and Mazur for GL(2) over Q, in the ordinary form. An odd irreducible representation that is ordinary at p, with the residual conditions of Kisin, comes from an eigenform.
     - name: Langlands.SelbergEigenvalue
       kind: statement
       status: open
