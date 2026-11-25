@@ -3,6 +3,7 @@ Copyright (c) 2026 The langlands authors. All rights reserved.
 Released under the Apache 2.0 licence as described in the file LICENSE.
 -/
 import Langlands.Statements.ClassField
+import Langlands.Statements.Hecke
 import Langlands.Statements.Torus
 import Langlands.Statements.TorusInduced
 
@@ -19,6 +20,14 @@ universe u
 theorem localReciprocityGL1 : LocalReciprocityGL1.{u} := sorry
 
 theorem Bridge.localExistence : LocalExistence.{u} := sorry
+
+theorem Bridge.globalReciprocity : GlobalReciprocity.{u} := sorry
+
+theorem Bridge.globalExistence : GlobalExistence.{u} := sorry
+
+theorem Bridge.kroneckerWeber : KroneckerWeber := sorry
+
+theorem heckeFunctionalEquationAt_rat : HeckeFunctionalEquationAt ℚ := sorry
 
 theorem localLanglandsTorusSplit (n : ℕ) : LocalLanglandsTorusSplit.{u} n := sorry
 
