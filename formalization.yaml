@@ -174,3 +174,24 @@ status:
     - name: Langlands.Fidelity.not_hasCMOverQ_X0_11
       kind: theorem
       status: proved
+    - name: Langlands.LocalField.isAlgClosed_residueFieldBar
+      kind: instance
+      status: proved
+    - name: Langlands.LocalField.not_isOfFinOrder_frobenius
+      kind: theorem
+      status: proved
+    - name: Langlands.WeilGroup.ker_degree
+      kind: theorem
+      status: proved
+    - name: Langlands.WeilGroup.degree_surjective
+      kind: theorem
+      status: proved
+    - name: Langlands.WeilGroup.continuous_degree
+      kind: theorem
+      status: proved
+    - name: Langlands.WeilGroup.isCompact_inertia
+      kind: theorem
+      status: proved
+    - name: Langlands.WeilGroup.not_isOpen_inertia_induced
+      kind: theorem
+      status: proved
