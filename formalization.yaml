@@ -138,6 +138,30 @@ status:
     - name: Langlands.SatoTate
       kind: statement
       status: known
+    - name: Langlands.EichlerShimuraDeligne
+      kind: statement
+      status: known
+      note: The theorem of Eichler, Shimura and Deligne. A normalized eigenform of weight at least 2 has an l-adic Galois representation for each l and each isomorphism of the algebraic closure of Q_l with C.
+    - name: Langlands.SerreModularityWeak
+      kind: statement
+      status: known
+      note: The weak form of Serre's conjecture, the theorem of Khare and Wintenberger, with traces and determinants of Frobenius at almost all primes.
+    - name: Langlands.ArtinConjecture
+      kind: statement
+      status: open
+      note: Artin's conjecture. The L-function of a nontrivial irreducible complex representation of a finite Galois group is entire.
+    - name: Langlands.ArtinOdd2Q
+      kind: statement
+      status: known
+      note: Artin's conjecture for odd two-dimensional representations over Q, with the newform of weight one. The theorem of Khare and Wintenberger and of Kisin.
+    - name: Langlands.SelbergEigenvalue
+      kind: statement
+      status: open
+      note: Selberg's conjecture. Each nonzero eigenvalue of the hyperbolic Laplacian on a congruence quotient is at least 1/4.
+    - name: Langlands.RamanujanMaass
+      kind: statement
+      status: open
+      note: The Ramanujan conjecture at the finite primes for Maass cusp forms, with the unitary normalization of the Hecke operators.
     - name: Langlands.Bridge.finiteAbelianLocalReciprocity
       kind: theorem
       status: proved
