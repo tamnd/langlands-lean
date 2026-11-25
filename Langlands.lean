@@ -36,7 +36,10 @@ import Langlands.Tate.ArchimedeanFourier
 import Langlands.Tate.ArchimedeanGamma
 import Langlands.Tate.ArchimedeanParameter
 import Langlands.Tate.ArchimedeanZeta
+import Langlands.Tate.NonArchimedeanCharacter
 import Langlands.Tate.NonArchimedeanFourier
+import Langlands.Tate.NonArchimedeanGauss
+import Langlands.Tate.NonArchimedeanLocalEquation
 import Langlands.Tate.NonArchimedeanMeasure
 import Langlands.Tate.NonArchimedeanZeta
 import Langlands.Tate.PoissonLattice
