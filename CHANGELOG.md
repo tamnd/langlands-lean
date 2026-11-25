@@ -4,6 +4,12 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.0 (2026-11-25)
+
+### Changed
+
+- This release closes milestone S0. It has the same Lean content as v0.0.2. The statements of S0 are in Langlands/Statements, and the bridges and the fidelity checks of S0 are complete.
+
 ## v0.0.2 (2026-11-25)
 
 ### Added
