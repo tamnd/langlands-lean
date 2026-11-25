@@ -1,0 +1,92 @@
+/-
+Copyright (c) 2026 Naganori Yamaguchi (https://github.com/n-yamaguchi-0729). All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
+-/
+-- Ported from n-yamaguchi-0729/ClassFieldTheory at commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565, file `Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedFrobeniusFixedFieldAlgebra.lean`. The module prefix is `Langlands.Ported.NYLL` in place of `Nyll`. The changes for the Mathlib of the project pin are in manifests/ported.yaml.
+
+
+module
+
+public import Langlands.Ported.NYLL.ClassFieldTheory.LubinTate.EqualCharacteristic.CompletedLevel.CompletedFrobeniusFixedField
+
+/-!
+# The completed theta-intertwining theorem: the canonical base algebra on the fixed field
+
+This light leaf names the base algebra already determined by the completed
+Frobenius action.  Naming it prevents repeated fallback searches through
+generic scalar-action instances in later norm calculations.
+-/
+
+
+
+@[expose] public section
+
+noncomputable section
+
+
+open scoped LaurentSeries PowerSeries
+
+universe u v
+
+namespace LubinTate
+namespace EqualCharacteristic
+
+open LocalFieldTheory.DiscreteValuationField
+
+variable {K : Type u} [Field K]
+
+attribute [local instance]
+  equalCharacteristicCompletedLevelBaseAlgebra
+  equalCharacteristicCompletedLevelLaurentAlgebra
+  equalCharacteristicCompletedLevelScalarTower
+
+/-- The completed Frobenius fixed field, viewed only as a subring of the
+completed level.  This lightweight projection lets ring-homomorphism
+consumers avoid reconstructing the ambient Laurent-base algebra. -/
+noncomputable def equalCharacteristicCompletedFrobeniusFixedFieldSubring
+    (F : LocalField.{u, v} K)
+    [CharP K F.residueCharacteristic]
+    (a : F.residueField⟦X⟧ˣ) (n : ℕ) :
+    Subring (equalCharacteristicCompletedLevelField F n) :=
+  (equalCharacteristicCompletedFrobeniusFixedField F a n).toSubring
+
+/-- The canonical `k((T))`-algebra structure on the completed theta-intertwining theorem fixed
+field. -/
+@[reducible]
+noncomputable def equalCharacteristicCompletedFrobeniusFixedFieldAlgebra
+    (F : LocalField.{u, v} K)
+    [CharP K F.residueCharacteristic]
+    (a : F.residueField⟦X⟧ˣ) (n : ℕ) :
+    Algebra F.residueField⸨X⸩
+      (equalCharacteristicCompletedFrobeniusFixedField F a n) :=
+  Subalgebra.algebra
+    (equalCharacteristicCompletedFrobeniusFixedField F a n).toSubalgebra
+
+/-- The scalar action induced by the canonical `k((T))`-algebra structure on
+the completed Frobenius fixed field.  Naming it lets downstream files reuse
+the same structure without asking typeclass search to unfold the fixed field. -/
+@[reducible]
+noncomputable def equalCharacteristicCompletedFrobeniusFixedFieldSMul
+    (F : LocalField.{u, v} K)
+    [CharP K F.residueCharacteristic]
+    (a : F.residueField⟦X⟧ˣ) (n : ℕ) :
+    SMul F.residueField⸨X⸩
+      (equalCharacteristicCompletedFrobeniusFixedField F a n) :=
+  @Algebra.toSMul _ _ _ _
+    (equalCharacteristicCompletedFrobeniusFixedFieldAlgebra F a n)
+
+/-- The module structure induced by the canonical `k((T))`-algebra structure
+on the completed Frobenius fixed field. -/
+@[reducible]
+noncomputable def equalCharacteristicCompletedFrobeniusFixedFieldModule
+    (F : LocalField.{u, v} K)
+    [CharP K F.residueCharacteristic]
+    (a : F.residueField⟦X⟧ˣ) (n : ℕ) :
+    Module F.residueField⸨X⸩
+      (equalCharacteristicCompletedFrobeniusFixedField F a n) :=
+  @Algebra.toModule _ _ _ _
+    (equalCharacteristicCompletedFrobeniusFixedFieldAlgebra F a n)
+
+end EqualCharacteristic
+end LubinTate

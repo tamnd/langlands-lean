@@ -29,6 +29,7 @@
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Degree/Valuation.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Degree/ValuationLaws.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/ClassFieldAxiom.lean
+    - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/ClassFieldCandidate.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/CanonicalUnramifiedNormQuotient.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/ChosenDegreeOneFrobenius.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/CoreFrobeniusNorm.lean
@@ -76,9 +77,12 @@
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Core.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/CyclicNormQuotient.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/FieldRepresentation.lean
+    - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/FiniteAbelianClassification.lean
+    - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/FiniteAbelianSubextension.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/FiniteGaloisSubextension.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/IntermediateExtension.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Main.lean
+    - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/NormTopology.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Reduction.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Sylow.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/TotallyRamified.lean
@@ -88,15 +92,25 @@
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/TotallyRamifiedCase/FrobeniusNorms.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/TotallyRamifiedCase/RestrictionCosets.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/TotallyRamifiedCase/RestrictionEquiv.lean
+    - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/ValuationContinuity.lean
     - Nyll/ClassFieldTheory/Algebra/AbelianGaloisEquiv.lean
+    - Nyll/ClassFieldTheory/Algebra/FiniteAbelianIntermediateFieldAlgEquiv.lean
     - Nyll/ClassFieldTheory/Algebra/FiniteAbstractFixedField.lean
     - Nyll/ClassFieldTheory/Algebra/FrobeniusRestriction.lean
+    - Nyll/ClassFieldTheory/Algebra/IntermediateFieldAlgEquivOrderIso.lean
     - Nyll/ClassFieldTheory/Algebra/NormalEmbeddingRange.lean
+    - Nyll/ClassFieldTheory/Algebra/PolynomialIdeal.lean
     - Nyll/ClassFieldTheory/Algebra/ShrinkFiniteExtension.lean
     - Nyll/ClassFieldTheory/AlgebraicNumberTheory/FiniteAbelianCompositum.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/AbsoluteAbelianization.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/AbsoluteFiniteQuotientTransitions.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/AbsoluteFiniteQuotients.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/MathlibAbsoluteAbelianization.lean
     - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/NormalFieldRange.lean
     - Nyll/ClassFieldTheory/AlgebraicNumberTheory/SeparableClosureEmbedding.lean
+    - Nyll/ClassFieldTheory/Definitions/FiniteAbelianExtension.lean
     - Nyll/ClassFieldTheory/Definitions/LocalClassFieldTheory/FieldNormQuotient.lean
+    - Nyll/ClassFieldTheory/Definitions/LocalClassFieldTheory/FiniteAbelianLocalExtension.lean
     - Nyll/ClassFieldTheory/Definitions/LocalClassFieldTheory/IsFieldNorm.lean
     - Nyll/ClassFieldTheory/Definitions/LocalClassFieldTheory/OpenFiniteIndexSubgroup.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/CohomologyBridge.lean
@@ -115,13 +129,49 @@
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/Valuation.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/ValuationHerbrand.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/ValueGroupCohomology.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Conductor.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/CharacteristicZero.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/Classification.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/CyclotomicKummerDescent.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/EqualCharacteristic.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/FiniteUnramifiedField.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/LocalAbsoluteData.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/MathlibFieldClassification.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/MaximalKummerNorm.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/NormSubgroupOrderEmbedding.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/NormSubgroupSurjectivity.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/OrderReversal.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/ShrinkChosenFiniteAbelianFields.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/ShrinkChosenFiniteAbelianNorms.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/ShrinkFiniteAbelianFields.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/ShrinkFiniteAbelianNorms.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/ShrinkIntermediateFields.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/ShrinkLocalClassification.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/ShrinkOpenSubgroups.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/ShrinkSeparableClosure.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/StandardDominatingExtension.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/StandardLubinTate.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/StandardSubgroupIntersection.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/UnramifiedNormContainment.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/UnramifiedNormSubgroup.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/UnshrinkFiniteAbelianFields.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/AbsoluteUnitsFixedField.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/AbstractFixedFieldNorm.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/AbstractFixedFieldUnits.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/ConcreteReciprocityCanonical.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/ConcreteReciprocityPrimeNorm.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/ConcreteReciprocityTransport.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/ConjugationNaturality.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/Filtered/AbstractUnramified.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/Filtered/Compositum.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/Filtered/Core.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/Filtered/FiniteAbelianNative.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/Filtered/Naturality.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/Filtered/StandardCompositum.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/Filtered/Unramified.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FiniteAbelianFamilyRigidity.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FiniteAbelianFamilySubgroupKernel.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FiniteAbelianFamilyUnramifiedCompositum.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FiniteExtensionClassFieldAxiom.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FiniteGaloisRealization.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FiniteResidueFinrankTransfer.lean
@@ -145,13 +195,17 @@
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FixedFieldNormResidueNaturality.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FixedFieldRelativeNorm.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/GaloisExtensionQuotient.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/GeneralTowerNaturality.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/HenselianValuationBase.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/IntermediateFieldNormResidueNaturality.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/IntrinsicAbsoluteData.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/LocalClassFieldAxiom.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/LocalHenselianValuation.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/LocalResidueDatum.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/Main.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/MathlibInterface.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/NormResidue.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/NormResidueNaturality.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/ResidueAbsoluteDegree.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/ResidueAbsoluteFrobenius.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/ResidueActionIndex.lean
@@ -165,8 +219,156 @@
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/TateTransport.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/TopologicalReciprocity.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/UniverseArtin.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/UniverseFrobenius.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/UniverseInertia.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/UnramifiedComparison.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/UnramifiedNormComparison.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/UnramifiedNormalization.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/UnramifiedReciprocity.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/UnramifiedResidueUniqueness.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/UnramifiedConductor.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Infinite/AbsoluteArtin.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Infinite/FiniteAbelianQuotientKernels.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Infinite/LocalMultiplicativeCompletion.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Infinite/ProfiniteLocalReciprocity.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/LubinTateTransport.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/NormIndex.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/NormSubgroup.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/StandardFilteredArtinComparison.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/StandardFixedFieldComparison.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/StandardNormIndex.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/StandardNormSubgroupExact.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/StandardSubgroupIndex.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/ChangedCompletedLevel.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/ChangedCompletedPrimitiveAction.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/ChangedPolynomialEvaluation.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/ChangedUniformizer.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/ChangedUniformizerNormalization.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedFrobeniusBaseEquiv.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedFrobeniusContinuity.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedFrobeniusFixedField.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedFrobeniusFixedFieldAlgebra.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedFrobeniusFixedFieldCoefficientDescent.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedFrobeniusFixedFieldDegree.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedFrobeniusFixedFieldGeneration.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedFrobeniusFixedFieldPowerBasis.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedFrobeniusFixedFieldPrimitive.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedFrobeniusFixedNorm.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedFrobeniusLift.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedLevel.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedPrimitiveAction.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/CompletedPrimitiveIrreducible.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/DirectBracketAtCompletedLevel.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/DirectLubinTateBracket.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/DirectLubinTateBracketRecursion.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/DirectTargetLevelEmbedding.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/DirectThetaAtCompletedLevel.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/DirectThetaFirstIdentity.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/DirectThetaFrobeniusFixed.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/DirectThetaIteration.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/DirectThetaSeries.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/ThetaAtCompletedLevel.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/ThetaLocalInverse.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/Existence/LaurentLocalField.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/Existence/LaurentModel.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/Existence/LaurentUniformizerNormalization.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FiniteLevel/AmbientDivisionTorsion.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FiniteLevel/DivisionPolynomial.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FiniteLevel/FiniteParameters.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FiniteLevel/FreeRankOne.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FiniteLevel/LevelAbelian.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FiniteLevel/LevelAutomorphisms.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FiniteLevel/LevelField.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FiniteLevel/NormUniformizer.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FiniteLevel/PrimitiveAction.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FiniteLevel/PrimitiveIrreducible.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FiniteLevel/PrimitiveTorsion.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FormalModule/AmbientBracketAction.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FormalModule/DivisionModuleEndomorphisms.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FormalModule/LubinTateAction.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/FormalModule/LubinTateEndomorphism.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/Frobenius/CoefficientFrobenius.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/Frobenius/CompletedUnramifiedField.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/Frobenius/ContractingEquation.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/Frobenius/LaurentSeriesFrobenius.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/NormSubgroup/HigherUnitFixedFieldEmbedding.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/NormSubgroup/HigherUnitFixedFieldEquiv.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/NormSubgroup/HigherUnitFixedFieldMembership.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/NormSubgroup/HigherUnitFixedFieldSurjective.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/NormSubgroup/HigherUnitFrobeniusFixed.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/NormSubgroup/HigherUnitLevelMapFixed.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/NormSubgroup/HigherUnits.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/NormSubgroup/HigherUnitsNorm.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/NormSubgroup/LevelAlgebra.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/NormSubgroup/StandardSubgroupNorm.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/NormSubgroup/UniformizerNorm.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/NormSubgroup/UnitQuotientCard.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/NormSubgroup/UnitTransport.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/Theta/ThetaCoefficients.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/Theta/ThetaEvaluation.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/Theta/ThetaFirstIdentity.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/Theta/ThetaSeries.lean
+    - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/Theta/ThetaUniqueness.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/ChangedLevelCompositum.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/ChangedPrimitiveEvaluation.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/ChangedUniformizer.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/CompletedEvaluation.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/CompletedIterates.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/DivisionPolynomial.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/FiniteParameterFiltration.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/FiniteParameters.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/GaloisParameterFiltration.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/HerbrandFormula.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/HigherUnitLevelEquiv.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/LevelAbelian.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/LevelAutomorphisms.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/LevelFieldTower.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/LevelValuation.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/LocalUpperRamification.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/LowerRamification.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/LowerRamificationFormula.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/NormSubgroup.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/NormUniformizer.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/ParameterCongruence.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/PrimitiveAction.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/PrimitiveDisplacement.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/PrimitiveEisenstein.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/PrimitiveRoot.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/PrimitiveTorsion.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/PrimitiveUniformizer.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/StandardLocalField.lean
+    - Nyll/ClassFieldTheory/LubinTate/FiniteLevel/UpperRamification.lean
+    - Nyll/ClassFieldTheory/LubinTate/FormalModule/CoefficientEquation.lean
+    - Nyll/ClassFieldTheory/LubinTate/FormalModule/DegreeStabilization.lean
+    - Nyll/ClassFieldTheory/LubinTate/FormalModule/Intertwiner.lean
+    - Nyll/ClassFieldTheory/LubinTate/FormalModule/LinearTerm.lean
+    - Nyll/ClassFieldTheory/LubinTate/FormalModule/RecursiveCoefficient.lean
+    - Nyll/ClassFieldTheory/LubinTate/FormalModule/RecursiveCorrection.lean
+    - Nyll/ClassFieldTheory/LubinTate/FormalModule/RecursiveIntertwiner.lean
+    - Nyll/ClassFieldTheory/LubinTate/FormalModule/Reduction.lean
+    - Nyll/ClassFieldTheory/LubinTate/FormalModule/Series.lean
+    - Nyll/ClassFieldTheory/LubinTate/FormalModule/StandardFormalGroup.lean
+    - Nyll/ClassFieldTheory/LubinTate/FormalModule/StandardSeries.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FieldNormSubgroupFiniteIndex.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FieldNormSubgroupRingEquiv.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FieldNormSubgroupTower.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalExistence.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalExistenceOrderIso.lean
     - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalReciprocity.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalReciprocityFamily.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalReciprocityFamilyArithmeticFrobenius.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalReciprocityFamilyExt.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalReciprocityFamilyUnramifiedNormalization.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalReciprocityIndex.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalReciprocityQuotient.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalReciprocityQuotientEquivMk.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalReciprocityQuotientEquivOfArtin.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalReciprocityTower.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalReciprocityUnramifiedFamilyExt.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalReciprocityUnramifiedHomExt.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalReciprocityUnramifiedNormalization.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/MemFieldNormSubgroupIff.lean
+    - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/ProfiniteLocalReciprocity.lean
     - Nyll/GaloisCohomology/Cyclic/GaloisCohomology.lean
     - Nyll/GaloisCohomology/Cyclic/Herbrand/FieldUnits.lean
     - Nyll/GaloisCohomology/Cyclic/Herbrand/HerbrandFiniteness.lean
@@ -209,11 +411,31 @@
     - Nyll/GaloisCohomology/Kummer/Abstract/KummerDelta.lean
     - Nyll/GaloisCohomology/Kummer/Abstract/KummerFixedField.lean
     - Nyll/GaloisCohomology/Kummer/Abstract/KummerGlobalOperator.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/ExtensionRoundTrip.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/FiniteCharacterEquiv.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/FiniteDualSeparation.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/FiniteGeneration.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/FiniteSupport.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/GaloisCohomology.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/InfiniteContinuity.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/InfiniteGeneration.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/InfiniteInverse.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/KummerCorrespondenceFormula.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/LocalMaximalKummerExtension.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/MaximalKummerSubgroup.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/RadicalExtension.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/RadicalQuotient.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/RestrictedFinite.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/RootCharacters.lean
     - Nyll/GaloisCohomology/ProfiniteIntegers/ProfiniteInteger.lean
     - Nyll/GaloisCohomology/ProfiniteIntegers/ProfiniteIntegerCore.lean
     - Nyll/GaloisCohomology/ProfiniteIntegers/TopologicalGeneration.lean
     - Nyll/GaloisCohomology/Topology/GaloisConjugation.lean
     - Nyll/GaloisCohomology/Topology/TotallyDisconnectedQuotients.lean
+    - Nyll/ProCGroups/Abelian/TopologicalAbelianization.lean
+    - Nyll/ProCGroups/Completion/Topological.lean
+    - Nyll/ProCGroups/Completion/TopologicalBasic.lean
+    - Nyll/ProCGroups/Completion/TopologicalCriteria.lean
     - Nyll/ProCGroups/Generation/Basic.lean
     - Nyll/ProCGroups/InducedFunctions.lean
     - Nyll/ProCGroups/Topologies/ContinuousMonoidHom.lean
@@ -221,13 +443,69 @@
     - Nyll/ProCGroups/Topologies/ContinuousQuotientEquiv.lean
     - Nyll/ProCGroups/Topologies/OpenFiniteIndexSubgroup.lean
     - Nyll/ProCGroups/Topologies/QuotientMaps.lean
+    - Nyll/ProCGroups/Topologies/TopologicallyCharacteristicSubgroups.lean
     - Nyll/SchemeTheory/HomologicalAlgebra/HomologySequenceExactFunctor.lean
     - Nyll/SchemeTheory/RingTheory/FieldExtensions/FiniteFrobeniusFixed.lean
     - Nyll/SchemeTheory/RingTheory/FieldExtensions/FiniteIntermediateFieldDegree.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/Arithmetic.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/ContinuousFieldUnitLog.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/DenominatorValuation.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/FieldUnitLogExtension.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/FieldUnitLogUniqueness.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpAdditivity.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpComposition.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpContinuity.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/ExpConvergence.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/FormalCore.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/FormalCoreBase/BasicFactors.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/FormalCoreBase/ChoiceCountSystem.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/FormalCoreBase/ChoicePositions.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/FormalCoreBase/ExplicitChoiceCounts.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/FormalCoreBase/PowerSeriesComposition.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/FormalCoreBase/ProductArgument.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/FormalProduct.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/Homomorphisms.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/InverseEstimates.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/LogConvergence.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/PrincipalUnitExp.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/PrincipalUnitLog.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/SeriesTerms.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/PrincipalUnitExpLogEquiv.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/Basic.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/EqualCharacteristicLaurent.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/FieldNorm.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/FieldNormBase.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/FieldUnitDecomposition.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/FieldUnitFactors.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/FieldUnitStructure.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/FiniteCoefficientLaurent.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/IwasawaIndexing.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/IwasawaPrincipalUnits.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/MixedCharacteristicQp.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/MixedCharacteristicStructure/Core.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/MixedCharacteristicStructure/DeepPrincipalUnits.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/MixedCharacteristicStructure/IntegralLattice.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/Norm/Basic.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/Norm/Quotients.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/NormFiltration.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PadicField.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PadicLinearOfContinuous.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PadicModuleStructure.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PadicPowerIndex.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PolynomialRootProximity.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PowerIndex.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnitInverseLimitSurjectivity.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnitPadicAction/AdicPadicModule.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnitPadicAction/AdicProdiscreteComparison.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnitPadicAction/Core.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnitPadicAction/FiniteQuotientPadicModule.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnitPadicAction/InverseLimitCore.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnitPadicAction/InverseLimitTopology.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnitPadicAction/PadicReductionContinuous.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnitPadicAction/ProdiscretePadicModule.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnitPadicAction/QuotientTransition.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnitPadicAction/TopologyModelTypes.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnitPadicAction/WithZeroValuationTopology.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnits/AutomorphismTransport.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnits/Core.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnits/Filtration.lean
@@ -235,9 +513,25 @@
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnits/ResidueRoots.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnits/TeichmullerDecomposition.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnits/TeichmullerLift.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/RamificationAddVal.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/RamificationIdeal.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/RamificationInvariants.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/Units.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/ValuationSubringUnits/CompleteRangeRestriction.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/ValuationSubringUnits/CyclicValueGroup.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/ValuationSubringUnits/IntegerValuation.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/ValuationSubringUnits/IntegerValuationUniformizer.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/ValuationSubringUnits/LocalFieldRangeRestriction.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/ValuationSubringUnits/RangeRestrictedTopology.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/ValuationSubringUnits/RangeRestriction.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/ValuationSubringUnits/SeriesValuationEstimates.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/ValuationSubringUnits/UniformizerIntegerValuation.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/ValuationSubringUnits/ValuationSubringUnitMap.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/ValuationSubringUnits/ValuedExtensionUnitMap.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/ValueGroup.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/WithZeroValuationTopology.lean
     - Nyll/ValuedFieldTheory/LocalField/GroupTheory/IntegerMultipleSubgroup.lean
+    - Nyll/ValuedFieldTheory/LocalField/GroupTheory/PowerIndex.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/AdditiveEquiv.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/Basic.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/FiniteExtensionCompleteDVF.lean
@@ -245,20 +539,26 @@
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/FiniteUnramified.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/GaloisIntegerRing.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/IdealQuotients.lean
+    - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/MultiplicativeDecomposition.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/Norm.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/NormContinuity.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/NormQuotient.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/NormSubgroupFunctoriality.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/NormalizedIntegerValuation.lean
+    - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/PowerClassFiniteness.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/PrincipalUnitActions.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/PrincipalUnitQuotients.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/PrincipalUnits.lean
+    - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/ProfiniteUnits.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/ResidueExtension.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/ResidueGalois.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/ResidueUnits.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/SeparableNormValuation.lean
+    - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/ShrinkResidueTransport.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/ShrinkTransport.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/Small.lean
+    - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/StandardOpenSubgroups.lean
+    - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/UniformizerPrincipalQuotient.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/UnitTopology.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/UnramifiedFrobenius.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/Valuation.lean
@@ -268,16 +568,50 @@
     - Nyll/ValuedFieldTheory/LocalField/NormUnits.lean
     - Nyll/ValuedFieldTheory/LocalField/NormUnitsBaseChange.lean
     - Nyll/ValuedFieldTheory/Ramification/ClosedSubgroups.lean
+    - Nyll/ValuedFieldTheory/Ramification/Filtration.lean
     - Nyll/ValuedFieldTheory/Ramification/GaloisValuation/AbsoluteGalois/AbsoluteRamification.lean
     - Nyll/ValuedFieldTheory/Ramification/GaloisValuation/AbsoluteGalois/FiniteExtensionCorrespondence.lean
     - Nyll/ValuedFieldTheory/Ramification/GaloisValuation/AbsoluteGalois/FiniteLevelValuationRestriction.lean
     - Nyll/ValuedFieldTheory/Ramification/GaloisValuation/AbsoluteGalois/InfiniteGaloisCorrespondence.lean
     - Nyll/ValuedFieldTheory/Ramification/GaloisValuation/ClosedFixingSubgroup.lean
+    - Nyll/ValuedFieldTheory/Ramification/GaloisValuation/CompositumRestriction.lean
+    - Nyll/ValuedFieldTheory/Ramification/GaloisValuation/IntermediateFieldRestriction.lean
     - Nyll/ValuedFieldTheory/Ramification/GaloisValuation/Ramification.lean
     - Nyll/ValuedFieldTheory/Ramification/GaloisValuation/RamificationQuotients.lean
+    - Nyll/ValuedFieldTheory/Ramification/Herbrand/Average.lean
+    - Nyll/ValuedFieldTheory/Ramification/Herbrand/DepthSum.lean
+    - Nyll/ValuedFieldTheory/Ramification/Herbrand/FixedField.lean
+    - Nyll/ValuedFieldTheory/Ramification/Herbrand/Function.lean
+    - Nyll/ValuedFieldTheory/Ramification/Herbrand/Quotient.lean
+    - Nyll/ValuedFieldTheory/Ramification/Herbrand/Tower.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/CompleteDVF.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/FiniteGaloisLevel.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/FiniteGaloisLevelIndependence.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/FixedFieldRamification.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/FixedFieldRamificationIndex.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/FixedFieldValuationRing.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/GaloisStabilizer.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/HerbrandFunction.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/HerbrandTheorem.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Monogeneity.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/OrbitPolynomialIdeal.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Polynomial.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/RamificationDepth.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/RamificationGroup.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/RamificationNumber.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/RamificationNumberFormula.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/RamificationNumberRestriction.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/RealLowerGroups.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/ResidueExactSequence.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/UniformizerGradedHom.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/UniqueExtensionIntegralClosure.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/ValuationKrasner.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/ValuationRestriction.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/ValuationSubring.lean
+    - Nyll/ValuedFieldTheory/Ramification/LocalField/BaseChange.lean
+    - Nyll/ValuedFieldTheory/Ramification/LocalField/Core.lean
+    - Nyll/ValuedFieldTheory/Ramification/LocalField/ResidueInertia.lean
+    - Nyll/ValuedFieldTheory/Ramification/LocalField/Unramified.lean
     - Nyll/ValuedFieldTheory/Ramification/ProfiniteInvariant.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/AlgebraicExtension/Core.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/AlgebraicExtension/NormFormula.lean
@@ -297,10 +631,12 @@
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/Theory/Core.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/Theory/ExponentialValuations.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/ValuationSubring.lean
+    - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/AddVal.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/AdicPower.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/Basic.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/ChevalleyExtension.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/Complete.lean
+    - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/CompleteDVRExpansion.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/Extensions.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/FiniteExtension/Core.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/FiniteExtension/Defectless.lean
@@ -342,11 +678,16 @@
     - Nyll/ValuedFieldTheory/Valuation/Henselian/UniqueExtensionPrimitive.lean
     - Nyll/ValuedFieldTheory/Valuation/Henselian/UniqueExtensionReduction.lean
     - Nyll/ValuedFieldTheory/Valuation/Henselian/ValuationExtensionCriterion.lean
+    - Nyll/ValuedFieldTheory/Valuation/LocalRingEquiv.lean
+    - Nyll/ValuedFieldTheory/Valuation/Topology/AdicCompletionInverseLimit.lean
+    - Nyll/ValuedFieldTheory/Valuation/Topology/AdicCompletionInverseLimitRing.lean
+    - Nyll/ValuedFieldTheory/Valuation/Topology/CompatibleInverseLimit.lean
+    - Nyll/ValuedFieldTheory/Valuation/Topology/Models.lean
     - Nyll/ValuedFieldTheory/Valuation/UniqueRing.lean
     - Nyll/ValuedFieldTheory/Valuation/ValuedAdicComplete.lean
   into: Langlands/Ported/NYLL
   changes: >-
-    The module prefix is Langlands.Ported.NYLL in place of Nyll. The files are the import closure of FiniteAbelianLocalReciprocity.lean. The source pin is Lean v4.36.0, and the project pin is v4.35.0, so these Mathlib names are changed.
+    The module prefix is Langlands.Ported.NYLL in place of Nyll. The files are the import closure of the files of Theorems/LocalClassFieldTheory, but not All.lean. The source pin is Lean v4.36.0, and the project pin is v4.35.0, so these Mathlib names are changed.
     Group.Abelianization is Abelianization, and Group.abelianizationCongr is abelianizationCongr.
     Group.Abelianization.commutator_le_ker is Abelianization.commutator_subset_ker.
     SubsemiringClass.charP_iff is CharP.subsemiring.
@@ -357,3 +698,10 @@
     The pow_apply lemma of a group representation is Module.End.pow_apply, and one_apply_eq_self is Module.End.one_apply.
     IsLocalRing.local_hom_tfae is IsLocalRing.local_hom_TFAE.
     Sylow.isPGroup is Sylow.isPGroup'.
+    Group.abelianizationCongr_of is abelianizationCongr_of, and IntermediateField.le_fixedField_iff_le_fixingSubgroup is IntermediateField.le_iff_le.
+    Submodule.le_of_le_smul_of_le_jacobson is Submodule.le_of_le_smul_of_le_jacobson_bot, so one proof uses IsLocalRing.jacobson_eq_maximalIdeal. The same change applies to isLocalHom_of_le_jacobson in AdicCompletionInverseLimit.lean.
+    DiscreteValuationField/Basic.lean adds the instance valuationSubring_charP with CharP.subring.
+    Analytic/Arithmetic.lean proves multiplicity_le_nat_log, multiplicity_factorial_le and multiplicity_factorial_lt_of_ne_zero from the padicValNat lemmas, because these names are not in the Mathlib of the project pin.
+    Analytic/DenominatorValuation.lean uses pow_succ_padicValNat_not_dvd, and IwasawaPrincipalUnits.lean uses padicValNat.mul and padicValNat.prime_pow in place of the multiplicity lemmas.
+    PowerSeries.irreducible_X is PowerSeries.X_irreducible, and PowerSeries.prime_X is PowerSeries.X_prime.
+    In CompletedUnramifiedField.lean the named argument of FiniteField.X_pow_card_sub_X_ne_zero is K', and in PrimitiveAction.lean the case of Nat.strong_induction_on is h.

@@ -1,0 +1,48 @@
+/-
+Copyright (c) 2026 Naganori Yamaguchi (https://github.com/n-yamaguchi-0729). All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
+-/
+-- Ported from n-yamaguchi-0729/ClassFieldTheory at commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565, file `Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/MathlibAbsoluteAbelianization.lean`. The module prefix is `Langlands.Ported.NYLL` in place of `Nyll`. The changes for the Mathlib of the project pin are in manifests/ported.yaml.
+
+
+module
+
+public import Langlands.Ported.NYLL.ProCGroups.Abelian.TopologicalAbelianization
+public import Mathlib.FieldTheory.AbsoluteGaloisGroup
+public import Langlands.Ported.NYLL.ValuedFieldTheory.Ramification.GaloisValuation.AbsoluteGalois.InfiniteGaloisCorrespondence
+
+/-!
+# Comparison with Mathlib's absolute Galois abelianization
+
+Restriction from the algebraic closure to the separable closure identifies
+Mathlib's absolute Galois group with the separable-closure model. The induced
+map on topological abelianizations is a homeomorphism of groups, not merely
+an abstract group isomorphism.
+-/
+
+@[expose] public section
+
+noncomputable section
+
+universe u
+
+/-- Mathlib's absolute Galois abelianization and the separable-closure
+topological abelianization are canonically isomorphic as topological groups. -/
+noncomputable def absoluteGaloisGroupAbelianizationEquivSeparable
+    (K : Type u) [Field K] :
+    Field.absoluteGaloisGroupAbelianization K ≃ₜ*
+      TopologicalAbelianization Gal(SeparableClosure K / K) :=
+  ProCGroups.Abelian.TopologicalAbelianization.congr
+    (RamificationTheory.Field.absoluteGaloisGroup.separableClosureContinuousMulEquiv K)
+
+/-- The comparison sends an absolute Galois automorphism to its restriction
+to the separable closure, also after passing to the abelianization. -/
+@[simp]
+theorem absoluteGaloisGroupAbelianizationEquivSeparable_mk
+    (K : Type u) [Field K] (σ : Field.absoluteGaloisGroup K) :
+    absoluteGaloisGroupAbelianizationEquivSeparable K
+        (QuotientGroup.mk σ) =
+      QuotientGroup.mk (AlgEquiv.separableClosure σ) :=
+  ProCGroups.Abelian.TopologicalAbelianization.congr_apply_mk
+    (RamificationTheory.Field.absoluteGaloisGroup.separableClosureContinuousMulEquiv K) σ

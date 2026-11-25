@@ -1,0 +1,94 @@
+/-
+Copyright (c) 2026 Naganori Yamaguchi (https://github.com/n-yamaguchi-0729). All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
+-/
+-- Ported from n-yamaguchi-0729/ClassFieldTheory at commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565, file `Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/LocalAbsoluteData.lean`. The module prefix is `Langlands.Ported.NYLL` in place of `Nyll`. The changes for the Mathlib of the project pin are in manifests/ported.yaml.
+
+
+module
+
+public import Langlands.Ported.NYLL.ClassFieldTheory.Definitions.LocalClassFieldTheory.OpenFiniteIndexSubgroup
+public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finite.LocalReciprocity.Main
+public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finite.LocalReciprocity.IntrinsicAbsoluteData
+public import Langlands.Ported.NYLL.ClassFieldTheory.AbstractClassFieldTheory.Reciprocity.FiniteAbelianClassification
+
+/-!
+# Absolute data for finite local existence
+
+This file isolates the common abstract Galois-theoretic realization of the absolute Galois
+group, its unit representation, and the ground-field fixing subgroup.  Both
+the characteristic-zero and equal-characteristic existence arguments use
+these definitions.
+-/
+
+
+
+@[expose] public section
+
+universe u
+
+noncomputable section
+
+namespace LocalClassFieldTheory
+
+open LocalFieldTheory RamificationTheory CyclicCohomology KummerTheory
+open ClassFormation LocalClassFieldTheory
+
+/-- The internal local-existence interface uses the same open-subgroup
+carrier as the public classification. -/
+abbrev OpenFiniteIndexSubgroup
+    (K : Type u) [Field K] [TopologicalSpace K] :=
+  ClassFieldTheory.OpenFiniteIndexSubgroup K
+
+/-- Normality over the abstract base fixing group makes the represented
+fixed field Galois over the concrete local base field. -/
+theorem abstractFixedField_isGalois_of_base_normal
+    (K : Type u) [Field K]
+    (H : ClosedSubgroup (Gal(SeparableClosure K/K)))
+    (hnormal :
+      (extensionSubgroup
+        (baseField (Gal(SeparableClosure K/K))) H
+        (le_baseField H)).Normal) :
+    IsGalois K (abstractFixedField K (SeparableClosure K) H) := by
+  let B := baseField (Gal(SeparableClosure K / K))
+  have hsub :
+      extensionSubgroup B H (le_baseField H) =
+        H.toSubgroup.subgroupOf B.toSubgroup := by
+    ext sigma
+    rw [mem_extensionSubgroup_iff]
+  have hrelative :
+      (H.toSubgroup.subgroupOf B.toSubgroup).Normal := by
+    rw [← hsub]
+    exact hnormal
+  have hconj :
+      ∀ h g : Gal(SeparableClosure K / K),
+        h ∈ H.toSubgroup → g ∈ B.toSubgroup →
+          g * h * g⁻¹ ∈ H.toSubgroup :=
+    (Subgroup.normal_subgroupOf_iff (le_baseField H)).1 hrelative
+  let : H.toSubgroup.Normal :=
+    { conj_mem := fun h hh g => hconj h g hh (by simp [B, baseField]) }
+  apply (InfiniteGalois.normal_iff_isGalois
+    (abstractFixedField K (SeparableClosure K) H)).1
+  have hfix :
+      (abstractFixedField K (SeparableClosure K) H).fixingSubgroup =
+        H.toSubgroup := by
+    have hclosed := closedFixingSubgroup_abstractFixedField_eq
+      K (SeparableClosure K) H
+    exact congrArg ClosedSubgroup.toSubgroup hclosed
+  rw [hfix]
+  infer_instance
+
+variable (K : Type u) [Field K]
+
+/-- The closed fixing group of the ground field is absolutely finite in the
+abstract Galois-theoretic sense (indeed, it is the full absolute Galois group). -/
+noncomputable instance intrinsicAbstractBase_index_finite :
+    Finite ((baseField (intrinsicAbsoluteGalois K)).toSubgroup ⧸
+      extensionSubgroup (baseField (intrinsicAbsoluteGalois K))
+        (intrinsicAbstractBase K) (le_baseField (intrinsicAbstractBase K))) := by
+  exact (intrinsicFiniteAbstractBase K).finite
+
+end LocalClassFieldTheory
+
+end
