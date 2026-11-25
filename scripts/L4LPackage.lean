@@ -65,6 +65,15 @@ unsafe def main (args : List String) : IO UInt32 := do
     | .ok env => pure env
     | .error e => throw <| .userError <| ← (e.toMessageData {}).toString
   IO.println s!"the external imports took {(← IO.monoMsNow) - start} ms"
+  -- Lean makes some auxiliary declarations, for example the `congr_simp` lemmas, when a module needs them. A module of the package and a module of Mathlib can make the same declaration. Such a declaration is already in the external environment. It is taken as correct if it has the same type and value, and else it is an error.
+  let mut shared := 0
+  for (name, ci) in newConstants.toList do
+    if let some ci' := env.find? name then
+      unless ci'.type == ci.type && ci'.value? == ci.value? do
+        throw <| IO.userError s!"{name} is in the package and in the external imports, with a different type or value"
+      newConstants := newConstants.erase name
+      shared := shared + 1
+  IO.println s!"{shared} constants of the package are also in the external imports"
   let start ← IO.monoMsNow
   let (n, _) ← replay { newConstants } env
   IO.println s!"the replay took {(← IO.monoMsNow) - start} ms"
