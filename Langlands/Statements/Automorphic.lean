@@ -20,7 +20,7 @@ where $q_v$ is the size of the residue field. So $q_v^{-i(n-i)/2} \lambda_i$ is 
 * `Langlands.IsInLevel N k` says that $k$ is in the principal congruence subgroup $K(N)$: the identity at the infinite places and congruent to $1$ modulo $N$ in $GL_n(\mathcal{O}_v)$ at each finite place.
 * `Langlands.HasVanishingConstantTerm r φ` says that the constant term of $\varphi$ along the unipotent radical of the standard maximal parabolic subgroup of type $(r, n - r)$ is zero.
 * `Langlands.IsCuspForm N φ` is the condition to be a cusp form of level $K(N)$.
-* `Langlands.heckeOperator v i` is the operator $T_{v,i}$, and `Langlands.IsHeckeEigenAt φ v λ` says that $\varphi$ is spherical at $v$ with $T_{v,i} \varphi = \lambda_i \varphi$ for $1 \le i \le n$.
+* `Langlands.adelicHeckeOperator v i` is the operator $T_{v,i}$, and `Langlands.IsHeckeEigenAt φ v λ` says that $\varphi$ is spherical at $v$ with $T_{v,i} \varphi = \lambda_i \varphi$ for $1 \le i \le n$.
 * `Langlands.satake v λ` is the multiset of Satake parameters.
 * `Langlands.IsAlgebraicRep r` says that a homomorphism $r : GL_n(\mathbb{C}) \to GL_m(\mathbb{C})$ is given by polynomials in the entries and the inverse of the determinant.
 * `Langlands.IsobaricCuspData K m` is a finite family of nonzero cusp forms on $GL_{m_i}$ with $\sum m_i = m$. It stands for the isobaric sum of the representations that the forms generate.
@@ -67,7 +67,7 @@ noncomputable def principalGL : GL (Fin n) K →* AdelicGL K n :=
   Matrix.GeneralLinearGroup.map (algebraMap K (AdeleRing (𝓞 K) K))
 
 /-- The scalar matrix $z \cdot 1 \in GL_n(\mathbb{A}_K)$ for an idele $z$. -/
-noncomputable def scalarGL (z : (AdeleRing (𝓞 K) K)ˣ) : AdelicGL K n :=
+noncomputable def adelicScalarGL (z : (AdeleRing (𝓞 K) K)ˣ) : AdelicGL K n :=
   Units.map (Matrix.scalar (Fin n) : AdeleRing (𝓞 K) K →+* _).toMonoidHom z
 
 /-- The adele with the component $x$ at the finite place $v$ and $0$ at the other places. -/
@@ -161,7 +161,7 @@ structure IsCuspForm (N : 𝓞 K) (φ : AdelicGL K n → ℂ) : Prop where
   left_invariant : ∀ (γ : GL (Fin n) K) (g : AdelicGL K n), φ (principalGL γ * g) = φ g
   level_ne_zero : N ≠ 0
   right_invariant : ∀ k : AdelicGL K n, IsInLevel N k → ∀ g, φ (g * k) = φ g
-  central : ∃ ω : (AdeleRing (𝓞 K) K)ˣ → ℂ, ∀ z g, φ (g * scalarGL z) = ω z * φ g
+  central : ∃ ω : (AdeleRing (𝓞 K) K)ˣ → ℂ, ∀ z g, φ (g * adelicScalarGL z) = ω z * φ g
   growth : ∃ C s : ℝ, ∀ g : AdelicGL K n,
     ‖φ g‖ ≤ C * ‖(g : Matrix (Fin n) (Fin n) (AdeleRing (𝓞 K) K)).det‖ ^ s
   cuspidal : ∀ r : ℕ, 0 < r → r < n → HasVanishingConstantTerm r φ
@@ -212,13 +212,13 @@ noncomputable def heckeCosetGL (v : HeightOneSpectrum (𝓞 K)) {i : ℕ} (c : H
   Matrix.GeneralLinearGroup.mkOfDetNeZero _ (heckeCosetMatrix_det_ne_zero v c)
 
 /-- The Hecke operator $T_{v,i}$: $(T_{v,i} \varphi)(g) = \sum_c \varphi(g h_c)$, where $h_c$ runs over the representatives of $GL_n(\mathcal{O}_v) \, \mathrm{diag}(\varpi_v^{(i)}, 1^{(n-i)}) \, GL_n(\mathcal{O}_v) / GL_n(\mathcal{O}_v)$ in `heckeCosetGL`. -/
-noncomputable def heckeOperator (v : HeightOneSpectrum (𝓞 K)) (i : ℕ) (φ : AdelicGL K n → ℂ) :
+noncomputable def adelicHeckeOperator (v : HeightOneSpectrum (𝓞 K)) (i : ℕ) (φ : AdelicGL K n → ℂ) :
     AdelicGL K n → ℂ :=
   fun g ↦ ∑ᶠ c : HeckeCoset K n v i, φ (g * localGL v (heckeCosetGL v c))
 
 /-- The function $\varphi$ is spherical at $v$ and an eigenvector of $T_{v,i}$ with eigenvalue $\lambda_i$, for $1 \le i \le n$. -/
 def IsHeckeEigenAt (φ : AdelicGL K n → ℂ) (v : HeightOneSpectrum (𝓞 K)) (ev : ℕ → ℂ) : Prop :=
-  IsSphericalAt φ v ∧ ∀ i, 1 ≤ i → i ≤ n → heckeOperator v i φ = ev i • φ
+  IsSphericalAt φ v ∧ ∀ i, 1 ≤ i → i ≤ n → adelicHeckeOperator v i φ = ev i • φ
 
 /-- The function $\varphi$ is a Hecke eigenform: it is a Hecke eigenvector at all finite places outside a finite set. -/
 def IsHeckeEigenform (φ : AdelicGL K n → ℂ) : Prop :=
@@ -304,8 +304,8 @@ instance (v : HeightOneSpectrum (𝓞 K)) : Subsingleton (HeckeCoset K 1 v 1) :=
   omega
 
 /-- For $n = 1$ the operator $T_{v,1}$ is the right translation by the element $\varpi_v$ at $v$. -/
-theorem exists_heckeOperator_one_eq (v : HeightOneSpectrum (𝓞 K)) :
-    ∃ t : AdelicGL K 1, ∀ (φ : AdelicGL K 1 → ℂ) g, heckeOperator v 1 φ g = φ (g * t) := by
+theorem exists_adelicHeckeOperator_one_eq (v : HeightOneSpectrum (𝓞 K)) :
+    ∃ t : AdelicGL K 1, ∀ (φ : AdelicGL K 1 → ℂ) g, adelicHeckeOperator v 1 φ g = φ (g * t) := by
   let c₀ : HeckeCoset K 1 v 1 := ⟨⟨Finset.univ, by simp⟩, fun p ↦ by
     have h := p.2.1
     have := p.1.1.isLt

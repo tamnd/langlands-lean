@@ -140,7 +140,7 @@ theorem ramanujanGL_one (K : Type u) [Field K] [NumberField K] : RamanujanGL 1 K
   intro N φ _ hφ ⟨C, hC⟩ v ev hev α hα
   rw [satake_one, Multiset.mem_singleton] at hα
   subst hα
-  obtain ⟨t, ht⟩ := exists_heckeOperator_one_eq (K := K) v
+  obtain ⟨t, ht⟩ := exists_adelicHeckeOperator_one_eq (K := K) v
   have h (g : AdelicGL K 1) : φ (g * t) = ev 1 * φ g := by
     have := ht φ g
     rw [hev.2 1 le_rfl le_rfl] at this
