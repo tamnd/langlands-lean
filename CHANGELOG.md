@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.2 (2026-11-25)
+
 ### Added
 
 - `Langlands/Statements/Hecke.lean`: Hecke characters of a number field, their conductor, the finite L-function as an Euler product, the archimedean Gamma factors and the completed L-function. The statement `HeckeFunctionalEquation` gives the meromorphic continuation and the functional equation of the completed L-function. The statement `ArchimedeanParametersExist` gives the archimedean parameters. Neither statement is proved yet.
