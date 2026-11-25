@@ -93,7 +93,7 @@ status:
     - name: Langlands.LocalReciprocityGL1
       kind: statement
       status: known
-      note: Local class field theory as the local Langlands correspondence for GL(1). This is a definition of a proposition. The package does not prove it yet.
+      note: Local class field theory as the local Langlands correspondence for GL(1). This is a definition of a proposition. It is proved by Langlands.localReciprocityGL1.
     - name: Langlands.LocalLanglandsTorusSplit
       kind: statement
       status: known
@@ -202,3 +202,15 @@ status:
     - name: Langlands.Shapiro.shapiro_top
       kind: theorem
       status: proved
+    - name: Langlands.exists_isLocalArtinMap
+      kind: theorem
+      status: proved
+      note: The existence of the local reciprocity map, as the inverse of the injection of the abelianized Weil group into the abelianized Galois group composed with the absolute local Artin map of the port.
+    - name: Langlands.isLocalArtinMap_unique
+      kind: theorem
+      status: proved
+      note: The uniqueness of the local reciprocity map, through the uniqueness of coherent families of finite Artin maps in the port.
+    - name: Langlands.localReciprocityGL1
+      kind: theorem
+      status: proved
+      note: Local class field theory as the local Langlands correspondence for GL(1).
