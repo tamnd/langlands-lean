@@ -27,6 +27,9 @@ import Langlands.Tate.ArchimedeanFourier
 import Langlands.Tate.ArchimedeanGamma
 import Langlands.Tate.ArchimedeanParameter
 import Langlands.Tate.ArchimedeanZeta
+import Langlands.Tate.NonArchimedeanFourier
+import Langlands.Tate.NonArchimedeanMeasure
+import Langlands.Tate.NonArchimedeanZeta
 import Langlands.Torus.Induced
 import Langlands.Torus.Split
 import Langlands.WeilGroup.Ab
