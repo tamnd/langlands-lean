@@ -214,3 +214,24 @@ status:
       kind: theorem
       status: proved
       note: Local class field theory as the local Langlands correspondence for GL(1).
+    - name: Langlands.WeilGroup.isOpen_restrictSubgroup
+      kind: theorem
+      status: proved
+    - name: Langlands.WeilGroup.finiteIndex_restrictSubgroup
+      kind: instance
+      status: proved
+    - name: Langlands.WeilGroup.map_degree_restrictSubgroup
+      kind: theorem
+      status: proved
+    - name: Langlands.WeilGroup.weilHom_injective
+      kind: theorem
+      status: proved
+    - name: Langlands.WeilGroup.continuous_weilHom
+      kind: theorem
+      status: proved
+    - name: Langlands.WeilGroup.range_weilHom
+      kind: theorem
+      status: proved
+    - name: Langlands.WeilGroup.degree_weilHom
+      kind: theorem
+      status: proved
