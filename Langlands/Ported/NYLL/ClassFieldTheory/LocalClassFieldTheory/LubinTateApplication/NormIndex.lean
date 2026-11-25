@@ -1,0 +1,73 @@
+/-
+Copyright (c) 2026 Naganori Yamaguchi (https://github.com/n-yamaguchi-0729). All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
+-/
+-- Ported from n-yamaguchi-0729/ClassFieldTheory at commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565, file `Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/NormIndex.lean`. The module prefix is `Langlands.Ported.NYLL` in place of `Nyll`. The changes for the Mathlib of the project pin are in manifests/ported.yaml.
+
+
+module
+
+public import Mathlib.SetTheory.Cardinal.Finite
+public import Langlands.Ported.NYLL.ClassFieldTheory.LubinTate.EqualCharacteristic.NormSubgroup.UniformizerNorm
+public import Langlands.Ported.NYLL.ClassFieldTheory.LubinTate.EqualCharacteristic.FiniteLevel.LevelAbelian
+public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finite.UnramifiedConductor
+
+/-!
+# Lubin--Tate application: index of the explicit level norm subgroup
+
+The equality between the norm-subgroup index and the extension degree uses
+finite local reciprocity.  It therefore belongs to the concrete local class
+field theory application layer, not to the reusable Lubin--Tate library.
+-/
+
+
+
+@[expose] public section
+
+noncomputable section
+
+universe u v w
+
+open scoped LaurentSeries ValuativeRel
+
+namespace LubinTate
+namespace EqualCharacteristic
+
+open LocalFieldTheory.DiscreteValuationField
+open LocalFieldTheory
+
+variable {K : Type u} [Field K]
+
+/-- The norm subgroup of the level-`n+1` Lubin--Tate extension has index
+`(q - 1) q^n`, its extension degree. -/
+theorem equalCharacteristicLubinTateNormSubgroup_index
+    (F : LocalField.{u, v} K)
+    [CharP K F.residueCharacteristic]
+    (n : ℕ) :
+    letI : ValuativeRel F.residueField⸨X⸩ :=
+      equalCharacteristicLaurentValuativeRel F
+    (equalCharacteristicLubinTateNormSubgroup F n).index =
+      (Nat.card F.residueField - 1) * Nat.card F.residueField ^ n := by
+  let B := F.residueField⸨X⸩
+  let E := equalCharacteristicLubinTateLevelField F n
+  let : ValuativeRel B := equalCharacteristicLaurentValuativeRel F
+  let : IsNonarchimedeanLocalField B :=
+    equalCharacteristicLaurentIsNonarchimedeanLocalField F
+  let : Algebra B E := equalCharacteristicLubinTateLevelAlgebra F n
+  have hAbelian : IsAbelianGalois B E :=
+    equalCharacteristicLubinTateLevelField_isAbelianGalois F n
+  have hFinite : FiniteDimensional B E :=
+    equalCharacteristicLubinTateLevelField_finiteDimensional F n
+  change (localNormSubgroup B E).index =
+    (Nat.card F.residueField - 1) * Nat.card F.residueField ^ n
+  calc
+    (localNormSubgroup B E).index = Module.finrank B E := by
+      rw [Subgroup.index_eq_card]
+      exact LocalClassFieldTheory.card_normQuotient_eq_finrank_of_isAbelianGalois B E
+    _ = (Nat.card F.residueField - 1) *
+        Nat.card F.residueField ^ n :=
+      equalCharacteristicLubinTateLevelField_finrank F n
+
+end EqualCharacteristic
+end LubinTate

@@ -1,0 +1,54 @@
+/-
+Copyright (c) 2026 Naganori Yamaguchi (https://github.com/n-yamaguchi-0729). All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
+-/
+-- Ported from n-yamaguchi-0729/ClassFieldTheory at commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565, file `Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FiniteAbelianLocalReciprocityQuotientEquivMk.lean`. The module prefix is `Langlands.Ported.NYLL` in place of `Nyll`. The changes for the Mathlib of the project pin are in manifests/ported.yaml.
+
+module
+
+public import Langlands.Ported.NYLL.ClassFieldTheory.Definitions.LocalClassFieldTheory.FieldNormQuotient
+public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finite.LocalReciprocity.UniverseArtin
+public import Langlands.Ported.NYLL.ClassFieldTheory.Theorems.LocalClassFieldTheory.FiniteAbelianLocalReciprocityQuotientEquivOfArtin
+public import Mathlib.FieldTheory.KrullTopology
+public import Mathlib.Topology.Algebra.Constructions
+public import Mathlib.Topology.Algebra.Group.Quotient
+
+/-!
+# The local norm quotient is induced by the Artin map
+
+The existence statements for the finite Artin map and the norm-quotient
+isomorphism alone do not say that their witnesses agree. Here a single
+canonical Artin map is chosen, and its quotient isomorphism is characterized
+uniquely by its values on classes of nonzero field elements.
+-/
+
+@[expose] public section
+
+open LocalFieldTheory (localNormSubgroup)
+
+noncomputable section
+
+namespace ClassFieldTheory
+
+universe u v
+
+/-- The continuous norm-quotient equivalence is uniquely determined by the
+canonical finite local Artin map, with the expected value on every class. -/
+theorem finiteAbelianLocalReciprocity_quotientEquiv_mk
+    (K : Type u) (L : Type v)
+    [Field K] [Field L] [Algebra K L]
+    [FiniteDimensional K L] [IsAbelianGalois K L]
+    [ValuativeRel K] [TopologicalSpace K]
+    [IsNonarchimedeanLocalField K] :
+    ∃ artin : Kˣ →ₜ* (L ≃ₐ[K] L),
+      Function.Surjective artin ∧
+      artin.ker = localNormSubgroup K L ∧
+      ∃! e : FieldNormQuotient K L ≃ₜ* (L ≃ₐ[K] L),
+        ∀ x : Kˣ, e (QuotientGroup.mk' (localNormSubgroup K L) x) = artin x := by
+  exact ⟨LocalClassFieldTheory.abelianLocalArtinMap K L,
+    LocalClassFieldTheory.abelianLocalArtinMap_surjective K L,
+    LocalClassFieldTheory.abelianLocalArtinMap_ker K L,
+    LocalClassFieldTheory.Universe.quotientEquiv_existsUnique K L⟩
+
+end ClassFieldTheory

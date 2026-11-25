@@ -126,6 +126,10 @@ status:
       kind: theorem
       status: proved
       note: Finite abelian local reciprocity. The proof is the port of n-yamaguchi-0729/ClassFieldTheory in Langlands/Ported/NYLL.
+    - name: Langlands.Bridge.localExistence
+      kind: theorem
+      status: proved
+      note: The local existence theorem LocalExistence. The proof is the port of n-yamaguchi-0729/ClassFieldTheory in Langlands/Ported/NYLL, with the move from the separable closure to the algebraic closure.
     - name: Langlands.Bridge.hasseWeil_rat_of_hasseWeilEllipticQ
       kind: theorem
       status: proved
