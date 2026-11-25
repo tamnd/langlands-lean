@@ -1,0 +1,117 @@
+/-
+Copyright (c) 2026 Naganori Yamaguchi (https://github.com/n-yamaguchi-0729). All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
+-/
+-- Ported from n-yamaguchi-0729/ClassFieldTheory at commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565, file `Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/TopologicalGlobalNormResidue.lean`. The module prefix is `Langlands.Ported.NYLL` in place of `Nyll`. The changes for the Mathlib of the project pin are in manifests/ported.yaml.
+
+module
+
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.Extension.IdeleNorm
+
+public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.GlobalClassFields.NormConductor
+public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.Reciprocity.GlobalNormResidue
+public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.Reciprocity.TopologicalGlobalNormResidueAbelianization
+public import Mathlib.FieldTheory.KrullTopology
+public import Mathlib.Topology.Algebra.Group.Quotient
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.PrincipalCore
+
+/-!
+# Topological global norm-residue reciprocity
+
+For a finite abelian extension of number fields, the genuine
+idele-class norm range is open in the ordinary idele-class topology.
+Hence its native quotient topology is discrete.  The finite Krull
+Galois group is discrete as well, so the algebraic global norm-residue
+equivalence upgrades to a homeomorphic multiplicative equivalence.
+
+This file also bundles the quotient map and the global norm-residue map
+as continuous homomorphisms, and proves that forgetting their topology
+recovers the previously constructed actual global norm-residue symbol.
+-/
+
+
+
+@[expose] public section
+
+open scoped IsMulCommutative NumberField
+open NumberField
+
+noncomputable section
+
+universe u v
+
+namespace GlobalClassFieldTheory
+namespace Reciprocity
+
+
+variable
+    (K : Type u) (L : Type v) [Field K] [NumberField K]
+    [Field L] [NumberField L] [Algebra K L]
+    [FiniteDimensional K L] [IsAbelianGalois K L]
+
+/-- Evaluation of the topological norm-residue equivalence is the
+existing actual norm-residue equivalence on the same quotient class. -/
+@[simp]
+theorem globalNormResidueContinuousMulEquiv_apply
+    (c :
+      IdeleClassGroup K ⧸
+        (_root_.ideleClassNorm K L).range) :
+    standardNumberFieldNormResidueContinuousMulEquiv K L c =
+      Additive.toMul
+        (globalNormResidueEquiv K L
+          (Additive.ofMul c)) := by
+  rfl
+
+/-- Global reciprocity in the direction used by the class-field
+correspondence,
+
+`Gal(L / K) ≃ₜ* C_K / N_{L/K}(C_L)`.
+
+This is the inverse of the norm-residue equivalence as a
+`ContinuousMulEquiv`, so the Krull topology on the finite Galois group
+and the native quotient topology on the idele-class quotient are part
+of the public statement. -/
+noncomputable def globalReciprocityContinuousMulEquiv :
+    Gal(L / K) ≃ₜ*
+      (IdeleClassGroup K ⧸
+        (_root_.ideleClassNorm K L).range) :=
+  (standardNumberFieldNormResidueContinuousMulEquiv K L).symm
+
+/-- Evaluation of topological global reciprocity is the inverse of the
+actual norm-residue equivalence, with no additional choice of an
+abstract group isomorphism. -/
+@[simp]
+theorem globalReciprocityContinuousMulEquiv_apply
+    (σ : Gal(L/K)) :
+    globalReciprocityContinuousMulEquiv K L σ =
+      Additive.toMul
+        ((globalNormResidueEquiv K L).symm
+          (Additive.ofMul σ)) := by
+  rfl
+
+/-- The actual global norm-residue map, bundled as a continuous
+homomorphism on the ordinary idele-class topology. -/
+noncomputable abbrev globalNormResidueContinuousMonoidHom :
+    IdeleClassGroup K →ₜ* Gal(L / K) :=
+  standardNumberFieldArtinContinuousMonoidHom K L
+
+/-- Evaluation of the continuous global norm-residue map agrees with
+the existing actual global norm-residue symbol. -/
+@[simp]
+theorem globalNormResidueContinuousMonoidHom_apply
+    (c : IdeleClassGroup K) :
+    globalNormResidueContinuousMonoidHom K L c =
+      globalNormResidueMonoidHom K L c := by
+  rfl
+
+/-- The existing actual global norm-residue homomorphism is continuous
+for the ordinary idele-class topology and the finite Krull topology. -/
+theorem globalNormResidueMonoidHom_continuous :
+    Continuous (globalNormResidueMonoidHom K L) :=
+  (globalNormResidueContinuousMonoidHom K L).continuous.congr
+    (fun c =>
+      globalNormResidueContinuousMonoidHom_apply K L c)
+
+end Reciprocity
+end GlobalClassFieldTheory

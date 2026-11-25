@@ -166,6 +166,10 @@ status:
       kind: theorem
       status: proved
       note: Finite abelian local reciprocity. The proof is the port of n-yamaguchi-0729/ClassFieldTheory in Langlands/Ported/NYLL.
+    - name: Langlands.Bridge.kroneckerWeber
+      kind: theorem
+      status: proved
+      note: The theorem of Kronecker and Weber, the statement KroneckerWeber. The proof is the port of n-yamaguchi-0729/ClassFieldTheory in Langlands/Ported/NYLL, with the move from an abstract embedding into a cyclotomic field to a subfield of the algebraic closure.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

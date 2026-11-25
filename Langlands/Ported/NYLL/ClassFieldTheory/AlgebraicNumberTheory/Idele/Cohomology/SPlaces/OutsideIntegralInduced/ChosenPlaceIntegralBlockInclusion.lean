@@ -1,0 +1,91 @@
+/-
+Copyright (c) 2026 Naganori Yamaguchi (https://github.com/n-yamaguchi-0729). All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
+-/
+-- Ported from n-yamaguchi-0729/ClassFieldTheory at commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565, file `Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/OutsideIntegralInduced/ChosenPlaceIntegralBlockInclusion.lean`. The module prefix is `Langlands.Ported.NYLL` in place of `Nyll`. The changes for the Mathlib of the project pin are in manifests/ported.yaml.
+
+module
+
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Completion.FinitePlaceModel
+
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.Cohomology.SPlaces.OutsideIntegralInduced.ChosenPlaceAction
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.RayClass.Ideal
+
+/-!
+# Inclusion of the chosen integral induced block
+
+This file embeds the chosen induced module of local integer units into the
+ordinary local multiplicative block and proves injectivity.
+-/
+
+
+
+@[expose] public section
+
+open scoped NumberField TensorProduct ValuativeRel NNReal
+open NumberField IsDedekindDomain
+
+noncomputable section
+
+open AlgebraicNumberTheory.Valuations
+open HilbertRamification
+open LocalClassFieldTheory
+open LocalFieldTheory
+open CyclicCohomology.ProfiniteCohomology.Herbrand
+open CyclicCohomology
+
+variable
+    {K : Type} {L : Type}
+    [Field K] [NumberField K]
+    [Field L] [NumberField L] [Algebra K L]
+    [FiniteDimensional K L] [IsGalois K L]
+
+section ChosenFinitePlace
+
+/-- Inclusion of the chosen integral block into the ordinary chosen
+local multiplicative block. -/
+noncomputable def chosenFinitePlaceIntegralInducedBlockToLocalPlaceBlock
+    (w₀ : HeightOneSpectrum (𝓞 K)) :
+    ChosenFinitePlaceInducedIntegerUnits
+        (K := K) (L := L) w₀ →
+      ChosenFinitePlaceLocalPlaceBlock
+        (K := K) (L := L) w₀ :=
+  by
+    letI : MulDistribMulAction
+        (absoluteValueDecompositionGroup K
+          (chosenFinitePlaceExtension (L := L) w₀).1)
+        𝒪[ChosenFinitePlaceLocalizedCompletion
+          (K := K) (L := L) w₀]ˣ :=
+      chosenFinitePlaceDecompositionGroupIntegerUnitsAction
+        (K := K) (L := L) w₀
+    change
+      InducedModule
+          (B := ChosenFinitePlaceLocalizedIntegerUnits
+            (K := K) (L := L) w₀)
+          (ChosenFinitePlaceDecompositionGroup
+            (K := K) (L := L) w₀) →
+        ChosenFinitePlaceLocalPlaceBlock
+          (K := K) (L := L) w₀
+    exact
+      (inducedIntegerUnitsToLocalPlaceBlock
+          (HeightOneSpectrum.adicAbv K w₀)
+          (RayClass.adicAbv_isNontrivial w₀)
+          (HeightOneSpectrum.isNonarchimedean_adicAbv K w₀)
+          (chosenFinitePlaceExtension (L := L) w₀)).toFun
+
+omit [NumberField L] in
+/-- The chosen finite-place integral induced block embeds into its
+unrestricted local-place block. -/
+theorem chosenFinitePlaceIntegralInducedBlockToLocalPlaceBlock_injective
+    (w₀ : HeightOneSpectrum (𝓞 K)) :
+    Function.Injective
+      (chosenFinitePlaceIntegralInducedBlockToLocalPlaceBlock
+        (K := K) (L := L) w₀) := by
+  intro x y hxy
+  apply Subtype.ext
+  funext g
+  apply LocalFieldTheory.IsNonarchimedeanLocalField.integerUnitsToFieldUnits_injective
+    (ChosenFinitePlaceLocalizedCompletion (K := K) (L := L) w₀)
+  exact congrArg (fun z : ChosenFinitePlaceLocalPlaceBlock (K := K) (L := L) w₀ => z.1 g) hxy
+end ChosenFinitePlace
