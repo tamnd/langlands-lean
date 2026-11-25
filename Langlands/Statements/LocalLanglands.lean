@@ -39,7 +39,7 @@ The operations twist, contragredient and dual are relations on isomorphism class
 
 $SL_2(K)$ is the kernel of $\det$ in $GL_2(K)$, with the subspace topology. $D^\times$ has the topology of units for the canonical topology of the finite dimensional $K$-vector space $D$.
 
-$GSp_4$ (Gan and Takeda) is not stated. A faithful statement needs the L-parameters as $GSp_4(\mathbb{C})$-conjugacy classes of pairs $(\varphi, \nu)$ of a parameter and its similitude character, the component groups that index the L-packets, and the generic member of each tempered packet, which needs Whittaker models and the γ-factors of pairs. This is too large for this file.
+The correspondence for $GSp_4$ (Gan and Takeda) is stated in `Langlands.Statements.GSp4`, with the L-parameters as $GSp_4(\mathbb{C})$-conjugacy classes and the size of each discrete L-packet.
 
 ## References
 

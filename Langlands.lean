@@ -21,6 +21,7 @@ import Langlands.Statements.ClassField
 import Langlands.Statements.FunctionField
 import Langlands.Statements.FundamentalLemma
 import Langlands.Statements.Galois
+import Langlands.Statements.GSp4
 import Langlands.Statements.GlobalGL
 import Langlands.Statements.GodementJacquet
 import Langlands.Statements.HasseWeil

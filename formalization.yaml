@@ -210,6 +210,10 @@ status:
       kind: statement
       status: known
       note: The theorem of L. Lafforgue for GL(n) over a global function field. For each prime l that is not the characteristic, there is a bijection between the cuspidal automorphic classes and the irreducible l-adic Galois representations with a determinant of finite order, and it matches the Hecke eigenvalues with the Frobenius eigenvalues at almost all places.
+    - name: Langlands.LocalLanglandsGSp4
+      kind: statement
+      status: known
+      note: The theorem of Gan and Takeda. For a nonarchimedean local field of characteristic 0 there is a surjection with finite fibers from the irreducible smooth representations of GSp(4) to the L-parameters into GSp(4, C). It matches the central character with the similitude character, respects twists, sends the constituents of each principal series to the diagonal parameter, and gives each discrete packet the size of the component group with exactly one generic member. The factors of pairs that make the map unique are not stated.
     - name: Langlands.SelbergEigenvalue
       kind: statement
       status: open
