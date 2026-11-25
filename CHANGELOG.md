@@ -4,6 +4,13 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.6 (2026-11-26)
+
+### Added
+
+- `Langlands/Tate/NonArchimedeanCharacter.lean`, `NonArchimedeanGauss.lean` and `NonArchimedeanLocalEquation.lean`: the invariance of the multiplicative measure at a finite place, the vanishing of the zeta integral of a ramified character on the integers, Gauss sums with the absolute value q^(-a/2), and the local functional equation of Tate's thesis at a finite place for an unramified and for a ramified character, with an explicit epsilon factor.
+- `Langlands/Statements/FunctionField.lean`: `ReciprocityFunctionFieldGL`, the theorem of L. Lafforgue for GL(n) over a global function field, with the places, the adele ring, cusp eigenforms, Hecke operators and l-adic Galois representations of a function field.
+
 ## v0.1.5 (2026-11-26)
 
 ### Added
