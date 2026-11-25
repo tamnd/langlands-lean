@@ -49,8 +49,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 350
     env:
-      # The last commit of lean4lean on the toolchain v4.35.0 of this package.
-      LEAN4LEAN_REV: b3ad4b39d94526395d2f39682208c7bd6fb0c1f3
+      # The commit of lean4lean that moves it to the toolchain v4.36.0 of this package.
+      LEAN4LEAN_REV: 23fd0341e823a332ce5df21a1897c8afcbf34471
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     env:
-      # The head of the branch master of ammkrn/nanoda_lib on 2026-11-24, a merge of 2026-11-07. The toolchain v4.35.0 bundles the older commit 3a2407216ee84a75f9e1aead6803d0578be06ae7.
+      # The head of the branch master of ammkrn/nanoda_lib on 2026-11-24, a merge of 2026-11-07. The toolchain v4.35.0 bundled the older commit 3a2407216ee84a75f9e1aead6803d0578be06ae7.
       NANODA_REV: 0da9f98feadd3a0a2ef4b3dbcf52a298a6fef929
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

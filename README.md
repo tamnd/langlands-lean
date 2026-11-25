@@ -36,8 +36,8 @@ Each proof in the main tree uses only the axioms `propext`, `Classical.choice` a
 
 | Item | Pin |
 |---|---|
-| Lean | v4.35.0 |
-| Mathlib | v4.35.0 |
+| Lean | v4.36.0 |
+| Mathlib | v4.36.0 |
 
 ## Licence
 
