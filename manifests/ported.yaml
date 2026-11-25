@@ -1,0 +1,13 @@
+# One entry for each ported source (spec 05.4). lgl port check reads this file.
+- source: formal-conjectures
+  repo: https://github.com/google-deepmind/formal-conjectures
+  commit: 9097e2f90e66d2f6244209cb1c07f7120d17ec53
+  licence: Apache-2.0
+  date: 2026-11-25
+  paths:
+    - FormalConjectures/Wikipedia/ModularityConjecture.lean
+    - FormalConjectures/Wikipedia/SatoTateConjecture.lean
+    - FormalConjectures/Wikipedia/RamanujanTau.lean
+    - FormalConjectures/Wikipedia/HasseWeil.lean
+  into: Langlands/Ported/FormalConjectures/Wikipedia.lean
+  changes: the theorems with sorry are def Prop; the attributes and test lemmas are removed
