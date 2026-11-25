@@ -118,6 +118,14 @@ status:
       kind: statement
       status: known
       note: Hecke's theorem as proved in Tate's thesis. The completed L-function of a Hecke character has a meromorphic continuation and a functional equation with a root number of absolute value one. The archimedean parameters are hypotheses.
+    - name: Langlands.HeckeFunctionalEquationAt
+      kind: statement
+      status: known
+      note: Hecke's theorem for one number field. HeckeFunctionalEquation is this statement for all number fields.
+    - name: Langlands.heckeFunctionalEquationAt_rat
+      kind: theorem
+      status: proved
+      note: Hecke's theorem for the rational numbers. A Hecke character of Q is a primitive Dirichlet character times a power of the idele norm, and the proof uses the functional equation of Dirichlet L-functions in Mathlib.
     - name: Langlands.ArchimedeanParametersExist
       kind: statement
       status: known

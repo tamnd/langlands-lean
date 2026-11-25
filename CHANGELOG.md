@@ -6,6 +6,12 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- `Langlands/Hecke/Rational.lean`: the proof `heckeFunctionalEquationAt_rat` of Hecke's theorem for Q. A Hecke character of Q is a primitive Dirichlet character times a power of the idele norm. Its completed L-function is the completed Dirichlet L-function at a shifted point, and the functional equation, the root number and the poles come from Mathlib.
+
+### Changed
+
+- `Langlands/Statements/Hecke.lean`: the new statement `HeckeFunctionalEquationAt K` is Hecke's theorem for one number field. `HeckeFunctionalEquation` is now this statement for all number fields. The content of the statement is the same.
+
 - `Langlands/Ported/NYLL`: the port of global class field theory from n-yamaguchi-0729/ClassFieldTheory. The port adds 114 files to the 692 files of the local theory. It has finite abelian global reciprocity, the existence theorem, the Artin map from the idele class group to the abelianized absolute Galois group, and the theorem of Kronecker and Weber. The changes for the Mathlib of the project pin are in `manifests/ported.yaml`.
 - `Langlands/Bridge/NYLLGlobal.lean`: the proof `Bridge.kroneckerWeber` of the statement `KroneckerWeber`.
 
