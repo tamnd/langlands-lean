@@ -6,6 +6,7 @@ import Langlands.Ported.FormalConjectures.Wikipedia
 import Langlands.Statements.Modularity
 import Mathlib.NumberTheory.ModularForms.LevelOne.DimensionFormula
 import Langlands.Fidelity.Modularity
+import Mathlib.NumberTheory.PrimeCounting
 
 /-!
 # Bridges to formal-conjectures
@@ -14,6 +15,12 @@ This file compares the statements of the project with the statements of formal-c
 
 * `Langlands.Bridge.hasseWeil_rat_of_hasseWeilEllipticQ`: `HasseWeilEllipticQ` implies the statement `exists_hasAnalyticContinuation_rat` of formal-conjectures. The proof divides the completed L-function by the gamma factor. The function $1/\Gamma$ is entire, so the quotient is entire.
 * `Langlands.Bridge.not_modularityConjecture`: the statement `modularityConjecture` of formal-conjectures is false for every elliptic curve over $\mathbb{Q}$.
+* `Langlands.Bridge.satoTate_conjecture_of_satoTate`: `SatoTate` implies the statement `satoTate_conjecture` of formal-conjectures. The proof takes two hypotheses on each curve: the coefficient `ap` of formal-conjectures agrees with $a_p$ of `WeierstrassCurve.LFunction` at almost all primes (`ApAgree`), and the Hasse bound holds at almost all primes (`HasseBound`). Both are theorems that Mathlib does not have yet.
+* `Langlands.Bridge.ramanujan_petersson_of_ramanujanPeterssonHolomorphic`: `RamanujanPeterssonHolomorphic` implies the statement `ramanujan_petersson` of formal-conjectures for $\tau$. The proof takes the hypothesis `DeltaIsEigenform`: the power series $\Delta$ of formal-conjectures is the $q$-expansion of a normalized eigenform of weight 12 and level 1.
+
+## The statement of Sato-Tate in formal-conjectures
+
+The statement of formal-conjectures counts the primes $p < N$ with $a \le a_p / (2 \sqrt{p}) \le b$ for $-1 \le a \le b \le 1$. The project statement counts the primes $p \le x$ with $\theta_p \in [\alpha, \beta]$ for $0 \le \alpha \le \beta \le \pi$. The bridge takes $\alpha = \arccos b$ and $\beta = \arccos a$. Because $\arccos$ is strictly decreasing on $[-1, 1]$, the two conditions on $p$ agree when $|a_p| \le 2 \sqrt{p}$. The change of variable $t = \cos \theta$ takes the measure $\frac{2}{\pi} \sin^2 \theta \, d\theta$ to the measure of `satoTateCDF` (`satoTateMeasure_eq`). The two counts differ at most at the finitely many primes below a bound $P_0$, and the number of primes tends to infinity, so the two limits are equal (`tendsto_density_congr`).
 
 ## The statement of modularity in formal-conjectures
 
@@ -161,5 +168,151 @@ theorem not_modularity_conjecture :
   not_modularityConjecture Fidelity.congruentNumberCurve (h _)
 
 end Modularity
+
+section SatoTate
+
+open Langlands.Ported.FormalConjectures Real Filter Topology
+
+/-- The Sato-Tate measure of $[a, b] \subseteq [-1, 1]$ in the variable $\cos \theta$ is the measure of $[\arccos b, \arccos a]$ in the variable $\theta$. -/
+theorem satoTateMeasure_eq {a b : ℝ} (ha : -1 ≤ a) (ha' : a ≤ 1) (hb : -1 ≤ b) (hb' : b ≤ 1) :
+    SatoTateConjecture.satoTateMeasure a b = (2 / π) * ∫ θ in (arccos b)..(arccos a), Real.sin θ ^ 2 := by
+  rw [integral_sin_sq, sin_arccos, sin_arccos, cos_arccos ha ha', cos_arccos hb hb',
+    arccos_eq_pi_div_two_sub_arcsin, arccos_eq_pi_div_two_sub_arcsin]
+  simp only [SatoTateConjecture.satoTateMeasure, SatoTateConjecture.satoTateCDF]
+  have hπ : π ≠ 0 := pi_ne_zero
+  field_simp
+  ring
+
+/-- The number of primes $p \le N$ with a property, as a count over `Nat.primesBelow (N + 1)`. -/
+theorem card_primes_le_eq (N : ℕ) (Q : ℕ → Prop) [DecidablePred Q] :
+    Nat.card {p : ℕ // p.Prime ∧ p ≤ N ∧ Q p} = ((Nat.primesBelow (N + 1)).filter Q).card := by
+  rw [← Nat.card_eq_finsetCard]
+  exact Nat.card_congr (Equiv.subtypeEquivRight fun p => by
+    simp [Nat.primesBelow, and_assoc, and_left_comm])
+
+theorem card_primes_le_eq' (N : ℕ) :
+    Nat.card {p : ℕ // p.Prime ∧ p ≤ N} = (Nat.primesBelow (N + 1)).card := by
+  rw [← Nat.card_eq_finsetCard]
+  exact Nat.card_congr (Equiv.subtypeEquivRight fun p => by
+    simp [Nat.primesBelow, and_comm])
+
+/-- If two properties agree on the primes $p \ge P_0$, then their densities among the primes have the same limit. -/
+theorem tendsto_density_congr {Q Q' : ℕ → Prop} [DecidablePred Q] [DecidablePred Q'] (P₀ : ℕ)
+    (hQ : ∀ p, P₀ ≤ p → p.Prime → (Q p ↔ Q' p)) {L : ℝ}
+    (h : Tendsto (fun N : ℕ => (((Nat.primesBelow N).filter Q).card : ℝ) / (Nat.primesBelow N).card)
+      atTop (𝓝 L)) :
+    Tendsto (fun N : ℕ => (((Nat.primesBelow N).filter Q').card : ℝ) / (Nat.primesBelow N).card)
+      atTop (𝓝 L) := by
+  have hden : Tendsto (fun N : ℕ => ((Nat.primesBelow N).card : ℝ)) atTop atTop := by
+    simp only [Nat.primesBelow_card_eq_primeCounting']
+    exact tendsto_natCast_atTop_atTop.comp Nat.tendsto_primeCounting'
+  have hbound : ∀ N, |(((Nat.primesBelow N).filter Q').card : ℝ) - ((Nat.primesBelow N).filter Q).card| ≤ P₀ := by
+    intro N
+    have key : ∀ (R R' : ℕ → Prop) [DecidablePred R] [DecidablePred R'],
+        (∀ p, P₀ ≤ p → p.Prime → (R p ↔ R' p)) →
+        ((Nat.primesBelow N).filter R).card ≤ ((Nat.primesBelow N).filter R').card + P₀ := by
+      intro R R' _ _ hR
+      calc ((Nat.primesBelow N).filter R).card
+          ≤ ((Nat.primesBelow N).filter R' ∪ Finset.range P₀).card := by
+            apply Finset.card_le_card
+            intro p hp
+            simp only [Finset.mem_filter, Nat.mem_primesBelow] at hp
+            simp only [Finset.mem_union, Finset.mem_filter, Nat.mem_primesBelow, Finset.mem_range]
+            by_cases hp0 : P₀ ≤ p
+            · exact Or.inl ⟨hp.1, (hR p hp0 hp.1.2).mp hp.2⟩
+            · exact Or.inr (not_le.mp hp0)
+        _ ≤ ((Nat.primesBelow N).filter R').card + (Finset.range P₀).card := Finset.card_union_le _ _
+        _ = _ := by rw [Finset.card_range]
+    have h1 := key Q Q' hQ
+    have h2 := key Q' Q (fun p hp hpr => (hQ p hp hpr).symm)
+    have h1' : (((Nat.primesBelow N).filter Q).card : ℝ) ≤ ((Nat.primesBelow N).filter Q').card + P₀ := by
+      exact_mod_cast h1
+    have h2' : (((Nat.primesBelow N).filter Q').card : ℝ) ≤ ((Nat.primesBelow N).filter Q).card + P₀ := by
+      exact_mod_cast h2
+    rw [abs_le]
+    constructor <;> linarith
+  have hdiff : Tendsto (fun N : ℕ => ((((Nat.primesBelow N).filter Q').card : ℝ) - ((Nat.primesBelow N).filter Q).card) / (Nat.primesBelow N).card) atTop (𝓝 0) := by
+    have hlim : Tendsto (fun N : ℕ => (P₀ : ℝ) / (Nat.primesBelow N).card) atTop (𝓝 0) :=
+      tendsto_const_nhds.div_atTop hden
+    apply squeeze_zero_norm' _ hlim
+    filter_upwards [hden.eventually_gt_atTop 0] with N hN
+    rw [Real.norm_eq_abs, abs_div, abs_of_pos hN]
+    exact div_le_div_of_nonneg_right (hbound N) hN.le
+  have := h.add hdiff
+  rw [add_zero] at this
+  refine this.congr' ?_
+  filter_upwards [hden.eventually_gt_atTop 0] with N hN
+  field_simp
+  ring
+
+/-- At the primes of good reduction of a minimal model, the coefficient `ModularityConjecture.WeierstrassCurve.ap` of formal-conjectures, computed from the given equation, is the coefficient $a_p$ of `WeierstrassCurve.LFunction`. The two agree at all but finitely many primes, because a Weierstrass equation is minimal and has good reduction at all but finitely many primes. -/
+def ApAgree (E : WeierstrassCurve ℚ) [E.IsElliptic] : Prop :=
+  ∃ P₀ : ℕ, ∀ p, P₀ ≤ p → p.Prime → (ModularityConjecture.WeierstrassCurve.ap E p : ℝ) = E.LFunction p
+
+/-- The Hasse bound $|a_p| \le 2 \sqrt{p}$ at all but finitely many primes. Mathlib does not have it yet. -/
+def HasseBound (E : WeierstrassCurve ℚ) : Prop :=
+  ∃ P₀ : ℕ, ∀ p, P₀ ≤ p → p.Prime → |(E.LFunction p : ℝ)| ≤ 2 * √p
+
+theorem hasCM_iff_hasCMOverQ (E : WeierstrassCurve ℚ) [E.IsElliptic] :
+    SatoTateConjecture.HasCM E ↔ HasCMOverQ E := by
+  simp [SatoTateConjecture.HasCM, HasCMOverQ, SatoTateConjecture.cmJInvariants, cmJInvariants]
+
+/-- **The Sato-Tate bridge.** With the Hasse bound and the agreement of the two definitions of $a_p$, `SatoTate` implies the statement `satoTate_conjecture` of formal-conjectures. The change of variable $t = \cos \theta$ takes the measure $\frac{2}{\pi} \sin^2 \theta \, d\theta$ to the measure of `satoTateCDF`. -/
+theorem satoTate_conjecture_of_satoTate
+    (hE : ∀ (E : WeierstrassCurve ℚ) [E.IsElliptic], ApAgree E ∧ HasseBound E)
+    (h : SatoTate) : SatoTateConjecture.satoTate_conjecture := by
+  intro E _ hCM a b ha hab hb
+  obtain ⟨⟨P₁, hP₁⟩, ⟨P₂, hP₂⟩⟩ := hE E
+  have hST := h E ((hasCM_iff_hasCMOverQ E).not.mp hCM) (arccos b) (arccos a) (arccos_nonneg _)
+    (strictAntiOn_arccos.antitoneOn ⟨ha, hab.trans hb⟩ ⟨ha.trans hab, hb⟩ hab) (arccos_le_pi _)
+  rw [satoTateMeasure_eq ha (hab.trans hb) (ha.trans hab) hb]
+  classical
+  have hST' : Tendsto (fun N : ℕ => (((Nat.primesBelow N).filter
+      (fun p => satoTateAngle E p ∈ Set.Icc (arccos b) (arccos a))).card : ℝ) / (Nat.primesBelow N).card)
+      atTop (𝓝 ((2 / π) * ∫ θ in (arccos b)..(arccos a), Real.sin θ ^ 2)) := by
+    rw [← tendsto_add_atTop_iff_nat 1]
+    refine hST.congr fun N => ?_
+    rw [card_primes_le_eq, card_primes_le_eq']
+  refine tendsto_density_congr (max P₁ P₂) (fun p hp hpr => ?_) hST'
+  have hap := hP₁ p (le_of_max_le_left hp) hpr
+  have hbd := hP₂ p (le_of_max_le_right hp) hpr
+  have hsq : 0 < 2 * √(p : ℝ) := by positivity [hpr.pos]
+  set x := (E.LFunction p : ℝ) / (2 * √p) with hx
+  have hx1 : -1 ≤ x ∧ x ≤ 1 := by
+    rw [hx, le_div_iff₀ hsq, div_le_iff₀ hsq]
+    constructor <;> linarith [abs_le.mp hbd]
+  have hnorm : SatoTateConjecture.normalisedAp E p = x := by
+    rw [SatoTateConjecture.normalisedAp, hap]
+  simp only [hnorm, satoTateAngle, ← hx, Set.mem_Icc]
+  have hxI : x ∈ Set.Icc (-1 : ℝ) 1 := hx1
+  have haI : a ∈ Set.Icc (-1 : ℝ) 1 := ⟨ha, hab.trans hb⟩
+  have hbI : b ∈ Set.Icc (-1 : ℝ) 1 := ⟨ha.trans hab, hb⟩
+  rw [strictAntiOn_arccos.le_iff_ge hbI hxI, strictAntiOn_arccos.le_iff_ge hxI haI]
+  exact and_comm
+
+end SatoTate
+
+section Ramanujan
+
+open Langlands.Ported.FormalConjectures
+
+/-- The discriminant form is a normalized Hecke eigenform of weight 12 and level 1 whose $q$-expansion has the coefficients $\tau(n)$ of the power series `RamanujanTau.Δ`. This is a theorem of Mordell and of Hecke. Mathlib does not have it yet, so the bridge takes it as a hypothesis. -/
+def DeltaIsEigenform : Prop :=
+  ∃ f : CuspForm (CongruenceSubgroup.Gamma0 1 : Subgroup (GL (Fin 2) ℝ)) 12,
+    IsNormalizedEigenform f ∧ ∀ n : ℕ, qCoeff f n = (RamanujanTau.τ n : ℂ)
+
+/-- **The Ramanujan bridge.** With `DeltaIsEigenform`, `RamanujanPeterssonHolomorphic` implies the statement `ramanujan_petersson` of formal-conjectures. This is the case $N = 1$ and $k = 12$, with $(12 - 1)/2 = 11/2$. -/
+theorem ramanujan_petersson_of_ramanujanPeterssonHolomorphic (hΔ : DeltaIsEigenform)
+    (h : RamanujanPeterssonHolomorphic) : RamanujanTau.ramanujan_petersson := by
+  obtain ⟨f, hf, hτ⟩ := hΔ
+  intro p hp
+  have hp' : p.Prime := Nat.prime_iff.mpr hp
+  have := h 1 12 f one_pos hf p hp' (fun hd => hp'.one_lt.ne' (Nat.dvd_one.mp hd))
+  rw [hτ, Complex.norm_intCast] at this
+  push_cast
+  convert this using 3
+  norm_num
+
+end Ramanujan
 
 end Langlands.Bridge
