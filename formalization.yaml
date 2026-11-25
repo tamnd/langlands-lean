@@ -214,6 +214,18 @@ status:
       kind: statement
       status: known
       note: The theorem of Gan and Takeda. For a nonarchimedean local field of characteristic 0 there is a surjection with finite fibers from the irreducible smooth representations of GSp(4) to the L-parameters into GSp(4, C). It matches the central character with the similitude character, respects twists, sends the constituents of each principal series to the diagonal parameter, and gives each discrete packet the size of the component group with exactly one generic member. The factors of pairs that make the map unique are not stated.
+    - name: Langlands.AutomorphicToGalois
+      kind: statement
+      status: known
+      note: The theorem of Harris, Lan, Taylor and Thorne and of Scholze. For K totally real or CM, each regular algebraic cuspidal class of GL(n) over K has, for each prime l and each iota, a continuous l-adic representation that is unramified at almost all places and matches it at almost all places. The exact set of unramified places and the local-global compatibility are left out.
+    - name: Langlands.GlobalJacquetLanglandsGL2
+      kind: statement
+      status: known
+      note: The theorem of Eichler and of Jacquet and Langlands in a special form. For a definite quaternion algebra over Q that ramifies exactly at p and infinity, the Hecke eigensystems on the right ideal classes of a maximal order, other than the system q + 1, are the eigensystems of the normalized eigenforms in S_2(Gamma_0(p)) at the primes other than p.
+    - name: Langlands.ReciprocityGL
+      kind: statement
+      status: open
+      note: A weak form of the reciprocity conjecture of Clozel and Fontaine-Mazur. Each algebraic cuspidal class of GL(n) over a number field has an irreducible l-adic representation that matches it at almost all places, the map is injective, and each representation with finite image is in its image. The de Rham condition is not in Mathlib, so the full bijection with the geometric representations is not stated.
     - name: Langlands.SelbergEigenvalue
       kind: statement
       status: open

@@ -29,7 +29,9 @@ import Langlands.Statements.Hecke
 import Langlands.Statements.LocalLanglands
 import Langlands.Statements.Maass
 import Langlands.Statements.Modularity
+import Langlands.Statements.NumberFieldGL
 import Langlands.Statements.PadicGalois
+import Langlands.Statements.Reciprocity
 import Langlands.Statements.Smooth
 import Langlands.Statements.Torus
 import Langlands.Statements.TorusInduced
