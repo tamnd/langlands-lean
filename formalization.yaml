@@ -258,6 +258,18 @@ status:
       kind: theorem
       status: proved
       note: The theta transformation formula for a full lattice. The theta series of the lattice at t is the inverse of the covolume times t^(-n/2) times the theta series of the dual lattice at 1/t.
+    - name: Langlands.Tate.NonArchimedean.localFunctionalEquation_unramified
+      kind: theorem
+      status: proved
+      note: The local functional equation of Tate's thesis at a finite place for an unramified character and the characteristic function of the integers, with the epsilon factor chi(pi)^d q^(d(1/2 - s)) times the constant q^(d/2) of the measure that gives the integers the volume 1.
+    - name: Langlands.Tate.NonArchimedean.localFunctionalEquation_ramified
+      kind: theorem
+      status: proved
+      note: The local functional equation of Tate's thesis at a finite place for a ramified character and the test function of Tate, with the epsilon factor given by a Gauss sum.
+    - name: Langlands.Tate.NonArchimedean.norm_gaussSum_sq
+      kind: theorem
+      status: proved
+      note: The square of the absolute value of the Gauss sum of a character with conductor exponent a is q^(-a), for the measure that gives the integers the volume 1.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
