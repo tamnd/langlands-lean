@@ -1,0 +1,43 @@
+/-
+Copyright (c) 2026 Naganori Yamaguchi (https://github.com/n-yamaguchi-0729). All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
+-/
+-- Ported from n-yamaguchi-0729/ClassFieldTheory at commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565, file `Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/IsUnramifiedOutsideModulus.lean`. The module prefix is `Langlands.Ported.NYLL` in place of `Nyll`. The changes for the Mathlib of the project pin are in manifests/ported.yaml.
+
+module
+
+public import Langlands.Ported.NYLL.ClassFieldTheory.Definitions.ConductorsAndRayClassFields.RayClassModulus
+public import Mathlib.NumberTheory.NumberField.InfinitePlace.Ramification
+public import Mathlib.RingTheory.Unramified.Locus
+
+/-!
+# Unramifiedness outside the support of a ray modulus
+-/
+
+
+
+@[expose] public section
+
+open scoped NumberField
+open NumberField IsDedekindDomain
+
+namespace ClassFieldTheory
+
+universe u v
+
+/-- A number-field extension is unramified away from the finite primes and
+real places occurring in a ray modulus.  Only the support of the finite part
+is used; this predicate does not bound conductor exponents. -/
+def IsUnramifiedOutsideModulus
+    (K : Type u) (L : Type v)
+    [Field K] [NumberField K]
+    [Field L] [NumberField L] [Algebra K L]
+    (m : RayClassModulus K) : Prop :=
+  (∀ v : HeightOneSpectrum (𝓞 K), v ∉ m.finitePart.support →
+      Algebra.IsUnramifiedIn (𝓞 L) v.asIdeal) ∧
+    ∀ (v : InfinitePlace K) (hv : v.IsReal),
+      (⟨v, hv⟩ : RayClass.RealPlace K) ∉ m.infinitePart →
+        v.IsUnramifiedIn L
+
+end ClassFieldTheory

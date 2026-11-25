@@ -1,0 +1,114 @@
+/-
+Copyright (c) 2026 Naganori Yamaguchi (https://github.com/n-yamaguchi-0729). All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
+-/
+-- Ported from n-yamaguchi-0729/ClassFieldTheory at commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565, file `Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FinitePlaceArtin/UnramifiedNormalization.lean`. The module prefix is `Langlands.Ported.NYLL` in place of `Nyll`. The changes for the Mathlib of the project pin are in manifests/ported.yaml.
+
+module
+
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Completion.ChosenLocalization
+public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.Reciprocity.FinitePlaceArtin.Construction
+public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finite.LocalReciprocity.UniverseFrobenius
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.IdealMap
+public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finite.LocalReciprocity.UniverseArtin
+
+/-!
+# Unramified normalization of the chosen finite-place Artin map
+
+The chosen order-one input has normalized local valuation `-1` in the
+geometric finite-place construction. Its local Artin image is therefore
+inverse arithmetic Frobenius in the actual chosen completion.
+-/
+
+
+
+@[expose] public section
+
+open scoped NumberField ValuativeRel
+open NumberField IsDedekindDomain
+open AlgebraicNumberTheory.Valuations LocalFieldTheory
+
+noncomputable section
+
+namespace GlobalClassFieldTheory
+namespace Reciprocity
+
+universe uK uL
+
+variable {K : Type uK} {L : Type uL}
+    [Field K] [NumberField K]
+    [Field L] [Algebra K L]
+    [hKLfinite : FiniteDimensional K L] [IsAbelianGalois K L]
+
+/-- Arithmetic Frobenius of the actual chosen unramified local extension. -/
+noncomputable def chosenFinitePlaceLocalArithmeticFrobenius
+    (v : HeightOneSpectrum (𝓞 K))
+    (hunram : ChosenFinitePlaceIsUnramified (K := K) (L := L) v) :
+    ChosenFinitePlaceLocalizedCompletion (K := K) (L := L) v ≃ₐ[
+      ChosenFinitePlaceBaseCompletion (K := K) v]
+      ChosenFinitePlaceLocalizedCompletion (K := K) (L := L) v := by
+  let C := ChosenFinitePlaceBaseCompletion (K := K) v
+  let E := ChosenFinitePlaceLocalizedCompletion (K := K) (L := L) v
+  letI : IsGalois C E :=
+    chosenFinitePlaceLocalizedIsGalois (K := K) (L := L) v
+  letI : Valuation.HasExtension
+      (ValuativeRel.valuation C) (ValuativeRel.valuation E) :=
+    chosenFinitePlaceLocalizedValuationHasExtension (K := K) (L := L) v
+  letI : IsIntegralClosure 𝒪[E] 𝒪[C] E :=
+    chosenFinitePlaceLocalizedIsIntegralClosure (K := K) (L := L) v
+  letI : Module.Finite 𝒪[C] 𝒪[E] :=
+    chosenFinitePlaceLocalizedIntegerModuleFinite (K := K) (L := L) v
+  letI : IsNonarchimedeanLocalField.IsUnramifiedValuedExtension
+      C E := hunram
+  exact arithmeticFrobeniusOfUnramifiedValuation C E
+
+/-- At an unramified chosen finite place, the chosen geometric local Artin
+symbol of the order-one section is inverse arithmetic Frobenius. -/
+theorem chosenFinitePlaceLocalArtin_eq_arithmeticFrobenius_inv_of_unramified
+    (v : HeightOneSpectrum (𝓞 K))
+    (hunram : ChosenFinitePlaceIsUnramified (K := K) (L := L) v) :
+    finitePlaceLocalArtinMonoidHom (K := K) (L := L) v
+        (chosenFinitePlaceExtension (L := L) v)
+        (FiniteIdeleGroup.chosenLocalOrderSection v 1) =
+      (chosenFinitePlaceLocalArithmeticFrobenius
+        (K := K) (L := L) v hunram)⁻¹ := by
+  let w := chosenFinitePlaceExtension (L := L) v
+  let C := ChosenFinitePlaceBaseCompletion (K := K) v
+  let E := ChosenFinitePlaceLocalizedCompletion (K := K) (L := L) v
+  let x : (v.adicCompletion K)ˣ :=
+    FiniteIdeleGroup.chosenLocalOrderSection v 1
+  let : Algebra C E := finitePlaceLocalArtinLocalizedAlgebra v w
+  let : FiniteDimensional C E := finitePlaceLocalArtinFiniteDimensional v w
+  let : IsAbelianGalois C E :=
+    finitePlaceLocalArtinIsAbelianGalois v w hKLfinite
+  let : ValuativeRel C := finitePlaceLocalArtinCompletionValuativeRel v
+  let : IsNonarchimedeanLocalField C :=
+    finitePlaceLocalArtinCompletionIsNonarchimedeanLocalField v
+  let : IsIntegralClosure 𝒪[E] 𝒪[C] E :=
+    chosenFinitePlaceLocalizedIsIntegralClosure (K := K) (L := L) v
+  let : Module.Finite 𝒪[C] 𝒪[E] :=
+    chosenFinitePlaceLocalizedIntegerModuleFinite (K := K) (L := L) v
+  let : IsNonarchimedeanLocalField.IsUnramifiedValuedExtension C E := hunram
+  have hval :
+      IsNonarchimedeanLocalField.valuationMap C
+        (Additive.ofMul (finitePlaceLocalArtinInput v x)) = -1 :=
+    finitePlaceLocalArtinInput_chosenLocalOrderSection_valuationMap v
+  have hnorm :
+      LocalClassFieldTheory.abelianLocalArtinMonoidHom C E
+          (finitePlaceLocalArtinInput v x) =
+        (arithmeticFrobeniusOfUnramifiedValuation C E)⁻¹ := by
+    rw [LocalClassFieldTheory.Universe.abelianLocalArtinMonoidHom_eq_frobenius_zpow,
+      hval, zpow_neg_one]
+  calc
+    finitePlaceLocalArtinMonoidHom (K := K) (L := L) v w x =
+        LocalClassFieldTheory.abelianLocalArtinMonoidHom C E
+          (finitePlaceLocalArtinInput v x) := by
+      have h := finitePlaceLocalArtinMonoidHom_apply_normalized_universe v w x
+      with_reducible exact h
+    _ = (chosenFinitePlaceLocalArithmeticFrobenius
+          (K := K) (L := L) v hunram)⁻¹ := by
+      exact hnorm
+
+end Reciprocity
+end GlobalClassFieldTheory

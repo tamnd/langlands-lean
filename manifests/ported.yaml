@@ -23,8 +23,10 @@
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Degree/FrobeniusLift.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Degree/Indices.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Degree/Norm.lean
+    - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Degree/NormComparison.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Degree/NormConjugation.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Degree/NormLaws.lean
+    - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Degree/PadicCyclicClosure.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Degree/PrimeElements.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Degree/Valuation.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Degree/ValuationLaws.lean
@@ -38,6 +40,7 @@
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/FiniteIntermediateCompositum.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/FiniteIntermediateFieldCompositum.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/FiniteNormQuotient.lean
+    - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/FiniteReciprocityTransport.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/FixedTowerUnitCorrection.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/FixedTowerUnitDescent.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/FrobeniusClosureCommutation.lean
@@ -48,6 +51,7 @@
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/FrobeniusPowerFixedField.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/FrobeniusQuotientDescent.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/FrobeniusSemigroup.lean
+    - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/FrobeniusTransport.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/InfiniteUnitDescent.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/InfiniteUnitNormSubgroup.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Construction/MainFiniteReciprocity.lean
@@ -82,6 +86,8 @@
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/FiniteGaloisSubextension.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/IntermediateExtension.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Main.lean
+    - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/MaximalUnramifiedReciprocity.lean
+    - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/MaximalUnramifiedSymbol.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/NormTopology.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Reduction.lean
     - Nyll/ClassFieldTheory/AbstractClassFieldTheory/Reciprocity/Sylow.lean
@@ -96,27 +102,528 @@
     - Nyll/ClassFieldTheory/Algebra/AbelianGaloisEquiv.lean
     - Nyll/ClassFieldTheory/Algebra/FiniteAbelianIntermediateFieldAlgEquiv.lean
     - Nyll/ClassFieldTheory/Algebra/FiniteAbstractFixedField.lean
+    - Nyll/ClassFieldTheory/Algebra/FinprodFibers.lean
+    - Nyll/ClassFieldTheory/Algebra/FractionalIdealFactorization.lean
     - Nyll/ClassFieldTheory/Algebra/FrobeniusRestriction.lean
     - Nyll/ClassFieldTheory/Algebra/IntermediateFieldAlgEquivOrderIso.lean
+    - Nyll/ClassFieldTheory/Algebra/IntermediateFieldRingEquivOrderIso.lean
     - Nyll/ClassFieldTheory/Algebra/NormalEmbeddingRange.lean
     - Nyll/ClassFieldTheory/Algebra/PolynomialIdeal.lean
+    - Nyll/ClassFieldTheory/Algebra/PrincipalFractionalIdeal.lean
+    - Nyll/ClassFieldTheory/Algebra/RestrictedProduct/Valuation.lean
     - Nyll/ClassFieldTheory/Algebra/ShrinkFiniteExtension.lean
+    - Nyll/ClassFieldTheory/Algebra/TensorNormBaseChange.lean
+    - Nyll/ClassFieldTheory/Algebra/TensorNormTransport.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/BaseChange.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/ComponentHom.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/Coordinates.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/Equiv.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/FieldInclusion.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/FiniteLocalFactor.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/FinitePlaceTensorBlock.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/FiniteRestrictedProductBaseChange.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/InfinitePlaceTensorBlock.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/IntegralLocalFactor.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/IntegralTensorSupport/FinitePlaceCompletion.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/IntegralTensorSupport/IdeleSupport.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/IntegralTensorSupport/Lattice.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/IntegralTensorSupport/LocalTensorDecomposition.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/IntegralTensorSupport/Localization.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/JointComponents.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/LocalComponents.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/Norm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/RelativeBasic.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/RelativeNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/RelativeSupport.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/RestrictedAction.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/RestrictedProduct.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Adele/RestrictedRing.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/AdeleBaseChange.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/AdicCompletionComparison.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/AdicCompletionMap.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/ChosenLocalization.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/Comparison.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/ExtensionIndex.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/FinitePlaceAdicCompletionCongrEquiv.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/FinitePlaceModel.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/GlobalNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/InfinitePlaceAbove.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/InfinitePlaceModel.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/IntegerRingComparison.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/LocalField.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/LocalFieldExtension.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/LocalizedValuation.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/UnramifiedComparison/CompletionToIdeal.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/UnramifiedComparison/IdealToCompletion.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Completion/UnramifiedComparison/LocalNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/CompositumEmbedding.lean
     - Nyll/ClassFieldTheory/AlgebraicNumberTheory/FiniteAbelianCompositum.lean
     - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/AbsoluteAbelianization.lean
     - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/AbsoluteFiniteQuotientTransitions.lean
     - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/AbsoluteFiniteQuotients.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/CyclicPrimeDegreeSubextension.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/CyclicPrimeSubextension.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/FixedFieldLattice.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/InfiniteBaseChange.lean
     - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/MathlibAbsoluteAbelianization.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/MathlibAbsoluteGaloisBaseEquiv.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/MaximalAbelianBaseEquiv.lean
     - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Galois/NormalFieldRange.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/AbsoluteNormCore.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/BaseChange.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Basic.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/AlgEquiv.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/AlgEquivAdeleTopology.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/AlgEquivFiniteIntegral.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/AlgEquivIdeleClassTopology.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/AlgEquivTopology.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/BaseChange.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/ConnectedComponentQuotientCongr.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/Core.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/InfiniteAlgEquiv.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/MathlibTopologyComparison.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/NormComparison.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/NormalClosureNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/StandardIdeal.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/Tower.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/TowerAlgEquivNaturality.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/ClassGroup/TowerBaseChange.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/Decomposition.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/Herbrand.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/HerbrandExactSequence.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/PrincipalSequence.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/Herbrand/Factors.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/Herbrand/FamilyCardinality.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/Herbrand/FamilyFinite.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/Herbrand/Local.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/LocalBlocks.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/OutsideIntegralInduced/ChosenPlace.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/OutsideIntegralInduced/ChosenPlaceAction.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/OutsideIntegralInduced/ChosenPlaceIntegralBlock.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/OutsideIntegralInduced/ChosenPlaceIntegralBlockEquiv.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/OutsideIntegralInduced/ChosenPlaceIntegralBlockEquivApply.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/OutsideIntegralInduced/ChosenPlaceIntegralBlockInclusion.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/OutsideIntegralInduced/ChosenPlaceIntegralBlockInducedSmul.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/OutsideIntegralInduced/ChosenPlaceIntegralBlockTensorSmul.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/OutsideIntegralInduced/CompletionTransport.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/OutsideIntegralInduced/LocalInduction/Action.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/OutsideIntegralInduced/LocalInduction/Equiv.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/OutsideIntegralInduced/LocalInduction/Inclusion.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/OutsideIntegralInduced/LocalInduction/Spine.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SPlaces/Reassociation.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Cohomology/SupportedBridge.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Components.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Equiv.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/BaseChange.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/ClassEmbeddingBaseChange.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/ClassGroup.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/EmbeddingNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/FieldEquivNaturality.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/GaloisClassNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/GaloisDescent.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/GaloisNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/IdealClass.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/IdeleClassBaseChange.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/IdeleNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/IdeleNormComponents.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/InfiniteOnePlaceBaseNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/LocalComponent.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/LocalNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/NormLocalOrder.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/NormProperties.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/OnePlaceBaseNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/RelativeNormComparison.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/StandardClassComparison.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/StandardFieldInclusion.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/StandardGaloisDescent.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Extension/StandardGaloisNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/FieldInclusion.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/FieldNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/FinitePrime.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/IdealMap.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/IdealMapCore.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/IdentityComponent.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/LocallyCompact.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Norm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/NormApproximation/FinitePlaces.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/NormApproximation/InfinitePlaces.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/NormCore.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/NormOneCompact.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/NormTopology/ArchimedeanNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/NormTopology/Continuity.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/NormTopology/ExtensionBehavior.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/NormTopology/FiniteNormArithmetic.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/NormTopology/IdeleClassNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/NormTopology/StandardNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/PositiveArchimedeanSection.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Principal.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/PrincipalCore.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/PrincipalNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/PrincipalTopology.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Relative/FiniteIntegralNormPreimage.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Relative/FinitePlaceTensorNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Relative/InfinitePlaceTensorNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Relative/SPlaces.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Relative/Support.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/RestrictedProductUnitsTopology.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/SPlaces.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/SinglePlace.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/SufficientlyLarge.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/Topology.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/NormalClosure.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/NumberField/DivisorAbsoluteNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/NumberField/EverywhereUnramifiedTower.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/NumberField/FinitePlaceAutomorphism.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/NumberField/FinitePlaceContraction.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/NumberField/FiniteUnramifiedTower.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/NumberField/MathlibUnramifiedInterface.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/NumberField/PlaceEquiv.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/NumberField/SmallModel.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Ramification/DegreeFromChosenPrimes.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Ramification/DegreeProduct.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Ramification/FiniteRamifiedPrimes.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Ramification/RationalPrime.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Ramification/Splitting/FinitePlace.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Ramification/Splitting/FinitePlaceIdeal.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Ramification/Splitting/NormalClosure.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Ramification/Splitting/PrimeOrderFixedField.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/Ramification/UnramifiedRationals.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/RayClass/Approximation.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/RayClass/Basic.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/RayClass/FullModulus.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/RayClass/Ideal.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/RayClass/IdealNorm.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/RayClass/IdealNormCore.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/RayClass/LocalConductor.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/RayClass/Narrow.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/RayClass/PrimeGeneration.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/RayClass/Rational.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/RayClass/Topology.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/SUnit/GaloisAction.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/SUnit/Herbrand.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/SUnit/LogLattice.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/SUnit/Rank.lean
     - Nyll/ClassFieldTheory/AlgebraicNumberTheory/SeparableClosureEmbedding.lean
+    - Nyll/ClassFieldTheory/AlgebraicNumberTheory/TensorProduct.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/EmbedsInRayClassField.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/FractionalIdealNorm.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/FractionalIdealNormExponentMap.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/IsAbelianConductor.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/IsRayCongruent.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/IsUnramifiedOutsideModulus.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/NarrowRayClassModulus.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/OrdinaryRayClassModulus.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/RayClassFieldRealization.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/RayClassGroup.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/RayClassIdealNorm.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/RayClassModulus.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/RayClassOfFinitePrime.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/RayClassPrimeToIdeals.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/RayClassSubgroupRealization.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/RayLocalHigherUnitGroup.lean
+    - Nyll/ClassFieldTheory/Definitions/ConductorsAndRayClassFields/RayPrincipalIdealSubgroup.lean
     - Nyll/ClassFieldTheory/Definitions/FiniteAbelianExtension.lean
+    - Nyll/ClassFieldTheory/Definitions/FrobeniusAndHilbertClassFields/ArithmeticFrobeniusAt.lean
+    - Nyll/ClassFieldTheory/Definitions/FrobeniusAndHilbertClassFields/FinitePrimeFractionalIdeal.lean
+    - Nyll/ClassFieldTheory/Definitions/FrobeniusAndHilbertClassFields/FinitePrimeSplitsCompletely.lean
+    - Nyll/ClassFieldTheory/Definitions/FrobeniusAndHilbertClassFields/IsBigHilbertClassField.lean
+    - Nyll/ClassFieldTheory/Definitions/FrobeniusAndHilbertClassFields/IsEverywhereUnramified.lean
+    - Nyll/ClassFieldTheory/Definitions/FrobeniusAndHilbertClassFields/IsSmallHilbertClassField.lean
+    - Nyll/ClassFieldTheory/Definitions/FrobeniusAndHilbertClassFields/IsUnramifiedAtFinitePlaces.lean
+    - Nyll/ClassFieldTheory/Definitions/FrobeniusAndHilbertClassFields/NumberFieldFractionalIdealFactorization.lean
+    - Nyll/ClassFieldTheory/Definitions/FrobeniusAndHilbertClassFields/NumberFieldFractionalIdealGroup.lean
+    - Nyll/ClassFieldTheory/Definitions/GlobalClassFieldTheory/FiniteAbelianExtension.lean
+    - Nyll/ClassFieldTheory/Definitions/GlobalClassFieldTheory/FiniteAbelianReciprocityData.lean
+    - Nyll/ClassFieldTheory/Definitions/GlobalClassFieldTheory/FiniteAbelianReciprocityQuotientEquiv.lean
+    - Nyll/ClassFieldTheory/Definitions/GlobalClassFieldTheory/FinitePlaceTensorNormSubgroup.lean
+    - Nyll/ClassFieldTheory/Definitions/GlobalClassFieldTheory/IdeleClassConnectedQuotient.lean
+    - Nyll/ClassFieldTheory/Definitions/GlobalClassFieldTheory/IsMaximalAbelianGlobalArtin.lean
     - Nyll/ClassFieldTheory/Definitions/LocalClassFieldTheory/FieldNormQuotient.lean
     - Nyll/ClassFieldTheory/Definitions/LocalClassFieldTheory/FiniteAbelianLocalExtension.lean
     - Nyll/ClassFieldTheory/Definitions/LocalClassFieldTheory/IsFieldNorm.lean
     - Nyll/ClassFieldTheory/Definitions/LocalClassFieldTheory/OpenFiniteIndexSubgroup.lean
+    - Nyll/ClassFieldTheory/Definitions/NormTheorems/ExtendingAbsoluteValue.lean
+    - Nyll/ClassFieldTheory/Definitions/NormTheorems/IsEverywhereLocalNorm.lean
+    - Nyll/ClassFieldTheory/Definitions/NormTheorems/IsNormAtFinitePlace.lean
+    - Nyll/ClassFieldTheory/Definitions/NormTheorems/IsNormAtInfinitePlace.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/CyclicIdeleClassNormIndex.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/HasseNormPrinciple.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/IdeleClassFormation.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/IdeleClassPowerLocalUnitQuotient/ArchimedeanPowerIndex.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/IdeleClassPowerLocalUnitQuotient/FinitePlaceCompletionInstances.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/IdeleClassPowerLocalUnitQuotient/FinitePlacePowerIndex.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/IdeleClassPowerLocalUnitQuotient/LocalResidueArithmetic.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/IdeleClassPowerLocalUnitQuotient/NormContainment.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/IdeleClassPowerLocalUnitQuotient/PrimePowerKummerIndex.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/IdeleClassPowerLocalUnitQuotient/SupportedIdeleIndex.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/IdeleClassPowerLocalUnitQuotient/SupportedPrincipalQuotient.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/IdelePowerLocalUnitNormContainment.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/IdelePowerLocalUnitSubgroup.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/KummerLocalNormContainment.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/LocalNormTransport.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/SUnitKummerPrimeSelection/BasePlaceSelection.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/SUnitKummerPrimeSelection/Conclusion.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/SUnitKummerPrimeSelection/CoordinatePlaces.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/SUnitKummerPrimeSelection/DecompositionFields.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/SUnitKummerPrimeSelection/FinitePlaceDecomposition.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/SUnitKummerPrimeSelection/PrimeSet.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/SUnitKummerPrimeSelection/RestrictionKernel.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/SUnitLocalPowerMap.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/StandardIdeleClassTate.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/ClassFieldAxiom/SupportedIdelePowerLocalUnitQuotient.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Cohomology/CofinitelySplitFiniteExtension.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Cohomology/CyclicPrimePowerFullDecomposition.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Cohomology/IdeleClassHerbrandLogPlaceOrbits.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Cohomology/IdeleClassHerbrandOutsideSupport.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Cohomology/IdeleClassHerbrandSupportedFinal.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Cohomology/SupportedIdeleExactSequence.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/AbelianConductorExactness.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/AbelianConductorRamification.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/AbelianLocalConductorComparison.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/AbelianNormConductor.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ArithmeticClassFieldCorrespondence.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ArithmeticHilbertClassFieldReciprocity.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ArithmeticRayClassFieldReciprocity.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ArithmeticUnramifiedPrimeArtin.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/BigHilbertClassField.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/BigHilbertClassFieldNaturality.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/BigHilbertClassFieldOverOriginalBase.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ClassFieldRealization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ClosedFiniteIndexClassFieldConstruction.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ClosedFiniteIndexClassFieldReciprocity/Algebraic/Construction.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ClosedFiniteIndexClassFieldReciprocity/Algebraic/Evaluation.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ClosedFiniteIndexClassFieldReciprocity/Degree.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ClosedFiniteIndexClassFieldReciprocity/GlobalNormResidue.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ClosedFiniteIndexClassFieldReciprocity/Topological/Construction.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ClosedFiniteIndexClassFieldReciprocity/Topological/Evaluation.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ClosedFiniteIndexClassFieldReciprocity/Topological/EvaluationCore.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ClosedFiniteIndexClassFieldReciprocity/Topological/EvaluationValue.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ClosedFiniteIndexClassFieldReciprocity/Topological/QuotientTransport.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/Conductor.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ConductorFrobenius.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ConductorInfinitePart.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ConductorLattice.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ConductorLocalComparison.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ConductorRayClassMaximality.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/ConductorSupport.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/CyclicNormConductor.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/CyclicRayClassMaximality.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/CyclotomicKummerNormDescent.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/EmbeddedAbelianSubextension.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/FiniteAbelianClassFieldContainment.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/FiniteAbelianClassFieldCorrespondence.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/FiniteIndexNormClassField.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/FiniteReciprocityDataComparison.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/FullConductorRayClassField.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/HilbertClassFieldComparison.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/HilbertClassFieldMaximalSubextension.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/HilbertClassFieldMaximality.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/HilbertClassFieldPrimeSplitting.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/HilbertClassFieldRealization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/HilbertClassFieldReciprocity/BigActual.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/HilbertClassFieldReciprocity/BigOriginal.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/HilbertClassFieldReciprocity/SmallActual.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/HilbertClassFieldReciprocity/SmallOriginal.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/HilbertClassFieldReciprocity/Transport.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/HilbertClassFieldUnramifiedMaximality.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/HilbertNormCharacterization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/InfiniteAbelianClassFieldCorrespondence.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/KummerNormDescent.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/MathlibFrobeniusHilbertComparison.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/MathlibGlobalArtinRayComparison.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/MathlibGlobalReciprocity.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/NormConductor.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/NormRayClassMaximality.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/NormTowerConductor.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/OrdinaryNormClassField.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/PowerCongruenceCore.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/PublicRayClassComparison.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/RayClassFieldRealization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/RayClassPrimeIdele.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/RayClassSubgroupPrimeArtin.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/RayFrobeniusRigidity.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/RayPrimeGeneration.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/SUnitKummerNormCore.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/SUnitKummerNormRealization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/SmallHilbertClassField.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/SmallHilbertClassFieldMaximalSubextension.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/SmallHilbertClassFieldNaturality.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/SmallHilbertClassFieldOverOriginalBase.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/SmallHilbertNormCharacterization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/UnramifiedPrimeArtin.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/AbstractCapitulation.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/ArithmeticIdealArtin.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/IdealArtinMap.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/IdealArtinQuotient.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/IdealDecompositionLaw.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/IdealFrobenius.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/PrincipalIdealTheorem.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/PrincipalIdealTower.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/PrincipalIdealTransfer.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/RationalAbstractExtensionToOrdinary.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/RationalFiniteNormTransfer/Compatibility.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/RationalFiniteNormTransfer/FieldSpine.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/RationalFiniteNormTransfer/FiniteNormClass.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/RationalFiniteNormTransfer/MembershipTypes.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/RationalFiniteNormTransfer/Quotient.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/RationalFiniteNormTransfer/Representatives.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/RationalFiniteNormTransfer/ZeroTransport.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/RationalFixedFieldBaseChange.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/SmallHilbertPrincipalization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/SmallHilbertSplitting.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/SmallHilbertTowerConjugation.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/SmallHilbertTowerRealization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/IdealClassFieldTheory/SmallHilbertTowerUnramified.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/AbstractFixedFieldGlobalNormResidue.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/ArithmeticNormalization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/ComplexificationArtin/InfinitePlaceCompatibility.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/ComplexificationArtin/InfinitePlaceOverfield.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/ComplexificationArtin/NumberFieldComplexification.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/ComplexificationArtin/OverextensionArtin.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/ComplexificationArtin/RamifiedOverextension.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/ComplexificationArtin/RationalComplexification.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/CyclotomicAbstractFixedFieldArtin.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/CyclotomicDegreeOnNumberField.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/CyclotomicIdeleClassValuation.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/CyclotomicIdeleValue.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/CyclotomicIdeleValueTopology.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/CyclotomicNormOneCorrection.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/CyclotomicPrincipalIdele.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/CyclotomicTorsionFixedField.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/CyclotomicUnramifiedGeometricRestriction.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/CyclotomicUnramifiedLocalGlobalCompatibility.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/CyclotomicUnramifiedRestriction.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/CyclotomicZHatBaseChange.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FiniteGaloisRealization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FiniteGaloisRealizationCore.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FiniteGaloisRealizationFinitePlace.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FiniteGaloisRealizationNormQuotient.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FiniteGaloisRealizationSubextension.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FiniteIdeleArtin.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FiniteIdeleClassSystem.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FiniteLocalFamily.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FinitePlaceArtin/Conjugation.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FinitePlaceArtin/Construction.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FinitePlaceArtin/Core.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FinitePlaceArtin/CrossLocalRestriction.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FinitePlaceArtin/NormRestriction.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FinitePlaceArtin/Semilinear.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FinitePlaceArtin/TowerRestriction.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FinitePlaceArtin/UnramifiedNormalization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/FinitePlaceCyclotomicFrobeniusLift.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/GlobalArtin.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/GlobalArtinBaseEquiv.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/GlobalArtinCompatibility.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/GlobalArtinFiniteSupportApproximation.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/GlobalNormResidue.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/GlobalNormResidueAbelianization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/GlobalNormResidueAbelianizationNaturality.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/GlobalNormResidueCommon.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/GlobalNormResidueCore.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/GlobalNormResidueEmbeddingIndependence.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/GlobalNormResidueNaturality.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimit.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitAbstractFixed.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitAbstractFixedField.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitAction.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitBaseNorm.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitCore.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitExtension.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitExtensionAction.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitExtensionNorm.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitFiniteEmbedding.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitFiniteLevelCore.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitFiniteTowerNormCore.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitFiniteTowerNormProof.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitFiniteTowerNormStatement.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitFixedDescent.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitFixedPoints.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitNormQuotient.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitRationalComparison.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassDirectLimitStandardNorm.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/IdeleClassNormTopology.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/InfiniteGlobalArtin.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/InfiniteGlobalArtinBaseEquiv.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/InfiniteGlobalArtinDescent.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/InfiniteGlobalArtinSurjectivity.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/InfiniteLocalGlobalArtinCompatibility.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/InfinitePlaceArtin.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/LocalGlobalArtinCompatibility/Factorization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/LocalGlobalArtinCompatibility/FinitePadicAuxiliaryField.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/LocalGlobalArtinCompatibility/FinitePadicCyclicData.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/LocalGlobalArtinCompatibility/SeparableClosurePadicLift.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/MathlibGlobalArtinNaturality.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/MathlibTopologicalGlobalReciprocity.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/MaximalAbelianGlobalArtin.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/MaximalAbelianKernel.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/NormQuotient.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/NumberFieldArtinTransport.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/NumberFieldNormResidue.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/OnePlaceNormKernel.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/RationalCyclotomicCharacterRigidity.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/RationalCyclotomicCompletionComparison.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/RationalCyclotomicFinitePlace.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/RationalCyclotomicLocalization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/RationalCyclotomicLocalizedPadic.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/RationalCyclotomicPrincipalAwayProduct.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/RationalCyclotomicPrincipalPrimeFactor.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/RationalCyclotomicPrincipalProduct.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/RationalCyclotomicRamifiedArtin.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/RationalCyclotomicRayNorm.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/RationalCyclotomicUnramifiedArtin.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/RationalCyclotomicZHatRigidity.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/RationalPrimeFactorization.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/RationalPrincipalLocalUnit.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/TopologicalGlobalNormResidue.lean
+    - Nyll/ClassFieldTheory/GlobalClassFieldTheory/Reciprocity/TopologicalGlobalNormResidueAbelianization.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/Core.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/Final.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/GlobalCompositumCyclotomicTarget.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/GlobalCompositumGlobalEmbedding.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/GlobalCompositumLeftFactors.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/GlobalCompositumLocalizationEmbedding.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/GlobalCompositumValuationInertiaBound.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/GlobalCompositumValuedEmbedding.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/GlobalPadicPrimePowInertiaBound.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/LocalCyclotomicEmbedding.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/RationalCyclotomicArithmeticReciprocity.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/RationalRayClassFieldCyclotomic.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/RayClassComparison.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/Setup.lean
+    - Nyll/ClassFieldTheory/KroneckerWeber/UnramifiedCompositumSupport.lean
+    - Nyll/ClassFieldTheory/KummerTheory/Concrete/CyclotomicPrimeBaseChange.lean
+    - Nyll/ClassFieldTheory/KummerTheory/Concrete/FinitePlaceDecomposition.lean
+    - Nyll/ClassFieldTheory/KummerTheory/Concrete/SUnitKummerUnramified.lean
+    - Nyll/ClassFieldTheory/KummerTheory/Concrete/SUnitPreparation/Core.lean
+    - Nyll/ClassFieldTheory/KummerTheory/Concrete/SUnitPreparation/EnlargedSUnitRestriction.lean
+    - Nyll/ClassFieldTheory/KummerTheory/Concrete/SUnitPreparation/FiniteRadicalSupport.lean
+    - Nyll/ClassFieldTheory/KummerTheory/Concrete/SUnitPreparation/FullSUnitKummerExtension.lean
+    - Nyll/ClassFieldTheory/KummerTheory/Concrete/SUnitPreparation/SUnitLocalPowerKernel.lean
+    - Nyll/ClassFieldTheory/KummerTheory/Concrete/SUnitPreparation/SUnitPowerQuotient.lean
+    - Nyll/ClassFieldTheory/KummerTheory/Concrete/SimpleExtensionLocalBehavior.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/ArchimedeanHilbert90.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/ArchimedeanNormQuotient.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/CohomologyBridge.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/FieldUnitsHerbrand.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/FilteredLiftingSequence.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/Hilbert90.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/IntegerUnitsHerbrand.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalBlocks/Family/H0.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalBlocks/Family/HMinusOne.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalBlocks/Family/Instances.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalBlocks/FamilyClassAxiom.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalBlocks/Induced.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalBlocks/Tensor.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalBlocks/TensorNorm.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalizedCompletionCohomology/Algebra.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalizedCompletionCohomology/Cardinality/H0.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalizedCompletionCohomology/Cardinality/HMinusOne.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalizedCompletionCohomology/Cardinality/Quotient.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalizedCompletionCohomology/Cardinality/Trivial.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalizedCompletionCohomology/CompMulEquiv.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalizedCompletionCohomology/Finite.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalizedCompletionCohomology/Generator.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/LocalizedCompletionCohomology/HerbrandEquiv.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/Main.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/NormalBasis.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/NormalBasisCohomology.lean
@@ -130,6 +637,9 @@
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/ValuationHerbrand.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/ClassFormation/ValueGroupCohomology.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Conductor.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/CyclotomicNorm/PrincipalUnits.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/CyclotomicNorm/StandardSubgroup.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/CyclotomicNorm/Unramified.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/CharacteristicZero.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/Classification.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Existence/CyclotomicKummerDescent.lean
@@ -173,6 +683,7 @@
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FiniteAbelianFamilySubgroupKernel.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FiniteAbelianFamilyUnramifiedCompositum.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FiniteExtensionClassFieldAxiom.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FiniteGaloisPresentation.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FiniteGaloisRealization.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FiniteResidueFinrankTransfer.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/FiniteResidueFrobenius.lean
@@ -226,6 +737,10 @@
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/UnramifiedNormalization.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/UnramifiedReciprocity.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/LocalReciprocity/UnramifiedResidueUniqueness.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Unramified/Cohomology.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Unramified/Norm.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Unramified/ResidueNorm.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/Unramified/Uniformizer.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Finite/UnramifiedConductor.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Infinite/AbsoluteArtin.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/Infinite/FiniteAbelianQuotientKernels.lean
@@ -234,11 +749,13 @@
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/LubinTateTransport.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/NormIndex.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/NormSubgroup.lean
+    - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/PadicMultiplicativeArtinComparison.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/StandardFilteredArtinComparison.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/StandardFixedFieldComparison.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/StandardNormIndex.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/StandardNormSubgroupExact.lean
     - Nyll/ClassFieldTheory/LocalClassFieldTheory/LubinTateApplication/StandardSubgroupIndex.lean
+    - Nyll/ClassFieldTheory/LocalFieldTheory/Padic/Cyclotomic/Unramified/CanonicalExtension.lean
     - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/ChangedCompletedLevel.lean
     - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/ChangedCompletedPrimitiveAction.lean
     - Nyll/ClassFieldTheory/LubinTate/EqualCharacteristic/CompletedLevel/ChangedPolynomialEvaluation.lean
@@ -349,6 +866,57 @@
     - Nyll/ClassFieldTheory/LubinTate/FormalModule/Series.lean
     - Nyll/ClassFieldTheory/LubinTate/FormalModule/StandardFormalGroup.lean
     - Nyll/ClassFieldTheory/LubinTate/FormalModule/StandardSeries.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/ChangedUniformizerCoefficient.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/ChangedUniformizerIntertwiner/CompletedSeries.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/ChangedUniformizerIntertwiner/DefectCorrection.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/ChangedUniformizerIntertwiner/IntertwinerConstruction.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/ChangedUniformizerIntertwiner/ScalarCompatibility.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/ChangedUniformizerIntertwiner/ScalarEndomorphisms.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedChangedStandardCompositum.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedChangedStandardFixedField.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedChangedStandardFrobenius.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedChangedStandardResidue.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedChangedStandardUnramified.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedChangedUniformizerFixedField.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedChangedUniformizerPrimitive.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedChangedUniformizerThetaFixed.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedFrobeniusEvaluation.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedFrobeniusLift.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedLevel.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedPrimitiveAction.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedPrimitiveIrreducible.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedPrimitiveUniformizer.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedResidueFrobenius.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedStandardLevelTransport.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedUnramifiedField.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/CompletedUnramifiedFrobeniusFixed.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/MultiplicativeEvaluation/CompletedCoefficientEvaluation.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/MultiplicativeEvaluation/CompletedPrimitivePoint.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/MultiplicativeEvaluation/CompletedScalarEndomorphism.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/MultiplicativeEvaluation/Core.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/MultiplicativeEvaluation/FiniteLevelEvaluation.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/MultiplicativeEvaluation/FiniteLevelPrimitiveRoot.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/MultiplicativeIntertwiner.lean
+    - Nyll/ClassFieldTheory/LubinTate/Padic/MultiplicativeSeries.lean
+    - Nyll/ClassFieldTheory/RamificationTheory/HilbertRamification/Dedekind/ChosenInertiaCoverage.lean
+    - Nyll/ClassFieldTheory/RamificationTheory/HilbertRamification/Dedekind/InertiaGeneration.lean
+    - Nyll/ClassFieldTheory/RamificationTheory/HilbertRamification/Dedekind/PadicValuationInertia.lean
+    - Nyll/ClassFieldTheory/RamificationTheory/HilbertRamification/PadicCyclotomicInertiaBound.lean
+    - Nyll/ClassFieldTheory/RamificationTheory/HilbertRamification/PadicCyclotomicRamificationIndexBound.lean
+    - Nyll/ClassFieldTheory/RamificationTheory/HilbertRamification/PadicLocalizationCanonicalValuation.lean
+    - Nyll/ClassFieldTheory/Theorems/FrobeniusAndHilbertClassFields/ArithmeticFrobeniusOrder.lean
+    - Nyll/ClassFieldTheory/Theorems/GlobalClassFieldTheory/All.lean
+    - Nyll/ClassFieldTheory/Theorems/GlobalClassFieldTheory/FiniteAbelianGlobalReciprocity.lean
+    - Nyll/ClassFieldTheory/Theorems/GlobalClassFieldTheory/FiniteAbelianGlobalReciprocityQuotient.lean
+    - Nyll/ClassFieldTheory/Theorems/GlobalClassFieldTheory/FiniteAbelianReciprocityQuotientEquivMk.lean
+    - Nyll/ClassFieldTheory/Theorems/GlobalClassFieldTheory/FinitePlaceCompletionLocalArtin.lean
+    - Nyll/ClassFieldTheory/Theorems/GlobalClassFieldTheory/FinitePlaceLocalGlobalNormKernel.lean
+    - Nyll/ClassFieldTheory/Theorems/GlobalClassFieldTheory/FinitePlaceRayArtinDecomposition.lean
+    - Nyll/ClassFieldTheory/Theorems/GlobalClassFieldTheory/FinitePlaceRayArtinLocalValue.lean
+    - Nyll/ClassFieldTheory/Theorems/GlobalClassFieldTheory/FinitePlaceRayArtinNormKernel.lean
+    - Nyll/ClassFieldTheory/Theorems/GlobalClassFieldTheory/MaximalAbelianGlobalArtin.lean
+    - Nyll/ClassFieldTheory/Theorems/GlobalClassFieldTheory/TopologicalGlobalReciprocity.lean
+    - Nyll/ClassFieldTheory/Theorems/KroneckerWeber.lean
     - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FieldNormSubgroupFiniteIndex.lean
     - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FieldNormSubgroupRingEquiv.lean
     - Nyll/ClassFieldTheory/Theorems/LocalClassFieldTheory/FieldNormSubgroupTower.lean
@@ -373,15 +941,22 @@
     - Nyll/GaloisCohomology/Cyclic/Herbrand/FieldUnits.lean
     - Nyll/GaloisCohomology/Cyclic/Herbrand/HerbrandFiniteness.lean
     - Nyll/GaloisCohomology/Cyclic/Herbrand/HerbrandLowDegree/Basic.lean
+    - Nyll/GaloisCohomology/Cyclic/Herbrand/HerbrandLowDegree/BinaryProduct.lean
     - Nyll/GaloisCohomology/Cyclic/Herbrand/HerbrandLowDegree/Cardinality.lean
     - Nyll/GaloisCohomology/Cyclic/Herbrand/HerbrandLowDegree/Core.lean
     - Nyll/GaloisCohomology/Cyclic/Herbrand/HerbrandLowDegree/EquivariantEquiv.lean
     - Nyll/GaloisCohomology/Cyclic/Herbrand/HerbrandLowDegree/FixedCycles.lean
+    - Nyll/GaloisCohomology/Cyclic/Herbrand/HerbrandLowDegree/Index.lean
     - Nyll/GaloisCohomology/Cyclic/Herbrand/HerbrandLowDegree/IntegralTateComparison.lean
+    - Nyll/GaloisCohomology/Cyclic/Herbrand/HerbrandLowDegree/Product.lean
     - Nyll/GaloisCohomology/Cyclic/Herbrand/HerbrandLowDegree/TateComparison.lean
     - Nyll/GaloisCohomology/Cyclic/Herbrand/Induced.lean
     - Nyll/GaloisCohomology/Cyclic/Herbrand/NormalBasisLattice.lean
+    - Nyll/GaloisCohomology/Cyclic/Herbrand/Permutation/Lattice.lean
+    - Nyll/GaloisCohomology/Cyclic/Herbrand/Permutation/LatticeHerbrand.lean
+    - Nyll/GaloisCohomology/Cyclic/Herbrand/Permutation/Module.lean
     - Nyll/GaloisCohomology/Cyclic/Herbrand/PrincipalUnits/QuotientTower.lean
+    - Nyll/GaloisCohomology/Cyclic/Herbrand/Product.lean
     - Nyll/GaloisCohomology/Cyclic/Herbrand/UniverseFiniteness.lean
     - Nyll/GaloisCohomology/Cyclic/IntegralCoefficientCohomology.lean
     - Nyll/GaloisCohomology/Cyclic/IntegralCyclicNormComplexes.lean
@@ -398,19 +973,40 @@
     - Nyll/GaloisCohomology/Cyclic/TateH0/Main.lean
     - Nyll/GaloisCohomology/Cyclic/TateH0/NormImage.lean
     - Nyll/GaloisCohomology/FieldTheory/FiniteFrobeniusTower.lean
+    - Nyll/GaloisCohomology/GroupTheory/Augmentation.lean
     - Nyll/GaloisCohomology/GroupTheory/CoefficientRingConnectingMap.lean
     - Nyll/GaloisCohomology/GroupTheory/CoefficientRingEquivalence.lean
     - Nyll/GaloisCohomology/GroupTheory/CoefficientRingHomologyEquivalence.lean
+    - Nyll/GaloisCohomology/GroupTheory/Finite.lean
     - Nyll/GaloisCohomology/GroupTheory/GroupEquivComplexComparison.lean
     - Nyll/GaloisCohomology/GroupTheory/QuotientTower.lean
     - Nyll/GaloisCohomology/GroupTheory/RepresentationPowers.lean
     - Nyll/GaloisCohomology/GroupTheory/RepresentationUniverseLift.lean
+    - Nyll/GaloisCohomology/GroupTheory/Transfer/RelativeAugmentation.lean
+    - Nyll/GaloisCohomology/GroupTheory/Transfer/Witt.lean
     - Nyll/GaloisCohomology/Kummer/Abstract/KummerAbelianAssembly.lean
     - Nyll/GaloisCohomology/Kummer/Abstract/KummerAbelianCyclicFactors.lean
     - Nyll/GaloisCohomology/Kummer/Abstract/KummerCyclicOperator.lean
     - Nyll/GaloisCohomology/Kummer/Abstract/KummerDelta.lean
     - Nyll/GaloisCohomology/Kummer/Abstract/KummerFixedField.lean
     - Nyll/GaloisCohomology/Kummer/Abstract/KummerGlobalOperator.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/ProfiniteUnitDecomposition/Basic.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/ProfiniteUnitDecomposition/CyclotomicQuotient.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/ProfiniteUnitDecomposition/Decomposition.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/ProfiniteUnitDecomposition/DenseTorsion.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/ProfiniteUnitDecomposition/FiniteFree.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/ProfiniteUnitDecomposition/FiniteOrder.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/ProfiniteUnitDecomposition/FreeCoordinate.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/ProfiniteUnitDecomposition/Gather.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/ProfiniteUnitDecomposition/Local.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/ProfiniteUnitDecomposition/Swap.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/ProfiniteUnitDecomposition/TorsionQuotientEquiv.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/ProfiniteUnitDecomposition/TorsionQuotientMk.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/RationalCyclotomicCharacter.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/RationalCyclotomicCharacterEquiv.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/RationalCyclotomicField.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/Cyclotomic/RationalCyclotomicTorsionField.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/CyclotomicField.lean
     - Nyll/GaloisCohomology/Kummer/Concrete/ExtensionRoundTrip.lean
     - Nyll/GaloisCohomology/Kummer/Concrete/FiniteCharacterEquiv.lean
     - Nyll/GaloisCohomology/Kummer/Concrete/FiniteDualSeparation.lean
@@ -422,21 +1018,29 @@
     - Nyll/GaloisCohomology/Kummer/Concrete/InfiniteInverse.lean
     - Nyll/GaloisCohomology/Kummer/Concrete/KummerCorrespondenceFormula.lean
     - Nyll/GaloisCohomology/Kummer/Concrete/LocalMaximalKummerExtension.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/LocalUnitKummerUnramified.lean
     - Nyll/GaloisCohomology/Kummer/Concrete/MaximalKummerSubgroup.lean
     - Nyll/GaloisCohomology/Kummer/Concrete/RadicalExtension.lean
     - Nyll/GaloisCohomology/Kummer/Concrete/RadicalQuotient.lean
     - Nyll/GaloisCohomology/Kummer/Concrete/RestrictedFinite.lean
     - Nyll/GaloisCohomology/Kummer/Concrete/RootCharacters.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/SUnitPreparation/PrimePowerKernelCoordinates.lean
+    - Nyll/GaloisCohomology/Kummer/Concrete/SimpleExtension.lean
+    - Nyll/GaloisCohomology/ProfiniteIntegers/CyclotomicTorsionQuotient.lean
     - Nyll/GaloisCohomology/ProfiniteIntegers/ProfiniteInteger.lean
     - Nyll/GaloisCohomology/ProfiniteIntegers/ProfiniteIntegerCore.lean
+    - Nyll/GaloisCohomology/ProfiniteIntegers/ProfiniteIntegerPrimeProduct.lean
+    - Nyll/GaloisCohomology/ProfiniteIntegers/ProfiniteIntegerUnits.lean
     - Nyll/GaloisCohomology/ProfiniteIntegers/TopologicalGeneration.lean
     - Nyll/GaloisCohomology/Topology/GaloisConjugation.lean
+    - Nyll/GaloisCohomology/Topology/GaloisRestrictionScalars.lean
     - Nyll/GaloisCohomology/Topology/TotallyDisconnectedQuotients.lean
     - Nyll/ProCGroups/Abelian/TopologicalAbelianization.lean
     - Nyll/ProCGroups/Completion/Topological.lean
     - Nyll/ProCGroups/Completion/TopologicalBasic.lean
     - Nyll/ProCGroups/Completion/TopologicalCriteria.lean
     - Nyll/ProCGroups/Generation/Basic.lean
+    - Nyll/ProCGroups/GroupTheory/Exactness.lean
     - Nyll/ProCGroups/InducedFunctions.lean
     - Nyll/ProCGroups/Topologies/ContinuousMonoidHom.lean
     - Nyll/ProCGroups/Topologies/ContinuousMulEquiv.lean
@@ -471,12 +1075,14 @@
     - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/PrincipalUnitLog.lean
     - Nyll/ValuedFieldTheory/LocalField/Analytic/LogExpSeries/SeriesTerms.lean
     - Nyll/ValuedFieldTheory/LocalField/Analytic/PrincipalUnitExpLogEquiv.lean
+    - Nyll/ValuedFieldTheory/LocalField/Analytic/PrincipalUnitExpLogValues.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/Basic.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/EqualCharacteristicLaurent.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/FieldNorm.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/FieldNormBase.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/FieldUnitDecomposition.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/FieldUnitFactors.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/FieldUnitPowerIndexFormulas.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/FieldUnitStructure.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/FiniteCoefficientLaurent.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/IwasawaIndexing.lean
@@ -492,6 +1098,7 @@
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PadicLinearOfContinuous.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PadicModuleStructure.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PadicPowerIndex.lean
+    - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PadicValuationComparison.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PolynomialRootProximity.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PowerIndex.lean
     - Nyll/ValuedFieldTheory/LocalField/DiscreteValuationField/PrincipalUnitInverseLimitSurjectivity.lean
@@ -545,8 +1152,10 @@
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/NormQuotient.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/NormSubgroupFunctoriality.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/NormalizedIntegerValuation.lean
+    - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/NormalizedValue.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/PowerClassFiniteness.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/PrincipalUnitActions.lean
+    - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/PrincipalUnitNorm.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/PrincipalUnitQuotients.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/PrincipalUnits.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/ProfiniteUnits.lean
@@ -561,13 +1170,39 @@
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/UniformizerPrincipalQuotient.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/UnitTopology.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/UnramifiedFrobenius.lean
+    - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/UnramifiedPrincipalUnits/Basic.lean
+    - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/UnramifiedPrincipalUnits/Lift.lean
+    - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/UnramifiedPrincipalUnits/NormSide.lean
+    - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/UnramifiedPrincipalUnits/Trace.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/Valuation.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/ValuationExactSequence.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/ValuativeExtension.lean
     - Nyll/ValuedFieldTheory/LocalField/NonarchimedeanLocalField/ValuedTopology.lean
     - Nyll/ValuedFieldTheory/LocalField/NormUnits.lean
     - Nyll/ValuedFieldTheory/LocalField/NormUnitsBaseChange.lean
+    - Nyll/ValuedFieldTheory/LocalField/Padic/ClosedAddSubgroup.lean
+    - Nyll/ValuedFieldTheory/LocalField/Padic/Cyclotomic/TotallyRamified/EisensteinPolynomial.lean
+    - Nyll/ValuedFieldTheory/LocalField/Padic/Cyclotomic/TotallyRamified/EisensteinRelation.lean
+    - Nyll/ValuedFieldTheory/LocalField/Padic/Cyclotomic/TotallyRamified/Existence.lean
+    - Nyll/ValuedFieldTheory/LocalField/Padic/Cyclotomic/TotallyRamified/IntegralClosure.lean
+    - Nyll/ValuedFieldTheory/LocalField/Padic/Cyclotomic/TotallyRamified/IntegralTranslate.lean
+    - Nyll/ValuedFieldTheory/LocalField/Padic/Cyclotomic/TotallyRamified/PrimeElement.lean
+    - Nyll/ValuedFieldTheory/LocalField/Padic/Cyclotomic/TotallyRamified/RamificationIndex.lean
+    - Nyll/ValuedFieldTheory/LocalField/Padic/Cyclotomic/TotallyRamified/ValuationRingEquiv.lean
+    - Nyll/ValuedFieldTheory/LocalField/Padic/Cyclotomic/Unramified/ArithmeticFrobenius.lean
+    - Nyll/ValuedFieldTheory/LocalField/Padic/NonarchimedeanLocalField.lean
+    - Nyll/ValuedFieldTheory/LocalField/Padic/PrincipalUnits.lean
+    - Nyll/ValuedFieldTheory/LocalField/Padic/UnitDecomposition.lean
+    - Nyll/ValuedFieldTheory/LocalField/Unramified/BaseChangeCore.lean
+    - Nyll/ValuedFieldTheory/LocalField/Unramified/BasicInvariants.lean
+    - Nyll/ValuedFieldTheory/LocalField/Unramified/Definitions.lean
+    - Nyll/ValuedFieldTheory/LocalField/Unramified/HenselReduction.lean
+    - Nyll/ValuedFieldTheory/LocalField/Unramified/HenselianAlgebraicExtension.lean
+    - Nyll/ValuedFieldTheory/LocalField/Unramified/RamificationIndexTower.lean
+    - Nyll/ValuedFieldTheory/LocalField/Unramified/Separable.lean
     - Nyll/ValuedFieldTheory/Ramification/ClosedSubgroups.lean
+    - Nyll/ValuedFieldTheory/Ramification/Different.lean
+    - Nyll/ValuedFieldTheory/Ramification/Different/Powers.lean
     - Nyll/ValuedFieldTheory/Ramification/Filtration.lean
     - Nyll/ValuedFieldTheory/Ramification/GaloisValuation/AbsoluteGalois/AbsoluteRamification.lean
     - Nyll/ValuedFieldTheory/Ramification/GaloisValuation/AbsoluteGalois/FiniteExtensionCorrespondence.lean
@@ -584,7 +1219,26 @@
     - Nyll/ValuedFieldTheory/Ramification/Herbrand/Function.lean
     - Nyll/ValuedFieldTheory/Ramification/Herbrand/Quotient.lean
     - Nyll/ValuedFieldTheory/Ramification/Herbrand/Tower.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/AbsoluteValueConjugacy.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/AlgebraicLocalization.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/BaseChange.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/CompleteDVF.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/CyclotomicDegreeBound.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/DecompositionField.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/DecompositionFieldExtension.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/DecompositionFieldLocalization.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/DecompositionGroup.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Dedekind/Basic.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Dedekind/CompositumUnramified.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Dedekind/Conjugation.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Dedekind/FixedFieldTower.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Dedekind/FixedFieldUnramified.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Dedekind/FixedFields.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Dedekind/NumberFieldPrimes.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Dedekind/OrbitCardinality.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Dedekind/PrimeContractions.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Dedekind/TowerInvariants.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Dedekind/ValuedGalois.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/FiniteGaloisLevel.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/FiniteGaloisLevelIndependence.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/FixedFieldRamification.lean
@@ -593,8 +1247,13 @@
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/GaloisStabilizer.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/HerbrandFunction.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/HerbrandTheorem.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/InertiaRamificationCard.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/InertiaRestrictionCard.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/LocalizationDensity.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/LocalizationRamificationGroups.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Monogeneity.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/OrbitPolynomialIdeal.lean
+    - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/PadicLocalization.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/Polynomial.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/RamificationDepth.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/RamificationGroup.lean
@@ -608,20 +1267,28 @@
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/ValuationKrasner.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/ValuationRestriction.lean
     - Nyll/ValuedFieldTheory/Ramification/HilbertRamification/ValuationSubring.lean
+    - Nyll/ValuedFieldTheory/Ramification/InertiaCardinality.lean
     - Nyll/ValuedFieldTheory/Ramification/LocalField/BaseChange.lean
     - Nyll/ValuedFieldTheory/Ramification/LocalField/Core.lean
     - Nyll/ValuedFieldTheory/Ramification/LocalField/ResidueInertia.lean
     - Nyll/ValuedFieldTheory/Ramification/LocalField/Unramified.lean
     - Nyll/ValuedFieldTheory/Ramification/ProfiniteInvariant.lean
+    - Nyll/ValuedFieldTheory/Ramification/RamificationIndexComparison.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/AlgebraicExtension/Core.lean
+    - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/AlgebraicExtension/FiniteNormExtension.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/AlgebraicExtension/NormFormula.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/AlgebraicExtension/NormFormulaAbsoluteValue.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/AlgebraicExtension/NormFormulaCoefficients.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/AlgebraicExtension/NormFormulaExtension.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/AlgebraicExtension/NormFormulaIntegralClosure.lean
+    - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/AlgebraicExtension/RamificationInvariants.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/AlgebraicExtension/UniqueExtensionCoefficients.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/AlgebraicExtension/UniqueValuationSubring.lean
+    - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/AlgebraicLocalization.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/Completeness.lean
+    - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/Completion.lean
+    - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/CompletionIntegers.lean
+    - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/ExponentialValuation.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/Extension.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/Nonarchimedean.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/Ostrowski.lean
@@ -631,12 +1298,29 @@
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/Theory/Core.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/Theory/ExponentialValuations.lean
     - Nyll/ValuedFieldTheory/Valuation/AbsoluteValue/ValuationSubring.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/AbsoluteValueExtensions.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/BaseChangeAdjoinRoot.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/BaseChangeNormTrace.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/CanonicalTensorMap.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/DegreeNormTrace.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/ExtensionFactorClassification.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/ExtensionInvariants.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/FiniteLocalization.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/FiniteProductNormTrace.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/Padic.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/PolynomialCRT.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/PolynomialFactors.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/SeparablePolynomialFactors.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/TensorProductDecomposition.lean
+    - Nyll/ValuedFieldTheory/Valuation/Completion/TensorProductProductFormulas.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/AddVal.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/AdicPower.lean
+    - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/AmbientUniformizer.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/Basic.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/ChevalleyExtension.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/Complete.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/CompleteDVRExpansion.lean
+    - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/Compositum.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/Extensions.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/FiniteExtension/Core.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/FiniteExtension/Defectless.lean
@@ -651,8 +1335,13 @@
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/ValuationExtension.lean
     - Nyll/ValuedFieldTheory/Valuation/DiscreteValuationField/ValuationTransport.lean
     - Nyll/ValuedFieldTheory/Valuation/HenselLemma.lean
+    - Nyll/ValuedFieldTheory/Valuation/Henselian/AlgebraicExtensionHenselian.lean
+    - Nyll/ValuedFieldTheory/Valuation/Henselian/AlgebraicExtensionUniqueness.lean
+    - Nyll/ValuedFieldTheory/Valuation/Henselian/AlgebraicIntegralClosure.lean
     - Nyll/ValuedFieldTheory/Valuation/Henselian/Complete.lean
+    - Nyll/ValuedFieldTheory/Valuation/Henselian/CoprimeFactorLifting.lean
     - Nyll/ValuedFieldTheory/Valuation/Henselian/Core.lean
+    - Nyll/ValuedFieldTheory/Valuation/Henselian/EtaleLifting.lean
     - Nyll/ValuedFieldTheory/Valuation/Henselian/Factorization/AdicLimits.lean
     - Nyll/ValuedFieldTheory/Valuation/Henselian/Factorization/Assembly.lean
     - Nyll/ValuedFieldTheory/Valuation/Henselian/Factorization/Basic.lean
@@ -674,6 +1363,8 @@
     - Nyll/ValuedFieldTheory/Valuation/Henselian/NonmonicReduction.lean
     - Nyll/ValuedFieldTheory/Valuation/Henselian/PrimitiveFactorization.lean
     - Nyll/ValuedFieldTheory/Valuation/Henselian/PrimitiveReduction.lean
+    - Nyll/ValuedFieldTheory/Valuation/Henselian/SimpleRootFactorization.lean
+    - Nyll/ValuedFieldTheory/Valuation/Henselian/StandardEtaleLifting.lean
     - Nyll/ValuedFieldTheory/Valuation/Henselian/UniqueAlgebraicExtensions.lean
     - Nyll/ValuedFieldTheory/Valuation/Henselian/UniqueExtensionPrimitive.lean
     - Nyll/ValuedFieldTheory/Valuation/Henselian/UniqueExtensionReduction.lean
@@ -681,13 +1372,14 @@
     - Nyll/ValuedFieldTheory/Valuation/LocalRingEquiv.lean
     - Nyll/ValuedFieldTheory/Valuation/Topology/AdicCompletionInverseLimit.lean
     - Nyll/ValuedFieldTheory/Valuation/Topology/AdicCompletionInverseLimitRing.lean
+    - Nyll/ValuedFieldTheory/Valuation/Topology/AdicContractingFixedPoint.lean
     - Nyll/ValuedFieldTheory/Valuation/Topology/CompatibleInverseLimit.lean
     - Nyll/ValuedFieldTheory/Valuation/Topology/Models.lean
     - Nyll/ValuedFieldTheory/Valuation/UniqueRing.lean
     - Nyll/ValuedFieldTheory/Valuation/ValuedAdicComplete.lean
   into: Langlands/Ported/NYLL
   changes: >-
-    The module prefix is Langlands.Ported.NYLL in place of Nyll. The files are the import closure of the files of Theorems/LocalClassFieldTheory, but not All.lean. The source pin is Lean v4.36.0, and the project pin is v4.35.0, so these Mathlib names are changed.
+    The module prefix is Langlands.Ported.NYLL in place of Nyll. The files are the import closure of the files of Theorems/LocalClassFieldTheory, but not All.lean, and of Theorems/GlobalClassFieldTheory/All.lean and Theorems/KroneckerWeber.lean. The source pin is Lean v4.36.0, and the project pin is v4.35.0, so these Mathlib names are changed.
     Group.Abelianization is Abelianization, and Group.abelianizationCongr is abelianizationCongr.
     Group.Abelianization.commutator_le_ker is Abelianization.commutator_subset_ker.
     SubsemiringClass.charP_iff is CharP.subsemiring.
@@ -705,3 +1397,24 @@
     Analytic/DenominatorValuation.lean uses pow_succ_padicValNat_not_dvd, and IwasawaPrincipalUnits.lean uses padicValNat.mul and padicValNat.prime_pow in place of the multiplicity lemmas.
     PowerSeries.irreducible_X is PowerSeries.X_irreducible, and PowerSeries.prime_X is PowerSeries.X_prime.
     In CompletedUnramifiedField.lean the named argument of FiniteField.X_pow_card_sub_X_ne_zero is K', and in PrimitiveAction.lean the case of Nat.strong_induction_on is h.
+    The modules Completion, Valuation and Ramification under Mathlib.RingTheory.DedekindDomain.AdicValuation are not in the Mathlib of the project pin, so IdealClass.lean, AdicCompletionComparison.lean, AdicCompletionMap.lean, LocalField.lean and PrincipalFractionalIdeal.lean import Mathlib.RingTheory.DedekindDomain.AdicValuation.
+    FractionalIdeal.count_coeIdeal is FractionalIdeal.count_coe.
+    In ArithmeticFrobenius.lean, Ring.jacobson V is Ideal.jacobson of the zero ideal, by IsLocalRing.jacobson_eq_maximalIdeal, and Submodule.le_of_le_smul_of_le_jacobson is Submodule.le_of_le_smul_of_le_jacobson_bot. In StandardEtaleLifting.lean, isLocalHom_of_le_jacobson is isLocalHom_of_le_jacobson_bot and takes the ideal.
+    Sylow.exists_subgroup_card_pow_prime_ge is Sylow.exists_subgroup_card_pow_prime_le, Countable.of_moduleFinite is Finsupp.Countable.of_moduleFinite, WittVector.RecursionBase.solution_ne_zero is WittVector.RecursionBase.solution_nonzero, and WittVector.p_ne_zero is WittVector.p_nonzero.
+    nnNormHom is nnnormHom, coe_nnNorm is coe_nnnorm, continuous_nnNorm is continuous_nnnorm, and div_left_inj₀ is div_left_inj'.
+    Submodule.isClosed_of_finiteDimensional is Submodule.closed_of_finiteDimensional, and in GaloisNorm.lean the simp lemma mul_apply_eq_comp is Module.End.mul_apply.
+    In the source Mathlib AbsoluteValue.Completion is a one-field structure, and in the Mathlib of the project pin it is an abbreviation for UniformSpace.Completion (WithAbs v). The file Compat/AbsoluteValueCompletion.lean is not in the source. It states the part of the source API that the files use (equiv, toCompletion, ofCompletion, the coe lemmas, induction_on, ext, map, map_coe, isometry_map, continuous_map, map_map, algebraMap_eq_of_liesOver) for the abbreviation, with short proofs. ValuedFieldTheory/Valuation/AbsoluteValue/Completion.lean, PrincipalCore.lean and NormOneCompact.lean import it, and the proof of infiniteComponent_principalIdele in PrincipalCore.lean is rfl.
+    In LocalTensorDecomposition.lean two simpa calls also use WithAbs.norm_toAbs_eq.
+    In the source Mathlib InfinitePlace.Completion v is an abbreviation for v.1.Completion and the map between completions is AbsoluteValue.Completion.map. In the Mathlib of the project pin InfinitePlace.Completion v is a structure with toCompletion and ofCompletion, and the map is NumberField.LiesOver.completionMap, with the scoped algebra instances of NumberField.LiesOver. The file Compat/InfinitePlaceCompletion.lean is not in the source. It proves toCompletion_completionMap and completionMap_eq_ofCompletion, which say that the two maps agree under toCompletion.
+    The file Compat/InfinitePlaceAbsMap.lean is not in the source. It defines InfinitePlace.Completion.absMap v w, which is AbsoluteValue.Completion.map v.1 w.1 between toCompletion and ofCompletion, with the lemmas toCompletion_absMap, absMap_ofCompletion, isometry_absMap, continuous_absMap, absMap_coe, absMap_eq_completionMap and absMap_absMap. It also defines the algebra InfinitePlace.Completion.algebraOfLiesOver v w given by absMap, with algebraMap_apply_of_liesOver, algebraMap_eq_of_liesOver, algebraOfLiesOver_eq_toAlgebra and its IsScalarTower and ContinuousSMul instances. This algebra is definitionally equal to the scoped algebra of NumberField.LiesOver, so the lemmas of the pin for that algebra apply to it.
+    Where the source applies AbsoluteValue.Completion.map, continuous_map, map_coe, isometry_map or map_map to completions at infinite places, the port uses InfinitePlace.Completion.absMap, continuous_absMap, absMap_coe, isometry_absMap or absMap_absMap. Where it uses AbsoluteValue.Completion.algebraOfLiesOver, algebraMap_apply_of_liesOver or algebraMap_eq_of_liesOver at infinite places, the port uses the InfinitePlace.Completion lemmas of the same names. This is in InfinitePlaceAbove.lean, Adele/BaseChange.lean, FieldInclusion.lean, IdealClass.lean, InfiniteAlgEquiv.lean, TowerBaseChange.lean, AlgEquiv.lean, ExtensionBehavior.lean, InfiniteOnePlaceBaseNorm.lean, Continuity.lean, ArchimedeanNorm.lean, InfinitePlaceTensorNorm.lean, IdeleNormComponents.lean, BigHilbertClassFieldNaturality.lean, InfiniteLocalGlobalArtinCompatibility.lean and RationalComplexification.lean. The files with the local instance AbsoluteValue.Completion.algebraOfLiesOver also have the local instance InfinitePlace.Completion.algebraOfLiesOver. AbsoluteValue.Completion.induction_on, denseRange_coe and continuous_coe at infinite places are the InfinitePlace.Completion lemmas, which take the place as an explicit argument.
+    In InfiniteAlgEquiv.lean, TowerBaseChange.lean and BigHilbertClassFieldNaturality.lean the proof that the completion map agrees with algebraMap applies InfinitePlace.Completion.ext and changes the goal to the AbsoluteValue completions before the simpa of the source.
+    In InfinitePlaceModel.lean infinitePlaceCompletionAlgEquiv is made from InfinitePlace.Completion.equiv, and infinitePlaceCompletionAlgEquiv_algebraMap opens NumberField.LiesOver and uses toCompletion_completionMap. In ArchimedeanNormQuotient.lean absoluteCompletionRingEquivReal and absoluteCompletionRingEquivComplex begin with the inverse of InfinitePlace.Completion.equiv, and infiniteCompletionNormQuotientEquivRealComplex uses the scoped algebra in place of a local one and ofCompletion in the embedding.
+    In the source RingEquiv.refl W.1.Completion is a cast between the two completions. In Idele/BaseChange.lean and IdeleNormComponents.lean it is InfinitePlace.Completion.equiv W.1, and in Idele/BaseChange.lean the proof of infinitePlaceTensorUnitsEquivAbove_localFieldIdeleInclusion applies InfinitePlace.Completion.ext. In Adele/BaseChange.lean infinitePlaceTensorRingEquivAbove ends with the inverse of InfinitePlace.Completion.equiv, and its apply lemma has ofCompletion on the right. In InfinitePlaceTensorNorm.lean hLocalized has ofCompletion on the right. The last step of infiniteComponent_norm_eq_prod in IdeleNormComponents.lean uses Algebra.norm_eq_of_equiv_equiv with InfinitePlace.Completion.equiv in place of a change between the two algebras.
+    In Ideal.lean and Approximation.lean three rewrites with AbsoluteValue.Completion.coe_zero end with rfl, for ofCompletion 0 = 0. In HasseNormPrinciple.lean the cast of algebraMap K w.Completion is InfinitePlace.Completion.algebraMap_apply. In RationalCyclotomicCompletionComparison.lean AbsoluteValue.Completion.instAlgebra is UniformSpace.Completion.algebra.
+    In RationalPrimeFactorization.lean and RationalCyclotomicPrincipalAwayProduct.lean the multiplicity of a prime in a natural number is padicValNat: Nat.prod_pow_prime_multiplicity is Nat.prod_pow_prime_padicValNat followed by Nat.padicValNat_def, multiplicity_eq_zero_of_not_dvd is padicValNat.eq_zero_of_not_dvd, and padicNorm.eq_zpow_of_ne_zero is padicNorm.eq_zpow_of_nonzero.
+    In InfiniteOnePlaceBaseNorm.lean, InfinitePlaceArtin.lean, SmallHilbertNormCharacterization.lean and AbelianConductorExactness.lean the degree one of the completion at an unramified infinite place is InfinitePlace.IsUnramified.finrank_eq_one stated for the algebra of NumberField.LiesOver.completionMap and rewritten with algebraOfLiesOver_eq_toAlgebra, since the unification of the two algebras runs out of heartbeats or the rewrite does not find the pattern.
+    In CyclicIdeleClassNormIndex.lean the case of Nat.strong_induction_on is named h, which is its name in the pin, in place of ind.
+    In FinitePlaceCyclotomicFrobeniusLift.lean the p-group property of a Sylow subgroup is the field Sylow.isPGroup' of the pin in place of Sylow.isPGroup.
+    In AbstractCapitulation.lean Group.abelianizationCongr_symm is _root_.abelianizationCongr_symm, its name in the pin.
+    In SmallHilbertTowerConjugation.lean the simp lemma for the identity endomorphism of a representation is Module.End.one_apply, since one_apply_eq_self of the pin is the lemma for continuous linear maps.

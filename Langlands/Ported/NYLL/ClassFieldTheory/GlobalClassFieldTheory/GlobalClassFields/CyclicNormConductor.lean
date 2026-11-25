@@ -1,0 +1,90 @@
+/-
+Copyright (c) 2026 Naganori Yamaguchi (https://github.com/n-yamaguchi-0729). All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
+-/
+-- Ported from n-yamaguchi-0729/ClassFieldTheory at commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565, file `Nyll/ClassFieldTheory/GlobalClassFieldTheory/GlobalClassFields/CyclicNormConductor.lean`. The module prefix is `Langlands.Ported.NYLL` in place of `Nyll`. The changes for the Mathlib of the project pin are in manifests/ported.yaml.
+
+module
+
+public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.GlobalClassFields.NormConductor
+public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.Reciprocity.GlobalNormResidue
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.RayClass.FullModulus
+
+/-!
+# Narrow finite conductors of cyclic class-norm subgroups
+
+For a finite cyclic extension, the actual idele-class norm quotient has
+order equal to the extension degree.  Substituting this norm-index
+theorem into the narrow finite conductor ray-class factorization identifies
+the ray class number at the exact narrow finite conductor as the product of the
+residual norm-subgroup image order and the extension degree.
+-/
+
+
+
+@[expose] public section
+
+open scoped NumberField
+
+noncomputable section
+
+universe u v
+
+namespace GlobalClassFieldTheory
+namespace GlobalClassFields
+
+open NumberField
+
+variable
+    {K : Type u} {L : Type v}
+    [Field K] [NumberField K]
+    [Field L] [NumberField L] [Algebra K L]
+    [FiniteDimensional K L] [IsGalois K L]
+    [IsCyclic (L ≃ₐ[K] L)]
+
+/-- For a finite cyclic extension, the ray class number at the exact
+narrow finite norm conductor is the order of the norm-subgroup image modulo
+the conductor congruence subgroup times the extension degree. -/
+theorem
+    narrowFiniteConductorRayClassGroup_card_eq_normSubgroupImage_card_mul_extensionDegree :
+    Nat.card
+        (RayClass.RayClassGroup
+          (RayClass.Modulus.narrowOfFinite
+            (ideleClassNormNarrowFiniteConductor
+              (K := K) (L := L)))) =
+      Nat.card
+          (Subgroup.map
+            (QuotientGroup.mk'
+              (RayClass.Modulus.congruenceSubgroup
+                (RayClass.Modulus.narrowOfFinite
+                  (ideleClassNormNarrowFiniteConductor
+                    (K := K) (L := L)))))
+            ((_root_.ideleClassNorm K L).range)) *
+        Module.finrank K L := by
+  let : IsAbelianGalois K L := IsAbelianGalois.of_isCyclic K L
+  simpa only [
+    ← Subgroup.index_eq_card,
+    Reciprocity.ideleClassNorm_index_eq_finrank_abelian K L] using
+      narrowFiniteConductorRayClassGroup_card_eq_normSubgroupImage_card_mul_normQuotient_card
+        (K := K) (L := L)
+
+/-- The degree of a finite cyclic extension divides the ray class
+number at the exact narrow finite conductor of its idèle-class norm
+subgroup. -/
+theorem cyclicExtensionDegree_dvd_narrowFiniteConductorRayClassGroup_card :
+    Module.finrank K L ∣
+      Nat.card
+        (RayClass.RayClassGroup
+          (RayClass.Modulus.narrowOfFinite
+            (ideleClassNormNarrowFiniteConductor
+              (K := K) (L := L)))) := by
+  let : IsAbelianGalois K L := IsAbelianGalois.of_isCyclic K L
+  simpa only [
+    ← Subgroup.index_eq_card,
+    Reciprocity.ideleClassNorm_index_eq_finrank_abelian K L] using
+      ideleClassNormQuotient_card_dvd_narrowFiniteConductorRayClassGroup_card
+        (K := K) (L := L)
+
+end GlobalClassFields
+end GlobalClassFieldTheory

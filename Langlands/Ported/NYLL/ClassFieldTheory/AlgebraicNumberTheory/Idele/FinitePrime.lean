@@ -1,0 +1,122 @@
+/-
+Copyright (c) 2026 Naganori Yamaguchi (https://github.com/n-yamaguchi-0729). All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
+-/
+-- Ported from n-yamaguchi-0729/ClassFieldTheory at commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565, file `Nyll/ClassFieldTheory/AlgebraicNumberTheory/Idele/FinitePrime.lean`. The module prefix is `Langlands.Ported.NYLL` in place of `Nyll`. The changes for the Mathlib of the project pin are in manifests/ported.yaml.
+
+module
+
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.ClassGroup.AlgEquiv
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.ClassGroup.BaseChange
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.ClassGroup.Core
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.ClassGroup.NormComparison
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.ClassGroup.NormalClosureNorm
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.ClassGroup.Tower
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.ClassGroup.TowerAlgEquivNaturality
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.ClassGroup.TowerBaseChange
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.SinglePlace
+public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.IdealMap
+
+/-!
+# Normalized finite-prime ideles
+
+This file defines the idele supported at one finite place with normalized
+local order one, and computes its associated fractional ideal and ideal
+class. These constructions are independent of class field theory.
+-/
+
+
+
+@[expose] public section
+
+open scoped NumberField
+
+noncomputable section
+
+namespace IdeleGroup
+
+open ClassFieldTheory
+open NumberField IsDedekindDomain
+
+variable {K : Type*} [Field K] [NumberField K]
+
+/-- The idele supported at `v` whose normalized local order is one. -/
+def finitePrimeIdele
+    (v : HeightOneSpectrum (𝓞 K)) :
+    IdeleGroup K :=
+  finitePlaceIdele v (FiniteIdeleGroup.chosenLocalOrderSection v 1)
+
+/-- A prime idèle has trivial archimedean part. -/
+@[simp]
+theorem infinitePart_finitePrimeIdele (v : HeightOneSpectrum (𝓞 K)) :
+    infinitePart (finitePrimeIdele v) = 1 :=
+  infinitePart_finitePlaceIdele v _
+
+/-- The fractional ideal of the normalized one-place prime idele is the
+corresponding prime ideal. -/
+@[simp]
+theorem fractionalIdeal_finitePrimeIdele
+    (v : HeightOneSpectrum (𝓞 K)) :
+    fractionalIdeal (finitePrimeIdele v) =
+      finitePrimeFractionalIdeal v := by
+  apply NumberFieldFractionalIdealGroup.ext_count
+  intro w
+  change
+    FractionalIdeal.count K w
+        ((FiniteIdeleGroup.fractionalIdeal
+          (IdeleGroup.finiteCoordinates (finitePrimeIdele v)) :
+            NumberFieldFractionalIdealGroup K) :
+          FractionalIdeal
+            (nonZeroDivisors (𝓞 K)) K) =
+      FractionalIdeal.count K w
+        ((finitePrimeFractionalIdeal v :
+            NumberFieldFractionalIdealGroup K) :
+          FractionalIdeal
+            (nonZeroDivisors (𝓞 K)) K)
+  rw [FiniteIdeleGroup.fractionalIdeal_eq_factorization]
+  change
+    FractionalIdeal.count K w
+        (((NumberFieldFractionalIdealGroup.factorization
+          (FiniteIdeleGroup.valuationVector
+            (IdeleGroup.finiteCoordinates (finitePrimeIdele v))) :
+              NumberFieldFractionalIdealGroup K) :
+            FractionalIdeal
+              (nonZeroDivisors (𝓞 K)) K)) =
+      FractionalIdeal.count K w
+        (v.asIdeal :
+          FractionalIdeal
+            (nonZeroDivisors (𝓞 K)) K)
+  rw [NumberFieldFractionalIdealGroup.count_factorization,
+    FiniteIdeleGroup.valuationVector_apply]
+  by_cases hw : w = v
+  · subst w
+    rw [← finiteComponent_apply, finitePrimeIdele,
+      finitePlaceIdele_finiteComponent_same,
+      FiniteIdeleGroup.localOrder_chosenLocalOrderSection,
+      FractionalIdeal.count_self]
+  · rw [← finiteComponent_apply, finitePrimeIdele,
+      finitePlaceIdele_finiteComponent_of_ne
+        v w (FiniteIdeleGroup.chosenLocalOrderSection v 1) hw,
+      map_one]
+    change
+      0 =
+        FractionalIdeal.count K w
+          (v.asIdeal :
+            FractionalIdeal
+              (nonZeroDivisors (𝓞 K)) K)
+    rw [FractionalIdeal.count_maximal_coprime K w (Ne.symm hw)]
+
+/-- The ordinary ideal class of the normalized one-place prime idele is the
+class of the corresponding prime ideal. -/
+@[simp]
+theorem idealClass_finitePrimeIdele
+    (v : HeightOneSpectrum (𝓞 K)) :
+    idealClass (finitePrimeIdele v) =
+      ClassGroup.mk K (finitePrimeFractionalIdeal v) := by
+  change
+    ClassGroup.mk K (fractionalIdeal (finitePrimeIdele v)) =
+      ClassGroup.mk K (finitePrimeFractionalIdeal v)
+  rw [fractionalIdeal_finitePrimeIdele]
+
+end IdeleGroup
