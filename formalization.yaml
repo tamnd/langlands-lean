@@ -206,6 +206,10 @@ status:
       kind: statement
       status: known
       note: The theorem of Kisin on the conjecture of Fontaine and Mazur for GL(2) over Q, in the ordinary form. An odd irreducible representation that is ordinary at p, with the residual conditions of Kisin, comes from an eigenform.
+    - name: Langlands.ReciprocityFunctionFieldGL
+      kind: statement
+      status: known
+      note: The theorem of L. Lafforgue for GL(n) over a global function field. For each prime l that is not the characteristic, there is a bijection between the cuspidal automorphic classes and the irreducible l-adic Galois representations with a determinant of finite order, and it matches the Hecke eigenvalues with the Frobenius eigenvalues at almost all places.
     - name: Langlands.SelbergEigenvalue
       kind: statement
       status: open
