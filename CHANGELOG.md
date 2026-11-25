@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.0.2 (2026-11-25)
+
 ### Added
 
 - `Langlands/Statements/Modularity.lean`: the statements `ModularityEllipticQ`, `ModularitySemistableQ`, `HasseWeilEllipticQ`, `RamanujanPeterssonHolomorphic` and `SatoTate`, with the structure `IsNormalizedEigenform` and the predicate `HasCMOverQ`. The coefficients of an elliptic curve come from `WeierstrassCurve.LFunction` in Mathlib, and the coefficients of a cusp form come from its $q$-expansion.
