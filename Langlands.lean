@@ -6,6 +6,8 @@ import Langlands.Bridge.FormalConjectures
 import Langlands.Bridge.NYLL
 import Langlands.Cohomology.Shapiro
 import Langlands.Fidelity.ClassField
+import Langlands.Fidelity.Galois
+import Langlands.Fidelity.Maass
 import Langlands.Fidelity.Modularity
 import Langlands.Ported.FormalConjectures.Wikipedia
 import Langlands.Reciprocity.Exists
@@ -13,7 +15,9 @@ import Langlands.Reciprocity.GL1
 import Langlands.Reciprocity.Unique
 import Langlands.Statements.Basic
 import Langlands.Statements.ClassField
+import Langlands.Statements.Galois
 import Langlands.Statements.Hecke
+import Langlands.Statements.Maass
 import Langlands.Statements.Modularity
 import Langlands.Statements.Torus
 import Langlands.Statements.TorusInduced

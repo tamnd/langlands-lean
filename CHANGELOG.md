@@ -4,6 +4,12 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- `Langlands/Statements/Galois.lean`: Galois representations of modular forms with a character, Frobenius elements, inertia and complex conjugation in the absolute Galois group of Q, and the Artin L-function with the factors at the ramified primes. The statements are `EichlerShimuraDeligne`, `SerreModularityWeak`, `ArtinConjecture` and `ArtinOdd2Q`.
+- `Langlands/Statements/Maass.lean`: the hyperbolic Laplacian, square integrable eigenfunctions on congruence quotients, Maass cusp forms with a character and the normalized Hecke operators. The statements are `SelbergEigenvalue` and `RamanujanMaass`.
+- `Langlands/Fidelity/Galois.lean` and `Langlands/Fidelity/Maass.lean`: the fidelity checks of these statements. A Frobenius element and a complex conjugation exist, the Artin L-function of the trivial representation is the Euler product of the Dedekind zeta function, and the constant function shows that the conditions in `SelbergEigenvalue` and `RamanujanMaass` are necessary.
+
 ## v0.1.2 (2026-11-25)
 
 ### Added
