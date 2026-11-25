@@ -134,6 +134,14 @@ status:
       kind: theorem
       status: proved
       note: The statement modularity_conjecture of formal-conjectures at commit 9097e2f is false as stated, because it reads the coefficients in the parameter exp(2 pi i tau / N).
+    - name: Langlands.Bridge.satoTate_conjecture_of_satoTate
+      kind: theorem
+      status: proved
+      note: SatoTate implies the statement satoTate_conjecture of formal-conjectures, with the hypotheses ApAgree and HasseBound on each curve.
+    - name: Langlands.Bridge.ramanujan_petersson_of_ramanujanPeterssonHolomorphic
+      kind: theorem
+      status: proved
+      note: RamanujanPeterssonHolomorphic implies the statement ramanujan_petersson of formal-conjectures, with the hypothesis DeltaIsEigenform.
     - name: Langlands.Fidelity.localExistence_top
       kind: theorem
       status: proved
