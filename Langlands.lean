@@ -8,6 +8,9 @@ import Langlands.Cohomology.Shapiro
 import Langlands.Fidelity.ClassField
 import Langlands.Fidelity.Modularity
 import Langlands.Ported.FormalConjectures.Wikipedia
+import Langlands.Reciprocity.Exists
+import Langlands.Reciprocity.GL1
+import Langlands.Reciprocity.Unique
 import Langlands.Statements.Basic
 import Langlands.Statements.ClassField
 import Langlands.Statements.Modularity

@@ -6,6 +6,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- `Langlands/Reciprocity/GL1.lean`: the proof `localReciprocityGL1` of the statement `LocalReciprocityGL1`. For each nonarchimedean local field there is exactly one local Artin map from the units of the field to the abelianized Weil group.
+- `Langlands/Reciprocity/Exists.lean`: the existence `exists_isLocalArtinMap`. The map is the inverse of the injection `toGaloisAb` composed with the absolute local Artin map of the port. The image of the units is the image of the inertia subgroup, and the map is continuous in both directions.
+- `Langlands/Reciprocity/Unique.lean`: the uniqueness `isLocalArtinMap_unique`, through the uniqueness of coherent families of finite Artin maps in the port.
+
 - `Langlands/Cohomology/Shapiro.lean`: continuous one-cocycles, coboundaries and the first continuous cohomology group. Shapiro's lemma `Shapiro.shapiro` gives an isomorphism from the first cohomology of a coinduced module from an open subgroup H to the group of continuous homomorphisms on H.
 
 - `Langlands/WeilGroup/Degree.lean`: the residue field of the algebraic closure is algebraically closed, and the Frobenius has infinite order. The degree map `WeilGroup.degree` from the Weil group to the integers has the inertia subgroup as its kernel, and it is surjective and locally constant. A geometric Frobenius has degree one.
