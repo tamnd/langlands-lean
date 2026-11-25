@@ -6,6 +6,11 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- `Langlands/WeilGroup/Dense.lean`: the ring `integers K` is local, so each element of the absolute Galois group fixes its maximal ideal. The absolute Galois group is compact, also in characteristic p. The map to the Galois group of the residue field is continuous, surjective and open. The Weil group is dense in the absolute Galois group (`denseRange_toGalois`).
+- `Langlands/WeilGroup/Ab.lean`: the map `toGaloisAb` from the abelianization of the Weil group to the abelianization of the absolute Galois group is continuous and injective, and `mem_range_toGaloisAb` gives its range. The topological abelianization of the Weil group is Hausdorff.
+
+### Added
+
 - `Langlands/Ported/NYLL/`: 341 more files from n-yamaguchi-0729/ClassFieldTheory at commit fc644f4. The port now has all the theorems of `ClassFieldTheory/Theorems/LocalClassFieldTheory`: local existence, the coherent family of local Artin maps, its uniqueness, the normalization at a uniformizer and profinite local reciprocity. The entry `nyll` of `manifests/ported.yaml` lists the changes for the Mathlib of the project pin.
 - `Langlands/Bridge/NYLL.lean`: `localExistence` proves the statement `Langlands.LocalExistence`. The lemma `exists_intermediateField_of_finiteAbelianExtension` moves a finite abelian extension from the separable closure to the algebraic closure and keeps the norm group.
 
