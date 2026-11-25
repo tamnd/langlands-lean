@@ -195,3 +195,10 @@ status:
     - name: Langlands.WeilGroup.not_isOpen_inertia_induced
       kind: theorem
       status: proved
+    - name: Langlands.Shapiro.shapiro
+      kind: def
+      status: proved
+      note: Shapiro's lemma in degree one for continuous cohomology with a coinduced module and an open subgroup. It is the first step of the local Langlands correspondence for induced tori.
+    - name: Langlands.Shapiro.shapiro_top
+      kind: theorem
+      status: proved

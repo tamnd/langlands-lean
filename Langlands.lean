@@ -4,6 +4,7 @@ Released under the Apache 2.0 licence as described in the file LICENSE.
 -/
 import Langlands.Bridge.FormalConjectures
 import Langlands.Bridge.NYLL
+import Langlands.Cohomology.Shapiro
 import Langlands.Fidelity.ClassField
 import Langlands.Fidelity.Modularity
 import Langlands.Ported.FormalConjectures.Wikipedia
