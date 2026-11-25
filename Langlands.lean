@@ -10,6 +10,8 @@ import Langlands.Ported.FormalConjectures.Wikipedia
 import Langlands.Statements.Basic
 import Langlands.Statements.ClassField
 import Langlands.Statements.Modularity
+import Langlands.Statements.Torus
+import Langlands.Torus.Split
 import Langlands.WeilGroup.Ab
 import Langlands.WeilGroup.Dense
 
