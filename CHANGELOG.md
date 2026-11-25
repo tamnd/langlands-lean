@@ -13,6 +13,11 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 - `Langlands/Ported/FormalConjectures/Wikipedia.lean`: the statements of modularity, Sato-Tate, Ramanujan-Petersson for $\tau$ and Hasse-Weil from formal-conjectures at commit 9097e2f, as `def ... : Prop`.
 - `Langlands/Bridge/FormalConjectures.lean`: `HasseWeilEllipticQ` implies the Hasse-Weil statement of formal-conjectures over $\mathbb{Q}$. The statement `modularity_conjecture` of formal-conjectures is false as stated, because it reads the coefficients in the parameter $q_N$ and not in $q_1$ (`not_modularity_conjecture`).
 - `manifests/ported.yaml`: the record of each ported source.
+- `manifests/statements.sha256`: the hashes of the three files of `Langlands/Statements/`. The workflow `check` now compares them (check F7 of spec 06.3).
+
+### Changed
+
+- `formalization.yaml` lists the sources of the modularity statements, the copied statements of formal-conjectures, the classification and the status of each main result.
 
 ## v0.0.1 (2026-11-25)
 

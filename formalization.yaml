@@ -1,4 +1,4 @@
-# The metadata of this formalization. The keys follow the formalization.yaml schema of version 0.4.
+# The metadata of this formalization. The keys follow the formalization.yaml schema of version 0.4 that resolutionorg/hironaka uses.
 version: "0.4"
 project:
   name: langlands-lean
@@ -17,6 +17,14 @@ sources:
     relationship: background
     note: The statement of local reciprocity for GL(1) follows Theorem 2 of this chapter, with the geometric normalization.
     author_endorsement: false
+  - title: Number theoretic background
+    authors: [John Tate]
+    id: "langlands:Tat79"
+    type: paper
+    location: Automorphic forms, representations and L-functions, Proc. Sympos. Pure Math. 33, part 2 (1979)
+    relationship: background
+    note: The source of the Weil group as a subgroup of the absolute Galois group, and of the normalizations.
+    author_endorsement: false
   - title: The local Langlands conjecture for GL(2)
     authors: [Colin J. Bushnell, Guy Henniart]
     id: "langlands:BH06"
@@ -25,11 +33,104 @@ sources:
     relationship: background
     note: The source of the statement of the local Langlands correspondence for GL(2).
     author_endorsement: false
-  - title: google-deepmind/formal-conjectures
+  - title: On the modularity of elliptic curves over Q
+    authors: [Christophe Breuil, Brian Conrad, Fred Diamond, Richard Taylor]
+    id: "langlands:BCDT01"
+    type: paper
+    location: Journal of the American Mathematical Society 14 (2001)
+    relationship: background
+    note: The source of ModularityEllipticQ. Not formalized here yet.
+    author_endorsement: false
+  - title: Modular elliptic curves and Fermat's last theorem
+    authors: [Andrew Wiles]
+    id: "langlands:Wil95"
+    type: paper
+    location: Annals of Mathematics 141 (1995)
+    relationship: background
+    note: The source of ModularitySemistableQ. Not formalized here yet.
+    author_endorsement: false
+  - title: La conjecture de Weil. I
+    authors: [Pierre Deligne]
+    id: "langlands:Del74"
+    type: paper
+    location: Publications Mathematiques de l'IHES 43 (1974)
+    relationship: background
+    note: The source of RamanujanPeterssonHolomorphic. Not formalized here yet.
+    author_endorsement: false
+  - title: A family of Calabi-Yau varieties and potential automorphy II
+    authors: [Thomas Barnet-Lamb, David Geraghty, Michael Harris, Richard Taylor]
+    id: "langlands:BGHT11"
+    type: paper
+    location: Publications of the Research Institute for Mathematical Sciences 47 (2011)
+    relationship: background
+    note: The source of SatoTate. Not formalized here yet.
+    author_endorsement: false
+  - title: google-deepmind/formal-conjectures, commit 9097e2f90e66d2f6244209cb1c07f7120d17ec53
     authors: [The Formal Conjectures Authors]
     id: "langlands:formal-conjectures"
     type: code
     location: https://github.com/google-deepmind/formal-conjectures
-    relationship: related
-    note: Statements of open conjectures. The files of Langlands/Bridge/ compare the statements of both projects.
+    relationship: copied
+    note: The statements of FormalConjectures/Wikipedia/ModularityConjecture.lean, SatoTateConjecture.lean, RamanujanTau.lean and HasseWeil.lean are copied to Langlands/Ported/FormalConjectures/Wikipedia.lean under the Apache License 2.0. The files of Langlands/Bridge/ compare the statements of both projects.
     author_endorsement: false
+classification:
+  arxiv: [math.NT, math.RT]
+  msc2020: [11F70, 11R37, 11S37, 11F80, 11G05, 22E50]
+status:
+  scope: statements
+  sorry_count: 0
+  sorry_in_definitions: false
+  axioms: [propext, Classical.choice, Quot.sound]
+  main_results:
+    - name: Langlands.LocalReciprocityGL1
+      kind: statement
+      status: known
+      note: Local class field theory as the local Langlands correspondence for GL(1). This is a definition of a proposition. The package does not prove it yet.
+    - name: Langlands.LocalExistence
+      kind: statement
+      status: known
+    - name: Langlands.GlobalReciprocity
+      kind: statement
+      status: known
+    - name: Langlands.GlobalExistence
+      kind: statement
+      status: known
+    - name: Langlands.KroneckerWeber
+      kind: statement
+      status: known
+    - name: Langlands.ModularityEllipticQ
+      kind: statement
+      status: known
+      note: The theorem of Breuil, Conrad, Diamond and Taylor, with equality of all the coefficients of the L-series.
+    - name: Langlands.ModularitySemistableQ
+      kind: statement
+      status: known
+    - name: Langlands.HasseWeilEllipticQ
+      kind: statement
+      status: known
+    - name: Langlands.RamanujanPeterssonHolomorphic
+      kind: statement
+      status: known
+    - name: Langlands.SatoTate
+      kind: statement
+      status: known
+    - name: Langlands.Bridge.hasseWeil_rat_of_hasseWeilEllipticQ
+      kind: theorem
+      status: proved
+      note: HasseWeilEllipticQ implies the Hasse-Weil statement over Q of formal-conjectures.
+    - name: Langlands.Bridge.not_modularity_conjecture
+      kind: theorem
+      status: proved
+      note: The statement modularity_conjecture of formal-conjectures at commit 9097e2f is false as stated, because it reads the coefficients in the parameter exp(2 pi i tau / N).
+    - name: Langlands.Fidelity.localExistence_top
+      kind: theorem
+      status: proved
+    - name: Langlands.Fidelity.kroneckerWeber_bot
+      kind: theorem
+      status: proved
+    - name: Langlands.Fidelity.satoTate_total_mass
+      kind: theorem
+      status: proved
+    - name: Langlands.Fidelity.not_hasCMOverQ_X0_11
+      kind: theorem
+      status: proved
