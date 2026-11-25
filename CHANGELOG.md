@@ -4,6 +4,20 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.4 (2026-11-26)
+
+### Added
+
+- `Langlands/Bridge/NYLLGlobal.lean`: the proofs `Bridge.globalReciprocity` of `GlobalReciprocity` and `Bridge.globalExistence` of `GlobalExistence`, from the port of global class field theory. The Artin map is the geometric global norm residue map of the port.
+- `Langlands/Tate/`: the archimedean local theory of Tate's thesis. It has the local zeta integrals at the real and the complex places, the Gamma factors, the Fourier transforms of the standard test functions, the local root numbers and the local functional equations, and the products over the infinite places of a number field.
+- `docs/cross-check.md`: the comparison of three project statements with riemann-lean, and the reason why the cross-check package is not built.
+- `scripts/L4LPackage.lean`: lean4lean on all the modules of the package in one environment.
+
+### Changed
+
+- The job lean4lean of the workflow trust runs `scripts/L4LPackage.lean`. The old command loaded one environment for each module in parallel, and the runner did not have sufficient memory.
+- `Comparator/Challenge.lean` and `comparator.json` pin `Bridge.globalReciprocity`, `Bridge.globalExistence`, `Bridge.kroneckerWeber` and `heckeFunctionalEquationAt_rat`.
+
 ## v0.1.3 (2026-11-26)
 
 ### Added
