@@ -8,6 +8,9 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 - `Langlands/Statements/Modularity.lean`: the statements `ModularityEllipticQ`, `ModularitySemistableQ`, `HasseWeilEllipticQ`, `RamanujanPeterssonHolomorphic` and `SatoTate`, with the structure `IsNormalizedEigenform` and the predicate `HasCMOverQ`. The coefficients of an elliptic curve come from `WeierstrassCurve.LFunction` in Mathlib, and the coefficients of a cusp form come from its $q$-expansion.
 
+- `Langlands/Fidelity/ClassField.lean`: the positive instances `localExistence_top` and `kroneckerWeber_bot`, and the lemma `normGroup_bot`.
+- `Langlands/Fidelity/Modularity.lean`: the total mass of the Sato-Tate measure, the CM curve $y^2 = x^3 - x$ and the curve $X_0(11)$ without CM.
+
 ## v0.0.1 (2026-11-25)
 
 ### Added
