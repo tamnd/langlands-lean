@@ -15,6 +15,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 - `manifests/ported.yaml`: the record of each ported source.
 - `Langlands/Ported/NYLL/`: the port of finite abelian local reciprocity from n-yamaguchi-0729/ClassFieldTheory at commit fc644f4. These are the 327 files of the import closure of `ClassFieldTheory.finiteAbelianLocalReciprocity`, with the Mathlib names of v4.35.0. The entry `nyll` of `manifests/ported.yaml` lists the changes.
 - `Langlands/Bridge/NYLL.lean`: `finiteAbelianLocalReciprocity` for a finite abelian extension in an algebraic closure, with the kernel given by `Langlands.normGroup`. This is the first theorem of the project with a full proof.
+- `Langlands/Fidelity/ClassField.lean`: the checks F2 and F3 for the class field statements. `LocalReciprocityGL1` implies finite abelian local reciprocity (F2). Without the condition at a uniformizer the local reciprocity map is never unique, and this proof uses no hypothesis (F3). A map is a geometric Artin map if and only if its composite with inversion is an arithmetic Artin map (F3).
+- `Langlands/Fidelity/Modularity.lean`: `ModularityEllipticQ` implies `ModularitySemistableQ` (F2), and `SatoTate` contradicts the variant with the uniform measure (F3).
 - `manifests/statements.sha256`: the hashes of the three files of `Langlands/Statements/`. The workflow `check` now compares them (check F7 of spec 06.3).
 
 ### Changed
