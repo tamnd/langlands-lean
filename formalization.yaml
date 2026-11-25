@@ -198,6 +198,14 @@ status:
       kind: theorem
       status: proved
       note: The product over the infinite places of the local zeta integrals of the standard test functions is pi^r2 times the archimedean factor gammaFactor of the statement HeckeFunctionalEquation.
+    - name: Langlands.Tate.NonArchimedean.zetaIntegral_eq_localFactor
+      kind: theorem
+      status: proved
+      note: At a finite place where the Hecke character is unramified, the local zeta integral of the characteristic function of the integers is the local factor of the L-function, in the region of convergence.
+    - name: Langlands.Tate.NonArchimedean.fourier_indicator_integers
+      kind: theorem
+      status: proved
+      note: For an additive character of the completion with conductor exponent d, the Fourier transform of the characteristic function of the integers is the characteristic function of the ball of radius q^d. The measure gives the integers the volume 1.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
