@@ -2,7 +2,7 @@
 Copyright (c) 2026 The langlands authors. All rights reserved.
 Released under the Apache 2.0 licence as described in the file LICENSE.
 -/
-import Mathlib.NumberTheory.LocalField.Basic
+import Langlands.Statements.Basic
 
 /-!
 # The Langlands program in Lean
