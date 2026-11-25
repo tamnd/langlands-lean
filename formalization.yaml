@@ -1,0 +1,35 @@
+# The metadata of this formalization. The keys follow the formalization.yaml schema of version 0.4.
+version: "0.4"
+project:
+  name: langlands-lean
+  description: Statements in Lean 4 of the Langlands program, the proofs of its known parts, and the work on its open parts.
+  authors:
+    - The langlands authors
+  responsible_maintainers:
+    - tamnd
+  license: Apache-2.0
+sources:
+  - title: Local class field theory
+    authors: [Jean-Pierre Serre]
+    id: "langlands:Ser67"
+    type: paper
+    location: Algebraic Number Theory, edited by J. W. S. Cassels and A. Frohlich, Academic Press (1967), Chapter VI
+    relationship: background
+    note: The statement of local reciprocity for GL(1) follows Theorem 2 of this chapter, with the geometric normalization.
+    author_endorsement: false
+  - title: The local Langlands conjecture for GL(2)
+    authors: [Colin J. Bushnell, Guy Henniart]
+    id: "langlands:BH06"
+    type: book
+    location: Grundlehren der mathematischen Wissenschaften 335, Springer (2006)
+    relationship: background
+    note: The source of the statement of the local Langlands correspondence for GL(2).
+    author_endorsement: false
+  - title: google-deepmind/formal-conjectures
+    authors: [The Formal Conjectures Authors]
+    id: "langlands:formal-conjectures"
+    type: code
+    location: https://github.com/google-deepmind/formal-conjectures
+    relationship: related
+    note: Statements of open conjectures. The files of Langlands/Bridge/ compare the statements of both projects.
+    author_endorsement: false
