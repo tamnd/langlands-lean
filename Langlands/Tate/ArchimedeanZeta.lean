@@ -226,7 +226,8 @@ noncomputable def complexTest (n : ℤ) (z : ℂ) : ℂ :=
 
 theorem realTest_mul_archChar {a : ℤ} (ha : a = 0 ∨ a = 1) (t : ℂ) (x : ℝ) :
     realTest a x * archChar 1 a t x =
-      ((|x| : ℝ) : ℂ) ^ a.toNat * cexp (-(Real.pi * ((|x| : ℝ) : ℂ) ^ 2)) * ((|x| : ℝ) : ℂ) ^ t := by
+      ((|x| : ℝ) : ℂ) ^ a.toNat * cexp (-(Real.pi * ((|x| : ℝ) : ℂ) ^ 2)) *
+        ((|x| : ℝ) : ℂ) ^ t := by
   have hsq : (x : ℂ) ^ 2 = ((|x| : ℝ) : ℂ) ^ 2 := by rw [← ofReal_pow, ← ofReal_pow, sq_abs]
   simp only [realTest, archChar, Complex.norm_real, Real.norm_eq_abs, Nat.cast_one, one_mul, hsq]
   rcases ha with rfl | rfl
