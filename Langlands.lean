@@ -13,6 +13,7 @@ import Langlands.Reciprocity.GL1
 import Langlands.Reciprocity.Unique
 import Langlands.Statements.Basic
 import Langlands.Statements.ClassField
+import Langlands.Statements.Hecke
 import Langlands.Statements.Modularity
 import Langlands.Statements.Torus
 import Langlands.Statements.TorusInduced
