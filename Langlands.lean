@@ -20,6 +20,7 @@ import Langlands.WeilGroup.Ab
 import Langlands.WeilGroup.Degree
 import Langlands.WeilGroup.Dense
 import Langlands.WeilGroup.Inertia
+import Langlands.WeilGroup.Restrict
 
 /-!
 # The Langlands program in Lean

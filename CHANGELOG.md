@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- `Langlands/WeilGroup/Restrict.lean`: for a finite extension L of K in the algebraic closure, the subgroup of the Weil group of K that fixes L is open, of finite index, and normal when L is normal over K. The map `weilHom` from the Weil group of L to the Weil group of K is injective and continuous, with this subgroup as its image. It multiplies the degree by the residue degree of L over K.
+
 - `comparator.json`, `Comparator/Challenge.lean` and `Comparator/Solution.lean`: the challenge for `lake comparator`, with the pinned statements of `localReciprocityGL1`, `Bridge.localExistence` and `localLanglandsTorusSplit`. The trust workflow has a new job that runs `lake comparator --paranoid`. This is row Q4 of the trust report.
 
 - `Langlands/Reciprocity/GL1.lean`: the proof `localReciprocityGL1` of the statement `LocalReciprocityGL1`. For each nonarchimedean local field there is exactly one local Artin map from the units of the field to the abelianized Weil group.
