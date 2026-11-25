@@ -4,6 +4,17 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.5 (2026-11-26)
+
+### Added
+
+- `Langlands/Tate/NonArchimedean*.lean`: the Haar measure on the completion at a finite place, the local zeta integral, and its value at an unramified place, which is the local factor of the Hecke L-function. The Fourier transform of the characteristic function of the integers for an additive character with a given conductor.
+- `Langlands/Tate/Poisson*.lean`: the Poisson summation formula on a full lattice of a real inner product space, with the covolume and the dual lattice, and the theta transformation formula.
+- `Langlands/Statements/Smooth.lean`, `WeilDeligne.lean` and `GodementJacquet.lean`: smooth representations, Weil-Deligne representations and the standard L-factor of a representation of GL(n).
+- `Langlands/Statements/LocalLanglands.lean`: `LocalLanglandsGL`, `LocalLanglandsGL2`, `LocalLanglandsSL2` and `JacquetLanglandsGL2`.
+- `Langlands/Statements/Automorphic.lean` and `GlobalGL.lean`: cusp forms on GL(n) over the adeles, Hecke operators, Satake parameters, and `RamanujanGL`, `FunctorialityGL`, `SymPowerFunctoriality` and `BaseChangeCyclic`.
+- `Langlands/Statements/HasseWeil.lean`, `FundamentalLemma.lean` and `PadicGalois.lean`: `HasseWeil`, `FundamentalLemma` and `FontaineMazurGL2Q`, and the vocabulary for the conjecture of Breuil and Mezard.
+
 ## v0.1.4 (2026-11-26)
 
 ### Added
