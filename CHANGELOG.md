@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- `Langlands/Cohomology/Shapiro.lean`: continuous one-cocycles, coboundaries and the first continuous cohomology group. Shapiro's lemma `Shapiro.shapiro` gives an isomorphism from the first cohomology of a coinduced module from an open subgroup H to the group of continuous homomorphisms on H.
+
 - `Langlands/WeilGroup/Degree.lean`: the residue field of the algebraic closure is algebraically closed, and the Frobenius has infinite order. The degree map `WeilGroup.degree` from the Weil group to the integers has the inertia subgroup as its kernel, and it is surjective and locally constant. A geometric Frobenius has degree one.
 - `Langlands/WeilGroup/Inertia.lean`: the checks F2 and F3 for the topology of the Weil group. The inertia subgroup is compact (`isCompact_inertia`). In the subspace topology from the absolute Galois group, the inertia subgroup is not open (`not_isOpen_inertia_induced`).
 
