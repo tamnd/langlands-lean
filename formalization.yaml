@@ -1138,6 +1138,26 @@ status:
       kind: theorem
       status: proved
       note: The reducible principal series with chi_2 = chi_1 |.| has length 2.
+    - name: Langlands.Tate.dualEquiv
+      kind: definition
+      status: proved
+      note: The nonzero elements of the dual of fJ, sorted by the ideal (beta) f J d.
+    - name: Langlands.Tate.IsRayClassType.dual_eq_completed
+      kind: theorem
+      status: proved
+      note: The dual theta series gives the completed L-function of the inverse character.
+    - name: Langlands.Tate.IsRayClassType.heckeFunctionalEquation_of_ramified
+      kind: theorem
+      status: proved
+      note: The Hecke functional equation for a ramified ray class character of an imaginary quadratic field, with W = tau/sqrt(N f).
+    - name: Langlands.Tate.IsRayClassType.heckeFunctionalEquation_of_isQuadratic
+      kind: theorem
+      status: proved
+      note: The Hecke functional equation for each ray class character of an imaginary quadratic field.
+    - name: Langlands.Tate.heckeFunctionalEquation_of_isQuadratic_of_infiniteComponent
+      kind: theorem
+      status: proved
+      note: The Hecke functional equation for each Hecke character of an imaginary quadratic field with parameter n = 0 at infinity.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

@@ -101,6 +101,7 @@ import Langlands.Smooth.ReducibleCase
 import Langlands.Tate.RayClassGaussNorm
 import Langlands.Smooth.ReducibleQuotient
 import Langlands.Smooth.Steinberg
+import Langlands.Tate.RayClassHecke
 
 /-!
 # The Langlands program in Lean
