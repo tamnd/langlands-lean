@@ -690,6 +690,30 @@ status:
       kind: theorem
       status: proved
       note: The Jacquet functor is right exact.
+    - name: Langlands.LocalGL1.exists_iso_charRep
+      kind: theorem
+      status: proved
+      note: Schur's lemma: an irreducible admissible smooth representation of a commutative group is a character.
+    - name: Langlands.LocalGL1.rec1
+      kind: definition
+      status: proved
+      note: The bijection from irreducible smooth representations of GL_1(K) to one dimensional Weil-Deligne representations through the local Artin map.
+    - name: Langlands.LocalGL1.isLanglandsMap_rec0
+      kind: theorem
+      status: proved
+      note: The m = 0 case of the local Langlands conditions.
+    - name: Langlands.LocalGL1.isLanglandsFamily_recFamily
+      kind: theorem
+      status: proved
+      note: The family rec_0, rec_1 satisfies IsLanglandsFamily for n = 1, given the GL_1 L-factor condition.
+    - name: Langlands.LocalGL1.GL1LFactor
+      kind: definition
+      status: proved
+      note: The L-factor condition for GL_1: Tate's local theory in Godement-Jacquet form. It is not proved yet.
+    - name: Langlands.LocalGL1.localLanglandsGL_one_of_gl1LFactor
+      kind: theorem
+      status: proved
+      note: GL1LFactor implies LocalLanglandsGL 1.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
