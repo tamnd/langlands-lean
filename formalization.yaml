@@ -814,6 +814,30 @@ status:
       kind: theorem
       status: proved
       note: The big cell part of the principal series is the kernel of evaluation at 1, and evaluation at 1 is surjective.
+    - name: Langlands.Tate.IsRayClassType.hasSum_partialLSeries
+      kind: theorem
+      status: proved
+      note: The partial L-series of a ray class character of an imaginary quadratic field over one ideal class is a finite combination of shifted Epstein zeta functions of the lattice fJ.
+    - name: Langlands.Tate.rayClassCompleted_two_sub
+      kind: theorem
+      status: proved
+      note: The functional equation of the completed partial L-series, with the dual side over the dual lattice of fJ.
+    - name: Langlands.Tate.hasSum_rayClass_dual
+      kind: theorem
+      status: proved
+      note: The dual side of the partial L-series as a Dirichlet series over the trace dual of fJ, weighted by finite Gauss sums.
+    - name: Langlands.Tate.gammaℝ_mul_finiteLFunction
+      kind: theorem
+      status: proved
+      note: The completed finite L-function of a ray class character of an imaginary quadratic field is the sum of the completed partial L-series over the ideal classes.
+    - name: Langlands.Tate.IsRayClassType.differentiable_rayClassCompleted
+      kind: theorem
+      status: proved
+      note: The completed partial L-series is entire when the residue coefficients sum to zero.
+    - name: Langlands.Tate.covolume_rayLattice
+      kind: theorem
+      status: proved
+      note: The covolume of the lattice fJ is N(f) N(J) times the square root of the absolute discriminant.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
