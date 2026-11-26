@@ -80,6 +80,7 @@ import Langlands.WeilGroup.Embedding
 import Langlands.WeilGroup.Inertia
 import Langlands.WeilGroup.Restrict
 import Langlands.Smooth.PrincipalSeries
+import Langlands.Local.GL1
 
 /-!
 # The Langlands program in Lean

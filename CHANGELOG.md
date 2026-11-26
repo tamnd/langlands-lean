@@ -10,6 +10,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Langlands.Local.GL1: Schur's lemma for commutative groups, the bijection rec_1 for GL_1 through the local Artin map with its central character, twist and dual conditions, the m = 0 case, and the reduction of LocalLanglandsGL 1 to the GL_1 L-factor condition GL1LFactor.
+
 - Langlands.Smooth.PrincipalSeries: the modulus character of the Borel subgroup of GL_2, the normalized principal series, the Iwasawa decomposition, the admissibility of the principal series, the surjection from its Jacquet module onto the inducing character and the right exactness of the Jacquet functor.
 
 ## v0.1.20 (2026-11-26)
