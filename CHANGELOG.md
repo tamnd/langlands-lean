@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The irreducibility criterion for the principal series of GL(2) in both directions, in `Langlands.Smooth.ReducibleQuotient`.
+
 - The identity |tau(chi)|^2 = N(f) for the Gauss sum of a primitive ray class character, and its independence of J, in `Langlands.Tate.RayClassGaussNorm`.
 
 - The reducible principal series of GL(2) with a line of chi o det, and the twisted Steinberg quotient, in `Langlands.Smooth.ReducibleCase`.
