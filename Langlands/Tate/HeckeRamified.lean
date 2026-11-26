@@ -136,7 +136,7 @@ theorem conductor_inv (χ : HeckeCharacter K) : χ⁻¹.conductor = χ.conductor
 theorem conductorExponent_eq_zero_iff (χ : HeckeCharacter K) (v : HeightOneSpectrum (𝓞 K)) :
     χ.conductorExponent v = 0 ↔ χ.IsUnramifiedAt v := by
   refine ⟨fun h => ?_, fun h => Nat.sInf_eq_zero.mpr (Or.inl h)⟩
-  have := Nat.sInf_mem (NonArchimedean.exists_isTrivialOnHigherUnits v χ)
+  have := Nat.sInf_mem (s := {m | χ.IsTrivialOnHigherUnits v m}) (NonArchimedean.exists_isTrivialOnHigherUnits v χ)
   change χ.IsTrivialOnHigherUnits v (χ.conductorExponent v) at this
   rwa [h] at this
 
@@ -364,7 +364,7 @@ theorem IsRayClassType.idealChar_toPrincipalIdeal (hχ : IsRayClassType χ) (x :
     by_cases hv : v ∈ ramifiedSet χ
     · rw [hcount v hv, zpow_zero]
       have ht : χ.IsTrivialOnHigherUnits v (χ.conductorExponent v) :=
-        Nat.sInf_mem (NonArchimedean.exists_isTrivialOnHigherUnits v χ)
+        Nat.sInf_mem (s := {m | χ.IsTrivialOnHigherUnits v m}) (NonArchimedean.exists_isTrivialOnHigherUnits v χ)
       refine (ht _ (hunit v hv) ?_).symm
       rw [ideleFin_unitEmbedding]
       exact hx v hv

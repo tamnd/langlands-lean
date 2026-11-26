@@ -389,7 +389,7 @@ theorem cosetSum_eq_zero_of_mem_jacquetKer (π : SmoothRep G) {N : Subgroup G} {
       rw [mem_stabIn, map_sub, hSw s hs]
       congr 1
       have hc : (⟨n, hn⟩ : N₁)⁻¹ * s * ⟨n, hn⟩ ∈ S := by
-        simpa using (Subgroup.Normal.conj_mem inferInstance s hs (⟨n, hn⟩ : N₁)⁻¹)
+        simpa using (Subgroup.Normal.conj_mem s hs (⟨n, hn⟩ : N₁)⁻¹)
       have e : ((s : N₁) : G) * n = n * (((⟨n, hn⟩ : N₁)⁻¹ * s * ⟨n, hn⟩ : N₁) : G) := by
         simp only [Subgroup.coe_mul, Subgroup.coe_inv]
         group
