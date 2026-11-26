@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Prove the unfolding of the weighted theta series of a number field over the units, with its absolute convergence.
+
 - Prove the Mellin formula of the weighted theta series of a number field in the coordinates of the norm and the units.
 
 - State Serre's weight in the wild case and the full strong form of Serre's conjecture.

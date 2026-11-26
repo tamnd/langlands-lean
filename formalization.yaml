@@ -1490,6 +1490,22 @@ status:
       kind: theorem
       status: proved
       note: The weighted theta formula of a fractional ideal in the coordinates of the norm and the units.
+    - name: Langlands.Tate.norm_heckeTerm_le
+      kind: theorem
+      status: proved
+      note: A bound of a term of the weighted theta series by a term of the theta series of weight 0, which gives the absolute convergence.
+    - name: Langlands.Tate.lintegral_tsum_heckeTerm_lt_top
+      kind: theorem
+      status: proved
+      note: The absolute convergence of the sum and the integral of the weighted theta series in the coordinates of the norm and the units, for Re s > n/2.
+    - name: Langlands.Tate.hasSum_integral_heckeTheta_sub
+      kind: theorem
+      status: proved
+      note: The unfolding of the weighted theta series over the units. The Mellin integral equals w_K times the Gamma factor times the partial Hecke sum over the classes of a modulo the units, when chi_infinity is trivial on the units.
+    - name: Langlands.Tate.hasSum_integral_heckeTheta
+      kind: theorem
+      status: proved
+      note: The unfolding for a nonzero weight, where the term alpha = 0 vanishes.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
