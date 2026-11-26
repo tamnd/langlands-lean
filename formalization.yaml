@@ -1306,6 +1306,30 @@ status:
       kind: theorem
       status: proved
       note: A Jacquet cuspidal representation of GL(2) is supercuspidal.
+    - name: Langlands.Tate.periodicChar
+      kind: definition
+      status: proved
+      note: The character of the multiplicative group given by the ideal character times the infinite type.
+    - name: Langlands.Tate.periodicGaussCoeff
+      kind: definition
+      status: proved
+      note: The finite Fourier coefficient of the periodic coefficient.
+    - name: Langlands.Tate.periodicGaussSum
+      kind: definition
+      status: proved
+      note: The Gauss sum of a Hecke character on a fractional ideal.
+    - name: Langlands.Tate.periodicGaussCoeff_eq_zero
+      kind: theorem
+      status: proved
+      note: The Fourier coefficient vanishes off the primitive classes.
+    - name: Langlands.Tate.periodicGaussCoeff_eq_periodicGaussSum_mul
+      kind: theorem
+      status: proved
+      note: The Fourier coefficient is the Gauss sum times the conjugate coefficient, for a unitary character.
+    - name: Langlands.Tate.norm_periodicGaussSum_sq
+      kind: theorem
+      status: proved
+      note: The square of the absolute value of the Gauss sum is the norm of the conductor, for a unitary character.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
