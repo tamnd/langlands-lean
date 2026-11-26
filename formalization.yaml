@@ -734,6 +734,30 @@ status:
       kind: theorem
       status: proved
       note: For Re s > 1 the finite L-function of a character of ray class type is its Dirichlet series over the ideals prime to the conductor.
+    - name: Langlands.GL2.bruhat
+      kind: theorem
+      status: proved
+      note: The Bruhat decomposition GL_2(K) = B and B w N over any field.
+    - name: Langlands.GL2.bigCell_unique
+      kind: theorem
+      status: proved
+      note: The decomposition b w n of an element of the big cell is unique.
+    - name: Langlands.SmoothRep.mem_jacquetKer_iff
+      kind: theorem
+      status: proved
+      note: Jacquet's lemma: v lies in V(N) if and only if its average over some compact open subgroup of N is 0.
+    - name: Langlands.SmoothRep.jacquetMap_injective
+      kind: theorem
+      status: proved
+      note: The Jacquet functor preserves injections when N is a union of compact open subgroups.
+    - name: Langlands.SmoothRep.jacquetMap_shortExact
+      kind: theorem
+      status: proved
+      note: The Jacquet functor is exact when N is a union of compact open subgroups.
+    - name: Langlands.SmoothRep.jacquetMap_unipotent_shortExact
+      kind: theorem
+      status: proved
+      note: The Jacquet functor for the unipotent radical of the Borel subgroup of GL_2(K) is exact.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
