@@ -910,6 +910,22 @@ status:
       kind: theorem
       status: proved
       note: The zeta integral is linear on finite sums of bounded functions with ball support.
+    - name: Langlands.principalSeriesInd_isIrreducible
+      kind: theorem
+      status: proved
+      note: The unnormalized principal series is irreducible if the characters differ and the big cell character is not trivial.
+    - name: Langlands.normPrincipalSeries_irreducible
+      kind: theorem
+      status: proved
+      note: The normalized principal series is irreducible if the ratio of the characters is not the absolute value to the power one or minus one.
+    - name: Langlands.normPrincipalSeries_quotient_jacquet_nontrivial
+      kind: theorem
+      status: proved
+      note: A proper quotient of the normalized principal series has a nonzero Jacquet module.
+    - name: Langlands.normPrincipalSeries_hom_injective
+      kind: theorem
+      status: proved
+      note: A nonzero map from an irreducible normalized principal series is injective.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

@@ -38,12 +38,12 @@ Let $W \neq 0$ be $G$-stable. If $f \in W$ is not zero, then $f(g) \neq 0$ for s
 
 ## Open parts
 
-The irreducibility criterion of Bushnell and Henniart, chapter 3, section 9, is not proved here. It states that the normalized principal series of $(\chi_1, \chi_2)$ is irreducible if $\chi_1 \chi_2^{-1} \neq |\cdot|^{\pm 1}$. The results of this file reduce it to these two open statements.
+The irreducibility criterion of Bushnell and Henniart, chapter 3, section 9, is not proved in this file. It states that the normalized principal series of $(\chi_1, \chi_2)$ is irreducible if $\chi_1 \chi_2^{-1} \neq |\cdot|^{\pm 1}$. The results of this file reduce it to the two statements below. The module `Langlands.Smooth.IrreducibilityCriterion` proves the criterion, and both statements follow from it.
 
 * A nonzero quotient $Q$ of the normalized principal series has $Q_N \neq 0$. This needs the duality $(\mathrm{Ind}_B^G \chi)^\vee \cong \mathrm{Ind}_B^G(\chi^{-1})$ of normalized induction and the exactness of the Jacquet functor on contragredients, or an equal argument with the Hecke algebra. These are not in the library.
 * If $\chi_1 \chi_2^{-1} \neq |\cdot|^{\pm 1}$, each nonzero map of representations of $G$ from the normalized principal series of $(\chi_1, \chi_2)$ to that of $(\chi_2, \chi_1)$ is injective. This needs the intertwining operator $M(w)$ and its composition $M(w^{-1}) M(w)$, which are not in the library.
 
-With these two statements, a proper nonzero $G$-stable subspace $W$ gives a nonzero map that vanishes on $W$ by `Langlands.normPrincipalSeries_exists_hom_of_quotient`, and this contradicts the injectivity. The criterion and the description of the reducible case are thus open.
+With these two statements, a proper nonzero $G$-stable subspace $W$ gives a nonzero map that vanishes on $W$ by `Langlands.normPrincipalSeries_exists_hom_of_quotient`, and this contradicts the injectivity. The description of the reducible case is still open.
 
 ## References
 
