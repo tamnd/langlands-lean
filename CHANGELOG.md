@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.18 (2026-11-26)
+
 ### Added
 
 - `Langlands/Tate/HeckeClassTwist.lean`: the theorem of Hecke for chi |.|^s_0, with chi of class group type and s_0 any complex number. The file proves a general shift lemma for twists by a power of the norm, and it shows that these twists are exactly the Hecke characters that are unramified at each finite place with infinite components |.|_w^s_0. It also proves that the idele norm is continuous and defines the Hecke character x -> |x|^s for each number field.
