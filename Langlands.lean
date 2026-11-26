@@ -60,6 +60,7 @@ import Langlands.Tate.ClassCharacter
 import Langlands.Tate.HeckeUnramified
 import Langlands.Tate.HeckeClassTwist
 import Langlands.Groups.RootDatum
+import Langlands.Smooth.Induction
 import Langlands.Tate.NonArchimedeanCharacter
 import Langlands.Tate.NonArchimedeanFourier
 import Langlands.Tate.NonArchimedeanGauss
