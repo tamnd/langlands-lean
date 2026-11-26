@@ -622,6 +622,42 @@ status:
       kind: definition
       status: proved
       note: The principal series of GL_2(K) induced from the character (chi_1, chi_2) of the Borel subgroup, not normalized.
+    - name: Langlands.Tate.NonArchimedean.gaussSum_eq_gaussSumFinite
+      kind: theorem
+      status: proved
+      note: The Gauss sum integral over the units is q^(-a) times the finite Gauss sum.
+    - name: Langlands.Tate.NonArchimedean.norm_gaussSumFinite_sq
+      kind: theorem
+      status: proved
+      note: The finite Gauss sum of a character of conductor exponent a has squared absolute value q^a.
+    - name: Langlands.Tate.NonArchimedean.sum_charExt_rep_eq_zero
+      kind: theorem
+      status: proved
+      note: A ramified character has sum 0 over the units of the residue ring.
+    - name: Langlands.Tate.NonArchimedean.zetaIntegral_eq_zero_of_ramified
+      kind: theorem
+      status: proved
+      note: For a ramified character the zeta integral of a unit invariant function is 0.
+    - name: Langlands.Tate.NonArchimedean.exists_isTrivialOnHigherUnits
+      kind: theorem
+      status: proved
+      note: Every Hecke character has a finite conductor exponent at each finite place.
+    - name: Langlands.Tate.NonArchimedean.localFactor_eq_one_of_not_isUnramifiedAt
+      kind: theorem
+      status: proved
+      note: The local factor of a Hecke character at a ramified place is 1.
+    - name: Langlands.Tate.NonArchimedean.norm_gaussSumFinite_finiteComponent_sq
+      kind: theorem
+      status: proved
+      note: The Gauss sum of a Hecke character at a ramified place has squared absolute value q^a.
+    - name: Langlands.Tate.NonArchimedean.epsilonRamified_eq_cpow
+      kind: theorem
+      status: proved
+      note: The local epsilon factor at a ramified place in terms of the finite Gauss sum.
+    - name: Langlands.Tate.NonArchimedean.gaussSumFinite
+      kind: definition
+      status: proved
+      note: The finite Gauss sum over the units of the residue ring.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
