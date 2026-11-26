@@ -115,7 +115,7 @@ theorem idealOf_unitSMul (u : (𝓞 K)ˣ) (α : NonzeroElt a) :
 
 variable (a) in
 /-- The integral ideals $I$ such that $\mathfrak{a} I$ is principal. They index the orbits of the units on the nonzero elements of $\mathfrak{a}$. -/
-abbrev Orbits := Set.range (idealOf a)
+noncomputable abbrev Orbits := Set.range (idealOf a)
 
 variable (a) in
 /-- A generator of $\mathfrak{a} I$, for $I$ in `Orbits a`. -/
