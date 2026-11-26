@@ -35,7 +35,7 @@ The torus $T$ is commutative and acts on $\pi_N$, which has finite dimension. Th
 ## Open parts
 
 * The finite dimension of $\pi_N$ is a hypothesis, not a theorem.
-* The file does not prove that `Langlands.SmoothRep.IsJacquetCuspidal` agrees with `Langlands.SmoothRep.IsSupercuspidal`, which uses matrix coefficients.
+* The file does not compare `Langlands.SmoothRep.IsJacquetCuspidal` with `Langlands.SmoothRep.IsSupercuspidal`, which uses matrix coefficients. The file `Langlands.Smooth.CuspidalCoefficients` proves one direction.
 * The file does not prove that `Langlands.steinbergSub` is isomorphic to `Langlands.steinbergQuotient`.
 * The file does not prove that the three families of `Langlands.classification` are pairwise not isomorphic, or that two twisted Steinberg representations are isomorphic only for equal characters.
 
@@ -473,7 +473,7 @@ theorem classification (π : SmoothRep (GL (Fin 2) K)) (hπ : π.IsIrreducible)
     exact Or.inr (Or.inr ⟨_, _, hχ₁, hχ₂, rfl,
       hc.trans (steinbergSub_iso hχ₁ hχ₂ hα₁ hα₂ rfl hα h₁ h₂).symm⟩)
 
-/-- A smooth representation $\pi$ of $GL_2(K)$ is Jacquet cuspidal if its Jacquet module $\pi_N$ for the upper unipotent subgroup $N$ is zero. This is the algebraic form of supercuspidality. It is not proved here to agree with `Langlands.SmoothRep.IsSupercuspidal`, which uses matrix coefficients. -/
+/-- A smooth representation $\pi$ of $GL_2(K)$ is Jacquet cuspidal if its Jacquet module $\pi_N$ for the upper unipotent subgroup $N$ is zero. This is the algebraic form of supercuspidality. It implies `Langlands.SmoothRep.IsSupercuspidal` by `Langlands.SmoothRep.isSupercuspidal_of_isJacquetCuspidal`. The converse is open. -/
 def SmoothRep.IsJacquetCuspidal (π : SmoothRep (GL (Fin 2) K)) : Prop :=
   Subsingleton (π.jacquet (unipotent K) (torus K) torus_le_normalizer_unipotent).V
 

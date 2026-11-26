@@ -1294,6 +1294,18 @@ status:
       kind: theorem
       status: proved
       note: The ray coefficient is the periodic coefficient times the archimedean weight.
+    - name: Langlands.GL2.cartan
+      kind: theorem
+      status: proved
+      note: The Cartan decomposition of GL(2) over a nonarchimedean local field.
+    - name: Langlands.SmoothRep.exists_coeff_diag_ne_zero
+      kind: theorem
+      status: proved
+      note: The matrix coefficients of a Jacquet cuspidal representation vanish on the torus away from a compact set.
+    - name: Langlands.SmoothRep.isSupercuspidal_of_isJacquetCuspidal
+      kind: theorem
+      status: proved
+      note: A Jacquet cuspidal representation of GL(2) is supercuspidal.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

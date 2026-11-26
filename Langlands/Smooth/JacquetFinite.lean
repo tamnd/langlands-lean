@@ -32,7 +32,7 @@ Each $g \in U_\gamma$ is $n(x) t \bar n(y)$ with $n(x) \in N$, $t \in T \cap U_\
 ## Open parts
 
 * The file does not prove that an irreducible smooth representation of $GL_2(K)$ is admissible. This is a hypothesis of the results above.
-* The file does not prove a relation between `Langlands.SmoothRep.IsJacquetCuspidal` and `Langlands.SmoothRep.IsSupercuspidal`. Each direction needs the asymptotics of matrix coefficients of Casselman, or the pairing between $\pi_N$ and the Jacquet module of the smooth dual, together with the Cartan decomposition.
+* The file does not relate `Langlands.SmoothRep.IsJacquetCuspidal` to `Langlands.SmoothRep.IsSupercuspidal`. The file `Langlands.Smooth.CuspidalCoefficients` proves that a Jacquet cuspidal representation is supercuspidal. The converse is open.
 -/
 
 universe u
