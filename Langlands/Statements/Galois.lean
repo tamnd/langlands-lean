@@ -209,7 +209,7 @@ end Artin
 
 /-- **Artin's conjecture** (open). Let $L/K$ be a finite Galois extension of number fields and let $\rho : \mathrm{Gal}(L/K) \to GL_n(\mathbb{C})$ be an irreducible representation that is not the trivial representation. Then there is an entire function that is equal to $L(s, \rho)$ for $\mathrm{Re}(s) > 1$.
 
-The meromorphic continuation and the functional equation are theorems of Artin and Brauer. The conjecture is that $L(s, \rho)$ has no pole. The statement is about the L-function without the archimedean factors; these factors have no zeros, so the completed L-function has the same poles. An irreducible representation with $n \ge 2$ is never trivial, so the condition $\rho \ne 1$ excludes only the trivial character, whose L-function is the Dedekind zeta function. -/
+The meromorphic continuation and the functional equation are theorems of Artin and Brauer. The conjecture is that $L(s, \rho)$ has no pole. The statement is about the L-function without the archimedean factors. These factors have no zeros, so an entire completed L-function gives an entire $L(s, \rho)$. The converse uses the functional equation, because the archimedean factors have poles. An irreducible representation with $n \ge 2$ is never trivial, so the condition $\rho \ne 1$ excludes only the trivial character, whose L-function is the Dedekind zeta function. -/
 def ArtinConjecture : Prop :=
   ∀ (K : Type u) [Field K] [NumberField K] (L : IntermediateField K (AlgebraicClosure K)),
     FiniteDimensional K L → IsGalois K L →
