@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- The partial L-series of a ray class character of an imaginary quadratic field as shifted Epstein zeta functions, with their functional equation and the dual side in Gauss sums.
+
 ## v0.1.23 (2026-11-26)
 
 ### Added
