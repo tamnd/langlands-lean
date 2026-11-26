@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.15 (2026-11-26)
+
 ### Added
 
 - `Langlands/Tate/HeckeNormPower.lean`: the theorem of Hecke for the Hecke characters x -> |x|^s_0 of each number field K. These characters are unramified everywhere, their archimedean parameters are n = 0 and t = s_0, and their conductor is (1). Their completed L-function is Lambda_K(s + s_0), so the conclusion of `HeckeFunctionalEquationAt K` holds with sigma = Re s_0, W = |d_K|^(sigma - s_0) and poles at -s_0 and 1 - s_0. This is the full polar case of the theorem.
