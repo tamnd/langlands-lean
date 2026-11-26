@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.21 (2026-11-26)
+
 ### Changed
 
 - Langlands.Tate.DedekindFE and Langlands.Tate.LocalRamified: two proofs no longer depend on behaviour of the elaborator that changes in v4.36.0.
