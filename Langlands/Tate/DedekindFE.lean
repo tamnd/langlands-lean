@@ -253,6 +253,7 @@ theorem differentiableAt_dedekindXi {u : ℂ} (hu0 : u ≠ 0) (hu1 : u ≠ 1) :
   exact h.const_mul _
 
 variable (K) in
+set_option maxHeartbeats 800000 in
 /-- **The functional equation of the Dedekind zeta function.** For $u \neq 0, 1$, $\xi_K(1 - u) = \xi_K(u)$. -/
 theorem dedekindXi_one_sub {u : ℂ} (hu0 : u ≠ 0) (hu1 : u ≠ 1) :
     dedekindXi K (1 - u) = dedekindXi K u := by
