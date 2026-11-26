@@ -768,7 +768,7 @@ theorem indicator_ordBall_eq (m : ℤ) (f : K → ℂ) (y : K) :
   by_cases hy : y = 0
   · subst hy
     rw [Set.indicator_of_mem (zero_mem_ordBall _), Set.indicator_of_mem (zero_mem_ordBall _),
-      Set.indicator_of_notMem (fun h => h.1 rfl), add_zero]
+      Set.indicator_of_notMem (fun h : (0 : K) ∈ ordShell K m => h.1 rfl), add_zero]
   have hb := fun N => mem_ordBall_of_ne_zero (K := K) hy (N := N)
   have hs : y ∈ ordShell K m ↔ ord K y = m := ⟨fun h => h.2, fun h => ⟨hy, h⟩⟩
   by_cases h1 : ord K y = m

@@ -74,7 +74,7 @@ theorem lt_uniformizer_zpow_iff {n : ℤ} {γ : ValueGroupWithZero K} :
     γ < uniformizer K ^ n ↔ γ ≤ uniformizer K ^ (n + 1) := by
   have hu : uniformizer K ≠ 0 := uniformizer_ne_zero
   have h0 : (0 : ValueGroupWithZero K) < uniformizer K ^ n := zpow_pos uniformizer_pos n
-  rw [← mul_lt_mul_iff_of_pos_right (zpow_pos uniformizer_pos (-n)), zpow_neg,
+  rw [← mul_lt_mul_iff_of_pos_right (zpow_pos uniformizer_pos (-n)), _root_.zpow_neg,
     mul_inv_cancel₀ h0.ne', ← le_uniformizer_iff,
     ← mul_le_mul_iff_of_pos_right h0, mul_assoc, inv_mul_cancel₀ h0.ne', mul_one,
     zpow_add₀ hu, zpow_one, mul_comm]
@@ -141,7 +141,7 @@ theorem map_mulLeft_piBall {c : K} (hc : c ≠ 0) {k : ℤ} (hk : valuation K c 
     gcongr
   · intro hy
     refine ⟨c⁻¹ * y, ?_, by field_simp⟩
-    rw [map_mul, map_inv₀, hk, ← zpow_neg]
+    rw [map_mul, map_inv₀, hk, ← _root_.zpow_neg]
     calc uniformizer K ^ (-k) * valuation K y ≤ uniformizer K ^ (-k) * uniformizer K ^ (n + k) :=
           by gcongr
       _ = uniformizer K ^ n := by rw [← zpow_add₀ hu]; ring_nf
@@ -435,7 +435,7 @@ theorem bigCellFun_eventually_zero {f : (principalSeriesInd χ₁ χ₂ hχ₁ h
   have hxi : lowerUnip x⁻¹ ∈ vecStabilizer (principalSeriesInd χ₁ χ₂ hχ₁ hχ₂).ρ f := by
     refine hγ (show valuation K (x⁻¹ - 0) < γ from ?_)
     have hpos : (0 : ValueGroupWithZero K) < uniformizer K ^ m := zpow_pos uniformizer_pos m
-    rw [sub_zero, map_inv₀, ← hc, hm, inv_lt_comm₀ (zero_lt_iff.2 (by simpa using hx0)) hpos, ← zpow_neg]
+    rw [sub_zero, map_inv₀, ← hc, hm, inv_lt_comm₀ (zero_lt_iff.2 (by simpa using hx0)) hpos, ← _root_.zpow_neg]
     exact hx
   rw [mem_vecStabilizer] at hxi
   have hf1 : SmoothRep.ind.toFun f 1 = 0 := hf
@@ -890,7 +890,7 @@ theorem ρ_torus_sub_mem_bigCellJacquetKer {f₀ : (Ψ).V} {n₀ : ℤ} (hf₀ :
   have hθ : (bigCellChar χ₁ χ₂ t : ℂ) = κ * q ^ j := by
     have hr : normAbs K a * (normAbs K d)⁻¹ = (residueCard K : ℝ) ^ j := by
       rw [← div_eq_mul_inv, ← inv_div, ← normAbs_div, normAbs_eq_zpow (div_ne_zero hd ha) hj,
-        zpow_neg, inv_inv]
+        _root_.zpow_neg, inv_inv]
     have hrC : ((normAbs K a : ℝ) : ℂ) * ((normAbs K d : ℝ) : ℂ)⁻¹ = q ^ j := by
       rw [← Complex.ofReal_inv, ← Complex.ofReal_mul, hr, Complex.ofReal_zpow,
         Complex.ofReal_natCast]
