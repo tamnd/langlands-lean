@@ -1446,6 +1446,22 @@ status:
       kind: theorem
       status: proved
       note: The theta transformation formula with a weight on the mixed space for a common t.
+    - name: Langlands.Tate.mem_dualLattice_globalLattice_iff
+      kind: theorem
+      status: proved
+      note: The dual lattice of the image of a fractional ideal a in the mixed space is the image of the inverse of a times the different, under the conjugate embedding with the dual scale.
+    - name: Langlands.Tate.covolume_dualLattice_globalLattice
+      kind: theorem
+      status: proved
+      note: The covolume of the dual lattice of the image of a fractional ideal.
+    - name: Langlands.Tate.idealTheta_eq
+      kind: theorem
+      status: proved
+      note: The weighted theta formula for a fractional ideal a and the dual ideal, the inverse of a times the different, with a separate t_w for each infinite place.
+    - name: Langlands.Tate.idealTheta_one_eq
+      kind: theorem
+      status: proved
+      note: The weighted theta formula for a fractional ideal with the standard embedding.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
