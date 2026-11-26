@@ -926,6 +926,30 @@ status:
       kind: theorem
       status: proved
       note: A nonzero map from an irreducible normalized principal series is injective.
+    - name: Langlands.Shapes.ReductiveGroupData
+      kind: definition
+      status: proved
+      note: The interface for a quasi-split reductive group over a nonarchimedean local field, with its L-parameters and component groups as fields. It does not construct them.
+    - name: Langlands.Shapes.IsLocalLanglandsMap
+      kind: definition
+      status: proved
+      note: The conditions of Borel on the map to the L-parameters that the interface can express: finite and nonempty packets, and the tempered and discrete conditions.
+    - name: Langlands.Shapes.LocalLanglands
+      kind: statement
+      status: open
+      note: The G1b shape of the local Langlands conjecture for a quasi-split group, with the injective maps from the packets to the component group duals and the generic member condition. The character identities are not in it.
+    - name: Langlands.Shapes.GlobalGroupData
+      kind: definition
+      status: proved
+      note: The interface for a reductive group over a global field, with the automorphic representations and their Satake parameters at the unramified places.
+    - name: Langlands.Shapes.LHomData
+      kind: definition
+      status: proved
+      note: The interface for an L-homomorphism, through its map on the unramified parameters.
+    - name: Langlands.Shapes.Functoriality
+      kind: statement
+      status: open
+      note: The G1b shape of the principle of functoriality in the weak form at almost all places.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
