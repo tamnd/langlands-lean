@@ -53,6 +53,7 @@ import Langlands.Tate.UnitUnfold
 import Langlands.Tate.UnitClass
 import Langlands.Tate.DedekindFE
 import Langlands.Tate.HeckeOne
+import Langlands.Tate.DedekindEuler
 import Langlands.Tate.NonArchimedeanCharacter
 import Langlands.Tate.NonArchimedeanFourier
 import Langlands.Tate.NonArchimedeanGauss

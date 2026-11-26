@@ -454,6 +454,22 @@ status:
       kind: theorem
       status: proved
       note: The local factor of the trivial Hecke character at a finite place v is (1 - N(v)^(-s))^(-1).
+    - name: Langlands.Tate.summable_absNorm_rpow
+      kind: theorem
+      status: proved
+      note: The series of N(I)^(-sigma) over the nonzero ideals I of the ring of integers converges for sigma > 1.
+    - name: Langlands.Tate.hasSum_supportedIn
+      kind: theorem
+      status: proved
+      note: For a finite set S of primes, the sum of N(I)^(-s) over the ideals with prime factors in S is the product over S of (1 - N(p)^(-s))^(-1).
+    - name: Langlands.Tate.hasProd_dedekindZeta
+      kind: theorem
+      status: proved
+      note: The Euler product of the Dedekind zeta function. For Re s > 1, zeta_K(s) is the product over the primes p of (1 - N(p)^(-s))^(-1).
+    - name: Langlands.Tate.finiteLFunction_one
+      kind: theorem
+      status: proved
+      note: For Re s > 1, the finite L-function of the trivial Hecke character is the Dedekind zeta function.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

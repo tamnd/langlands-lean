@@ -8,6 +8,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 - `Langlands/Tate/HeckeOne.lean`: the data of `HeckeFunctionalEquationAt` for the trivial Hecke character. Its archimedean parameters are 0, the archimedean factor for these parameters is 2^(r_2) Gamma_K(s), and the local factor at a finite place v is (1 - N(v)^(-s))^(-1).
 
+- `Langlands/Tate/DedekindEuler.lean`: the Euler product of the Dedekind zeta function. For Re s > 1, zeta_K(s) is the product over the primes p of (1 - N(p)^(-s))^(-1). So the finite L-function of the trivial Hecke character is zeta_K.
+
 ## v0.1.13 (2026-11-26)
 
 ### Added
