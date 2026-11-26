@@ -526,6 +526,30 @@ status:
       kind: theorem
       status: proved
       note: Hecke's theorem for class group characters: for psi other than 1, the entire continuation of xi(u, psi) satisfies the functional equation at all u. This covers the Hecke characters that are unramified everywhere and trivial at infinity. The link from HeckeCharacter is open.
+    - name: Langlands.Tate.IsClassType.apply_eq_classChar
+      kind: theorem
+      status: proved
+      note: A Hecke character of class group type, unramified at each finite place and trivial at each infinite place, is chi(x) = psi([I(x)]) for a character psi of the class group.
+    - name: Langlands.Tate.IsClassType.conductor_eq_one
+      kind: theorem
+      status: proved
+      note: A Hecke character of class group type has conductor (1).
+    - name: Langlands.Tate.IsClassType.isArchimedeanParameter
+      kind: theorem
+      status: proved
+      note: A Hecke character of class group type has the archimedean parameters n = 0 and t = 0.
+    - name: Langlands.Tate.hasProd_classCharL
+      kind: theorem
+      status: proved
+      note: The Euler product of the L-function of a class group character for Re s > 1.
+    - name: Langlands.Tate.IsClassType.completedLFunction_eq
+      kind: theorem
+      status: proved
+      note: For a Hecke character of class group type, Lambda(s, chi) = 2^(r_2) Gamma_K(s) L(s, psi) for Re s > 1.
+    - name: Langlands.Tate.IsClassType.heckeFunctionalEquation
+      kind: theorem
+      status: proved
+      note: Hecke's theorem for each Hecke character of class group type. The conclusion of HeckeFunctionalEquationAt K holds. For psi = 1 the proof uses heckeFunctionalEquationAt_one, and for psi other than 1 it uses classCharLambda_one_sub.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
