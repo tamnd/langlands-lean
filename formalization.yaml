@@ -338,6 +338,18 @@ status:
       kind: theorem
       status: proved
       note: For an imaginary quadratic field and Re s > 2, the class zeta function is Gamma_R(s) times the sum over the classes C of c(a_C)^s times the sum over the nonzero alpha in a_C of (2 |N(alpha)|)^(-s/2).
+    - name: Langlands.Tate.classZeta_two_mul
+      kind: theorem
+      status: proved
+      note: For an imaginary quadratic field K and Re u > 1, the class zeta function at 2u is w/2 times |d_K|^(u/2) times Gamma_C(u) times the Dedekind zeta function of K, where w is the number of roots of unity in K. The proof counts the generators of J I with the unit group, which is finite for an imaginary quadratic field.
+    - name: Langlands.Tate.completedQuadraticZeta_one_sub
+      kind: theorem
+      status: proved
+      note: The functional equation of the completed Dedekind zeta function of an imaginary quadratic field under u to 1 - u, for u not 0 or 1. The completed function is the class zeta function at 2u.
+    - name: Langlands.Tate.differentiableAt_completedQuadraticZeta
+      kind: theorem
+      status: proved
+      note: The completed Dedekind zeta function of an imaginary quadratic field is holomorphic at each u not 0 or 1.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
