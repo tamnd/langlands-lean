@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- `Langlands/Tate/HeckeOne.lean`: the data of `HeckeFunctionalEquationAt` for the trivial Hecke character. Its archimedean parameters are 0, the archimedean factor for these parameters is 2^(r_2) Gamma_K(s), and the local factor at a finite place v is (1 - N(v)^(-s))^(-1).
+
 ## v0.1.13 (2026-11-26)
 
 ### Added

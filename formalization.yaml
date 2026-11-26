@@ -442,6 +442,18 @@ status:
       kind: theorem
       status: proved
       note: The functional equation xi_K(1 - u) = xi_K(u) of the Dedekind zeta function of each number field K.
+    - name: Langlands.Tate.isArchimedeanParameter_one_iff
+      kind: theorem
+      status: proved
+      note: The archimedean parameters (n, t) of the trivial Hecke character at each infinite place are n = 0 and t = 0.
+    - name: Langlands.Tate.gammaFactor_zero
+      kind: theorem
+      status: proved
+      note: The archimedean factor of the Hecke L-function for the parameters 0 is 2^(r_2) Gamma_K(s).
+    - name: Langlands.Tate.localFactor_one
+      kind: theorem
+      status: proved
+      note: The local factor of the trivial Hecke character at a finite place v is (1 - N(v)^(-s))^(-1).
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
