@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.10 (2026-11-26)
+
 ### Added
 
 - `Langlands/Tate/QuadraticDedekind.lean`: the Dedekind zeta function of an imaginary quadratic field as the class zeta function at 2u, with its holomorphic continuation to C minus {0, 1} and its functional equation under u to 1 - u. The file proves that each unit of the field is a root of unity and counts the generators of a principal ideal J I.
