@@ -103,6 +103,7 @@ import Langlands.Smooth.ReducibleQuotient
 import Langlands.Smooth.Steinberg
 import Langlands.Tate.RayClassHecke
 import Langlands.Smooth.LengthTwo
+import Langlands.Tate.RayClassHeckeWeight
 
 /-!
 # The Langlands program in Lean
