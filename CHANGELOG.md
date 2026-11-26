@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- `Langlands/Tate/UnitClass.lean`: the integral ideals I with a I principal are the ideals in the class of the inverse of a, and a generator of a I has the norm N(a) N(I). So the Mellin transform of the unit theta function is a multiple of the partial zeta function of the class of the inverse of a.
+
 ## v0.1.12 (2026-11-26)
 
 ### Added

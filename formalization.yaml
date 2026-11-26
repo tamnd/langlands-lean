@@ -410,6 +410,18 @@ status:
       kind: theorem
       status: proved
       note: For Re s > n/2 the Mellin transform Lambda_a(s) of the unit theta function is a Dirichlet series over the integral ideals I with a I principal.
+    - name: Langlands.Tate.mem_orbits_iff
+      kind: theorem
+      status: proved
+      note: An integral ideal I has a I principal if and only if the class of I is the inverse of the class of a.
+    - name: Langlands.Tate.abs_norm_orbitRep
+      kind: theorem
+      status: proved
+      note: A generator alpha_I of a I has |N(alpha_I)| = N(a) N(I).
+    - name: Langlands.Tate.hasSum_Λ_unitThetaFEPair_class
+      kind: theorem
+      status: proved
+      note: For Re s > n/2 the Mellin transform Lambda_a(s) is w_K Gamma_K(s') N(a)^(-s') times the partial zeta function of the class of the inverse of a at s' = 2s/n, divided by 2^(r - r_2) n R_K.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
