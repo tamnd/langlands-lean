@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.16 (2026-11-26)
+
 ### Added
 
 - `Langlands/Tate/ClassCharacter.lean`: the L-functions of class group characters. The file proves the Dirichlet series identity for Re u > 1, the functional equation xi(1 - u, psi) = psi([d]) xi(u, psi^-1), and for psi other than 1 the entire continuation and the functional equation at all u.
