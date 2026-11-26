@@ -1382,6 +1382,26 @@ status:
       kind: theorem
       status: proved
       note: The Hecke functional equation for each Hecke character of an imaginary quadratic field that is ramified at a finite place.
+    - name: Langlands.Tate.unramifiedWeightCompleted
+      kind: definition
+      status: proved
+      note: The completed partial L-function of an unramified Hecke character of weight k on one ideal class.
+    - name: Langlands.Tate.entireFunctionalEquation_unramifiedWeight
+      kind: theorem
+      status: proved
+      note: The entire functional equation for an unramified unitary Hecke character of weight k not equal to 0.
+    - name: Langlands.Tate.heckeFunctionalEquation_of_isQuadratic_of_unramified_weight
+      kind: theorem
+      status: proved
+      note: The Hecke functional equation for an unramified Hecke character of an imaginary quadratic field with n not equal to 0.
+    - name: Langlands.Tate.heckeFunctionalEquation_of_isQuadratic
+      kind: theorem
+      status: proved
+      note: The Hecke functional equation for every Hecke character of an imaginary quadratic field.
+    - name: Langlands.Tate.heckeFunctionalEquationAt_of_isQuadratic
+      kind: theorem
+      status: proved
+      note: HeckeFunctionalEquationAt holds for each imaginary quadratic field.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
