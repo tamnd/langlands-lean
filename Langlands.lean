@@ -90,6 +90,7 @@ import Langlands.Tate.RayClassFE
 import Langlands.Local.GL1Epsilon
 import Langlands.Smooth.PrincipalIrreducible
 import Langlands.Tate.RayClassGauss
+import Langlands.Local.GL1EpsilonFull
 
 /-!
 # The Langlands program in Lean
