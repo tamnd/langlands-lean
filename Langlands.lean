@@ -121,6 +121,7 @@ import Langlands.Statements.SerreWeight
 import Langlands.Tate.HeckeMellinUnits
 import Langlands.Tate.HeckeUnfold
 import Langlands.Tate.HeckeFEPair
+import Langlands.Tate.HeckeDualSum
 
 /-!
 # The Langlands program in Lean

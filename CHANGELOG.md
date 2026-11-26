@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Prove the functional equation of the completed partial Hecke sum of a fractional ideal of a number field with the partial sum of the dual ideal.
+
 - Prove that the weighted theta series of a fractional ideal and its dual form a functional equation pair, and that the completed partial Hecke sum is entire.
 
 ## v0.1.31 (2026-11-27)

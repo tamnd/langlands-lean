@@ -1526,6 +1526,22 @@ status:
       kind: theorem
       status: proved
       note: On Re s > n/2, the completed function is the partial Hecke sum over the classes of a modulo the units, with the Gamma factor.
+    - name: Langlands.Tate.differentiable_completedPartialHecke
+      kind: theorem
+      status: proved
+      note: The completed partial Hecke sum of a fractional ideal for a nonzero weight is entire.
+    - name: Langlands.Tate.hasSum_completedPartialHecke
+      kind: theorem
+      status: proved
+      note: On Re s > n/2, the completed partial Hecke sum is the sum over the classes of a modulo the units, with the Gamma factor of the infinity type.
+    - name: Langlands.Tate.completedPartialHecke_sub
+      kind: theorem
+      status: proved
+      note: The functional equation of the completed partial Hecke sum of a fractional ideal a with the completed partial sum of the dual ideal, the inverse of a times the different, for a number field and a nonzero weight that is trivial on the units.
+    - name: Langlands.Tate.heckeTheta_unit
+      kind: theorem
+      status: proved
+      note: The weighted theta series is invariant under the units on which chi_infinity is trivial.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
