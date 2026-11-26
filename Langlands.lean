@@ -84,6 +84,7 @@ import Langlands.Local.GL1
 import Langlands.Tate.HeckeRamified
 import Langlands.Smooth.Bruhat
 import Langlands.Tate.RayClassQuadratic
+import Langlands.Local.GL1LFactor
 
 /-!
 # The Langlands program in Lean

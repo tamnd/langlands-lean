@@ -774,6 +774,30 @@ status:
       kind: theorem
       status: proved
       note: A ray class character on principal ideals is periodic modulo the conductor.
+    - name: Langlands.LocalGL1.localLanglandsGL_one
+      kind: theorem
+      status: proved
+      note: LocalLanglandsGL 1 with no hypothesis: the local Langlands correspondence for GL(1), with the standard L-factors matched by Tate's local computation.
+    - name: Langlands.LocalGL1.gl1LFactorNontrivial
+      kind: theorem
+      status: proved
+      note: The L-factor of a nonzero smooth character representation of GL(1) is the Godement-Jacquet L-factor of the character.
+    - name: Langlands.LocalGL1.not_gl1LFactor
+      kind: theorem
+      status: proved
+      note: GL1LFactor as stated in GL1.lean is false, because the zero representation has only zero zeta integrals. GL1LFactorNontrivial is the corrected form.
+    - name: Langlands.LocalGL1.exists_zeta_eq
+      kind: theorem
+      status: proved
+      note: Tate's local computation of the zeta integral of a Schwartz-Bruhat function on a nonarchimedean local field.
+    - name: Langlands.LocalGL1.unramified_iff
+      kind: theorem
+      status: proved
+      note: A character of the multiplicative group is unramified if and only if the Weil group character is trivial on inertia.
+    - name: Langlands.LocalGL1.distribHaarChar_eq
+      kind: theorem
+      status: proved
+      note: The Haar modulus of a unit a is q to the power minus ord a.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
