@@ -950,6 +950,42 @@ status:
       kind: statement
       status: open
       note: The G1b shape of the principle of functoriality in the weak form at almost all places.
+    - name: Langlands.LocalGL1.epsilonRamified
+      kind: definition
+      status: proved
+      note: The epsilon factor G(chi, psi) (q^-s)^(a + n) of a ramified character.
+    - name: Langlands.LocalGL1.shellCoeff_addChar_eq_zero_of_lt
+      kind: theorem
+      status: proved
+      note: The shell integrals of psi times chi inverse below the conductor are zero.
+    - name: Langlands.LocalGL1.ballZeta_addChar_eq_zero_of_le
+      kind: theorem
+      status: proved
+      note: The ball integrals of psi times chi inverse above the conductor are zero.
+    - name: Langlands.LocalGL1.zeta_indicator_ordBall_eq_zero
+      kind: theorem
+      status: proved
+      note: A ramified character has zeta integral zero on each ball around 0.
+    - name: Langlands.LocalGL1.localFunctionalEquation_oneAddBall
+      kind: theorem
+      status: proved
+      note: The local functional equation for the indicator of 1 + p^M, for each M.
+    - name: Langlands.LocalGL1.localFunctionalEquation_comp_inv_mul
+      kind: theorem
+      status: proved
+      note: The local functional equation is stable under dilations.
+    - name: Langlands.LocalGL1.localFunctionalEquation_ballIndicator
+      kind: theorem
+      status: proved
+      note: The local functional equation for each translated ball.
+    - name: Langlands.LocalGL1.localFunctionalEquation_of_isLocallyConstant
+      kind: theorem
+      status: proved
+      note: Tate's local functional equation for a ramified character on each locally constant function with compact support.
+    - name: Langlands.LocalGL1.gaussInt_ne_zero
+      kind: theorem
+      status: proved
+      note: The Gauss integral of a ramified character is not zero.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

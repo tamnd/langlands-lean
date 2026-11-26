@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Tate's local functional equation for a ramified character on all locally constant functions with compact support, and the nonvanishing of the Gauss integral, in `Langlands.Local.GL1EpsilonRamified`.
+
 - The G1b shapes `Langlands.Shapes.LocalLanglands` and `Langlands.Shapes.Functoriality`, with the missing notions as fields of interface structures.
 
 - Smooth: the irreducibility criterion for the principal series of GL2.
