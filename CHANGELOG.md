@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- `Langlands/Tate/UnitMellin.lean`: the change of variables of Mathlib's `expMapBasis` in the integral of the Gamma factor of a number field, and the Mellin transform of one theta term integrated over all unit coordinates c in R^r. This is the second step of the proof of Hecke of the functional equation of the Dedekind zeta function.
+
 ## v0.1.11 (2026-11-26)
 
 ### Added
