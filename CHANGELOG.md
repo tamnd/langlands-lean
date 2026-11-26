@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Local: the decomposition of Schwartz-Bruhat functions into balls and the linearity of the zeta integral.
+
 ## v0.1.24 (2026-11-26)
 
 ### Added

@@ -894,6 +894,22 @@ status:
       kind: theorem
       status: proved
       note: The Gauss coefficient transforms by the character under a unit twist.
+    - name: Langlands.LocalGL1.secondCountableTopology
+      kind: instance
+      status: proved
+      note: A nonarchimedean local field is second countable.
+    - name: Langlands.LocalGL1.exists_eq_sum_ballIndicator
+      kind: theorem
+      status: proved
+      note: A locally constant function with compact support is a finite sum of indicators of translated balls.
+    - name: Langlands.LocalGL1.fourier_sum
+      kind: theorem
+      status: proved
+      note: The Fourier transform is linear on finite sums of bounded functions with ball support.
+    - name: Langlands.LocalGL1.zeta_sum
+      kind: theorem
+      status: proved
+      note: The zeta integral is linear on finite sums of bounded functions with ball support.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
