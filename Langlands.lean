@@ -109,6 +109,7 @@ import Langlands.Smooth.JacquetFinite
 import Langlands.Tate.RayClassHeckeWeightFE
 import Langlands.Smooth.CuspidalCoefficients
 import Langlands.Tate.PeriodicGauss
+import Langlands.Local.LanglandsFamilyEps
 
 /-!
 # The Langlands program in Lean

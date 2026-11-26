@@ -1330,6 +1330,34 @@ status:
       kind: theorem
       status: proved
       note: The square of the absolute value of the Gauss sum is the norm of the conductor, for a unitary character.
+    - name: Langlands.LocalGL1.tateEpsilon
+      kind: definition
+      status: proved
+      note: The Tate epsilon factor of a smooth character, by cases on the ramification.
+    - name: Langlands.LocalGL1.wdEpsilon
+      kind: definition
+      status: proved
+      note: The epsilon factor of a one dimensional Weil-Deligne representation, through the Artin map.
+    - name: Langlands.LocalGL1.IsLanglandsFamilyEps
+      kind: definition
+      status: proved
+      note: The conditions of a Langlands family with the epsilon factors and the factors of pairs for GL(1).
+    - name: Langlands.LocalGL1.exists_isRamifiedConductor
+      kind: theorem
+      status: proved
+      note: A ramified smooth character has a conductor exponent.
+    - name: Langlands.LocalGL1.localFunctionalEquation_tateEpsilon
+      kind: theorem
+      status: proved
+      note: The local functional equation with the Tate epsilon factor for all Schwartz-Bruhat functions.
+    - name: Langlands.LocalGL1.isLanglandsFamilyEps_recFamily
+      kind: theorem
+      status: proved
+      note: The GL(1) family satisfies the conditions with epsilon factors.
+    - name: Langlands.LocalGL1.IsLanglandsFamilyEps.unique_one
+      kind: theorem
+      status: proved
+      note: The family for n = 1 is unique.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

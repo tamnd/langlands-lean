@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The epsilon factor conditions of the local Langlands family for GL(1), with existence and uniqueness for n = 1, in `Langlands.Local.LanglandsFamilyEps`.
+
 - The Gauss sums of the periodic coefficient of a Hecke character, with the vanishing, the evaluation and the norm, in `Langlands.Tate.PeriodicGauss`.
 
 - The Cartan decomposition of GL(2) and the proof that a Jacquet cuspidal representation is supercuspidal, in `Langlands.Smooth.CuspidalCoefficients`.
