@@ -1358,6 +1358,30 @@ status:
       kind: theorem
       status: proved
       note: The family for n = 1 is unique.
+    - name: Langlands.Tate.EntireFunctionalEquation
+      kind: definition
+      status: proved
+      note: The functional equation of a Hecke character with entire completed L-functions.
+    - name: Langlands.Tate.periodicGaussSum_eq_one
+      kind: theorem
+      status: proved
+      note: The Gauss sum of a Hecke character does not depend on the fractional ideal.
+    - name: Langlands.Tate.gammaFactor_weight
+      kind: theorem
+      status: proved
+      note: The gamma factor of a complex place with weight k in terms of the real gamma function.
+    - name: Langlands.Tate.entireFunctionalEquation_weight
+      kind: theorem
+      status: proved
+      note: The entire functional equation for a unitary ramified Hecke character of weight k not equal to 0.
+    - name: Langlands.Tate.heckeFunctionalEquation_of_isQuadratic_of_weight
+      kind: theorem
+      status: proved
+      note: The Hecke functional equation for an imaginary quadratic field and infinite type n not equal to 0.
+    - name: Langlands.Tate.heckeFunctionalEquation_of_isQuadratic_of_ramified
+      kind: theorem
+      status: proved
+      note: The Hecke functional equation for each Hecke character of an imaginary quadratic field that is ramified at a finite place.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

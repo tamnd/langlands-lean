@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- The Hecke functional equation for the ramified Hecke characters of an imaginary quadratic field with any infinite type, in `Langlands.Tate.HeckeWeightFE`.
+
 ## v0.1.28 (2026-11-27)
 
 ### Added
