@@ -1562,6 +1562,26 @@ status:
       kind: theorem
       status: proved
       note: Hecke's functional equation for every unramified Hecke character of a number field with one infinite place.
+    - name: Langlands.Tate.coeffTheta_eq_sum_residues
+      kind: theorem
+      status: proved
+      note: The theta series with a periodic coefficient is a finite sum of shifted theta series.
+    - name: Langlands.Tate.coeffTheta_eq
+      kind: theorem
+      status: proved
+      note: The transformation law of the theta series with a periodic coefficient, with the finite Gauss sum on the dual side.
+    - name: Langlands.Tate.coeffTheta_periodicCoeff_eq
+      kind: theorem
+      status: proved
+      note: The transformation law for the coefficient of a ramified unitary character, with the Gauss sum tau_J(chi).
+    - name: Langlands.Tate.hasSum_integral_unitCube_coeffTheta
+      kind: theorem
+      status: proved
+      note: The unfolding of the coefficient theta series for a fixed y.
+    - name: Langlands.Tate.hasSum_integral_coeffTheta_sub
+      kind: theorem
+      status: proved
+      note: The Mellin transform of the coefficient theta series is the partial Hecke sum with coefficients.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The theta series with a periodic coefficient over a general number field, its transformation law with Gauss sums, and its unfolding.
+
 - Prove Hecke's functional equation for the unramified Hecke characters of a general number field with a parallel shift and complex weights of one sign.
 
 - Prove the functional equation of the completed partial Hecke sum of a fractional ideal of a number field with the partial sum of the dual ideal.
