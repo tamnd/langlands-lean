@@ -489,9 +489,9 @@ theorem gaussInt_ne_zero (hχs : IsSmoothChar K χ) {a : ℕ} (hχ : IsRamifiedC
     refine HasCompactSupport.intro (isCompact_ordBall (-n - a)) fun x hx => ?_
     rw [hφ, fourier_ballIndicator μ hψ, Set.indicator_of_notMem hx, mul_zero]
   have hsi : ‖((χ⁻¹ (unif K) : ℂˣ) : ℂ) * (residueCard K : ℂ) ^ (-(1 - s))‖ < 1 := by
-    rwa [inv_apply_coe]
+    simpa only [inv_apply_coe] using hs'
   have hsi' : ‖((χ⁻¹ (unif K) : ℂˣ) : ℂ)⁻¹ * (residueCard K : ℂ) ^ (-(1 - (1 - s)))‖ < 1 := by
-    rwa [inv_apply_coe, inv_inv, sub_sub_cancel]
+    simpa only [inv_apply_coe, inv_inv, sub_sub_cancel] using hs
   have h2 := localFunctionalEquation_of_isLocallyConstant μ (isSmoothChar_inv χ hχs) hχ.inv hψc hψ
     hloc hcs hsi hsi'
   rw [h1, mul_zero] at h2

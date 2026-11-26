@@ -63,7 +63,7 @@ theorem absChar_ne_one : absChar K ≠ 1 := by
   rw [Units.val_mk0, normAbs_eq_zpow hπ0 (k := 1) (by rw [zpow_one]; exact hπ)] at h1
   have hq : (1 : ℝ) < residueCard K := by exact_mod_cast one_lt_residueCard'
   have h2 : ((residueCard K : ℝ) ^ (-1 : ℤ)) = 1 := by exact_mod_cast h1
-  rw [zpow_neg_one] at h2
+  rw [_root_.zpow_neg_one] at h2
   have := inv_lt_one_of_one_lt₀ hq
   linarith
 
