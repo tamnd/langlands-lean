@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Jacquet's lemma for GL(2) and the classification of the irreducible admissible representations that are not cuspidal, in `Langlands.Smooth.JacquetFinite`.
+
 - The classification of the irreducible representations of GL(2) that are not cuspidal, with a finite dimensional Jacquet module, in `Langlands.Smooth.Classification`.
 
 - The weighted theta series and the functional equation of the weighted Epstein zeta function of a lattice in C, in `Langlands.Tate.RayClassHeckeWeight`.
