@@ -45,6 +45,7 @@ import Langlands.Tate.DedekindTheta
 import Langlands.Tate.EpsteinZeta
 import Langlands.Tate.GlobalLattice
 import Langlands.Tate.IdealZeta
+import Langlands.Tate.ImaginaryQuadratic
 import Langlands.Tate.NonArchimedeanCharacter
 import Langlands.Tate.NonArchimedeanFourier
 import Langlands.Tate.NonArchimedeanGauss
