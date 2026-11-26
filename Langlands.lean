@@ -40,6 +40,9 @@ import Langlands.Tate.ArchimedeanFourier
 import Langlands.Tate.ArchimedeanGamma
 import Langlands.Tate.ArchimedeanParameter
 import Langlands.Tate.ArchimedeanZeta
+import Langlands.Tate.DedekindMellin
+import Langlands.Tate.DedekindTheta
+import Langlands.Tate.GlobalLattice
 import Langlands.Tate.NonArchimedeanCharacter
 import Langlands.Tate.NonArchimedeanFourier
 import Langlands.Tate.NonArchimedeanGauss
