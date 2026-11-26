@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.30 (2026-11-27)
+
 ### Added
 
 - Prove the theta transformation formula with a weight on the mixed space of a number field.
