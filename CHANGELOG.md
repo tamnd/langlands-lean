@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.22 (2026-11-26)
+
 ### Added
 
 - Langlands.Smooth.Bruhat: the Bruhat decomposition of GL_2, Jacquet's lemma, and the exactness of the Jacquet functor for a unipotent group that is a union of compact open subgroups, with the case of GL_2.
