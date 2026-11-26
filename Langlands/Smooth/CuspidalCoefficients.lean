@@ -334,7 +334,7 @@ theorem isSupercuspidal_of_isJacquetCuspidal (π : SmoothRep (GL (Fin 2) K))
   have had : (a : K) / d ≠ 0 := div_ne_zero a.ne_zero d.ne_zero
   obtain ⟨k, hk⟩ := exists_valuation_eq_zpow had
   rw [hk, uniformizer_zpow_le_iff] at h₁'
-  rw [← inv_div, map_inv₀, hk, ← zpow_neg, uniformizer_zpow_le_iff] at h₂'
+  rw [← inv_div, map_inv₀, hk, ← _root_.zpow_neg, uniformizer_zpow_le_iff] at h₂'
   have hϖ : valuation K (ϖ : K) = uniformizer K := hcϖ
   let u : Kˣ := a * d⁻¹ * (ϖ ^ k)⁻¹
   have hu : valuation K (u : K) = 1 := by
