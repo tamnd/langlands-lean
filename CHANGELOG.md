@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- State the local Langlands correspondence for a general torus, the strong form of Serre's conjecture in the tame case, and a shape of the Breuil-Mezard conjecture.
+
 ## v0.1.29 (2026-11-27)
 
 ### Added

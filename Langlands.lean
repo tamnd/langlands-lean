@@ -112,6 +112,9 @@ import Langlands.Tate.PeriodicGauss
 import Langlands.Local.LanglandsFamilyEps
 import Langlands.Tate.HeckeWeightFE
 import Langlands.Tate.HeckeWeightUnramified
+import Langlands.Statements.TorusGeneral
+import Langlands.Statements.SerreStrong
+import Langlands.Statements.BreuilMezard
 
 /-!
 # The Langlands program in Lean
