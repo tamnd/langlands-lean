@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Shifted and twisted Epstein zeta functions of a lattice, with their functional equation, and the periodicity of a ray class character modulo the conductor.
+
 ## v0.1.22 (2026-11-26)
 
 ### Added

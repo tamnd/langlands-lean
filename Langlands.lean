@@ -83,6 +83,7 @@ import Langlands.Smooth.PrincipalSeries
 import Langlands.Local.GL1
 import Langlands.Tate.HeckeRamified
 import Langlands.Smooth.Bruhat
+import Langlands.Tate.RayClassQuadratic
 
 /-!
 # The Langlands program in Lean
