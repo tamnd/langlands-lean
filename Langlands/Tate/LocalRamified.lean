@@ -485,14 +485,14 @@ theorem exists_isTrivialOnHigherUnits (χ : HeckeCharacter K) :
 /-- The local component $\chi_v$ is trivial on $1 + \mathfrak{p}_v^a$ for the conductor exponent $a$. -/
 theorem isTrivialOnHigherUnits_conductorExponent (χ : HeckeCharacter K) :
     IsTrivialOnHigherUnits v (χ.finiteComponent v) (χ.conductorExponent v) :=
-  (isTrivialOnHigherUnits_iff v χ _).1 (Nat.sInf_mem (exists_isTrivialOnHigherUnits v χ))
+  (isTrivialOnHigherUnits_iff v χ _).1 (Nat.sInf_mem (s := {m | χ.IsTrivialOnHigherUnits v m}) (exists_isTrivialOnHigherUnits v χ))
 
 /-- The conductor exponent of a character ramified at $v$ is at least $1$. -/
 theorem conductorExponent_ne_zero (χ : HeckeCharacter K) (hχ : ¬ χ.IsUnramifiedAt v) :
     χ.conductorExponent v ≠ 0 := by
   intro h
   have h1 : χ.IsTrivialOnHigherUnits v (χ.conductorExponent v) :=
-    Nat.sInf_mem (exists_isTrivialOnHigherUnits v χ)
+    Nat.sInf_mem (s := {m | χ.IsTrivialOnHigherUnits v m}) (exists_isTrivialOnHigherUnits v χ)
   rw [h] at h1
   exact hχ h1
 

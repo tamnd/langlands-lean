@@ -256,11 +256,12 @@ variable (K) in
 /-- **The functional equation of the Dedekind zeta function.** For $u \neq 0, 1$, $\xi_K(1 - u) = \xi_K(u)$. -/
 theorem dedekindXi_one_sub {u : ℂ} (hu0 : u ≠ 0) (hu1 : u ≠ 1) :
     dedekindXi K (1 - u) = dedekindXi K u := by
-  rw [dedekindXi, dedekindXi]
-  congr 1
-  simp_rw [classXi_one_sub]
-  rw [← (dualClass K).sum_comp (fun C => classXi (classRepUnit K C) u)]
-  refine Finset.sum_congr rfl fun C _ => classXi_eq_of_mk_eq ?_ hu0 hu1
-  rw [mk_dualUnit_classRepUnit, mk_classRepUnit]
+  have h : (∑ C : ClassGroup (𝓞 K), classXi (classRepUnit K C) (1 - u)) =
+      ∑ C : ClassGroup (𝓞 K), classXi (classRepUnit K C) u := by
+    simp_rw [classXi_one_sub]
+    rw [← (dualClass K).sum_comp (fun C => classXi (classRepUnit K C) u)]
+    refine Finset.sum_congr rfl fun C _ => classXi_eq_of_mk_eq ?_ hu0 hu1
+    rw [mk_dualUnit_classRepUnit, mk_classRepUnit]
+  rw [dedekindXi, dedekindXi, h]
 
 end Langlands.Tate
