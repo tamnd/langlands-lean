@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The weighted functional equation for the lattices of an imaginary quadratic field and the periodic coefficient of a Hecke character, in `Langlands.Tate.RayClassHeckeWeightFE`.
+
 - Jacquet's lemma for GL(2) and the classification of the irreducible admissible representations that are not cuspidal, in `Langlands.Smooth.JacquetFinite`.
 
 - The classification of the irreducible representations of GL(2) that are not cuspidal, with a finite dimensional Jacquet module, in `Langlands.Smooth.Classification`.
