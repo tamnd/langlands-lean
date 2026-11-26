@@ -714,6 +714,26 @@ status:
       kind: theorem
       status: proved
       note: GL1LFactor implies LocalLanglandsGL 1.
+    - name: Langlands.Tate.IsRayClassType
+      kind: definition
+      status: proved
+      note: A Hecke character that is trivial at every infinite place and may be ramified at finitely many finite places.
+    - name: Langlands.Tate.conductor_eq_prod
+      kind: theorem
+      status: proved
+      note: The conductor of a Hecke character is the product of p_v^(a_v) over the ramified places.
+    - name: Langlands.Tate.finite_setOf_not_isUnramifiedAt
+      kind: theorem
+      status: proved
+      note: A Hecke character is ramified at only finitely many finite places.
+    - name: Langlands.Tate.IsRayClassType.idealChar_toPrincipalIdeal
+      kind: theorem
+      status: proved
+      note: A character of ray class type is trivial on the principal ideals of elements that are 1 modulo the conductor.
+    - name: Langlands.Tate.IsRayClassType.finiteLFunction_eq
+      kind: theorem
+      status: proved
+      note: For Re s > 1 the finite L-function of a character of ray class type is its Dirichlet series over the ideals prime to the conductor.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
