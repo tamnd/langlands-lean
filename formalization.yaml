@@ -1250,6 +1250,50 @@ status:
       kind: theorem
       status: proved
       note: Each irreducible admissible representation of GL(2) is cuspidal or of one of the three kinds.
+    - name: Langlands.Tate.mapLattice
+      kind: definition
+      status: proved
+      note: The image of a lattice under a linear isometry.
+    - name: Langlands.Tate.dualLattice_mapLattice
+      kind: theorem
+      status: proved
+      note: The dual lattice commutes with a linear isometry.
+    - name: Langlands.Tate.quadEmbed
+      kind: definition
+      status: proved
+      note: The scaled complex embedding of an imaginary quadratic field.
+    - name: Langlands.Tate.covolume_quadLattice
+      kind: theorem
+      status: proved
+      note: The covolume of the image of a fractional ideal is N(a) times the square root of the discriminant.
+    - name: Langlands.Tate.completedWeightZeta_quadLattice_sub
+      kind: theorem
+      status: proved
+      note: The weighted functional equation for the image of a fractional ideal.
+    - name: Langlands.Tate.infChar
+      kind: definition
+      status: proved
+      note: The infinite type of a Hecke character as a character of the multiplicative group.
+    - name: Langlands.Tate.idealChar_mul_infChar_eq
+      kind: theorem
+      status: proved
+      note: Reciprocity: the ideal character times the infinite type depends only on the class modulo the conductor.
+    - name: Langlands.Tate.infChar_unit_eq_one
+      kind: theorem
+      status: proved
+      note: The infinite type is trivial on units that are 1 modulo the conductor.
+    - name: Langlands.Tate.periodicCoeff
+      kind: definition
+      status: proved
+      note: The periodic coefficient of a Hecke character on a fractional ideal.
+    - name: Langlands.Tate.periodicCoeff_eq_of_sub_mem
+      kind: theorem
+      status: proved
+      note: The periodic coefficient depends only on the class modulo fJ.
+    - name: Langlands.Tate.rayCoeff_eq_periodicCoeff_mul_quad
+      kind: theorem
+      status: proved
+      note: The ray coefficient is the periodic coefficient times the archimedean weight.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
