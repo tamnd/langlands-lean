@@ -9,6 +9,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 - `Langlands/Tate/IdealZeta.lean`: the trace form zeta function of a nonzero fractional ideal of a number field, its continuation, its residue at s = n and its functional equation with the dual ideal for the trace form. The file also proves that two lattices with the same theta function and the same covolume have the same completed Epstein zeta function.
 - `Langlands/Tate/ImaginaryQuadratic.lean`: the class zeta function of an imaginary quadratic field, a sum over the ideal classes, with its Dirichlet series and its functional equation under s to 2 - s. The file proves that each term depends only on the ideal class, with the identity theorem for holomorphic functions.
 
+### Fixed
+
+- `manifests/statements.sha256` has the hash of each of the 21 files of `Langlands/Statements/`. Before, it did not list 13 of them, and the hash of `Galois.lean` was the hash before the change of #49. Row Q4 of the trust report reads this file.
+
 ## v0.1.8 (2026-11-26)
 
 ### Added
