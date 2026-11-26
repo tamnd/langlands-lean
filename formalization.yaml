@@ -350,6 +350,30 @@ status:
       kind: theorem
       status: proved
       note: The completed Dedekind zeta function of an imaginary quadratic field is holomorphic at each u not 0 or 1.
+    - name: Langlands.Tate.dedekindTheta_unitScale_add_int
+      kind: theorem
+      status: proved
+      note: The theta function of a fractional ideal at t(y, c), with t(y, c)_w = y exp(2 sum_i c_i log |e_i|_w) for the fundamental units e_i, is periodic in c for the lattice Z^r. The reason is that the theta function is invariant under the units.
+    - name: Langlands.Tate.continuousAt_dedekindTheta
+      kind: theorem
+      status: proved
+      note: The theta function of a fractional ideal in several variables is continuous at each t with t_w > 0 for all w.
+    - name: Langlands.Tate.setIntegral_comp_neg_of_periodic
+      kind: theorem
+      status: proved
+      note: For a function G on R^r that is periodic for Z^r, the integral of G(-c) over [0, 1)^r is the integral of G(c) over [0, 1)^r, because -[0, 1)^r is also a fundamental domain of Z^r.
+    - name: Langlands.Tate.unitTheta_inv
+      kind: theorem
+      status: proved
+      note: The transformation formula of the theta function averaged over the units, Theta_a(1/y) = (N(a) sqrt|d_K|)^(-1) sqrt(y)^n Theta_dual(y) for y > 0. This is the first step of the proof of Hecke of the functional equation of the Dedekind zeta function.
+    - name: Langlands.Tate.isBigO_unitTheta_sub_one
+      kind: theorem
+      status: proved
+      note: The function Theta_a - 1 is O(y^s) at infinity for each real s.
+    - name: Langlands.Tate.unitThetaFEPair
+      kind: def
+      status: proved
+      note: The pair (Theta_a, Theta_dual) as a WeakFEPair of Mathlib, with weight n/2, root number (N(a) sqrt|d_K|)^(-1) and constant terms 1.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
