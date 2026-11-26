@@ -146,6 +146,7 @@ open scoped Classical
 
 variable {K : Type*} [Field K] [NumberField K]
 
+set_option maxHeartbeats 800000 in
 /-- **The Fourier transform of a product function on the mixed space.** Let $f_v : \mathbb{R} \to \mathbb{C}$ for the real places $v$ and $g_w : \mathbb{C} \to \mathbb{C}$ for the complex places $w$. Then the Fourier transform of $x \mapsto \prod_v f_v(x_v) \prod_w g_w(x_w)$ on the euclidean mixed space is $\xi \mapsto \prod_v \mathcal{F} f_v(\xi_v) \prod_w \mathcal{F} g_w(\xi_w)$. No integrability is necessary: if one factor is not integrable, both sides are $0$ by the conventions of the Bochner integral. -/
 theorem fourier_mixed_prod (f : {w : InfinitePlace K // IsReal w} → ℝ → ℂ)
     (g : {w : InfinitePlace K // IsComplex w} → ℂ → ℂ) (ξ : euclidean.mixedSpace K) :
