@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The reducible principal series of GL(2) with a line of chi o det, and the twisted Steinberg quotient, in `Langlands.Smooth.ReducibleCase`.
+
 - The evaluation of the ray class Gauss coefficient by the Gauss sum when (beta) f J d is prime to f, in `Langlands.Tate.RayClassGaussEval`.
 
 - Tate's local functional equation for an unramified character on all locally constant functions with compact support, in `Langlands.Local.GL1EpsilonUnramifiedFull`.

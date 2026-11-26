@@ -1058,6 +1058,34 @@ status:
       kind: theorem
       status: proved
       note: G_J(beta) = tau_J(chi) times the conjugate of chi(I) for a pair prime to f.
+    - name: Langlands.detVec
+      kind: definition
+      status: proved
+      note: The vector g to chi(det g) in the induced representation.
+    - name: Langlands.steinbergQuotient
+      kind: definition
+      status: proved
+      note: The twisted Steinberg representation, the principal series modulo the line of chi o det.
+    - name: Langlands.ind_not_isIrreducible
+      kind: theorem
+      status: proved
+      note: The induced representation of chi o det on B is reducible.
+    - name: Langlands.normPrincipalSeries_not_isIrreducible
+      kind: theorem
+      status: proved
+      note: The normalized principal series is reducible when chi_2 = chi_1 |.|.
+    - name: Langlands.normPrincipalSeries_isIrreducible_iff_of_ne
+      kind: theorem
+      status: proved
+      note: The irreducibility criterion when chi_1 is not chi_2 |.|.
+    - name: Langlands.two_le_rank_steinbergQuotient
+      kind: theorem
+      status: proved
+      note: The Steinberg quotient has dimension at least 2.
+    - name: Langlands.steinbergQuotient_not_iso_charRep
+      kind: theorem
+      status: proved
+      note: The Steinberg quotient is not a character.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
