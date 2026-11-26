@@ -758,6 +758,22 @@ status:
       kind: theorem
       status: proved
       note: The Jacquet functor for the unipotent radical of the Borel subgroup of GL_2(K) is exact.
+    - name: Langlands.Tate.completedShiftEpsteinZeta_sub
+      kind: theorem
+      status: proved
+      note: The functional equation of the completed shifted Epstein zeta function.
+    - name: Langlands.Tate.shiftTheta_eq
+      kind: theorem
+      status: proved
+      note: Poisson summation for the shifted and twisted theta function.
+    - name: Langlands.Tate.differentiable_completedShiftEpsteinZeta
+      kind: theorem
+      status: proved
+      note: The completed shifted Epstein zeta function is entire when x is not in M and y is not in the dual lattice.
+    - name: Langlands.Tate.IsRayClassType.idealChar_toPrincipalIdeal_eq
+      kind: theorem
+      status: proved
+      note: A ray class character on principal ideals is periodic modulo the conductor.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
