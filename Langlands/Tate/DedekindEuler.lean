@@ -212,7 +212,7 @@ theorem hasSum_supportedIn {s : ℂ} (hs : 1 < s.re) (S : Finset (HeightOneSpect
         (norm_normCpow_lt_one v (s := s) (by linarith))).congr fun n => (norm_pow _ _).symm
     have hJn : Summable (fun J : supportedIn K S =>
         ‖normCpow K s ((J : (Ideal (𝓞 K))⁰) : Ideal (𝓞 K))‖) :=
-      hsum.subtype (supportedIn K S)
+      hsum.comp_injective Subtype.coe_injective
     have hfg : Summable (fun p : ℕ × supportedIn K S => normCpow K s v.asIdeal ^ p.1 *
         normCpow K s ((p.2 : (Ideal (𝓞 K))⁰) : Ideal (𝓞 K))) :=
       summable_mul_of_summable_norm (f := fun n : ℕ => normCpow K s v.asIdeal ^ n)
