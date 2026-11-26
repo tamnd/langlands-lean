@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The local Langlands correspondence for GL(1) with the standard L-factors, from Tate's local computation of the zeta integral.
+
 - Shifted and twisted Epstein zeta functions of a lattice, with their functional equation, and the periodicity of a ray class character modulo the conductor.
 
 ## v0.1.22 (2026-11-26)
