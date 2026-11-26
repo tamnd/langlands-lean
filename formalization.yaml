@@ -658,6 +658,38 @@ status:
       kind: definition
       status: proved
       note: The finite Gauss sum over the units of the residue ring.
+    - name: Langlands.GL2.modulus
+      kind: definition
+      status: proved
+      note: The modulus character delta_B(b) = |b_00 / b_11| of the Borel subgroup of GL_2(K).
+    - name: Langlands.normPrincipalSeries
+      kind: definition
+      status: proved
+      note: The normalized principal series of GL_2(K), induced from (chi_1, chi_2) times delta_B^(1/2).
+    - name: Langlands.normPrincipalSeries_iso
+      kind: theorem
+      status: proved
+      note: The normalized principal series is isomorphic to principalSeries of the statements.
+    - name: Langlands.GL2.iwasawa
+      kind: theorem
+      status: proved
+      note: The Iwasawa decomposition GL_2(K) = B(K) GL_2(O_K).
+    - name: Langlands.SmoothRep.ind_isAdmissible
+      kind: theorem
+      status: proved
+      note: Induction of a finite dimensional representation from a cocompact subgroup is admissible.
+    - name: Langlands.principalSeries_isAdmissible
+      kind: theorem
+      status: proved
+      note: The principal series of GL_2(K) is admissible.
+    - name: Langlands.principalSeriesJacquetEval_surjective
+      kind: theorem
+      status: proved
+      note: Evaluation at 1 gives a surjection from the Jacquet module of the principal series onto chi_1 tensor chi_2.
+    - name: Langlands.SmoothRep.jacquetMap_exact
+      kind: theorem
+      status: proved
+      note: The Jacquet functor is right exact.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

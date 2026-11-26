@@ -79,6 +79,7 @@ import Langlands.WeilGroup.Dense
 import Langlands.WeilGroup.Embedding
 import Langlands.WeilGroup.Inertia
 import Langlands.WeilGroup.Restrict
+import Langlands.Smooth.PrincipalSeries
 
 /-!
 # The Langlands program in Lean
