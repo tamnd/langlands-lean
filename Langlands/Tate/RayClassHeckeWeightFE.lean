@@ -421,7 +421,7 @@ theorem idealChar_toPrincipalIdeal_mul_infinitePart (χ : HeckeCharacter K) (x :
     by_cases hv : v ∈ ramifiedSet χ
     · rw [hcount v hv, zpow_zero]
       have ht : χ.IsTrivialOnHigherUnits v (χ.conductorExponent v) :=
-        Nat.sInf_mem (NonArchimedean.exists_isTrivialOnHigherUnits v χ)
+        Nat.sInf_mem (s := {m | χ.IsTrivialOnHigherUnits v m}) (NonArchimedean.exists_isTrivialOnHigherUnits v χ)
       refine (ht _ (hunit v hv) ?_).symm
       rw [ideleFin_unitEmbedding]
       exact hx v hv
