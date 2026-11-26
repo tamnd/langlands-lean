@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- `Langlands/Groups/RootDatum.lean`: the first part of tier T2. The file defines the dual root datum as the flip of Mathlib and proves that it is involutive and functorial. It gives the root data of GL_n, SL_2, PGL_2 and split tori, and it proves that GL_n is self-dual, that the dual of SL_2 is PGL_2, and that the dual of a torus is the torus of the dual lattice. It defines the combinatorial L-group datum of a quasi-split group: a based root datum with an action that keeps the base.
+
 ## v0.1.17 (2026-11-26)
 
 ### Added

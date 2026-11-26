@@ -550,6 +550,30 @@ status:
       kind: theorem
       status: proved
       note: Hecke's theorem for each Hecke character of class group type. The conclusion of HeckeFunctionalEquationAt K holds. For psi = 1 the proof uses heckeFunctionalEquationAt_one, and for psi other than 1 it uses classCharLambda_one_sub.
+    - name: Langlands.Groups.RootDatum.dual_dual
+      kind: theorem
+      status: proved
+      note: The dual of the dual of a root datum is the root datum itself. The dual is the flip of Mathlib.
+    - name: Langlands.Groups.RootDatum.dual_gl
+      kind: theorem
+      status: proved
+      note: The root datum of GL_n is equal to its dual, so the dual group of GL_n is GL_n.
+    - name: Langlands.Groups.RootDatum.dual_sl2
+      kind: theorem
+      status: proved
+      note: The dual of the root datum of SL_2 is the root datum of PGL_2.
+    - name: Langlands.Groups.RootDatum.torusDualEquiv
+      kind: definition
+      status: proved
+      note: The dual of the root datum of a split torus with character lattice X is the root datum of the torus with character lattice the dual of X.
+    - name: Langlands.Groups.QuasiSplitDatum.dual_dual
+      kind: theorem
+      status: proved
+      note: The combinatorial L-group datum: the dual of a based root datum with an action of a group that keeps the base, and the dual of the dual is the original datum.
+    - name: Langlands.Groups.QuasiSplitDatum.dual_split_sl2
+      kind: theorem
+      status: proved
+      note: The L-group datum of split SL_2 is the split datum of PGL_2.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
