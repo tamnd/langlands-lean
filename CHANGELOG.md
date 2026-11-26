@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.24 (2026-11-26)
+
 ### Added
 
 - Tate: the vanishing of the coefficient sum and the twist of the ray class Gauss sum.
