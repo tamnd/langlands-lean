@@ -10,6 +10,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 - `Langlands/Tate/DedekindEuler.lean`: the Euler product of the Dedekind zeta function. For Re s > 1, zeta_K(s) is the product over the primes p of (1 - N(p)^(-s))^(-1). So the finite L-function of the trivial Hecke character is zeta_K.
 
+- `Langlands/Tate/HeckeTrivial.lean`: the theorem of Hecke for the trivial Hecke character of each number field K. The completed function xi_K has simple poles at 0 and 1. The completed L-function Lambda(s) = 2^(r_2) |d_K|^(-s/2) xi_K(s) satisfies Lambda(s) = |d_K|^(1/2 - s) Lambda'(1 - s), with root number 1. So the conclusion of `HeckeFunctionalEquationAt K` holds for the trivial character.
+
 ## v0.1.13 (2026-11-26)
 
 ### Added

@@ -470,6 +470,22 @@ status:
       kind: theorem
       status: proved
       note: For Re s > 1, the finite L-function of the trivial Hecke character is the Dedekind zeta function.
+    - name: Langlands.Tate.meromorphicOrderAt_dedekindXi_zero
+      kind: theorem
+      status: proved
+      note: The completed Dedekind zeta function xi_K has a simple pole at u = 0.
+    - name: Langlands.Tate.meromorphicOrderAt_dedekindXi_one
+      kind: theorem
+      status: proved
+      note: The completed Dedekind zeta function xi_K has a simple pole at u = 1.
+    - name: Langlands.Tate.heckeLambdaOne_eq_discr_cpow_mul
+      kind: theorem
+      status: proved
+      note: The completed L-function of the trivial Hecke character satisfies Lambda(s) = |d_K|^(1/2 - s) Lambda'(1 - s).
+    - name: Langlands.Tate.heckeFunctionalEquationAt_one
+      kind: theorem
+      status: proved
+      note: The conclusion of HeckeFunctionalEquationAt K for the trivial Hecke character, with sigma = 0, W = 1 and s_0 = 0. The case of a general Hecke character is open.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
