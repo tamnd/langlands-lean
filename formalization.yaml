@@ -394,6 +394,22 @@ status:
       kind: theorem
       status: proved
       note: The Mellin transform in y of the integral over c in R^r of one theta term is 2^(r_2 - r) (n R_K)^(-1) Gamma_K(2s/n) |N(alpha)|^(-2s/n).
+    - name: Langlands.Tate.unitsEquiv
+      kind: definition
+      status: proved
+      note: The bijection from mu_K x Z^r to the units of O_K given by Dirichlet's unit theorem.
+    - name: Langlands.Tate.lintegral_unitCube_eq_tsum
+      kind: theorem
+      status: proved
+      note: The unfolding of the unit theta function with values in [0, infinity]. The integral over [0, 1)^r of theta_a - 1 is w_K times the sum over the ideal classes in the orbit of a of the integrals over R^r of one theta term.
+    - name: Langlands.Tate.hasSum_unitTheta_sub_one
+      kind: theorem
+      status: proved
+      note: The unfolding of the unit theta function as a convergent series of real numbers.
+    - name: Langlands.Tate.hasSum_Λ_unitThetaFEPair
+      kind: theorem
+      status: proved
+      note: For Re s > n/2 the Mellin transform Lambda_a(s) of the unit theta function is a Dirichlet series over the integral ideals I with a I principal.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
