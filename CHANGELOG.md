@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.29 (2026-11-27)
+
 ### Added
 
 - The Hecke functional equation for every Hecke character of an imaginary quadratic field, in `Langlands.Tate.HeckeWeightUnramified`.
