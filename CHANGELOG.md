@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.17 (2026-11-26)
+
 ### Added
 
 - `Langlands/Tate/HeckeUnramified.lean`: the theorem of Hecke for the Hecke characters of class group type. These characters are unramified at each finite place and trivial at each infinite place. The file shows that such a character chi comes from a character psi of the class group, that its conductor is (1) and its archimedean parameters are 0, and that Lambda(s, chi) = 2^(r_2) |d_K|^(-s/2) Lambda(s, psi). The conclusion of `HeckeFunctionalEquationAt K` follows from the functional equation of the class group L-function.
