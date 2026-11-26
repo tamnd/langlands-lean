@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- `Langlands/Tate/EpsteinZeta.lean`: the Epstein zeta function of a full lattice in a real inner product space, its meromorphic continuation, the functional equation that relates the lattice to its dual lattice, and the residue at s = n. The file also proves that the dual of the dual lattice is the lattice and that the dual lattice has the inverse covolume.
+
 ## v0.1.7 (2026-11-26)
 
 ### Added
