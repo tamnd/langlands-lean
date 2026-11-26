@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Prove that the weighted theta series of a fractional ideal and its dual form a functional equation pair, and that the completed partial Hecke sum is entire.
+
 ## v0.1.31 (2026-11-27)
 
 ### Added

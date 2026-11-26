@@ -1506,6 +1506,26 @@ status:
       kind: theorem
       status: proved
       note: The unfolding for a nonzero weight, where the term alpha = 0 vanishes.
+    - name: Langlands.Tate.heckeDualTheta_eq
+      kind: theorem
+      status: proved
+      note: The dual weighted theta series is the complex conjugate of the weighted theta series of the dual ideal, the inverse of a times the different, with the rescaling by n_w^2.
+    - name: Langlands.Tate.isStrongFEPair_heckeFEPair
+      kind: theorem
+      status: proved
+      note: The integrals of the weighted theta series and its dual over the unit cube form a strong functional equation pair, for a nonzero weight.
+    - name: Langlands.Tate.differentiable_Λ_heckeFEPair
+      kind: theorem
+      status: proved
+      note: The completed partial Hecke sum of a fractional ideal for a nonzero weight is entire.
+    - name: Langlands.Tate.Λ_heckeFEPair_sub
+      kind: theorem
+      status: proved
+      note: The functional equation of the completed partial Hecke sum with the Mellin transform of the dual series.
+    - name: Langlands.Tate.hasSum_Λ_heckeFEPair
+      kind: theorem
+      status: proved
+      note: On Re s > n/2, the completed function is the partial Hecke sum over the classes of a modulo the units, with the Gamma factor.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
