@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- `Langlands/Tate/DedekindFE.lean`: the functional equation of the Dedekind zeta function of each number field K. The completed function xi_K(u) is |d_K|^(u/2) Gamma_K(u) zeta_K(u) for Re u > 1, it is holomorphic outside u = 0 and u = 1, and xi_K(1 - u) = xi_K(u). This is the case of the trivial character of the theorem of Hecke.
+
 - `Langlands/Tate/UnitClass.lean`: the integral ideals I with a I principal are the ideals in the class of the inverse of a, and a generator of a I has the norm N(a) N(I). So the Mellin transform of the unit theta function is a multiple of the partial zeta function of the class of the inverse of a.
 
 ## v0.1.12 (2026-11-26)
