@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.27 (2026-11-27)
+
 ### Added
 
 - The weighted functional equation for the lattices of an imaginary quadratic field and the periodic coefficient of a Hecke character, in `Langlands.Tate.RayClassHeckeWeightFE`.
