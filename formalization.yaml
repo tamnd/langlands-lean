@@ -858,6 +858,26 @@ status:
       kind: theorem
       status: proved
       note: The double Fourier transform of the indicator of a translated ball.
+    - name: Langlands.SmoothRep.jacquetFrobenius
+      kind: definition
+      status: proved
+      note: Frobenius reciprocity for the principal series: Hom_G(pi, Ind_B^G alpha) is equivalent to Hom_T(pi_N, alpha).
+    - name: Langlands.principalSeriesInd_sub_jacquet_nontrivial
+      kind: theorem
+      status: proved
+      note: A nonzero G-stable subspace W of the principal series has a nonzero Jacquet module W_N.
+    - name: Langlands.principalSeriesInd_hom_eq
+      kind: theorem
+      status: proved
+      note: A nonzero G-map between principal series Ind(chi) to Ind(alpha) exists only if alpha is chi or its twisted Weyl conjugate.
+    - name: Langlands.normPrincipalSeries_hom_eq
+      kind: theorem
+      status: proved
+      note: A nonzero G-map between normalized principal series exists only if the pair of characters is the same or swapped.
+    - name: Langlands.normPrincipalSeries_exists_hom_of_quotient
+      kind: theorem
+      status: proved
+      note: If W is a nonzero subrepresentation of the normalized principal series whose quotient has nonzero Jacquet module, there is a nonzero G-map normPS(chi1,chi2) to normPS(chi2,chi1) that kills W.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
