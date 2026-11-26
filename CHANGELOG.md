@@ -4,6 +4,18 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.7 (2026-11-26)
+
+### Added
+
+- `Langlands/Statements/GSp4.lean`: `LocalLanglandsGSp4`, the theorem of Gan and Takeda, with GSp(4) as a matrix group, its L-parameters into GSp(4, C) and the size of each discrete L-packet.
+- `Langlands/Statements/NumberFieldGL.lean` and `Reciprocity.lean`: the algebraic and regular algebraic cusp forms of Clozel through the Capelli operator, l-adic Galois representations of a number field, and the statements `ReciprocityGL` (open, weak form), `AutomorphicToGalois` and `GlobalJacquetLanglandsGL2`.
+- `Langlands/Tate/GlobalLattice.lean`, `DedekindTheta.lean` and `DedekindMellin.lean`: the lattice of a fractional ideal with its covolume and its dual, the theta transformation formula for a number field, the Gamma factor of a number field and the Mellin transform of one term of the theta function.
+
+### Fixed
+
+- `Langlands/Statements/Galois.lean`: the docstring of `ArtinConjecture` now says correctly how the poles of the completed L-function and of L(s, rho) are related.
+
 ## v0.1.6 (2026-11-26)
 
 ### Added
