@@ -1474,6 +1474,22 @@ status:
       kind: theorem
       status: proved
       note: The strong form for the weight rule from the full recipe implies Langlands.SerreModularityStrong, under the uniqueness of the weight.
+    - name: Langlands.Tate.integral_prod_cpow_mul_mixedGaussWeight
+      kind: theorem
+      status: proved
+      note: The Mellin transform of the weighted Gaussian at a point alpha of K, in a separate t_w for each infinite place. It gives the Gamma factor of the infinity type times chi_infinity(alpha) |N alpha|^(-s).
+    - name: Langlands.Tate.integral_unitScale_heckeTerm
+      kind: theorem
+      status: proved
+      note: The Mellin formula for one term of the weighted theta series in the coordinates of the norm and the units.
+    - name: Langlands.Tate.heckeTerm_unitOfInt_mul
+      kind: theorem
+      status: proved
+      note: The action of a unit on a term of the weighted theta series is a translation of the unit coordinates, when chi_infinity is trivial on the unit.
+    - name: Langlands.Tate.heckeTheta_unitScale
+      kind: theorem
+      status: proved
+      note: The weighted theta formula of a fractional ideal in the coordinates of the norm and the units.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
