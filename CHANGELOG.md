@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- The Cartan decomposition of GL(2) and the proof that a Jacquet cuspidal representation is supercuspidal, in `Langlands.Smooth.CuspidalCoefficients`.
+
 ## v0.1.27 (2026-11-27)
 
 ### Added

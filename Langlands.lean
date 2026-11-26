@@ -107,6 +107,7 @@ import Langlands.Tate.RayClassHeckeWeight
 import Langlands.Smooth.Classification
 import Langlands.Smooth.JacquetFinite
 import Langlands.Tate.RayClassHeckeWeightFE
+import Langlands.Smooth.CuspidalCoefficients
 
 /-!
 # The Langlands program in Lean
