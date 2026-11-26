@@ -82,6 +82,7 @@ import Langlands.WeilGroup.Restrict
 import Langlands.Smooth.PrincipalSeries
 import Langlands.Local.GL1
 import Langlands.Tate.HeckeRamified
+import Langlands.Smooth.Bruhat
 
 /-!
 # The Langlands program in Lean
