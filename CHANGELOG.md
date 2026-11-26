@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.28 (2026-11-27)
+
 ### Added
 
 - The epsilon factor conditions of the local Langlands family for GL(1), with existence and uniqueness for n = 1, in `Langlands.Local.LanglandsFamilyEps`.
