@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Tate's local functional equation for an unramified character on all locally constant functions with compact support, in `Langlands.Local.GL1EpsilonUnramifiedFull`.
+
 - The vanishing of the ray class Gauss coefficient when (beta) f J d is not prime to f, in `Langlands.Tate.RayClassGaussVanish`.
 
 ## v0.1.25 (2026-11-26)
