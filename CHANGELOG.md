@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Tate's local functional equation for GL(1) with the epsilon factor, for the standard test functions in the unramified and the ramified case.
+
 - The partial L-series of a ray class character of an imaginary quadratic field as shifted Epstein zeta functions, with their functional equation and the dual side in Gauss sums.
 
 ## v0.1.23 (2026-11-26)
