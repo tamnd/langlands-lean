@@ -205,6 +205,14 @@ noncomputable def unitCoord : realSpace K ≃ᵐ ℝ × (Fin (rank K) → ℝ) :
     (MeasurableEquiv.prodCongr (MeasurableEquiv.funUnique {w : InfinitePlace K // w = w₀} ℝ)
       (MeasurableEquiv.piCongrLeft (fun _ => ℝ) fundamentalCone.equivFinRank).symm)
 
+omit [NumberField K] in
+/-- The volume of `ι → ℝ` does not depend on the instance of `Fintype ι`. -/
+theorem volume_pi_fintype_congr {ι : Type*} (i₁ i₂ : Fintype ι) :
+    @volume (ι → ℝ) (@MeasureSpace.pi ι i₁ (fun _ => ℝ) _) =
+      @volume (ι → ℝ) (@MeasureSpace.pi ι i₂ (fun _ => ℝ) _) := by
+  cases Subsingleton.elim i₁ i₂
+  rfl
+
 variable (K) in
 theorem measurePreserving_unitCoord : MeasurePreserving (unitCoord K) := by
   refine (volume_preserving_piEquivPiSubtypeProd (fun _ : InfinitePlace K => ℝ)
@@ -213,8 +221,8 @@ theorem measurePreserving_unitCoord : MeasurePreserving (unitCoord K) := by
     (volume_measurePreserving_piCongrLeft (fun _ => ℝ) (fundamentalCone.equivFinRank (K := K))).symm
   · rfl
   · rw [Measure.volume_eq_prod]
-    congr
-    exact Subsingleton.elim _ _
+    congr 1
+    exact volume_pi_fintype_congr _ _
 
 theorem unitCoord_apply_fst (x : realSpace K) : (unitCoord K x).1 = x (w₀ : InfinitePlace K) := rfl
 
