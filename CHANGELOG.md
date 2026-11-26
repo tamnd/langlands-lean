@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.23 (2026-11-26)
+
 ### Added
 
 - The Jacquet module of the principal series of GL2 has dimension 2, with its exact sequence of torus representations.
