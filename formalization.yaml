@@ -798,6 +798,22 @@ status:
       kind: theorem
       status: proved
       note: The Haar modulus of a unit a is q to the power minus ord a.
+    - name: Langlands.finrank_principalSeriesJacquet
+      kind: theorem
+      status: proved
+      note: The Jacquet module of the principal series of GL2 with respect to N has dimension 2.
+    - name: Langlands.principalSeriesJacquet_shortExact
+      kind: theorem
+      status: proved
+      note: The exact sequence 0 to (V_w)_N to V_N to the character chi to 0 of torus representations, with (V_w)_N isomorphic to the twisted Weyl conjugate of chi.
+    - name: Langlands.bigCellJacquet_iso
+      kind: theorem
+      status: proved
+      note: The Jacquet module of the big cell part of the principal series is the character diag(a,d) to chi2(a)|a| chi1(d)|d|^-1.
+    - name: Langlands.principalSeriesBigCell_shortExact
+      kind: theorem
+      status: proved
+      note: The big cell part of the principal series is the kernel of evaluation at 1, and evaluation at 1 is surjective.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
