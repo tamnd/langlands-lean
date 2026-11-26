@@ -117,6 +117,7 @@ import Langlands.Statements.SerreStrong
 import Langlands.Statements.BreuilMezard
 import Langlands.Tate.MixedWeightTheta
 import Langlands.Tate.IdealWeightTheta
+import Langlands.Statements.SerreWeight
 
 /-!
 # The Langlands program in Lean
