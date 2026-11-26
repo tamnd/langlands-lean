@@ -594,6 +594,34 @@ status:
       kind: theorem
       status: proved
       note: Hecke's theorem for each Hecke character that is unramified at each finite place and has infinite components |.|_w^s_0 for one s_0.
+    - name: Langlands.isGreatest_smoothVectors
+      kind: theorem
+      status: proved
+      note: The smooth vectors of a representation form the largest stable subspace on which the representation is smooth.
+    - name: Langlands.SmoothRep.IsAdmissible.sub
+      kind: theorem
+      status: proved
+      note: A subrepresentation of an admissible smooth representation is admissible.
+    - name: Langlands.SmoothRep.ind
+      kind: definition
+      status: proved
+      note: Smooth induction from a subgroup H to G: the functions with f(hg) = sigma(h) f(g) that are right invariant under an open subgroup.
+    - name: Langlands.SmoothRep.frobenius
+      kind: definition
+      status: proved
+      note: Frobenius reciprocity for smooth induction, as a linear equivalence Hom_G(pi, Ind sigma) = Hom_H(pi restricted to H, sigma).
+    - name: Langlands.SmoothRep.jacquet
+      kind: definition
+      status: proved
+      note: The Jacquet module V_N = V / V(N) as a smooth representation of a group M that normalizes N.
+    - name: Langlands.SmoothRep.jacquetEquiv
+      kind: definition
+      status: proved
+      note: The universal property of the Jacquet module: Hom_M(V_N, tau) is the space of M-maps from V to tau that are invariant under N.
+    - name: Langlands.principalSeriesInd
+      kind: definition
+      status: proved
+      note: The principal series of GL_2(K) induced from the character (chi_1, chi_2) of the Borel subgroup, not normalized.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

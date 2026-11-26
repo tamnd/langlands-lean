@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- `Langlands/Smooth/Induction.lean`: the first part of tier T5. The file proves that the smooth vectors form the largest smooth subrepresentation, and that a subrepresentation of an admissible representation is admissible. It defines smooth induction and proves Frobenius reciprocity, and it defines the Jacquet module and proves its universal property. It gives the Borel subgroup, the unipotent radical and the torus of GL_2(K), and the principal series as an induced representation.
+
 ## v0.1.18 (2026-11-26)
 
 ### Added
