@@ -1158,6 +1158,30 @@ status:
       kind: theorem
       status: proved
       note: The Hecke functional equation for each Hecke character of an imaginary quadratic field with parameter n = 0 at infinity.
+    - name: Langlands.jacquetEigenSub
+      kind: definition
+      status: proved
+      note: The vectors on which the torus acts by a given character modulo the Jacquet kernel.
+    - name: Langlands.normSteinbergSub
+      kind: definition
+      status: proved
+      note: The Steinberg subspace W0 of the principal series when chi_1 = chi_2 |.|.
+    - name: Langlands.normPrincipalSeries_existsUnique_stable_of_eq_mul
+      kind: theorem
+      status: proved
+      note: The principal series with chi_1 = chi_2 |.| has exactly one proper nonzero stable subspace.
+    - name: Langlands.normPrincipalSeries_isStableSubspace_iff_of_eq_mul
+      kind: theorem
+      status: proved
+      note: The stable subspaces are 0, W0 and the whole space.
+    - name: Langlands.finrank_quotient_normSteinbergSub
+      kind: theorem
+      status: proved
+      note: The quotient by W0 has dimension 1.
+    - name: Langlands.steinbergSub_isIrreducible
+      kind: theorem
+      status: proved
+      note: The representation on W0 is irreducible.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
