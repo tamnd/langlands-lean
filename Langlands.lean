@@ -89,6 +89,7 @@ import Langlands.Smooth.JacquetPrincipal
 import Langlands.Tate.RayClassFE
 import Langlands.Local.GL1Epsilon
 import Langlands.Smooth.PrincipalIrreducible
+import Langlands.Tate.RayClassGauss
 
 /-!
 # The Langlands program in Lean

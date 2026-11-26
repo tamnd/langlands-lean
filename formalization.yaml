@@ -878,6 +878,22 @@ status:
       kind: theorem
       status: proved
       note: If W is a nonzero subrepresentation of the normalized principal series whose quotient has nonzero Jacquet module, there is a nonzero G-map normPS(chi1,chi2) to normPS(chi2,chi1) that kills W.
+    - name: Langlands.Tate.IsRayClassType.sum_rayLatticeCoeff_eq_zero
+      kind: theorem
+      status: proved
+      note: The coefficient sum of a nontrivial ray class character over the lattice classes is zero.
+    - name: Langlands.Tate.IsRayClassType.differentiable_rayClassCompleted_of_nonempty
+      kind: theorem
+      status: proved
+      note: The completed ray class L-function is entire for a nontrivial character.
+    - name: Langlands.Tate.IsRayClassType.exists_idealChar_ne_one
+      kind: theorem
+      status: proved
+      note: A nontrivial ray class character takes a value other than one on some ideal.
+    - name: Langlands.Tate.IsRayClassType.rayGaussCoeff_eq_mul
+      kind: theorem
+      status: proved
+      note: The Gauss coefficient transforms by the character under a unit twist.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
