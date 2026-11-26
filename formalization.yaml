@@ -374,6 +374,26 @@ status:
       kind: def
       status: proved
       note: The pair (Theta_a, Theta_dual) as a WeakFEPair of Mathlib, with weight n/2, root number (N(a) sqrt|d_K|)^(-1) and constant terms 1.
+    - name: Langlands.Tate.unitConst_mul_integral_expMapBasis
+      kind: theorem
+      status: proved
+      note: The change of variables t = expMapBasis x in the integral of Gamma_K(s) |N(alpha)|^(-s), with the Jacobian 2^(-r_2) n R_K.
+    - name: Langlands.Tate.integrable_thetaTerm_expMapBasis
+      kind: theorem
+      status: proved
+      note: The theta term in the coordinates of expMapBasis, times exp(n s x_0 / 2), is integrable for Re s > 0.
+    - name: Langlands.Tate.measurePreserving_unitCoord
+      kind: theorem
+      status: proved
+      note: The split of R^(S_inf) into the coordinate at w_0 and the r coordinates of the units preserves the measure.
+    - name: Langlands.Tate.expMapBasis_unitCoord_symm
+      kind: theorem
+      status: proved
+      note: In the coordinates (log y, 2c) the map expMapBasis gives the point t(y, c) of the unit theta function.
+    - name: Langlands.Tate.integral_unitScale
+      kind: theorem
+      status: proved
+      note: The Mellin transform in y of the integral over c in R^r of one theta term is 2^(r_2 - r) (n R_K)^(-1) Gamma_K(2s/n) |N(alpha)|^(-2s/n).
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
