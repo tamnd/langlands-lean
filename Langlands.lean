@@ -87,6 +87,7 @@ import Langlands.Tate.RayClassQuadratic
 import Langlands.Local.GL1LFactor
 import Langlands.Smooth.JacquetPrincipal
 import Langlands.Tate.RayClassFE
+import Langlands.Local.GL1Epsilon
 
 /-!
 # The Langlands program in Lean

@@ -838,6 +838,26 @@ status:
       kind: theorem
       status: proved
       note: The covolume of the lattice fJ is N(f) N(J) times the square root of the absolute discriminant.
+    - name: Langlands.LocalGL1.localFunctionalEquation_unramified
+      kind: theorem
+      status: proved
+      note: Tate's local functional equation for an unramified character and the test function 1_O, with the epsilon factor c q^{-ns}.
+    - name: Langlands.LocalGL1.localFunctionalEquation_ramified
+      kind: theorem
+      status: proved
+      note: Tate's local functional equation for a ramified character of conductor exponent a and the test function 1_{1+p^a}, with epsilon factor G(chi, psi) q^{-(a+n)s}. The proof that G is not zero is open.
+    - name: Langlands.LocalGL1.epsilonUnramified_eq
+      kind: theorem
+      status: proved
+      note: The unramified epsilon factor is c q^{-ns} with c not zero.
+    - name: Langlands.LocalGL1.existsUnique_selfDual
+      kind: theorem
+      status: proved
+      note: Exactly one scaling of the Haar measure is self-dual for psi on the translated balls.
+    - name: Langlands.LocalGL1.fourier_fourier_ballIndicator
+      kind: theorem
+      status: proved
+      note: The double Fourier transform of the indicator of a translated ball.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
