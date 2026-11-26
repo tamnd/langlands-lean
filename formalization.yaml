@@ -1034,6 +1034,30 @@ status:
       kind: theorem
       status: proved
       note: The ratio of the two zeta integrals does not depend on the test function.
+    - name: Langlands.Tate.IsRayGaussPair
+      kind: definition
+      status: proved
+      note: A pair (beta, I) with I = (beta) f J d integral and prime to f.
+    - name: Langlands.Tate.rayGaussSum
+      kind: definition
+      status: proved
+      note: The ray class Gauss sum tau_J(chi) = G_J(beta) chi(I) for a chosen pair.
+    - name: Langlands.Tate.IsRayGaussPair.dual_eq_add
+      kind: theorem
+      status: proved
+      note: The dual of fJ is (beta) + f times the dual, so the quotient is cyclic.
+    - name: Langlands.Tate.exists_isRayGaussPair
+      kind: theorem
+      status: proved
+      note: A pair (beta, I) prime to f exists.
+    - name: Langlands.Tate.IsRayClassType.rayGaussCoeff_mul_idealChar_eq
+      kind: theorem
+      status: proved
+      note: G_J(beta) chi(I) does not depend on the pair.
+    - name: Langlands.Tate.IsRayClassType.rayGaussCoeff_eq_rayGaussSum_mul
+      kind: theorem
+      status: proved
+      note: G_J(beta) = tau_J(chi) times the conjugate of chi(I) for a pair prime to f.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
