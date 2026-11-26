@@ -17,9 +17,9 @@ The module `Langlands.Local.GL1Epsilon` proves Tate's local functional equation 
 * `exists_eq_sum_ballIndicator`: such a function is a finite linear combination of the indicator functions $\mathbf{1}_{b + \varpi^N \mathcal{O}}$.
 * `fourier_sum` and `zeta_sum`: the Fourier transform and the zeta integral are linear on finite combinations of such functions.
 
-## Open parts
+## The general case
 
-The local functional equation for $\mathbf{1}_{b + \varpi^N \mathcal{O}}$ with $b \ne 0$ is not proved here. With it, the decomposition and the two linearity results give the functional equation for each Schwartz-Bruhat function. The nonvanishing of the Gauss sum for a ramified character is also open.
+The module `Langlands.Local.GL1EpsilonRamified` uses these results to prove the local functional equation for a ramified character on each locally constant function with compact support, and the nonvanishing of the Gauss integral.
 -/
 
 namespace Langlands.LocalGL1
