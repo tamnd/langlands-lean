@@ -94,6 +94,7 @@ import Langlands.Local.GL1EpsilonFull
 import Langlands.Smooth.IrreducibilityCriterion
 import Langlands.Statements.Shapes
 import Langlands.Local.GL1EpsilonRamified
+import Langlands.Tate.RayClassGaussVanish
 
 /-!
 # The Langlands program in Lean
