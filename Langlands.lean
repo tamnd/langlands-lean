@@ -122,6 +122,7 @@ import Langlands.Tate.HeckeMellinUnits
 import Langlands.Tate.HeckeUnfold
 import Langlands.Tate.HeckeFEPair
 import Langlands.Tate.HeckeDualSum
+import Langlands.Tate.HeckeGeneralUnramified
 
 /-!
 # The Langlands program in Lean
