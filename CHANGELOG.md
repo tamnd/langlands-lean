@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Langlands.Tate.HeckeRamified: the conductor as a product over the ramified places, characters of ray class type, their identification with characters of the ray class group, and the Euler product and Dirichlet series of their L-functions.
+
 ## v0.1.21 (2026-11-26)
 
 ### Changed
