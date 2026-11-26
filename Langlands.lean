@@ -55,6 +55,7 @@ import Langlands.Tate.DedekindFE
 import Langlands.Tate.HeckeOne
 import Langlands.Tate.DedekindEuler
 import Langlands.Tate.HeckeTrivial
+import Langlands.Tate.HeckeNormPower
 import Langlands.Tate.NonArchimedeanCharacter
 import Langlands.Tate.NonArchimedeanFourier
 import Langlands.Tate.NonArchimedeanGauss

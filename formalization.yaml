@@ -486,6 +486,22 @@ status:
       kind: theorem
       status: proved
       note: The conclusion of HeckeFunctionalEquationAt K for the trivial Hecke character, with sigma = 0, W = 1 and s_0 = 0. The case of a general Hecke character is open.
+    - name: Langlands.Tate.isArchimedeanParameter_of_normPower
+      kind: theorem
+      status: proved
+      note: The archimedean parameters of the Hecke character x -> |x|^s_0 are n = 0 and t = s_0.
+    - name: Langlands.Tate.conductor_of_normPower
+      kind: theorem
+      status: proved
+      note: The conductor of the Hecke character x -> |x|^s_0 is the unit ideal.
+    - name: Langlands.Tate.completedLFunction_of_normPower
+      kind: theorem
+      status: proved
+      note: The completed L-function of x -> |x|^s_0 is Lambda_K(s + s_0) for Re(s + s_0) > 1.
+    - name: Langlands.Tate.heckeFunctionalEquationAt_normPower
+      kind: theorem
+      status: proved
+      note: The conclusion of HeckeFunctionalEquationAt K for the Hecke characters x -> |x|^s_0, with sigma = Re s_0 and W = |d_K|^(sigma - s_0). This is the full polar case. The case of a general Hecke character is open.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
