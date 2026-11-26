@@ -459,6 +459,7 @@ theorem exists_mem_strip : ∃ s : ℂ, ‖(χ (unif K) : ℂ) * (residueCard K 
       inv_mul_cancel₀ hr0.ne', one_mul]
     exact inv_lt_one_of_one_lt₀ hh
 
+set_option maxHeartbeats 800000 in
 /-- **The Gauss integral does not vanish.** Let $\chi$ be a smooth character of conductor exponent $a \ge 1$ and let $\psi$ be continuous of conductor exponent $n$. Then $G(\chi, \psi) = \int_{\varpi^{-n-a} \mathcal{O}_K^\times} \psi(y) \chi^{-1}(y) \, dy \ne 0$. The proof applies the functional equation twice, to $\varphi = \mathbf{1}_{1 + \mathfrak{p}^a}$ for $\chi$ and to $\hat{\varphi}$ for $\chi^{-1}$. By Fourier inversion, $\hat{\hat{\varphi}}(x) = c \varphi(-x)$ with $c \ne 0$, so $\varepsilon(1 - s, \chi^{-1}, \psi) \varepsilon(s, \chi, \psi) = c \chi(-1) \ne 0$. -/
 theorem gaussInt_ne_zero (hχs : IsSmoothChar K χ) {a : ℕ} (hχ : IsRamifiedConductor χ a)
     {ψ : AddChar K ℂ} (hψc : Continuous ψ) {n : ℤ} (hψ : IsConductor ψ n) :
