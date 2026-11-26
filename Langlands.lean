@@ -98,6 +98,7 @@ import Langlands.Tate.RayClassGaussVanish
 import Langlands.Local.GL1EpsilonUnramifiedFull
 import Langlands.Tate.RayClassGaussEval
 import Langlands.Smooth.ReducibleCase
+import Langlands.Tate.RayClassGaussNorm
 
 /-!
 # The Langlands program in Lean

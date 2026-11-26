@@ -1086,6 +1086,26 @@ status:
       kind: theorem
       status: proved
       note: The Steinberg quotient is not a character.
+    - name: Langlands.Tate.traceExp
+      kind: definition
+      status: proved
+      note: The additive character exp(2 pi i Tr r) of K.
+    - name: Langlands.Tate.sum_traceExp_eq
+      kind: theorem
+      status: proved
+      note: Orthogonality of the trace character on the quotient by fJ.
+    - name: Langlands.Tate.IsRayClassType.mul_rayCoeff_eq
+      kind: theorem
+      status: proved
+      note: The key identity N(f) c_J(xi) = G_J(beta) times the conjugate of G_1(beta xi).
+    - name: Langlands.Tate.IsRayClassType.norm_rayGaussSum_sq
+      kind: theorem
+      status: proved
+      note: The Gauss sum of a primitive ray class character has |tau|^2 = N(f).
+    - name: Langlands.Tate.IsRayClassType.rayGaussSum_eq_rayGaussSum_one
+      kind: theorem
+      status: proved
+      note: The Gauss sum tau_J does not depend on J.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
