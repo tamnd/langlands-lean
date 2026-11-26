@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Changed
+
+- Langlands.Tate.DedekindFE and Langlands.Tate.LocalRamified: two proofs no longer depend on behaviour of the elaborator that changes in v4.36.0.
+
 ### Added
 
 - Langlands.Smooth.PrincipalSeries: the modulus character of the Borel subgroup of GL_2, the normalized principal series, the Iwasawa decomposition, the admissibility of the principal series, the surjection from its Jacquet module onto the inducing character and the right exactness of the Jacquet functor.
