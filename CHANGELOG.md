@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- `Langlands/Tate/HeckeClassTwist.lean`: the theorem of Hecke for chi |.|^s_0, with chi of class group type and s_0 any complex number. The file proves a general shift lemma for twists by a power of the norm, and it shows that these twists are exactly the Hecke characters that are unramified at each finite place with infinite components |.|_w^s_0. It also proves that the idele norm is continuous and defines the Hecke character x -> |x|^s for each number field.
+
 - `Langlands/Groups/RootDatum.lean`: the first part of tier T2. The file defines the dual root datum as the flip of Mathlib and proves that it is involutive and functorial. It gives the root data of GL_n, SL_2, PGL_2 and split tori, and it proves that GL_n is self-dual, that the dual of SL_2 is PGL_2, and that the dual of a torus is the torus of the dual lattice. It defines the combinatorial L-group datum of a quasi-split group: a based root datum with an action that keeps the base.
 
 ## v0.1.17 (2026-11-26)

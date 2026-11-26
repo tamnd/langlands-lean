@@ -58,6 +58,7 @@ import Langlands.Tate.HeckeTrivial
 import Langlands.Tate.HeckeNormPower
 import Langlands.Tate.ClassCharacter
 import Langlands.Tate.HeckeUnramified
+import Langlands.Tate.HeckeClassTwist
 import Langlands.Groups.RootDatum
 import Langlands.Tate.NonArchimedeanCharacter
 import Langlands.Tate.NonArchimedeanFourier

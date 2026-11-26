@@ -574,6 +574,26 @@ status:
       kind: theorem
       status: proved
       note: The L-group datum of split SL_2 is the split datum of PGL_2.
+    - name: Langlands.Tate.heckeFunctionalEquation_of_twist
+      kind: theorem
+      status: proved
+      note: The shift of the theorem of Hecke: if it holds for chi, then it holds for the twist chi |.|^s_0, with sigma + Re s_0, Lambda(s + s_0) and the root number times D^(Re s_0 - s_0).
+    - name: Langlands.Tate.IsClassType.heckeFunctionalEquation_twist
+      kind: theorem
+      status: proved
+      note: Hecke's theorem for chi |.|^s_0 with chi of class group type and s_0 any complex number.
+    - name: Langlands.Tate.continuous_ideleNorm
+      kind: theorem
+      status: proved
+      note: The idele norm of a number field is continuous.
+    - name: Langlands.Tate.exists_isClassType_twist_iff
+      kind: theorem
+      status: proved
+      note: A Hecke character is unramified at each finite place with infinite components |.|_w^s_0 if and only if it is chi |.|^s_0 with chi of class group type.
+    - name: Langlands.Tate.heckeFunctionalEquation_of_unramified
+      kind: theorem
+      status: proved
+      note: Hecke's theorem for each Hecke character that is unramified at each finite place and has infinite components |.|_w^s_0 for one s_0.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
