@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The identity |tau(chi)|^2 = N(f) for the Gauss sum of a primitive ray class character, and its independence of J, in `Langlands.Tate.RayClassGaussNorm`.
+
 - The reducible principal series of GL(2) with a line of chi o det, and the twisted Steinberg quotient, in `Langlands.Smooth.ReducibleCase`.
 
 - The evaluation of the ray class Gauss coefficient by the Gauss sum when (beta) f J d is prime to f, in `Langlands.Tate.RayClassGaussEval`.
