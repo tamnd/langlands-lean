@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.26 (2026-11-27)
+
 ### Added
 
 - The irreducibility criterion for the principal series of GL(2) in both directions, in `Langlands.Smooth.ReducibleQuotient`.
