@@ -7,6 +7,7 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 ### Added
 
 - `Langlands/Tate/IdealZeta.lean`: the trace form zeta function of a nonzero fractional ideal of a number field, its continuation, its residue at s = n and its functional equation with the dual ideal for the trace form. The file also proves that two lattices with the same theta function and the same covolume have the same completed Epstein zeta function.
+- `Langlands/Tate/ImaginaryQuadratic.lean`: the class zeta function of an imaginary quadratic field, a sum over the ideal classes, with its Dirichlet series and its functional equation under s to 2 - s. The file proves that each term depends only on the ideal class, with the identity theorem for holomorphic functions.
 
 ## v0.1.8 (2026-11-26)
 

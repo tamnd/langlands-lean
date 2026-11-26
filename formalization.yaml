@@ -326,6 +326,18 @@ status:
       kind: theorem
       status: proved
       note: The completed trace form zeta function of a has residue 2 divided by N(a) times the square root of |d_K| at s = n.
+    - name: Langlands.Tate.classZeta_two_sub
+      kind: theorem
+      status: proved
+      note: The functional equation of the class zeta function of an imaginary quadratic field K. The class zeta function is the sum over the ideal classes C of c(a_C)^s times the trace form zeta function of a fractional ideal a_C in C, with c(a)^2 = N(a) times the square root of |d_K|. It is invariant under s to 2 - s for s not 0 or 2.
+    - name: Langlands.Tate.classTerm_toPrincipalIdeal_mul
+      kind: theorem
+      status: proved
+      note: For an imaginary quadratic field, the term c(a)^s times the completed trace form zeta function of a does not change if a is replaced by x a for x in K^x, for s not 0 or 2. The proof compares the Dirichlet series for Re s > 2 and uses the identity theorem.
+    - name: Langlands.Tate.classZeta_eq
+      kind: theorem
+      status: proved
+      note: For an imaginary quadratic field and Re s > 2, the class zeta function is Gamma_R(s) times the sum over the classes C of c(a_C)^s times the sum over the nonzero alpha in a_C of (2 |N(alpha)|)^(-s/2).
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
