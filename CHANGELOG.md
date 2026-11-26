@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.11 (2026-11-26)
+
 ### Added
 
 - `Langlands/Tate/UnitTheta.lean`: the theta function of a fractional ideal averaged over the units with an integral over [0, 1)^r, its transformation formula with the dual ideal, its decay at infinity, and the pair of the two functions as a `WeakFEPair`. This is the first step of the proof of Hecke of the functional equation of the Dedekind zeta function of each number field.
