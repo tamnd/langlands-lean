@@ -613,7 +613,7 @@ open scoped Classical in
 noncomputable def charLFactor (ϖ : Kˣ) (χ : Kˣ →* ℂˣ) (s : ℂ) : ℂ :=
   if ∀ x : Kˣ, normAbs K x = 1 → χ x = 1 then (1 - (χ ϖ : ℂ) * (residueCard K : ℂ) ^ (-s))⁻¹ else 1
 
-/-- The L-factor of $\chi$ is the L-factor of $(\chi \circ \mathrm{art}_K^{-1}, 0)$, if $\chi$ is unramified exactly when $\chi \circ \mathrm{art}_K^{-1}$ is trivial on the inertia subgroup. This condition follows from $\mathrm{art}_K(\mathcal{O}_K^\times) = I_K^{ab}$, which this file does not prove. -/
+/-- The L-factor of $\chi$ is the L-factor of $(\chi \circ \mathrm{art}_K^{-1}, 0)$, if $\chi$ is unramified exactly when $\chi \circ \mathrm{art}_K^{-1}$ is trivial on the inertia subgroup. This condition follows from $\mathrm{art}_K(\mathcal{O}_K^\times) = I_K^{ab}$. The file `Langlands/Local/GL1LFactor.lean` proves it as `Langlands.LocalGL1.unramified_iff`. -/
 theorem charLFactor_eq_lFactor_of_iff (hart : IsLocalArtinMap K art) (χ : Kˣ →* ℂˣ)
     (hχ : IsSmoothChar K χ) (ϖ : Kˣ) (hϖ : IsUniformizer (ϖ : K))
     (hunr : (∀ x : Kˣ, normAbs K x = 1 → χ x = 1) ↔
@@ -765,7 +765,7 @@ theorem isLanglandsMap_rec0 (art : Kˣ ≃ₜ* WeilGroup.Ab K) : IsLanglandsMap 
 
 end Zero
 
-/-- Tate's local theory for $GL_1$ in the Godement-Jacquet form. For each local Artin map $\mathrm{art}_K$, each smooth character $\chi$ of $K^\times$ and each representation $\pi$ of $GL_1(K)$ that acts by $\chi \circ \det$, the L-factor of the Weil-Deligne representation $(\chi \circ \mathrm{art}_K^{-1}, 0)$ is the Godement-Jacquet L-factor of $\pi$. This is the only part of `LocalLanglandsGL 1` that this file does not prove. -/
+/-- Tate's local theory for $GL_1$ in the Godement-Jacquet form. For each local Artin map $\mathrm{art}_K$, each smooth character $\chi$ of $K^\times$ and each representation $\pi$ of $GL_1(K)$ that acts by $\chi \circ \det$, the L-factor of the Weil-Deligne representation $(\chi \circ \mathrm{art}_K^{-1}, 0)$ is the Godement-Jacquet L-factor of $\pi$. This proposition is false as stated, because the zero representation has only zero zeta integrals. The file `Langlands/Local/GL1LFactor.lean` proves this as `Langlands.LocalGL1.not_gl1LFactor`, proves the corrected form `GL1LFactorNontrivial` with the hypothesis `Nontrivial π.V`, and proves `LocalLanglandsGL 1` with no hypothesis. -/
 def GL1LFactor : Prop :=
   ∀ (K : Type u) [Field K] [ValuativeRel K] [TopologicalSpace K] [IsNonarchimedeanLocalField K]
     (art : Kˣ ≃ₜ* WeilGroup.Ab K), IsLocalArtinMap K art →
