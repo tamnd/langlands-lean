@@ -1582,6 +1582,30 @@ status:
       kind: theorem
       status: proved
       note: The Mellin transform of the coefficient theta series is the partial Hecke sum with coefficients.
+    - name: Langlands.Tate.fourier_pow_mul_gauss
+      kind: theorem
+      status: proved
+      note: The Fourier transform of z^k exp(-pi t |z|^2) on C.
+    - name: Langlands.Tate.signHeckeTheta_eq
+      kind: theorem
+      status: proved
+      note: The transformation law of the Hecke theta series with a sign at each complex place.
+    - name: Langlands.Tate.signCompletedPartialHecke_sub
+      kind: theorem
+      status: proved
+      note: The functional equation of the signed completed partial Hecke sum.
+    - name: Langlands.Tate.signHeckeClassCompleted_eq_conj
+      kind: theorem
+      status: proved
+      note: The functional equation of one class sum for an unramified character with any signs at the complex places.
+    - name: Langlands.Tate.entireFunctionalEquation_unramified_sign
+      kind: theorem
+      status: proved
+      note: The entire functional equation for an unramified character with any signs at the complex places.
+    - name: Langlands.Tate.heckeFunctionalEquation_of_unramified_const_shift
+      kind: theorem
+      status: proved
+      note: The conclusion of HeckeFunctionalEquationAt for an unramified character with one shift at all infinite places and any signs.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

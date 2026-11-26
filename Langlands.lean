@@ -124,6 +124,9 @@ import Langlands.Tate.HeckeFEPair
 import Langlands.Tate.HeckeDualSum
 import Langlands.Tate.HeckeGeneralUnramified
 import Langlands.Tate.HeckeRamifiedTheta
+import Langlands.Tate.HeckeMixedSignTheta
+import Langlands.Tate.HeckeMixedSignFE
+import Langlands.Tate.HeckeMixedSign
 
 /-!
 # The Langlands program in Lean

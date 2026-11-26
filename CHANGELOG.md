@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Hecke's functional equation for unramified characters of a general number field with one shift and any signs at the complex places.
+
 ## v0.1.32 (2026-11-27)
 
 ### Added
