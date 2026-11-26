@@ -302,6 +302,18 @@ status:
       kind: theorem
       status: proved
       note: The Mellin transform of one term of the theta function of a number field over the product of the half lines is the Gamma factor of K times the absolute norm of the element to the power -s.
+    - name: Langlands.Tate.completedEpsteinZeta_sub
+      kind: theorem
+      status: proved
+      note: The functional equation of the Epstein zeta function of a full lattice L in a real inner product space of dimension n. The completed function at n - s is the inverse of the covolume of L times the completed function of the dual lattice at s.
+    - name: Langlands.Tate.completedEpsteinZeta_eq
+      kind: theorem
+      status: proved
+      note: For Re s > n, the completed Epstein zeta function of L is Gamma_R(s) times the sum of |l|^(-s) over the nonzero vectors l of L.
+    - name: Langlands.Tate.differentiableAt_completedEpsteinZeta
+      kind: theorem
+      status: proved
+      note: The completed Epstein zeta function of a lattice is holomorphic outside s = 0 and s = n.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
