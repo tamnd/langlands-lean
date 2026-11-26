@@ -1106,6 +1106,18 @@ status:
       kind: theorem
       status: proved
       note: The Gauss sum tau_J does not depend on J.
+    - name: Langlands.principalSeriesInd_exists_bijective_of_isIrreducible
+      kind: theorem
+      status: proved
+      note: An irreducible principal series is isomorphic to the principal series of the other order, by the Jacquet module.
+    - name: Langlands.normPrincipalSeries_not_isIrreducible_of_eq_mul
+      kind: theorem
+      status: proved
+      note: The normalized principal series is reducible when chi_1 = chi_2 |.|.
+    - name: Langlands.normPrincipalSeries_isIrreducible_iff
+      kind: theorem
+      status: proved
+      note: The irreducibility criterion for the principal series of GL(2): irreducible if and only if chi_1 chi_2^-1 is not |.|^(plus or minus 1).
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
