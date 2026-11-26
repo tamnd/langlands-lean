@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The Hecke functional equation for each Hecke character of an imaginary quadratic field with parameter n = 0 at infinity, in `Langlands.Tate.RayClassHecke`.
+
 - The irreducibility of the twisted Steinberg representation and the length 2 of the reducible principal series, in `Langlands.Smooth.Steinberg`.
 
 ## v0.1.26 (2026-11-27)
