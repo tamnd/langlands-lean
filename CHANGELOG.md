@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Prove the weighted theta formula for a fractional ideal of a number field and its dual ideal.
+
 ## v0.1.30 (2026-11-27)
 
 ### Added
