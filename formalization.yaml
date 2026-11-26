@@ -1182,6 +1182,30 @@ status:
       kind: theorem
       status: proved
       note: The representation on W0 is irreducible.
+    - name: Langlands.Tate.weightTheta
+      kind: definition
+      status: proved
+      note: The theta series of a lattice in C weighted by conj(z)^k.
+    - name: Langlands.Tate.completedWeightZeta
+      kind: definition
+      status: proved
+      note: The completed weighted Epstein zeta function of a lattice in C.
+    - name: Langlands.Tate.fourier_gaussWeight
+      kind: theorem
+      status: proved
+      note: Hecke's lemma: the Fourier transform of conj(z)^k exp(-pi t |z|^2).
+    - name: Langlands.Tate.weightTheta_eq
+      kind: theorem
+      status: proved
+      note: The transformation law of the weighted theta series, by Poisson summation.
+    - name: Langlands.Tate.differentiable_completedWeightZeta
+      kind: theorem
+      status: proved
+      note: The completed weighted zeta function is entire for k not 0.
+    - name: Langlands.Tate.completedWeightZeta_sub
+      kind: theorem
+      status: proved
+      note: The functional equation s to 2k + 2 - s of the weighted zeta function, with the factor (-i)^k.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
