@@ -1426,6 +1426,26 @@ status:
       kind: theorem
       status: proved
       note: HeckeFunctionalEquationAt holds for each imaginary quadratic field.
+    - name: Langlands.Tate.fourier_realGaussWeight
+      kind: theorem
+      status: proved
+      note: Hecke's lemma on R. The Fourier transform of x^p exp(-pi t x^2) for p at most 1.
+    - name: Langlands.Tate.fourier_mixed_prod
+      kind: theorem
+      status: proved
+      note: The Fourier transform of a product function on the mixed space is the product of the Fourier transforms.
+    - name: Langlands.Tate.fourier_mixedGaussWeight
+      kind: theorem
+      status: proved
+      note: The Fourier transform of the product weight on the mixed space, with a separate t_w for each infinite place.
+    - name: Langlands.Tate.mixedTheta_eq
+      kind: theorem
+      status: proved
+      note: The theta transformation formula with a weight on the mixed space, with a separate t_w for each infinite place.
+    - name: Langlands.Tate.mixedTheta_eq_const
+      kind: theorem
+      status: proved
+      note: The theta transformation formula with a weight on the mixed space for a common t.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
