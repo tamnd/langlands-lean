@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.32 (2026-11-27)
+
 ### Added
 
 - The theta series with a periodic coefficient over a general number field, its transformation law with Gauss sums, and its unfolding.
