@@ -1542,6 +1542,26 @@ status:
       kind: theorem
       status: proved
       note: The weighted theta series is invariant under the units on which chi_infinity is trivial.
+    - name: Langlands.Tate.heckeGamma_mul_finiteLFunction
+      kind: theorem
+      status: proved
+      note: The finite L-function of an unramified Hecke character of a number field, times the Gamma factor, is a finite sum of completed partial Hecke sums over the ideal classes.
+    - name: Langlands.Tate.heckeClassCompleted_eq_conj
+      kind: theorem
+      status: proved
+      note: The functional equation of the class part of the completed L-function of an unramified Hecke character, with the root number chi(d) (-i)^(sum of the weights).
+    - name: Langlands.Tate.entireFunctionalEquation_unramified
+      kind: theorem
+      status: proved
+      note: The entire functional equation of an unramified Hecke character of a number field with t = 0, n at least 0 and n not 0.
+    - name: Langlands.Tate.heckeFunctionalEquation_of_unramified_parallel
+      kind: theorem
+      status: proved
+      note: Hecke's functional equation for an unramified Hecke character of a general number field whose shift t_v is the same at every place and whose complex n_w do not have mixed signs.
+    - name: Langlands.Tate.heckeFunctionalEquation_of_unramified_of_subsingleton
+      kind: theorem
+      status: proved
+      note: Hecke's functional equation for every unramified Hecke character of a number field with one infinite place.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
