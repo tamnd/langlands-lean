@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- `Langlands/Tate/IdealZeta.lean`: the trace form zeta function of a nonzero fractional ideal of a number field, its continuation, its residue at s = n and its functional equation with the dual ideal for the trace form. The file also proves that two lattices with the same theta function and the same covolume have the same completed Epstein zeta function.
+
 ## v0.1.8 (2026-11-26)
 
 ### Added

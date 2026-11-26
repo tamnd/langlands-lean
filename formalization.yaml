@@ -314,6 +314,18 @@ status:
       kind: theorem
       status: proved
       note: The completed Epstein zeta function of a lattice is holomorphic outside s = 0 and s = n.
+    - name: Langlands.Tate.completedIdealZeta_sub
+      kind: theorem
+      status: proved
+      note: The functional equation of the trace form zeta function of a nonzero fractional ideal a of a number field K of degree n. The completed function at n - s is the inverse of N(a) times the square root of |d_K|, times the completed function of the dual ideal (a d)^(-1) at s.
+    - name: Langlands.Tate.completedIdealZeta_eq
+      kind: theorem
+      status: proved
+      note: For Re s > n, the completed trace form zeta function of a is Gamma_R(s) times the sum over the nonzero elements alpha of a of the power -s/2 of the sum of n_w |alpha|_w^2 over the infinite places w.
+    - name: Langlands.Tate.completedIdealZeta_residue
+      kind: theorem
+      status: proved
+      note: The completed trace form zeta function of a has residue 2 divided by N(a) times the square root of |d_K| at s = n.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
