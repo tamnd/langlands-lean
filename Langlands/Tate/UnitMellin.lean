@@ -213,6 +213,17 @@ theorem volume_pi_fintype_congr {ι : Type*} (i₁ i₂ : Fintype ι) :
   cases Subsingleton.elim i₁ i₂
   rfl
 
+omit [NumberField K] in
+/-- The product of the volumes of `ι → ℝ` and `κ → ℝ` does not depend on the instances of `Fintype ι` and `Fintype κ`. -/
+theorem volume_prod_pi_fintype_congr {ι κ : Type*} (i₁ i₂ : Fintype ι) (j₁ j₂ : Fintype κ) :
+    (@volume (ι → ℝ) (@MeasureSpace.pi ι i₁ (fun _ => ℝ) _)).prod
+        (@volume (κ → ℝ) (@MeasureSpace.pi κ j₁ (fun _ => ℝ) _)) =
+      (@volume (ι → ℝ) (@MeasureSpace.pi ι i₂ (fun _ => ℝ) _)).prod
+        (@volume (κ → ℝ) (@MeasureSpace.pi κ j₂ (fun _ => ℝ) _)) := by
+  cases Subsingleton.elim i₁ i₂
+  cases Subsingleton.elim j₁ j₂
+  rfl
+
 variable (K) in
 set_option maxHeartbeats 800000 in
 theorem measurePreserving_unitCoord : MeasurePreserving (unitCoord K) := by
@@ -222,8 +233,7 @@ theorem measurePreserving_unitCoord : MeasurePreserving (unitCoord K) := by
     (volume_measurePreserving_piCongrLeft (fun _ => ℝ) (fundamentalCone.equivFinRank (K := K))).symm
   · rfl
   · rw [Measure.volume_eq_prod]
-    congr 1
-    exact volume_pi_fintype_congr _ _
+    exact volume_prod_pi_fintype_congr _ _ _ _
 
 theorem unitCoord_apply_fst (x : realSpace K) : (unitCoord K x).1 = x (w₀ : InfinitePlace K) := rfl
 
