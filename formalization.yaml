@@ -290,6 +290,18 @@ status:
       kind: theorem
       status: proved
       note: The square of the absolute value of the Gauss sum of a character with conductor exponent a is q^(-a), for the measure that gives the integers the volume 1.
+    - name: Langlands.Tate.covolume_globalLattice
+      kind: theorem
+      status: proved
+      note: The covolume of the lattice of a fractional ideal a in the euclidean mixed space, scaled by c_w at each infinite place, is the product of the scalings times N(a) 2^(-r_2) times the square root of the absolute discriminant.
+    - name: Langlands.Tate.dedekindTheta_dual
+      kind: theorem
+      status: proved
+      note: The theta transformation formula for a fractional ideal of a number field. The theta function of a at t is the theta function of the dual ideal at 1/t, divided by N(a), the square root of the absolute discriminant and the product of the square roots of t_w to the local degree.
+    - name: Langlands.Tate.integral_exp_mul_prod_eq_gammaK
+      kind: theorem
+      status: proved
+      note: The Mellin transform of one term of the theta function of a number field over the product of the half lines is the Gamma factor of K times the absolute norm of the element to the power -s.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
