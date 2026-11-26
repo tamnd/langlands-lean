@@ -1226,6 +1226,30 @@ status:
       kind: theorem
       status: proved
       note: Two irreducible principal series are isomorphic if and only if the pairs agree up to order.
+    - name: Langlands.SmoothRep.jacquetN
+      kind: definition
+      status: proved
+      note: The Jacquet module of a representation of GL(2) for the upper unipotent subgroup.
+    - name: Langlands.GL2.exists_unip_mul_torus_mul_lowerUnip
+      kind: theorem
+      status: proved
+      note: The Iwahori factorization of the congruence subgroups of GL(2).
+    - name: Langlands.SmoothRep.jacquetN_isAdmissible
+      kind: theorem
+      status: proved
+      note: Jacquet's lemma: the Jacquet module of an admissible representation is admissible.
+    - name: Langlands.SmoothRep.finiteDimensional_jacquetN
+      kind: theorem
+      status: proved
+      note: The Jacquet module of an irreducible admissible representation is finite dimensional.
+    - name: Langlands.classification_of_isAdmissible
+      kind: theorem
+      status: proved
+      note: The classification of the irreducible admissible representations of GL(2) that are not cuspidal.
+    - name: Langlands.IrrRep.isJacquetCuspidal_or_classification
+      kind: theorem
+      status: proved
+      note: Each irreducible admissible representation of GL(2) is cuspidal or of one of the three kinds.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
