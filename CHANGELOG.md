@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Langlands.Tate.LocalRamified: the finite Gauss sum at a ramified place, the bound |τ|² = q^a, the vanishing of the local factor and the local epsilon factor of a ramified character.
+
 ## v0.1.19 (2026-11-26)
 
 ### Added
