@@ -1206,6 +1206,26 @@ status:
       kind: theorem
       status: proved
       note: The functional equation s to 2k + 2 - s of the weighted zeta function, with the factor (-i)^k.
+    - name: Langlands.SmoothRep.IsJacquetCuspidal
+      kind: definition
+      status: proved
+      note: A representation of GL(2) whose Jacquet module is zero.
+    - name: Langlands.exists_injective_principalSeriesInd
+      kind: theorem
+      status: proved
+      note: An irreducible representation with a nonzero finite dimensional Jacquet module embeds in a principal series.
+    - name: Langlands.classification
+      kind: theorem
+      status: proved
+      note: An irreducible representation that is not cuspidal is an irreducible principal series, a character chi o det or a twisted Steinberg representation.
+    - name: Langlands.isJacquetCuspidal_or_classification
+      kind: theorem
+      status: proved
+      note: The Bernstein-Zelevinsky dichotomy for GL(2), with finite dimensional Jacquet module.
+    - name: Langlands.normPrincipalSeries_iso_iff
+      kind: theorem
+      status: proved
+      note: Two irreducible principal series are isomorphic if and only if the pairs agree up to order.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

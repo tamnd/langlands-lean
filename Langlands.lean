@@ -104,6 +104,7 @@ import Langlands.Smooth.Steinberg
 import Langlands.Tate.RayClassHecke
 import Langlands.Smooth.LengthTwo
 import Langlands.Tate.RayClassHeckeWeight
+import Langlands.Smooth.Classification
 
 /-!
 # The Langlands program in Lean
