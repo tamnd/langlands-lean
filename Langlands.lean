@@ -127,6 +127,7 @@ import Langlands.Tate.HeckeRamifiedTheta
 import Langlands.Tate.HeckeMixedSignTheta
 import Langlands.Tate.HeckeMixedSignFE
 import Langlands.Tate.HeckeMixedSign
+import Langlands.Ring.HilbertSamuel
 
 /-!
 # The Langlands program in Lean

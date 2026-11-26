@@ -1606,6 +1606,26 @@ status:
       kind: theorem
       status: proved
       note: The conclusion of HeckeFunctionalEquationAt for an unramified character with one shift at all infinite places and any signs.
+    - name: Langlands.hilbertSamuelMultiplicity
+      kind: definition
+      status: proved
+      note: The Hilbert-Samuel multiplicity e(R) of a noetherian local ring, as the limit of d! l(R/m^n)/n^d when the limit exists in N.
+    - name: Langlands.isFiniteLength_quotient_maximalIdeal_pow
+      kind: theorem
+      status: proved
+      note: The quotient R/m^n of a noetherian local ring has finite length.
+    - name: Langlands.hilbertSamuelMultiplicity_of_isArtinianRing
+      kind: theorem
+      status: proved
+      note: For an artinian local ring, e(R) is the length of R.
+    - name: Langlands.hilbertSamuelMultiplicity_of_isDiscreteValuationRing
+      kind: theorem
+      status: proved
+      note: For a discrete valuation ring, e(R) = 1.
+    - name: Langlands.hilbertSamuelMultiplicity_powerSeries
+      kind: theorem
+      status: proved
+      note: For a field k, e(k[[x]]) = 1.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
