@@ -1006,6 +1006,34 @@ status:
       kind: theorem
       status: proved
       note: The Gauss coefficient vanishes when (beta) f J d is not prime to f.
+    - name: Langlands.LocalGL1.extChar_eq_zpow_of_unramified
+      kind: theorem
+      status: proved
+      note: An unramified character is chi(varpi)^ord on nonzero elements.
+    - name: Langlands.LocalGL1.zeta_indicator_oneAddBall_of_unramified
+      kind: theorem
+      status: proved
+      note: The zeta integral of the indicator of 1 + p^M is mu(p^M) for an unramified character.
+    - name: Langlands.LocalGL1.localFunctionalEquation_unramified_ordBall
+      kind: theorem
+      status: proved
+      note: The local functional equation for an unramified character and each ball around 0.
+    - name: Langlands.LocalGL1.localFunctionalEquation_unramified_oneAddBall
+      kind: theorem
+      status: proved
+      note: The local functional equation for an unramified character and the indicator of 1 + p^M.
+    - name: Langlands.LocalGL1.localFunctionalEquation_unramified_ballIndicator
+      kind: theorem
+      status: proved
+      note: The local functional equation for an unramified character and each translated ball.
+    - name: Langlands.LocalGL1.localFunctionalEquation_unramified_of_isLocallyConstant
+      kind: theorem
+      status: proved
+      note: Tate's local functional equation for an unramified character on each locally constant function with compact support.
+    - name: Langlands.LocalGL1.zeta_fourier_div_zeta_eq_of_unramified
+      kind: theorem
+      status: proved
+      note: The ratio of the two zeta integrals does not depend on the test function.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
