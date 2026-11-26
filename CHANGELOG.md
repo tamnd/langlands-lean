@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.25 (2026-11-26)
+
 ### Added
 
 - Tate's local functional equation for a ramified character on all locally constant functions with compact support, and the nonvanishing of the Gauss integral, in `Langlands.Local.GL1EpsilonRamified`.
