@@ -1118,6 +1118,26 @@ status:
       kind: theorem
       status: proved
       note: The irreducibility criterion for the principal series of GL(2): irreducible if and only if chi_1 chi_2^-1 is not |.|^(plus or minus 1).
+    - name: Langlands.selfDetLine
+      kind: definition
+      status: proved
+      note: The line of chi o det in the principal series Ind(chi, chi).
+    - name: Langlands.stable_eq_selfDetLine
+      kind: theorem
+      status: proved
+      note: Each proper nonzero stable subspace of Ind(chi, chi) is the line of chi o det.
+    - name: Langlands.steinbergQuotient_isIrreducible
+      kind: theorem
+      status: proved
+      note: The twisted Steinberg representation is irreducible.
+    - name: Langlands.normPrincipalSeries_isStableSubspace_iff
+      kind: theorem
+      status: proved
+      note: The stable subspaces of the reducible principal series are 0, the line of chi o det and the whole space.
+    - name: Langlands.normPrincipalSeries_existsUnique_stable
+      kind: theorem
+      status: proved
+      note: The reducible principal series with chi_2 = chi_1 |.| has length 2.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

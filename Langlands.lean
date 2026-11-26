@@ -100,6 +100,7 @@ import Langlands.Tate.RayClassGaussEval
 import Langlands.Smooth.ReducibleCase
 import Langlands.Tate.RayClassGaussNorm
 import Langlands.Smooth.ReducibleQuotient
+import Langlands.Smooth.Steinberg
 
 /-!
 # The Langlands program in Lean
