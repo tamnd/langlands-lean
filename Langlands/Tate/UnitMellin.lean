@@ -214,6 +214,7 @@ theorem volume_pi_fintype_congr {ι : Type*} (i₁ i₂ : Fintype ι) :
   rfl
 
 variable (K) in
+set_option maxHeartbeats 800000 in
 theorem measurePreserving_unitCoord : MeasurePreserving (unitCoord K) := by
   refine (volume_preserving_piEquivPiSubtypeProd (fun _ : InfinitePlace K => ℝ)
     (· = (w₀ : InfinitePlace K))).trans ?_
