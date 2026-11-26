@@ -986,6 +986,26 @@ status:
       kind: theorem
       status: proved
       note: The Gauss integral of a ramified character is not zero.
+    - name: Langlands.Tate.IsRayClassType.exists_idealChar_ne_one_of_mem
+      kind: theorem
+      status: proved
+      note: At a ramified prime p there is an integer u = 1 mod f p^-1, prime to f, with chi((u)) not 1.
+    - name: Langlands.Tate.rayGaussCoeff_add_of_mem_dual
+      kind: theorem
+      status: proved
+      note: The ray class Gauss coefficient is periodic for the dual of J.
+    - name: Langlands.Tate.inv_dual_eq_mul_differentIdeal
+      kind: theorem
+      status: proved
+      note: The inverse of the dual of fJ is fJ times the different.
+    - name: Langlands.Tate.IsRayClassType.rayGaussCoeff_eq_zero_of_mem
+      kind: theorem
+      status: proved
+      note: The Gauss coefficient vanishes at beta in p times the dual of fJ, for a ramified p.
+    - name: Langlands.Tate.IsRayClassType.rayGaussCoeff_eq_zero
+      kind: theorem
+      status: proved
+      note: The Gauss coefficient vanishes when (beta) f J d is not prime to f.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
