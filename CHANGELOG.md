@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Add Langlands/Deformation/Framed.lean: framed deformation functors, universal framed deformation rings, the quotients by sets of points and the multiplicity of the special fiber.
+
 ## v0.1.35 (2026-11-27)
 
 ### Added
