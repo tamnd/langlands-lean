@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Fixed
+
+- BreuilMezardTypes.lean: rename SmoothRep.IsIrreducible.of_iso to SmoothRep.Iso.isIrreducible. The old name is also declared in Smooth/Classification.lean, and the main build failed on the duplicate.
+
 ### Changed
 
 - The docstrings of RamanujanGL, FunctorialityGL and ReciprocityGL now state the facts found by the F5 round trip. The statements are not changed.
