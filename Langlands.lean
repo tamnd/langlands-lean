@@ -180,6 +180,7 @@ import Langlands.Local.IntertwiningNormalizer
 import Langlands.Local.GL2Reduction
 import Langlands.Local.GL2NonSupercuspidal
 import Langlands.Local.GL2TameTypes
+import Langlands.Local.CIndSupercuspidal
 
 /-!
 # The Langlands program in Lean

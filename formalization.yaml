@@ -3134,6 +3134,42 @@ status:
       kind: theorem
       status: proved-mod
       note: 'proved-mod: the input tame of GL2OddInputs from TameTypeInputs.'
+    - name: Langlands.isSupercuspidal_cInd_of_isAdmissible
+      kind: theorem
+      status: proved
+      note: 'An admissible c-Ind_J Lambda with J compact modulo the centre is supercuspidal.'
+    - name: Langlands.exists_finset_of_finiteDimensional
+      kind: theorem
+      status: proved
+      note: 'If the K''-fixed vectors of c-Ind are finite-dimensional, the double cosets that carry a fixed vector are finite in number.'
+    - name: Langlands.LocalGL2.exists_isCompact_isOpen_le
+      kind: theorem
+      status: proved
+      note: 'Each open subgroup of GL_2(K) contains a compact open subgroup.'
+    - name: Langlands.LocalGL2.isSupercuspidal_cInd_of_isAdmissible
+      kind: theorem
+      status: proved
+      note: 'An admissible c-Ind_J Lambda of GL_2(K) is supercuspidal.'
+    - name: Langlands.LocalGL2.exists_compact_coeff_cInd
+      kind: theorem
+      status: proved
+      note: 'The coefficient of the basic vector of c-Ind is nonzero and has support compact modulo the centre.'
+    - name: Langlands.LocalGL2.CompactCoeffAdmissible
+      kind: def
+      status: known
+      note: 'known: BH section 10, Jacquet, Bernstein. An irreducible smooth representation of GL_2(K) with a nonzero coefficient compactly supported modulo the centre is admissible.'
+    - name: Langlands.LocalGL2.isAdmissible_cInd
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: c-Ind_J Lambda is admissible, from CompactCoeffAdmissible.'
+    - name: Langlands.LocalGL2.cIndSupercuspidal_of_compactCoeffAdmissible
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: CIndSupercuspidal from CompactCoeffAdmissible.'
+    - name: Langlands.LocalGL1.exists_isConductor_neg_one
+      kind: theorem
+      status: proved
+      note: 'Each non-archimedean local field has an additive character of level one.'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

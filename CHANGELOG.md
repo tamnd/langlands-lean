@@ -6,6 +6,7 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The supercuspidality of an admissible c-Ind of a cuspidal type, its admissibility from one named input, and an additive character of level one.
 - The tame parametrization for GL(2), p odd, from cuspidal types and five named inputs.
 - The classification of reducible 2-dimensional Weil-Deligne representations, and the non-supercuspidal part of the local Langlands correspondence for GL(2) from eight named inputs.
 - The reduction of the local Langlands correspondence for GL(2), p odd, to six named inputs: the Artin map compatibilities, the two tame parametrizations, the rectifier, the supercuspidal L-factor and the non-supercuspidal part.
