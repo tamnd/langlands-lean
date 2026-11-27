@@ -165,7 +165,7 @@ theorem exists_zpow_inv_mul_mem_unitsFilt (hv : IsAdapted A v) (m : ℕ) {g : GL
   have hw0 : embGL v w ∈ unitsFilt F A 0 :=
     (hv.embGL_mem_unitsFilt_iff 0 w).2 (mem_unitFilt_zero_of_ord (ord_mul_unif_zpow y))
   have e : (embGL v (unif E ^ ord E (y : E)))⁻¹ * g = embGL v w * ((embGL v y)⁻¹ * g) := by
-    rw [hw, mul_comm y, map_mul, map_zpow, map_zpow, zpow_neg]
+    rw [hw, mul_comm y, map_mul, map_zpow, map_zpow, _root_.zpow_neg]
     group
   rw [e]
   exact (unitsFilt F A 0).mul_mem hw0 (unitsFilt_anti (Nat.zero_le m) hy)
@@ -219,7 +219,7 @@ theorem finiteIndex_jGroup (hv : IsAdapted A v) (m : ℕ) :
   have h3 : ∀ k : ℤ, (ϖ ^ (k % e))⁻¹ * ϖ ^ k ∈ H := by
     intro k
     have e2 : ϖ ^ k = ϖ ^ (k % e) * (ϖ ^ e) ^ (k / e) := by
-      rw [← zpow_mul, ← zpow_add, Int.emod_add_mul_ediv]
+      rw [← _root_.zpow_mul, ← _root_.zpow_add, Int.emod_add_mul_ediv]
     rw [e2, inv_mul_cancel_left]
     exact H.zpow_mem h2 _
   let f : Fin e.toNat → J ⧸ H := fun r => ((ϖ ^ ((r : ℕ) : ℤ) : J) : J ⧸ H)
