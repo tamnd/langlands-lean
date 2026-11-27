@@ -144,6 +144,7 @@ import Langlands.Groups.ChevalleySteinberg
 import Langlands.Padic.Semistable
 import Langlands.Local.BreuilMezardTypes
 import Langlands.Groups.SplitReductive
+import Langlands.Local.LanglandsFamilyPairs
 
 /-!
 # The Langlands program in Lean

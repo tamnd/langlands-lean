@@ -1962,6 +1962,30 @@ status:
       kind: definition
       status: proved
       note: for a split datum the L-group of the torus is the direct product
+    - name: Langlands.isSemisimple_kronMat
+      kind: theorem
+      status: proved
+      note: the Kronecker product of two semisimple matrices is semisimple
+    - name: Langlands.IsLanglandsFamilyPairs.isLanglandsFamily
+      kind: theorem
+      status: proved
+      note: the conditions with the factors of pairs imply the old conditions
+    - name: Langlands.LocalLanglandsGLFull.localLanglandsGL
+      kind: theorem
+      status: proved
+      note: the full statement of the local Langlands correspondence implies LocalLanglandsGL
+    - name: Langlands.isRSLFactor_tensor_wdOfChar
+      kind: theorem
+      status: proved
+      note: the condition on the L-factors of pairs holds for GL_1 times GL_1
+    - name: Langlands.isTateEpsilon_tensor
+      kind: theorem
+      status: proved
+      note: the epsilon factor of a tensor product of characters is Tate's epsilon factor of the product
+    - name: Langlands.LocalLanglandsGLFull
+      kind: statement
+      status: known
+      note: the local Langlands correspondence for GL_n with the L-factors and epsilon factors of pairs
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
