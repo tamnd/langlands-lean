@@ -2002,6 +2002,46 @@ status:
       kind: theorem
       status: proved
       note: Brauer-Nesbitt for the ring of integers of a finite extension of Q_p
+    - name: Langlands.Groups.Pinned.pinnedAut
+      kind: def
+      status: proved
+      note: an automorphism of the based root system gives a Lie algebra automorphism that keeps the Chevalley pinning
+    - name: Langlands.Groups.Pinned.adjointAction
+      kind: def
+      status: proved
+      note: the action of the based root system automorphisms on the adjoint Chevalley group, with the images of the simple root elements and the torus
+    - name: Langlands.Groups.LGroup.PinnedLGroup
+      kind: def
+      status: proved
+      note: the L-group of a quasi-split group with adjoint dual group, the semidirect product of the dual group with the Galois group through the pinning
+    - name: Langlands.Groups.LGroup.IsDualPinning.unique
+      kind: theorem
+      status: proved
+      note: the pinned Galois action that matches the dual root datum is unique
+    - name: Langlands.Groups.LGroup.lGroupEquivProdOfIsSplit
+      kind: def
+      status: proved
+      note: for a split group the L-group is the direct product of the dual group and the Galois group
+    - name: Langlands.Groups.Unitary.theta_theta
+      kind: theorem
+      status: proved
+      note: the outer involution of GL_n is an involution
+    - name: Langlands.Groups.Unitary.map_theta_upperBorel
+      kind: theorem
+      status: proved
+      note: the outer involution of GL_n keeps the upper triangular Borel subgroup
+    - name: Langlands.Groups.Unitary.unitaryDatum_isSplit_iff
+      kind: theorem
+      status: proved
+      note: the quasi-split datum of U(n) is split exactly when the quadratic character is trivial
+    - name: Langlands.Groups.Unitary.unitaryAction_torusHom
+      kind: theorem
+      status: proved
+      note: the Galois action of the L-group of U(n) on the diagonal torus matches the dual root datum
+    - name: Langlands.Groups.Unitary.unitaryAction_rootElement
+      kind: theorem
+      status: proved
+      note: the Galois action of the L-group of U(n) on the simple root elements matches the dual root datum
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
