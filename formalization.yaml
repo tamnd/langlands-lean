@@ -1722,6 +1722,22 @@ status:
       kind: theorem
       status: proved
       note: The trivial representation is de Rham if B_dR(O_Cp) is not zero.
+    - name: Langlands.IsHilbertSerrePair.exists_fwdDiff_iter_eq_zero
+      kind: theorem
+      status: proved
+      note: The Hilbert-Serre theorem for a pair of filtrations: a finite difference of the length function is eventually zero.
+    - name: Langlands.exists_hilbertSamuelPoly
+      kind: theorem
+      status: proved
+      note: The length of R/m^n is eventually a polynomial in n of degree dim R.
+    - name: Langlands.natDegree_eq_height_toNat
+      kind: theorem
+      status: proved
+      note: The degree of the Hilbert-Samuel polynomial is the Krull dimension.
+    - name: Langlands.hasHilbertSamuelMultiplicity_hilbertSamuelMultiplicity
+      kind: theorem
+      status: proved
+      note: For a noetherian local ring, the Hilbert-Samuel limit exists and e(R) >= 1.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

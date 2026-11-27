@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The Hilbert-Samuel polynomial of a noetherian local ring, its degree dim R, and the existence of the multiplicity e(R) >= 1.
+
 - The Q_p-algebra structure on B_dR, the Galois action on the ring of integers of C_p, and de Rham representations of the absolute Galois group of Q_p.
 
 - Hecke's functional equation for ramified characters of a general number field with one shift and one sign, and for every character of a field with one infinite place.
