@@ -1902,6 +1902,22 @@ status:
       kind: theorem
       status: proved
       note: the Chevalley commutator formula when only alpha plus beta is a root in the alpha string
+    - name: Langlands.Padic.epsCp_ne_one
+      kind: theorem
+      status: proved
+      note: the element epsilon of the tilt of O_Cp is not one
+    - name: Langlands.Padic.smul_logTeich
+      kind: theorem
+      status: proved
+      note: the Galois action commutes with log of a Teichmuller element
+    - name: Langlands.Padic.acrisFrob_logTeich
+      kind: theorem
+      status: proved
+      note: the Frobenius sends log[epsilon] to log[epsilon^p]
+    - name: Langlands.Padic.kummerFlat_mul
+      kind: theorem
+      status: proved
+      note: the Kummer elements satisfy the cocycle relation
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
