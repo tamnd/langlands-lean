@@ -136,7 +136,7 @@ theorem conductor_inv (χ : HeckeCharacter K) : χ⁻¹.conductor = χ.conductor
 theorem conductorExponent_eq_zero_iff (χ : HeckeCharacter K) (v : HeightOneSpectrum (𝓞 K)) :
     χ.conductorExponent v = 0 ↔ χ.IsUnramifiedAt v := by
   refine ⟨fun h => ?_, fun h => Nat.sInf_eq_zero.mpr (Or.inl h)⟩
-  have := Nat.sInf_mem (NonArchimedean.exists_isTrivialOnHigherUnits v χ)
+  have := Nat.sInf_mem (s := {m | χ.IsTrivialOnHigherUnits v m}) (NonArchimedean.exists_isTrivialOnHigherUnits v χ)
   change χ.IsTrivialOnHigherUnits v (χ.conductorExponent v) at this
   rwa [h] at this
 
@@ -364,7 +364,7 @@ theorem IsRayClassType.idealChar_toPrincipalIdeal (hχ : IsRayClassType χ) (x :
     by_cases hv : v ∈ ramifiedSet χ
     · rw [hcount v hv, zpow_zero]
       have ht : χ.IsTrivialOnHigherUnits v (χ.conductorExponent v) :=
-        Nat.sInf_mem (NonArchimedean.exists_isTrivialOnHigherUnits v χ)
+        Nat.sInf_mem (s := {m | χ.IsTrivialOnHigherUnits v m}) (NonArchimedean.exists_isTrivialOnHigherUnits v χ)
       refine (ht _ (hunit v hv) ?_).symm
       rw [ideleFin_unitEmbedding]
       exact hx v hv
@@ -462,7 +462,7 @@ theorem hasSum_supportedIn_of_norm_le (f : (Ideal (𝓞 K))⁰ →* ℂ) {s : �
     have hg := hasSum_geometric_of_norm_lt_one (hp v)
     have hgn : Summable (fun n : ℕ => ‖f (primeNZ v) ^ n‖) :=
       (summable_geometric_of_lt_one (norm_nonneg _) (hp v)).congr fun n => (norm_pow _ _).symm
-    have hJn : Summable (fun J : supportedIn K S => ‖f J‖) := hsum.subtype (supportedIn K S)
+    have hJn : Summable (fun J : supportedIn K S => ‖f J‖) := hsum.comp_injective Subtype.coe_injective
     have hfg : Summable (fun p : ℕ × supportedIn K S => f (primeNZ v) ^ p.1 * f p.2) :=
       summable_mul_of_summable_norm (f := fun n : ℕ => f (primeNZ v) ^ n)
         (g := fun J : supportedIn K S => f J) hgn hJn

@@ -15,8 +15,7 @@ public import Mathlib.RingTheory.DedekindDomain.Factorization
 /-!
 # Prime factorization of fractional ideals over a Dedekind domain
 
-The standard fractional-ideal unit group is identified with finitely
-supported integer exponents. The inverse is the prime-count vector itself.
+The standard fractional-ideal unit group is identified with finitely supported integer exponents. The inverse is the prime-count vector itself.
 -/
 
 @[expose] public section
@@ -40,15 +39,13 @@ noncomputable def prime (v : HeightOneSpectrum R) :
   Units.mk0 (v.asIdeal : FractionalIdeal R⁰ F)
     (FractionalIdeal.coeIdeal_ne_zero.mpr v.ne_bot)
 
-/-- The homomorphism sending an integer exponent to the corresponding
-power of a finite prime. -/
+/-- The homomorphism sending an integer exponent to the corresponding power of a finite prime. -/
 noncomputable def primePowerHom (v : HeightOneSpectrum R) :
     Multiplicative ℤ →* (FractionalIdeal R⁰ F)ˣ :=
   MonoidHom.mk' (fun n => prime v ^ n.toAdd) fun m n => by
     simp only [toAdd_mul, zpow_add]
 
-/-- Reconstruct a fractional ideal from its finitely supported vector
-of prime exponents. -/
+/-- Reconstruct a fractional ideal from its finitely supported vector of prime exponents. -/
 noncomputable def factorization :
     Multiplicative (HeightOneSpectrum R →₀ ℤ) →*
       (FractionalIdeal R⁰ F)ˣ :=
@@ -83,7 +80,7 @@ theorem count_coeIdeal_eq_multiplicity (v : HeightOneSpectrum R) {I : Ideal R}
     (hI : I ≠ ⊥) :
     FractionalIdeal.count F v (I : FractionalIdeal R⁰ F) = (multiplicity v.asIdeal I : ℤ) := by
   classical
-  rw [FractionalIdeal.count_coe F v hI,
+  rw [FractionalIdeal.count_coeIdeal F v hI,
     Ideal.count_associates_factors_eq hI v.isPrime v.ne_bot,
     v.count_normalizedFactors_eq_multiplicity hI]
 
@@ -94,8 +91,7 @@ theorem multiplicity_ne_zero_iff_le (v : HeightOneSpectrum R) {I : Ideal R} (hI 
   rw [pow_one, Ideal.dvd_iff_le, Nat.one_le_iff_ne_zero] at h
   exact h.symm
 
-/-- The finitely supported vector of prime exponents of a nonzero
-fractional ideal. -/
+/-- The finitely supported vector of prime exponents of a nonzero fractional ideal. -/
 noncomputable def countVector (I : (FractionalIdeal R⁰ F)ˣ) :
     HeightOneSpectrum R →₀ ℤ :=
   Finsupp.onFinset (finite_count_support I).toFinset
@@ -164,8 +160,7 @@ theorem factorization_surjective :
       (I : FractionalIdeal R⁰ F)
   exact countVector_apply I v
 
-/-- Multiplicative unique factorization of nonzero fractional ideals by
-finite primes. -/
+/-- Multiplicative unique factorization of nonzero fractional ideals by finite primes. -/
 noncomputable def factorizationEquiv :
     Multiplicative (HeightOneSpectrum R →₀ ℤ) ≃*
       (FractionalIdeal R⁰ F)ˣ :=

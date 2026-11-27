@@ -149,11 +149,13 @@ open MvPolynomial TensorProduct
 variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {G : Type*} [Group G]
   {C : Type*} [Field C] [Algebra O C] [IsFractionRing O C]
 
-omit [IsDomain O] [IsDiscreteValuationRing O] [IsFractionRing O C] in
+omit [IsDiscreteValuationRing O] in
 /-- The image of $O$ in its fraction field $C$ is a stable lattice of the trivial representation. -/
 theorem isStableLattice_range_trivial :
     IsStableLattice (Representation.trivial C G C) (LinearMap.range (Algebra.linearMap O C)) := by
-  refine ⟨⟨LinearMap.range_eq_map (Algebra.linearMap O C) ▸ (Module.Finite.fg_top (R := O) (M := O)).map _, ?_⟩, fun g v hv => hv⟩
+  have hfg : (LinearMap.range (Algebra.linearMap O C)).FG :=
+    LinearMap.range_eq_map (Algebra.linearMap O C) ▸ (Module.Finite.fg_top (R := O) (M := O)).map _
+  refine ⟨{ toIsLattice := Submodule.IsLattice.of_fg C hfg, span_eq_top := ?_ }, fun g v hv => hv⟩
   rw [eq_top_iff]
   intro x _
   have h1 : (1 : C) ∈ Submodule.span C (LinearMap.range (Algebra.linearMap O C) : Set C) :=

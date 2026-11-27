@@ -8,14 +8,12 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 module
 
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Completion.ExtensionIndex
-public import Mathlib.RingTheory.DedekindDomain.AdicValuation
+public import Mathlib.RingTheory.DedekindDomain.AdicValuation.Ramification
 
 /-!
 # The canonical map between adic completions
 
-A finite place above a base finite place determines the continuous
-extension of the number-field algebra map to their concrete adic
-completions.
+A finite place above a base finite place determines the continuous extension of the number-field algebra map to their concrete adic completions.
 -/
 
 
@@ -34,9 +32,7 @@ variable
     [Field K] [NumberField K]
     [Field L] [NumberField L] [Algebra K L]
 
-/-- The canonical map between adic completions at a finite place and a
-chosen place above it.  It is obtained by completing the algebra map
-between the corresponding valued copies of the number fields. -/
+/-- The canonical map between adic completions at a finite place and a chosen place above it.  It is obtained by completing the algebra map between the corresponding valued copies of the number fields. -/
 noncomputable def finitePlaceAdicCompletionMap
     (w : HeightOneSpectrum (𝓞 K))
     (W : {W : HeightOneSpectrum (𝓞 L) //
@@ -55,8 +51,7 @@ noncomputable def finitePlaceAdicCompletionMap
           K L w W.1).continuous).comp
         (HeightOneSpectrum.adicCompletion.equiv K w).toRingHom)
 
-/-- On the dense copy of the base field, the canonical map of adic
-completions is the original field embedding. -/
+/-- On the dense copy of the base field, the canonical map of adic completions is the original field embedding. -/
 theorem finitePlaceAdicCompletionMap_coe
     (w : HeightOneSpectrum (𝓞 K))
     (W : {W : HeightOneSpectrum (𝓞 L) //
@@ -95,8 +90,7 @@ theorem finitePlaceAdicCompletionMap_coe
           (W.1.valuation L).Completion)
   rw [UniformSpace.Completion.mapRingHom_coe]
 
-/-- The canonical map of adic completions is compatible with the original
-number-field tower. -/
+/-- The canonical map of adic completions is compatible with the original number-field tower. -/
 theorem finitePlaceAdicCompletionMap_isScalarTower
     (w : HeightOneSpectrum (𝓞 K))
     (W : {W : HeightOneSpectrum (𝓞 L) //
@@ -129,8 +123,7 @@ theorem finitePlaceAdicCompletionMap_continuous
       (UniformSpace.Completion.continuous_map.comp
         (HeightOneSpectrum.adicCompletion.continuous_toCompletion K w))
 
-/-- The canonical map on a finite-place adic completion induced by the
-identity field extension is the identity map. -/
+/-- The canonical map on a finite-place adic completion induced by the identity field extension is the identity map. -/
 @[simp]
 theorem finitePlaceAdicCompletionMap_self_apply
     (W : HeightOneSpectrum (𝓞 K))
@@ -162,8 +155,7 @@ theorem finitePlaceAdicCompletionMap_self_apply
       K K W ⟨W, finitePlaceBelow_self W⟩ k]
     rfl
 
-/-- Canonical maps between concrete adic completions compose in a
-number-field tower. -/
+/-- Canonical maps between concrete adic completions compose in a number-field tower. -/
 theorem finitePlaceAdicCompletionMap_comp
     {M : Type w}
     [Field M] [NumberField M]

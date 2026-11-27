@@ -12,9 +12,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Adele
 /-!
 # Inclusion of ordinary adeles under a field extension
 
-The map is the scalar inclusion into the relative adele algebra followed by
-the existing ring base-change equivalence. Its component and diagonal values
-are inherited from that equivalence.
+The map is the scalar inclusion into the relative adele algebra followed by the existing ring base-change equivalence. Its component and diagonal values are inherited from that equivalence.
 -/
 
 @[expose] public section
@@ -69,7 +67,7 @@ theorem fieldInclusion_infinite (a : AdeleRing (𝓞 K) K) (W : InfinitePlace L)
     let v := infinitePlaceBelow (K := K) W
     let : W.1.LiesOver v.1 := ⟨rfl⟩
     (fieldInclusion K L a).1 W =
-      InfinitePlace.Completion.absMap v W (a.1 v) := by
+      AbsoluteValue.Completion.map v.1 W.1 (a.1 v) := by
   intro v sharedOwner
   rw [fieldInclusion_apply, relativeAdeleBaseChangeRingEquiv_infiniteComponent_tmul,
     map_one, mul_one]

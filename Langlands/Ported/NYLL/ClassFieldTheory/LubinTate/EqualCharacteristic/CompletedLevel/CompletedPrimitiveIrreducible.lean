@@ -16,11 +16,7 @@ public import Mathlib.RingTheory.PowerSeries.Ideal
 /-!
 # The completed theta-intertwining theorem: irreducibility after completed unramified base change
 
-The primitive Lubin--Tate polynomial remains Eisenstein after replacing the
-finite residue field `κ` by its algebraic closure.  Consequently it remains
-irreducible over `(AlgebraicClosure κ)((T))`.  This is the algebraic input
-needed to prescribe the image of a primitive point when arithmetic Frobenius
-is extended to the completed level field.
+The primitive Lubin--Tate polynomial remains Eisenstein after replacing the finite residue field `κ` by its algebraic closure.  Consequently it remains irreducible over `(AlgebraicClosure κ)((T))`.  This is the algebraic input needed to prescribe the image of a primitive point when arithmetic Frobenius is extended to the completed level field.
 -/
 
 
@@ -43,8 +39,7 @@ variable {K : Type u} [Field K]
 
 attribute [local instance] equalCharacteristicCompletedLevelBaseAlgebra
 
-/-- Coefficientwise extension of the integral primitive polynomial from
-`κ[[T]]` to `(AlgebraicClosure κ)[[T]]`. -/
+/-- Coefficientwise extension of the integral primitive polynomial from `κ[[T]]` to `(AlgebraicClosure κ)[[T]]`. -/
 noncomputable def equalCharacteristicCompletedIntegralPrimitivePolynomial
     (F : LocalField.{u, v} K) (n : ℕ) :
     Polynomial (AlgebraicClosure F.residueField)⟦X⟧ :=
@@ -67,8 +62,7 @@ theorem equalCharacteristicCompletedIntegralPrimitivePolynomial_natDegree
     (equalCharacteristicLubinTateIntegralPrimitivePolynomial_monic F n).natDegree_map,
     equalCharacteristicLubinTateIntegralPrimitivePolynomial_natDegree]
 
-/-- The power-series coefficient map commutes with passage to Laurent
-series. -/
+/-- The power-series coefficient map commutes with passage to Laurent series. -/
 theorem equalCharacteristicPowerSeriesLaurent_baseChange_commutes
     (F : LocalField.{u, v} K) :
     (algebraMap (AlgebraicClosure F.residueField)⟦X⟧
@@ -93,8 +87,7 @@ theorem equalCharacteristicPowerSeriesLaurent_baseChange_commutes
       rw [PowerSeries.coeff_coe, PowerSeries.coeff_coe]
       simp only [Int.negSucc_lt_zero, ite_true, map_zero]
 
-/-- Passing the integral polynomial to the Laurent fraction field gives
-exactly the completed primitive polynomial. -/
+/-- Passing the integral polynomial to the Laurent fraction field gives exactly the completed primitive polynomial. -/
 theorem equalCharacteristicCompletedIntegralPrimitivePolynomial_map
     (F : LocalField.{u, v} K) (n : ℕ) :
     (equalCharacteristicCompletedIntegralPrimitivePolynomial F n).map
@@ -155,7 +148,7 @@ theorem equalCharacteristicCompletedIntegralPrimitivePolynomial_isEisensteinAt
   have hmonic : Q.Monic :=
     equalCharacteristicCompletedIntegralPrimitivePolynomial_monic F n
   refine hmonic.isEisensteinAt_of_mem_of_notMem
-    (Ideal.isPrime_span_singleton_of_prime PowerSeries.X_prime).ne_top ?_ ?_
+    (Ideal.isPrime_span_singleton_of_prime PowerSeries.prime_X).ne_top ?_ ?_
   · intro i hi
     rw [Ideal.mem_span_singleton, PowerSeries.X_dvd_iff]
     have hcoeff :
@@ -182,7 +175,7 @@ theorem equalCharacteristicCompletedIntegralPrimitivePolynomial_irreducible
     Irreducible (equalCharacteristicCompletedIntegralPrimitivePolynomial F n) := by
   apply
     (equalCharacteristicCompletedIntegralPrimitivePolynomial_isEisensteinAt F n).irreducible
-      (Ideal.isPrime_span_singleton_of_prime PowerSeries.X_prime)
+      (Ideal.isPrime_span_singleton_of_prime PowerSeries.prime_X)
       (equalCharacteristicCompletedIntegralPrimitivePolynomial_monic F n).isPrimitive
   rw [equalCharacteristicCompletedIntegralPrimitivePolynomial_natDegree]
   exact Nat.mul_pos
@@ -190,8 +183,7 @@ theorem equalCharacteristicCompletedIntegralPrimitivePolynomial_irreducible
       (Finite.one_lt_card : 1 < Nat.card F.residueField))
     (Nat.pow_pos Nat.card_pos)
 
-/-- The primitive polynomial remains irreducible over the completed maximal
-unramified Laurent field. -/
+/-- The primitive polynomial remains irreducible over the completed maximal unramified Laurent field. -/
 theorem equalCharacteristicCompletedPrimitivePolynomial_irreducible
     (F : LocalField.{u, v} K) (n : ℕ) :
     Irreducible (equalCharacteristicCompletedPrimitivePolynomial F n) := by

@@ -15,12 +15,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AbstractClassFieldTheory.Re
 /-!
 # Finite abelian classification by norm subgroups
 
-The first paragraph of the finite classification proof uses the two restriction maps
-from the Galois group of a compositum.  This file constructs those maps on
-the actual finite quotients and proves that they are jointly injective.
-This is the group-theoretic source of the implication that a reciprocity
-class which restricts trivially to both subextensions is already trivial on
-their compositum.
+The first paragraph of the finite classification proof uses the two restriction maps from the Galois group of a compositum.  This file constructs those maps on the actual finite quotients and proves that they are jointly injective. This is the group-theoretic source of the implication that a reciprocity class which restricts trivially to both subextensions is already trivial on their compositum.
 -/
 
 
@@ -53,22 +48,17 @@ local instance representedQuotient_finite
     Finite (K.toSubgroup ⧸ extensionSubgroup K L.field L.below) :=
   L.finite
 
-/-- Additive subgroups which are open for the explicitly declared norm
-topology.  The topology is part of the predicate, so no ambient topology
-instance is changed outside the finite abelian classification theorem. -/
+/-- Additive subgroups which are open for the explicitly declared norm topology.  The topology is part of the predicate, so no ambient topology instance is changed outside the finite abelian classification theorem. -/
 def NormOpenAddSubgroup (A : Rep.{v} ℤ G) (K : ClosedSubgroup G) :=
   {H : AddSubgroup (ambientFixedAddSubgroup A K) //
     IsNormOpen A K (H : Set (ambientFixedAddSubgroup A K))}
 
-/-- Norm-open subgroups inherit the literal inclusion order of their
-underlying additive subgroups.  This instance is stated explicitly because
-`NormOpenAddSubgroup` is an opaque boundary type, not a transparent alias. -/
+/-- Norm-open subgroups inherit the literal inclusion order of their underlying additive subgroups.  This instance is stated explicitly because `NormOpenAddSubgroup` is an opaque boundary type, not a transparent alias. -/
 instance normOpenAddSubgroupPartialOrder (A : Rep.{v} ℤ G)
     (K : ClosedSubgroup G) : PartialOrder (NormOpenAddSubgroup A K) :=
   PartialOrder.lift (fun H => H.1) (fun _ _ h => Subtype.ext h)
 
-/-- The actual map in the finite abelian classification theorem, `L ↦ N_{L/K} A_L`, with openness
-carried by the codomain rather than assumed. -/
+/-- The actual map in the finite abelian classification theorem, `L ↦ N_{L/K} A_L`, with openness carried by the codomain rather than assumed. -/
 def normSubgroupMap (A : Rep.{v} ℤ G)
     (L : FiniteAbelianSubextension K) : NormOpenAddSubgroup A K := by
   refine ⟨L.normSubgroup A, ?_⟩
@@ -84,9 +74,7 @@ theorem normSubgroupMap_val
     (L.normSubgroupMap A).1 = L.normSubgroup A :=
   rfl
 
-/-- The subgroup product `N_{L₁}N_{L₂}` (a supremum in additive
-notation) is open in the norm topology.  It contains the defining norm
-neighbourhood attached to `L₁`. -/
+/-- The subgroup product `N_{L₁}N_{L₂}` (a supremum in additive notation) is open in the norm topology.  It contains the defining norm neighbourhood attached to `L₁`. -/
 theorem sup_normSubgroup_isOpen (A : Rep.{v} ℤ G)
     (L₁ L₂ : FiniteAbelianSubextension K) :
     IsNormOpen A K
@@ -99,9 +87,7 @@ theorem sup_normSubgroup_isOpen (A : Rep.{v} ℤ G)
   change L₁.normSubgroup A ≤ L₁.normSubgroup A ⊔ L₂.normSubgroup A
   exact le_sup_left
 
-/-- The finite classification compositum argument, isolated as a private diagram chase.
-The final public theorem supplies the three bijectivity facts directly from
-finite reciprocity; they are not exposed as hypotheses of the classification.
+/-- The finite classification compositum argument, isolated as a private diagram chase. The final public theorem supplies the three bijectivity facts directly from finite reciprocity; they are not exposed as hypotheses of the classification.
 -/
 private theorem normSubgroup_compositum_eq_inf_of_reciprocity_bijective
     [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
@@ -240,9 +226,7 @@ private theorem normSubgroup_compositum_eq_inf_of_reciprocity_bijective
     change a ∈ finiteNormSubgroup A K.field P.field P.below
     exact (finiteNormClass_eq_zero_iff A K.field P.field P.below a).1 hz
 
-/-- Restriction along an inclusion of finite abelian subextensions.  The
-proof-dependent raw quotient map is transported through the two named
-quotient boundaries here and nowhere in its callers. -/
+/-- Restriction along an inclusion of finite abelian subextensions.  The proof-dependent raw quotient map is transported through the two named quotient boundaries here and nowhere in its callers. -/
 def restriction
     {G : Type*} [Group G] [TopologicalSpace G] {K : ClosedSubgroup G}
     {L₁ L₂ : FiniteAbelianSubextension K} (h₁₂ : L₁ ≤ L₂) :
@@ -253,8 +237,7 @@ def restriction
     ((abstractReciprocityRestriction K L₁.field L₂.field h₁₂ L₁.below).comp
       L₂.extensionQuotientMulEquiv.toMonoidHom)
 
-/--
-Establishes the identity `restriction h₁₂ (L₂.extensionQuotientMk k) = L₁.extensionQuotientMk k`.
+/-- Establishes the identity `restriction h₁₂ (L₂.extensionQuotientMk k) = L₁.extensionQuotientMk k`.
 -/
 @[simp]
 theorem restriction_mk
@@ -266,25 +249,21 @@ theorem restriction_mk
   apply L₁.extensionQuotientMulEquiv.injective
   simp [restriction]
 
-/-- Restriction from the actual Galois quotient of `L₁L₂ / K` to that of
-`L₁ / K`. -/
+/-- Restriction from the actual Galois quotient of `L₁L₂ / K` to that of `L₁ / K`. -/
 def compositumRestrictionLeft
     {G : Type*} [Group G] [TopologicalSpace G] {K : ClosedSubgroup G}
     (L₁ L₂ : FiniteAbelianSubextension K) :
     (L₁.compositum L₂).extensionQuotient →* L₁.extensionQuotient :=
   restriction (L₁.le_compositum_left L₂)
 
-/-- Restriction from the actual Galois quotient of `L₁L₂ / K` to that of
-`L₂ / K`. -/
+/-- Restriction from the actual Galois quotient of `L₁L₂ / K` to that of `L₂ / K`. -/
 def compositumRestrictionRight
     {G : Type*} [Group G] [TopologicalSpace G] {K : ClosedSubgroup G}
     (L₁ L₂ : FiniteAbelianSubextension K) :
     (L₁.compositum L₂).extensionQuotient →* L₂.extensionQuotient :=
   restriction (L₁.le_compositum_right L₂)
 
-/--
-Establishes the identity `compositumRestrictionLeft L₁ L₂ ((L₁.compositum L₂).extensionQuotientMk
-k) = L₁.extensionQuotientMk k`.
+/-- Establishes the identity `compositumRestrictionLeft L₁ L₂ ((L₁.compositum L₂).extensionQuotientMk k) = L₁.extensionQuotientMk k`.
 -/
 @[simp]
 theorem compositumRestrictionLeft_mk
@@ -295,9 +274,7 @@ theorem compositumRestrictionLeft_mk
       L₁.extensionQuotientMk k := by
   exact restriction_mk (L₁.le_compositum_left L₂) k
 
-/--
-Establishes the identity `compositumRestrictionRight L₁ L₂ ((L₁.compositum L₂).extensionQuotientMk
-k) = L₂.extensionQuotientMk k`.
+/-- Establishes the identity `compositumRestrictionRight L₁ L₂ ((L₁.compositum L₂).extensionQuotientMk k) = L₂.extensionQuotientMk k`.
 -/
 @[simp]
 theorem compositumRestrictionRight_mk
@@ -308,10 +285,7 @@ theorem compositumRestrictionRight_mk
       L₂.extensionQuotientMk k := by
   exact restriction_mk (L₁.le_compositum_right L₂) k
 
-/-- The two restriction maps from the Galois group of a compositum are
-jointly injective.  This is proved on the literal quotient representatives:
-an element trivial modulo both field subgroups lies in their intersection,
-which is the subgroup representing the compositum. -/
+/-- The two restriction maps from the Galois group of a compositum are jointly injective.  This is proved on the literal quotient representatives: an element trivial modulo both field subgroups lies in their intersection, which is the subgroup representing the compositum. -/
 theorem compositumRestriction_joint_injective
     {G : Type*} [Group G] [TopologicalSpace G] {K : ClosedSubgroup G}
     (L₁ L₂ : FiniteAbelianSubextension K) :
@@ -358,9 +332,7 @@ theorem compositumRestriction_joint_injective
     (mem_extensionSubgroup_iff K L₂.field L₂.below _).1
       (QuotientGroup.eq.mp hrightRaw)⟩
 
-/-- Equivalently, the kernels of the two restrictions have trivial
-intersection.  This is the literal group statement used in the first
-paragraph of the proof of the finite abelian classification theorem. -/
+/-- Equivalently, the kernels of the two restrictions have trivial intersection.  This is the literal group statement used in the first paragraph of the proof of the finite abelian classification theorem. -/
 theorem ker_compositumRestrictionLeft_inf_ker_compositumRestrictionRight
     {G : Type*} [Group G] [TopologicalSpace G] {K : ClosedSubgroup G}
     (L₁ L₂ : FiniteAbelianSubextension K) :
@@ -382,10 +354,7 @@ theorem ker_compositumRestrictionLeft_inf_ker_compositumRestrictionRight
 
 /-! ## Recovering a field from the order of its finite quotient -/
 
-/-- If one finite abelian extension is contained in another and their
-actual Galois quotients have the same finite cardinality, then the fields
-are equal.  This is the group-theoretic final step in the injectivity
-finite classification argument, where equality of cardinalities comes from finite reciprocity.
+/-- If one finite abelian extension is contained in another and their actual Galois quotients have the same finite cardinality, then the fields are equal.  This is the group-theoretic final step in the injectivity finite classification argument, where equality of cardinalities comes from finite reciprocity.
 -/
 theorem eq_of_le_of_extensionQuotient_card_eq
     {G : Type*} [Group G] [TopologicalSpace G] {K : ClosedSubgroup G}
@@ -421,9 +390,7 @@ theorem eq_of_le_of_extensionQuotient_card_eq
   exact (mem_extensionSubgroup_iff K L₂.field L₂.below k).1
     ((QuotientGroup.eq_one_iff k).1 hkOneRaw)
 
-/-- The order-reversing finite classification argument, kept private until the public
-the finite abelian classification theorem supplies the compositum formula and the two reciprocity
-bijectivities from finite reciprocity. -/
+/-- The order-reversing finite classification argument, kept private until the public the finite abelian classification theorem supplies the compositum formula and the two reciprocity bijectivities from finite reciprocity. -/
 private theorem le_iff_normSubgroup_le_of_compositum_and_reciprocity
     [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
     [TotallyDisconnectedSpace G]
@@ -490,8 +457,7 @@ private theorem le_iff_normSubgroup_le_of_compositum_and_reciprocity
     rw [hL₂P]
     exact le_compositum_left L₁ L₂
 
-/-- The final surjectivity step: surjectivity and order reversal turn
-the unconditional inclusion for an intersection field into equality. -/
+/-- The final surjectivity step: surjectivity and order reversal turn the unconditional inclusion for an intersection field into equality. -/
 private theorem normSubgroup_intersection_eq_sup_of_surjective_and_order
     [IsTopologicalGroup G] [CompactSpace G]
     (A : Rep.{v} ℤ G) (K : ClosedSubgroup G)
@@ -542,26 +508,24 @@ local instance classification_abelianExtension_finite
     Finite (K.toSubgroup ⧸ extensionSubgroup K M.field M.below) :=
   M.finite
 
-/-- The original finite Galois field lies below the abelian class-field
-candidate cut out inside it. -/
+/-- The original finite Galois field lies below the abelian class-field candidate cut out inside it. -/
 theorem classFieldCandidate_field_le
     (E : FiniteGaloisSubextension K) (A : Rep.{v} ℤ G)
     (H : AddSubgroup (ambientFixedAddSubgroup A K))
     (rE : FiniteNormQuotient A K E.field E.below ≃+
-      Additive (Abelianization E.extensionQuotient)) :
+      Additive (Group.Abelianization E.extensionQuotient)) :
     E.field.toSubgroup ≤
       (ClassFormation.FiniteGaloisSubextension.classFieldCandidate A E H rE).field.toSubgroup := by
   rw [classFieldCandidate_field A E H rE]
   exact E.field_le_intermediateField
     (reciprocityPreimageSubgroup A E H rE)
 
-/-- Restriction from `E/K` to its class-field candidate is trivial exactly
-on the pulled-back subgroup used to define that candidate. -/
+/-- Restriction from `E/K` to its class-field candidate is trivial exactly on the pulled-back subgroup used to define that candidate. -/
 theorem classFieldCandidate_restriction_eq_one_iff
     (E : FiniteGaloisSubextension K) (A : Rep.{v} ℤ G)
     (H : AddSubgroup (ambientFixedAddSubgroup A K))
     (rE : FiniteNormQuotient A K E.field E.below ≃+
-      Additive (Abelianization E.extensionQuotient))
+      Additive (Group.Abelianization E.extensionQuotient))
     (q : E.extensionQuotient) :
     abstractReciprocityRestriction K
         (ClassFormation.FiniteGaloisSubextension.classFieldCandidate A E H rE).field E.field
@@ -604,9 +568,7 @@ theorem classFieldCandidate_restriction_eq_one_iff
     apply (QuotientGroup.eq_one_iff k).2
     exact (mem_extensionSubgroup_iff K M.field M.below k).2 hkMfield
 
-/-- The finite classification surjectivity diagram chase.  The final public theorem feeds
-`rE` and its compatibility from finite reciprocity, so neither appears as an
-assumption of the classification endpoint. -/
+/-- The finite classification surjectivity diagram chase.  The final public theorem feeds `rE` and its compatibility from finite reciprocity, so neither appears as an assumption of the classification endpoint. -/
 private theorem classFieldCandidate_normSubgroup_eq_of_reciprocity
     [CompactSpace G] [T2Space G] [TotallyDisconnectedSpace G]
     (D : DegreeData G) (A : Rep.{v} ℤ G) (v : ValuationData D A)
@@ -616,9 +578,9 @@ private theorem classFieldCandidate_normSubgroup_eq_of_reciprocity
     (H : AddSubgroup (ambientFixedAddSubgroup A K.field))
     (hEH : ClassFormation.FiniteGaloisSubextension.normSubgroup A E ≤ H)
     (rE : FiniteNormQuotient A K.field E.field E.below ≃+
-      Additive (Abelianization E.extensionQuotient))
+      Additive (Group.Abelianization E.extensionQuotient))
     (hcompatE : ∀ q : E.extensionQuotient,
-      rE.symm (Additive.ofMul (Abelianization.of q)) =
+      rE.symm (Additive.ofMul (Group.Abelianization.of q)) =
         D.finiteReciprocityHom A v hAxiom K E.field E.below
           (Additive.ofMul q))
     (hbijM : Function.Bijective
@@ -647,11 +609,11 @@ private theorem classFieldCandidate_normSubgroup_eq_of_reciprocity
     reciprocityClass_mem_preimageSubgroup_iff A E H hEH rE a
   let zE : FiniteNormQuotient A K.field E.field E.below :=
     finiteNormClass A K.field E.field E.below a
-  let ab : Additive (Abelianization E.extensionQuotient) := rE zE
+  let ab : Additive (Group.Abelianization E.extensionQuotient) := rE zE
   let q : E.extensionQuotient := Quotient.out ab.toMul
   let zM : FiniteNormQuotient A K.field M.field M.below :=
     finiteNormClass A K.field M.field M.below a
-  have hab : Additive.ofMul (Abelianization.of q) = ab := by
+  have hab : Additive.ofMul (Group.Abelianization.of q) = ab := by
     apply Additive.ext
     exact Quotient.out_eq' ab.toMul
   have hrecE :
@@ -719,10 +681,7 @@ private theorem classFieldCandidate_normSubgroup_eq_of_reciprocity
         _ = 0 := map_zero _
     exact (finiteNormClass_eq_zero_iff A K.field M.field M.below a).1 hzM
 
-/-- The third-isomorphism quotient by `S` is literally restriction from
-`E / K` to the intermediate field fixed by `S`.  This representative-level
-identity connects the candidate quotient in the surjectivity construction
-of the finite abelian classification theorem to restriction compatibility's restriction map. -/
+/-- The third-isomorphism quotient by `S` is literally restriction from `E / K` to the intermediate field fixed by `S`.  This representative-level identity connects the candidate quotient in the surjectivity construction of the finite abelian classification theorem to restriction compatibility's restriction map. -/
 theorem upperQuotientEquiv_quotientMk_eq_restriction
     {G : Type*} [Group G] [TopologicalSpace G] [IsTopologicalGroup G]
     {K : ClosedSubgroup G}
@@ -754,10 +713,7 @@ namespace FiniteAbelianSubextension
 
 variable {D : DegreeData G} {A : Rep.{v} ℤ G}
 
-/-- finite reciprocity specialized to an actual finite abelian extension.
-The two halves are supplied by the general Sylow surjectivity argument and
-the cyclic-coordinate injectivity argument; no bijectivity premise is
-exposed by the finite abelian classification theorem. -/
+/-- finite reciprocity specialized to an actual finite abelian extension. The two halves are supplied by the general Sylow surjectivity argument and the cyclic-coordinate injectivity argument; no bijectivity premise is exposed by the finite abelian classification theorem. -/
 private theorem reciprocityEquiv_bijective
     (v : ValuationData D A) (hcf : SatisfiesClassFieldAxiom A)
     [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
@@ -781,11 +737,7 @@ private theorem reciprocityEquiv_bijective
     v.abstractReciprocity_finiteReciprocityHom_surjective
       hcf hAxiom K L.toFiniteGaloisExtension⟩
 
-/-- The first displayed formula in the finite abelian classification theorem: the norm subgroup of
-the compositum is
-the intersection of the two norm subgroups.  This is the first paragraph
-of the finite classification proof, with finite reciprocity supplying all three vertical
-isomorphisms. -/
+/-- The first displayed formula in the finite abelian classification theorem: the norm subgroup of the compositum is the intersection of the two norm subgroups.  This is the first paragraph of the finite classification proof, with finite reciprocity supplying all three vertical isomorphisms. -/
 theorem normSubgroup_compositum
     (v : ValuationData D A) (hcf : SatisfiesClassFieldAxiom A)
     [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
@@ -804,9 +756,7 @@ theorem normSubgroup_compositum
       (reciprocityEquiv_bijective
         v hcf hAxiom K (L₁.compositum L₂))
 
-/-- The order-reversal assertion in the finite abelian classification theorem: field inclusion is
-exactly reverse inclusion of norm
-subgroups. -/
+/-- The order-reversal assertion in the finite abelian classification theorem: field inclusion is exactly reverse inclusion of norm subgroups. -/
 theorem le_iff_normSubgroup_le
     (v : ValuationData D A) (hcf : SatisfiesClassFieldAxiom A)
     [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
@@ -840,10 +790,7 @@ theorem normSubgroupMap_injective
   · apply (le_iff_normSubgroup_le v hcf K L₂ L₁).2
     rw [hnorm]
 
-/-- The kernel equality in the surjectivity surjectivity step.  Starting
-from `N_E ≤ H`, pull `H / N_E` back through the actual norm-residue symbol
-of finite reciprocity and take its fixed field.  The norm subgroup of that concrete
-finite abelian candidate is exactly `H`. -/
+/-- The kernel equality in the surjectivity surjectivity step.  Starting from `N_E ≤ H`, pull `H / N_E` back through the actual norm-residue symbol of finite reciprocity and take its fixed field.  The norm subgroup of that concrete finite abelian candidate is exactly `H`. -/
 theorem classFieldCandidate_normSubgroup_eq
     (v : ValuationData D A) (hcf : SatisfiesClassFieldAxiom A)
     [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
@@ -862,7 +809,7 @@ theorem classFieldCandidate_normSubgroup_eq
   let rE := D.normResidueSymbol A v hcf K E
   let M := ClassFormation.FiniteGaloisSubextension.classFieldCandidate A E H rE
   have hcompatE (q : E.extensionQuotient) :
-      rE.symm (Additive.ofMul (Abelianization.of q)) =
+      rE.symm (Additive.ofMul (Group.Abelianization.of q)) =
         D.finiteReciprocityHom A v hAxiom K E.field E.below
           (Additive.ofMul q) := by
     simpa only [rE, DegreeData.normResidueSymbol, AddEquiv.symm_symm] using
@@ -873,9 +820,7 @@ theorem classFieldCandidate_normSubgroup_eq
         (reciprocityEquiv_bijective
           v hcf hAxiom K M)
 
-/-- Every open subgroup in the norm topology is the norm subgroup of an
-actual finite abelian extension.  The extension is the fixed field of the
-literal preimage of `H / N_E` under the norm-residue symbol of finite reciprocity.
+/-- Every open subgroup in the norm topology is the norm subgroup of an actual finite abelian extension.  The extension is the fixed field of the literal preimage of `H / N_E` under the norm-residue symbol of finite reciprocity.
 -/
 theorem normSubgroupMap_surjective
     (v : ValuationData D A) (hcf : SatisfiesClassFieldAxiom A)
@@ -911,9 +856,7 @@ theorem normSubgroupMap_bijective
   ⟨normSubgroupMap_injective v hcf K,
     normSubgroupMap_surjective v hcf K⟩
 
-/-- **the finite abelian classification theorem.** Finite abelian extensions of the base are
-order-isomorphic
-to the opposite poset of norm-open subgroups. -/
+/-- **the finite abelian classification theorem.** Finite abelian extensions of the base are order-isomorphic to the opposite poset of norm-open subgroups. -/
 noncomputable def normSubgroupOrderIso
     (v : ValuationData D A) (hcf : SatisfiesClassFieldAxiom A)
     [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
@@ -927,9 +870,7 @@ noncomputable def normSubgroupOrderIso
     change L₂.normSubgroup A ≤ L₁.normSubgroup A ↔ L₁ ≤ L₂
     exact (le_iff_normSubgroup_le v hcf K L₁ L₂).symm
 
-/--
-The defining evaluation formula for `normSubgroupOrderIso` is `(OrderDual.ofDual
-(normSubgroupOrderIso v hcf K L)).1 = L.normSubgroup A`.
+/-- The defining evaluation formula for `normSubgroupOrderIso` is `(OrderDual.ofDual (normSubgroupOrderIso v hcf K L)).1 = L.normSubgroup A`.
 -/
 @[simp]
 theorem normSubgroupOrderIso_apply
@@ -942,10 +883,7 @@ theorem normSubgroupOrderIso_apply
       L.normSubgroup A :=
   rfl
 
-/-- The second displayed formula in the finite abelian classification theorem: the norm subgroup of
-the
-intersection field is the product of the two norm subgroups (their supremum
-in additive notation). -/
+/-- The second displayed formula in the finite abelian classification theorem: the norm subgroup of the intersection field is the product of the two norm subgroups (their supremum in additive notation). -/
 theorem normSubgroup_intersection
     (v : ValuationData D A) (hcf : SatisfiesClassFieldAxiom A)
     [IsTopologicalGroup G] [CompactSpace G] [T2Space G]

@@ -17,9 +17,7 @@ public import Mathlib.NumberTheory.NumberField.Basic
 /-!
 # Small models of number fields
 
-A number field has finite dimension over the countable field `ℚ`, so its
-underlying type has a representative in the lowest universe.  The ring
-equivalence to that representative preserves the number-field structure.
+A number field has finite dimension over the countable field `ℚ`, so its underlying type has a representative in the lowest universe.  The ring equivalence to that representative preserves the number-field structure.
 -/
 
 @[expose] public section
@@ -31,7 +29,7 @@ universe u
 /-- Every number field can be represented by a type in universe zero. -/
 theorem numberField_small (F : Type u) [Field F] [NumberField F] :
     Small.{0} F := by
-  let : Countable F := Finsupp.Countable.of_moduleFinite (R := ℚ)
+  let : Countable F := Countable.of_moduleFinite (R := ℚ)
   infer_instance
 
 /-- The shrunk model of a number field remains a number field. -/

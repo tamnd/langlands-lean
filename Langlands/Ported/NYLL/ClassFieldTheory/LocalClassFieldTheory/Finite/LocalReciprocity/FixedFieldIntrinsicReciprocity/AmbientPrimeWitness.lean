@@ -15,9 +15,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finit
 /-!
 # Ambient prime witnesses
 
-This module constructs the ambient norm-residue value, a valuation-one
-prime witness for each abelianized Galois element, and the corresponding
-ambient Frobenius target.
+This module constructs the ambient norm-residue value, a valuation-one prime witness for each abelianized Galois element, and the corresponding ambient Frobenius target.
 -/
 
 
@@ -34,31 +32,30 @@ open LocalFieldTheory RamificationTheory CyclicCohomology KummerTheory
 open ClassFormation
 open scoped ValuativeRel
 
-/-- Transporting an identified abelianized prime value back through one
-quotient equivalence and forward through another preserves its target. -/
+/-- Transporting an identified abelianized prime value back through one quotient equivalence and forward through another preserves its target. -/
 theorem abelianizationCongr_symm_eq_primeTarget
     {Q₀ : Type u₁} {G₀ : Type u₂} {G : Type u₃}
     [Group Q₀] [Group G₀] [Group G]
     (q₀ : Q₀ ≃* G₀)
     (qE : Q₀ ≃* G)
     (qAmbient : Q₀)
-    (r : Additive (Abelianization G₀))
+    (r : Additive (Group.Abelianization G₀))
     (hprime :
       r =
         Additive.ofMul
           (q₀.abelianizationCongr
-            (Abelianization.of qAmbient))) :
+            (Group.Abelianization.of qAmbient))) :
     qE.abelianizationCongr
         (q₀.abelianizationCongr.symm
           (Additive.toMul r)) =
       qE.abelianizationCongr
-        (Abelianization.of qAmbient) := by
+        (Group.Abelianization.of qAmbient) := by
   have hprimeMul :=
     congrArg Additive.toMul hprime
   change
     Additive.toMul r =
       q₀.abelianizationCongr
-        (Abelianization.of qAmbient) at hprimeMul
+        (Group.Abelianization.of qAmbient) at hprimeMul
   calc
     qE.abelianizationCongr
         (q₀.abelianizationCongr.symm
@@ -66,15 +63,14 @@ theorem abelianizationCongr_symm_eq_primeTarget
         qE.abelianizationCongr
           (q₀.abelianizationCongr.symm
             (q₀.abelianizationCongr
-              (Abelianization.of qAmbient))) :=
+              (Group.Abelianization.of qAmbient))) :=
       congrArg qE.abelianizationCongr
         (congrArg q₀.abelianizationCongr.symm hprimeMul)
     _ = qE.abelianizationCongr
-          (Abelianization.of qAmbient) := by
+          (Group.Abelianization.of qAmbient) := by
       rw [q₀.abelianizationCongr.symm_apply_apply]
 
-/-- A prime-norm unit in the intrinsic base field chosen from a Frobenius
-lift of an abelianized Galois element. -/
+/-- A prime-norm unit in the intrinsic base field chosen from a Frobenius lift of an abelianized Galois element. -/
 noncomputable def ambientEmbeddedPrimeWitness
     (K : Type u₁) (F : Type u₂) (E : Type u₃)
     [Field K] [ValuativeRel K] [TopologicalSpace K]
@@ -89,7 +85,7 @@ noncomputable def ambientEmbeddedPrimeWitness
     [FiniteDimensional F E] [IsAbelianGalois F E]
     (j : E →ₐ[K] SeparableClosure K)
     (e : ambientEmbeddedSeparableClosureEquiv K F E j)
-    (z : Abelianization Gal(E/F)) : Fˣ := by
+    (z : Group.Abelianization Gal(E/F)) : Fˣ := by
   let i :=
     j.comp (IsScalarTower.toAlgHom K F E)
   letI : Algebra F (SeparableClosure K) :=
@@ -155,7 +151,7 @@ noncomputable def ambientEmbeddedPrimeWitness
     exact hSourceFinite
   let RH :=
     H.toFiniteResidueAbstractField (localResidueDatum K)
-  let zF : Abelianization EI.extensionQuotient :=
+  let zF : Group.Abelianization EI.extensionQuotient :=
     qF.abelianizationCongr.symm z
   let q :=
     Classical.choose (QuotientGroup.mk_surjective zF)
@@ -250,8 +246,7 @@ noncomputable def ambientEmbeddedPrimeWitness
   exact normUnits F LF pF
 
 
-/-- The ambient abelianized Frobenius target associated with the same
-chosen intrinsic Frobenius lift as the prime witness. -/
+/-- The ambient abelianized Frobenius target associated with the same chosen intrinsic Frobenius lift as the prime witness. -/
 noncomputable def ambientEmbeddedPrimeTarget
     (K : Type u₁) (F : Type u₂) (E : Type u₃)
     [Field K] [ValuativeRel K] [TopologicalSpace K]
@@ -266,8 +261,8 @@ noncomputable def ambientEmbeddedPrimeTarget
     [FiniteDimensional F E] [IsAbelianGalois F E]
     (j : E →ₐ[K] SeparableClosure K)
     (e : ambientEmbeddedSeparableClosureEquiv K F E j)
-    (z : Abelianization Gal(E/F)) :
-    Abelianization Gal(E / F) := by
+    (z : Group.Abelianization Gal(E/F)) :
+    Group.Abelianization Gal(E / F) := by
   let i :=
     j.comp (IsScalarTower.toAlgHom K F E)
   letI : Algebra F (SeparableClosure K) :=
@@ -336,7 +331,7 @@ noncomputable def ambientEmbeddedPrimeTarget
     exact hSourceFinite
   let RH :=
     H.toFiniteResidueAbstractField (localResidueDatum K)
-  let zF : Abelianization EI.extensionQuotient :=
+  let zF : Group.Abelianization EI.extensionQuotient :=
     qF.abelianizationCongr.symm z
   let q :=
     Classical.choose (QuotientGroup.mk_surjective zF)
@@ -352,6 +347,6 @@ noncomputable def ambientEmbeddedPrimeTarget
       RH J₀ hJH sigmaH
   exact
     qE.abelianizationCongr
-      (Abelianization.of qAmbient)
+      (Group.Abelianization.of qAmbient)
 
 end LocalClassFieldTheory

@@ -13,14 +13,9 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LubinTate.Padic.CompletedUn
 /-!
 # Fixed points of p-adic completed-unramified Frobenius
 
-Witt Frobenius on `W(AlgebraicClosure (ZMod p))` has exactly the canonical
-copy of `ℤ_[p]` as its fixed ring.  Passing to fraction fields shows that
-the arithmetic Frobenius on the completed maximal-unramified coefficient
-field has exactly the canonical copy of `ℚ_[p]` as its fixed field.
+Witt Frobenius on `W(AlgebraicClosure (ZMod p))` has exactly the canonical copy of `ℤ_[p]` as its fixed ring.  Passing to fraction fields shows that the arithmetic Frobenius on the completed maximal-unramified coefficient field has exactly the canonical copy of `ℚ_[p]` as its fixed field.
 
-The fraction-field argument is integral: after writing a denominator as a
-power of `p` times a unit, multiplication by that power of `p` puts a fixed
-fraction back in the Witt ring.
+The fraction-field argument is integral: after writing a denominator as a power of `p` times a unit, multiplication by that power of `p` puts a fixed fraction back in the Witt ring.
 -/
 
 
@@ -34,8 +29,7 @@ namespace LubinTate
 open LocalFieldTheory.DiscreteValuationField
 open LocalFieldTheory.DiscreteValuationField.Examples.Qp
 
-/-- The fixed ring of Witt Frobenius on the completed-unramified Witt
-ring is the canonical image of the p-adic integers. -/
+/-- The fixed ring of Witt Frobenius on the completed-unramified Witt ring is the canonical image of the p-adic integers. -/
 theorem padicCompletedUnramifiedWittRing_frobenius_fixed_iff
     (p : ℕ) [Fact p.Prime]
     (x : padicCompletedUnramifiedWittRing p) :
@@ -80,8 +74,7 @@ theorem padicCompletedUnramifiedWittRing_frobenius_fixed_iff
   · rintro ⟨z, rfl⟩
     exact padicIntToCompletedUnramifiedWittRing_frobenius p z
 
-/-- The fixed field of completed-unramified arithmetic Frobenius is the
-canonical image of `ℚ_[p]`. -/
+/-- The fixed field of completed-unramified arithmetic Frobenius is the canonical image of `ℚ_[p]`. -/
 theorem padicCompletedUnramifiedFrobenius_fixed_iff
     (p : ℕ) [Fact p.Prime]
     (x : padicCompletedUnramifiedField p) :
@@ -101,7 +94,7 @@ theorem padicCompletedUnramifiedFrobenius_fixed_iff
     let c : W := a * (u⁻¹ : Wˣ)
     have hpW : (p : W) ≠ 0 := by
       exact
-        WittVector.p_nonzero p
+        WittVector.p_ne_zero p
           (AlgebraicClosure (ZMod p))
     have hpE :
         algebraMap W E ((p : W) ^ m) ≠ 0 := by

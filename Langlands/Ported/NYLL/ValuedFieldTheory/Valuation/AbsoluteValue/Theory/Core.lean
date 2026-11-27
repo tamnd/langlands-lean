@@ -10,7 +10,6 @@ module
 
 public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.Theory.AbsoluteValues
 public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.Theory.ExponentialValuations
-public import Mathlib.RingTheory.Henselian
 
 /-! Provides the public declarations in the `ValuationTheory.AbsoluteValue.Theory` Lean module. -/
 
@@ -24,8 +23,7 @@ open scoped BigOperators Topology
 namespace LubinTate
 namespace Valuations
 
-/-- For a normalized exponential valuation, the principal-power ideal `π^n𝒪` attached to
-a normalized prime element is the `n`-th power of the positive-value maximal ideal. -/
+/-- For a normalized exponential valuation, the principal-power ideal `π^n𝒪` attached to a normalized prime element is the `n`-th power of the positive-value maximal ideal. -/
 theorem uniformizerPowerIdeal_primeElement_eq_exponentialMaxIdeal_pow_of_normalized
     {K : Type*} [Field K] {v : ExponentialValuation K}
     (hv : NormalizedExponentialValuation v) {π : K}
@@ -36,8 +34,7 @@ theorem uniformizerPowerIdeal_primeElement_eq_exponentialMaxIdeal_pow_of_normali
   exact (exponentialMaxIdeal_pow_eq_span_primeElement_pow_of_normalized
     hv hπ n).symm
 
-/-- The same identification, expressed using mathlib's maximal ideal of the
-valuation ring. -/
+/-- The same identification, expressed using mathlib's maximal ideal of the valuation ring. -/
 theorem uniformizerPowerIdeal_primeElement_eq_maximalIdeal_pow_of_normalized
     {K : Type*} [Field K] {v : ExponentialValuation K}
     (hv : NormalizedExponentialValuation v) {π : K}
@@ -48,11 +45,7 @@ theorem uniformizerPowerIdeal_primeElement_eq_maximalIdeal_pow_of_normalized
   exact uniformizerPowerIdeal_primeElement_eq_exponentialMaxIdeal_pow_of_normalized
     hv hπ n
 
-/-- The ideal structure theorem for discrete valuation rings, successive-quotient part in
-maximal-ideal notation:
-`𝒪/𝔭 ≃+ 𝔭^n/𝔭^(n+1)`.  This retains the additive structure supplied by the
-generic quotient-of-powers theorem instead of weakening it to a bare
-bijection. -/
+/-- The ideal structure theorem for discrete valuation rings, successive-quotient part in maximal-ideal notation: `𝒪/𝔭 ≃+ 𝔭^n/𝔭^(n+1)`.  This retains the additive structure supplied by the generic quotient-of-powers theorem instead of weakening it to a bare bijection. -/
 noncomputable def residue_addEquiv_maximalIdeal_pow_quotient
     {K : Type*} [Field K] {v : ExponentialValuation K}
     (hv : NormalizedExponentialValuation v) {π : K}
@@ -74,9 +67,7 @@ noncomputable def residue_addEquiv_maximalIdeal_pow_quotient
       (Ideal.powQuotPowSuccLinearEquivMapMkPowSuccPow
         (IsLocalRing.maximalIdeal (exponentialValuationSubring v)) n).toAddEquiv
 
-/-- The ideal structure theorem for discrete valuation rings, successive-quotient part in the
-principal-power notation `π^n𝒪`: `𝒪/(π) ≃+ π^n𝒪/π^(n+1)𝒪`, represented as the image of `π^n𝒪`
-inside `𝒪/π^(n+1)𝒪`. -/
+/-- The ideal structure theorem for discrete valuation rings, successive-quotient part in the principal-power notation `π^n𝒪`: `𝒪/(π) ≃+ π^n𝒪/π^(n+1)𝒪`, represented as the image of `π^n𝒪` inside `𝒪/π^(n+1)𝒪`. -/
 noncomputable def residue_addEquiv_uniformizerPowerIdeal_quotient
     {K : Type*} [Field K] {v : ExponentialValuation K}
     (hv : NormalizedExponentialValuation v) {π : K}
@@ -122,8 +113,7 @@ instance uniformizerGradedPieceModule
           Submodule O (uniformizerPowerIdeal π n)))
   infer_instance
 
-/-- Explicit access to the submodule quotient implementing a uniformizer
-graded piece. -/
+/-- Explicit access to the submodule quotient implementing a uniformizer graded piece. -/
 def uniformizerGradedPieceConcreteLinearEquiv
     {O : Type*} [CommRing O] (π : O) (n : ℕ) :
     uniformizerGradedPiece π n ≃ₗ[O]
@@ -168,8 +158,7 @@ theorem uniformizerGradedPieceMk_surjective
     Function.Surjective (uniformizerGradedPieceMk π n) :=
   Submodule.mkQ_surjective _
 
-/-- Eliminate a uniformizer graded-piece class through its canonical
-representatives. -/
+/-- Eliminate a uniformizer graded-piece class through its canonical representatives. -/
 protected theorem uniformizerGradedPiece.inductionOn
     {O : Type*} [CommRing O] (π : O) (n : ℕ)
     {motive : uniformizerGradedPiece π n → Prop}
@@ -220,8 +209,7 @@ def uniformizerGradedPieceLinearLift
         (uniformizerGradedPieceMk π n a) = f a :=
   rfl
 
-/-- A graded-piece class is zero exactly when its representative lies in the next
-filtration step. -/
+/-- A graded-piece class is zero exactly when its representative lies in the next filtration step. -/
 theorem uniformizerGradedPieceMk_eq_zero_iff
     {O : Type*} [CommRing O] (π : O) (n : ℕ)
     (a : uniformizerPowerIdeal π n) :
@@ -307,9 +295,7 @@ theorem mem_higherUnitSubgroup_iff_sub_one_mem_powerIdeal
   exact Iff.trans mem_higherUnitSubgroup
     (higherUnit_iff_sub_one_mem_powerIdeal π n u)
 
-/-- For a normalized exponential valuation, higher units defined by a normalized
-prime element are exactly units congruent to `1` modulo the corresponding
-power of the maximal ideal. -/
+/-- For a normalized exponential valuation, higher units defined by a normalized prime element are exactly units congruent to `1` modulo the corresponding power of the maximal ideal. -/
 theorem mem_higherUnitSubgroup_primeElement_iff_sub_one_mem_maximalIdeal_pow
     {K : Type*} [Field K] {v : ExponentialValuation K}
     (hv : NormalizedExponentialValuation v) {π : K}
@@ -443,8 +429,7 @@ theorem unitReduction_ker_powerIdeal {O : Type*} [CommRing O]
       Ideal.subset_span (Set.mem_singleton (π ^ n))
     simpa using (uniformizerPowerIdeal π n).mul_mem_right a hπ
 
-/-- For a normalized exponential valuation, the kernel of reduction modulo
-`maximalIdeal^n` is the higher-unit subgroup attached to a normalized prime element. -/
+/-- For a normalized exponential valuation, the kernel of reduction modulo `maximalIdeal^n` is the higher-unit subgroup attached to a normalized prime element. -/
 theorem unitReduction_ker_maximalIdeal_pow_primeElement_of_normalized
     {K : Type*} [Field K] {v : ExponentialValuation K}
     (hv : NormalizedExponentialValuation v) {π : K}
@@ -462,8 +447,7 @@ theorem unitReduction_surjective_of_isLocalHom {O : Type*} [CommRing O]
   exact IsLocalRing.surjective_units_map_of_local_ringHom
     (Ideal.Quotient.mk I) Ideal.Quotient.mk_surjective inferInstance
 
-/-- For a exponential valuation ring, the quotient map modulo
-`maximalIdeal^n` is local for `n ≥ 1`. -/
+/-- For a exponential valuation ring, the quotient map modulo `maximalIdeal^n` is local for `n ≥ 1`. -/
 theorem unitReduction_isLocalHom_maximalIdeal_pow_of_pos
     {K : Type*} [Field K] (v : ExponentialValuation K)
     {n : ℕ} (hn : 1 ≤ n) :
@@ -476,8 +460,8 @@ theorem unitReduction_isLocalHom_maximalIdeal_pow_of_pos
       (IsLocalRing.maximalIdeal (exponentialValuationSubring v)) ^ n ≤
         IsLocalRing.maximalIdeal (exponentialValuationSubring v) :=
     Ideal.pow_le_self hn0
-  apply isLocalHom_of_le_jacobson_bot
-  rwa [IsLocalRing.jacobson_eq_maximalIdeal ⊥ bot_ne_top]
+  apply isLocalHom_of_le_jacobson
+  rwa [IsLocalRing.ringJacobson_eq_maximalIdeal]
 
 /-- The first-isomorphism-theorem form of the unit quotient modulo `π^n𝒪`. -/
 noncomputable def unitsModPowerIdealEquivOfSurjective {O : Type*} [CommRing O]
@@ -489,8 +473,7 @@ noncomputable def unitsModPowerIdealEquivOfSurjective {O : Type*} [CommRing O]
     (QuotientGroup.quotientKerEquivOfSurjective
       (unitReduction (uniformizerPowerIdeal π n)) hsurj)
 
-/-- If reduction modulo `π^n𝒪` is a local quotient, then
-`Oˣ/U⁽ⁿ⁾` is the unit group of `O/π^n𝒪`.
+/-- If reduction modulo `π^n𝒪` is a local quotient, then `Oˣ/U⁽ⁿ⁾` is the unit group of `O/π^n𝒪`.
 -/
 noncomputable def unitsModPowerIdealEquivOfIsLocalHom {O : Type*} [CommRing O]
     (π : O) (n : ℕ) [IsLocalHom (Ideal.Quotient.mk (uniformizerPowerIdeal π n))] :
@@ -498,8 +481,7 @@ noncomputable def unitsModPowerIdealEquivOfIsLocalHom {O : Type*} [CommRing O]
   unitsModPowerIdealEquivOfSurjective π n
     (unitReduction_surjective_of_isLocalHom (uniformizerPowerIdeal π n))
 
-/-- The first-isomorphism-theorem form for a normalized exponential-valuation ring,
-modulo `maximalIdeal^n`, assuming surjectivity of reduction on units. -/
+/-- The first-isomorphism-theorem form for a normalized exponential-valuation ring, modulo `maximalIdeal^n`, assuming surjectivity of reduction on units. -/
 noncomputable def unitsModMaximalIdealPowEquivOfSurjectiveNormalized
     {K : Type*} [Field K] {v : ExponentialValuation K}
     (hv : NormalizedExponentialValuation v) {π : K}
@@ -519,8 +501,7 @@ noncomputable def unitsModMaximalIdealPowEquivOfSurjectiveNormalized
         ((IsLocalRing.maximalIdeal (exponentialValuationSubring v)) ^ n))
       hsurj)
 
-/-- For a normalized exponential-valuation ring and `n ≥ 1`,
-`Oˣ/U⁽ⁿ⁾` is the unit group of `O/maximalIdeal^n`. -/
+/-- For a normalized exponential-valuation ring and `n ≥ 1`, `Oˣ/U⁽ⁿ⁾` is the unit group of `O/maximalIdeal^n`. -/
 noncomputable def unitsModMaximalIdealPowEquivOfNormalized
     {K : Type*} [Field K] {v : ExponentialValuation K}
     (hv : NormalizedExponentialValuation v) {π : K}
@@ -564,10 +545,10 @@ theorem unitReduction_isLocalHom_of_dvr {O : Type*}
     [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     {π : O} (hπ : Irreducible π) {n : ℕ} (hn : 1 ≤ n) :
     IsLocalHom (Ideal.Quotient.mk (uniformizerPowerIdeal π n)) :=
-  isLocalHom_of_le_jacobson_bot _ (uniformizerPowerIdeal_le_jacobson_bot hπ hn)
+  isLocalHom_of_le_jacobson
+    (by simpa only [Ideal.jacobson_bot] using uniformizerPowerIdeal_le_jacobson_bot hπ hn)
 
-/-- The graded coefficient map `U⁽ⁿ⁾ → 𝒪/(π)`, `1 + π^n a ↦ a mod π`,
-viewed multiplicatively by tagging the additive residue group as `Multiplicative`.
+/-- The graded coefficient map `U⁽ⁿ⁾ → 𝒪/(π)`, `1 + π^n a ↦ a mod π`, viewed multiplicatively by tagging the additive residue group as `Multiplicative`.
 -/
 noncomputable def higherUnitCoeffModHom {O : Type*}
     [CommRing O] [IsDomain O] {π : O} (hπ0 : π ≠ 0) (n : ℕ) (hn : 1 ≤ n) :
@@ -723,8 +704,7 @@ theorem chosenHigherUnitCoeff_oneAdd {O : Type*}
   chosenHigherUnitCoeff_eq_of_repr hπ.ne_zero
     (higherUnitOneAdd_val hπ n hn a)
 
-/-- The coefficient map sends the explicit higher unit `1 + π^n a` to
-`a mod π`. -/
+/-- The coefficient map sends the explicit higher unit `1 + π^n a` to `a mod π`. -/
 theorem higherUnitCoeffModHom_oneAdd {O : Type*}
     [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     {π : O} (hπ : Irreducible π) (n : ℕ) (hn : 1 ≤ n) (a : O) :
@@ -740,8 +720,7 @@ theorem higherUnitCoeffModHom_oneAdd {O : Type*}
         (Ideal.Quotient.mk (Ideal.span ({π} : Set O)) a)
   rw [chosenHigherUnitCoeff_oneAdd]
 
-/-- If a higher unit is displayed as `1 + π^n a`, the coefficient map sends it
-to `a mod π`. -/
+/-- If a higher unit is displayed as `1 + π^n a`, the coefficient map sends it to `a mod π`. -/
 theorem higherUnitCoeffModHom_apply_of_repr {O : Type*}
     [CommRing O] [IsDomain O] {π : O} (hπ0 : π ≠ 0)
     {n : ℕ} (hn : 1 ≤ n) {u : higherUnitSubgroup π n} {a : O}
@@ -757,8 +736,7 @@ theorem higherUnitCoeffModHom_apply_of_repr {O : Type*}
         (Ideal.Quotient.mk (Ideal.span ({π} : Set O)) a)
   rw [chosenHigherUnitCoeff_eq_of_repr hπ0 ha]
 
-/-- The multiplicative first-isomorphism-theorem form of
-`U⁽ⁿ⁾/U⁽ⁿ⁺¹⁾ ≃ 𝒪/(π)`.
+/-- The multiplicative first-isomorphism-theorem form of `U⁽ⁿ⁾/U⁽ⁿ⁺¹⁾ ≃ 𝒪/(π)`.
 -/
 noncomputable def higherUnitGradedPieceMulEquivResidue {O : Type*}
     [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
@@ -773,15 +751,13 @@ noncomputable def higherUnitGradedPieceMulEquivResidue {O : Type*}
       (higherUnitCoeffModHom (O := O) hπ.ne_zero n hn)
       (higherUnitCoeffModHom_surjective hπ n hn))
 
-/-- The unit-reduction and graded-piece equivalences, kernel part for the reduction map on unit
-groups. -/
+/-- The unit-reduction and graded-piece equivalences, kernel part for the reduction map on unit groups. -/
 theorem units_reduction_kernel
     {O : Type*} [CommRing O] (π : O) (n : ℕ) :
     (unitReduction (uniformizerPowerIdeal π n)).ker = higherUnitSubgroup π n :=
   unitReduction_ker_powerIdeal π n
 
-/-- The unit-reduction and graded-piece equivalences, surjectivity part for the reduction map on
-unit groups. -/
+/-- The unit-reduction and graded-piece equivalences, surjectivity part for the reduction map on unit groups. -/
 theorem units_reduction_surjective
     {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     {π : O} (hπ : Irreducible π) {n : ℕ} (hn : 1 ≤ n) :
@@ -790,9 +766,7 @@ theorem units_reduction_surjective
     unitReduction_isLocalHom_of_dvr hπ hn
   exact unitReduction_surjective_of_isLocalHom (uniformizerPowerIdeal π n)
 
-/-- The unit-reduction and graded-piece equivalences, the named first-isomorphism-theorem
-equivalence
-`Oˣ/U⁽ⁿ⁾ ≃ (O/π^nO)ˣ`. -/
+/-- The unit-reduction and graded-piece equivalences, the named first-isomorphism-theorem equivalence `Oˣ/U⁽ⁿ⁾ ≃ (O/π^nO)ˣ`. -/
 noncomputable def units_quotient_equiv
     {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     {π : O} (hπ : Irreducible π) {n : ℕ} (hn : 1 ≤ n) :
@@ -800,8 +774,7 @@ noncomputable def units_quotient_equiv
   exact unitsModPowerIdealEquivOfSurjective π n
     (units_reduction_surjective hπ hn)
 
-/-- The unit-quotient equivalence of the unit-reduction and graded-piece equivalences is induced by
-reduction modulo `πⁿO`. -/
+/-- The unit-quotient equivalence of the unit-reduction and graded-piece equivalences is induced by reduction modulo `πⁿO`. -/
 @[simp]
 theorem units_quotient_equiv_mk
     {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
@@ -815,8 +788,7 @@ theorem units_quotient_equiv_mk
   rw [QuotientGroup.quotientMulEquivOfEq_mk]
   exact QuotientGroup.kerLift_mk (unitReduction (uniformizerPowerIdeal π n)) u
 
-/-- The unit-reduction and graded-piece equivalences, kernel part for the coefficient map
-`U⁽ⁿ⁾ → O/(π)`. -/
+/-- The unit-reduction and graded-piece equivalences, kernel part for the coefficient map `U⁽ⁿ⁾ → O/(π)`. -/
 theorem higher_unit_coeff_kernel
     {O : Type*} [CommRing O] [IsDomain O]
     {π : O} (hπ0 : π ≠ 0) {n : ℕ} (hn : 1 ≤ n) :
@@ -825,16 +797,14 @@ theorem higher_unit_coeff_kernel
         (higherUnitSubgroup π (n + 1)) :=
   higherUnitCoeffModHom_ker (O := O) hπ0 n hn
 
-/-- The unit-reduction and graded-piece equivalences, surjectivity part for the coefficient map
-`U⁽ⁿ⁾ → O/(π)`. -/
+/-- The unit-reduction and graded-piece equivalences, surjectivity part for the coefficient map `U⁽ⁿ⁾ → O/(π)`. -/
 theorem higher_unit_coeff_surjective
     {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     {π : O} (hπ : Irreducible π) {n : ℕ} (hn : 1 ≤ n) :
     Function.Surjective (higherUnitCoeffModHom (O := O) hπ.ne_zero n hn) :=
   higherUnitCoeffModHom_surjective hπ n hn
 
-/-- The unit-reduction and graded-piece equivalences, the named additive graded-piece equivalence
-`U⁽ⁿ⁾/U⁽ⁿ⁺¹⁾ ≃+ O/(π)`. -/
+/-- The unit-reduction and graded-piece equivalences, the named additive graded-piece equivalence `U⁽ⁿ⁾/U⁽ⁿ⁺¹⁾ ≃+ O/(π)`. -/
 noncomputable def higher_unit_graded_equiv
     {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     {π : O} (hπ : Irreducible π) {n : ℕ} (hn : 1 ≤ n) :

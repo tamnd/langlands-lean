@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.RayClass.IdealNorm
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.RayClass.IdealNormCore
 public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.Reciprocity.GlobalNormResidue
@@ -24,15 +23,9 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NormUnits
 /-!
 # The ideal-theoretic Artin map
 
-Let `N ≤ C_K` be a class-field norm subgroup and let `m` be a defining
-modulus, so `C_K^m ≤ N`.  The idelic quotient map then factors through the
-ideal ray class group.  Composing with the projection from ideals prime to
-`m` gives the ideal-theoretic Artin map.  This file proves its surjectivity,
-identifies its kernel, and records the exact sequence.
+Let `N ≤ C_K` be a class-field norm subgroup and let `m` be a defining modulus, so `C_K^m ≤ N`.  The idelic quotient map then factors through the ideal ray class group.  Composing with the projection from ideals prime to `m` gives the ideal-theoretic Artin map.  This file proves its surjectivity, identifies its kernel, and records the exact sequence.
 
-The target is kept as the concrete reciprocity quotient `C_K / N`; global
-reciprocity identifies this quotient with the corresponding abelian Galois
-group.
+The target is kept as the concrete reciprocity quotient `C_K / N`; global reciprocity identifies this quotient with the corresponding abelian Galois group.
 -/
 
 
@@ -44,7 +37,6 @@ universe u v w
 open scoped NumberField BigOperators
 
 attribute [local instance] AbsoluteValue.Completion.algebraOfLiesOver
-attribute [local instance] NumberField.InfinitePlace.Completion.algebraOfLiesOver
 
 noncomputable section
 
@@ -60,8 +52,7 @@ local instance ideleClassSubgroupNormal
     (N : Subgroup (IdeleClassGroup K)) : N.Normal :=
   N.normal_of_isMulCommutative
 
-/-- The quotient map from the ray class group modulo a defining modulus
-to the class-field reciprocity quotient. -/
+/-- The quotient map from the ray class group modulo a defining modulus to the class-field reciprocity quotient. -/
 def rayClassToNormQuotient
     (m : RayClass.Modulus K)
     (N : Subgroup (IdeleClassGroup K))
@@ -72,8 +63,7 @@ def rayClassToNormQuotient
     (RayClass.Modulus.congruenceSubgroup m) N
     (MonoidHom.id (IdeleClassGroup K)) hm
 
-/-- The ray-class quotient map sends the class of an idele class to its
-class modulo the norm subgroup. -/
+/-- The ray-class quotient map sends the class of an idele class to its class modulo the norm subgroup. -/
 @[simp]
 theorem rayClassToNormQuotient_mk
     (m : RayClass.Modulus K)
@@ -100,8 +90,7 @@ theorem rayClassToNormQuotient_surjective
     ⟨QuotientGroup.mk'
         (RayClass.Modulus.congruenceSubgroup m) c, rfl⟩
 
-/-- The Artin map on the ideal ray class group, obtained from the
-idele-theoretic reciprocity quotient. -/
+/-- The Artin map on the ideal ray class group, obtained from the idele-theoretic reciprocity quotient. -/
 def idealRayClassArtinMap
     (m : RayClass.Modulus K)
     (N : Subgroup (IdeleClassGroup K))
@@ -133,8 +122,7 @@ def idealArtinMap
     (QuotientGroup.mk'
       (RayClass.principalRayIdealSubgroup m))
 
-/-- The ideal Artin map of the fractional ideal attached to a
-prime-to-modulus idèle is its class in the idèle-class quotient. -/
+/-- The ideal Artin map of the fractional ideal attached to a prime-to-modulus idèle is its class in the idèle-class quotient. -/
 @[simp]
 theorem idealArtinMap_primeToIdealMap
     (m : RayClass.Modulus K)
@@ -168,8 +156,7 @@ theorem idealArtinMap_primeToIdealMap
           (a : IdeleGroup K))
   rw [he', rayClassToNormQuotient_mk]
 
-/-- The ideal group `H_m` attached to `N`: precisely the ideals whose
-Artin class is trivial. -/
+/-- The ideal group `H_m` attached to `N`: precisely the ideals whose Artin class is trivial. -/
 def idealArtinKernel
     (m : RayClass.Modulus K)
     (N : Subgroup (IdeleClassGroup K))
@@ -202,11 +189,7 @@ variable
     [FiniteDimensional K L]
 
 omit [FiniteDimensional K L] in
-/-- For choosing idèle representatives of ideal norms, retain the finite
-part of the ideal-norm lifted modulus and impose positivity at every real
-place upstairs.  Its prime-to ideal group is definitionally the same as the
-one for `idealNormLiftedModulus`, while positivity makes its idèle norm
-prime to the selected infinite part downstairs. -/
+/-- For choosing idèle representatives of ideal norms, retain the finite part of the ideal-norm lifted modulus and impose positivity at every real place upstairs.  Its prime-to ideal group is definitionally the same as the one for `idealNormLiftedModulus`, while positivity makes its idèle norm prime to the selected infinite part downstairs. -/
 noncomputable def normIdeleLiftedModulus
     (m : RayClass.Modulus K) : RayClass.Modulus L :=
   RayClass.Modulus.narrowOfFinite
@@ -240,9 +223,7 @@ private theorem ideleNorm_mem_finitePrimeToModulusSubgroup_aux
     RayClass.finite_norm_mem_finitePrimeToModulusSubgroup
       (K := K) (L := L) m aFinite
 
-/-- The idèle norm carries idèles prime to the lifted modulus to
-idèles prime to the base modulus.  At real places this uses positivity
-of both real-real and complex-real local norms. -/
+/-- The idèle norm carries idèles prime to the lifted modulus to idèles prime to the base modulus.  At real places this uses positivity of both real-real and complex-real local norms. -/
 theorem ideleNorm_mem_idelePrimeToModulusSubgroup
     (m : RayClass.Modulus K)
     (a : RayClass.idelePrimeToModulusSubgroup
@@ -330,8 +311,7 @@ theorem ideleNorm_mem_idelePrimeToModulusSubgroup
     simpa only [IdeleGroup.infiniteComponent_apply] using hNormComponent
   · exact ideleNorm_mem_finitePrimeToModulusSubgroup_aux m a
 
-/-- The ordinary idèle norm restricted to the prime-to-modulus
-subgroups selected by the lifted modulus. -/
+/-- The ordinary idèle norm restricted to the prime-to-modulus subgroups selected by the lifted modulus. -/
 noncomputable def primeToModulusIdeleNorm
     (m : RayClass.Modulus K) :
     RayClass.idelePrimeToModulusSubgroup
@@ -351,8 +331,7 @@ noncomputable def primeToModulusIdeleNorm
       (IdeleGroup.norm K L).map_mul
         (a : IdeleGroup L) (b : IdeleGroup L)
 
-/-- The restricted idèle norm and the genuine ideal norm commute with
-the prime-to-modulus fractional-ideal maps. -/
+/-- The restricted idèle norm and the genuine ideal norm commute with the prime-to-modulus fractional-ideal maps. -/
 @[simp]
 theorem primeToIdealMap_primeToModulusIdeleNorm
     (m : RayClass.Modulus K)
@@ -565,9 +544,7 @@ private theorem idealNormSubgroup_le_idealArtinKernel
       principalRayIdealSubgroup_le_idealArtinKernel
         m (_root_.ideleClassNorm K L).range hm
 
-/-- For a finite extension and a defining modulus, the kernel of the ideal
-Artin map is exactly the genuine norm-defined ideal group
-`N_{L/K} J_L^m P_K^m`. -/
+/-- For a finite extension and a defining modulus, the kernel of the ideal Artin map is exactly the genuine norm-defined ideal group `N_{L/K} J_L^m P_K^m`. -/
 theorem idealArtinKernel_eq_idealNormSubgroup_of_finiteExtension
     (m : RayClass.Modulus K)
     (hm :
@@ -592,10 +569,7 @@ variable
     [IsGalois K L]
 
 omit [IsGalois K L] in
-/-- For a defining modulus, the kernel of the ideal Artin map is exactly the
-genuine norm-defined ideal group `N_{L/K} J_L^m P_K^m` for a finite Galois
-extension.  This preserves the original Galois-facing API while delegating to
-the finite-extension theorem. -/
+/-- For a defining modulus, the kernel of the ideal Artin map is exactly the genuine norm-defined ideal group `N_{L/K} J_L^m P_K^m` for a finite Galois extension.  This preserves the original Galois-facing API while delegating to the finite-extension theorem. -/
 theorem idealArtinKernel_eq_idealNormSubgroup
     (m : RayClass.Modulus K)
     (hm :
@@ -621,8 +595,7 @@ theorem idealArtinMap_surjective
       (QuotientGroup.mk'_surjective
         (RayClass.principalRayIdealSubgroup m))
 
-/-- Exactness of
-`1 → H_m → J_K^m → C_K/N → 1`. -/
+/-- Exactness of `1 → H_m → J_K^m → C_K/N → 1`. -/
 theorem idealArtin_exact
     (m : RayClass.Modulus K)
     (N : Subgroup (IdeleClassGroup K))
@@ -641,10 +614,7 @@ variable
 
 /-- The ideal-theoretic Artin map with its actual Galois-group target.
 
-For a defining modulus of the genuine norm subgroup
-`N_{L/K} C_L`, this is the quotient-valued ideal Artin map followed by
-the global norm-residue equivalence
-`C_K / N_{L/K} C_L ≃ Gal(L/K)`. -/
+For a defining modulus of the genuine norm subgroup `N_{L/K} C_L`, this is the quotient-valued ideal Artin map followed by the global norm-residue equivalence `C_K / N_{L/K} C_L ≃ Gal(L/K)`. -/
 noncomputable def idealArtinGaloisMap
     (m : RayClass.Modulus K)
     (hm :
@@ -657,9 +627,7 @@ noncomputable def idealArtinGaloisMap
     (idealArtinMap m
       ((_root_.ideleClassNorm K L).range) hm)
 
-/-- Evaluation of the actual ideal Artin map is the global
-norm-residue equivalence applied to the quotient-valued ideal Artin
-class. -/
+/-- Evaluation of the actual ideal Artin map is the global norm-residue equivalence applied to the quotient-valued ideal Artin class. -/
 @[simp]
 theorem idealArtinGaloisMap_apply
     (m : RayClass.Modulus K)
@@ -689,8 +657,7 @@ theorem idealArtinGaloisMap_surjective
       (idealArtinMap_surjective m
         ((_root_.ideleClassNorm K L).range) hm)
 
-/-- Passing from the genuine norm quotient to the actual Galois group
-does not change the ideal Artin kernel. -/
+/-- Passing from the genuine norm quotient to the actual Galois group does not change the ideal Artin kernel. -/
 @[simp]
 theorem idealArtinGaloisMap_ker
     (m : RayClass.Modulus K)
@@ -715,8 +682,7 @@ theorem idealArtinGaloisMap_ker
         1
   exact e.map_eq_one_iff
 
-/-- Exactness of the actual ideal Artin sequence
-`1 → H_m → J_K^m → Gal(L/K) → 1`. -/
+/-- Exactness of the actual ideal Artin sequence `1 → H_m → J_K^m → Gal(L/K) → 1`. -/
 theorem idealArtinGalois_exact
     (m : RayClass.Modulus K)
     (hm :

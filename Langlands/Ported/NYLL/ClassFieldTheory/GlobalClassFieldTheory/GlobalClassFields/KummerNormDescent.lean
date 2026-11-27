@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Completion.FinitePlaceModel
 
 public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.ClassFieldAxiom.IdeleClassPowerLocalUnitQuotient.ArchimedeanPowerIndex
@@ -28,16 +27,9 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NormUnits
 /-!
 # Descent of power-local-unit idèle subgroups
 
-For a finite extension `L / K`, the norm of a local `n`-th power is again
-an `n`-th power.  At a finite place outside a prescribed support, the norm
-of an integral unit is an integral unit.  Combining these statements over
-all places above a place of `K` shows that the ordinary idèle norm carries
-the power-local-unit subgroup for the full inverse-image support on `L`
-into the corresponding subgroup on `K`.
+For a finite extension `L / K`, the norm of a local `n`-th power is again an `n`-th power.  At a finite place outside a prescribed support, the norm of an integral unit is an integral unit.  Combining these statements over all places above a place of `K` shows that the ordinary idèle norm carries the power-local-unit subgroup for the full inverse-image support on `L` into the corresponding subgroup on `K`.
 
-Passing to principal-idèle quotients gives the idèle-class norm descent
-needed when a Kummer extension is first constructed after a finite base
-extension and then viewed over the original number field.
+Passing to principal-idèle quotients gives the idèle-class norm descent needed when a Kummer extension is first constructed after a finite base extension and then viewed over the original number field.
 -/
 
 
@@ -47,7 +39,6 @@ extension and then viewed over the original number field.
 open scoped BigOperators NumberField
 
 attribute [local instance] AbsoluteValue.Completion.algebraOfLiesOver
-attribute [local instance] NumberField.InfinitePlace.Completion.algebraOfLiesOver
 open NumberField IsDedekindDomain
 
 noncomputable section
@@ -66,9 +57,7 @@ variable
     [Field L] [NumberField L]
     [Algebra K L] [FiniteDimensional K L]
 
-/-- If `S'` is exactly the set of finite places of `L` above `S`, the
-ordinary idèle norm carries the power-local-unit subgroup over `L` into
-the corresponding subgroup over `K`. -/
+/-- If `S'` is exactly the set of finite places of `L` above `S`, the ordinary idèle norm carries the power-local-unit subgroup over `L` into the corresponding subgroup over `K`. -/
 theorem ideleNorm_mem_powerLocalUnitSubgroup_of_supports_above
     (n : ℕ+)
     (S : Finset (HeightOneSpectrum (𝓞 K)))
@@ -177,9 +166,7 @@ theorem ideleNorm_mem_powerLocalUnitSubgroup_of_supports_above
       IdeleGroup.finitePlace_normUnits_mem_integerUnits
         (K := K) (L := L) v₀ W z
 
-/-- Under exact compatibility of the finite supports, the ordinary
-idèle-class norm maps the power-local-unit idèle-class subgroup over `L`
-into the corresponding subgroup over `K`. -/
+/-- Under exact compatibility of the finite supports, the ordinary idèle-class norm maps the power-local-unit idèle-class subgroup over `L` into the corresponding subgroup over `K`. -/
 theorem ideleClassNorm_map_powerLocalUnitSubgroup_le_of_supports_above
     (n : ℕ+)
     (S : Finset (HeightOneSpectrum (𝓞 K)))

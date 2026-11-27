@@ -17,10 +17,7 @@ public import Mathlib.Topology.Algebra.Group.TopologicalAbelianization
 /-!
 # Absolute abelianization inside the separable closure
 
-For an arbitrary field, this module identifies the topological abelianization
-of the Galois group of its separable closure with the Galois group of the
-maximal abelian subextension.  Working inside the separable closure makes the
-construction uniform in every characteristic.
+For an arbitrary field, this module identifies the topological abelianization of the Galois group of its separable closure with the Galois group of the maximal abelian subextension.  Working inside the separable closure makes the construction uniform in every characteristic.
 -/
 
 
@@ -35,8 +32,7 @@ universe u
 
 variable (K : Type u) [Field K]
 
-/-- The closure of the commutator subgroup of the separable absolute Galois
-group, packaged as a closed subgroup. -/
+/-- The closure of the commutator subgroup of the separable absolute Galois group, packaged as a closed subgroup. -/
 def absoluteCommutatorClosure :
     ClosedSubgroup Gal(SeparableClosure K / K) where
   toSubgroup :=
@@ -67,15 +63,13 @@ instance maximalAbelianExtension_isGalois :
     (absoluteCommutatorClosure K)]
   infer_instance
 
-/-- The algebraic quotient equivalence from the absolute topological
-abelianization to the Galois group of the maximal abelian extension. -/
+/-- The algebraic quotient equivalence from the absolute topological abelianization to the Galois group of the maximal abelian extension. -/
 noncomputable def absoluteAbelianizationMulEquivMaximalAbelianGalois :
     TopologicalAbelianization Gal(SeparableClosure K / K) ≃*
       Gal(maximalAbelianExtension K / K) :=
   InfiniteGalois.normalAutEquivQuotient (absoluteCommutatorClosure K)
 
-/-- The algebraic equivalence sends a quotient class to restriction to the
-maximal abelian extension. -/
+/-- The algebraic equivalence sends a quotient class to restriction to the maximal abelian extension. -/
 @[simp]
 theorem absoluteAbelianizationMulEquivMaximalAbelianGalois_mk
     (sigma : Gal(SeparableClosure K/K)) :
@@ -95,8 +89,7 @@ theorem absoluteAbelianizationMulEquivMaximalAbelianGalois_continuous :
   exact
     (absoluteAbelianizationMulEquivMaximalAbelianGalois_mk K sigma).symm
 
-/-- The canonical topological identification of the absolute separable
-Galois group's abelianization with the maximal abelian Galois group. -/
+/-- The canonical topological identification of the absolute separable Galois group's abelianization with the maximal abelian Galois group. -/
 noncomputable def absoluteTopologicalAbelianizationEquivMaximalAbelianGalois :
     TopologicalAbelianization Gal(SeparableClosure K / K) ≃ₜ*
       Gal(maximalAbelianExtension K / K) := by
@@ -129,27 +122,24 @@ instance maximalAbelianExtension_isAbelianGalois :
     simp only [map_mul]
     exact mul_comm _ _
 
-/-- Every finite abelian intermediate field of the separable closure is
-contained in the maximal abelian extension. -/
+/-- Every finite abelian intermediate field of the separable closure is contained in the maximal abelian extension. -/
 theorem finiteAbelianIntermediateField_le_maximalAbelianExtension
     (E : IntermediateField K (SeparableClosure K))
     [FiniteDimensional K E] [IsAbelianGalois K E] :
     E ≤ maximalAbelianExtension K := by
-  rw [maximalAbelianExtension, IntermediateField.le_iff_le]
+  rw [maximalAbelianExtension, IntermediateField.le_fixedField_iff_le_fixingSubgroup]
   change
     (commutator Gal(SeparableClosure K / K)).topologicalClosure ≤
       E.fixingSubgroup
   apply Subgroup.topologicalClosure_minimal
   · rw [← E.restrictNormalHom_ker]
     exact
-      Abelianization.commutator_subset_ker
+      Group.Abelianization.commutator_le_ker
         (AlgEquiv.restrictNormalHom
           (F := K) (K₁ := SeparableClosure K) E)
   · exact E.fixingSubgroup_isClosed
 
-/-- A selected embedding of a finite abelian extension into the maximal
-abelian extension.  Naming this embedding keeps downstream finite-coordinate
-arguments independent of the implementation of the separable closure. -/
+/-- A selected embedding of a finite abelian extension into the maximal abelian extension.  Naming this embedding keeps downstream finite-coordinate arguments independent of the implementation of the separable closure. -/
 noncomputable def finiteAbelianExtensionEmbeddingIntoMaximalAbelianExtension
     (L : Type*) [Field L] [Algebra K L]
     [FiniteDimensional K L] [IsAbelianGalois K L] :
@@ -166,8 +156,7 @@ noncomputable def finiteAbelianExtensionEmbeddingIntoMaximalAbelianExtension
     i.codRestrict (maximalAbelianExtension K).toSubalgebra
       (fun x => hle (AlgHom.mem_fieldRange.mpr ⟨x, rfl⟩))
 
-/-- The finite Galois intermediate field of the maximal abelian extension
-selected by a finite abelian extension. -/
+/-- The finite Galois intermediate field of the maximal abelian extension selected by a finite abelian extension. -/
 noncomputable def finiteAbelianExtensionInMaximalAbelianExtension
     (L : Type*) [Field L] [Algebra K L]
     [FiniteDimensional K L] [IsAbelianGalois K L] :
@@ -175,8 +164,7 @@ noncomputable def finiteAbelianExtensionInMaximalAbelianExtension
   let j := finiteAbelianExtensionEmbeddingIntoMaximalAbelianExtension K L
   j.finiteGaloisFieldRange
 
-/-- The selected finite layer is canonically equivalent to the original
-finite abelian extension. -/
+/-- The selected finite layer is canonically equivalent to the original finite abelian extension. -/
 noncomputable def finiteAbelianExtensionEquivInMaximalAbelianExtension
     (L : Type*) [Field L] [Algebra K L]
     [FiniteDimensional K L] [IsAbelianGalois K L] :

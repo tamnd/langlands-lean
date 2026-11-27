@@ -37,7 +37,7 @@ jobs:
           COMMIT: ${{ github.sha }}
         run: |
           mkdir -p records
-          if ! lake env lean --run scripts/Export.lean "$COMMIT" v4.35.0 "$(date -u +%Y-%m-%d)" > records/lean.json; then
+          if ! lake env lean --run scripts/Export.lean "$COMMIT" v4.36.0 "$(date -u +%Y-%m-%d)" > records/lean.json; then
             cat records/lean.json
             exit 1
           fi

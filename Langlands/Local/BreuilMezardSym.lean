@@ -453,10 +453,24 @@ omit [IsLocalRing O] in
 theorem IsStableLattice.map (e : V ≃ₗ[C] V') (he : ∀ g v, e (ρ g v) = ρ' g (e v))
     {L : Submodule O V} (hL : IsStableLattice ρ L) :
     IsStableLattice ρ' (L.map ((e : V →ₗ[C] V').restrictScalars O)) := by
-  refine ⟨⟨hL.1.fg.map _, ?_⟩, ?_⟩
+  have := hL.1
+  have hfg : L.FG := Submodule.IsLattice.fg (A := C) L
+  refine ⟨{ fg := hfg.map _, linearIndepOn := ?_, span_eq_top := ?_ }, ?_⟩
+  · intro s hs hli
+    have hsub : e.symm '' s ⊆ (L : Set V) := by
+      rintro _ ⟨y, hy, rfl⟩
+      obtain ⟨v, hv, rfl⟩ := hs hy
+      simpa using hv
+    have h1 : LinearIndepOn O id (e.symm '' s) :=
+      hli.image (f := (e.symm : V' →ₗ[C] V).restrictScalars O) (by
+        rw [LinearMap.ker_eq_bot.2 (by exact e.symm.injective)]; exact disjoint_bot_right)
+    have h3 := (Submodule.IsLattice.linearIndepOn (A := C) (M := L) _ hsub h1).image
+      (f := (e : V →ₗ[C] V')) (by
+        rw [LinearMap.ker_eq_bot.2 e.injective]; exact disjoint_bot_right)
+    simpa [Set.image_image] using h3
   · change Submodule.span C ((e : V →ₗ[C] V') '' L) = ⊤
-    rw [Submodule.span_image, hL.1.span_eq_top, Submodule.map_top,
-      LinearMap.range_eq_top.2 e.surjective]
+    rw [Submodule.span_image, Submodule.IsFullLattice.span_eq_top (A := C) (M := L),
+      Submodule.map_top, LinearMap.range_eq_top.2 e.surjective]
   · rintro g _ ⟨v, hv, rfl⟩
     exact ⟨ρ g v, hL.2 g v hv, he g v⟩
 

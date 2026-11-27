@@ -16,11 +16,7 @@ public import Langlands.Ported.NYLL.GaloisCohomology.Cyclic.NormKernelVanishing
 /-!
 # Finite restriction of cyclotomic fixed-field reciprocity
 
-For an unramified finite abelian subextension of an abstract fixed
-number field, this file constructs the genuine restriction from the
-cyclotomic maximal-unramified Galois group to the finite Galois group.
-It then identifies the restriction of the chosen-local-factor
-cyclotomic Artin map with the actual global norm-residue map.
+For an unramified finite abelian subextension of an abstract fixed number field, this file constructs the genuine restriction from the cyclotomic maximal-unramified Galois group to the finite Galois group. It then identifies the restriction of the chosen-local-factor cyclotomic Artin map with the actual global norm-residue map.
 -/
 
 
@@ -37,9 +33,7 @@ namespace Reciprocity
 open ClassFormation
 open KummerTheory
 
-/-- The actual fixed field attached to `H` is a number field.  Keeping
-this as one file-local instance makes it available while later idele-class
-binders are elaborated. -/
+/-- The actual fixed field attached to `H` is a number field.  Keeping this as one file-local instance makes it available while later idele-class binders are elaborated. -/
 noncomputable local instance
     cyclotomicUnramifiedRestriction_abstractFixedFieldNumberField
     (H : FiniteAbstractField
@@ -57,9 +51,7 @@ noncomputable local instance
       (LocalClassFieldTheory.abstractFixedField
         ℚ (SeparableClosure ℚ) H.field)
 
-/-- The abelianized fixed-field quotient comparison sends the class of
-an actual finite quotient element to the corresponding automorphism of
-the concrete relative fixed field. -/
+/-- The abelianized fixed-field quotient comparison sends the class of an actual finite quotient element to the corresponding automorphism of the concrete relative fixed field. -/
 @[simp]
 theorem
     abstractFixedFieldAbelianizedExtensionQuotientEquivGaloisGroup_of
@@ -68,7 +60,7 @@ theorem
     (L : FiniteAbelianSubextension H.field)
     (q : L.extensionQuotient) :
     abstractFixedFieldAbelianizedExtensionQuotientEquivGaloisGroup H L
-        (Additive.ofMul (Abelianization.of q)) =
+        (Additive.ofMul (Group.Abelianization.of q)) =
       Additive.ofMul
         ((L.extensionQuotientMulEquiv.trans
           (LocalClassFieldTheory.abstractExtensionQuotientEquivGaloisGroup
@@ -82,10 +74,10 @@ theorem
       (LocalClassFieldTheory.abstractExtensionQuotientEquivGaloisGroup
         ℚ (SeparableClosure ℚ)
         H.field L.field L.below L.normal))
-      ((Abelianization.equivOfComm :
+      ((Group.Abelianization.equivOfComm :
           L.extensionQuotient ≃*
-            Abelianization L.extensionQuotient).symm
-        (Abelianization.of q)) =
+            Group.Abelianization L.extensionQuotient).symm
+        (Group.Abelianization.of q)) =
       (L.extensionQuotientMulEquiv.trans
         (LocalClassFieldTheory.abstractExtensionQuotientEquivGaloisGroup
           ℚ (SeparableClosure ℚ)
@@ -95,14 +87,11 @@ theorem
       (LocalClassFieldTheory.abstractExtensionQuotientEquivGaloisGroup
         ℚ (SeparableClosure ℚ)
         H.field L.field L.below L.normal))
-    ((Abelianization.equivOfComm :
+    ((Group.Abelianization.equivOfComm :
       L.extensionQuotient ≃*
-        Abelianization L.extensionQuotient).symm_apply_apply q)
+        Group.Abelianization L.extensionQuotient).symm_apply_apply q)
 
-/-- Genuine restriction from the cyclotomic maximal-unramified
-extension of an abstract fixed field to a finite unramified abelian
-subextension.  The construction uses the canonical quotient
-presentations of both actual Galois groups. -/
+/-- Genuine restriction from the cyclotomic maximal-unramified extension of an abstract fixed field to a finite unramified abelian subextension.  The construction uses the canonical quotient presentations of both actual Galois groups. -/
 noncomputable def abstractFixedFieldCyclotomicFiniteRestrictionMonoidHom
     (H : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
@@ -176,8 +165,7 @@ theorem abstractFixedFieldCyclotomicFiniteRestrictionMonoidHom_apply
             (abstractFixedFieldCyclotomicGalEquivZHat H σ))) := by
   rfl
 
-/-- In the canonical `ZHat` coordinate, the genuine cyclotomic Artin
-symbol recovers the abstract maximal-unramified quotient class. -/
+/-- In the canonical `ZHat` coordinate, the genuine cyclotomic Artin symbol recovers the abstract maximal-unramified quotient class. -/
 private theorem
     abstractFixedFieldCyclotomicIdeleClassArtin_fixed_coordinate
     (H : FiniteAbstractField
@@ -214,9 +202,7 @@ private theorem
           (ClassFormation.ValuationData.maximalUnramifiedNormResidueSymbol
             rationalCyclotomicIdeleClassValuationData H a).toMul)
 
-/-- On a fixed-part idele class, finite restriction of the genuine
-cyclotomic Artin symbol is the finite restriction of the
-maximal-unramified norm-residue symbol. -/
+/-- On a fixed-part idele class, finite restriction of the genuine cyclotomic Artin symbol is the finite restriction of the maximal-unramified norm-residue symbol. -/
 theorem
     abstractFixedFieldCyclotomicFiniteRestriction_ideleClassArtin_fixed
     (H : FiniteAbstractField
@@ -279,9 +265,7 @@ theorem
 open _root_.ClassFormation.ValuationData (
   normResidueSymbol_finiteNormClass_eq_maximalUnramifiedRestriction
 ) in
-/-- The actual fixed-field global norm-residue value on a fixed-part
-class is the finite restriction of the maximal-unramified cyclotomic
-symbol. -/
+/-- The actual fixed-field global norm-residue value on a fixed-part class is the finite restriction of the maximal-unramified cyclotomic symbol. -/
 theorem
     abstractFixedFieldGlobalNormResidueMonoidHom_fixed_eq_finiteUnramifiedRestriction
     (H : FiniteAbstractField
@@ -339,7 +323,7 @@ theorem
     _ =
         Additive.toMul
           (abstractFixedFieldAbelianizedExtensionQuotientEquivGaloisGroup H L
-            (Additive.ofMul (Abelianization.of q))) :=
+            (Additive.ofMul (Group.Abelianization.of q))) :=
       congrArg
         (fun z =>
           Additive.toMul
@@ -353,9 +337,7 @@ theorem
       rw [abstractFixedFieldAbelianizedExtensionQuotientEquivGaloisGroup_of]
       exact toMul_ofMul _
 
-/-- Finite restriction of the genuine cyclotomic chosen-local-factor
-Artin map is exactly the actual global norm-residue map for every
-finite unramified abelian fixed-field extension. -/
+/-- Finite restriction of the genuine cyclotomic chosen-local-factor Artin map is exactly the actual global norm-residue map for every finite unramified abelian fixed-field extension. -/
 theorem
     abstractFixedFieldGlobalNormResidueMonoidHom_eq_cyclotomicFiniteRestriction
     (H : FiniteAbstractField

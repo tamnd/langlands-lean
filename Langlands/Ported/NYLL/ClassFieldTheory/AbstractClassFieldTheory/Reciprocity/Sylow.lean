@@ -14,21 +14,9 @@ public import Mathlib.GroupTheory.Nilpotent
 /-!
 # The abstract reciprocity theorem: the Sylow step in the first reduction
 
-This file formalizes the source-producing group-theoretic part of the
-first reduction.  For a Sylow `p`-subgroup `P` of the actual
-finite quotient `G(L/K)`, the already constructed fixed field `M = L^P`
-is an actual (not necessarily Galois over `K`) intermediate field.  The
-actual quotient `G(L/M)` is a `p`-group and hence solvable, while
-`[M:K] = (G(L/K) : P)` is prime to `p`.
+This file formalizes the source-producing group-theoretic part of the first reduction.  For a Sylow `p`-subgroup `P` of the actual finite quotient `G(L/K)`, the already constructed fixed field `M = L^P` is an actual (not necessarily Galois over `K`) intermediate field.  The actual quotient `G(L/M)` is a `p`-group and hence solvable, while `[M:K] = (G(L/K) : P)` is prime to `p`.
 
-For an abelian group `B`, multiplication by `[M:K]` is therefore
-surjective on every Sylow `p`-subgroup of `B`, without assuming that the
-ambient group is finite.  Equivalently, that Sylow subgroup lies in the
-image of the `[M:K]`-fold map.  In the abstract reciprocity theorem the ambient norm quotient is
-only known at this point to have bounded exponent; its individual cyclic
-subgroups are finite.  This avoids using the desired reciprocity
-surjectivity to prove finiteness.  No reciprocity surjectivity or
-the finite reciprocity equivalence comparison is assumed here.
+For an abelian group `B`, multiplication by `[M:K]` is therefore surjective on every Sylow `p`-subgroup of `B`, without assuming that the ambient group is finite.  Equivalently, that Sylow subgroup lies in the image of the `[M:K]`-fold map.  In the abstract reciprocity theorem the ambient norm quotient is only known at this point to have bounded exponent; its individual cyclic subgroups are finite.  This avoids using the desired reciprocity surjectivity to prove finiteness.  No reciprocity surjectivity or the finite reciprocity equivalence comparison is assumed here.
 -/
 
 @[expose] public section
@@ -51,9 +39,7 @@ variable {K : ClosedSubgroup G}
 
 /-! ## The fixed field of a Sylow subgroup -/
 
-/-- For `M = L^P`, the actual lower quotient `G(L/M)` is a `p`-group.
-This is the identification `G(L/M) \cong P`, applied to an actual
-Sylow subgroup of the actual finite quotient `G(L/K)`. -/
+/-- For `M = L^P`, the actual lower quotient `G(L/M)` is a `p`-group. This is the identification `G(L/M) \cong P`, applied to an actual Sylow subgroup of the actual finite quotient `G(L/K)`. -/
 theorem abstractReciprocity_sylow_lowerQuotient_isPGroup
     (L : FiniteGaloisSubextension K) {p : ℕ}
     (P : Sylow p L.extensionQuotient) :
@@ -63,16 +49,14 @@ theorem abstractReciprocity_sylow_lowerQuotient_isPGroup
           (L.intermediateField (P : Subgroup L.extensionQuotient)) L.field
           (L.field_le_intermediateField
             (P : Subgroup L.extensionQuotient))) := by
-  exact P.isPGroup'.of_equiv
+  exact P.isPGroup.of_equiv
     (L.lowerQuotientEquiv (P : Subgroup L.extensionQuotient)).symm
 
 section SylowSolvability
 
 local notation "IsSolvable" => Group.IsSolvable
 
-/-- Consequently, the actual extension `L/M` cut out by a Sylow subgroup
-is solvable.  Mathlib proves this by the standard chain
-finite `p`-group `\Rightarrow` nilpotent `\Rightarrow` solvable. -/
+/-- Consequently, the actual extension `L/M` cut out by a Sylow subgroup is solvable.  Mathlib proves this by the standard chain finite `p`-group `\Rightarrow` nilpotent `\Rightarrow` solvable. -/
 theorem abstractReciprocity_sylow_lowerQuotient_isSolvable
     (L : FiniteGaloisSubextension K) {p : ℕ} [Fact p.Prime]
     (P : Sylow p L.extensionQuotient) :
@@ -106,9 +90,7 @@ theorem abstractReciprocity_sylow_lowerQuotient_isSolvable
 
 end SylowSolvability
 
-/-- The degree of the actual fixed field `M = L^P` over `K` is the index
-of `P` in `G(L/K)`.  No normality of `P`, and hence none of `M/K`, is
-used. -/
+/-- The degree of the actual fixed field `M = L^P` over `K` is the index of `P` in `G(L/K)`.  No normality of `P`, and hence none of `M/K`, is used. -/
 theorem abstractReciprocity_sylow_intermediateDegree_eq_index
     (L : FiniteGaloisSubextension K) {p : ℕ}
     (P : Sylow p L.extensionQuotient) :
@@ -126,8 +108,7 @@ theorem abstractReciprocity_sylow_intermediateDegree_eq_index
         ((P : Subgroup L.extensionQuotient).index_comap_of_surjective
           (QuotientGroup.mk'_surjective (extensionSubgroup K L.field L.below)))
 
-/-- Hence the actual degree `[M:K]` is prime to the chosen Sylow prime
-`p`, as asserted. -/
+/-- Hence the actual degree `[M:K]` is prime to the chosen Sylow prime `p`, as asserted. -/
 theorem abstractReciprocity_sylow_intermediateDegree_coprime
     (L : FiniteGaloisSubextension K) {p : ℕ} [Fact p.Prime]
     (P : Sylow p L.extensionQuotient) :
@@ -140,13 +121,9 @@ theorem abstractReciprocity_sylow_intermediateDegree_coprime
 
 /-! ## Sylow subgroups in a possibly infinite abelian target -/
 
-/-- Let `S` be a Sylow `p`-subgroup of an abelian group `B`.  If
-`n` is prime to `p`, then `S` lies in the range of the additive `n`-fold
-map on `B`.
+/-- Let `S` be a Sylow `p`-subgroup of an abelian group `B`.  If `n` is prime to `p`, then `S` lies in the range of the additive `n`-fold map on `B`.
 
-The proof follows the sentence literally: `S` has `p`-power
-order, so the `n`-fold map is a bijection on `S`; a preimage in `S` is in
-particular a preimage in `B`. -/
+The proof follows the sentence literally: `S` has `p`-power order, so the `n`-fold map is a bijection on `S`; a preimage in `S` is in particular a preimage in `B`. -/
 theorem sylowAddSubgroup_le_nsmul_range_of_coprime
     {B : Type*} [AddCommGroup B]
     {p n : ℕ} [Fact p.Prime]
@@ -156,17 +133,14 @@ theorem sylowAddSubgroup_le_nsmul_range_of_coprime
       (nsmulAddMonoidHom (α := B) n).range := by
   intro x hx
   let xS : S := ⟨Multiplicative.ofAdd x, hx⟩
-  let e : S ≃ S := S.isPGroup'.powEquiv hn.symm
+  let e : S ≃ S := S.isPGroup.powEquiv hn.symm
   let yS : S := e.symm xS
   refine ⟨yS.1.toAdd, ?_⟩
   have hy : yS ^ n = xS := e.apply_symm_apply xS
   have hyval : yS.1 ^ n = xS.1 := congrArg Subtype.val hy
   simpa [xS] using congrArg Multiplicative.toAdd hyval
 
-/-- The exact specialization: for `M = L^P`, every Sylow
-`p`-subgroup of an abelian group `B` lies in the image of the
-`[M:K]`-fold map on `B`.  This is the group-theoretic input which the
-identity `N_{M/K} ∘ i = [M:K]` later converts into norm-map containment. -/
+/-- The exact specialization: for `M = L^P`, every Sylow `p`-subgroup of an abelian group `B` lies in the image of the `[M:K]`-fold map on `B`.  This is the group-theoretic input which the identity `N_{M/K} ∘ i = [M:K]` later converts into norm-map containment. -/
 theorem abstractReciprocity_sylowAddSubgroup_le_intermediateDegree_nsmul_range
     (L : FiniteGaloisSubextension K) {p : ℕ} [Fact p.Prime]
     (P : Sylow p L.extensionQuotient)

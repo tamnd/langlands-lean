@@ -15,9 +15,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finit
 /-!
 # Concrete prime-norm evaluation
 
-The abstract prime-norm formula is transported through an explicit
-separable-closure realization. The resulting concrete norm-residue symbol
-sends the transported base-field norm to the represented Galois automorphism.
+The abstract prime-norm formula is transported through an explicit separable-closure realization. The resulting concrete norm-residue symbol sends the transported base-field norm to the represented Galois automorphism.
 -/
 
 
@@ -59,13 +57,9 @@ local instance concretePrimeNorm_residueExtensionFinite
         (Eᵢ).field (Eᵢ).below) :=
   (Eᵢ).finite
 
-/-- The concrete local norm-residue symbol evaluated on the norm of a prime
-element in the fixed field of a positive Frobenius lift.
+/-- The concrete local norm-residue symbol evaluated on the norm of a prime element in the fixed field of a positive Frobenius lift.
 
-The hypothesis on `x` identifies its image in the base fixed coefficient
-group with the abstract relative norm, so the statement is independent of a
-particular presentation of that norm. The right side is the abelianization
-class of the actual `K`-automorphism of `L` represented by `q`. -/
+The hypothesis on `x` identifies its image in the base fixed coefficient group with the abstract relative norm, so the statement is independent of a particular presentation of that norm. The right side is the abelianization class of the actual `K`-automorphism of `L` represented by `q`. -/
 theorem concreteNormResidueSymbolOfEmbedding_apply_primeNorm
     (D : DegreeData (intrinsicAbsoluteGalois K)) (v : ValuationData D (intrinsicAbsoluteUnits K))
     (hcf : SatisfiesClassFieldAxiom (intrinsicAbsoluteUnits K))
@@ -106,7 +100,7 @@ theorem concreteNormResidueSymbolOfEmbedding_apply_primeNorm
         relativeNorm
           (intrinsicAbsoluteUnits K) (intrinsicAbstractBase K) S hSB pi) :
     concreteNormResidueSymbolOfEmbedding K L i D v hcf x =
-      Abelianization.of
+      Group.Abelianization.of
         (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L i q) := by
   dsimp only at hx
   let BK := intrinsicFiniteAbstractBase K
@@ -141,7 +135,7 @@ theorem concreteNormResidueSymbolOfEmbedding_apply_primeNorm
       (Additive.ofMul q) sigma hsigma pi hpi
   have hreciprocity :
       D.abstractReciprocityEquiv (intrinsicAbsoluteUnits K) v hcf BK Eᵢ
-          (Additive.ofMul (Abelianization.of q)) =
+          (Additive.ofMul (Group.Abelianization.of q)) =
         finiteNormClass (intrinsicAbsoluteUnits K) (intrinsicAbstractBase
           K) (Eᵢ).field (Eᵢ).below a := by
     rw [D.abstractReciprocityEquiv_apply_of (intrinsicAbsoluteUnits K) v hcf BK Eᵢ q]
@@ -161,23 +155,23 @@ theorem concreteNormResidueSymbolOfEmbedding_apply_primeNorm
       MulEquiv.toAdditive
           ((finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding
             K L i).abelianizationCongr.symm)
-          (Additive.ofMul (Abelianization.of
+          (Additive.ofMul (Group.Abelianization.of
             (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L i q))) =
-        Additive.ofMul (Abelianization.of q) := by
+        Additive.ofMul (Group.Abelianization.of q) := by
     change
       (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding
           K L i).abelianizationCongr.symm
-          (Abelianization.of
+          (Group.Abelianization.of
             (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L i q)) =
-        Abelianization.of q
-    rw [← abelianizationCongr_of
+        Group.Abelianization.of q
+    rw [← Group.abelianizationCongr_of
       (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L i) q]
     exact
       (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding
         K L i).abelianizationCongr.symm_apply_apply _
   have hforward :
       concreteReciprocityAddEquivOfEmbedding K L i D v hcf
-          (Additive.ofMul (Abelianization.of
+          (Additive.ofMul (Group.Abelianization.of
             (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L i q))) =
         Additive.ofMul (normClass K L x) := by
     change
@@ -187,7 +181,7 @@ theorem concreteNormResidueSymbolOfEmbedding_apply_primeNorm
             (MulEquiv.toAdditive
               ((finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding
                 K L i).abelianizationCongr.symm)
-              (Additive.ofMul (Abelianization.of
+              (Additive.ofMul (Group.Abelianization.of
                 (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding
                   K L i q))))) =
         Additive.ofMul (normClass K L x)
@@ -195,7 +189,7 @@ theorem concreteNormResidueSymbolOfEmbedding_apply_primeNorm
   change
     (concreteReciprocityEquivOfEmbedding K L i D v hcf).symm
         (normClass K L x) =
-      Abelianization.of
+      Group.Abelianization.of
         (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L i q)
   apply (concreteReciprocityEquivOfEmbedding K L i D v hcf).injective
   rw [(concreteReciprocityEquivOfEmbedding K L i D v hcf).apply_symm_apply]

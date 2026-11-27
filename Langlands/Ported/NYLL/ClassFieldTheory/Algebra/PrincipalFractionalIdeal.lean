@@ -7,7 +7,8 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Mathlib.RingTheory.DedekindDomain.AdicValuation
+public import Mathlib.RingTheory.DedekindDomain.AdicValuation.Completion
+public import Mathlib.RingTheory.DedekindDomain.AdicValuation.Valuation
 public import Mathlib.RingTheory.DedekindDomain.Factorization
 public import Mathlib.RingTheory.ClassGroup.Basic
 
@@ -25,8 +26,7 @@ universe u v
 variable {R : Type u} {F : Type v} [CommRing R] [IsDedekindDomain R]
   [Field F] [Algebra R F] [IsFractionRing R F]
 
-/-- The exponent of a prime in a principal fractional ideal is the additive
-form of the corresponding normalized finite-place valuation. -/
+/-- The exponent of a prime in a principal fractional ideal is the additive form of the corresponding normalized finite-place valuation. -/
 theorem FractionalIdeal.count_toPrincipalIdeal (x : Fˣ)
     (v : HeightOneSpectrum R) :
     FractionalIdeal.count F v

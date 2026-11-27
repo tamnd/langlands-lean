@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Adele.Equiv
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.ClassGroup.AlgEquiv
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.NumberField.PlaceEquiv
@@ -15,8 +14,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Numbe
 /-!
 # Infinite completions under a number-field equivalence
 
-The completion maps along an isomorphism of number fields are mutually
-inverse. This is the archimedean local input for the topology of `adeleCongr`.
+The completion maps along an isomorphism of number fields are mutually inverse. This is the archimedean local input for the topology of `adeleCongr`.
 -/
 
 @[expose] public section
@@ -44,7 +42,7 @@ noncomputable def infinitePlaceCompletionCongrHom
     rfl
   let : W.1.LiesOver w.1 :=
     ⟨congrArg (fun v : InfinitePlace K => v.1) hKM⟩
-  exact InfinitePlace.Completion.absMap w W
+  exact AbsoluteValue.Completion.map w.1 W.1
 
 /-- The archimedean completion map is continuous. -/
 theorem infinitePlaceCompletionCongrHom_continuous
@@ -57,11 +55,10 @@ theorem infinitePlaceCompletionCongrHom_continuous
     rfl
   let : W.1.LiesOver w.1 :=
     ⟨congrArg (fun v : InfinitePlace K => v.1) hKM⟩
-  change Continuous (InfinitePlace.Completion.absMap w W)
-  exact InfinitePlace.Completion.continuous_absMap w W
+  change Continuous (AbsoluteValue.Completion.map w.1 W.1)
+  exact AbsoluteValue.Completion.continuous_map w.1 W.1
 
-/-- Transport along a field isomorphism is an equivalence of the
-corresponding infinite-place completions. -/
+/-- Transport along a field isomorphism is an equivalence of the corresponding infinite-place completions. -/
 noncomputable def infinitePlaceCompletionCongrEquiv
     (e : K ≃ₐ[ℚ] M) (W : InfinitePlace M) :
     ((ClassFieldTheory.infinitePlaceEquivOfRingEquiv e.toRingEquiv).symm W).Completion ≃+*
@@ -80,24 +77,24 @@ noncomputable def infinitePlaceCompletionCongrEquiv
   let : w.1.LiesOver W.1 :=
     ⟨congrArg (fun v : InfinitePlace M => v.1) hMK⟩
   let f : w.Completion →+* W.Completion :=
-    InfinitePlace.Completion.absMap w W
+    AbsoluteValue.Completion.map w.1 W.1
   let g : W.Completion →+* w.Completion :=
-    InfinitePlace.Completion.absMap W w
+    AbsoluteValue.Completion.map W.1 w.1
   exact RingEquiv.ofRingHom f g
     (by
       apply RingHom.ext
       intro x
       change f (g x) = x
-      refine InfinitePlace.Completion.induction_on W x ?_ ?_
+      refine AbsoluteValue.Completion.induction_on x ?_ ?_
       · exact isClosed_eq
-          ((InfinitePlace.Completion.continuous_absMap w W).comp
-            (InfinitePlace.Completion.continuous_absMap W w))
+          ((AbsoluteValue.Completion.continuous_map w.1 W.1).comp
+            (AbsoluteValue.Completion.continuous_map W.1 w.1))
           continuous_id
       · intro y
         dsimp only [f, g]
-        rw [InfinitePlace.Completion.absMap_coe
-            W w y,
-          InfinitePlace.Completion.absMap_coe w W]
+        rw [AbsoluteValue.Completion.map_coe
+            W.1 w.1 y,
+          AbsoluteValue.Completion.map_coe w.1 W.1]
         apply congrArg (fun z : WithAbs W.1 => (z : W.Completion))
         apply (WithAbs.equiv W.1).injective
         change e (e.symm (WithAbs.equiv W.1 y)) =
@@ -107,24 +104,23 @@ noncomputable def infinitePlaceCompletionCongrEquiv
       apply RingHom.ext
       intro x
       change g (f x) = x
-      refine InfinitePlace.Completion.induction_on w x ?_ ?_
+      refine AbsoluteValue.Completion.induction_on x ?_ ?_
       · exact isClosed_eq
-          ((InfinitePlace.Completion.continuous_absMap W w).comp
-            (InfinitePlace.Completion.continuous_absMap w W))
+          ((AbsoluteValue.Completion.continuous_map W.1 w.1).comp
+            (AbsoluteValue.Completion.continuous_map w.1 W.1))
           continuous_id
       · intro y
         dsimp only [f, g]
-        rw [InfinitePlace.Completion.absMap_coe
-            w W y,
-          InfinitePlace.Completion.absMap_coe W w]
+        rw [AbsoluteValue.Completion.map_coe
+            w.1 W.1 y,
+          AbsoluteValue.Completion.map_coe W.1 w.1]
         apply congrArg (fun z : WithAbs w.1 => (z : w.Completion))
         apply (WithAbs.equiv w.1).injective
         change e.symm (e (WithAbs.equiv w.1 y)) =
           WithAbs.equiv w.1 y
         exact e.symm_apply_apply _)
 
-/-- The completion map agrees with the number-field equivalence on
-elements of the number field. -/
+/-- The completion map agrees with the number-field equivalence on elements of the number field. -/
 theorem infinitePlaceCompletionCongrHom_algebraMap
     (e : K ≃ₐ[ℚ] M) (W : InfinitePlace M) (x : K) :
     infinitePlaceCompletionCongrHom e W
@@ -138,21 +134,17 @@ theorem infinitePlaceCompletionCongrHom_algebraMap
     rfl
   let : W.1.LiesOver w.1 :=
     ⟨congrArg (fun v : InfinitePlace K => v.1) hKM⟩
-  change InfinitePlace.Completion.absMap w W (algebraMap K w.Completion x) =
+  change AbsoluteValue.Completion.map w.1 W.1 (algebraMap K w.Completion x) =
     algebraMap M W.Completion (e x)
   have hAlg : algebraMap K M x = e x := by
     change e.toRingHom x = e x
     rfl
   rw [← hAlg]
-  apply InfinitePlace.Completion.ext
-  change AbsoluteValue.Completion.map w.1 W.1 (algebraMap K w.1.Completion x) =
-    algebraMap M W.1.Completion (algebraMap K M x)
   simpa only [AbsoluteValue.Completion.algebraMap_def, WithAbs.algebraMap_right_apply,
     Algebra.algebraMap_self_apply, WithAbs.map_apply, WithAbs.ofAbs_toAbs] using
     (AbsoluteValue.Completion.map_coe w.1 W.1 (WithAbs.toAbs w.1 x))
 
-/-- On infinite coordinates, `adeleCongr` is the completion map at the
-corresponding infinite place. -/
+/-- On infinite coordinates, `adeleCongr` is the completion map at the corresponding infinite place. -/
 theorem adeleCongr_infiniteComponent
     (e : K ≃ₐ[ℚ] M)
     (a : NumberField.AdeleRing (𝓞 K) K)
@@ -208,12 +200,12 @@ theorem adeleCongr_infiniteComponent
           [hWv : W.1.LiesOver v.1]
           [hwv' : w.1.LiesOver v'.1]
           [hWw : W.1.LiesOver w.1] :
-          InfinitePlace.Completion.absMap
-              v W (b.1 v) =
-            InfinitePlace.Completion.absMap
-              w W
-              (InfinitePlace.Completion.absMap
-                v' w (b.1 v')) := by
+          AbsoluteValue.Completion.map
+              v.1 W.1 (b.1 v) =
+            AbsoluteValue.Completion.map
+              w.1 W.1
+              (AbsoluteValue.Completion.map
+                v'.1 w.1 (b.1 v')) := by
         subst v'
         exact (infinitePlaceCompletionMap_comp_apply
           (K := ℚ) (M := K) (L := M) W (b.1 v)).symm

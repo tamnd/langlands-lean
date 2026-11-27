@@ -12,7 +12,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Adele
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.AdeleBaseChange
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Completion.AdicCompletionComparison
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.ClassGroup.Core
-public import Mathlib.RingTheory.DedekindDomain.AdicValuation
+public import Mathlib.RingTheory.DedekindDomain.AdicValuation.Ramification
 public import Mathlib.RingTheory.ClassGroup.ExtendedHom
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.Extension.BaseChange
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.Extension.LocalComponent
@@ -23,11 +23,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele
 /-!
 # Extension of ideles and ideal classes
 
-For a finite Galois extension of number fields, scalar extension of the
-relative adele algebra followed by the relative-to-ordinary comparison
-gives the usual extension map on ideles.  This file descends that map to
-idele classes and compares it with extension of fractional ideals and
-ideal classes.
+For a finite Galois extension of number fields, scalar extension of the relative adele algebra followed by the relative-to-ordinary comparison gives the usual extension map on ideles.  This file descends that map to idele classes and compares it with extension of fractional ideals and ideal classes.
 -/
 
 
@@ -51,8 +47,7 @@ variable
     [FiniteDimensional K L] [IsGalois K L]
 
 omit [IsGalois K L] in
-/-- On a base-field local unit, the finite relative-to-ordinary
-comparison is the canonical map to the chosen place above it. -/
+/-- On a base-field local unit, the finite relative-to-ordinary comparison is the canonical map to the chosen place above it. -/
 theorem finitePlaceTensorUnitsEquivAboveAdic_localIdeleInclusion
     (w : HeightOneSpectrum (𝓞 K))
     (W : {W : HeightOneSpectrum (𝓞 L) //
@@ -90,8 +85,7 @@ theorem finitePlaceTensorUnitsEquivAboveAdic_localIdeleInclusion
       K L w a (x : w.adicCompletion K)
 
 omit [FiniteDimensional K L] [IsGalois K L] in
-/-- Local orders under the canonical completion map are multiplied by
-the ramification index. -/
+/-- Local orders under the canonical completion map are multiplied by the ramification index. -/
 theorem localOrder_finitePlaceAdicCompletionMap
     (w : HeightOneSpectrum (𝓞 K))
     (W : {W : HeightOneSpectrum (𝓞 L) //
@@ -120,16 +114,14 @@ namespace FractionalIdealGroup
 open ClassFieldTheory.NumberFieldFractionalIdealGroup
 
 omit [FiniteDimensional K L] [IsGalois K L] in
-/-- Extension of nonzero fractional ideals along the inclusion of number
-fields. -/
+/-- Extension of nonzero fractional ideals along the inclusion of number fields. -/
 noncomputable def extension :
     NumberFieldFractionalIdealGroup K →* NumberFieldFractionalIdealGroup L :=
   Units.map
     (FractionalIdeal.extendedHom L (𝓞 L)).toMonoidHom
 
 omit [FiniteDimensional K L] [IsGalois K L] in
-/-- On a prime fractional ideal, extension is the fractional ideal
-associated with the mapped integral ideal. -/
+/-- On a prime fractional ideal, extension is the fractional ideal associated with the mapped integral ideal. -/
 theorem extension_prime_val
     (w : HeightOneSpectrum (𝓞 K)) :
     ((extension K L (finitePrimeFractionalIdeal w) : NumberFieldFractionalIdealGroup L) :
@@ -144,8 +136,7 @@ theorem extension_prime_val
       L (𝓞 L) w.asIdeal
 
 omit [FiniteDimensional K L] [IsGalois K L] in
-/-- At a place above `w`, the exponent of the extended prime is the
-ramification index. -/
+/-- At a place above `w`, the exponent of the extended prime is the ramification index. -/
 theorem count_extension_prime
     (w : HeightOneSpectrum (𝓞 K))
     (W : HeightOneSpectrum (𝓞 L))
@@ -161,7 +152,7 @@ theorem count_extension_prime
       w.asIdeal.map (algebraMap (𝓞 K) (𝓞 L)) ≠ ⊥ :=
     Ideal.map_ne_bot_of_ne_bot w.ne_bot
   rw [extension_prime_val,
-    FractionalIdeal.count_coe L W hmap,
+    FractionalIdeal.count_coeIdeal L W hmap,
     Ideal.count_associates_factors_eq
       hmap W.isPrime W.ne_bot]
   norm_cast
@@ -185,7 +176,7 @@ theorem count_extension_prime_ne
       w.asIdeal.map (algebraMap (𝓞 K) (𝓞 L)) ≠ ⊥ :=
     Ideal.map_ne_bot_of_ne_bot w.ne_bot
   rw [extension_prime_val,
-    FractionalIdeal.count_coe L W hmap,
+    FractionalIdeal.count_coeIdeal L W hmap,
     Ideal.count_associates_factors_eq
       hmap W.isPrime W.ne_bot]
   norm_cast
@@ -201,8 +192,7 @@ theorem count_extension_prime_ne
   exact hprimes.2.over.symm
 
 omit [FiniteDimensional K L] [IsGalois K L] in
-/-- The exponent formula for extension of a fractional ideal presented
-by its prime factorization. -/
+/-- The exponent formula for extension of a fractional ideal presented by its prime factorization. -/
 theorem count_extension_factorization
     (exps : Multiplicative
       (HeightOneSpectrum (𝓞 K) →₀ ℤ))
@@ -269,8 +259,7 @@ theorem count_extension_factorization
       (extension K L (finitePrimeFractionalIdeal v)))
 
 omit [FiniteDimensional K L] [IsGalois K L] in
-/-- Extension multiplies the exponent at `W` by the ramification index
-over the place below `W`. -/
+/-- Extension multiplies the exponent at `W` by the ramification index over the place below `W`. -/
 theorem count_extension
     (I : NumberFieldFractionalIdealGroup K)
     (W : HeightOneSpectrum (𝓞 L)) :
@@ -289,8 +278,7 @@ theorem count_extension
     count_factorization]
 
 omit [FiniteDimensional K L] [IsGalois K L] in
-/-- Extension of a prime fractional ideal commutes with passage to the
-ideal class group. -/
+/-- Extension of a prime fractional ideal commutes with passage to the ideal class group. -/
 @[simp]
 theorem classGroup_mk_extension_prime
     (w : HeightOneSpectrum (𝓞 K)) :
@@ -313,8 +301,7 @@ theorem classGroup_mk_extension_prime
   exact extension_prime_val K L w
 
 omit [FiniteDimensional K L] [IsGalois K L] in
-/-- Extension of arbitrary fractional ideals commutes with passage to
-the ideal class group. -/
+/-- Extension of arbitrary fractional ideals commutes with passage to the ideal class group. -/
 @[simp]
 theorem classGroup_mk_extension
     (I : NumberFieldFractionalIdealGroup K) :
@@ -344,8 +331,7 @@ variable
     [Algebra A B] [Module.IsTorsionFree A B]
     [IsDedekindDomain A] [IsDedekindDomain B]
 
-/-- If extension of ideal classes is trivial, then the extension of
-each integral ideal is principal. -/
+/-- If extension of ideal classes is trivial, then the extension of each integral ideal is principal. -/
 theorem ideal_map_isPrincipal_of_extendedHom_eq_one
     (h : extendedHom A B = 1)
     (I : Ideal A) :
@@ -365,8 +351,7 @@ theorem ideal_map_isPrincipal_of_extendedHom_eq_one
         (extendedIdeal A B I₀).2).mp hclass
     simpa [extendedIdeal, I₀] using hprincipal
 
-/-- Triviality of the class-group extension map is exactly the
-principalization of every integral ideal. -/
+/-- Triviality of the class-group extension map is exactly the principalization of every integral ideal. -/
 theorem extendedHom_eq_one_iff_forall_ideal_map_isPrincipal :
     extendedHom A B = 1 ↔
       ∀ I : Ideal A,
@@ -406,8 +391,8 @@ theorem extension_infiniteComponent
         _root_.infinitePlaceBelow (K := K) W
       letI : W.1.LiesOver v.1 := ⟨rfl⟩
       Units.map
-        (InfinitePlace.Completion.absMap
-          v W)
+        (AbsoluteValue.Completion.map
+          v.1 W.1)
         (infiniteComponent v a) := by
   let : Algebra.IsIntegral K L :=
     Algebra.IsIntegral.of_finite K L
@@ -447,8 +432,8 @@ theorem extension_infiniteComponent
         (K := K) (L := L) v
         ((infiniteComponent v a : v.Completion) ⊗ₜ[K] (1 : L))
         ⟨W, rfl⟩ =
-      InfinitePlace.Completion.absMap
-        v W
+      AbsoluteValue.Completion.map
+        v.1 W.1
         (infiniteComponent v a : v.Completion)
   simpa only [map_one, mul_one] using
     (_root_.infinitePlaceTensorRingEquivAbove_tmul
@@ -456,8 +441,7 @@ theorem extension_infiniteComponent
       (infiniteComponent v a : v.Completion) (1 : L))
 
 omit [IsGalois K L] in
-/-- The finite component of an extended idele is the canonical local
-completion map applied to the component below it. -/
+/-- The finite component of an extended idele is the canonical local completion map applied to the component below it. -/
 @[simp]
 theorem extension_finiteComponent
     (a : IdeleGroup K)
@@ -492,8 +476,7 @@ theorem extension_finiteComponent
     _root_.finitePlaceTensorUnitsEquivAboveAdic_localIdeleInclusion]
 
 omit [IsGalois K L] in
-/-- The local order of an extended idele is multiplied by the
-ramification index at the chosen place above. -/
+/-- The local order of an extended idele is multiplied by the ramification index at the chosen place above. -/
 theorem extension_localOrder
     (a : IdeleGroup K)
     (W : HeightOneSpectrum (𝓞 L)) :
@@ -513,8 +496,7 @@ theorem extension_localOrder
         (_root_.finitePlaceBelow (K := K) W) a)
 
 omit [IsGalois K L] in
-/-- The fractional ideal attached to an extended idele is the extension
-of the fractional ideal attached to the original idele. -/
+/-- The fractional ideal attached to an extended idele is the extension of the fractional ideal attached to the original idele. -/
 theorem fractionalIdeal_extension
     (a : IdeleGroup K) :
     fractionalIdeal (extension K L a) =
@@ -544,8 +526,7 @@ theorem fractionalIdeal_extension
   exact extension_localOrder K L a W
 
 omit [IsGalois K L] in
-/-- The ideal class attached to an extended idele is the extension of
-the ideal class attached to the original idele. -/
+/-- The ideal class attached to an extended idele is the extension of the ideal class attached to the original idele. -/
 theorem idealClass_extension
     (a : IdeleGroup K) :
     idealClass (extension K L a) =
@@ -560,8 +541,7 @@ theorem idealClass_extension
     FractionalIdealGroup.classGroup_mk_extension]
 
 omit [IsGalois K L] in
-/-- Extension sends the subgroup defining the ordinary ideal class
-quotient into the corresponding subgroup over the extension field. -/
+/-- Extension sends the subgroup defining the ordinary ideal class quotient into the corresponding subgroup over the extension field. -/
 theorem extension_mem_ordinaryIdealClassSubgroup
     {a : IdeleGroup K}
     (ha : a ∈
@@ -577,8 +557,7 @@ theorem extension_mem_ordinaryIdealClassSubgroup
   rw [idealClass_extension, ha, map_one]
 
 omit [IsGalois K L] in
-/-- Extension of a principal idele is the corresponding principal idele
-of the extension field. -/
+/-- Extension of a principal idele is the corresponding principal idele of the extension field. -/
 @[simp]
 theorem extension_principalIdele (x : Kˣ) :
     extension K L (principalIdele K x) =
@@ -589,8 +568,7 @@ theorem extension_principalIdele (x : Kˣ) :
     relativeIdeleBaseChangeMulEquiv_principalIdele]
   rfl
 
-/-- Extension of ideles along the identity field extension is the
-identity homomorphism. -/
+/-- Extension of ideles along the identity field extension is the identity homomorphism. -/
 @[simp]
 theorem extension_self :
     extension K K = MonoidHom.id (IdeleGroup K) := by
@@ -609,15 +587,15 @@ theorem extension_self :
         (hv : v = W)
         [hov : W.1.LiesOver v.1] :
         Units.map
-            (InfinitePlace.Completion.absMap
-              v W).toMonoidHom
+            (AbsoluteValue.Completion.map
+              v.1 W.1).toMonoidHom
             (infiniteComponent v a) =
           infiniteComponent W a := by
       subst v
       apply Units.ext
       change
-        InfinitePlace.Completion.absMap
-            W W
+        AbsoluteValue.Completion.map
+            W.1 W.1
             (infiniteComponent W a : W.Completion) =
           (infiniteComponent W a : W.Completion)
       exact
@@ -665,8 +643,7 @@ theorem extension_self :
         (_root_.finitePlaceBelow_self (K := K) W)
 
 omit [IsGalois K L] in
-/-- Extension of ideles is functorial in a tower of finite field
-extensions. -/
+/-- Extension of ideles is functorial in a tower of finite field extensions. -/
 theorem extension_comp
     (M : Type w)
     [Field M] [NumberField M]
@@ -698,26 +675,26 @@ theorem extension_comp
         [hWV : W.1.LiesOver V.1]
         [hWv : W.1.LiesOver v.1] :
         Units.map
-            (InfinitePlace.Completion.absMap
-              V W).toMonoidHom
+            (AbsoluteValue.Completion.map
+              V.1 W.1).toMonoidHom
             (Units.map
-              (InfinitePlace.Completion.absMap
-                v' V).toMonoidHom
+              (AbsoluteValue.Completion.map
+                v'.1 V.1).toMonoidHom
               (infiniteComponent v' a)) =
           Units.map
-            (InfinitePlace.Completion.absMap
-              v W).toMonoidHom
+            (AbsoluteValue.Completion.map
+              v.1 W.1).toMonoidHom
             (infiniteComponent v a) := by
       subst v'
       apply Units.ext
       change
-        InfinitePlace.Completion.absMap
-            V W
-            (InfinitePlace.Completion.absMap
-              v V
+        AbsoluteValue.Completion.map
+            V.1 W.1
+            (AbsoluteValue.Completion.map
+              v.1 V.1
               (infiniteComponent v a : v.Completion)) =
-          InfinitePlace.Completion.absMap
-            v W
+          AbsoluteValue.Completion.map
+            v.1 W.1
             (infiniteComponent v a : v.Completion)
       exact
         _root_.infinitePlaceCompletionMap_comp_apply
@@ -795,8 +772,7 @@ theorem ideleClassExtension_mk (a : IdeleGroup K) :
       IdeleGroup.toStandardClass L (IdeleGroup.extension K L a) :=
   NumberField.IdeleClassGroup.fieldInclusion_mk K L a
 
-/-- Extension of idele classes along the identity field extension is
-the identity homomorphism. -/
+/-- Extension of idele classes along the identity field extension is the identity homomorphism. -/
 @[simp]
 theorem ideleClassExtension_self :
     ideleClassExtension K K =
@@ -814,8 +790,7 @@ theorem ideleClassExtension_self :
   rfl
 
 omit [IsGalois K L] in
-/-- Extension of idele classes is functorial in a tower of finite
-field extensions. -/
+/-- Extension of idele classes is functorial in a tower of finite field extensions. -/
 theorem ideleClassExtension_comp
     (M : Type w)
     [Field M] [NumberField M]

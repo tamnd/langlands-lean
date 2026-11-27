@@ -12,9 +12,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.DiscreteValuatio
 /-!
 # Uniformizers detected in an ambient complete discrete valuation field
 
-An embedding into an ambient complete DVF can make a uniformizer easier to
-recognize.  For a finite separable extension, uniqueness of the extended
-valuation transports that recognition back to the chosen valuation.
+An embedding into an ambient complete DVF can make a uniformizer easier to recognize.  For a finite separable extension, uniqueness of the extended valuation transports that recognition back to the chosen valuation.
 -/
 
 
@@ -33,9 +31,7 @@ namespace ValuedExtension
 variable {K : Type u} {L : Type w} [Field K] [Field L]
 variable [Algebra K L] [FiniteDimensional K L] [Algebra.IsSeparable K L]
 
-/-- An embedding into an ambient valued field restricts to valuation rings
-whenever the chosen source valuation is equivalent to the pulled-back
-ambient valuation. -/
+/-- An embedding into an ambient valued field restricts to valuation rings whenever the chosen source valuation is equivalent to the pulled-back ambient valuation. -/
 noncomputable def valuationSubringMapOfIsEquivComap
     {M : Type y} [Field M]
     {GammaL : Type x} {GammaM : Type z}
@@ -63,8 +59,7 @@ noncomputable def valuationSubringMapOfIsEquivComap
   map_zero' := Subtype.ext (map_zero ι)
   map_add' a b := Subtype.ext (map_add ι (a : L) (b : L))
 
-/-- The valuation-ring map induced by an equivalent ambient pullback acts
-through the original field embedding. -/
+/-- The valuation-ring map induced by an equivalent ambient pullback acts through the original field embedding. -/
 @[simp]
 theorem valuationSubringMapOfIsEquivComap_apply
     {M : Type y} [Field M]
@@ -81,8 +76,7 @@ theorem valuationSubringMapOfIsEquivComap_apply
       ι (a : L) :=
   rfl
 
-/-- The valuation-ring map induced by an equivalent ambient pullback is a
-local homomorphism. -/
+/-- The valuation-ring map induced by an equivalent ambient pullback is a local homomorphism. -/
 theorem valuationSubringMapOfIsEquivComap_isLocalHom
     {M : Type y} [Field M]
     {GammaL : Type x} {GammaM : Type z}
@@ -95,7 +89,7 @@ theorem valuationSubringMapOfIsEquivComap_isLocalHom
     IsLocalHom
       (valuationSubringMapOfIsEquivComap vL vM ι hEquiv) := by
   let f := valuationSubringMapOfIsEquivComap vL vM ι hEquiv
-  apply ((IsLocalRing.local_hom_TFAE f).out 2 1).mp
+  apply ((IsLocalRing.local_hom_tfae f).out 2 1).mp
   rintro _ ⟨a, ha, rfl⟩
   have haVal : vL (a : L) < 1 :=
     (_root_.Valuation.mem_maximalIdeal_iff (v := vL)).1 ha
@@ -109,8 +103,7 @@ theorem valuationSubringMapOfIsEquivComap_isLocalHom
     simpa only [f, valuationSubringMapOfIsEquivComap_apply,
       _root_.Valuation.comap_apply, map_one] using hlt
 
-/-- The induced injection from the chosen residue field into the ambient
-residue field. -/
+/-- The induced injection from the chosen residue field into the ambient residue field. -/
 noncomputable def residueFieldMapOfIsEquivComap
     {M : Type y} [Field M]
     {GammaL : Type x} {GammaM : Type z}
@@ -130,10 +123,7 @@ noncomputable def residueFieldMapOfIsEquivComap
     IsLocalRing.ResidueField.map
       (valuationSubringMapOfIsEquivComap vL vM ι hEquiv)
 
-/-- Reduction modulo the maximal ideal commutes with compatible
-automorphisms of the source and ambient valuation rings.  This is the
-residue-field naturality needed when a finite valued subfield is realized
-inside a larger complete discrete valuation field. -/
+/-- Reduction modulo the maximal ideal commutes with compatible automorphisms of the source and ambient valuation rings.  This is the residue-field naturality needed when a finite valued subfield is realized inside a larger complete discrete valuation field. -/
 theorem residueFieldMapOfIsEquivComap_mapEquiv
     {M : Type y} [Field M]
     {GammaL : Type x} {GammaM : Type z}
@@ -179,16 +169,9 @@ theorem residueFieldMapOfIsEquivComap_mapEquiv
     (IsLocalRing.residue vM.valuationSubring)
     (hcompat b)
 
-/-- Let `L / K` be finite separable with a chosen complete discrete valuation
-extending the one on `K`.  If a field embedding of `L` into another complete
-DVF sends `π` to an ambient uniformizer, and the pulled-back ambient valuation
-also extends the base valuation, then `π` is a uniformizer for the chosen
-valuation on `L`.
+/-- Let `L / K` be finite separable with a chosen complete discrete valuation extending the one on `K`.  If a field embedding of `L` into another complete DVF sends `π` to an ambient uniformizer, and the pulled-back ambient valuation also extends the base valuation, then `π` is a uniformizer for the chosen valuation on `L`.
 
-The proof first uses uniqueness of valuation extension to compare the chosen
-valuation with the ambient comap valuation.  It then pulls divisibility by the
-ambient uniformizer back through the field embedding, proving that `π`
-generates the chosen maximal ideal. -/
+The proof first uses uniqueness of valuation extension to compare the chosen valuation with the ambient comap valuation.  It then pulls divisibility by the ambient uniformizer back through the field embedding, proving that `π` generates the chosen maximal ideal. -/
 theorem isUniformizer_of_ambient_image_isUniformizer
     {M : Type y} [Field M]
     (base : CompleteDVF.{u, v} K) (target : CompleteDVF.{w, x} L)

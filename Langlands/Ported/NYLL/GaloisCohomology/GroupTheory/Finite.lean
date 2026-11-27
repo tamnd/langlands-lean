@@ -13,20 +13,11 @@ public import Mathlib.GroupTheory.Sylow
 /-!
 # Finite group theory for the splitting corollaries
 
-This file isolates the finite-group inputs for prime-power and normal-closure
-splitting arguments.
+This file isolates the finite-group inputs for prime-power and normal-closure splitting arguments.
 
-For the prime-power subgroup reduction, a proper subgroup of a finite group of order `p ^ v` is
-contained in a subgroup of index `p`.  The proof below gives the
-slightly stronger statement for arbitrary finite `p`-groups.  In the
-cyclic case the resulting subgroup is normal, hence produces the
-degree-`p` quotient used to choose the intermediate field.
+For the prime-power subgroup reduction, a proper subgroup of a finite group of order `p ^ v` is contained in a subgroup of index `p`.  The proof below gives the slightly stronger statement for arbitrary finite `p`-groups.  In the cyclic case the resulting subgroup is normal, hence produces the degree-`p` quotient used to choose the intermediate field.
 
-For the normal-closure splitting argument, the normal closure is encoded by a core-free subgroup
-`H`.  The canonical map from left cosets to double cosets is
-surjective.  If it does not decrease cardinality, its right subgroup
-is contained in the normal core of `H`; therefore it is trivial when
-`H` is core-free.
+For the normal-closure splitting argument, the normal closure is encoded by a core-free subgroup `H`.  The canonical map from left cosets to double cosets is surjective.  If it does not decrease cardinality, its right subgroup is contained in the normal core of `H`; therefore it is trivial when `H` is core-free.
 -/
 
 
@@ -41,12 +32,9 @@ section PrimePower
 
 variable {G : Type uG} [Group G] [Finite G]
 
-/-- A proper subgroup of a finite group of prime-power order is
-contained in a subgroup of index `p`.
+/-- A proper subgroup of a finite group of prime-power order is contained in a subgroup of index `p`.
 
-This is the group-theoretic step in the prime-power subgroup reduction.  Mathlib's Sylow
-extension theorem proves the stronger result without a cyclicity
-assumption. -/
+This is the group-theoretic step in the prime-power subgroup reduction.  Mathlib's Sylow extension theorem proves the stronger result without a cyclicity assumption. -/
 theorem exists_index_prime_supergroup_of_card_prime_power
     {p v : ℕ}
     (hp : p.Prime)
@@ -83,7 +71,7 @@ theorem exists_index_prime_supergroup_of_card_prime_power
     exact
       pow_dvd_pow p (Nat.sub_le v 1)
   obtain ⟨P, hPcard, hDP⟩ :=
-    Sylow.exists_subgroup_card_pow_prime_le
+    Sylow.exists_subgroup_card_pow_prime_ge
       p hpowDvd D hDcard hmPred
   refine ⟨P, hDP, ?_⟩
   have hmul :
@@ -96,8 +84,7 @@ theorem exists_index_prime_supergroup_of_card_prime_power
   exact
     Nat.mul_left_cancel (pow_pos hp.pos _) hmul
 
-/-- In a cyclic finite group of prime-power order, the index-`p`
-supergroup is normal and its quotient has order `p`. -/
+/-- In a cyclic finite group of prime-power order, the index-`p` supergroup is normal and its quotient has order `p`. -/
 theorem cyclic_exists_normal_index_prime_supergroup
     [IsCyclic G]
     {p v : ℕ}
@@ -122,8 +109,7 @@ theorem cyclic_exists_normal_index_prime_supergroup
   exact hPindex
 
 omit [Finite G] in
-/-- In a cyclic group of finite prime-power cardinality, every proper
-subgroup is contained in every subgroup of index `p`. -/
+/-- In a cyclic group of finite prime-power cardinality, every proper subgroup is contained in every subgroup of index `p`. -/
 theorem subgroup_le_index_prime_subgroup_of_ne_top_cyclic_prime_power
     [IsCyclic G]
     {p exponent : ℕ}
@@ -172,9 +158,7 @@ section PrimeOrder
 
 variable (G : Type uG) [Group G] [Finite G] [Nontrivial G]
 
-/-- Every nontrivial finite group contains an element of prime order.
-This supplies the cyclic prime-degree subgroup used after passing to a
-normal closure. -/
+/-- Every nontrivial finite group contains an element of prime order. This supplies the cyclic prime-degree subgroup used after passing to a normal closure. -/
 theorem exists_element_of_prime_order :
     ∃ (p : ℕ) (g : G),
       p.Prime ∧ orderOf g = p := by
@@ -188,8 +172,7 @@ theorem exists_element_of_prime_order :
       (G := G) p hpDvd
   exact ⟨p, g, hp, hg⟩
 
-/-- Every nontrivial finite group contains an actual cyclic subgroup
-of prime cardinality. -/
+/-- Every nontrivial finite group contains an actual cyclic subgroup of prime cardinality. -/
 theorem exists_cyclic_subgroup_of_prime_card :
     ∃ (p : ℕ) (P : Subgroup G),
       p.Prime ∧ Nat.card P = p ∧ IsCyclic P := by
@@ -205,8 +188,7 @@ section DoubleCosets
 
 variable {G : Type uG} [Group G]
 
-/-- The canonical projection
-`H \ G = H \ G / 1 → H \ G / D`. -/
+/-- The canonical projection `H \ G = H \ G / 1 → H \ G / D`. -/
 def doubleCosetRightProjection
     (H D : Subgroup G) :
     DoubleCoset.Quotient
@@ -241,8 +223,7 @@ theorem doubleCosetRightProjection_surjective
   rw [doubleCosetRightProjection_mk]
   exact DoubleCoset.out_eq' q
 
-/-- If the left-coset to double-coset projection is injective, then
-the right subgroup lies in the normal core of the left subgroup. -/
+/-- If the left-coset to double-coset projection is injective, then the right subgroup lies in the normal core of the left subgroup. -/
 theorem rightSubgroup_le_normalCore_of_doubleCoset_projection_injective
     (H D : Subgroup G)
     (hinj : Function.Injective
@@ -279,8 +260,7 @@ theorem rightSubgroup_le_normalCore_of_doubleCoset_projection_injective
   rw [hconj]
   exact hh
 
-/-- Equality between the number of left cosets and the number of
-double cosets forces the right subgroup into the normal core. -/
+/-- Equality between the number of left cosets and the number of double cosets forces the right subgroup into the normal core. -/
 theorem rightSubgroup_le_normalCore_of_doubleCoset_card_eq
     [Finite G]
     (H D : Subgroup G)
@@ -312,8 +292,7 @@ theorem rightSubgroup_le_normalCore_of_doubleCoset_card_eq
     rightSubgroup_le_normalCore_of_doubleCoset_projection_injective
       H D hbij.injective
 
-/-- For a core-free subgroup `H`, the double-coset count equals the
-left-coset count exactly when the right subgroup is trivial.
+/-- For a core-free subgroup `H`, the double-coset count equals the left-coset count exactly when the right subgroup is trivial.
 
 This is the finite-group content of the normal-closure reduction. -/
 theorem doubleCoset_card_eq_leftCoset_iff_of_normalCore_eq_bot

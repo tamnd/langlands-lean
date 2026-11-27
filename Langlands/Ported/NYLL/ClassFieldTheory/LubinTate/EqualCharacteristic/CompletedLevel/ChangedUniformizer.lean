@@ -21,16 +21,11 @@ public import Mathlib.FieldTheory.IsSepClosed
 /-!
 # The completed theta-intertwining theorem: changing the equal-characteristic uniformizer
 
-If `u` is a unit of `κ[[T]]`, then `uT` is again a uniformizer.  This file
-repeats the mechanical part of the Lubin--Tate construction with
+If `u` is a unit of `κ[[T]]`, then `uT` is again a uniformizer.  This file repeats the mechanical part of the Lubin--Tate construction with
 
 `P_{uT}(Y) = Y^q + uT Y`.
 
-The primitive level polynomial is monic and Eisenstein at `(T)`, hence
-irreducible over `κ((T))`; its simple root extension has degree
-`(q - 1)q^n`, and the norm of the negative generator is exactly `uT`.
-This is the changed-uniformizer algebra used in the proof of the completed theta-intertwining
-theorem.
+The primitive level polynomial is monic and Eisenstein at `(T)`, hence irreducible over `κ((T))`; its simple root extension has degree `(q - 1)q^n`, and the norm of the negative generator is exactly `uT`. This is the changed-uniformizer algebra used in the proof of the completed theta-intertwining theorem.
 -/
 
 
@@ -282,8 +277,7 @@ theorem equalCharacteristicChangedIntegralPrimitivePolynomial_map_constantCoeff
     equalCharacteristicChangedIntegralPiPolynomialIterate_map_constantCoeff,
     equalCharacteristicChangedIntegralUniformizer, ← pow_mul, Nat.mul_comm]
 
-/-- The constant coefficient of the changed integral primitive polynomial is the changed
-uniformizer. -/
+/-- The constant coefficient of the changed integral primitive polynomial is the changed uniformizer. -/
 theorem equalCharacteristicChangedIntegralPrimitivePolynomial_coeff_zero
     (F : LocalField.{u, v} K) (a : F.residueField⟦X⟧ˣ) (n : ℕ) :
     (equalCharacteristicChangedIntegralPrimitivePolynomial F a n).coeff 0 =
@@ -316,7 +310,7 @@ theorem equalCharacteristicChangedIntegralPrimitivePolynomial_isEisensteinAt
   have hmonic : Q.Monic :=
     equalCharacteristicChangedIntegralPrimitivePolynomial_monic F a n
   refine hmonic.isEisensteinAt_of_mem_of_notMem
-    (Ideal.isPrime_span_singleton_of_prime PowerSeries.X_prime).ne_top ?_ ?_
+    (Ideal.isPrime_span_singleton_of_prime PowerSeries.prime_X).ne_top ?_ ?_
   · intro i hi
     rw [Ideal.mem_span_singleton, PowerSeries.X_dvd_iff]
     have hcoeff :
@@ -340,7 +334,7 @@ theorem equalCharacteristicChangedIntegralPrimitivePolynomial_irreducible
     Irreducible (equalCharacteristicChangedIntegralPrimitivePolynomial F a n) := by
   apply (equalCharacteristicChangedIntegralPrimitivePolynomial_isEisensteinAt
     F a n).irreducible
-    (Ideal.isPrime_span_singleton_of_prime PowerSeries.X_prime)
+    (Ideal.isPrime_span_singleton_of_prime PowerSeries.prime_X)
     (equalCharacteristicChangedIntegralPrimitivePolynomial_monic F a n).isPrimitive
   rw [equalCharacteristicChangedIntegralPrimitivePolynomial_natDegree]
   exact Nat.mul_pos
@@ -653,8 +647,7 @@ theorem equalCharacteristicChangedLevelGenerator_eq_powerBasis_gen
         (chosenEqualCharacteristicChangedPrimitiveRoot_isIntegral F a n)).gen := by
   rfl
 
-/-- The completed theta-intertwining theorem, changed-uniformizer norm identity:
-`N(-λ_{uT,n+1}) = uT`. -/
+/-- The completed theta-intertwining theorem, changed-uniformizer norm identity: `N(-λ_{uT,n+1}) = uT`. -/
 theorem equalCharacteristicChanged_norm_neg_levelGenerator
     (F : LocalField.{u, v} K) (a : F.residueField⟦X⟧ˣ)
     [CharP K F.residueCharacteristic] (n : ℕ) :

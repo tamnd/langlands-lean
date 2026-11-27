@@ -14,9 +14,7 @@ public import Mathlib.GroupTheory.Abelianization.Defs
 /-!
 # Naturality of transfer under a quotient
 
-This file supplies the group-theoretic source used in transfer--norm naturality. If a surjection
-has kernel contained in a finite-index subgroup, it identifies the two left-coset spaces and
-transfer commutes with the induced maps on abelianizations.
+This file supplies the group-theoretic source used in transfer--norm naturality. If a surjection has kernel contained in a finite-index subgroup, it identifies the two left-coset spaces and transfer commutes with the induced maps on abelianizations.
 -/
 
 @[expose] public section
@@ -32,8 +30,7 @@ open scoped Pointwise
 
 variable {P : Type*} {Q : Type*} [Group P] [Group Q]
 
-/-- A surjection identifies left cosets of `H` with left cosets of its image
-when its kernel is contained in `H`. -/
+/-- A surjection identifies left cosets of `H` with left cosets of its image when its kernel is contained in `H`. -/
 noncomputable def leftCosetEquivMapOfSurjective
     (f : P →* Q) (hf : Function.Surjective f)
     (H : Subgroup P) (hker : f.ker ≤ H) :
@@ -60,9 +57,7 @@ noncomputable def leftCosetEquivMapOfSurjective
     obtain ⟨p, rfl⟩ := hf q
     exact ⟨QuotientGroup.mk p, rfl⟩
 
-/--
-Establishes the identity `leftCosetEquivMapOfSurjective f hf H hker (QuotientGroup.mk p) =
-QuotientGroup.mk (f p)`.
+/-- Establishes the identity `leftCosetEquivMapOfSurjective f hf H hker (QuotientGroup.mk p) = QuotientGroup.mk (f p)`.
 -/
 @[simp]
 theorem leftCosetEquivMapOfSurjective_mk
@@ -72,9 +67,7 @@ theorem leftCosetEquivMapOfSurjective_mk
       QuotientGroup.mk (f p) :=
   rfl
 
-/--
-Establishes the identity `leftCosetEquivMapOfSurjective f hf H hker (p • q) = f p •
-leftCosetEquivMapOfSurjective f hf H hker q`.
+/-- Establishes the identity `leftCosetEquivMapOfSurjective f hf H hker (p • q) = f p • leftCosetEquivMapOfSurjective f hf H hker q`.
 -/
 @[simp]
 theorem leftCosetEquivMapOfSurjective_smul
@@ -88,9 +81,7 @@ theorem leftCosetEquivMapOfSurjective_smul
   simp only [MulAction.Quotient.smul_mk, leftCosetEquivMapOfSurjective_mk,
     smul_eq_mul, map_mul]
 
-/-- A left transversal descends along the same quotient map.  It is built
-from the induced equivalence of left-coset spaces, so its chosen
-representatives are literally the images of the original representatives. -/
+/-- A left transversal descends along the same quotient map.  It is built from the induced equivalence of left-coset spaces, so its chosen representatives are literally the images of the original representatives. -/
 noncomputable def leftTransversalMapOfSurjective
     (f : P →* Q) (hf : Function.Surjective f)
     (H : Subgroup P) (hker : f.ker ≤ H)
@@ -107,10 +98,7 @@ noncomputable def leftTransversalMapOfSurjective
     exact (congrArg e hrep).trans (e.apply_symm_apply q)
   exact ⟨Set.range u, Subgroup.isComplement_range_left hu⟩
 
-/--
-The defining evaluation formula for `leftTransversalMapOfSurjective` is
-`((leftTransversalMapOfSurjective f hf H hker T).2.leftQuotientEquiv q : Q) = f
-(T.2.leftQuotientEquiv ((leftCosetEquivMapOfSurjective f hf H hker).symm q) : P)`.
+/-- The defining evaluation formula for `leftTransversalMapOfSurjective` is `((leftTransversalMapOfSurjective f hf H hker T).2.leftQuotientEquiv q : Q) = f (T.2.leftQuotientEquiv ((leftCosetEquivMapOfSurjective f hf H hker).symm q) : P)`.
 -/
 @[simp]
 theorem leftTransversalMapOfSurjective_apply
@@ -199,11 +187,11 @@ private theorem leftTransversals_diff_natural_of_surjective
     letI : J.FiniteIndex := by
       rw [Subgroup.finiteIndex_iff, H.index_map_eq hf hker]
       exact Subgroup.FiniteIndex.index_ne_zero
-    Abelianization.map (f.subgroupMap H)
+    Group.Abelianization.map (f.subgroupMap H)
         (Subgroup.leftTransversals.diff
-          (Abelianization.of : H →* Abelianization H) S T) =
+          (Group.Abelianization.of : H →* Group.Abelianization H) S T) =
       Subgroup.leftTransversals.diff
-        (Abelianization.of : J →* Abelianization J)
+        (Group.Abelianization.of : J →* Group.Abelianization J)
         (leftTransversalMapOfSurjective f hf H hker S)
         (leftTransversalMapOfSurjective f hf H hker T) := by
   dsimp only
@@ -216,18 +204,15 @@ private theorem leftTransversals_diff_natural_of_surjective
     (H.map f).fintypeQuotientOfFiniteIndex
   let e := leftCosetEquivMapOfSurjective f hf H hker
   simp only [Subgroup.leftTransversals.diff, map_prod,
-    Abelianization.map_of, leftTransversalMapOfSurjective_apply]
+    Group.Abelianization.map_of, leftTransversalMapOfSurjective_apply]
   rw [← e.prod_comp]
   apply Finset.prod_congr rfl
   intro q _
-  apply congrArg Abelianization.of
+  apply congrArg Group.Abelianization.of
   apply Subtype.ext
   simp only [MonoidHom.subgroupMap_apply_coe, map_mul, map_inv, Equiv.symm_apply_apply, e]
 
-/-- Transfer is natural for a surjective homomorphism whose kernel is
-contained in the finite-index subgroup.  Both transfer maps are Mathlib's
-actual `MonoidHom.transfer`; the proof descends an arbitrary left
-transversal and compares the defining products term by term. -/
+/-- Transfer is natural for a surjective homomorphism whose kernel is contained in the finite-index subgroup.  Both transfer maps are Mathlib's actual `MonoidHom.transfer`; the proof descends an arbitrary left transversal and compares the defining products term by term. -/
 theorem abelianization_transfer_natural_of_surjective
     (f : P →* Q) (hf : Function.Surjective f)
     (H : Subgroup P) (hker : f.ker ≤ H) [H.FiniteIndex] :
@@ -235,51 +220,50 @@ theorem abelianization_transfer_natural_of_surjective
     letI : J.FiniteIndex := by
       rw [Subgroup.finiteIndex_iff, H.index_map_eq hf hker]
       exact Subgroup.FiniteIndex.index_ne_zero
-    (Abelianization.map (f.subgroupMap H)).comp
-        (Abelianization.lift
+    (Group.Abelianization.map (f.subgroupMap H)).comp
+        (Group.Abelianization.lift
           (MonoidHom.transfer
-            (Abelianization.of : H →* Abelianization H))) =
-      (Abelianization.lift
+            (Group.Abelianization.of : H →* Group.Abelianization H))) =
+      (Group.Abelianization.lift
           (MonoidHom.transfer
-            (Abelianization.of : J →* Abelianization J))).comp
-        (Abelianization.map f) := by
+            (Group.Abelianization.of : J →* Group.Abelianization J))).comp
+        (Group.Abelianization.map f) := by
   dsimp only
   let : (H.map f).FiniteIndex := by
     rw [Subgroup.finiteIndex_iff, H.index_map_eq hf hker]
     exact Subgroup.FiniteIndex.index_ne_zero
-  apply Abelianization.hom_ext
+  apply Group.Abelianization.hom_ext
   apply MonoidHom.ext
   intro p
-  simp only [MonoidHom.comp_apply, Abelianization.lift_apply_of,
-    Abelianization.map_of]
+  simp only [MonoidHom.comp_apply, Group.Abelianization.lift_apply_of,
+    Group.Abelianization.map_of]
   let T : H.LeftTransversal := default
   rw [MonoidHom.transfer_def
-    (Abelianization.of : H →* Abelianization H) T p]
+    (Group.Abelianization.of : H →* Group.Abelianization H) T p]
   rw [MonoidHom.transfer_def
-    (Abelianization.of : H.map f →* Abelianization (H.map f))
+    (Group.Abelianization.of : H.map f →* Group.Abelianization (H.map f))
     (leftTransversalMapOfSurjective f hf H hker T) (f p)]
   rw [← leftTransversalMapOfSurjective_smul f hf H hker T p]
   exact leftTransversals_diff_natural_of_surjective
     f hf H hker T (p • T)
 
-/-- Replacing a finite-index subgroup by an equal subgroup only transports
-the codomain of transfer along the corresponding canonical equivalence. -/
+/-- Replacing a finite-index subgroup by an equal subgroup only transports the codomain of transfer along the corresponding canonical equivalence. -/
 theorem abelianization_transfer_congr_subgroup
     (H J : Subgroup P) (h : H = J)
     [H.FiniteIndex] [J.FiniteIndex] :
     (MulEquiv.subgroupCongr h).abelianizationCongr.toMonoidHom.comp
-        (Abelianization.lift
+        (Group.Abelianization.lift
           (MonoidHom.transfer
-            (Abelianization.of : H →* Abelianization H))) =
-      Abelianization.lift
+            (Group.Abelianization.of : H →* Group.Abelianization H))) =
+      Group.Abelianization.lift
         (MonoidHom.transfer
-          (Abelianization.of : J →* Abelianization J)) := by
+          (Group.Abelianization.of : J →* Group.Abelianization J)) := by
   subst J
   have hc : MulEquiv.subgroupCongr (show H = H from rfl) =
       MulEquiv.refl H := by
     ext x
     rfl
-  rw [hc, abelianizationCongr_refl]
+  rw [hc, Group.abelianizationCongr_refl]
   exact MonoidHom.id_comp _
 
 end

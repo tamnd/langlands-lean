@@ -25,13 +25,7 @@ public import Langlands.Ported.NYLL.GaloisCohomology.Cyclic.NormKernelVanishing
 /-!
 # Conjugation of the small Hilbert class-field tower
 
-For a finite abelian tower, conjugation by the lower base carries the
-relative norm subgroup of the upper extension to the relative norm subgroup
-of the conjugate extension.  In the rational absolute idele-class formation,
-the subgroup defining the small Hilbert class field is intrinsic under the
-corresponding automorphism of its actual fixed field.  Finite abelian
-classification therefore identifies every conjugate of the second small
-Hilbert class field with the original field.
+For a finite abelian tower, conjugation by the lower base carries the relative norm subgroup of the upper extension to the relative norm subgroup of the conjugate extension.  In the rational absolute idele-class formation, the subgroup defining the small Hilbert class field is intrinsic under the corresponding automorphism of its actual fixed field.  Finite abelian classification therefore identifies every conjugate of the second small Hilbert class field with the original field.
 -/
 
 
@@ -92,8 +86,7 @@ variable
     {G : Type uG}
     [Group G] [TopologicalSpace G] [ContinuousMul G]
 
-/-- A finite Galois field in an abelian tower is stable under conjugation
-by every element of its base subgroup. -/
+/-- A finite Galois field in an abelian tower is stable under conjugation by every element of its base subgroup. -/
 theorem conjugateFiniteAbelianSubextensionField_eq_self
     {K : ClosedSubgroup G}
     (L : FiniteAbelianSubextension K)
@@ -137,8 +130,7 @@ theorem conjugateFiniteAbelianSubextensionField_eq_self
       (mem_extensionSubgroup_iff K L.field L.below
         (s * xK * s⁻¹)).1 hxConj
 
-/-- Conjugation gives an additive equivalence between the two actual fixed
-parts of a coefficient representation. -/
+/-- Conjugation gives an additive equivalence between the two actual fixed parts of a coefficient representation. -/
 private noncomputable def conjugateFixedAddEquiv
     (A : Rep.{uA} ℤ G) (K : ClosedSubgroup G) (s : G) :
     ambientFixedAddSubgroup A K ≃+
@@ -176,7 +168,7 @@ private noncomputable def conjugateFixedAddEquiv
             exact congrArg (fun φ => φ a.1)
               (map_mul A.ρ s s⁻¹).symm
       _ = a.1 := by
-        simp only [mul_inv_cancel, map_one, Module.End.one_apply]
+        simp only [mul_inv_cancel, map_one, one_apply_eq_self]
   right_inv := by
     intro b
     apply Subtype.ext
@@ -187,14 +179,13 @@ private noncomputable def conjugateFixedAddEquiv
             exact congrArg (fun φ => φ b.1)
               (map_mul A.ρ s⁻¹ s).symm
       _ = b.1 := by
-        simp only [inv_mul_cancel, map_one, Module.End.one_apply]
+        simp only [inv_mul_cancel, map_one, one_apply_eq_self]
   map_add' := by
     intro a b
     apply Subtype.ext
     exact map_add (A.ρ s⁻¹) a.1 b.1
 
-/-- Relative norm images are carried exactly to the norm images of the
-conjugate extension. -/
+/-- Relative norm images are carried exactly to the norm images of the conjugate extension. -/
 theorem finiteNormSubgroup_map_conjugateFixed
     (A : Rep.{uA} ℤ G)
     (K L : ClosedSubgroup G)
@@ -320,8 +311,7 @@ private theorem rebaseFiniteAbelianSubextension_normSubgroup
   cases h
   rfl
 
-/-- Conjugation of the upper extension, transported back across the
-conjugation-stability equality of its abelian base. -/
+/-- Conjugation of the upper extension, transported back across the conjugation-stability equality of its abelian base. -/
 noncomputable def conjugateFiniteAbelianSubextensionOverBase
     {K : ClosedSubgroup G}
     (L : FiniteAbelianSubextension K)
@@ -348,8 +338,7 @@ theorem conjugateFiniteAbelianSubextensionOverBase_field
       (conjugateFiniteAbelianSubextension M s.1)).trans
         (conjugateFiniteAbelianSubextension_field M s.1)
 
-/-- The canonical conjugation map on the fixed part, transported along
-the conjugation-stability equality of the abelian base. -/
+/-- The canonical conjugation map on the fixed part, transported along the conjugation-stability equality of the abelian base. -/
 noncomputable def stableBaseConjugationHom
     (A : Rep.{uA} ℤ G)
     {K : ClosedSubgroup G}
@@ -385,9 +374,7 @@ theorem stableBaseConjugationHom_coe
     _ = A.ρ s.1⁻¹ a.1 :=
       conjugateFixedElement_coe A L.field s.1 a
 
-/-- The norm subgroup of the conjugate upper extension is the image of
-the original norm subgroup under the actual action on the fixed part of
-the stable base. -/
+/-- The norm subgroup of the conjugate upper extension is the image of the original norm subgroup under the actual action on the fixed part of the stable base. -/
 theorem conjugateFiniteAbelianSubextensionOverBase_normSubgroup
     (A : Rep.{uA} ℤ G)
     {K : ClosedSubgroup G}
@@ -457,9 +444,7 @@ local instance smallHilbertTowerRelativeQuotientFinite
 
 attribute [local instance] GlobalClassFields.ordinaryIdeleClassNormExtensionIsGalois
 
-/-- The ordinary small-Hilbert norm subgroup of an actual fixed field,
-transported into the fixed part of the rational absolute idele-class
-representation. -/
+/-- The ordinary small-Hilbert norm subgroup of an actual fixed field, transported into the fixed part of the rational absolute idele-class representation. -/
 noncomputable def smallHilbertNormSubgroupInRationalClassFormation
     (K : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ)) :
@@ -518,11 +503,7 @@ private theorem
   rw [finiteAbelianNormSubgroup_map_fixedIdeleClassEquiv_symm K L]
   exact fun c hc => hordinary hc
 
-/-- Maximality of the intrinsic small-Hilbert norm subgroup, transported
-from the actual fixed-field extension back into the rational absolute
-class formation.  For an extension unramified at every finite and
-infinite place, the canonical small-Hilbert subgroup is contained in
-its genuine abstract norm subgroup. -/
+/-- Maximality of the intrinsic small-Hilbert norm subgroup, transported from the actual fixed-field extension back into the rational absolute class formation.  For an extension unramified at every finite and infinite place, the canonical small-Hilbert subgroup is contained in its genuine abstract norm subgroup. -/
 theorem
     smallHilbertNormSubgroupInRationalClassFormation_le_normSubgroup_of_everywhereUnramified
     (K : FiniteAbstractField
@@ -556,11 +537,7 @@ theorem
     smallHilbertNormSubgroupInRationalClassFormation_le_normSubgroup_of_fixedFieldNormRange
       K L hordinary
 
-/-- Every finite abelian extension of the same actual base which is
-unramified at all finite and infinite places lies in any realization of
-the small Hilbert class field.  The conclusion is a field-order statement:
-it follows from the genuine fixed-field norm comparison and the
-order-reversing finite abelian classification. -/
+/-- Every finite abelian extension of the same actual base which is unramified at all finite and infinite places lies in any realization of the small Hilbert class field.  The conclusion is a field-order statement: it follows from the genuine fixed-field norm comparison and the order-reversing finite abelian classification. -/
 theorem everywhereUnramifiedFiniteAbelianSubextension_le_smallHilbertClassField
     (K : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
@@ -597,9 +574,7 @@ theorem everywhereUnramifiedFiniteAbelianSubextension_le_smallHilbertClassField
   intro c hc
   exact hsmall (hL ▸ hc)
 
-/-- The automorphism of the actual upper fixed field induced by the inverse
-of an element of the lower base subgroup.  The inverse is the one appearing
-in right conjugation and in `conjugateFixedElement`. -/
+/-- The automorphism of the actual upper fixed field induced by the inverse of an element of the lower base subgroup.  The inverse is the one appearing in right conjugation and in `conjugateFixedElement`. -/
 noncomputable def smallHilbertBaseConjugationAutomorphism
     (K : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
@@ -620,8 +595,7 @@ noncomputable def smallHilbertBaseConjugationAutomorphism
         K.field L.field L.below)
       s⁻¹)).restrictScalars ℚ
 
-/-- The fixed-field automorphism used for stable conjugation is induced by
-the inverse ambient automorphism on underlying separable-closure elements. -/
+/-- The fixed-field automorphism used for stable conjugation is induced by the inverse ambient automorphism on underlying separable-closure elements. -/
 private theorem smallHilbertBaseConjugationAutomorphism_apply_val
     (K : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
@@ -653,9 +627,7 @@ private theorem smallHilbertBaseConjugationAutomorphism_apply_val
       ℚ (SeparableClosure ℚ)
       K.field L.field L.below L.normal s⁻¹ x).symm
 
-/-- On the actual fixed part of the rational idele-class formation,
-conjugation by an element of the lower base is ordinary idele-class
-transport along the induced automorphism of the upper fixed field. -/
+/-- On the actual fixed part of the rational idele-class formation, conjugation by an element of the lower base is ordinary idele-class transport along the induced automorphism of the upper fixed field. -/
 theorem rationalSmallHilbertFixedPart_conjugation
     (K : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
@@ -836,8 +808,7 @@ private theorem
       (smallHilbertClassFieldNormSubgroup_toAddSubgroup_map_ideleClassCongr
         E (smallHilbertBaseConjugationAutomorphism K L s))
 
-/-- The canonical small-Hilbert norm subgroup in the rational absolute
-class formation is fixed by every lower-base conjugation. -/
+/-- The canonical small-Hilbert norm subgroup in the rational absolute class formation is fixed by every lower-base conjugation. -/
 theorem smallHilbertNormSubgroupInRationalClassFormation_map_conjugation
     (K : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
@@ -853,10 +824,7 @@ theorem smallHilbertNormSubgroupInRationalClassFormation_map_conjugation
     smallHilbertNormSubgroupInRationalClassFormation_map_conjugation_canonical
       K L s
 
-/-- If the upper extension realizes the canonical small-Hilbert norm
-subgroup of the middle field, finite abelian classification identifies
-its conjugate by every element of the lower base with the original
-finite abelian subextension. -/
+/-- If the upper extension realizes the canonical small-Hilbert norm subgroup of the middle field, finite abelian classification identifies its conjugate by every element of the lower base with the original finite abelian subextension. -/
 theorem smallHilbertClassField_conjugateSubextension_eq_self
     (K : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
@@ -899,8 +867,7 @@ theorem smallHilbertClassField_conjugateSubextension_eq_self
       M.normSubgroup (ideleClassRepresentation ℚ)
   exact hnorm
 
-/-- Field-level conjugation stability of the upper small Hilbert class
-field in the two-stage tower. -/
+/-- Field-level conjugation stability of the upper small Hilbert class field in the two-stage tower. -/
 theorem smallHilbertClassField_conjugate_eq_self
     (K : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
@@ -923,8 +890,7 @@ theorem smallHilbertClassField_conjugate_eq_self
   simpa only [
     conjugateFiniteAbelianSubextensionOverBase_field] using hfield
 
-/-- The second small Hilbert class field in a finite abelian tower is
-an actual finite Galois extension of the original base. -/
+/-- The second small Hilbert class field in a finite abelian tower is an actual finite Galois extension of the original base. -/
 noncomputable def smallHilbertClassFieldGaloisSubextension
     (K : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
@@ -938,9 +904,7 @@ noncomputable def smallHilbertClassFieldGaloisSubextension
   galoisSubextensionOfConjugateStableAbelianTower
     L M (smallHilbertClassField_conjugate_eq_self K L M hM)
 
-/-- The abelian middle field of the two-stage small-Hilbert tower is
-contained in the maximal abelian intermediate field of the resulting
-Galois extension over the original base. -/
+/-- The abelian middle field of the two-stage small-Hilbert tower is contained in the maximal abelian intermediate field of the resulting Galois extension over the original base. -/
 theorem smallHilbertTowerBase_le_maximalAbelianSubextension
     (K : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
@@ -963,11 +927,7 @@ theorem smallHilbertTowerBase_le_maximalAbelianSubextension
     galoisSubextensionOfConjugateStableAbelianTower_field] using
     M.below
 
-/-- If an actual finite Galois extension is everywhere unramified over
-its base fixed field, then its maximal abelian intermediate field lies
-in every realization of the small Hilbert class field.  Unramifiedness
-is first descended to the genuine commutator-fixed intermediate field;
-finite abelian classification then gives the field inclusion. -/
+/-- If an actual finite Galois extension is everywhere unramified over its base fixed field, then its maximal abelian intermediate field lies in every realization of the small Hilbert class field.  Unramifiedness is first descended to the genuine commutator-fixed intermediate field; finite abelian classification then gives the field inclusion. -/
 theorem
     maximalAbelianSubextension_le_smallHilbertClassField_of_everywhereUnramified
     (K : FiniteAbstractField

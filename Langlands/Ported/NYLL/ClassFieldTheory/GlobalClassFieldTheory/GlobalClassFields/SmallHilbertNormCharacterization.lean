@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.Relative.InfinitePlaceTensorNorm
 public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.GlobalClassFields.SmallHilbertClassField
 public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.GlobalClassFields.NormConductor
@@ -20,16 +19,9 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele
 /-!
 # Small Hilbert norm subgroups and everywhere-unramified extensions
 
-For a finite Galois extension which is unramified at both finite and
-infinite places, every idele integral at all finite places is an actual
-relative-idele norm.  It follows that the actual idele-class norm range
-contains the small-Hilbert norm subgroup.
+For a finite Galois extension which is unramified at both finite and infinite places, every idele integral at all finite places is an actual relative-idele norm.  It follows that the actual idele-class norm range contains the small-Hilbert norm subgroup.
 
-This realizes the maximality of the small Hilbert class field on the
-norm-subgroup side.  The resulting quotient transition gives a canonical
-surjection from the ordinary class group, its exact kernel
-factorization, and the divisibility of the extension norm quotient order
-by the class number.
+This realizes the maximality of the small Hilbert class field on the norm-subgroup side.  The resulting quotient transition gives a canonical surjection from the ordinary class group, its exact kernel factorization, and the divisibility of the extension norm quotient order by the class number.
 -/
 
 
@@ -39,7 +31,6 @@ by the class number.
 open scoped IsMulCommutative NumberField
 
 attribute [local instance] AbsoluteValue.Completion.algebraOfLiesOver
-attribute [local instance] NumberField.InfinitePlace.Completion.algebraOfLiesOver
 
 noncomputable section
 
@@ -58,9 +49,7 @@ variable
 
 
 omit [FiniteDimensional K L] in
-/-- At an extension unramified at all infinite places, the determinant
-norm image of every infinite tensor factor is the whole local
-multiplicative group. -/
+/-- At an extension unramified at all infinite places, the determinant norm image of every infinite tensor factor is the whole local multiplicative group. -/
 theorem
     infiniteTensorNormSubgroup_eq_top_of_isUnramifiedAtInfinitePlaces
     [_root_.IsUnramifiedAtInfinitePlaces K L]
@@ -90,16 +79,11 @@ theorem
       (x : v.Completion)
   rw [
     Algebra.norm_algebraMap,
-    show Module.finrank v.Completion w.Completion = 1 by
-      have h : @Module.finrank v.Completion w.Completion _ _
-          (NumberField.LiesOver.completionMap v w).toAlgebra.toModule = 1 :=
-        InfinitePlace.IsUnramified.finrank_eq_one v (w.isUnramified K)
-      rw [← InfinitePlace.Completion.algebraOfLiesOver_eq_toAlgebra] at h
-      exact h,
+    InfinitePlace.IsUnramified.finrank_eq_one
+      v (w.isUnramified K),
     pow_one]
 
-/-- If the finite ramification support is empty, the chosen completion
-above every finite base place is unramified. -/
+/-- If the finite ramification support is empty, the chosen completion above every finite base place is unramified. -/
 theorem chosenFinitePlaceIsUnramified_of_no_ramifiedFinitePlaces
     (hunramifiedFinite :
       _root_.ramifiedBaseFinitePlaces
@@ -126,8 +110,7 @@ theorem chosenFinitePlaceIsUnramified_of_no_ramifiedFinitePlaces
   rw [hunramifiedFinite] at hv
   exact Finset.notMem_empty v hv
 
-/-- For an everywhere unramified extension, every idèle integral
-at the finite places is an ordinary idèle norm. -/
+/-- For an everywhere unramified extension, every idèle integral at the finite places is an ordinary idèle norm. -/
 theorem
     integralAtFinitePlaces_le_ideleNorm_range_of_everywhereUnramified
     [_root_.IsUnramifiedAtInfinitePlaces K L]
@@ -181,8 +164,7 @@ private theorem principalIdeleClass_mem_ideleClassNorm_range
   rw [haOne]
   exact ((_root_.ideleClassNorm K L).range).one_mem
 
-/-- The norm subgroup of an everywhere-unramified finite Galois
-extension contains the small-Hilbert norm subgroup. -/
+/-- The norm subgroup of an everywhere-unramified finite Galois extension contains the small-Hilbert norm subgroup. -/
 theorem
     smallHilbertClassFieldNormSubgroup_le_ideleClassNorm_range_of_everywhereUnramified
     [_root_.IsUnramifiedAtInfinitePlaces K L]
@@ -203,9 +185,7 @@ theorem
       principalIdeleClass_mem_ideleClassNorm_range
         (K := K) (L := L) ha
 
-/-- The canonical transition from the small-Hilbert reciprocity
-quotient to the actual norm quotient of an everywhere-unramified
-extension. -/
+/-- The canonical transition from the small-Hilbert reciprocity quotient to the actual norm quotient of an everywhere-unramified extension. -/
 def smallHilbertClassFieldQuotientToIdeleClassNormQuotient
     [_root_.IsUnramifiedAtInfinitePlaces K L]
     (hunramifiedFinite :
@@ -223,8 +203,7 @@ def smallHilbertClassFieldQuotientToIdeleClassNormQuotient
       smallHilbertClassFieldNormSubgroup_le_ideleClassNorm_range_of_everywhereUnramified
         (K := K) (L := L) hunramifiedFinite hx)
 
-/-- The small-Hilbert quotient transition sends an idele class to the
-same class modulo the actual norm subgroup. -/
+/-- The small-Hilbert quotient transition sends an idele class to the same class modulo the actual norm subgroup. -/
 @[simp]
 theorem smallHilbertClassFieldQuotientToIdeleClassNormQuotient_mk
     [_root_.IsUnramifiedAtInfinitePlaces K L]
@@ -240,8 +219,7 @@ theorem smallHilbertClassFieldQuotientToIdeleClassNormQuotient_mk
         ((_root_.ideleClassNorm K L).range) x :=
   rfl
 
-/-- The transition from the small-Hilbert quotient to an
-everywhere-unramified actual norm quotient is surjective. -/
+/-- The transition from the small-Hilbert quotient to an everywhere-unramified actual norm quotient is surjective. -/
 theorem
     smallHilbertClassFieldQuotientToIdeleClassNormQuotient_surjective
     [_root_.IsUnramifiedAtInfinitePlaces K L]
@@ -260,8 +238,7 @@ theorem
         (smallHilbertClassFieldNormSubgroup (K := K)) x,
       rfl⟩
 
-/-- The kernel of the small-Hilbert quotient transition is the image
-of the actual norm subgroup modulo the small-Hilbert norm subgroup. -/
+/-- The kernel of the small-Hilbert quotient transition is the image of the actual norm subgroup modulo the small-Hilbert norm subgroup. -/
 theorem
     smallHilbertClassFieldQuotientToIdeleClassNormQuotient_ker
     [_root_.IsUnramifiedAtInfinitePlaces K L]
@@ -289,8 +266,7 @@ theorem
           (QuotientGroup.mk' (smallHilbertClassFieldNormSubgroup (K := K))))
         (Subgroup.comap_id ((_root_.ideleClassNorm K L).range)))
 
-/-- Quotienting the small-Hilbert reciprocity quotient by the image of
-the actual norm subgroup recovers the actual norm quotient. -/
+/-- Quotienting the small-Hilbert reciprocity quotient by the image of the actual norm subgroup recovers the actual norm quotient. -/
 def smallHilbertNormImageQuotientEquivIdeleClassNormQuotient
     [_root_.IsUnramifiedAtInfinitePlaces K L]
     (hunramifiedFinite :
@@ -313,8 +289,7 @@ def smallHilbertNormImageQuotientEquivIdeleClassNormQuotient
       (smallHilbertClassFieldQuotientToIdeleClassNormQuotient_surjective
         (K := K) (L := L) hunramifiedFinite))
 
-/-- The ordinary class group maps canonically onto the actual norm
-quotient of every everywhere-unramified finite Galois extension. -/
+/-- The ordinary class group maps canonically onto the actual norm quotient of every everywhere-unramified finite Galois extension. -/
 def classGroupToIdeleClassNormQuotient
     [_root_.IsUnramifiedAtInfinitePlaces K L]
     (hunramifiedFinite :
@@ -328,8 +303,7 @@ def classGroupToIdeleClassNormQuotient
     (smallHilbertClassFieldQuotientEquivClassGroup
       (K := K)).symm.toMonoidHom
 
-/-- The canonical map from the ordinary class group to the actual norm
-quotient of an everywhere-unramified extension is surjective. -/
+/-- The canonical map from the ordinary class group to the actual norm quotient of an everywhere-unramified extension is surjective. -/
 theorem classGroupToIdeleClassNormQuotient_surjective
     [_root_.IsUnramifiedAtInfinitePlaces K L]
     (hunramifiedFinite :
@@ -343,8 +317,7 @@ theorem classGroupToIdeleClassNormQuotient_surjective
     (smallHilbertClassFieldQuotientEquivClassGroup
       (K := K)).symm.surjective
 
-/-- The actual norm quotient of an everywhere-unramified finite Galois
-extension has order dividing the class number. -/
+/-- The actual norm quotient of an everywhere-unramified finite Galois extension has order dividing the class number. -/
 theorem
     ideleClassNormQuotient_card_dvd_classNumber_of_everywhereUnramified
     [_root_.IsUnramifiedAtInfinitePlaces K L]
@@ -370,9 +343,7 @@ theorem
       smallHilbertClassFieldQuotient_card_eq_classNumber
         (K := K)
 
-/-- The class number factors as the kernel order of the canonical class
-group map times the order of an everywhere-unramified actual norm
-quotient. -/
+/-- The class number factors as the kernel order of the canonical class group map times the order of an everywhere-unramified actual norm quotient. -/
 theorem
     classNumber_eq_unramifiedNormKernel_card_mul_normQuotient_card
     [_root_.IsUnramifiedAtInfinitePlaces K L]
@@ -410,8 +381,7 @@ theorem
             (_root_.ideleClassNorm K L).range) := by
       rw [f.range_eq_top_of_surjective hf, Subgroup.card_top]
 
-/-- The degree of every finite cyclic extension unramified at all finite
-and infinite places divides the class number. -/
+/-- The degree of every finite cyclic extension unramified at all finite and infinite places divides the class number. -/
 theorem cyclicEverywhereUnramifiedExtensionDegree_dvd_classNumber
     [_root_.IsUnramifiedAtInfinitePlaces K L]
     [IsCyclic (L ≃ₐ[K] L)]
@@ -427,9 +397,7 @@ theorem cyclicEverywhereUnramifiedExtensionDegree_dvd_classNumber
       ideleClassNormQuotient_card_dvd_classNumber_of_everywhereUnramified
         (K := K) (L := L) hunramifiedFinite
 
-/-- For a finite cyclic extension unramified at all finite and infinite
-places, the class number is the kernel order of the canonical class
-group reciprocity map times the extension degree. -/
+/-- For a finite cyclic extension unramified at all finite and infinite places, the class number is the kernel order of the canonical class group reciprocity map times the extension degree. -/
 theorem
     classNumber_eq_unramifiedCyclicNormKernel_card_mul_extensionDegree
     [_root_.IsUnramifiedAtInfinitePlaces K L]

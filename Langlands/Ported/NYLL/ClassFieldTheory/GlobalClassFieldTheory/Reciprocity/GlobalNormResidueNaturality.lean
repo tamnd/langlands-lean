@@ -15,10 +15,7 @@ public import Langlands.Ported.NYLL.GaloisCohomology.Cyclic.NormKernelVanishing
 /-!
 # Naturality of the global norm-residue symbol
 
-This file records the same-base restriction specialization of abstract
-norm-residue naturality in the rational absolute class formation.  All
-closed subgroups remain in one fixed separable-closure ambient, so the
-statement is directly usable by fixed-field overextension arguments.
+This file records the same-base restriction specialization of abstract norm-residue naturality in the rational absolute class formation.  All closed subgroups remain in one fixed separable-closure ambient, so the statement is directly usable by fixed-field overextension arguments.
 -/
 
 
@@ -49,9 +46,7 @@ local instance ideleClassSubgroupNormal
   N.normal_of_isMulCommutative
 
 
-/-- Rebase a finite Galois subextension along equality of its bundled base.
-The field equality is the only data component; the remaining fields are
-proof-irrelevant. -/
+/-- Rebase a finite Galois subextension along equality of its bundled base. The field equality is the only data component; the remaining fields are proof-irrelevant. -/
 private theorem finiteGaloisSubextension_transport_eq_of_field_eq
     {G : Type u} [Group G] [TopologicalSpace G]
     {A B : FiniteAbstractField G}
@@ -68,8 +63,7 @@ private theorem finiteGaloisSubextension_transport_eq_of_field_eq
   cases hAB
   exact FiniteGaloisSubextension.ext hfield
 
-/-- Transporting an additive equivalence between rational ambient fixed
-subgroups does not change the underlying direct-limit class. -/
+/-- Transporting an additive equivalence between rational ambient fixed subgroups does not change the underlying direct-limit class. -/
 private theorem rationalAmbientFixedAddEquiv_transport_apply_val
     {A B : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ)}
@@ -90,8 +84,7 @@ private theorem rationalAmbientFixedAddEquiv_transport_apply_val
   cases hAB
   rfl
 
-/-- Transporting an idele class along a field equality and the corresponding
-algebra equivalence leaves its rational direct-limit representative fixed. -/
+/-- Transporting an idele class along a field equality and the corresponding algebra equivalence leaves its rational direct-limit representative fixed. -/
 private theorem rationalIdeleClassEquivFixed_congr_apply_val
     {A B : IntermediateField ℚ (SeparableClosure ℚ)}
     [FiniteDimensional ℚ A] [FiniteDimensional ℚ B]
@@ -119,8 +112,7 @@ private theorem rationalIdeleClassEquivFixed_congr_apply_val
         exact congrArg Additive.ofMul (ideleClassCongr_refl c)
   rw [hc]
 
-/-- Transporting the target intermediate field of a base-field equivalence
-preserves its rational fixed-part representative. -/
+/-- Transporting the target intermediate field of a base-field equivalence preserves its rational fixed-part representative. -/
 private theorem rationalIdeleClassEquivFixed_transport_baseEquiv_val
     {T : Type u} [Field T] [NumberField T]
     {A B : IntermediateField ℚ (SeparableClosure ℚ)}
@@ -140,8 +132,7 @@ private theorem rationalIdeleClassEquivFixed_transport_baseEquiv_val
     rfl
   rw [he]
 
-/-- Equality of the lower and upper closed subgroups transports the raw
-extension quotient without exposing dependent rewrites to clients. -/
+/-- Equality of the lower and upper closed subgroups transports the raw extension quotient without exposing dependent rewrites to clients. -/
 private def extensionQuotientMulEquivOfEq
     {G : Type u} [Group G] [TopologicalSpace G]
     {H H' J J' : ClosedSubgroup G}
@@ -157,8 +148,7 @@ private def extensionQuotientMulEquivOfEq
   cases hJ
   exact MulEquiv.refl _
 
-/-- The quotient transport sends a quotient representative to the same
-ambient group element, rebundled in the equal lower subgroup. -/
+/-- The quotient transport sends a quotient representative to the same ambient group element, rebundled in the equal lower subgroup. -/
 @[simp]
 private theorem extensionQuotientMulEquivOfEq_mk
     {G : Type u} [Group G] [TopologicalSpace G]
@@ -178,8 +168,7 @@ private theorem extensionQuotientMulEquivOfEq_mk
   cases hJ
   rfl
 
-/-- Rebundling an element along equality of closed subgroups preserves its
-underlying ambient group element. -/
+/-- Rebundling an element along equality of closed subgroups preserves its underlying ambient group element. -/
 private theorem closedSubgroupCongr_apply_val
     {G : Type u} [Group G] [TopologicalSpace G]
     {H H' : ClosedSubgroup G}
@@ -189,17 +178,16 @@ private theorem closedSubgroupCongr_apply_val
   cases hH
   rfl
 
-/-- Rebase an abelianized extension-quotient equivalence together with its
-finite abstract base. -/
+/-- Rebase an abelianized extension-quotient equivalence together with its finite abstract base. -/
 private def abelianizedExtensionQuotientAddEquiv_transportBase
     {G : Type u} [Group G] [TopologicalSpace G]
     {A B : FiniteAbstractField G}
     (hAB : A = B)
     (P : FiniteGaloisSubextension A.field)
     {X : Type uX} [AddGroup X]
-    (e : Additive (Abelianization P.extensionQuotient) ≃+ X) :
+    (e : Additive (Group.Abelianization P.extensionQuotient) ≃+ X) :
     Additive
-        (Abelianization
+        (Group.Abelianization
           (Eq.mp
             (congrArg
               (fun Y : FiniteAbstractField G =>
@@ -209,21 +197,19 @@ private def abelianizedExtensionQuotientAddEquiv_transportBase
   cases hAB
   exact e
 
-/-- Rebase an abelianized equivalence along equality of finite Galois
-subextensions over a fixed abstract base. -/
+/-- Rebase an abelianized equivalence along equality of finite Galois subextensions over a fixed abstract base. -/
 private def abelianizedExtensionQuotientAddEquiv_transportExtension
     {G : Type u} [Group G] [TopologicalSpace G]
     {K : ClosedSubgroup G}
     {P Q : FiniteGaloisSubextension K}
     (hPQ : P = Q)
     {X : Type uX} [AddGroup X]
-    (e : Additive (Abelianization P.extensionQuotient) ≃+ X) :
-    Additive (Abelianization Q.extensionQuotient) ≃+ X := by
+    (e : Additive (Group.Abelianization P.extensionQuotient) ≃+ X) :
+    Additive (Group.Abelianization Q.extensionQuotient) ≃+ X := by
   cases hPQ
   exact e
 
-/-- The explicit quotient equivalence induced by rebasing a finite Galois
-subextension. -/
+/-- The explicit quotient equivalence induced by rebasing a finite Galois subextension. -/
 private def extensionQuotientMulEquiv_transportFiniteGalois
     {G : Type u} [Group G] [TopologicalSpace G]
     {A B : FiniteAbstractField G}
@@ -242,8 +228,7 @@ private def extensionQuotientMulEquiv_transportFiniteGalois
   cases hPQ
   exact MulEquiv.refl _
 
-/-- Quotient rebasing sends a canonical representative to the same ambient
-group element rebundled in the old base subgroup. -/
+/-- Quotient rebasing sends a canonical representative to the same ambient group element rebundled in the old base subgroup. -/
 @[simp]
 private theorem extensionQuotientMulEquiv_transportFiniteGalois_mk
     {G : Type u} [Group G] [TopologicalSpace G]
@@ -269,8 +254,7 @@ private theorem extensionQuotientMulEquiv_transportFiniteGalois_mk
   cases hPQ
   rfl
 
-/-- Abelianization commutes with simultaneous transport of the abstract base
-and its finite Galois subextension. -/
+/-- Abelianization commutes with simultaneous transport of the abstract base and its finite Galois subextension. -/
 private theorem abelianizedCanonicalEquiv_transportFiniteGalois
     {G : Type u} [Group G] [TopologicalSpace G]
     {A B : FiniteAbstractField G}
@@ -291,17 +275,16 @@ private theorem abelianizedCanonicalEquiv_transportFiniteGalois
           hAB P
           (MulEquiv.toAdditive
             (e.abelianizationCongr.trans
-              (Abelianization.equivOfComm : X ≃* Abelianization X).symm))) =
+              (Group.Abelianization.equivOfComm : X ≃* Group.Abelianization X).symm))) =
       MulEquiv.toAdditive
         (((extensionQuotientMulEquiv_transportFiniteGalois
             hAB P hPQ).trans e).abelianizationCongr.trans
-          (Abelianization.equivOfComm : X ≃* Abelianization X).symm) := by
+          (Group.Abelianization.equivOfComm : X ≃* Group.Abelianization X).symm) := by
   cases hAB
   cases hPQ
   rfl
 
-/-- Package the entire rational finite norm-residue evaluation so that its
-dependent base, extension, quotient and comparison maps move together. -/
+/-- Package the entire rational finite norm-residue evaluation so that its dependent base, extension, quotient and comparison maps move together. -/
 private def rationalFiniteNormResidueValue
     (K : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
@@ -309,7 +292,7 @@ private def rationalFiniteNormResidueValue
     {C : Type uC} {X : Type uX} [AddGroup C] [AddGroup X]
     (eIdele : C ≃+
       ambientFixedAddSubgroup (ideleClassRepresentation ℚ) K.field)
-    (eGalois : Additive (Abelianization L.extensionQuotient) ≃+ X)
+    (eGalois : Additive (Group.Abelianization L.extensionQuotient) ≃+ X)
     (c : C) : X := by
   letI :
       Finite
@@ -327,8 +310,7 @@ private def rationalFiniteNormResidueValue
         (finiteNormClass (ideleClassRepresentation ℚ)
           K.field L.field L.below (eIdele c)))
 
-/-- The packaged norm-residue value is invariant under rebasing the finite
-abstract field together with all dependent data. -/
+/-- The packaged norm-residue value is invariant under rebasing the finite abstract field together with all dependent data. -/
 private theorem rationalFiniteNormResidueValue_transportBase
     {A B : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ)}
@@ -337,7 +319,7 @@ private theorem rationalFiniteNormResidueValue_transportBase
     {C : Type uC} {X : Type uX} [AddGroup C] [AddGroup X]
     (eIdele : C ≃+
       ambientFixedAddSubgroup (ideleClassRepresentation ℚ) A.field)
-    (eGalois : Additive (Abelianization P.extensionQuotient) ≃+ X)
+    (eGalois : Additive (Group.Abelianization P.extensionQuotient) ≃+ X)
     (c : C) :
     rationalFiniteNormResidueValue A P eIdele eGalois c =
       rationalFiniteNormResidueValue B
@@ -362,8 +344,7 @@ private theorem rationalFiniteNormResidueValue_transportBase
   cases hAB
   rfl
 
-/-- The packaged norm-residue value is invariant under equality of the finite
-Galois subextension. -/
+/-- The packaged norm-residue value is invariant under equality of the finite Galois subextension. -/
 private theorem rationalFiniteNormResidueValue_transportExtension
     (K : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
@@ -372,7 +353,7 @@ private theorem rationalFiniteNormResidueValue_transportExtension
     {C : Type uC} {X : Type uX} [AddGroup C] [AddGroup X]
     (eIdele : C ≃+
       ambientFixedAddSubgroup (ideleClassRepresentation ℚ) K.field)
-    (eGalois : Additive (Abelianization P.extensionQuotient) ≃+ X)
+    (eGalois : Additive (Group.Abelianization P.extensionQuotient) ≃+ X)
     (c : C) :
     rationalFiniteNormResidueValue K P eIdele eGalois c =
       rationalFiniteNormResidueValue K Q eIdele
@@ -382,39 +363,37 @@ private theorem rationalFiniteNormResidueValue_transportExtension
   cases hPQ
   rfl
 
-/-- Evaluation of the canonical abelianization comparison induced by a
-multiplicative equivalence into a commutative group. -/
+/-- Evaluation of the canonical abelianization comparison induced by a multiplicative equivalence into a commutative group. -/
 private theorem abelianizationCongrToComm_apply
     {Q R : Type*} [Group Q] [CommGroup R]
     (e : Q ≃* R) (q : Q) :
     MulEquiv.toAdditive
         (e.abelianizationCongr.trans
-          (Abelianization.equivOfComm : R ≃* Abelianization R).symm)
-        (Additive.ofMul (Abelianization.of q)) =
+          (Group.Abelianization.equivOfComm : R ≃* Group.Abelianization R).symm)
+        (Additive.ofMul (Group.Abelianization.of q)) =
       Additive.ofMul (e q) := by
   apply Additive.toMul.injective
   change
-    (Abelianization.equivOfComm : R ≃* Abelianization R).symm
-        (e.abelianizationCongr (Abelianization.of q)) = e q
-  rw [abelianizationCongr_of]
+    (Group.Abelianization.equivOfComm : R ≃* Group.Abelianization R).symm
+        (e.abelianizationCongr (Group.Abelianization.of q)) = e q
+  rw [Group.abelianizationCongr_of]
   exact
-    (Abelianization.equivOfComm : R ≃* Abelianization R).symm_apply_apply _
+    (Group.Abelianization.equivOfComm : R ≃* Group.Abelianization R).symm_apply_apply _
 
-/-- Evaluation of the canonical quotient from the abelianization of a
-commutative group. -/
+/-- Evaluation of the canonical quotient from the abelianization of a commutative group. -/
 private theorem commutativeAbelianizationEquiv_apply
     {Q R : Type*} [CommGroup Q] [Group R]
     (e : Q ≃* R) (q : Q) :
     MulEquiv.toAdditive
-        ((Abelianization.equivOfComm : Q ≃* Abelianization Q).symm.trans e)
-        (Additive.ofMul (Abelianization.of q)) =
+        ((Group.Abelianization.equivOfComm : Q ≃* Group.Abelianization Q).symm.trans e)
+        (Additive.ofMul (Group.Abelianization.of q)) =
       Additive.ofMul (e q) := by
   apply Additive.toMul.injective
   change
-    e ((Abelianization.equivOfComm : Q ≃* Abelianization Q).symm
-      (Abelianization.of q)) = e q
+    e ((Group.Abelianization.equivOfComm : Q ≃* Group.Abelianization Q).symm
+      (Group.Abelianization.of q)) = e q
   exact congrArg e
-    ((Abelianization.equivOfComm : Q ≃* Abelianization Q).symm_apply_apply q)
+    ((Group.Abelianization.equivOfComm : Q ≃* Group.Abelianization Q).symm_apply_apply q)
 
 section AbstractFixedFieldInclusion
 
@@ -488,9 +467,7 @@ noncomputable local instance
     (abstractRelativeFixedField
       ℚ (SeparableClosure ℚ) P.below)
 
-/-- Use the same direct fixed-field Galois witness as the intrinsic
-norm-residue construction.  This prevents the dependent Galois-group type
-from being synthesized through a second `IsAbelianGalois` instance path. -/
+/-- Use the same direct fixed-field Galois witness as the intrinsic norm-residue construction.  This prevents the dependent Galois-group type from being synthesized through a second `IsAbelianGalois` instance path. -/
 noncomputable local instance
     naturalityAbstractRelativeFixedFieldIsGalois :
     IsGalois
@@ -509,8 +486,7 @@ noncomputable local instance
       ℚ (SeparableClosure ℚ) P.below) :=
   finiteAbelianSubextensionAbstractRelativeFixedFieldIsAbelianGalois P
 
-/-- The lower subgroup obtained from the canonical inclusion of an abstract
-fixed-field tower is the original lower closed subgroup. -/
+/-- The lower subgroup obtained from the canonical inclusion of an abstract fixed-field tower is the original lower closed subgroup. -/
 private theorem
     numberFieldEmbeddedBaseSubgroup_abstractFixedFieldInclusion
     (H : FiniteAbstractField
@@ -566,8 +542,7 @@ private theorem
     closedFixingSubgroup_abstractFixedField_eq
       ℚ (SeparableClosure ℚ) H.field
 
-/-- The upper subgroup obtained from the canonical inclusion of an abstract
-fixed-field tower is the original upper closed subgroup. -/
+/-- The upper subgroup obtained from the canonical inclusion of an abstract fixed-field tower is the original upper closed subgroup. -/
 private theorem
     numberFieldEmbeddedTopSubgroup_abstractFixedFieldInclusion
     (H : FiniteAbstractField
@@ -607,10 +582,7 @@ private theorem
     closedFixingSubgroup_abstractFixedField_eq
       ℚ (SeparableClosure ℚ) P.field
 
-/-- Transport a packaged rational norm-residue value directly from an equal
-abstract base to the finite Galois extension underlying `P`.  Keeping the two
-dependent transports in their own declaration prevents their elaboration cost
-from accumulating in the main fixed-field comparison theorem. -/
+/-- Transport a packaged rational norm-residue value directly from an equal abstract base to the finite Galois extension underlying `P`.  Keeping the two dependent transports in their own declaration prevents their elaboration cost from accumulating in the main fixed-field comparison theorem. -/
 private theorem rationalFiniteNormResidueValue_transportToAbstractExtension
     {A : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ)}
@@ -628,7 +600,7 @@ private theorem rationalFiniteNormResidueValue_transportToAbstractExtension
     {C : Type uC} {X : Type uX} [AddGroup C] [AddGroup X]
     (eIdele : C ≃+
       ambientFixedAddSubgroup (ideleClassRepresentation ℚ) A.field)
-    (eGalois : Additive (Abelianization L.extensionQuotient) ≃+ X)
+    (eGalois : Additive (Group.Abelianization L.extensionQuotient) ≃+ X)
     (c : C) :
     rationalFiniteNormResidueValue A L eIdele eGalois c =
       rationalFiniteNormResidueValue H P.toFiniteGaloisExtension
@@ -689,8 +661,7 @@ private theorem rationalFiniteNormResidueValue_transportToAbstractExtension
         (abelianizedExtensionQuotientAddEquiv_transportBase hAH L eGalois)
         c
 
-/-- The packaged value at the literal fixed-field realization is the ambient
-fixed-part norm-residue homomorphism evaluated at the same idele class. -/
+/-- The packaged value at the literal fixed-field realization is the ambient fixed-part norm-residue homomorphism evaluated at the same idele class. -/
 private theorem rationalFiniteNormResidueValue_abstractFixedField_eq_ambient
     (c : IdeleClassGroup
       (abstractFixedField ℚ (SeparableClosure ℚ) H.field)) :
@@ -703,8 +674,7 @@ private theorem rationalFiniteNormResidueValue_abstractFixedField_eq_ambient
           H.field (Additive.ofMul c)) := by
   rfl
 
-/-- The packaged norm-residue value for the literal fixed-field realization
-is the intrinsic abstract fixed-field norm-residue value. -/
+/-- The packaged norm-residue value for the literal fixed-field realization is the intrinsic abstract fixed-field norm-residue value. -/
 private theorem rationalFiniteNormResidueValue_abstractFixedField_apply
     (c : IdeleClassGroup
       (abstractFixedField ℚ (SeparableClosure ℚ) H.field)) :
@@ -732,9 +702,7 @@ private theorem rationalFiniteNormResidueValue_abstractFixedField_apply
       simpa only [a, AddEquiv.symm_apply_apply, toMul_ofMul] using
         hAbstract.symm
 
-/-- The finite abstract field reconstructed from the literal fixed-field
-inclusion is the original packaged abstract field.  Keeping this structure
-equality separate avoids repeatedly rebuilding all of its proof fields. -/
+/-- The finite abstract field reconstructed from the literal fixed-field inclusion is the original packaged abstract field.  Keeping this structure equality separate avoids repeatedly rebuilding all of its proof fields. -/
 private theorem
     numberFieldEmbeddedFiniteAbstractField_abstractFixedFieldInclusion
     (H : FiniteAbstractField
@@ -752,10 +720,7 @@ private theorem
   exact FiniteAbstractField.eq_of_field_eq _ _
     (numberFieldEmbeddedBaseSubgroup_abstractFixedFieldInclusion H P)
 
-/-- Pointwise specification of the idele-class comparison after transporting
-the explicitly embedded abstract field to the canonical packaged field.  The
-transport is kept at the value boundary, so clients never compare the two
-dependent additive equivalences themselves. -/
+/-- Pointwise specification of the idele-class comparison after transporting the explicitly embedded abstract field to the canonical packaged field.  The transport is kept at the value boundary, so clients never compare the two dependent additive equivalences themselves. -/
 private theorem
     numberFieldEmbeddedIdeleClassEquivAmbientFixed_transport_apply
     (H : FiniteAbstractField
@@ -817,10 +782,7 @@ private theorem
   have hRight := rationalAbstractFixedFieldIdeleClassEquivFixed_coe H.field c
   exact Subtype.ext (hTransport.trans (hLeft.trans (hCompare.trans hRight.symm)))
 
-/-- Transporting the finite Galois subextension reconstructed from the literal
-fixed-field inclusion recovers the canonical subextension packaged by `P`.
-This is the sole dependent structure equality used by the later quotient
-comparisons. -/
+/-- Transporting the finite Galois subextension reconstructed from the literal fixed-field inclusion recovers the canonical subextension packaged by `P`. This is the sole dependent structure equality used by the later quotient comparisons. -/
 private theorem
     numberFieldEmbeddedFiniteGaloisSubextension_transport_eq
     (H : FiniteAbstractField
@@ -852,9 +814,7 @@ private theorem
     hHEmbedded PEmbedded P.toFiniteGaloisExtension
     (numberFieldEmbeddedTopSubgroup_abstractFixedFieldInclusion H P)
 
-/-- Opaque endpoint for the extension-quotient comparison supplied by the
-literal embedding.  Its domain is already the canonical quotient of `P`, so
-no client has to reconstruct the two subgroup transports. -/
+/-- Opaque endpoint for the extension-quotient comparison supplied by the literal embedding.  Its domain is already the canonical quotient of `P`, so no client has to reconstruct the two subgroup transports. -/
 private noncomputable def
     abstractFixedFieldInclusionEmbeddedExtensionQuotientEquiv
     (H : FiniteAbstractField
@@ -896,8 +856,7 @@ private noncomputable def
       (ambientEmbeddedExtensionQuotientEquivGaloisGroup
         ℚ F E j eSep))
 
-/-- Opaque canonical endpoint for the same quotient, obtained directly from
-the abstract fixed-field realization. -/
+/-- Opaque canonical endpoint for the same quotient, obtained directly from the abstract fixed-field realization. -/
 private noncomputable def
     abstractFixedFieldInclusionCanonicalExtensionQuotientEquiv
     (H : FiniteAbstractField
@@ -964,8 +923,7 @@ private noncomputable def
   (abstractFixedFieldInclusionCanonicalExtensionQuotientValue H P q x :
     SeparableClosure ℚ)
 
-/-- The ambient Galois value attached to a representative of the canonical
-quotient, packaged behind a literal result type. -/
+/-- The ambient Galois value attached to a representative of the canonical quotient, packaged behind a literal result type. -/
 private noncomputable def
     abstractFixedFieldInclusionAmbientEmbeddedQuotientMkValue
     (H : FiniteAbstractField
@@ -1016,8 +974,7 @@ private noncomputable def
   (abstractFixedFieldInclusionAmbientEmbeddedQuotientMkValue H P σ x :
     SeparableClosure ℚ)
 
-/-- Ambient action of the representative after rebundling it in the embedded
-base subgroup. -/
+/-- Ambient action of the representative after rebundling it in the embedded base subgroup. -/
 private noncomputable def
     abstractFixedFieldInclusionRebasedAutomorphismApplyVal
     (H : FiniteAbstractField
@@ -1042,8 +999,7 @@ private noncomputable def
       (congrArg ClosedSubgroup.toSubgroup hBase.symm)) σ
   exact σEmbedded.1.1 (x : SeparableClosure ℚ)
 
-/-- The embedded quotient endpoint sends a canonical representative to the
-packaged ambient value above. -/
+/-- The embedded quotient endpoint sends a canonical representative to the packaged ambient value above. -/
 private theorem
     abstractFixedFieldInclusionEmbeddedExtensionQuotientValue_mk
     (H : FiniteAbstractField
@@ -1088,8 +1044,7 @@ private theorem
       hBase.symm hTop.symm P.below
       (numberFieldEmbeddedTopSubgroup_le_baseSubgroup F E j) σ)
 
-/-- The packaged ambient endpoint evaluates to the action of the rebundled
-representative. -/
+/-- The packaged ambient endpoint evaluates to the action of the rebundled representative. -/
 private theorem
     abstractFixedFieldInclusionAmbientEmbeddedQuotientMkApplyVal_eq_rebased
     (H : FiniteAbstractField
@@ -1137,8 +1092,7 @@ private theorem
     abstractFixedFieldInclusionAmbientEmbeddedQuotientMkValue,
     abstractFixedFieldInclusionRebasedAutomorphismApplyVal] using hmk
 
-/-- Rebundling the representative does not change its action in the ambient
-separable closure. -/
+/-- Rebundling the representative does not change its action in the ambient separable closure. -/
 private theorem
     abstractFixedFieldInclusionRebasedAutomorphismApplyVal_eq
     (H : FiniteAbstractField
@@ -1169,8 +1123,7 @@ private theorem
   change σEmbedded.1.1 (x : SeparableClosure ℚ) = _
   rw [hσEmbedded]
 
-/-- The packaged ambient representative acts by the original automorphism on
-the underlying separable-closure value. -/
+/-- The packaged ambient representative acts by the original automorphism on the underlying separable-closure value. -/
 private theorem
     abstractFixedFieldInclusionAmbientEmbeddedQuotientMkValue_apply
     (H : FiniteAbstractField
@@ -1186,8 +1139,7 @@ private theorem
       H P σ x).trans
       (abstractFixedFieldInclusionRebasedAutomorphismApplyVal_eq H P σ x)
 
-/-- Evaluation of the embedded quotient endpoint on a canonical quotient
-representative, stated only in the ambient separable closure. -/
+/-- Evaluation of the embedded quotient endpoint on a canonical quotient representative, stated only in the ambient separable closure. -/
 private theorem
     abstractFixedFieldInclusionEmbeddedExtensionQuotientEquiv_mk_val
     (H : FiniteAbstractField
@@ -1210,8 +1162,7 @@ private theorem
       abstractFixedFieldInclusionAmbientEmbeddedQuotientMkValue_apply
         H P σ x
 
-/-- Evaluation of the canonical abstract quotient endpoint on a quotient
-representative, again exposed only through its ambient value. -/
+/-- Evaluation of the canonical abstract quotient endpoint on a quotient representative, again exposed only through its ambient value. -/
 private theorem
     abstractFixedFieldInclusionCanonicalExtensionQuotientEquiv_mk_val
     (H : FiniteAbstractField
@@ -1234,9 +1185,7 @@ private theorem
       ℚ (SeparableClosure ℚ)
       H.field P.field P.below P.normal σ x).symm
 
-/-- The embedded and canonical quotient endpoints agree on each quotient
-class.  This pointwise boundary is intentionally weaker than equality of the
-dependent `MulEquiv` structures. -/
+/-- The embedded and canonical quotient endpoints agree on each quotient class.  This pointwise boundary is intentionally weaker than equality of the dependent `MulEquiv` structures. -/
 private theorem
     abstractFixedFieldInclusionExtensionQuotientEquiv_apply
     (H : FiniteAbstractField
@@ -1260,8 +1209,7 @@ private theorem
       (abstractFixedFieldInclusionCanonicalExtensionQuotientEquiv_mk_val
         H P σ x).symm
 
-/-- Opaque quotient endpoint obtained by transporting the explicitly embedded
-finite Galois subextension back to the canonical package. -/
+/-- Opaque quotient endpoint obtained by transporting the explicitly embedded finite Galois subextension back to the canonical package. -/
 private noncomputable def
     abstractFixedFieldInclusionTransportedExtensionQuotientEquiv
     (H : FiniteAbstractField
@@ -1313,8 +1261,7 @@ private noncomputable def
       (abstractFixedField ℚ (SeparableClosure ℚ) H.field)) :=
   abstractFixedFieldInclusionTransportedExtensionQuotientEquiv H P q
 
-/-- Transporting a canonical representative of the embedded finite Galois
-package preserves its Galois value. -/
+/-- Transporting a canonical representative of the embedded finite Galois package preserves its Galois value. -/
 private theorem
     abstractFixedFieldInclusionTransportedExtensionQuotientValue_mk
     (H : FiniteAbstractField
@@ -1389,8 +1336,7 @@ private theorem
         hBase.symm hTop.symm P.below
         (numberFieldEmbeddedTopSubgroup_le_baseSubgroup F E j) σ)).symm
 
-/-- Transporting the embedded finite Galois package preserves the value of
-its extension-quotient comparison. -/
+/-- Transporting the embedded finite Galois package preserves the value of its extension-quotient comparison. -/
 private theorem
     abstractFixedFieldInclusionTransportedExtensionQuotientEquiv_apply
     (H : FiniteAbstractField
@@ -1408,15 +1354,14 @@ private theorem
   exact abstractFixedFieldInclusionTransportedExtensionQuotientValue_mk
     H P σ
 
-/-- Opaque abelianized equivalence obtained by transporting the explicitly
-embedded finite Galois package to the canonical one. -/
+/-- Opaque abelianized equivalence obtained by transporting the explicitly embedded finite Galois package to the canonical one. -/
 private noncomputable def
     abstractFixedFieldInclusionTransportedAbelianizedEquiv
     (H : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
     (P : FiniteAbelianSubextension H.field) :
     Additive
-        (Abelianization
+        (Group.Abelianization
           P.toFiniteGaloisExtension.extensionQuotient) ≃+
       Additive
         (Gal(
@@ -1453,15 +1398,14 @@ private noncomputable def
         (numberFieldEmbeddedAbelianizedExtensionQuotientEquivGaloisGroup
           F E j))
 
-/-- Canonical abelianization comparison built from the already transported
-opaque extension-quotient endpoint. -/
+/-- Canonical abelianization comparison built from the already transported opaque extension-quotient endpoint. -/
 private noncomputable def
     abstractFixedFieldInclusionTransportedCanonicalAbelianizedEquiv
     (H : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
     (P : FiniteAbelianSubextension H.field) :
     Additive
-        (Abelianization
+        (Group.Abelianization
           P.toFiniteGaloisExtension.extensionQuotient) ≃+
       Additive
         (Gal(
@@ -1477,7 +1421,7 @@ private noncomputable def
     MulEquiv.toAdditive
       ((MulEquiv.abelianizationCongr
         (abstractFixedFieldInclusionTransportedExtensionQuotientEquiv H P)).trans
-          (Abelianization.equivOfComm : Q ≃* Abelianization Q).symm)
+          (Group.Abelianization.equivOfComm : Q ≃* Group.Abelianization Q).symm)
 
 /-- Pointwise opaque value of the transported abelianized equivalence. -/
 private noncomputable def
@@ -1486,7 +1430,7 @@ private noncomputable def
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
     (P : FiniteAbelianSubextension H.field)
     (z : Additive
-      (Abelianization P.toFiniteGaloisExtension.extensionQuotient)) :
+      (Group.Abelianization P.toFiniteGaloisExtension.extensionQuotient)) :
     Additive
       (Gal(
         (abstractRelativeFixedField
@@ -1494,15 +1438,14 @@ private noncomputable def
         (abstractFixedField ℚ (SeparableClosure ℚ) H.field))) :=
   abstractFixedFieldInclusionTransportedAbelianizedEquiv H P z
 
-/-- Pointwise opaque value of the canonical abelianization comparison built
-from the transported quotient endpoint. -/
+/-- Pointwise opaque value of the canonical abelianization comparison built from the transported quotient endpoint. -/
 private noncomputable def
     abstractFixedFieldInclusionTransportedCanonicalAbelianizedValue
     (H : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
     (P : FiniteAbelianSubextension H.field)
     (z : Additive
-      (Abelianization P.toFiniteGaloisExtension.extensionQuotient)) :
+      (Group.Abelianization P.toFiniteGaloisExtension.extensionQuotient)) :
     Additive
       (Gal(
         (abstractRelativeFixedField
@@ -1510,15 +1453,14 @@ private noncomputable def
         (abstractFixedField ℚ (SeparableClosure ℚ) H.field))) :=
   abstractFixedFieldInclusionTransportedCanonicalAbelianizedEquiv H P z
 
-/-- Pointwise opaque value of the intrinsic abstract fixed-field
-abelianization comparison. -/
+/-- Pointwise opaque value of the intrinsic abstract fixed-field abelianization comparison. -/
 private noncomputable def
     abstractFixedFieldInclusionCanonicalAbelianizedValue
     (H : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
     (P : FiniteAbelianSubextension H.field)
     (z : Additive
-      (Abelianization P.toFiniteGaloisExtension.extensionQuotient)) :
+      (Group.Abelianization P.toFiniteGaloisExtension.extensionQuotient)) :
     Additive
       (Gal(
         (abstractRelativeFixedField
@@ -1526,15 +1468,14 @@ private noncomputable def
         (abstractFixedField ℚ (SeparableClosure ℚ) H.field))) :=
   abstractFixedFieldAbelianizedExtensionQuotientEquivGaloisGroup H P z
 
-/-- The transported abelianized endpoint agrees pointwise with the canonical
-abelianization comparison built from the transported quotient endpoint. -/
+/-- The transported abelianized endpoint agrees pointwise with the canonical abelianization comparison built from the transported quotient endpoint. -/
 private theorem
     abstractFixedFieldInclusionTransportedAbelianizedValue_eq_canonical
     (H : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
     (P : FiniteAbelianSubextension H.field)
     (z : Additive
-      (Abelianization P.toFiniteGaloisExtension.extensionQuotient)) :
+      (Group.Abelianization P.toFiniteGaloisExtension.extensionQuotient)) :
     abstractFixedFieldInclusionTransportedAbelianizedValue H P z =
       abstractFixedFieldInclusionTransportedCanonicalAbelianizedValue
         H P z := by
@@ -1577,8 +1518,7 @@ private theorem
         hHEmbedded PEmbedded hPEmbedded qEmbedded)
   exact DFunLike.congr_fun hCanonical z
 
-/-- On an abelianization representative, the transported canonical endpoint
-is the additive value of the transported quotient endpoint. -/
+/-- On an abelianization representative, the transported canonical endpoint is the additive value of the transported quotient endpoint. -/
 private theorem
     abstractFixedFieldInclusionTransportedCanonicalAbelianizedValue_of
     (H : FiniteAbstractField
@@ -1586,7 +1526,7 @@ private theorem
     (P : FiniteAbelianSubextension H.field)
     (q : P.toFiniteGaloisExtension.extensionQuotient) :
     abstractFixedFieldInclusionTransportedCanonicalAbelianizedValue H P
-        (Additive.ofMul (Abelianization.of q)) =
+        (Additive.ofMul (Group.Abelianization.of q)) =
       Additive.ofMul
         (abstractFixedFieldInclusionTransportedExtensionQuotientValue
           H P q) := by
@@ -1597,8 +1537,7 @@ private theorem
     (abelianizationCongrToComm_apply
       (abstractFixedFieldInclusionTransportedExtensionQuotientEquiv H P) q)
 
-/-- On the same representative, the intrinsic fixed-field endpoint is the
-additive value of the canonical quotient endpoint. -/
+/-- On the same representative, the intrinsic fixed-field endpoint is the additive value of the canonical quotient endpoint. -/
 private theorem
     abstractFixedFieldInclusionCanonicalAbelianizedValue_of
     (H : FiniteAbstractField
@@ -1606,7 +1545,7 @@ private theorem
     (P : FiniteAbelianSubextension H.field)
     (q : P.toFiniteGaloisExtension.extensionQuotient) :
     abstractFixedFieldInclusionCanonicalAbelianizedValue H P
-        (Additive.ofMul (Abelianization.of q)) =
+        (Additive.ofMul (Group.Abelianization.of q)) =
       Additive.ofMul
         (abstractFixedFieldInclusionCanonicalExtensionQuotientValue
           H P q) := by
@@ -1619,29 +1558,28 @@ private theorem
     abstractFixedFieldInclusionCanonicalExtensionQuotientEquiv H P
   change
     MulEquiv.toAdditive
-        ((Abelianization.equivOfComm :
+        ((Group.Abelianization.equivOfComm :
           P.toFiniteGaloisExtension.extensionQuotient ≃*
-            Abelianization
+            Group.Abelianization
               P.toFiniteGaloisExtension.extensionQuotient).symm.trans
           qAbstractRaw)
-        (Additive.ofMul (Abelianization.of q)) =
+        (Additive.ofMul (Group.Abelianization.of q)) =
       Additive.ofMul (qAbstractRaw q)
   exact commutativeAbelianizationEquiv_apply qAbstractRaw q
 
-/-- The canonical abelianization comparison built after transport agrees
-pointwise with the intrinsic abstract fixed-field comparison. -/
+/-- The canonical abelianization comparison built after transport agrees pointwise with the intrinsic abstract fixed-field comparison. -/
 private theorem
     abstractFixedFieldInclusionTransportedCanonicalAbelianizedValue_eq
     (H : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
     (P : FiniteAbelianSubextension H.field)
     (z : Additive
-      (Abelianization P.toFiniteGaloisExtension.extensionQuotient)) :
+      (Group.Abelianization P.toFiniteGaloisExtension.extensionQuotient)) :
     abstractFixedFieldInclusionTransportedCanonicalAbelianizedValue H P z =
       abstractFixedFieldInclusionCanonicalAbelianizedValue H P z := by
   let q : P.toFiniteGaloisExtension.extensionQuotient :=
     Quotient.out z.toMul
-  have hz : Additive.ofMul (Abelianization.of q) = z := by
+  have hz : Additive.ofMul (Group.Abelianization.of q) = z := by
     apply Additive.ext
     exact Quotient.out_eq' z.toMul
   rw [← hz]
@@ -1665,15 +1603,14 @@ private theorem
     _ = _ :=
       (abstractFixedFieldInclusionCanonicalAbelianizedValue_of H P q).symm
 
-/-- The transported abelianized equivalence agrees pointwise with the
-intrinsic abstract fixed-field Galois comparison. -/
+/-- The transported abelianized equivalence agrees pointwise with the intrinsic abstract fixed-field Galois comparison. -/
 private theorem
     abstractFixedFieldInclusionTransportedAbelianizedValue_eq
     (H : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
     (P : FiniteAbelianSubextension H.field)
     (z : Additive
-      (Abelianization P.toFiniteGaloisExtension.extensionQuotient)) :
+      (Group.Abelianization P.toFiniteGaloisExtension.extensionQuotient)) :
     abstractFixedFieldInclusionTransportedAbelianizedValue H P z =
       abstractFixedFieldInclusionCanonicalAbelianizedValue H P z :=
   (abstractFixedFieldInclusionTransportedAbelianizedValue_eq_canonical
@@ -1681,8 +1618,7 @@ private theorem
     (abstractFixedFieldInclusionTransportedCanonicalAbelianizedValue_eq
       H P z)
 
-/-- Opaque packaged norm-residue value before transporting the explicitly
-embedded abstract field and finite Galois package. -/
+/-- Opaque packaged norm-residue value before transporting the explicitly embedded abstract field and finite Galois package. -/
 private noncomputable def
     abstractFixedFieldInclusionEmbeddedNormResidueValue
     (H : FiniteAbstractField
@@ -1714,8 +1650,7 @@ private noncomputable def
         F E j)
       c
 
-/-- Opaque packaged value after transporting both dependent structures to
-the canonical `H` and `P` endpoints. -/
+/-- Opaque packaged value after transporting both dependent structures to the canonical `H` and `P` endpoints. -/
 private noncomputable def
     abstractFixedFieldInclusionTransportedNormResidueValue
     (H : FiniteAbstractField
@@ -1779,8 +1714,7 @@ private noncomputable def
     (abstractFixedFieldAbelianizedExtensionQuotientEquivGaloisGroup H P)
     c
 
-/-- Simultaneous transport of the embedded abstract field and finite Galois
-package sends the embedded norm-residue value to the transported endpoint. -/
+/-- Simultaneous transport of the embedded abstract field and finite Galois package sends the embedded norm-residue value to the transported endpoint. -/
 private theorem
     abstractFixedFieldInclusionEmbeddedNormResidueValue_eq_transported
     (H : FiniteAbstractField
@@ -1832,9 +1766,7 @@ private theorem
       hHEmbedded PEmbedded hPEmbedded
       eIdeleEmbedded eGaloisEmbedded c)
 
-/-- A packaged finite norm-residue value depends only on the value of its
-idele comparison at the chosen input and the value of its Galois comparison
-at the resulting norm class. -/
+/-- A packaged finite norm-residue value depends only on the value of its idele comparison at the chosen input and the value of its Galois comparison at the resulting norm class. -/
 private theorem rationalFiniteNormResidueValue_congr_apply
     (K : FiniteAbstractField
       (SeparableClosure ℚ ≃ₐ[ℚ] SeparableClosure ℚ))
@@ -1843,7 +1775,7 @@ private theorem rationalFiniteNormResidueValue_congr_apply
     (eIdele eIdele' : C ≃+
       ambientFixedAddSubgroup (ideleClassRepresentation ℚ) K.field)
     (eGalois eGalois' :
-      Additive (Abelianization L.extensionQuotient) ≃+ X)
+      Additive (Group.Abelianization L.extensionQuotient) ≃+ X)
     (c : C)
     (heIdele : eIdele c = eIdele' c)
     (heGalois : ∀ z, eGalois z = eGalois' z) :
@@ -1853,8 +1785,7 @@ private theorem rationalFiniteNormResidueValue_congr_apply
   rw [heIdele]
   exact heGalois _
 
-/-- The transported packaged value is the intrinsic canonical packaged value;
-only the idele input and the eventual abelianized value are compared. -/
+/-- The transported packaged value is the intrinsic canonical packaged value; only the idele input and the eventual abelianized value are compared. -/
 private theorem
     abstractFixedFieldInclusionTransportedNormResidueValue_eq_canonical
     (H : FiniteAbstractField
@@ -1922,10 +1853,7 @@ private theorem
     (abstractFixedFieldInclusionTransportedNormResidueValue_eq_canonical
       H P c)
 
-/-- For the literal fixed fields attached to an abstract finite abelian
-extension, the norm-residue map obtained from their canonical inclusion in
-the rational separable closure is the intrinsic fixed-field norm-residue
-map. -/
+/-- For the literal fixed fields attached to an abstract finite abelian extension, the norm-residue map obtained from their canonical inclusion in the rational separable closure is the intrinsic fixed-field norm-residue map. -/
 theorem
     globalNormResidueMonoidHomOfEmbedding_abstractFixedFieldInclusion
     (H : FiniteAbstractField
@@ -1977,8 +1905,7 @@ variable
     [IsScalarTower K K' L'] [IsScalarTower K L L']
 
 
-/-- Rebracketing the compatible tower does not change its embedded lower
-fixing subgroup. -/
+/-- Rebracketing the compatible tower does not change its embedded lower fixing subgroup. -/
 private theorem numberFieldEmbeddedBaseSubgroup_baseChange_eq
     (j : L' →ₐ[ℚ] SeparableClosure ℚ) :
     numberFieldEmbeddedBaseSubgroup K K'
@@ -1999,8 +1926,7 @@ private theorem numberFieldEmbeddedBaseSubgroup_baseChange_eq
 
 omit [Field K] [NumberField K]
     [Algebra K K'] [Algebra K L'] [IsScalarTower K K' L'] in
-/-- The top subgroup of the rebracketed base-change tower is the embedded
-fixing subgroup of the intermediate field. -/
+/-- The top subgroup of the rebracketed base-change tower is the embedded fixing subgroup of the intermediate field. -/
 private theorem numberFieldEmbeddedTopSubgroup_baseChange_eq
     (j : L' →ₐ[ℚ] SeparableClosure ℚ) :
     numberFieldEmbeddedTopSubgroup K K'
@@ -2008,8 +1934,7 @@ private theorem numberFieldEmbeddedTopSubgroup_baseChange_eq
       numberFieldEmbeddedBaseSubgroup K' L' j := by
   rfl
 
-/-- Reidentify the two presentations of the embedded lower fixing subgroup
-without transporting dependent subgroup data through an equality. -/
+/-- Reidentify the two presentations of the embedded lower fixing subgroup without transporting dependent subgroup data through an equality. -/
 private noncomputable def numberFieldEmbeddedBaseChangeBaseEquiv
     (j : L' →ₐ[ℚ] SeparableClosure ℚ) :
     (numberFieldEmbeddedBaseSubgroup K K'
@@ -2020,8 +1945,7 @@ private noncomputable def numberFieldEmbeddedBaseChangeBaseEquiv
     (congrArg ClosedSubgroup.toSubgroup
       (numberFieldEmbeddedBaseSubgroup_baseChange_eq K K' L L' j))
 
-/-- Under the identity equivalence of the two lower fixing subgroups, the
-relative subgroup for the base change is exactly the target presentation. -/
+/-- Under the identity equivalence of the two lower fixing subgroups, the relative subgroup for the base change is exactly the target presentation. -/
 private theorem numberFieldEmbeddedBaseChangeExtensionSubgroup_map_eq
     (j : L' →ₐ[ℚ] SeparableClosure ℚ) :
     (CyclicCohomology.extensionSubgroup
@@ -2070,8 +1994,7 @@ private theorem numberFieldEmbeddedBaseChangeExtensionSubgroup_map_eq
     rw [MulEquiv.subgroupCongr_symm_apply, hTop]
     exact hx
 
-/-- Normality of the relative subgroup between the two embedded base fields
-in a finite Galois base change. -/
+/-- Normality of the relative subgroup between the two embedded base fields in a finite Galois base change. -/
 private theorem numberFieldEmbeddedBaseChangeExtensionSubgroup_normal
     [FiniteDimensional K K'] [IsGalois K K']
     (j : L' →ₐ[ℚ] SeparableClosure ℚ) :
@@ -2100,8 +2023,7 @@ noncomputable local instance
       (numberFieldEmbeddedBaseSubgroup_le_of_tower K K' L L' j)).Normal :=
   numberFieldEmbeddedBaseChangeExtensionSubgroup_normal K K' L L' j
 
-/-- Finiteness of the relative quotient between the two embedded base fields
-in a finite Galois base change. -/
+/-- Finiteness of the relative quotient between the two embedded base fields in a finite Galois base change. -/
 private theorem numberFieldEmbeddedBaseChangeExtensionQuotient_finite
     [FiniteDimensional K K'] [IsGalois K K']
     (j : L' →ₐ[ℚ] SeparableClosure ℚ) :
@@ -2176,9 +2098,7 @@ noncomputable local instance
           (numberFieldEmbeddedBaseSubgroup_le_of_tower K K' L L' j)) :=
   numberFieldEmbeddedBaseChangeExtensionQuotient_finite K K' L L' j
 
-/-- Reuse the canonical absolute fixed-field witness for the lower embedded
-tower.  The base-change relative witness below needs this exact instance path
-when forming the absolute finite-dimensional tower. -/
+/-- Reuse the canonical absolute fixed-field witness for the lower embedded tower.  The base-change relative witness below needs this exact instance path when forming the absolute finite-dimensional tower. -/
 noncomputable local instance
     numberFieldEmbeddedBaseChangeBaseFixedFieldFiniteDimensional
     (j : L' →ₐ[ℚ] SeparableClosure ℚ) :
@@ -2264,16 +2184,14 @@ noncomputable local instance
     (numberFieldEmbeddedBaseSubgroup_le_of_tower K K' L L' j)
     (numberFieldEmbeddedBaseChangeExtensionSubgroupNormal K K' L L' j)
 
-/-- In one common rational-separable-closure realization, the canonical
-quotient-to-Galois comparisons intertwine abstract restriction with
-ordinary restriction of the actual number-field automorphisms. -/
+/-- In one common rational-separable-closure realization, the canonical quotient-to-Galois comparisons intertwine abstract restriction with ordinary restriction of the actual number-field automorphisms. -/
 theorem
     numberFieldEmbeddedAbelianizedExtensionQuotientEquivGaloisGroup_restriction
     [FiniteDimensional K L] [IsAbelianGalois K L]
     [FiniteDimensional K' L'] [IsAbelianGalois K' L']
     (j : L' →ₐ[ℚ] SeparableClosure ℚ)
     (z :
-      Abelianization
+      Group.Abelianization
         (numberFieldEmbeddedFiniteGaloisSubextension
           K' L' j).extensionQuotient) :
     let jLower : L →ₐ[ℚ] SeparableClosure ℚ :=
@@ -2346,16 +2264,16 @@ theorem
       K' L' j).extensionQuotientMk_surjective q
   change
     restrictActual
-        ((Abelianization.equivOfComm (H := Gal(L' / K'))).symm
+        ((Group.Abelianization.equivOfComm (H := Gal(L' / K'))).symm
           (qUpperRaw.abelianizationCongr
-            (Abelianization.of (QuotientGroup.mk σ)))) =
-      (Abelianization.equivOfComm (H := Gal(L / K))).symm
+            (Group.Abelianization.of (QuotientGroup.mk σ)))) =
+      (Group.Abelianization.equivOfComm (H := Gal(L / K))).symm
         (qLowerRaw.abelianizationCongr
           (normResidueNaturalityAbelianizedRestriction
             H H' J J' hJH hJ'H' hH'H hJ'J
-            (Abelianization.of (QuotientGroup.mk σ))))
+            (Group.Abelianization.of (QuotientGroup.mk σ))))
   rw [normResidueNaturalityAbelianizedRestriction_of_mk,
-    abelianizationCongr_of, abelianizationCongr_of]
+    Group.abelianizationCongr_of, Group.abelianizationCongr_of]
   change
     restrictActual (qUpperRaw (QuotientGroup.mk σ)) =
       qLowerRaw
@@ -2399,9 +2317,7 @@ theorem
           ℚ K L jLower eLower
           (Subgroup.inclusion hH'H σ) x).symm
 
-/-- In a compatible common embedding, the fixed-part relative norm
-between two (Galois-related) base fields is the genuine ordinary
-idele-class norm. -/
+/-- In a compatible common embedding, the fixed-part relative norm between two (Galois-related) base fields is the genuine ordinary idele-class norm. -/
 theorem numberFieldEmbeddedIdeleClassEquivAmbientFixed_relativeNorm
     [FiniteDimensional K K'] [IsGalois K K']
     (j : L' →ₐ[ℚ] SeparableClosure ℚ)
@@ -2551,9 +2467,7 @@ theorem numberFieldEmbeddedIdeleClassEquivAmbientFixed_relativeNorm
         (ideleClassCongr_ideleClassNorm
           (K := K) (K' := F) (L := K') (L' := E) eK eK' hcompat c).symm
 
-/-- For one common compatible embedding of a Galois base-change
-diamond, the genuine global norm-residue maps commute with ordinary
-idele-class norm and actual restriction of automorphisms. -/
+/-- For one common compatible embedding of a Galois base-change diamond, the genuine global norm-residue maps commute with ordinary idele-class norm and actual restriction of automorphisms. -/
 theorem globalNormResidueMonoidHomOfEmbedding_norm_restriction
     [FiniteDimensional K L] [IsAbelianGalois K L]
     [FiniteDimensional K' L'] [IsAbelianGalois K' L']
@@ -2762,10 +2676,7 @@ variable
     [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
     [TotallyDisconnectedSpace G]
 
-/-- Same-base norm-residue naturality in a compatible ambient:
-restriction from the larger finite Galois subextension commutes with
-the canonical projection between its finite norm quotient and the
-norm quotient of an intermediate subextension. -/
+/-- Same-base norm-residue naturality in a compatible ambient: restriction from the larger finite Galois subextension commutes with the canonical projection between its finite norm quotient and the norm quotient of an intermediate subextension. -/
 theorem normResidueSymbol_restriction_sameBase
     (D : DegreeData G)
     (A : Rep.{uA} ℤ G)
@@ -2807,13 +2718,13 @@ theorem normResidueSymbol_restriction_sameBase
       FiniteNormQuotient A K.field M hMK
     let AL : Type uG :=
       Additive
-        (Abelianization
+        (Group.Abelianization
           (K.field.toSubgroup ⧸
             CyclicCohomology.extensionSubgroup
               K.field L (hLM.trans hMK)))
     let AM : Type uG :=
       Additive
-        (Abelianization
+        (Group.Abelianization
           (K.field.toSubgroup ⧸
             CyclicCohomology.extensionSubgroup K.field M hMK))
     let restriction :

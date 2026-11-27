@@ -16,16 +16,14 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.Co
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Adele.IntegralTensorSupport.Lattice
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Adele.IntegralTensorSupport.FinitePlaceCompletion
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Adele.IntegralTensorSupport.LocalTensorDecomposition
-public import Mathlib.RingTheory.DedekindDomain.AdicValuation
+public import Mathlib.RingTheory.DedekindDomain.AdicValuation.Ramification
 public import Mathlib.RingTheory.RamificationInertia.Ramification
 public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.Completion
 
 /-!
 # Comparing the exact-extension and concrete adic-completion maps
 
-The completion map attached to an exact extension of a finite-place
-absolute value agrees with the canonical map between the concrete adic
-completions at the corresponding finite places.
+The completion map attached to an exact extension of a finite-place absolute value agrees with the canonical map between the concrete adic completions at the corresponding finite places.
 -/
 
 
@@ -46,8 +44,7 @@ variable
     [Field K] [NumberField K]
     [Field L] [NumberField L] [Algebra K L]
 
-/-- The concrete homomorphism of adic completions associated with an
-exact extension of the normalized absolute value. -/
+/-- The concrete homomorphism of adic completions associated with an exact extension of the normalized absolute value. -/
 noncomputable def finitePlaceExtensionAdicCompletionMap
     (w : HeightOneSpectrum (𝓞 K))
     (a : AbsoluteValueExtension
@@ -61,8 +58,7 @@ noncomputable def finitePlaceExtensionAdicCompletionMap
       (HeightOneSpectrum.adicAbv K w) a.1 a.2).comp
       (finitePlaceCompletionAlgEquiv w).symm.toRingHom)
 
-/-- The exact-extension completion map agrees with the field embedding
-on elements of the base number field. -/
+/-- The exact-extension completion map agrees with the field embedding on elements of the base number field. -/
 theorem finitePlaceExtensionAdicCompletionMap_coe
     (w : HeightOneSpectrum (𝓞 K))
     (a : AbsoluteValueExtension
@@ -97,8 +93,7 @@ theorem finitePlaceExtensionAdicCompletionMap_coe
     finitePlaceExtensionAdicCompletionRingEquiv_toCompletion]
   rfl
 
-/-- The completion map defined using an exact absolute-value extension
-is continuous. -/
+/-- The completion map defined using an exact absolute-value extension is continuous. -/
 theorem finitePlaceExtensionAdicCompletionMap_continuous
     (w : HeightOneSpectrum (𝓞 K))
     (a : AbsoluteValueExtension
@@ -120,9 +115,7 @@ theorem finitePlaceExtensionAdicCompletionMap_continuous
         (HeightOneSpectrum.adicAbv K w) a.1 a.2).continuous.comp
         hrelative.continuous)
 
-/-- The exact-extension construction and the canonical completion of the
-field embedding agree.  Equality on the dense copy of `K` is extended by
-continuity. -/
+/-- The exact-extension construction and the canonical completion of the field embedding agree.  Equality on the dense copy of `K` is extended by continuity. -/
 theorem finitePlaceExtensionAdicCompletionMap_eq_finitePlaceAdicCompletionMap
     (w : HeightOneSpectrum (𝓞 K))
     (a : AbsoluteValueExtension
@@ -185,8 +178,7 @@ theorem finitePlaceExtensionAdicCompletionMap_eq_finitePlaceAdicCompletionMap
           (K := K) (L := L) w a).adicCompletion L)
     rfl
 
-/-- The concrete completion at a finite place above `w` is finite over the
-concrete completion at `w`, for the canonical completion map. -/
+/-- The concrete completion at a finite place above `w` is finite over the concrete completion at `w`, for the canonical completion map. -/
 theorem finitePlaceAdicCompletionMap_moduleFinite
     [FiniteDimensional K L]
     (w : HeightOneSpectrum (𝓞 K))
@@ -250,8 +242,7 @@ theorem finitePlaceAdicCompletionMap_moduleFinite
             K L w a x }
   exact Module.Finite.equiv e.toLinearEquiv
 
-/-- The norm of the image under the concrete adic-completion map is
-raised to the exact-extension exponent. -/
+/-- The norm of the image under the concrete adic-completion map is raised to the exact-extension exponent. -/
 theorem finitePlaceExtensionAdicCompletionMap_norm
     (w : HeightOneSpectrum (𝓞 K))
     (a : AbsoluteValueExtension
@@ -276,8 +267,7 @@ theorem finitePlaceExtensionAdicCompletionMap_norm
             (HeightOneSpectrum.adicAbv K w) a.1 a.2)),
     finitePlaceCompletionAlgEquiv_symm_norm]
 
-/-- The canonical map between concrete adic completions preserves the
-valuation ring, expressed by the norm bound defining its unit ball. -/
+/-- The canonical map between concrete adic completions preserves the valuation ring, expressed by the norm bound defining its unit ball. -/
 theorem finitePlaceAdicCompletionMap_norm_le_one_iff
     (w : HeightOneSpectrum (𝓞 K))
     (W : {W : HeightOneSpectrum (𝓞 L) //
@@ -303,9 +293,7 @@ theorem finitePlaceAdicCompletionMap_norm_le_one_iff
       (finitePlaceExtensionExponent_pos
         (K := K) (L := L) w a)
 
-/-- The valuation of the image under the concrete adic-completion map
-is multiplied by the ramification index.  This extends the corresponding
-formula for elements of `K` to every element of the completion. -/
+/-- The valuation of the image under the concrete adic-completion map is multiplied by the ramification index.  This extends the corresponding formula for elements of `K` to every element of the completion. -/
 theorem finitePlaceExtensionAdicCompletionMap_valued
     (w : HeightOneSpectrum (𝓞 K))
     (a : AbsoluteValueExtension
@@ -397,8 +385,7 @@ theorem finitePlaceExtensionAdicCompletionMap_valued
           w.asIdeal.ramificationIdx' W.asIdeal := by
       rw [hkval]
 
-/-- Under the canonical map to a place above `w`, the completed
-valuation is raised to the ramification index. -/
+/-- Under the canonical map to a place above `w`, the completed valuation is raised to the ramification index. -/
 theorem finitePlaceAdicCompletionMap_valued
     (w : HeightOneSpectrum (𝓞 K))
     (W : {W : HeightOneSpectrum (𝓞 L) //

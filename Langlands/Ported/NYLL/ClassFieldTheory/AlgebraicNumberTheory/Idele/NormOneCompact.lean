@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.AbsoluteValueCompletion
 public import Langlands.Ported.NYLL.ClassFieldTheory.Algebra.PrincipalFractionalIdeal
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Completion.LocalField
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.AbsoluteNormCore
@@ -26,9 +25,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele
 /-!
 # Compactness of norm-one idele classes
 
-This module combines local compactness, the logarithmic unit lattice, and the
-principal-idele norm formula to prove compactness of the norm-one subgroup of
-the idele class group.
+This module combines local compactness, the logarithmic unit lattice, and the principal-idele norm formula to prove compactness of the norm-one subgroup of the idele class group.
 -/
 
 
@@ -46,8 +43,7 @@ variable {K : Type*} [Field K] [NumberField K]
 
 namespace FiniteIdeleGroup
 
-/-- The product of all local integral-unit groups, embedded in the finite
-idele group. -/
+/-- The product of all local integral-unit groups, embedded in the finite idele group. -/
 def integralStructureMap :
     (∀ v : HeightOneSpectrum (𝓞 K),
       (v.adicCompletionIntegers K).units) → FiniteIdeleGroup K :=
@@ -201,12 +197,11 @@ theorem continuous_archimedeanNorm :
   apply continuous_finsetProd
   intro w _
   apply Continuous.pow
-  exact (continuous_nnnorm.units_map _).comp
+  exact (continuous_nnNorm.units_map _).comp
     ((continuous_apply w).comp
       ContinuousMulEquiv.piUnits.continuous)
 
-/-- The logarithms of the normalized archimedean absolute values, with the
-distinguished place omitted as in Dirichlet's unit theorem. -/
+/-- The logarithms of the normalized archimedean absolute values, with the distinguished place omitted as in Dirichlet's unit theorem. -/
 def logNorm (a : InfiniteIdeleGroup K) :
     logSpace K :=
   fun w ↦ w.1.mult *
@@ -239,8 +234,7 @@ theorem norm_infiniteComponent_principalIdele (x : Kˣ)
   exact (AbsoluteValue.Completion.norm_coe ((WithAbs.equiv w.1).symm (x : K))).trans
     (congrArg (fun a : K => w.1 a) ((WithAbs.equiv w.1).apply_symm_apply (x : K)))
 
-/-- On an algebraic integer unit, the archimedean idele log is exactly
-Dirichlet's logarithmic embedding. -/
+/-- On an algebraic integer unit, the archimedean idele log is exactly Dirichlet's logarithmic embedding. -/
 theorem logNorm_principalRingUnit (u : (𝓞 K)ˣ) :
     logNorm (IdeleGroup.infinitePart (IdeleGroup.principalIdele K
         (NumberField.ringUnitToFieldUnit (K := K) u))) =
@@ -260,8 +254,7 @@ theorem logNorm_component_le {r : ℝ} (a : InfiniteIdeleGroup K)
     (norm_le_pi_norm (logNorm a) w).trans h
 
 open scoped Classical in
-/-- If the total archimedean norm is one, the omitted logarithmic coordinate
-is the negative sum of all the other coordinates. -/
+/-- If the total archimedean norm is one, the omitted logarithmic coordinate is the negative sum of all the other coordinates. -/
 theorem sum_logNorm_eq_neg_distinguished
     (a : InfiniteIdeleGroup K)
     (ha : NumberField.InfiniteAdeleRing.absoluteNorm a = 1) :
@@ -282,7 +275,7 @@ theorem sum_logNorm_eq_neg_distinguished
         w.mult) = 1
     simpa only [NumberField.InfiniteAdeleRing.absoluteNorm_apply, Units.coe_prod,
       Units.val_pow_eq_pow_val, nnnormUnitHom_val, NNReal.coe_prod,
-      NNReal.coe_pow, coe_nnnorm, Units.val_one, NNReal.coe_one] using h
+      NNReal.coe_pow, coe_nnNorm, Units.val_one, NNReal.coe_one] using h
   have hsum :
       ∑ w : InfinitePlace K,
           w.mult *
@@ -324,8 +317,7 @@ theorem sum_logNorm_eq_neg_distinguished
   simpa only [logNorm] using hsum'
 
 open scoped Classical in
-/-- A norm bound in the logarithmic space bounds every local logarithm.
-The harmless factor `#S∞` also covers the omitted coordinate. -/
+/-- A norm bound in the logarithmic space bounds every local logarithm. The harmless factor `#S∞` also covers the omitted coordinate. -/
 theorem abs_log_norm_component_le
     {r : ℝ} (hr : 0 ≤ r) (a : InfiniteIdeleGroup K)
     (hlog : ‖logNorm a‖ ≤ r)
@@ -367,8 +359,7 @@ theorem abs_log_norm_component_le
         le_rfl hr (Nat.cast_nonneg _)
 
 open scoped Classical in
-/-- Exponentiating the preceding logarithmic estimate gives a compact
-annulus containing the idele. -/
+/-- Exponentiating the preceding logarithmic estimate gives a compact annulus containing the idele. -/
 theorem mem_annulus_of_logNorm_le
     {r : ℝ} (hr : 0 ≤ r) (a : InfiniteIdeleGroup K)
     (hlog : ‖logNorm a‖ ≤ r)
@@ -427,8 +418,7 @@ def unitLatticeRealBasis :
       ℝ (NumberField.Units.unitLattice K)
 
 open scoped Classical in
-/-- An explicit uniform logarithmic bound for representatives modulo the
-ordinary unit lattice. -/
+/-- An explicit uniform logarithmic bound for representatives modulo the ordinary unit lattice. -/
 def logFundamentalBound : ℝ :=
   ∑ i, ‖unitLatticeRealBasis (K := K) i‖
 
@@ -438,9 +428,7 @@ theorem logFundamentalBound_nonneg :
   Finset.sum_nonneg fun _ _ ↦ norm_nonneg _
 
 open scoped Classical in
-/-- Every archimedean idele can be multiplied by an algebraic integer unit
-so that its logarithmic vector lies in a fixed bounded fundamental
-parallelepiped. -/
+/-- Every archimedean idele can be multiplied by an algebraic integer unit so that its logarithmic vector lies in a fixed bounded fundamental parallelepiped. -/
 theorem exists_ringUnit_logNorm_le (a : InfiniteIdeleGroup K) :
     ∃ u : (𝓞 K)ˣ,
       ‖logNorm
@@ -486,8 +474,7 @@ end InfiniteIdeleGroup
 
 namespace IdeleGroup
 
-/-- A principal idele coming from a unit of the ring of integers is integral
-at every finite place. -/
+/-- A principal idele coming from a unit of the ring of integers is integral at every finite place. -/
 theorem principalRingUnit_mem_integralAtFinitePlaces
     (u : (𝓞 K)ˣ) :
     principalIdele K
@@ -517,8 +504,7 @@ theorem finite_absoluteNorm_eq_one_of_integral
     exact ha
   rw [hfrac, map_one]
 
-/-- For an idele which is integral at all finite places, the global norm-one
-condition is exactly the archimedean norm-one condition. -/
+/-- For an idele which is integral at all finite places, the global norm-one condition is exactly the archimedean norm-one condition. -/
 theorem archimedeanNorm_eq_one_of_normOne_integral
     (a : IdeleGroup K)
     (hnorm : a ∈ normOneSubgroup (K := K))
@@ -531,8 +517,7 @@ theorem archimedeanNorm_eq_one_of_normOne_integral
   rw [absoluteNorm_apply, hfin, one_mul] at hnorm
   exact inv_eq_one.mp hnorm
 
-/-- The fixed compact set of norm-one ideles which are integral at every
-finite place and logarithmically reduced modulo the ordinary units. -/
+/-- The fixed compact set of norm-one ideles which are integral at every finite place and logarithmically reduced modulo the ordinary units. -/
 def compactIntegralNormOneSet : Set (IdeleGroup K) :=
   ((fun a => ofComponents a.1 a.2) ''
     (InfiniteIdeleGroup.annulus (K := K)
@@ -568,8 +553,7 @@ theorem mem_compactIntegralNormOneSet_iff (a : IdeleGroup K) :
       ofComponents_parts a⟩, hNorm⟩
 
 open scoped Classical in
-/-- A norm-one idele integral at every finite place is principal-equivalent
-to an element of the fixed compact representative set. -/
+/-- A norm-one idele integral at every finite place is principal-equivalent to an element of the fixed compact representative set. -/
 theorem exists_compactIntegralNormOneSet_representative
     (a : IdeleGroup K)
     (hnorm : a ∈ normOneSubgroup (K := K))
@@ -628,8 +612,7 @@ theorem exists_compactIntegralNormOneSet_representative
     (toStandardClass K a)
 
 open scoped Classical in
-/-- For every ordinary ideal class which occurs on a norm-one idele, choose
-one such representative; use `1` for the (irrelevant) remaining classes. -/
+/-- For every ordinary ideal class which occurs on a norm-one idele, choose one such representative; use `1` for the (irrelevant) remaining classes. -/
 def normOneIdealClassRepresentative
     (c : ClassGroup (𝓞 K)) : IdeleGroup K :=
   if h : ∃ a : IdeleGroup K,
@@ -657,8 +640,7 @@ private theorem idealClass_normOneIdealClassRepresentative
   rw [normOneIdealClassRepresentative, dite_eq_left h]
   exact (Classical.choose_spec h).2
 
-/-- The finite set of chosen norm-one representatives of ordinary ideal
-classes. -/
+/-- The finite set of chosen norm-one representatives of ordinary ideal classes. -/
 def normOneIdealClassRepresentativeSet : Set (IdeleGroup K) :=
   Set.range (normOneIdealClassRepresentative (K := K))
 
@@ -673,9 +655,7 @@ theorem normOneIdealClassRepresentativeSet_subset_normOne :
   rintro _ ⟨c, rfl⟩
   exact normOneIdealClassRepresentative_mem c
 
-/-- Remove the ordinary ideal class of a norm-one idele.  The result is
-integral at every finite place, and multiplying back by the chosen
-representative recovers the original idele class. -/
+/-- Remove the ordinary ideal class of a norm-one idele.  The result is integral at every finite place, and multiplying back by the chosen representative recovers the original idele class. -/
 theorem exists_integral_normOne_reduction
     (a : IdeleGroup K)
     (ha : a ∈ normOneSubgroup (K := K)) :
@@ -772,8 +752,7 @@ end IdeleGroup
 
 namespace IdeleClassGroup
 
-/-- The image of the compact idele cover is exactly the group of norm-one
-idele classes. -/
+/-- The image of the compact idele cover is exactly the group of norm-one idele classes. -/
 theorem image_compactNormOneClassCover :
     (IdeleGroup.toStandardClass K) ''
         IdeleGroup.compactNormOneClassCover (K := K) =

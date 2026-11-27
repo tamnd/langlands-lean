@@ -245,7 +245,7 @@ def IsStable (ρ : Representation C G V) (L : Submodule O V) : Prop :=
 
 /-- The subspace $L$ is an $O$-lattice in $V$ that is stable under $\rho$. -/
 def IsStableLattice (ρ : Representation C G V) (L : Submodule O V) : Prop :=
-  L.IsLattice C ∧ IsStable ρ L
+  L.IsFullLattice C ∧ IsStable ρ L
 
 /-- The representation on a stable lattice. -/
 def latticeRep (ρ : Representation C G V) (L : Submodule O V) (hL : IsStable ρ L) :

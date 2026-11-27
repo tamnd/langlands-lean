@@ -71,7 +71,7 @@ sources:
     type: code
     location: https://github.com/n-yamaguchi-0729/ClassFieldTheory
     relationship: copied
-    note: The import closure of the theorem finiteAbelianLocalReciprocity is copied to Langlands/Ported/NYLL under the Apache License 2.0, with the changes for the Mathlib of v4.35.0 that manifests/ported.yaml lists.
+    note: The import closure of the theorem finiteAbelianLocalReciprocity is copied to Langlands/Ported/NYLL under the Apache License 2.0, with the changes that manifests/ported.yaml lists.
     author_endorsement: false
   - title: google-deepmind/formal-conjectures, commit 9097e2f90e66d2f6244209cb1c07f7120d17ec53
     authors: [The Formal Conjectures Authors]

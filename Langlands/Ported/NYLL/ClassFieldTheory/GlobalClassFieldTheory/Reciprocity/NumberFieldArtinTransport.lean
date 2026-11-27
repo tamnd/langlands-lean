@@ -22,9 +22,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finit
 /-!
 # Transport of the number-field Artin calculation
 
-Compatible closure maps identify corresponding finite fixed fields.
-Standard idèle classes then transport with the same normalized valuation,
-so the prime norm used by abstract reciprocity agrees under transport.
+Compatible closure maps identify corresponding finite fixed fields. Standard idèle classes then transport with the same normalized valuation, so the prime norm used by abstract reciprocity agrees under transport.
 -/
 
 @[expose] public section
@@ -40,8 +38,7 @@ universe u v
 
 variable (K : Type u) [Field K] [NumberField K]
 
-/-- Under a compatible comparison of lower absolute Galois groups, the
-image of the finite fixed field is the corresponding rational fixed field. -/
+/-- Under a compatible comparison of lower absolute Galois groups, the image of the finite fixed field is the corresponding rational fixed field. -/
 theorem rationalIntermediateFieldImage_abstractFixedField
     (i : SeparableClosure K ≃ₐ[ℚ] SeparableClosure ℚ)
     (H S : ClosedSubgroup Gal(SeparableClosure K/K))
@@ -128,8 +125,7 @@ private theorem rationalCyclotomicValuationAt_standard
         (Additive.ofMul c) := by
   exact rationalCyclotomicIdeleClassValuationData_valuationAt_fixed_apply S (Additive.ofMul c)
 
-/-- The closure comparison preserves the normalized class valuation on
-every pair of corresponding finite fixed fields. -/
+/-- The closure comparison preserves the normalized class valuation on every pair of corresponding finite fixed fields. -/
 theorem numberFieldCyclotomicValuationAt_transport
     (i : SeparableClosure K ≃ₐ[ℚ] SeparableClosure ℚ)
     (H : ClosedSubgroup Gal(SeparableClosure K/K)) (H' : ClosedSubgroup
@@ -174,8 +170,7 @@ theorem numberFieldCyclotomicValuationAt_transport
     rationalCyclotomicValuationAt_standard]
   exact (standardCyclotomicIdeleClassValue_congr F F' eF c.toMul).symm
 
-/-- The chosen original cyclotomic degree matches the normalized rational
-degree under any compatible closure and lower-group comparison. -/
+/-- The chosen original cyclotomic degree matches the normalized rational degree under any compatible closure and lower-group comparison. -/
 theorem numberFieldCyclotomicNormalizedDegree_transport
     (H' : FiniteAbstractField Gal(SeparableClosure ℚ/ℚ))
     (i : SeparableClosure K ≃ₐ[ℚ] SeparableClosure ℚ)
@@ -258,8 +253,7 @@ private theorem degreeData_eq_of_degree_eq {G : Type*} [Group G] [TopologicalSpa
   cases h
   rfl
 
-/-- The generic degree over the rational field is exactly its original
-cyclotomic degree. -/
+/-- The generic degree over the rational field is exactly its original cyclotomic degree. -/
 theorem numberFieldCyclotomicDegreeData_rat :
     numberFieldCyclotomicDegreeData ℚ = rationalCyclotomicDegreeData := by
   let G := Gal(SeparableClosure ℚ/ℚ)
@@ -350,8 +344,7 @@ private theorem normResidueSymbol_eq_of_data_eq
     rfl
   rw [h]
 
-/-- The generic finite norm-residue equivalence over the rationals retains
-the same value at every rational fixed-field stage. -/
+/-- The generic finite norm-residue equivalence over the rationals retains the same value at every rational fixed-field stage. -/
 theorem numberFieldCyclotomicNormResidueSymbol_rat
     (H : FiniteAbstractField Gal(SeparableClosure ℚ/ℚ)) (J : FiniteGaloisSubextension H.field) :
     (numberFieldCyclotomicDegreeData ℚ).normResidueSymbol (ideleClassRepresentation ℚ)
@@ -370,8 +363,7 @@ open AlgebraicNumberTheory
 
 variable (L : Type v) [Field L] [NumberField L] [Algebra K L] [FiniteDimensional K L] [IsGalois K L]
 
-/-- The comparison of separable closures is chosen to extend the two
-actual embeddings of the finite upper field. -/
+/-- The comparison of separable closures is chosen to extend the two actual embeddings of the finite upper field. -/
 def numberFieldTowerCompatibleClosureEquiv :
     let : Algebra K (SeparableClosure ℚ) := numberFieldTowerSeparableClosureBaseAlgebra K L
     SeparableClosure K ≃ₐ[K] SeparableClosure ℚ := by
@@ -387,8 +379,7 @@ def numberFieldTowerCompatibleClosureEquiv :
   exact e.trans t
 
 omit [FiniteDimensional K L] in
-/-- Both chosen embeddings of the top field are identified by the actual
-closure comparison. -/
+/-- Both chosen embeddings of the top field are identified by the actual closure comparison. -/
 theorem numberFieldTowerCompatibleClosureEquiv_apply_top (x : L) :
     let : Algebra K (SeparableClosure ℚ) := numberFieldTowerSeparableClosureBaseAlgebra K L
     numberFieldTowerCompatibleClosureEquiv K L (separableEmbeddingIntoSeparableClosure K L x) =
@@ -407,8 +398,7 @@ theorem numberFieldTowerCompatibleClosureEquiv_apply_top (x : L) :
   change j (i.equivFieldRange.symm (i.equivFieldRange x)) = j x
   rw [i.equivFieldRange.symm_apply_apply]
 
-/-- The closure comparison identifies the original lower group with the
-lower subgroup of the rational presentation. -/
+/-- The closure comparison identifies the original lower group with the lower subgroup of the rational presentation. -/
 def numberFieldTowerCompatibleBaseSubgroupEquiv :
     (intrinsicFiniteAbstractBase K).field.toSubgroup ≃ₜ* (numberFieldTowerBaseSubgroup K
       L).toSubgroup := by
@@ -443,8 +433,7 @@ def numberFieldTowerCompatibleBaseSubgroupEquiv :
     (h.subtype_mk (fun σ => (e σ).property)) e.bijective
 
 omit [FiniteDimensional K L] in
-/-- The continuous lower-group comparison acts by the conjugated
-automorphism pointwise on the closure. -/
+/-- The continuous lower-group comparison acts by the conjugated automorphism pointwise on the closure. -/
 theorem numberFieldTowerCompatibleBaseSubgroupEquiv_apply
     (s : (intrinsicFiniteAbstractBase K).field.toSubgroup) (x : SeparableClosure K) :
     let : Algebra K (SeparableClosure ℚ) := numberFieldTowerSeparableClosureBaseAlgebra K L
@@ -458,8 +447,7 @@ theorem numberFieldTowerCompatibleBaseSubgroupEquiv_apply
   exact (congrArg (fun z => i (s.1 z)) (i.symm_apply_apply x)).symm.trans
     (congrArg (fun σ : Gal(SeparableClosure ℚ/ℚ) => σ (i x)) h).symm
 
-/-- The lower-group comparison takes the subgroup fixing the original
-top field onto the subgroup fixing its embedded rational model. -/
+/-- The lower-group comparison takes the subgroup fixing the original top field onto the subgroup fixing its embedded rational model. -/
 theorem numberFieldTowerCompatibleBaseSubgroupEquiv_mem_top
     (s : (intrinsicFiniteAbstractBase K).field.toSubgroup) :
     s.1 ∈ (finiteGaloisAbstractExtension K L).field.toSubgroup ↔
@@ -507,8 +495,7 @@ private theorem numberFieldTowerCoefficientTransport_equivariant
     (numberFieldTowerCompatibleBaseSubgroupEquiv K L s).1
     (numberFieldTowerCompatibleBaseSubgroupEquiv_apply K L s) a.toMul)
 
-/-- After transporting actual norm classes, the original and rational
-finite reciprocity homomorphisms assign the same class to each automorphism. -/
+/-- After transporting actual norm classes, the original and rational finite reciprocity homomorphisms assign the same class to each automorphism. -/
 private theorem numberFieldTower_finiteReciprocityHom_transport
     (q : (intrinsicFiniteAbstractBase K).field.toSubgroup ⧸
       extensionSubgroup (intrinsicFiniteAbstractBase K).field (finiteGaloisAbstractExtension
@@ -643,8 +630,7 @@ private theorem numberFieldTowerQuotientTransport_galois_apply
       congrArg i hNew.symm
     _ = _ := numberFieldTowerCompatibleClosureEquiv_apply_top K L _
 
-/-- The standard Artin map agrees pointwise with the rational presentation
-of the same finite norm-residue symbol and actual Galois quotient. -/
+/-- The standard Artin map agrees pointwise with the rational presentation of the same finite norm-residue symbol and actual Galois quotient. -/
 theorem standardNumberFieldArtin_transport
     (c : _root_.IdeleClassGroup K) :
     let H' := numberFieldTowerFiniteAbstractField K L
@@ -719,9 +705,9 @@ theorem standardNumberFieldArtin_transport
   let eOriginal := J.extensionQuotientMulEquiv.trans eBase
   let eRational := numberFieldTowerExtensionQuotientEquivGaloisGroup K L
   have h := numberFieldTowerQuotientTransport_galois_apply K L q.toMul
-  exact (abelianizationCongr_of eOriginal q.toMul).trans
-    ((congrArg Abelianization.of h.symm).trans
-      (abelianizationCongr_of eRational q').symm)
+  exact (Group.abelianizationCongr_of eOriginal q.toMul).trans
+    ((congrArg Group.Abelianization.of h.symm).trans
+      (Group.abelianizationCongr_of eRational q').symm)
 
 end Tower
 

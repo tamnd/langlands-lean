@@ -66,7 +66,7 @@ theorem not_isOfFinOrder_frobenius : ¬ IsOfFinOrder (LocalField.frobenius K) :=
   have hne := FiniteField.X_pow_card_pow_sub_X_ne_zero (residueFieldBar K) hn.ne' hq
   apply hne
   apply Polynomial.eq_zero_of_infinite_isRoot
-  convert Set.infinite_univ (α := residueFieldBar K)
+  convert Set.infinite_univ (α := residueFieldBar K) using 1
   ext x
   simp [hx x]
 

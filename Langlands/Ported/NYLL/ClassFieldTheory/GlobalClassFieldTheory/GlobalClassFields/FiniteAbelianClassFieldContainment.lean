@@ -14,11 +14,9 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finit
 /-!
 # Containment of finite abelian class fields
 
-For actual finite abelian extensions of a number field, containment is
-exactly reverse containment of their genuine idèle-class norm ranges.
+For actual finite abelian extensions of a number field, containment is exactly reverse containment of their genuine idèle-class norm ranges.
 
-The fixing subgroups are computed in the separable closure of the original
-number field, using the same standard norm ranges as finite reciprocity.
+The fixing subgroups are computed in the separable closure of the original number field, using the same standard norm ranges as finite reciprocity.
 -/
 
 
@@ -60,8 +58,7 @@ noncomputable def numberFieldAbelianSubextensionOfEmbedding
       exact h.symm ▸ M.commutative
     exact commutativeOfField hBase _ rfl
 
-/-- An algebra embedding of finite extensions reverses inclusion of
-their genuine idèle-class norm ranges. -/
+/-- An algebra embedding of finite extensions reverses inclusion of their genuine idèle-class norm ranges. -/
 theorem ideleClassNorm_range_le_of_algHom
     (L₁ : Type v) (L₂ : Type w)
     [Field L₁] [NumberField L₁]
@@ -83,9 +80,7 @@ theorem ideleClassNorm_range_le_of_algHom
     ideleClassNorm_range_le_of_tower
       (K := K) (M := L₁) (L := L₂)
 
-/-- Reverse inclusion of genuine idèle-class norm ranges constructs an
-actual algebra embedding of the corresponding finite abelian
-extensions over the original base field. -/
+/-- Reverse inclusion of genuine idèle-class norm ranges constructs an actual algebra embedding of the corresponding finite abelian extensions over the original base field. -/
 noncomputable def finiteAbelianExtensionEmbeddingOfNormRangeLE
     (L₁ : Type v) (L₂ : Type w)
     [Field L₁] [NumberField L₁]
@@ -119,14 +114,13 @@ noncomputable def finiteAbelianExtensionEmbeddingOfNormRangeLE
       (FiniteAbstractField.base Gal(SeparableClosure K/K)) J₁ J₂).2 hNorm
   have hRange : i₁.fieldRange ≤ i₂.fieldRange := by
     rw [← InfiniteGalois.fixedField_fixingSubgroup i₂.fieldRange]
-    apply (IntermediateField.le_iff_le
+    apply (IntermediateField.le_fixedField_iff_le_fixingSubgroup
       i₂.fieldRange.fixingSubgroup i₁.fieldRange).2
     exact hOrder
   exact i₂.equivFieldRange.symm.toAlgHom.comp
     ((IntermediateField.inclusion hRange).comp i₁.equivFieldRange.toAlgHom)
 
-/-- Reverse norm-range inclusion implies actual field containment over
-the original number field. -/
+/-- Reverse norm-range inclusion implies actual field containment over the original number field. -/
 theorem finiteAbelianExtension_nonempty_algHom_of_normRange_le
     (L₁ : Type v) (L₂ : Type w)
     [Field L₁] [NumberField L₁]
@@ -141,8 +135,7 @@ theorem finiteAbelianExtension_nonempty_algHom_of_normRange_le
   ⟨finiteAbelianExtensionEmbeddingOfNormRangeLE
     (K := K) L₁ L₂ h⟩
 
-/-- Actual containment of finite abelian extensions is equivalent to
-reverse inclusion of their genuine idèle-class norm ranges. -/
+/-- Actual containment of finite abelian extensions is equivalent to reverse inclusion of their genuine idèle-class norm ranges. -/
 theorem nonempty_algHom_iff_ideleClassNorm_range_le
     (L₁ : Type v) (L₂ : Type w)
     [Field L₁] [NumberField L₁]
@@ -162,8 +155,7 @@ theorem nonempty_algHom_iff_ideleClassNorm_range_le
       finiteAbelianExtension_nonempty_algHom_of_normRange_le
         (K := K) L₁ L₂
 
-/-- Equality of genuine norm ranges characterizes isomorphism of
-finite abelian extensions over the original number field. -/
+/-- Equality of genuine norm ranges characterizes isomorphism of finite abelian extensions over the original number field. -/
 theorem nonempty_algEquiv_iff_ideleClassNorm_range_eq
     (L₁ : Type v) (L₂ : Type w)
     [Field L₁] [NumberField L₁]

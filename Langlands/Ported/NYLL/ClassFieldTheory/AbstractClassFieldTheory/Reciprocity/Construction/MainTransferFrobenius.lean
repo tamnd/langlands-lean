@@ -15,9 +15,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AbstractClassFieldTheory.Re
 /-!
 # The abstract reciprocity construction, transfer--norm naturality: Frobenius fibers
 
-This module continues the geometric transfer construction with the chosen
-norm-orbit representatives, fiber calculations, fixed-field arithmetic, and
-the final Frobenius transfer formula.
+This module continues the geometric transfer construction with the chosen norm-orbit representatives, fiber calculations, fixed-field arithmetic, and the final Frobenius transfer formula.
 -/
 
 @[expose] public section
@@ -46,8 +44,7 @@ variable {G : Type u} [Group G] [TopologicalSpace G]
 
 namespace Internal
 
-/-- The chosen representative of a norm orbit is the inverse of the
-representative of the corresponding transfer orbit. -/
+/-- The chosen representative of a norm orbit is the inverse of the representative of the corresponding transfer orbit. -/
 private noncomputable def chosenTransferNormNaturalityNormOrbitRepresentative
     (D : DegreeData G) [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
     (E : DegreeData.FiniteResidueAbstractExtension D) (L : ClosedSubgroup G)
@@ -108,8 +105,7 @@ variable {G : Type u} [Group G] [TopologicalSpace G]
 
 namespace DegreeData
 
-/-- Canonical identification of the two realizations of
-`G(\widetilde L/K')`. -/
+/-- Canonical identification of the two realizations of `G(\widetilde L/K')`. -/
 noncomputable def transferNormNaturalityFrobeniusIntermediateEquiv
     (D : DegreeData G) [IsTopologicalGroup G]
     (E : FiniteResidueAbstractExtension D) (L : ClosedSubgroup G)
@@ -128,9 +124,7 @@ noncomputable def transferNormNaturalityFrobeniusIntermediateEquiv
         E L hL (congrArg Subtype.val h),
       MonoidHom.rangeRestrict_surjective _⟩
 
-/--
-Establishes the identity `(D.transferNormNaturalityFrobeniusIntermediateEquiv E L hL
-(QuotientGroup.mk k')).1 = QuotientGroup.mk (Subgroup.inclusion E.below k')`.
+/-- Establishes the identity `(D.transferNormNaturalityFrobeniusIntermediateEquiv E L hL (QuotientGroup.mk k')).1 = QuotientGroup.mk (Subgroup.inclusion E.below k')`.
 -/
 @[simp]
 theorem transferNormNaturalityFrobeniusIntermediateEquiv_mk
@@ -145,8 +139,7 @@ theorem transferNormNaturalityFrobeniusIntermediateEquiv_mk
       E L hL (QuotientGroup.mk k')).1 =
       QuotientGroup.mk (Subgroup.inclusion E.below k') := rfl
 
-/-- A divisibility fact in `ℤ̂` used to recognize every transfer term as
-a positive Frobenius element over `K'`. -/
+/-- A divisibility fact in `ℤ̂` used to recognize every transfer term as a positive Frobenius element over `K'`. -/
 theorem transferNormNaturality_zHat_positive_nat_of_nsmul_eq_nat
     (f N : ℕ) (hf : 0 < f) (hN : 0 < N) (z : ZHat)
     (h : f • z = N • (1 : ZHat)) :
@@ -175,8 +168,7 @@ theorem transferNormNaturality_zHat_positive_nat_of_nsmul_eq_nat
   change f • z = f • (n • (1 : ZHat))
   rw [h, smul_smul, ← hN_eq]
 
-/-- The element `τ⁻¹ σ ^ f(τ) τ` of `H` attached to one double coset in
-the transfer formula on `G(\widetilde L/K)`. -/
+/-- The element `τ⁻¹ σ ^ f(τ) τ` of `H` attached to one double coset in the transfer formula on `G(\widetilde L/K)`. -/
 noncomputable def transferNormNaturalityFrobeniusTransferTerm
     (D : DegreeData G) [IsTopologicalGroup G]
     (E : FiniteResidueAbstractExtension D) (L : ClosedSubgroup G)
@@ -196,8 +188,7 @@ noncomputable def transferNormNaturalityFrobeniusTransferTerm
       q.out.out,
     QuotientGroup.out_conj_pow_minimalPeriod_mem H σ.1 q.out⟩
 
-/-- The transfer term pulled back from `H` to
-`G(\widetilde L/K')`. -/
+/-- The transfer term pulled back from `H` to `G(\widetilde L/K')`. -/
 noncomputable def transferNormNaturalityFrobeniusTransferTermPreimage
     (D : DegreeData G) [IsTopologicalGroup G]
     (E : FiniteResidueAbstractExtension D) (L : ClosedSubgroup G)
@@ -215,8 +206,7 @@ noncomputable def transferNormNaturalityFrobeniusTransferTermPreimage
   (D.transferNormNaturalityFrobeniusIntermediateEquiv E L hL).symm
     (D.transferNormNaturalityFrobeniusTransferTerm E L hL σ q)
 
-/-- The pullback of each double-coset term has strictly positive integral
-normalized degree, as asserted. -/
+/-- The pullback of each double-coset term has strictly positive integral normalized degree, as asserted. -/
 theorem transferNormNaturalityFrobeniusTransferTermPreimage_degree
     (D : DegreeData G) [IsTopologicalGroup G]
     (E : FiniteResidueAbstractExtension D) (L : ClosedSubgroup G)
@@ -303,8 +293,7 @@ theorem transferNormNaturalityFrobeniusTransferTermPreimage_degree
   apply Multiplicative.ext
   exact hnEq
 
-/-- The actual Frobenius lift over `K'` represented by one term of the
-transfer product. -/
+/-- The actual Frobenius lift over `K'` represented by one term of the transfer product. -/
 noncomputable def transferNormNaturalityTransferFrobeniusLift
     (D : DegreeData G) [IsTopologicalGroup G]
     (E : FiniteResidueAbstractExtension D) (L : ClosedSubgroup G)
@@ -324,9 +313,7 @@ noncomputable def transferNormNaturalityTransferFrobeniusLift
     D.transferNormNaturalityFrobeniusTransferTermPreimage_degree
       E L hL σ q⟩
 
-/--
-Establishes the identity `(D.transferNormNaturalityTransferFrobeniusLift E L hL σ q).1 =
-D.transferNormNaturalityFrobeniusTransferTermPreimage E L hL σ q`.
+/-- Establishes the identity `(D.transferNormNaturalityTransferFrobeniusLift E L hL σ q).1 = D.transferNormNaturalityFrobeniusTransferTermPreimage E L hL σ q`.
 -/
 @[simp]
 theorem transferNormNaturalityTransferFrobeniusLift_coe
@@ -347,8 +334,7 @@ theorem transferNormNaturalityTransferFrobeniusLift_coe
       D.transferNormNaturalityFrobeniusTransferTermPreimage
         E L hL σ q := rfl
 
-/-- The Frobenius lift attached to a transfer orbit maps to the transfer
-term `τ⁻¹ σ^f τ` in `G(\widetilde L/K)`. -/
+/-- The Frobenius lift attached to a transfer orbit maps to the transfer term `τ⁻¹ σ^f τ` in `G(\widetilde L/K)`. -/
 theorem transferNormNaturalityTransferFrobeniusLift_towerMap
     (D : DegreeData G) [IsTopologicalGroup G]
     (E : FiniteResidueAbstractExtension D) (L : ClosedSubgroup G)
@@ -375,8 +361,7 @@ theorem transferNormNaturalityTransferFrobeniusLift_towerMap
         (D.transferNormNaturalityFrobeniusTransferTerm
           E L hL σ q))
 
-/-- The closed subgroup generated by a transfer Frobenius lift maps onto
-the closed subgroup generated by the corresponding transfer term. -/
+/-- The closed subgroup generated by a transfer Frobenius lift maps onto the closed subgroup generated by the corresponding transfer term. -/
 theorem transferNormNaturalityTransferFrobeniusLift_closure_map
     (D : DegreeData G) [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
     (E : FiniteResidueAbstractExtension D) (L : ClosedSubgroup G)
@@ -483,10 +468,7 @@ theorem transferNormNaturalityTransferFrobeniusLift_closure_map
       exact ⟨β.1, hβmem, hβu⟩
     · exact hmapClosed
 
-/-- For a transfer orbit represented by `t`, the absolute subgroup fixed
-by its Frobenius lift over `K'` is the stabilizer of the norm coset
-`t⁻¹ G_Σ`.  This is the intersection
-`G_K' ∩ t⁻¹ G_Σ t`. -/
+/-- For a transfer orbit represented by `t`, the absolute subgroup fixed by its Frobenius lift over `K'` is the stabilizer of the norm coset `t⁻¹ G_Σ`.  This is the intersection `G_K' ∩ t⁻¹ G_Σ t`. -/
 theorem transferNormNaturalityTransferFrobeniusLift_mem_fixedSubgroup_iff_stabilizer
     (D : DegreeData G) [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
     (E : FiniteResidueAbstractExtension D) (L : ClosedSubgroup G)
@@ -637,9 +619,7 @@ theorem transferNormNaturalityTransferFrobeniusLift_mem_fixedSubgroup_iff_stabil
     E.base.field E.field.field S hSK E.below tK⁻¹ kM).symm
   simp [zK, kM, tK, mul_assoc]
 
-/-- The pointwise fixed-subgroup calculation above, upgraded to the
-literal subgroup equality used to identify the stabilizer-coset fiber in
-the transfer formula with the norm fiber. -/
+/-- The pointwise fixed-subgroup calculation above, upgraded to the literal subgroup equality used to identify the stabilizer-coset fiber in the transfer formula with the norm fiber. -/
 theorem transferNormNaturalityTransferFrobeniusLift_fixedSubgroup_map
     (D : DegreeData G) [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
     (E : FiniteResidueAbstractExtension D) (L : ClosedSubgroup G)
@@ -695,9 +675,7 @@ end DegreeData
 
 namespace Internal
 
-/-- For each transfer double coset, the quotient by the fixed subgroup of
-its Frobenius factor is the stabilizer-coset fiber in the corresponding
-norm double coset. -/
+/-- For each transfer double coset, the quotient by the fixed subgroup of its Frobenius factor is the stabilizer-coset fiber in the corresponding norm double coset. -/
 private noncomputable def chosenTransferNormNaturalityTransferNormFiberEquiv
     (D : DegreeData G) [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
     (E : DegreeData.FiniteResidueAbstractExtension D) (L : ClosedSubgroup G)
@@ -771,8 +749,7 @@ variable {G : Type u} [Group G] [TopologicalSpace G]
 
 namespace Internal
 
-/-- Under the fiber equivalence, a summand in the double-coset norm is
-literally the corresponding summand in `N_{Σₜ/K'}`. -/
+/-- Under the fiber equivalence, a summand in the double-coset norm is literally the corresponding summand in `N_{Σₜ/K'}`. -/
 private theorem transferNormNaturalityTransferNormFiber_term
     (D : DegreeData G) (A : Rep.{uA} ℤ G)
     [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
@@ -853,9 +830,7 @@ variable {G : Type u} [Group G] [TopologicalSpace G]
 
 namespace DegreeData
 
-/-- The fixed field `Σₜ` of a transfer Frobenius factor is contained
-in the conjugate field `Σ^t`.  On absolute groups this is
-`G_{Σₜ} ⊆ G_{Σ^t}` from. -/
+/-- The fixed field `Σₜ` of a transfer Frobenius factor is contained in the conjugate field `Σ^t`.  On absolute groups this is `G_{Σₜ} ⊆ G_{Σ^t}` from. -/
 theorem transferNormNaturalityTransferFrobenius_fixedField_le_conjugate
     (D : DegreeData G) [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
     (E : FiniteResidueAbstractExtension D) (L : ClosedSubgroup G)
@@ -917,8 +892,7 @@ theorem transferNormNaturalityTransferFrobenius_fixedField_le_conjugate
   rw [heq] at hmem
   exact hmem
 
-/-- The extension `Σₜ | Σ^t` attached to one transfer orbit is
-unramified, as asserted. -/
+/-- The extension `Σₜ | Σ^t` attached to one transfer orbit is unramified, as asserted. -/
 theorem transferNormNaturalityTransferFrobenius_fixedField_isUnramified_conjugate
     (D : DegreeData G) [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
     [TotallyDisconnectedSpace G]
@@ -1007,8 +981,7 @@ variable {G : Type u} [Group G] [TopologicalSpace G]
 
 namespace DegreeData
 
-/-- If `π` is prime in `Σ`, its conjugate `π^t`, included into the
-unramified extension `Σₜ`, remains prime. -/
+/-- If `π` is prime in `Σ`, its conjugate `π^t`, included into the unramified extension `Σₜ`, remains prime. -/
 theorem transferNormNaturalityTransferFrobenius_conjugatePrime_isPrime
     (D : DegreeData G) (A : Rep.{uA} ℤ G) (v : ValuationData D A)
     [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
@@ -1151,9 +1124,7 @@ theorem transferNormNaturalityTransferFrobenius_conjugatePrime_isPrime
       E L hL σ q
   exact v.prime_of_unramified EβC hUn πC hπC
 
-/-- The norm identity for transfer--norm naturality:
-`N_{Σ/K}(π)` is the sum, over transfer double cosets, of
-`N_{Σₜ/K'}(π^t)`.  The construction writes this identity multiplicatively. -/
+/-- The norm identity for transfer--norm naturality: `N_{Σ/K}(π)` is the sum, over transfer double cosets, of `N_{Σₜ/K'}(π^t)`.  The construction writes this identity multiplicatively. -/
 theorem transferNormNaturalityNorm_eq_sum_transferNorms
     (D : DegreeData G) (A : Rep.{uA} ℤ G)
     [IsTopologicalGroup G] [CompactSpace G] [T2Space G]
@@ -1313,9 +1284,7 @@ variable {G : Type u} [Group G] [TopologicalSpace G]
 
 namespace DegreeData
 
-/-- The classical transfer on the groups
-`G(\widetilde L/K) → G(\widetilde L/K')`, before passage to the finite
-Galois quotient. -/
+/-- The classical transfer on the groups `G(\widetilde L/K) → G(\widetilde L/K')`, before passage to the finite Galois quotient. -/
 noncomputable def transferNormNaturalityFrobeniusTransfer
     (D : DegreeData G) [IsTopologicalGroup G]
     (E : FiniteResidueAbstractExtension D) (L : ClosedSubgroup G)
@@ -1323,9 +1292,9 @@ noncomputable def transferNormNaturalityFrobeniusTransfer
     [hLnormal :
       (extensionSubgroup E.base.field L (hL.trans E.below)).Normal]
     [hL'normal : (extensionSubgroup E.field.field L hL).Normal] :
-    Abelianization (E.base.field.toSubgroup ⧸
+    Group.Abelianization (E.base.field.toSubgroup ⧸
         D.extensionInertiaWithin E.base.field L (hL.trans E.below)) →*
-      Abelianization (E.field.field.toSubgroup ⧸
+      Group.Abelianization (E.field.field.toSubgroup ⧸
         D.extensionInertiaWithin E.field.field L hL) := by
   let H := D.transferNormNaturalityFrobeniusIntermediateSubgroup
     E L hL
@@ -1334,11 +1303,10 @@ noncomputable def transferNormNaturalityFrobeniusTransfer
   let e := D.transferNormNaturalityFrobeniusIntermediateEquiv
     E L hL
   exact e.symm.abelianizationCongr.toMonoidHom.comp
-    (Abelianization.lift
-      (MonoidHom.transfer (Abelianization.of : H →* Abelianization H)))
+    (Group.Abelianization.lift
+      (MonoidHom.transfer (Group.Abelianization.of : H →* Group.Abelianization H)))
 
-/-- The double-coset formula for the preceding Frobenius-level transfer.
-Every factor is the positive Frobenius lift constructed above. -/
+/-- The double-coset formula for the preceding Frobenius-level transfer. Every factor is the positive Frobenius lift constructed above. -/
 theorem transferNormNaturalityFrobeniusTransfer_doubleCoset_formula
     (D : DegreeData G) [IsTopologicalGroup G]
     (E : FiniteResidueAbstractExtension D) (L : ClosedSubgroup G)
@@ -1357,11 +1325,11 @@ theorem transferNormNaturalityFrobeniusTransfer_doubleCoset_formula
           (hL.trans E.below)) ⧸ H))) :=
       Fintype.ofFinite _
     D.transferNormNaturalityFrobeniusTransfer E L hL
-        (Abelianization.of σ) =
+        (Group.Abelianization.of σ) =
       ∏ q : Quotient (orbitRel (Subgroup.zpowers σ)
           ((E.base.field.toSubgroup ⧸ D.extensionInertiaWithin E.base.field L
             (hL.trans E.below)) ⧸ H)),
-        Abelianization.of
+        Group.Abelianization.of
           ((D.transferNormNaturalityFrobeniusIntermediateEquiv
             E L hL).symm
               ⟨q.out.out⁻¹ * σ ^ Function.minimalPeriod (σ • ·) q.out *
@@ -1378,12 +1346,12 @@ theorem transferNormNaturalityFrobeniusTransfer_doubleCoset_formula
       ((E.base.field.toSubgroup ⧸ D.extensionInertiaWithin E.base.field L
         (hL.trans E.below)) ⧸ H)))
   unfold transferNormNaturalityFrobeniusTransfer
-  simp only [MonoidHom.comp_apply, Abelianization.lift_apply_of]
+  simp only [MonoidHom.comp_apply, Group.Abelianization.lift_apply_of]
   rw [MonoidHom.transfer_eq_prod_quotient_orbitRel_zpowers_quot]
   rw [map_prod]
   apply Finset.prod_congr rfl
   intro q _
-  exact abelianizationCongr_of
+  exact Group.abelianizationCongr_of
     (D.transferNormNaturalityFrobeniusIntermediateEquiv
       E L hL).symm _
 

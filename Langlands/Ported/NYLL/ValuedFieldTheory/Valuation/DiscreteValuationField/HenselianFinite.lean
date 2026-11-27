@@ -18,8 +18,7 @@ public import Mathlib.RingTheory.Nakayama
 /-!
 # Finite algebra consequences of Henselian pairs
 
-This file keeps the Nakayama and finite-module completion consequences away
-from the lightweight `HenselianDVF` core.
+This file keeps the Nakayama and finite-module completion consequences away from the lightweight `HenselianDVF` core.
 -/
 
 @[expose] public section
@@ -32,8 +31,7 @@ universe u v
 
 namespace DiscreteValuationField
 
-/-- If an ideal lies in the Jacobson radical of the base ring, then its action
-on any module lands in the module Jacobson radical. -/
+/-- If an ideal lies in the Jacobson radical of the base ring, then its action on any module lands in the module Jacobson radical. -/
 theorem ideal_smul_top_le_module_jacobson_of_le_jacobson_bot
     {R M : Type*} [CommRing R] [AddCommGroup M] [Module R M]
     {I : Ideal R} (hI : I ≤ Ideal.jacobson (⊥ : Ideal R)) :
@@ -42,18 +40,16 @@ theorem ideal_smul_top_le_module_jacobson_of_le_jacobson_bot
   exact (Submodule.smul_mono hI le_rfl).trans
     (Ring.jacobson_smul_top_le R M)
 
-/-- The `jac` field of `HenselianRing` gives the Nakayama/module-Jacobson
-component needed after applying the Henselian ideal to any module. -/
+/-- The `jac` field of `HenselianRing` gives the Nakayama/module-Jacobson component needed after applying the Henselian ideal to any module. -/
 theorem ideal_smul_top_le_module_jacobson_of_henselianRing
     {R M : Type*} [CommRing R] [AddCommGroup M] [Module R M]
     {I : Ideal R} [HenselianRing R I] :
     I • (⊤ : Submodule R M) ≤ Module.jacobson R M := by
   apply ideal_smul_top_le_module_jacobson_of_le_jacobson_bot
+  rw [Ideal.jacobson_bot]
   exact HenselianRing.jac
 
-/-- Algebra form of `ideal_smul_top_le_module_jacobson_of_henselianRing`: the
-base Henselian ideal mapped into an algebra lies in the module Jacobson radical
-after restricting scalars to the base. -/
+/-- Algebra form of `ideal_smul_top_le_module_jacobson_of_henselianRing`: the base Henselian ideal mapped into an algebra lies in the module Jacobson radical after restricting scalars to the base. -/
 theorem ideal_map_restrictScalars_le_module_jacobson_of_henselianRing
     {R S : Type*} [CommRing R] [CommRing S] [Algebra R S]
     {I : Ideal R} [HenselianRing R I] :
@@ -62,9 +58,7 @@ theorem ideal_map_restrictScalars_le_module_jacobson_of_henselianRing
     (ideal_smul_top_le_module_jacobson_of_henselianRing
       (R := R) (M := S) (I := I))
 
-/-- Finite algebra form of the Jacobson/Nakayama component: if an ideal lies
-in the Jacobson radical of the base, then its extension to a finite algebra
-lies in the Jacobson radical upstairs. -/
+/-- Finite algebra form of the Jacobson/Nakayama component: if an ideal lies in the Jacobson radical of the base, then its extension to a finite algebra lies in the Jacobson radical upstairs. -/
 theorem ideal_map_le_jacobson_bot_of_le_jacobson_bot_of_moduleFinite
     {R S : Type*} [CommRing R] [CommRing S] [Algebra R S]
     [Module.Finite R S] {I : Ideal R}
@@ -101,21 +95,21 @@ theorem ideal_map_le_jacobson_bot_of_le_jacobson_bot_of_moduleFinite
     simpa [Ideal.smul_top_eq_map] using hyideal
   have hbot :
       (⊤ : Submodule R (S ⧸ Q)) = ⊥ :=
-    Submodule.eq_bot_of_le_smul_of_le_jacobson_bot I
-      (⊤ : Submodule R (S ⧸ Q)) Module.Finite.fg_top htop hI
+    Submodule.eq_bot_of_le_smul_of_le_jacobson I
+      (⊤ : Submodule R (S ⧸ Q)) Module.Finite.fg_top htop
+      (by simpa only [Ideal.jacobson_bot] using hI)
   exact (top_ne_bot : (⊤ : Submodule R (S ⧸ Q)) ≠ ⊥) hbot
 
-/-- Henselian-ring version of
-`ideal_map_le_jacobson_bot_of_le_jacobson_bot_of_moduleFinite`. -/
+/-- Henselian-ring version of `ideal_map_le_jacobson_bot_of_le_jacobson_bot_of_moduleFinite`. -/
 theorem ideal_map_le_jacobson_bot_of_henselianRing_of_moduleFinite
     {R S : Type*} [CommRing R] [CommRing S] [Algebra R S]
     [Module.Finite R S] {I : Ideal R} [HenselianRing R I] :
     I.map (algebraMap R S) ≤ Ideal.jacobson (⊥ : Ideal S) := by
   apply ideal_map_le_jacobson_bot_of_le_jacobson_bot_of_moduleFinite
+  rw [Ideal.jacobson_bot]
   exact HenselianRing.jac
 
-/-- In a Noetherian finite algebra over a Henselian pair, the extended
-Henselian ideal is adically Hausdorff. -/
+/-- In a Noetherian finite algebra over a Henselian pair, the extended Henselian ideal is adically Hausdorff. -/
 theorem isHausdorff_map_algebraMap_of_henselianRing_of_moduleFinite
     {R S : Type*} [CommRing R] [CommRing S] [Algebra R S]
     [Module.Finite R S] [IsNoetherianRing S]
@@ -128,8 +122,7 @@ theorem isHausdorff_map_algebraMap_of_henselianRing_of_moduleFinite
         (ideal_map_le_jacobson_bot_of_henselianRing_of_moduleFinite
           (R := R) (S := S) (I := I)))
 
-/-- Pulling back an adic power submodule along a linear equivalence gives the
-corresponding adic power submodule on the source. -/
+/-- Pulling back an adic power submodule along a linear equivalence gives the corresponding adic power submodule on the source. -/
 theorem linearEquiv_comap_pow_smul_top
     {R M N : Type*} [CommRing R] (I : Ideal R)
     [AddCommGroup M] [Module R M]
@@ -141,8 +134,7 @@ theorem linearEquiv_comap_pow_smul_top
   rw [Submodule.map_smul'']
   rw [Submodule.map_top, LinearMap.range_eq_top.mpr e.symm.surjective]
 
-/-- Mapping an adic power submodule along a linear equivalence gives the
-corresponding adic power submodule on the target. -/
+/-- Mapping an adic power submodule along a linear equivalence gives the corresponding adic power submodule on the target. -/
 theorem linearEquiv_map_pow_smul_top
     {R M N : Type*} [CommRing R] (I : Ideal R)
     [AddCommGroup M] [Module R M]
@@ -230,8 +222,7 @@ theorem isPrecomplete_linearEquiv_iff
     let : IsPrecomplete I M := h
     exact isPrecomplete_of_linearEquiv I e
 
-/-- Same-universe finite modules over a Noetherian adically complete ring are
-adically complete. -/
+/-- Same-universe finite modules over a Noetherian adically complete ring are adically complete. -/
 theorem isAdicComplete_of_moduleFinite_sameUniverse
     {R M : Type u} [CommRing R] (I : Ideal R)
     [AddCommGroup M] [Module R M]
@@ -265,8 +256,7 @@ theorem isAdicComplete_of_moduleFinite_sameUniverse
 
 /-- A finite module over a Noetherian adically complete ring is adically complete.
 
-This is a universe-polymorphic wrapper around mathlib's tensor-product
-finite-module completion theorem. -/
+This is a universe-polymorphic wrapper around mathlib's tensor-product finite-module completion theorem. -/
 theorem isAdicComplete_of_moduleFinite
     {R : Type u} {M : Type v} [CommRing R] (I : Ideal R)
     [AddCommGroup M] [Module R M]
@@ -283,8 +273,7 @@ theorem isAdicComplete_of_moduleFinite
   exact ValuationTheory.DiscreteValuationField.isAdicComplete_of_linearEquiv
     (I := I) (Shrink.linearEquiv R M)
 
-/-- A finite algebra over a Noetherian `I`-adically complete base is Henselian
-along the ideal generated by `I`. -/
+/-- A finite algebra over a Noetherian `I`-adically complete base is Henselian along the ideal generated by `I`. -/
 theorem henselianRing_map_algebraMap_of_moduleFinite_of_isAdicComplete
     {R : Type u} {S : Type v} [CommRing R] [CommRing S] [Algebra R S]
     {I : Ideal R} [IsNoetherianRing R] [Module.Finite R S]
@@ -303,8 +292,7 @@ variable {K : Type u} [Field K]
 
 /-- The maximal-ideal topology on a Henselian DVF valuation ring is separated.
 
-The proof uses only the Henselian Jacobson condition together with the
-Noetherian DVR structure of the valuation ring. -/
+The proof uses only the Henselian Jacobson condition together with the Noetherian DVR structure of the valuation ring. -/
 theorem isHausdorff_maximalIdeal (F : HenselianDVF.{u, v} K) :
     IsHausdorff F.maximalIdeal F.valuationSubring := by
   let : IsNoetherianRing F.valuationSubring :=
@@ -315,8 +303,7 @@ theorem isHausdorff_maximalIdeal (F : HenselianDVF.{u, v} K) :
       (I := F.maximalIdeal)
       HenselianRing.jac
 
-/-- A precomplete Henselian DVF valuation ring is adically complete at its
-maximal ideal, since separatedness is automatic. -/
+/-- A precomplete Henselian DVF valuation ring is adically complete at its maximal ideal, since separatedness is automatic. -/
 theorem isAdicComplete_maximalIdeal_of_isPrecomplete
     (F : HenselianDVF.{u, v} K)
     [IsPrecomplete F.maximalIdeal F.valuationSubring] :

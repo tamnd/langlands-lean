@@ -23,10 +23,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finit
 /-!
 # Reciprocity on the standard number-field formation
 
-The finite norm-residue symbol uses the normalized cyclotomic degree and the
-valuation of the actual standard class representation over the original base.
-The quotient target is the abelianization of the automorphism group of the
-two concrete fixed fields.
+The finite norm-residue symbol uses the normalized cyclotomic degree and the valuation of the actual standard class representation over the original base. The quotient target is the abelianization of the automorphism group of the two concrete fixed fields.
 -/
 
 @[expose] public section
@@ -60,8 +57,7 @@ noncomputable def standardFixedFieldAbelianNormSubgroup (L : FiniteAbelianSubext
   (NumberField.IdeleClassGroup.norm K₀
     (abstractRelativeFixedField K (SeparableClosure K) L.below)).range.toAddSubgroup
 
-/-- The fixed-part comparison takes the abstract norm to the determinant norm
-of the same extension on standard idèle classes. -/
+/-- The fixed-part comparison takes the abstract norm to the determinant norm of the same extension on standard idèle classes. -/
 theorem standardFixedFieldAbelianNormSubgroup_eq_map (L : FiniteAbelianSubextension H.field) :
     standardFixedFieldAbelianNormSubgroup K H L =
       (L.normSubgroup (ideleClassRepresentation K)).map
@@ -73,8 +69,7 @@ theorem standardFixedFieldAbelianNormSubgroup_eq_map (L : FiniteAbelianSubextens
   exact (map_finiteNormSubgroup_eq_standardIdeleClassNormRange K H.field L.field
     L.below L.normal).symm
 
-/-- Inclusion of the actual abelian subextensions reverses inclusion of their
-standard idèle-class norm subgroups. -/
+/-- Inclusion of the actual abelian subextensions reverses inclusion of their standard idèle-class norm subgroups. -/
 theorem le_iff_standardFixedFieldAbelianNormSubgroup_le
     (L₁ L₂ : FiniteAbelianSubextension H.field) :
     L₁ ≤ L₂ ↔
@@ -98,7 +93,7 @@ noncomputable def standardFixedFieldNormResidueEquiv
     let F := abstractFixedField K (SeparableClosure K) H.field
     let E := abstractRelativeFixedField K (SeparableClosure K) J.below
     let n := NumberField.IdeleClassGroup.norm F E
-    (NumberField.IdeleClassGroup (𝓞 F) F ⧸ n.range) ≃* Abelianization Gal(E/F) := by
+    (NumberField.IdeleClassGroup (𝓞 F) F ⧸ n.range) ≃* Group.Abelianization Gal(E/F) := by
   intro F E n
   let : Finite (H.field.toSubgroup ⧸ (J.field.toSubgroup.subgroupOf H.field.toSubgroup)) := J.finite
   let eClass :=
@@ -119,7 +114,7 @@ noncomputable def standardFixedFieldArtin
     [FiniteDimensional K (abstractFixedField K (SeparableClosure K) J.field)] :
     let F := abstractFixedField K (SeparableClosure K) H.field
     let E := abstractRelativeFixedField K (SeparableClosure K) J.below
-    NumberField.IdeleClassGroup (𝓞 F) F →* Abelianization Gal(E/F) := by
+    NumberField.IdeleClassGroup (𝓞 F) F →* Group.Abelianization Gal(E/F) := by
   intro F E
   let n := NumberField.IdeleClassGroup.norm F E
   exact (standardFixedFieldNormResidueEquiv K H J).toMonoidHom.comp (QuotientGroup.mk' n.range)
@@ -144,8 +139,7 @@ theorem standardFixedFieldArtin_ker
   exact normResidue_quotient_ker (NumberField.IdeleClassGroup.norm F E).range
     (standardFixedFieldNormResidueEquiv K H J)
 
-/-- The original standard classes are the fixed coefficients at the
-intrinsic base subgroup. -/
+/-- The original standard classes are the fixed coefficients at the intrinsic base subgroup. -/
 noncomputable def standardNumberFieldClassEquivIntrinsicFixed :
     Additive (NumberField.IdeleClassGroup (𝓞 K) K) ≃+
       ambientFixedAddSubgroup (ideleClassRepresentation K)
@@ -157,13 +151,12 @@ noncomputable def standardNumberFieldClassEquivIntrinsicFixed :
   exact (MulEquiv.toAdditive (NumberField.IdeleClassGroup.congr (e.restrictScalars ℚ))).trans
     (abstractFixedFieldIdeleClassEquivFixed K (intrinsicFiniteAbstractBase K).field)
 
-/-- An explicit realization in the separable closure of the original base
-identifies the standard norm-residue quotient with the actual finite Galois abelianization. -/
+/-- An explicit realization in the separable closure of the original base identifies the standard norm-residue quotient with the actual finite Galois abelianization. -/
 noncomputable def standardNumberFieldNormResidueEquivOfEmbedding
     (L : Type v) [Field L] [NumberField L] [Algebra K L] [FiniteDimensional K L] [IsGalois K L]
     (i : L →ₐ[K] SeparableClosure K) :
     (NumberField.IdeleClassGroup (𝓞 K) K ⧸ (NumberField.IdeleClassGroup.norm K L).range) ≃*
-      Abelianization Gal(L/K) := by
+      Group.Abelianization Gal(L/K) := by
   let Ω := SeparableClosure K
   let H := intrinsicFiniteAbstractBase K
   let J := finiteGaloisAbstractExtensionOfEmbedding K L i
@@ -199,17 +192,15 @@ noncomputable def standardNumberFieldNormResidueEquivOfEmbedding
   exact eC.trans (MulEquiv.toAdditive.symm
     (eNorm.symm.trans (eRec.trans (MulEquiv.toAdditive eGal.abelianizationCongr))))
 
-/-- The Artin map on the original standard idele classes, using the chosen
-embedding into the original base's separable closure. -/
+/-- The Artin map on the original standard idele classes, using the chosen embedding into the original base's separable closure. -/
 noncomputable def standardNumberFieldArtin
     (L : Type v) [Field L] [NumberField L] [Algebra K L] [FiniteDimensional K L] [IsGalois K L] :
-    NumberField.IdeleClassGroup (𝓞 K) K →* Abelianization Gal(L/K) :=
+    NumberField.IdeleClassGroup (𝓞 K) K →* Group.Abelianization Gal(L/K) :=
   (standardNumberFieldNormResidueEquivOfEmbedding K L
     (AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L)).toMonoidHom.comp
       (QuotientGroup.mk' (NumberField.IdeleClassGroup.norm K L).range)
 
-/-- The original Artin map evaluates the actual abstract norm class with
-the lower fixed coefficient and the original quotient restriction. -/
+/-- The original Artin map evaluates the actual abstract norm class with the lower fixed coefficient and the original quotient restriction. -/
 theorem standardNumberFieldArtin_finiteNormClass
     (L : Type v) [Field L] [NumberField L] [Algebra K L] [FiniteDimensional K L] [IsGalois K L]
     (c : NumberField.IdeleClassGroup (𝓞 K) K) :
@@ -276,8 +267,7 @@ theorem standardNumberFieldArtin_ker
     (standardNumberFieldNormResidueEquivOfEmbedding K L
       (AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L))
 
-/-- Finite abelian norm-residue reciprocity in the ordinary topology of the
-standard class quotient and the finite Krull topology. -/
+/-- Finite abelian norm-residue reciprocity in the ordinary topology of the standard class quotient and the finite Krull topology. -/
 noncomputable def standardNumberFieldNormResidueContinuousMulEquiv
     (L : Type v) [Field L] [NumberField L] [Algebra K L]
     [FiniteDimensional K L] [IsAbelianGalois K L] :
@@ -289,7 +279,7 @@ noncomputable def standardNumberFieldNormResidueContinuousMulEquiv
       (GlobalClassFields.ideleClassNorm_range_isOpen (K := K) (L := L))
   let e := (standardNumberFieldNormResidueEquivOfEmbedding K L
     (AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L)).trans
-      (Abelianization.equivOfComm : Gal(L/K) ≃* Abelianization Gal(L/K)).symm
+      (Group.Abelianization.equivOfComm : Gal(L/K) ≃* Group.Abelianization Gal(L/K)).symm
   exact { e with
     continuous_toFun := continuous_of_discreteTopology
     continuous_invFun := continuous_of_discreteTopology }
@@ -310,12 +300,11 @@ theorem standardNumberFieldArtinContinuousMonoidHom_apply
     (L : Type v) [Field L] [NumberField L] [Algebra K L]
     [FiniteDimensional K L] [IsAbelianGalois K L] (c : NumberField.IdeleClassGroup (𝓞 K) K) :
     standardNumberFieldArtinContinuousMonoidHom K L c =
-      (Abelianization.equivOfComm : Gal(L/K) ≃* Abelianization Gal(L/K)).symm
+      (Group.Abelianization.equivOfComm : Gal(L/K) ≃* Group.Abelianization Gal(L/K)).symm
         (standardNumberFieldArtin K L c) :=
   rfl
 
-/-- The finite norm subgroup over the original base is the transported range
-of the standard determinant norm from its finite Galois fixed field. -/
+/-- The finite norm subgroup over the original base is the transported range of the standard determinant norm from its finite Galois fixed field. -/
 theorem standardNumberFieldFiniteNormSubgroup
     (J : FiniteGaloisSubextension (baseField Gal(SeparableClosure K/K))) :
     let F := abstractFixedField K (SeparableClosure K) J.field
@@ -377,8 +366,7 @@ private theorem standardNumberFieldAbelianNormSubgroup_eq_map (L : FiniteAbelian
     (L.normSubgroup (ideleClassRepresentation K)).map f
   rw [h, AddSubgroup.map_map, hcomp, AddSubgroup.map_id]
 
-/-- The norm range from a compositum is the intersection of the two norm ranges
-in the standard idèle-class group of the original number field. -/
+/-- The norm range from a compositum is the intersection of the two norm ranges in the standard idèle-class group of the original number field. -/
 theorem standardNumberFieldAbelianNormSubgroup_compositum (L₁ L₂ : FiniteAbelianSubextension B) :
     standardNumberFieldAbelianNormSubgroup K (L₁.compositum L₂) =
       standardNumberFieldAbelianNormSubgroup K L₁ ⊓
@@ -396,8 +384,7 @@ theorem standardNumberFieldAbelianNormSubgroup_compositum (L₁ L₂ : FiniteAbe
   apply AddSubgroup.map_inf
   exact (ideleClassEquivBaseFixed K).symm.injective
 
-/-- The norm range from an intersection field is the product of the two norm ranges
-in the standard idèle-class group of the original number field. -/
+/-- The norm range from an intersection field is the product of the two norm ranges in the standard idèle-class group of the original number field. -/
 theorem standardNumberFieldAbelianNormSubgroup_intersection (L₁ L₂ : FiniteAbelianSubextension B) :
     standardNumberFieldAbelianNormSubgroup K (L₁.intersection L₂) =
       standardNumberFieldAbelianNormSubgroup K L₁ ⊔
@@ -421,8 +408,7 @@ private theorem addSubgroup_eq_of_equiv_map_eq
     (h : P.map e.toAddMonoidHom = Q.map e.toAddMonoidHom) : P = Q :=
   AddSubgroup.map_injective (f := e.toAddMonoidHom) e.injective h
 
-/-- The finite Galois extension determined by an embedding in the original
-separable closure, over the distinguished abstract base. -/
+/-- The finite Galois extension determined by an embedding in the original separable closure, over the distinguished abstract base. -/
 noncomputable def standardNumberFieldGaloisSubextensionOfEmbedding
     (L : Type v) [Field L] [Algebra K L] [FiniteDimensional K L] [IsGalois K L]
     (i : L →ₐ[K] SeparableClosure K) :
@@ -444,8 +430,7 @@ noncomputable def standardNumberFieldGaloisSubextensionOfEmbedding
         rw [← hBase]
         exact J₀.finite }
 
-/-- The abstract norm subgroup of an embedded finite Galois extension is the
-image of its actual determinant-norm range on the standard idèle classes. -/
+/-- The abstract norm subgroup of an embedded finite Galois extension is the image of its actual determinant-norm range on the standard idèle classes. -/
 theorem standardNumberFieldGaloisSubextensionOfEmbedding_normSubgroup
     (L : Type v) [Field L] [NumberField L] [Algebra K L] [FiniteDimensional K L] [IsGalois K L]
     (i : L →ₐ[K] SeparableClosure K) :
@@ -477,9 +462,7 @@ theorem standardNumberFieldGaloisSubextensionOfEmbedding_normSubgroup
     exact h.symm
   rw [standardNumberFieldFiniteNormSubgroup K J, hRange]
 
-/-- Any standard subgroup containing an actual finite Galois norm range is
-the exact determinant-norm range of a finite abelian class field inside the
-separable closure of the original base. -/
+/-- Any standard subgroup containing an actual finite Galois norm range is the exact determinant-norm range of a finite abelian class field inside the separable closure of the original base. -/
 theorem exists_standardNumberFieldClassField_of_normRange_le
     (L : Type v) [Field L] [NumberField L] [Algebra K L] [FiniteDimensional K L] [IsGalois K L]
     (U : Subgroup (NumberField.IdeleClassGroup (𝓞 K) K))
@@ -516,8 +499,7 @@ theorem exists_standardNumberFieldClassField_of_normRange_le
     (NumberField.IdeleClassGroup.norm K M).range.toAddSubgroup U.toAddSubgroup hMap
   exact congrArg AddSubgroup.toSubgroup h'
 
-/-- Finite abelian existence and order reversal for the norm topology of
-the same number-field formation. -/
+/-- Finite abelian existence and order reversal for the norm topology of the same number-field formation. -/
 noncomputable def numberFieldFiniteAbelianNormSubgroupOrderIso
     (H : FiniteAbstractField Gal(SeparableClosure K/K)) :
     FiniteAbelianSubextension H.field ≃o

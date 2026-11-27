@@ -18,9 +18,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Galoi
 /-!
 # Base equivalences on the actual maximal abelian extension
 
-Restricting the specified ambient equivalence gives the separable and maximal
-abelian field maps. Their conjugation actions commute with restriction and
-with the canonical comparison of absolute Galois abelianizations.
+Restricting the specified ambient equivalence gives the separable and maximal abelian field maps. Their conjugation actions commute with restriction and with the canonical comparison of absolute Galois abelianizations.
 -/
 
 @[expose] public section
@@ -46,8 +44,7 @@ theorem separableClosure_mem_semilinear
     exact (hc a).symm
   · exact mem_separableClosure_iff.1 x.property
 
-/-- The specified algebraic-closure equivalence restricted to the actual
-separable closures. -/
+/-- The specified algebraic-closure equivalence restricted to the actual separable closures. -/
 def separableClosureEquivOfSemilinear
     (e : K ≃+* M) (c : AlgebraicClosure K ≃+* AlgebraicClosure M)
     (hc : ∀ a : K, c (algebraMap K (AlgebraicClosure K) a) =
@@ -74,11 +71,11 @@ theorem separableClosureEquivOfSemilinear_commutes
 private theorem abelianIntermediateField_le_maximalAbelianExtension
     (E : IntermediateField K (SeparableClosure K)) [IsAbelianGalois K E] :
     E ≤ maximalAbelianExtension K := by
-  rw [maximalAbelianExtension, IntermediateField.le_iff_le]
+  rw [maximalAbelianExtension, IntermediateField.le_fixedField_iff_le_fixingSubgroup]
   change (commutator Gal(SeparableClosure K/K)).topologicalClosure ≤ E.fixingSubgroup
   apply Subgroup.topologicalClosure_minimal
   · rw [← E.restrictNormalHom_ker]
-    exact Abelianization.commutator_subset_ker
+    exact Group.Abelianization.commutator_le_ker
       (AlgEquiv.restrictNormalHom (F := K) (K₁ := SeparableClosure K) E)
   · exact InfiniteGalois.fixingSubgroup_isClosed E
 
@@ -94,8 +91,7 @@ theorem maximalAbelianExtension_map_le
     (intermediateFieldMapRingEquivEquiv_commutes e c hc (maximalAbelianExtension K))
   exact abelianIntermediateField_le_maximalAbelianExtension E
 
-/-- Restrict the specified separable-closure map to the actual maximal
-abelian intermediate fields. Both directions retain their ambient values. -/
+/-- Restrict the specified separable-closure map to the actual maximal abelian intermediate fields. Both directions retain their ambient values. -/
 def maximalAbelianExtensionEquivOfSemilinear
     (e : K ≃+* M) (c : SeparableClosure K ≃+* SeparableClosure M)
     (hc : ∀ a : K, c (algebraMap K (SeparableClosure K) a) =
@@ -120,16 +116,14 @@ theorem maximalAbelianExtensionEquivOfSemilinear_commutes
       algebraMap M (maximalAbelianExtension M) (e a) :=
   Subtype.ext (hc a)
 
-/-- Mathlib's absolute abelianization identified with the actual maximal
-abelian extension of the chosen separable closure. -/
+/-- Mathlib's absolute abelianization identified with the actual maximal abelian extension of the chosen separable closure. -/
 noncomputable def mathlibAbelianizationToMaximal
     (K : Type u) [Field K] :
     Field.absoluteGaloisGroupAbelianization K ≃ₜ* Gal(maximalAbelianExtension K/K) :=
   (absoluteGaloisGroupAbelianizationEquivSeparable K).trans
     (absoluteTopologicalAbelianizationEquivMaximalAbelianGalois K)
 
-/-- On an actual absolute automorphism, the comparison is restriction through
-the same separable closure to the same maximal abelian field. -/
+/-- On an actual absolute automorphism, the comparison is restriction through the same separable closure to the same maximal abelian field. -/
 theorem mathlibAbelianizationToMaximal_mk
     (σ : Field.absoluteGaloisGroup K) :
     mathlibAbelianizationToMaximal K (QuotientGroup.mk σ) =
@@ -139,8 +133,7 @@ theorem mathlibAbelianizationToMaximal_mk
   rw [absoluteGaloisGroupAbelianizationEquivSeparable_mk,
     absoluteAbelianizationMulEquivMaximalAbelianGalois_mk]
 
-/-- The absolute comparison commutes with the actual base and ambient maps.
-The proof checks representatives and their values in the original closure. -/
+/-- The absolute comparison commutes with the actual base and ambient maps. The proof checks representatives and their values in the original closure. -/
 theorem mathlibAbelianizationToMaximal_semilinear
     (e : K ≃+* M) (c : AlgebraicClosure K ≃+* AlgebraicClosure M)
     (hc : ∀ a : K, c (algebraMap K (AlgebraicClosure K) a) =
@@ -176,8 +169,7 @@ theorem mathlibAbelianizationToMaximal_semilinear
   apply Subtype.ext
   rfl
 
-/-- The maximal-field equivalence induced by the specified algebraic-closure
-extension used in the public absolute Galois base equivalence. -/
+/-- The maximal-field equivalence induced by the specified algebraic-closure extension used in the public absolute Galois base equivalence. -/
 noncomputable def maximalAbelianExtensionBaseEquiv (e : K ≃+* M) :
     maximalAbelianExtension K ≃+* maximalAbelianExtension M :=
   let c := IsAlgClosure.equivOfEquiv (AlgebraicClosure K) (AlgebraicClosure M) e
@@ -196,8 +188,7 @@ theorem maximalAbelianExtensionBaseEquiv_commutes (e : K ≃+* M) (a : K) :
     (separableClosureEquivOfSemilinear e c hc)
     (separableClosureEquivOfSemilinear_commutes e c hc) a
 
-/-- The public absolute base equivalence and the same maximal-field base
-equivalence commute with the canonical absolute comparison. -/
+/-- The public absolute base equivalence and the same maximal-field base equivalence commute with the canonical absolute comparison. -/
 theorem mathlibAbelianizationToMaximal_baseEquiv (e : K ≃+* M)
     (q : Field.absoluteGaloisGroupAbelianization K) :
     mathlibAbelianizationToMaximal M

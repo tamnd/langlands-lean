@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.Reciprocity.GlobalNormResidue
 public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.Reciprocity.GlobalArtin
 public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.Reciprocity.OnePlaceNormKernel
@@ -25,10 +24,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele
 /-!
 # Archimedean local-global compatibility of Artin homomorphisms
 
-This file compares the actual Artin homomorphism at an infinite place
-with the global norm-residue homomorphism on idele classes.  The
-one-place norm statements are proved from genuine relative ideles
-supported at the chosen archimedean place.
+This file compares the actual Artin homomorphism at an infinite place with the global norm-residue homomorphism on idele classes.  The one-place norm statements are proved from genuine relative ideles supported at the chosen archimedean place.
 -/
 
 
@@ -53,8 +49,7 @@ variable
     [FiniteDimensional K L] [IsAbelianGalois K L]
 
 omit [IsAbelianGalois K L] in
-/-- A determinant norm at one infinite place gives an ordinary idèle-class
-norm through the one-place inclusion. -/
+/-- A determinant norm at one infinite place gives an ordinary idèle-class norm through the one-place inclusion. -/
 theorem infinitePlaceIdeleClass_mem_ideleClassNorm_range_of_mem_infiniteTensorNorm
     (v : InfinitePlace K)
     (x : v.Completionˣ)
@@ -67,9 +62,7 @@ theorem infinitePlaceIdeleClass_mem_ideleClassNorm_range_of_mem_infiniteTensorNo
   exact ideleClassNorm_range_mem_mk_of_mem_ideleNorm_range K L (infinitePlaceIdele v x) hnorm
 
 omit [FiniteDimensional K L] in
-/-- Triviality of the actual chosen infinite-place Artin symbol is
-equivalent to membership in the corresponding determinant-norm
-subgroup. -/
+/-- Triviality of the actual chosen infinite-place Artin symbol is equivalent to membership in the corresponding determinant-norm subgroup. -/
 @[simp]
 theorem chosenInfinitePlaceArtinMonoidHom_eq_one_iff_infiniteTensorNorm
     (v : InfinitePlace K)
@@ -84,9 +77,7 @@ theorem chosenInfinitePlaceArtinMonoidHom_eq_one_iff_infiniteTensorNorm
   rw [chosenInfinitePlaceArtinMonoidHom_ker
     (K := K) (L := L) v]
 
-/-- An infinite-place element killed by the actual local Artin
-homomorphism is killed by the global norm-residue homomorphism after
-insertion as a one-place idele class. -/
+/-- An infinite-place element killed by the actual local Artin homomorphism is killed by the global norm-residue homomorphism after insertion as a one-place idele class. -/
 theorem globalNormResidueMonoidHom_infinitePlaceIdeleClass_eq_one_of_localArtin_eq_one
     (v : InfinitePlace K)
     (x : v.Completionˣ)
@@ -102,8 +93,7 @@ theorem globalNormResidueMonoidHom_infinitePlaceIdeleClass_eq_one_of_localArtin_
       ((chosenInfinitePlaceArtinMonoidHom_eq_one_iff_infiniteTensorNorm
         (K := K) (L := L) v x).1 hx)
 
-/-- The infinite tensor norm subgroup lies in the kernel of the global
-norm-residue homomorphism restricted to the one-place idele class map. -/
+/-- The infinite tensor norm subgroup lies in the kernel of the global norm-residue homomorphism restricted to the one-place idele class map. -/
 theorem infiniteTensorNormSubgroup_le_globalNormResidueKernel
     (v : InfinitePlace K) :
     infiniteTensorNormSubgroup
@@ -117,8 +107,7 @@ theorem infiniteTensorNormSubgroup_le_globalNormResidueKernel
       ((chosenInfinitePlaceArtinMonoidHom_eq_one_iff_infiniteTensorNorm
         (K := K) (L := L) v x).2 hx)
 
-/-- A positive element at a real infinite place gives an actual
-idele-class norm. -/
+/-- A positive element at a real infinite place gives an actual idele-class norm. -/
 theorem infinitePlaceIdeleClass_mem_ideleClassNorm_range_of_real_pos
     (v : InfinitePlace K)
     (hvReal : v.IsReal)
@@ -138,8 +127,7 @@ theorem infinitePlaceIdeleClass_mem_ideleClassNorm_range_of_real_pos
       (chosenInfinitePlaceArtinMonoidHom_eq_one_of_real_pos
         (K := K) (L := L) v hvReal x hx)
 
-/-- The global norm-residue symbol of a positive real one-place idele
-class is trivial. -/
+/-- The global norm-residue symbol of a positive real one-place idele class is trivial. -/
 theorem globalNormResidueMonoidHom_infinitePlaceIdeleClass_eq_one_of_real_pos
     (v : InfinitePlace K)
     (hvReal : v.IsReal)
@@ -155,9 +143,7 @@ theorem globalNormResidueMonoidHom_infinitePlaceIdeleClass_eq_one_of_real_pos
     infinitePlaceIdeleClass_mem_ideleClassNorm_range_of_real_pos
       (K := K) (L := L) v hvReal x hx
 
-/-- At an actually unramified infinite place, both the restricted
-global norm-residue map and the chosen local Artin map are trivial,
-hence the local-global compatibility square commutes. -/
+/-- At an actually unramified infinite place, both the restricted global norm-residue map and the chosen local Artin map are trivial, hence the local-global compatibility square commutes. -/
 theorem globalNormResidueMonoidHom_comp_infinitePlaceIdeleClass_of_unramified
     (v : InfinitePlace K)
     (hUnramified :
@@ -182,9 +168,7 @@ theorem globalNormResidueMonoidHom_comp_infinitePlaceIdeleClass_of_unramified
       (K := K) (L := L) v x hlocal
   rw [MonoidHom.comp_apply, hglobal, hlocal]
 
-/-- At a complex base place the chosen place upstairs is automatically
-unramified, so the archimedean local-global compatibility square is
-trivial. -/
+/-- At a complex base place the chosen place upstairs is automatically unramified, so the archimedean local-global compatibility square is trivial. -/
 theorem globalNormResidueMonoidHom_comp_infinitePlaceIdeleClass_of_isComplex
     (v : InfinitePlace K)
     (hvComplex : v.IsComplex) :
@@ -200,8 +184,7 @@ theorem globalNormResidueMonoidHom_comp_infinitePlaceIdeleClass_of_isComplex
   rw [chosenInfinitePlaceAbove_comap (L := L) v]
   exact hvComplex
 
-/-- At an actually unramified infinite place, one-place idele-class
-norm membership is exactly local determinant-norm membership. -/
+/-- At an actually unramified infinite place, one-place idele-class norm membership is exactly local determinant-norm membership. -/
 theorem infinitePlaceIdeleClass_mem_ideleClassNorm_range_iff_of_unramified
     (v : InfinitePlace K)
     (hUnramified :
@@ -227,9 +210,7 @@ theorem infinitePlaceIdeleClass_mem_ideleClassNorm_range_iff_of_unramified
   rw [hcompat]
 
 omit [FiniteDimensional K L] in
-/-- At an actually ramified real place, negative one is not a local
-determinant norm.  This is the concrete real/complex norm obstruction:
-every norm from the complex completion is positive. -/
+/-- At an actually ramified real place, negative one is not a local determinant norm.  This is the concrete real/complex norm obstruction: every norm from the complex completion is positive. -/
 theorem neg_one_not_mem_infiniteTensorNormSubgroup_of_ramified
     (v : InfinitePlace K)
     (hRamified :
@@ -244,7 +225,7 @@ theorem neg_one_not_mem_infiniteTensorNormSubgroup_of_ramified
   let chosenInfinitePlaceLiesOver : w.1.LiesOver v.1 :=
     ⟨congrArg (fun q : InfinitePlace K => q.1) hw⟩
   let : Algebra v.Completion w.Completion :=
-    InfinitePlace.Completion.algebraOfLiesOver v w
+    AbsoluteValue.Completion.algebraOfLiesOver v.1 w.1
   rw [infiniteTensorNormSubgroup_eq_localNormSubgroup
     (K := K) (L := L) v w hw]
   rintro ⟨z, hz⟩
@@ -267,8 +248,7 @@ theorem neg_one_not_mem_infiniteTensorNormSubgroup_of_ramified
   norm_num at hneg
 
 omit [FiniteDimensional K L] in
-/-- The actual chosen local Artin symbol of negative one is nontrivial
-at a ramified real place. -/
+/-- The actual chosen local Artin symbol of negative one is nontrivial at a ramified real place. -/
 theorem chosenInfinitePlaceArtinMonoidHom_neg_one_ne_one_of_ramified
     (v : InfinitePlace K)
     (hRamified :
@@ -284,8 +264,7 @@ theorem chosenInfinitePlaceArtinMonoidHom_neg_one_ne_one_of_ramified
         (K := K) (L := L) v (-1 : v.Completionˣ)).1 htrivial)
 
 omit [NumberField K] in
-/-- Every unit at a real completion is positive either as given or
-after multiplication by negative one. -/
+/-- Every unit at a real completion is positive either as given or after multiplication by negative one. -/
 private theorem realCompletionUnit_pos_or_neg_one_mul_pos
     (v : InfinitePlace K)
     (hvReal : v.IsReal)
@@ -311,9 +290,7 @@ private theorem realCompletionUnit_pos_or_neg_one_mul_pos
     simpa only [neg_one_mul] using neg_pos.mpr hneg
   · exact Or.inl hpos
 
-/-- At a real place, the full archimedean local-global Artin square is
-equivalent to its single value at negative one.  Positivity kills both
-maps, so this isolates the unique ramified real source calculation. -/
+/-- At a real place, the full archimedean local-global Artin square is equivalent to its single value at negative one.  Positivity kills both maps, so this isolates the unique ramified real source calculation. -/
 theorem globalNormResidueMonoidHom_comp_infinitePlaceIdeleClass_eq_iff_neg_one
     (v : InfinitePlace K)
     (hvReal : v.IsReal) :
@@ -376,9 +353,7 @@ theorem globalNormResidueMonoidHom_comp_infinitePlaceIdeleClass_eq_iff_neg_one
         eq_inv_of_mul_eq_one_right hlocal
       rw [MonoidHom.comp_apply, hglobalX, hlocalX, hneg]
 
-/-- For an arbitrary infinite place, the local-global Artin square is
-reduced canonically to the negative-one calculation in the real case;
-the complex case is already trivial. -/
+/-- For an arbitrary infinite place, the local-global Artin square is reduced canonically to the negative-one calculation in the real case; the complex case is already trivial. -/
 theorem
     globalNormResidueMonoidHom_comp_infinitePlaceIdeleClass_eq_iff_real_neg_one
     (v : InfinitePlace K) :
@@ -406,14 +381,9 @@ theorem
         globalNormResidueMonoidHom_comp_infinitePlaceIdeleClass_of_isComplex
           (K := K) (L := L) v hvComplex
 
-/-- The global norm-residue homomorphism restricted to a single
-archimedean component is the actual local Artin homomorphism at that
-place.
+/-- The global norm-residue homomorphism restricted to a single archimedean component is the actual local Artin homomorphism at that place.
 
-At an unramified archimedean place both maps are trivial.  In the only
-remaining case, a ramified real place, positivity reduces the equality
-to negative one and the complexification overextension identifies its
-global symbol with the genuine local complex conjugation. -/
+At an unramified archimedean place both maps are trivial.  In the only remaining case, a ramified real place, positivity reduces the equality to negative one and the complexification overextension identifies its global symbol with the genuine local complex conjugation. -/
 theorem globalNormResidueMonoidHom_comp_infinitePlaceIdeleClass
     (v : InfinitePlace K) :
     (globalNormResidueMonoidHom K L).comp
@@ -434,9 +404,7 @@ theorem globalNormResidueMonoidHom_comp_infinitePlaceIdeleClass
       globalNormResidueMonoidHom_infinitePlaceIdeleClass_neg_one_of_ramified
         (K := K) (L := L) v hUnramified
 
-/-- One-place archimedean norm membership is exactly membership in the
-local determinant-norm subgroup.  This is the norm-kernel form of
-archimedean local-global Artin compatibility. -/
+/-- One-place archimedean norm membership is exactly membership in the local determinant-norm subgroup.  This is the norm-kernel form of archimedean local-global Artin compatibility. -/
 @[simp]
 theorem infinitePlaceIdeleClass_mem_ideleClassNorm_range_iff
     (v : InfinitePlace K)

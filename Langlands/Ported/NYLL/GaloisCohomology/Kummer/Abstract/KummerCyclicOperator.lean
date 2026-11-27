@@ -15,13 +15,7 @@ public import Langlands.Ported.NYLL.GaloisCohomology.Cyclic.NormKernelVanishing
 # finite abelian Kummer theory, the finite abelian Kummer decomposition: the cyclic
 abstract-operator step
 
-This file isolates the finite cyclic step in the proof of the finite abelian Kummer decomposition.
-It does not claim the full Kummer correspondence.  In additive notation, we
-use a fixed kernel element `xi` of an equivariant operator `wp`, of order
-`n`.  If the cyclic Galois group is killed by `n`, the vanishing of `H⁻¹`
-produces one element `a` such that `wp a` is fixed and `a` has trivial
-stabilizer.  This is the abstract analogue of the construction
-`a^σ⁻¹ = ζ` and hence the single-radical generation step.
+This file isolates the finite cyclic step in the proof of the finite abelian Kummer decomposition. It does not claim the full Kummer correspondence.  In additive notation, we use a fixed kernel element `xi` of an equivariant operator `wp`, of order `n`.  If the cyclic Galois group is killed by `n`, the vanishing of `H⁻¹` produces one element `a` such that `wp a` is fixed and `a` has trivial stabilizer.  This is the abstract analogue of the construction `a^σ⁻¹ = ζ` and hence the single-radical generation step.
 -/
 
 @[expose] public section
@@ -38,9 +32,7 @@ noncomputable section
 
 open CategoryTheory
 
-/-- Stabilizer for the action carried by a representation.  We keep it
-explicit because a `Representation` does not install its action as a global
-`MulAction` instance on the underlying module. -/
+/-- Stabilizer for the action carried by a representation.  We keep it explicit because a `Representation` does not install its action as a global `MulAction` instance on the underlying module. -/
 def representationStabilizer {Q : Type u} [Group Q]
     (B : Rep.{v} ℤ Q) (a : B.V) : Subgroup Q := by
   letI : Module ℤ B.V := B.hV2
@@ -64,9 +56,7 @@ def representationStabilizer {Q : Type u} [Group Q]
 
 /-- The cohomological core of the finite cyclic case of the finite abelian Kummer decomposition.
 
-The two conclusions say that `wp a` belongs to the base fixed module and
-that the orbit of `a` has the full size of `Q`.  No radical element or
-generation assertion is assumed. -/
+The two conclusions say that `wp a` belongs to the base fixed module and that the orbit of `a` has the full size of `Q`.  No radical element or generation assertion is assumed. -/
 theorem cyclic_single_radical_of_tateHMinusOne_isZero
     {Q : Type u} [Group Q] [Fintype Q]
     (B : Rep.{v} ℤ Q) (g : Q) (hg : ∀ q, q ∈ Subgroup.zpowers g)
@@ -129,7 +119,7 @@ theorem cyclic_single_radical_of_tateHMinusOne_isZero
     induction i with
     | zero =>
         let : Module ℤ B.V := B.hV2
-        rw [pow_zero, map_one, zero_smul, zero_add, Module.End.one_apply]
+        rw [pow_zero, map_one, zero_smul, zero_add, one_apply_eq_self]
     | succ i hi =>
         rw [pow_succ', map_mul]
         change B.ρ g (B.ρ (g ^ i) a) = _
@@ -160,15 +150,9 @@ theorem cyclic_single_radical_of_tateHMinusOne_isZero
     subst q
     exact Subgroup.one_mem _
 
-/-- Finite-cyclic, single-radical frontier of finite abelian Kummer theory, the finite abelian
-Kummer decomposition,
-now obtained from `SatisfiesIntegralCyclicNormKernelVanishing` itself.
+/-- Finite-cyclic, single-radical frontier of finite abelian Kummer theory, the finite abelian Kummer decomposition, now obtained from `SatisfiesIntegralCyclicNormKernelVanishing` itself.
 
-Here `B` is the actual coefficient representation `A_L` attached to the
-abstract cyclic extension.  The operator is stated on `B`; constructing it
-functorially from a global operator on `A`, and assembling cyclic
-subextensions into the full abelian Kummer extension, are deliberately not
-claimed in this theorem. -/
+Here `B` is the actual coefficient representation `A_L` attached to the abstract cyclic extension.  The operator is stated on `B`; constructing it functorially from a global operator on `A`, and assembling cyclic subextensions into the full abelian Kummer extension, are deliberately not claimed in this theorem. -/
 theorem cyclicOperator_singleRadical_of_normKernelVanishing
     {G : Type u} [Group G] [TopologicalSpace G]
     (A : Rep.{v} ℤ G) (hAxiom : SatisfiesIntegralCyclicNormKernelVanishing A)

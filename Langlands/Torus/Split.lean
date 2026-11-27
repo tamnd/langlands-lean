@@ -27,7 +27,7 @@ namespace WeilGroup
 noncomputable def Ab.lift {A : Type*} [CommGroup A] [TopologicalSpace A] [IsTopologicalGroup A]
     [T2Space A] (φ : ContinuousMonoidHom (WeilGroup K) A) : ContinuousMonoidHom (Ab K) A where
   toMonoidHom := QuotientGroup.lift _ φ.toMonoidHom <| by
-    refine Subgroup.topologicalClosure_minimal _ (Abelianization.commutator_subset_ker _) ?_
+    refine Subgroup.topologicalClosure_minimal _ (Group.Abelianization.commutator_le_ker _) ?_
     exact isClosed_singleton.preimage φ.continuous
   continuous_toFun := by
     apply continuous_quot_lift

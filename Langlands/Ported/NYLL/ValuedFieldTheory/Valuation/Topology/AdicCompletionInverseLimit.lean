@@ -16,10 +16,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.Topology.Models
 /-!
 # Adic unit and higher-unit inverse limits
 
-This file contains the algebraic and topological projective-limit descriptions
-of unit groups of adically complete rings and complete discrete valuation
-rings.  The underlying adic ring inverse-limit theory lives in
-`AdicCompletionInverseLimitRing`.
+This file contains the algebraic and topological projective-limit descriptions of unit groups of adically complete rings and complete discrete valuation rings.  The underlying adic ring inverse-limit theory lives in `AdicCompletionInverseLimitRing`.
 -/
 
 
@@ -44,8 +41,7 @@ def adicCompletionUnitsEquiv
     Rˣ ≃* (AdicCompletion I R)ˣ :=
   Units.mapEquiv (adicCompletionAlgEquiv I).toRingEquiv.toMulEquiv
 
-/-- The unit isomorphism is induced by the canonical ring map into the adic
-completion. -/
+/-- The unit isomorphism is induced by the canonical ring map into the adic completion. -/
 theorem adicCompletionUnitsEquiv_apply
     {R : Type*} [CommRing R] (I : Ideal R) [IsAdicComplete I R] (u : Rˣ) :
     (adicCompletionUnitsEquiv I u :
@@ -53,8 +49,7 @@ theorem adicCompletionUnitsEquiv_apply
       adicCompletionAlgEquiv I (u : R) :=
   rfl
 
-/-- The adic inverse-limit equivalence, unit-coordinate injectivity: a unit of a complete ring is
-determined by all of its finite reductions modulo `I ^ n`. -/
+/-- The adic inverse-limit equivalence, unit-coordinate injectivity: a unit of a complete ring is determined by all of its finite reductions modulo `I ^ n`. -/
 theorem adicCompletion_units_coordinates_injective
     {R : Type*} [CommRing R] (I : Ideal R) [IsAdicComplete I R]
     {u v : Rˣ}
@@ -66,9 +61,7 @@ theorem adicCompletion_units_coordinates_injective
   intro n
   exact congrArg Units.val (h n)
 
-/-- The adic inverse-limit equivalence, unit-coordinate surjectivity against the adic completion:
-every unit in the adic completion is represented by a unit of the complete
-ring, and the finite quotient coordinates agree. -/
+/-- The adic inverse-limit equivalence, unit-coordinate surjectivity against the adic completion: every unit in the adic completion is represented by a unit of the complete ring, and the finite quotient coordinates agree. -/
 theorem adicCompletion_units_coordinates_surjective
     {R : Type*} [CommRing R] (I : Ideal R) [IsAdicComplete I R]
     (z : (AdicCompletion I R)ˣ) :
@@ -94,10 +87,7 @@ theorem adicCompletion_units_coordinates_surjective
       (congrArg (AdicCompletion.evalₐ I n)
         ((adicCompletionAlgEquiv I).apply_symm_apply (z : AdicCompletion I R)))
 
-/-- The adic inverse-limit equivalence, finite unit quotient form: if reduction modulo `I` is a
-local quotient map, then `Rˣ / ker(Rˣ → (R/I)ˣ)` is `(R/I)ˣ`.  For valuation
-rings and `I = 𝔭^n`, this is the finite stage of
-`𝒪ˣ ≅ lim 𝒪ˣ/U⁽ⁿ⁾`. -/
+/-- The adic inverse-limit equivalence, finite unit quotient form: if reduction modulo `I` is a local quotient map, then `Rˣ / ker(Rˣ → (R/I)ˣ)` is `(R/I)ˣ`.  For valuation rings and `I = 𝔭^n`, this is the finite stage of `𝒪ˣ ≅ lim 𝒪ˣ/U⁽ⁿ⁾`. -/
 noncomputable def unitsModIdealEquivQuotientUnits
     {R : Type*} [CommRing R] (I : Ideal R)
     [IsLocalHom (Ideal.Quotient.mk I)] :
@@ -116,8 +106,7 @@ theorem unitsModIdealEquivQuotientUnits_mk
     QuotientGroup.quotientKerEquivOfRightInverse
   exact QuotientGroup.kerLift_mk (unitReduction I) u
 
-/-- In a local ring, reduction modulo a positive power of the maximal ideal is
-a local quotient map. -/
+/-- In a local ring, reduction modulo a positive power of the maximal ideal is a local quotient map. -/
 theorem isLocalHom_quotient_maximalIdeal_pow
     {R : Type*} [CommRing R] [IsLocalRing R]
     {n : ℕ} (hn : 1 ≤ n) :
@@ -126,11 +115,10 @@ theorem isLocalHom_quotient_maximalIdeal_pow
   have hpow_le :
       (IsLocalRing.maximalIdeal R) ^ n ≤ IsLocalRing.maximalIdeal R :=
     Ideal.pow_le_self hn0
-  apply isLocalHom_of_le_jacobson_bot
-  rwa [IsLocalRing.jacobson_eq_maximalIdeal ⊥ bot_ne_top]
+  apply isLocalHom_of_le_jacobson
+  rwa [IsLocalRing.ringJacobson_eq_maximalIdeal]
 
-/-- The adic inverse-limit equivalence, finite unit quotient form for the maximal-ideal
-filtration of a local ring. -/
+/-- The adic inverse-limit equivalence, finite unit quotient form for the maximal-ideal filtration of a local ring. -/
 noncomputable def unitsModMaximalIdealPowEquiv
     {R : Type*} [CommRing R] [IsLocalRing R]
     {n : ℕ} (hn : 1 ≤ n) :
@@ -142,8 +130,7 @@ noncomputable def unitsModMaximalIdealPowEquiv
   exact unitsModIdealEquivQuotientUnits
     ((IsLocalRing.maximalIdeal R) ^ n)
 
-/-- The maximal-ideal finite unit quotient equivalence is induced by
-reduction. -/
+/-- The maximal-ideal finite unit quotient equivalence is induced by reduction. -/
 theorem unitsModMaximalIdealPowEquiv_mk
     {R : Type*} [CommRing R] [IsLocalRing R]
     {n : ℕ} (hn : 1 ≤ n) (u : Rˣ) :
@@ -156,8 +143,7 @@ theorem unitsModMaximalIdealPowEquiv_mk
   exact unitsModIdealEquivQuotientUnits_mk
     ((IsLocalRing.maximalIdeal R) ^ n) u
 
-/-- The opaque projective-limit object `lim_n (R/I^n)^*` for quotient-unit
-groups. -/
+/-- The opaque projective-limit object `lim_n (R/I^n)^*` for quotient-unit groups. -/
 def adicUnitInverseLimit
     {R : Type*} [CommRing R] (I : Ideal R) : Type _ :=
   compatibleGroupFamilies (fun n : ℕ => (R ⧸ I ^ n)ˣ)
@@ -240,8 +226,7 @@ theorem adicUnitInverseLimit_eval_transition
       adicUnitInverseLimit_eval I m x :=
   (adicUnitInverseLimitCompatibleFamiliesEquiv I x).2 hmn
 
-/-- Units of the explicit projective-limit ring are the same as compatible
-families of units in the finite quotient rings. -/
+/-- Units of the explicit projective-limit ring are the same as compatible families of units in the finite quotient rings. -/
 def adicQuotientInverseLimitUnitsEquiv
     {R : Type*} [CommRing R] (I : Ideal R) :
     (adicQuotientInverseLimit I)ˣ ≃*
@@ -282,8 +267,7 @@ def adicQuotientInverseLimitUnitsEquiv
     ext n
     rfl
 
-/-- The adic inverse-limit equivalence, units of the adic completion are the projective limit of
-the units of the finite quotient rings. -/
+/-- The adic inverse-limit equivalence, units of the adic completion are the projective limit of the units of the finite quotient rings. -/
 def adicCompletionUnitsEquivUnitInverseLimit
     {R : Type*} [CommRing R] (I : Ideal R) :
     (AdicCompletion I R)ˣ ≃* adicUnitInverseLimit I :=
@@ -298,8 +282,7 @@ def unitsEquivUnitInverseLimit
   (adicCompletionUnitsEquiv I).trans
     (adicCompletionUnitsEquivUnitInverseLimit I)
 
-/-- The complete-ring unit projective-limit isomorphism is induced by unit
-reduction in each coordinate. -/
+/-- The complete-ring unit projective-limit isomorphism is induced by unit reduction in each coordinate. -/
 theorem unitsEquivUnitInverseLimit_apply
     {R : Type*} [CommRing R] (I : Ideal R) [IsAdicComplete I R]
     (u : Rˣ) (n : ℕ) :
@@ -308,8 +291,7 @@ theorem unitsEquivUnitInverseLimit_apply
   ext
   rfl
 
-/-- The opaque positive-indexed unit inverse limit
-`lim_n (R/I^(n+1))ˣ`. -/
+/-- The opaque positive-indexed unit inverse limit `lim_n (R/I^(n+1))ˣ`. -/
 def adicPositiveUnitInverseLimit
     {R : Type*} [CommRing R] (I : Ideal R) : Type _ :=
   compatibleGroupFamilies (fun n : ℕ => (R ⧸ I ^ (n + 1))ˣ)
@@ -466,9 +448,7 @@ theorem adicUnitInverseLimit_toAll_toPositive
   | succ n =>
       rfl
 
-/-- The all-level unit inverse limit is equivalent to the positive-indexed
-one.  This removes the degenerate `I^0` coordinate used by mathlib's adic
-completion API. -/
+/-- The all-level unit inverse limit is equivalent to the positive-indexed one.  This removes the degenerate `I^0` coordinate used by mathlib's adic completion API. -/
 def adicUnitInverseLimitEquivPositive
     {R : Type*} [CommRing R] (I : Ideal R) :
     adicUnitInverseLimit I ≃*
@@ -488,8 +468,7 @@ def unitsEquivPositiveUnitInverseLimit
   (unitsEquivUnitInverseLimit I).trans
     (adicUnitInverseLimitEquivPositive I)
 
-/-- The positive-indexed complete-ring unit inverse-limit isomorphism is
-coordinatewise reduction modulo `I^(n+1)`. -/
+/-- The positive-indexed complete-ring unit inverse-limit isomorphism is coordinatewise reduction modulo `I^(n+1)`. -/
 theorem unitsEquivPositiveUnitInverseLimit_apply
     {R : Type*} [CommRing R] (I : Ideal R) [IsAdicComplete I R]
     (u : Rˣ) (n : ℕ) :
@@ -520,8 +499,7 @@ def dvrPowerIdealUnitTransition
   Ideal.Quotient.factor
     (dvrPowerIdeal_le_of_le π (Nat.succ_le_succ hmn))
 
-/-- The opaque positive-indexed projective limit
-`lim_n (O/π^(n+1)O)ˣ`. -/
+/-- The opaque positive-indexed projective limit `lim_n (O/π^(n+1)O)ˣ`. -/
 def dvrPowerIdealUnitInverseLimit
     {O : Type*} [CommRing O] (π : O) : Type _ :=
   compatibleGroupFamilies
@@ -592,8 +570,7 @@ theorem dvrPowerIdealUnitInverseLimit_ext
   funext n
   exact h n
 
-/-- The finite quotient-unit stage for `(π)^(n+1)` agrees with the canonical
-stage `π^(n+1)O`. -/
+/-- The finite quotient-unit stage for `(π)^(n+1)` agrees with the canonical stage `π^(n+1)O`. -/
 def powerIdealStageEquiv
     {O : Type*} [CommRing O] (π : O) (n : ℕ) :
     (O ⧸ (uniformizerPowerIdeal π 1) ^ (n + 1))ˣ ≃*
@@ -602,8 +579,7 @@ def powerIdealStageEquiv
     (Ideal.quotientEquivAlgOfEq O
       (dvrPowerIdeal_one_pow π (n + 1))).toRingEquiv.toMulEquiv
 
-/-- The finite stage equivalence is induced by the equality
-`(πO)^(n+1) = π^(n+1)O`. -/
+/-- The finite stage equivalence is induced by the equality `(πO)^(n+1) = π^(n+1)O`. -/
 theorem powerIdealStageEquiv_apply
     {O : Type*} [CommRing O] (π : O) (n : ℕ)
     (u : (O ⧸ (uniformizerPowerIdeal π 1) ^ (n + 1))ˣ) :
@@ -638,8 +614,7 @@ theorem powerIdealStageEquiv_factorPow
   rw [Ideal.quotientEquivAlgOfEq_mk]
   simp [dvrPowerIdealUnitTransition, Ideal.Quotient.factorPow]
 
-/-- The positive-indexed unit inverse limit for the principal ideal `(π)` is
-the finite quotient-unit inverse limit `lim_n (O/π^(n+1)O)ˣ`. -/
+/-- The positive-indexed unit inverse limit for the principal ideal `(π)` is the finite quotient-unit inverse limit `lim_n (O/π^(n+1)O)ˣ`. -/
 def adicPositiveUnitInverseLimitEquivDVRPowerIdealUnitInverseLimit
     {O : Type*} [CommRing O] (π : O) :
     adicPositiveUnitInverseLimit (uniformizerPowerIdeal π 1) ≃*
@@ -705,8 +680,7 @@ def equiv {O : Type*} [CommRing O] (π : O) (n : ℕ) :
   left_inv := fun x => by cases x; rfl
   right_inv := fun _ => rfl
 
-/-- A discrete higher-unit quotient inherits its commutative group structure
-from the concrete quotient. -/
+/-- A discrete higher-unit quotient inherits its commutative group structure from the concrete quotient. -/
 instance {O : Type*} [CommRing O] (π : O) (n : ℕ) :
     CommGroup (DiscreteHigherUnitQuotient π n) :=
   (equiv π n).commGroup
@@ -879,8 +853,7 @@ def dvrHigherUnitQuotientInverseLimit_discreteEval
   fun x => DiscreteHigherUnitQuotient.of π (n + 1)
     (dvrHigherUnitQuotientInverseLimit_eval π n x)
 
-/-- Every coordinate evaluation from the higher-unit inverse limit to its
-discrete quotient is continuous. -/
+/-- Every coordinate evaluation from the higher-unit inverse limit to its discrete quotient is continuous. -/
 theorem dvrHigherUnitQuotientInverseLimit_discreteEval_continuous
     {O : Type*} [CommRing O] (π : O) (n : ℕ) :
     Continuous (dvrHigherUnitQuotientInverseLimit_discreteEval π n) := by
@@ -903,10 +876,7 @@ theorem dvrHigherUnitQuotientInverseLimit_discreteEval_continuous
       ((dvrHigherUnitQuotientInverseLimitCompatibleFamiliesEquiv π x).1 n))
   exact hmodel
 
-/-- A map into the higher-unit inverse limit is continuous exactly when all
-of its named discrete coordinates are continuous.  This is the public
-universal property of the canonical prodiscrete topology; raw quotient
-topology instances remain confined to the proof. -/
+/-- A map into the higher-unit inverse limit is continuous exactly when all of its named discrete coordinates are continuous.  This is the public universal property of the canonical prodiscrete topology; raw quotient topology instances remain confined to the proof. -/
 theorem dvrHigherUnitQuotientInverseLimit_continuous_iff
     {O : Type*} [CommRing O] {α : Type*} [TopologicalSpace α]
     (π : O) (f : α → dvrHigherUnitQuotientInverseLimit π) :
@@ -946,8 +916,7 @@ theorem dvrHigherUnitQuotientInverseLimit_continuous_iff
     have hback := representation.symm.continuous.comp hrepresentation
     exact hback.congr fun x => representation.symm_apply_apply (f x)
 
-/-- The canonical homomorphism
-`Oˣ → lim_n Oˣ/U^(n+1)`. -/
+/-- The canonical homomorphism `Oˣ → lim_n Oˣ/U^(n+1)`. -/
 def unitsToHigherUnitQuotientInverseLimit
     {O : Type*} [CommRing O] (π : O) :
     Oˣ →* dvrHigherUnitQuotientInverseLimit π where
@@ -958,8 +927,7 @@ def unitsToHigherUnitQuotientInverseLimit
   map_one' := by ext n; rfl
   map_mul' u v := by ext n; rfl
 
-/-- The finite-stage isomorphisms
-`Oˣ/U^(n+1) ≃ (O/π^(n+1)O)ˣ` commute with the projective transition maps. -/
+/-- The finite-stage isomorphisms `Oˣ/U^(n+1) ≃ (O/π^(n+1)O)ˣ` commute with the projective transition maps. -/
 theorem higherUnitQuotient_finiteStage_compat
     {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     {π : O} (hπ : Irreducible π) {m n : ℕ} (hmn : m ≤ n)
@@ -977,8 +945,7 @@ theorem higherUnitQuotient_finiteStage_compat
   simp [units_quotient_equiv_mk,
     dvrPowerIdealUnitTransition, unitReduction]
 
-/-- The direct quotient-system `lim Oˣ/U^(n+1)` is equivalent to the finite
-quotient-unit limit `lim (O/π^(n+1)O)ˣ`. -/
+/-- The direct quotient-system `lim Oˣ/U^(n+1)` is equivalent to the finite quotient-unit limit `lim (O/π^(n+1)O)ˣ`. -/
 def higherUnitQuotientInverseLimitEquivPowerIdealUnitInverseLimit
     {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     {π : O} (hπ : Irreducible π) :
@@ -1000,9 +967,7 @@ def higherUnitQuotientInverseLimitEquivPowerIdealUnitInverseLimit
           hπ hmn q).symm)).trans
       (dvrPowerIdealUnitInverseLimitRepresentation π).symm)
 
-/-- The adic inverse-limit equivalence, direct unit-quotient form:
-if `O` is complete for the `(π)`-adic topology, then `Oˣ` is isomorphic to
-the projective limit `lim_n Oˣ/U^(n+1)`. -/
+/-- The adic inverse-limit equivalence, direct unit-quotient form: if `O` is complete for the `(π)`-adic topology, then `Oˣ` is isomorphic to the projective limit `lim_n Oˣ/U^(n+1)`. -/
 def dvrUnitsEquivHigherUnitQuotientInverseLimit
     {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     {π : O} (hπ : Irreducible π) [IsAdicComplete (uniformizerPowerIdeal π 1) O] :
@@ -1011,8 +976,7 @@ def dvrUnitsEquivHigherUnitQuotientInverseLimit
     (adicPositiveUnitInverseLimitEquivDVRPowerIdealUnitInverseLimit π)).trans
     (higherUnitQuotientInverseLimitEquivPowerIdealUnitInverseLimit hπ).symm
 
-/-- The direct unit-quotient inverse-limit isomorphism is the canonical
-map, coordinatewise `u ↦ u mod U^(n+1)`. -/
+/-- The direct unit-quotient inverse-limit isomorphism is the canonical map, coordinatewise `u ↦ u mod U^(n+1)`. -/
 theorem dvrUnitsEquivHigherUnitQuotientInverseLimit_apply
     {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     {π : O} (hπ : Irreducible π) [IsAdicComplete (uniformizerPowerIdeal π 1) O]
@@ -1044,8 +1008,7 @@ theorem dvrUnitsEquivHigherUnitQuotientInverseLimit_apply
   rw [powerIdealStageEquiv_apply, unitReduction_apply, Ideal.quotientEquivAlgOfEq_mk]
   exact (unitReduction_apply (uniformizerPowerIdeal π (n + 1)) u).symm
 
-/-- Equality in the finite higher-unit quotient is exactly congruence modulo
-`π^nO` on the underlying elements. -/
+/-- Equality in the finite higher-unit quotient is exactly congruence modulo `π^nO` on the underlying elements. -/
 theorem higherUnitQuotient_mk_eq_mk_iff_sub_mem
     {O : Type*} [CommRing O] (π : O) (n : ℕ) (u v : Oˣ) :
     (QuotientGroup.mk v : Oˣ ⧸ higherUnitSubgroup π n) =
@@ -1092,16 +1055,14 @@ theorem higherUnitQuotient_mk_eq_mk_iff_sub_mem
     exact (QuotientGroup.eq_iff_div_mem
       (N := higherUnitSubgroup π n) (x := v) (y := u)).2 hdiv
 
-/-- The topology on a unit group induced by an explicitly chosen adic
-topology on its ring. -/
+/-- The topology on a unit group induced by an explicitly chosen adic topology on its ring. -/
 @[reducible]
 noncomputable def adicUnitsTopology
     {O : Type*} [CommRing O] (I : Ideal O) : TopologicalSpace Oˣ := by
   letI : TopologicalSpace O := I.adicTopology
   exact inferInstance
 
-/-- Reduction to a higher-unit quotient is continuous for the adic topology
-on `Oˣ` and the discrete topology on the finite quotient. -/
+/-- Reduction to a higher-unit quotient is continuous for the adic topology on `Oˣ` and the discrete topology on the finite quotient. -/
 theorem higherUnitQuotient_mk_continuous_adic_raw
     {O : Type*} [CommRing O] (π : O) (n : ℕ) :
     @Continuous Oˣ (Oˣ ⧸ higherUnitSubgroup π n)
@@ -1146,8 +1107,7 @@ theorem higherUnitQuotient_mk_continuous_adic_raw
         π n u v).2 hsub
     simpa [hq] using hs)
 
-/-- The quotient map from adic units to a named discrete higher-unit stage
-is continuous. -/
+/-- The quotient map from adic units to a named discrete higher-unit stage is continuous. -/
 theorem higherUnitQuotient_mk_continuous_adic
     {O : Type*} [CommRing O] (π : O) (n : ℕ) :
     Continuous fun u : WithTopology Oˣ
@@ -1350,8 +1310,7 @@ noncomputable def unitsCompatibleFamiliesHomeomorph
           (((e.symm q')⁻¹ : Oˣ) : O)
         ring)
 
-/-- The unit-group inverse-limit homeomorphism with the adic source and
-prodiscrete target fixed at the type level. -/
+/-- The unit-group inverse-limit homeomorphism with the adic source and prodiscrete target fixed at the type level. -/
 noncomputable def unitsEquivHigherUnitQuotientInverseLimitHomeomorph
     {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     {π : O} (hπ : Irreducible π)
@@ -1369,9 +1328,7 @@ noncomputable def unitsEquivHigherUnitQuotientInverseLimitHomeomorph
   let target := dvrHigherUnitQuotientInverseLimitRepresentationHomeomorph π
   exact source.trans (algebraic.trans target.symm)
 
-/-- Complete-DVF specialization of the adic inverse-limit equivalence: the valuation ring is
-canonically
-isomorphic to its maximal-ideal adic completion. -/
+/-- Complete-DVF specialization of the adic inverse-limit equivalence: the valuation ring is canonically isomorphic to its maximal-ideal adic completion. -/
 def completeDVF_valuationSubring_adicCompletionAlgEquiv
     {K : Type u} [Field K]
     (F : ValuationTheory.DiscreteValuationField.CompleteDVF.{u, v} K) :
@@ -1379,9 +1336,7 @@ def completeDVF_valuationSubring_adicCompletionAlgEquiv
       AdicCompletion F.maximalIdeal F.valuationSubring :=
   adicCompletionAlgEquiv F.maximalIdeal
 
-/-- Complete-DVF specialization of the adic inverse-limit equivalence: the valuation ring is the
-explicit
-projective limit of its finite quotients by powers of the maximal ideal. -/
+/-- Complete-DVF specialization of the adic inverse-limit equivalence: the valuation ring is the explicit projective limit of its finite quotients by powers of the maximal ideal. -/
 def completeDVF_valuationSubring_quotientInverseLimitEquiv
     {K : Type u} [Field K]
     (F : ValuationTheory.DiscreteValuationField.CompleteDVF.{u, v} K) :
@@ -1389,8 +1344,7 @@ def completeDVF_valuationSubring_quotientInverseLimitEquiv
       adicQuotientInverseLimit F.maximalIdeal :=
   adicQuotientInverseLimitEquiv F.maximalIdeal
 
-/-- The complete-DVF projective-limit isomorphism is coordinatewise reduction
-modulo `𝔭^n`. -/
+/-- The complete-DVF projective-limit isomorphism is coordinatewise reduction modulo `𝔭^n`. -/
 theorem completeDVF_valuationSubring_quotientInverseLimitEquiv_apply
     {K : Type u} [Field K]
     (F : ValuationTheory.DiscreteValuationField.CompleteDVF.{u, v} K)
@@ -1400,9 +1354,7 @@ theorem completeDVF_valuationSubring_quotientInverseLimitEquiv_apply
       Ideal.Quotient.mk (F.maximalIdeal ^ n) x := by
   exact adicQuotientInverseLimitEquiv_apply F.maximalIdeal x n
 
-/-- Complete-DVF specialization of the adic inverse-limit equivalence, units of the valuation
-ring agree
-with units of its maximal-ideal adic completion. -/
+/-- Complete-DVF specialization of the adic inverse-limit equivalence, units of the valuation ring agree with units of its maximal-ideal adic completion. -/
 def completeDVF_units_adicCompletionUnitsEquiv
     {K : Type u} [Field K]
     (F : ValuationTheory.DiscreteValuationField.CompleteDVF.{u, v} K) :
@@ -1410,8 +1362,7 @@ def completeDVF_units_adicCompletionUnitsEquiv
       (AdicCompletion F.maximalIdeal F.valuationSubring)ˣ :=
   adicCompletionUnitsEquiv F.maximalIdeal
 
-/-- The complete-DVF unit equivalence is induced by the canonical valuation-ring
-map into the adic completion. -/
+/-- The complete-DVF unit equivalence is induced by the canonical valuation-ring map into the adic completion. -/
 theorem completeDVF_units_adicCompletionUnitsEquiv_apply
     {K : Type u} [Field K]
     (F : ValuationTheory.DiscreteValuationField.CompleteDVF.{u, v} K)
@@ -1422,8 +1373,7 @@ theorem completeDVF_units_adicCompletionUnitsEquiv_apply
         (u : F.valuationSubring) := by
   rfl
 
-/-- Complete-DVF specialization of the adic inverse-limit equivalence, unit-coordinate
-injectivity. -/
+/-- Complete-DVF specialization of the adic inverse-limit equivalence, unit-coordinate injectivity. -/
 theorem completeDVF_units_coordinates_injective
     {K : Type u} [Field K]
     (F : ValuationTheory.DiscreteValuationField.CompleteDVF.{u, v} K)
@@ -1436,9 +1386,7 @@ theorem completeDVF_units_coordinates_injective
   exact adicCompletion_units_coordinates_injective
     F.maximalIdeal h
 
-/-- Complete-DVF specialization of the adic inverse-limit equivalence, unit-coordinate
-surjectivity against
-the adic completion. -/
+/-- Complete-DVF specialization of the adic inverse-limit equivalence, unit-coordinate surjectivity against the adic completion. -/
 theorem completeDVF_units_coordinates_surjective
     {K : Type u} [Field K]
     (F : ValuationTheory.DiscreteValuationField.CompleteDVF.{u, v} K)
@@ -1450,9 +1398,7 @@ theorem completeDVF_units_coordinates_surjective
             Units.map (AdicCompletion.evalₐ F.maximalIdeal n).toMonoidHom z := by
   exact adicCompletion_units_coordinates_surjective F.maximalIdeal z
 
-/-- Complete-DVF specialization of the adic inverse-limit equivalence: units of the valuation
-ring are the
-projective limit of the units of the finite quotient rings. -/
+/-- Complete-DVF specialization of the adic inverse-limit equivalence: units of the valuation ring are the projective limit of the units of the finite quotient rings. -/
 def completeDVF_unitsEquivUnitInverseLimit
     {K : Type u} [Field K]
     (F : ValuationTheory.DiscreteValuationField.CompleteDVF.{u, v} K) :
@@ -1460,8 +1406,7 @@ def completeDVF_unitsEquivUnitInverseLimit
       adicUnitInverseLimit F.maximalIdeal :=
   unitsEquivUnitInverseLimit F.maximalIdeal
 
-/-- The complete-DVF unit projective-limit isomorphism is coordinatewise unit
-reduction modulo `𝔭^n`. -/
+/-- The complete-DVF unit projective-limit isomorphism is coordinatewise unit reduction modulo `𝔭^n`. -/
 theorem completeDVF_unitsEquivUnitInverseLimit_apply
     {K : Type u} [Field K]
     (F : ValuationTheory.DiscreteValuationField.CompleteDVF.{u, v} K)
@@ -1471,8 +1416,7 @@ theorem completeDVF_unitsEquivUnitInverseLimit_apply
       unitReduction (F.maximalIdeal ^ n) u := by
   exact unitsEquivUnitInverseLimit_apply F.maximalIdeal u n
 
-/-- Complete-DVF specialization of the adic inverse-limit equivalence, finite unit quotient form:
-`𝒪ˣ / ker(𝒪ˣ → (𝒪/𝔭ⁿ)ˣ) ≃ (𝒪/𝔭ⁿ)ˣ` for `n ≥ 1`. -/
+/-- Complete-DVF specialization of the adic inverse-limit equivalence, finite unit quotient form: `𝒪ˣ / ker(𝒪ˣ → (𝒪/𝔭ⁿ)ˣ) ≃ (𝒪/𝔭ⁿ)ˣ` for `n ≥ 1`. -/
 noncomputable def completeDVF_unitsModMaximalIdealPowEquiv
     {K : Type u} [Field K]
     (F : ValuationTheory.DiscreteValuationField.CompleteDVF.{u, v} K)
@@ -1483,8 +1427,7 @@ noncomputable def completeDVF_unitsModMaximalIdealPowEquiv
   exact unitsModMaximalIdealPowEquiv
     (R := F.valuationSubring) hn
 
-/-- The complete-DVF finite unit quotient equivalence is induced by reduction
-modulo `𝔭ⁿ`. -/
+/-- The complete-DVF finite unit quotient equivalence is induced by reduction modulo `𝔭ⁿ`. -/
 theorem completeDVF_unitsModMaximalIdealPowEquiv_mk
     {K : Type u} [Field K]
     (F : ValuationTheory.DiscreteValuationField.CompleteDVF.{u, v} K)
@@ -1495,8 +1438,7 @@ theorem completeDVF_unitsModMaximalIdealPowEquiv_mk
   exact unitsModMaximalIdealPowEquiv_mk
     (R := F.valuationSubring) hn u
 
-/-- The adic inverse-limit equivalence, injectivity source: an element of the valuation ring is
-determined by all of its reductions modulo powers of the maximal ideal. -/
+/-- The adic inverse-limit equivalence, injectivity source: an element of the valuation ring is determined by all of its reductions modulo powers of the maximal ideal. -/
 theorem completeDVF_valuationSubring_quotient_coordinates_injective
     {K : Type u} [Field K]
     (F : ValuationTheory.DiscreteValuationField.CompleteDVF.{u, v} K)
@@ -1515,8 +1457,7 @@ theorem completeDVF_valuationSubring_quotient_coordinates_injective
         (x := x) (y := y)).1 (h n)
   exact sub_eq_zero.mp (F.eq_zero_of_mem_maximalIdeal_pow_all hsub)
 
-/-- The adic inverse-limit equivalence, unit injectivity source: a unit is determined by all of
-its reductions modulo powers of the maximal ideal. -/
+/-- The adic inverse-limit equivalence, unit injectivity source: a unit is determined by all of its reductions modulo powers of the maximal ideal. -/
 theorem completeDVF_units_quotient_coordinates_injective
     {K : Type u} [Field K]
     (F : ValuationTheory.DiscreteValuationField.CompleteDVF.{u, v} K)
@@ -1530,9 +1471,7 @@ theorem completeDVF_units_quotient_coordinates_injective
 
 /-! ### Direct complete-valued-field form of the adic inverse-limit equivalence -/
 
-/-- The adic inverse-limit equivalence, direct algebraic endpoint from valued-field completeness:
-the canonical map from the valuation ring to the positive-indexed inverse
-limit of its maximal-ideal quotients is a ring equivalence. -/
+/-- The adic inverse-limit equivalence, direct algebraic endpoint from valued-field completeness: the canonical map from the valuation ring to the positive-indexed inverse limit of its maximal-ideal quotients is a ring equivalence. -/
 def completeValuedField_valuationSubringEquivPositiveQuotientInverseLimit
     {K : Type u} [Field K] {Gamma : Type v}
     [LinearOrderedCommGroupWithZero Gamma] [MulArchimedean Gamma]
@@ -1550,8 +1489,7 @@ def completeValuedField_valuationSubringEquivPositiveQuotientInverseLimit
     (completeDVF_valuationSubring_quotientInverseLimitEquiv F).trans
       (adicQuotientInverseLimitEquivPositive F.maximalIdeal)
 
-/-- The direct valuation-ring equivalence is the canonical map,
-coordinatewise reduction modulo `𝓅^(n+1)`. -/
+/-- The direct valuation-ring equivalence is the canonical map, coordinatewise reduction modulo `𝓅^(n+1)`. -/
 theorem completeValuedField_valuationSubringEquivPositiveQuotientInverseLimit_apply
     {K : Type u} [Field K] {Gamma : Type v}
     [LinearOrderedCommGroupWithZero Gamma] [MulArchimedean Gamma]
@@ -1579,9 +1517,7 @@ theorem completeValuedField_valuationSubringEquivPositiveQuotientInverseLimit_ap
       Ideal.Quotient.mk (m ^ (n + 1)) x
   exact adicPositiveQuotientInverseLimitEquiv_apply m x n
 
-/-- The adic inverse-limit equivalence, direct topological endpoint: with the native valued
-topology on the valuation ring and discrete topology at every finite stage,
-the canonical ring equivalence is a homeomorphism. -/
+/-- The adic inverse-limit equivalence, direct topological endpoint: with the native valued topology on the valuation ring and discrete topology at every finite stage, the canonical ring equivalence is a homeomorphism. -/
 def completeValuedField_valuationSubringPositiveQuotientInverseLimitHomeomorph
     {K : Type u} [Field K] {Gamma : Type v}
     [LinearOrderedCommGroupWithZero Gamma] [MulArchimedean Gamma]
@@ -1609,8 +1545,7 @@ def completeValuedField_valuationSubringPositiveQuotientInverseLimitHomeomorph
       (α := O)
       (topology := (inferInstance : TopologicalSpace O))).symm.trans hNative
 
-/-- A uniformizer of a complete rank-one discrete valued field is irreducible
-in its valuation ring. -/
+/-- A uniformizer of a complete rank-one discrete valued field is irreducible in its valuation ring. -/
 theorem completeValuedField_uniformizer_irreducible
     {K : Type u} [Field K] {Gamma : Type v}
     [LinearOrderedCommGroupWithZero Gamma] [MulArchimedean Gamma]
@@ -1630,8 +1565,7 @@ theorem completeValuedField_uniformizer_irreducible
   exact (IsDiscreteValuationRing.irreducible_iff_uniformizer pi).2
     (F.maximalIdeal_eq_span_uniformizer hpi)
 
-/-- For a uniformizer, the first principal-power ideal is the maximal
-ideal of the valuation ring. -/
+/-- For a uniformizer, the first principal-power ideal is the maximal ideal of the valuation ring. -/
 theorem completeValuedField_uniformizerPowerIdeal_one_eq_maximalIdeal
     {K : Type u} [Field K] {Gamma : Type v}
     [LinearOrderedCommGroupWithZero Gamma] [MulArchimedean Gamma]
@@ -1657,8 +1591,7 @@ theorem completeValuedField_uniformizerPowerIdeal_one_eq_maximalIdeal
     Ideal.span {pi} at h
   exact h.symm
 
-/-- Completeness of the valued field supplies completeness for the principal
-uniformizer filtration used by the higher-unit quotients. -/
+/-- Completeness of the valued field supplies completeness for the principal uniformizer filtration used by the higher-unit quotients. -/
 theorem completeValuedField_uniformizerIdeal_isAdicComplete
     {K : Type u} [Field K] {Gamma : Type v}
     [LinearOrderedCommGroupWithZero Gamma] [MulArchimedean Gamma]
@@ -1673,8 +1606,7 @@ theorem completeValuedField_uniformizerIdeal_isAdicComplete
   exact rankOneDiscreteValuationSubring_isAdicComplete
     (K := K) (Gamma := Gamma)
 
-/-- The native topology of the valuation ring is also the principal
-uniformizer-adic topology. -/
+/-- The native topology of the valuation ring is also the principal uniformizer-adic topology. -/
 theorem completeValuedField_uniformizerIdeal_isAdic
     {K : Type u} [Field K] {Gamma : Type v}
     [LinearOrderedCommGroupWithZero Gamma] [MulArchimedean Gamma]
@@ -1688,9 +1620,7 @@ theorem completeValuedField_uniformizerIdeal_isAdic
   exact rankOneDiscreteValuationSubring_isAdic
     (K := K) (Gamma := Gamma)
 
-/-- The adic inverse-limit equivalence, direct unit-group endpoint from valued-field
-completeness: the canonical map `𝒪ˣ → lim 𝒪ˣ/U⁽ⁿ⁾` is a
-multiplicative equivalence. -/
+/-- The adic inverse-limit equivalence, direct unit-group endpoint from valued-field completeness: the canonical map `𝒪ˣ → lim 𝒪ˣ/U⁽ⁿ⁾` is a multiplicative equivalence. -/
 def completeValuedField_unitsEquivHigherUnitQuotientInverseLimit
     {K : Type u} [Field K] {Gamma : Type v}
     [LinearOrderedCommGroupWithZero Gamma] [MulArchimedean Gamma]
@@ -1710,8 +1640,7 @@ def completeValuedField_unitsEquivHigherUnitQuotientInverseLimit
   exact dvrUnitsEquivHigherUnitQuotientInverseLimit
     (completeValuedField_uniformizer_irreducible hpi)
 
-/-- The direct unit equivalence is coordinatewise the canonical quotient map
-`u ↦ u mod U⁽ⁿ⁺¹⁾`. -/
+/-- The direct unit equivalence is coordinatewise the canonical quotient map `u ↦ u mod U⁽ⁿ⁺¹⁾`. -/
 theorem completeValuedField_unitsEquivHigherUnitQuotientInverseLimit_apply
     {K : Type u} [Field K] {Gamma : Type v}
     [LinearOrderedCommGroupWithZero Gamma] [MulArchimedean Gamma]
@@ -1733,9 +1662,7 @@ theorem completeValuedField_unitsEquivHigherUnitQuotientInverseLimit_apply
   exact dvrUnitsEquivHigherUnitQuotientInverseLimit_apply
     (completeValuedField_uniformizer_irreducible hpi) u n
 
-/-- The adic inverse-limit equivalence, direct topological unit endpoint: for the native topology
-on `𝒪ˣ` and discrete topology on all finite quotients, the canonical
-unit map is a homeomorphism. -/
+/-- The adic inverse-limit equivalence, direct topological unit endpoint: for the native topology on `𝒪ˣ` and discrete topology on all finite quotients, the canonical unit map is a homeomorphism. -/
 def completeValuedField_unitsHigherUnitQuotientInverseLimitHomeomorph
     {K : Type u} [Field K] {Gamma : Type v}
     [LinearOrderedCommGroupWithZero Gamma] [MulArchimedean Gamma]

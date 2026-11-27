@@ -14,10 +14,7 @@ public import Mathlib.NumberTheory.Padics.PadicVal.Basic
 /-!
 # Valuations of natural-number denominators
 
-For a complete discrete valuation with value group `WithZero (Multiplicative ℤ)`
-and finite residue field, this file constructs the ramification index
-`e = v_K(p)` from the valuation itself.  In mixed characteristic it then proves
-the natural-number valuation formula used in the logarithm and exponential theorems.
+For a complete discrete valuation with value group `WithZero (Multiplicative ℤ)` and finite residue field, this file constructs the ramification index `e = v_K(p)` from the valuation itself.  In mixed characteristic it then proves the natural-number valuation formula used in the logarithm and exponential theorems.
 -/
 
 
@@ -33,8 +30,7 @@ namespace LocalField
 
 variable {K : Type u} [Field K]
 
-/-- The full ordered group structure whose ordered-monoid parent is the
-canonical one used by `Valuation` on `ℤᵐ⁰`. -/
+/-- The full ordered group structure whose ordered-monoid parent is the canonical one used by `Valuation` on `ℤᵐ⁰`. -/
 @[reducible] def coherentWithZeroMultiplicativeIntGroup :
     LinearOrderedCommGroupWithZero
       (WithZero (Multiplicative ℤ)) where
@@ -47,8 +43,7 @@ canonical one used by `Valuation` on `ℤᵐ⁰`. -/
       CommGroupWithZero
         (WithZero (Multiplicative ℤ)))
 
-/-- Package a standard `ℤᵐ⁰`-valued complete discrete valuation with finite
-residue field as a local field. -/
+/-- Package a standard `ℤᵐ⁰`-valued complete discrete valuation with finite residue field as a local field. -/
 def ofWithZeroValuation
     (v : _root_.Valuation K (WithZero (Multiplicative ℤ)))
     [ValuationTheory.DiscreteValuationField.Valuation.IsCompleteDiscrete v]
@@ -63,9 +58,7 @@ def ofWithZeroValuation
     change Finite (IsLocalRing.ResidueField v.valuationSubring)
     infer_instance
 
-/-- The ramification index `e = v_K(p)` of a standard mixed-characteristic
-local field, obtained from the exponent of the value of its residue
-characteristic `p`. -/
+/-- The ramification index `e = v_K(p)` of a standard mixed-characteristic local field, obtained from the exponent of the value of its residue characteristic `p`. -/
 def ramificationIndexOfWithZeroValuation
     (v : _root_.Valuation K (WithZero (Multiplicative ℤ)))
     [ValuationTheory.DiscreteValuationField.Valuation.IsCompleteDiscrete v]
@@ -74,8 +67,7 @@ def ramificationIndexOfWithZeroValuation
     (-WithZero.log
       (v ((ofWithZeroValuation v).residueCharacteristic : K)))
 
-/-- The natural ramification index recovers the normalized integer valuation
-of the residue characteristic. -/
+/-- The natural ramification index recovers the normalized integer valuation of the residue characteristic. -/
 theorem ramificationIndexOfWithZeroValuation_intCast
     (v : _root_.Valuation K (WithZero (Multiplicative ℤ)))
     [ValuationTheory.DiscreteValuationField.Valuation.IsCompleteDiscrete v]
@@ -135,8 +127,7 @@ theorem ramificationIndexOfWithZeroValuation_pos
     exact neg_pos.mpr hlogneg
   exact_mod_cast heInt
 
-/-- The value of the residue characteristic is `exp (-e)`, where `e` is the
-ramification index constructed from the valuation. -/
+/-- The value of the residue characteristic is `exp (-e)`, where `e` is the ramification index constructed from the valuation. -/
 theorem valuation_residueCharacteristic_eq_exp_neg_ramificationIndex
     (v : _root_.Valuation K (WithZero (Multiplicative ℤ)))
     [ValuationTheory.DiscreteValuationField.Valuation.IsCompleteDiscrete v]
@@ -160,9 +151,7 @@ theorem valuation_residueCharacteristic_eq_exp_neg_ramificationIndex
     _ = WithZero.exp (-(ramificationIndexOfWithZeroValuation v : ℤ)) := by
       rw [ramificationIndexOfWithZeroValuation_intCast v, neg_neg]
 
-/-- A nonzero natural number has valuation equal to the value of its
-residue-characteristic power.  This is the denominator formula needed for the
-logarithm and exponential estimates in the logarithm and exponential estimates. -/
+/-- A nonzero natural number has valuation equal to the value of its residue-characteristic power.  This is the denominator formula needed for the logarithm and exponential estimates in the logarithm and exponential estimates. -/
 theorem valuation_natCast_eq_exp_neg_ramificationIndex_mul_padicValNat
     (v : _root_.Valuation K (WithZero (Multiplicative ℤ)))
     [ValuationTheory.DiscreteValuationField.Valuation.IsCompleteDiscrete v]
@@ -187,7 +176,7 @@ theorem valuation_natCast_eq_exp_neg_ramificationIndex_mul_padicValNat
   have ha : ¬ p ∣ a := by
     intro hpa
     have hnot : ¬ p ^ (k + 1) ∣ m := by
-      simpa only [k, Nat.padicValNat_def] using pow_succ_padicValNat_not_dvd (p := p) hm
+      simpa only [k, Nat.padicValNat_def] using pow_succ_multiplicity_not_dvd (p := p) hm
     apply hnot
     rcases hpa with ⟨b, hb⟩
     refine ⟨b, ?_⟩
@@ -218,8 +207,7 @@ theorem valuation_natCast_eq_exp_neg_ramificationIndex_mul_padicValNat
           (padicValNat (ofWithZeroValuation v).residueCharacteristic m : ℤ))) := by
       rfl
 
-/-- Successor form of the natural-number valuation formula.  Unlike the main
-formula, this needs no explicit nonzero hypothesis. -/
+/-- Successor form of the natural-number valuation formula.  Unlike the main formula, this needs no explicit nonzero hypothesis. -/
 theorem valuation_natCast_succ_eq_exp_neg_ramificationIndex_mul_padicValNat
     (v : _root_.Valuation K (WithZero (Multiplicative ℤ)))
     [ValuationTheory.DiscreteValuationField.Valuation.IsCompleteDiscrete v]
@@ -233,8 +221,7 @@ theorem valuation_natCast_succ_eq_exp_neg_ramificationIndex_mul_padicValNat
   valuation_natCast_eq_exp_neg_ramificationIndex_mul_padicValNat
     v (m + 1) (Nat.succ_ne_zero m)
 
-/-- Factorial form of the natural-number valuation formula, used by the
-exponential series in the deep exponential–logarithm equivalence. -/
+/-- Factorial form of the natural-number valuation formula, used by the exponential series in the deep exponential–logarithm equivalence. -/
 theorem valuation_natCast_factorial_eq_exp_neg_ramificationIndex_mul_padicValNat
     (v : _root_.Valuation K (WithZero (Multiplicative ℤ)))
     [ValuationTheory.DiscreteValuationField.Valuation.IsCompleteDiscrete v]

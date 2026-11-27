@@ -15,9 +15,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NonarchimedeanL
 /-!
 # normalization of the equal-characteristic parameter
 
-The Laurent-series valuation sends `T` to `exp (-1)`.  The power-series
-description of its integer ring makes `T` a genuine prime element, so the
-canonical normalized additive valuation sends `T⁻¹` to `1`.
+The Laurent-series valuation sends `T` to `exp (-1)`.  The power-series description of its integer ring makes `T` a genuine prime element, so the canonical normalized additive valuation sends `T⁻¹` to `1`.
 -/
 
 
@@ -48,8 +46,7 @@ theorem equalCharacteristicLaurentUniformizer_laurentValuation
         F.residueField⸨X⸩)) = _
   simpa using LaurentSeries.valuation_X_pow F.residueField 1
 
-/-- The Laurent parameter in the canonical integer ring determined by the
-native Laurent valuation. -/
+/-- The Laurent parameter in the canonical integer ring determined by the native Laurent valuation. -/
 noncomputable def equalCharacteristicLaurentUniformizerInteger
     (F : LocalField.{u, v} K) :
     letI := equalCharacteristicLaurentValuativeRel F
@@ -70,8 +67,7 @@ theorem equalCharacteristicLaurentUniformizerInteger_coe
     equalCharacteristicLaurentValuativeRel F
   rfl
 
-/-- The explicit Laurent parameter is a prime element of the canonical
-integer ring. -/
+/-- The explicit Laurent parameter is a prime element of the canonical integer ring. -/
 theorem equalCharacteristicLaurentUniformizerInteger_irreducible
     (F : LocalField.{u, v} K) :
     letI := equalCharacteristicLaurentValuativeRel F
@@ -81,7 +77,7 @@ theorem equalCharacteristicLaurentUniformizerInteger_irreducible
   change Irreducible
     (powerSeriesEquivLaurentValuativeInteger F.residueField
       (PowerSeries.X : F.residueField⟦X⟧))
-  exact PowerSeries.X_irreducible.map
+  exact PowerSeries.irreducible_X.map
     (powerSeriesEquivLaurentValuativeInteger F.residueField)
 
 /-- The Laurent parameter as a nonzero field unit. -/
@@ -101,8 +97,7 @@ theorem equalCharacteristicLaurentUniformizerUnit_coe
       equalCharacteristicLaurentUniformizer F :=
   rfl
 
-/-- In the normalized additive convention used here, the inverse Laurent
-parameter has value one. -/
+/-- In the normalized additive convention used here, the inverse Laurent parameter has value one. -/
 theorem equalCharacteristicLaurentUniformizerUnit_inv_valuationMap
     (F : LocalField.{u, v} K) :
     letI := equalCharacteristicLaurentValuativeRel F

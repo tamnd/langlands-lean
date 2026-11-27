@@ -7,7 +7,6 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.InfinitePlaceAbsMap
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.Extension.IdeleNormComponents
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.SinglePlace
 public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NonarchimedeanLocalField.Norm
@@ -17,11 +16,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NormUnits
 /-!
 # Norms of base units supported at one infinite place
 
-For an infinite place `W` of an extension field, a unit of the
-completion at the place below `W` can be extended to `W` and inserted
-as a one-place idele.  Its ordinary idele norm remains supported at the
-place below `W`; the surviving component is the corresponding local
-degree power.
+For an infinite place `W` of an extension field, a unit of the completion at the place below `W` can be extended to `W` and inserted as a one-place idele.  Its ordinary idele norm remains supported at the place below `W`; the surviving component is the corresponding local degree power.
 -/
 
 
@@ -43,8 +38,7 @@ variable
     [Field K] [NumberField K]
     [Field L] [NumberField L] [Algebra K L]
 
-/-- Extend a unit of the completion below `W` to the completion at
-`W`. -/
+/-- Extend a unit of the completion below `W` to the completion at `W`. -/
 noncomputable def infinitePlaceBaseUnitExtension
     (W : InfinitePlace L) :
     ((_root_.infinitePlaceBelow (K := K) W).Completion)ˣ →*
@@ -54,8 +48,8 @@ noncomputable def infinitePlaceBaseUnitExtension
     ⟨rfl⟩
   exact
     Units.map
-      (InfinitePlace.Completion.absMap
-        (_root_.infinitePlaceBelow (K := K) W) W).toMonoidHom
+      (AbsoluteValue.Completion.map
+        (_root_.infinitePlaceBelow (K := K) W).1 W.1).toMonoidHom
 
 /-- The actual completion map carries negative one to negative one. -/
 @[simp]
@@ -72,19 +66,16 @@ theorem infinitePlaceBaseUnitExtension_neg_one
   apply Units.ext
   simp [infinitePlaceBaseUnitExtension]
 
-/-- The degree of the completed extension at `W` over the completion
-at the place below it. -/
+/-- The degree of the completed extension at `W` over the completion at the place below it. -/
 noncomputable def infinitePlaceCompletionDegree
     (W : InfinitePlace L) : ℕ := by
   let v := _root_.infinitePlaceBelow (K := K) W
   letI : W.1.LiesOver v.1 := ⟨rfl⟩
   letI : Algebra v.Completion W.Completion :=
-    InfinitePlace.Completion.algebraOfLiesOver v W
+    AbsoluteValue.Completion.algebraOfLiesOver v.1 W.1
   exact Module.finrank v.Completion W.Completion
 
-/-- The idele norm of a base-completion unit supported at one
-extension infinite place is the corresponding local-degree power
-supported at the place below it. -/
+/-- The idele norm of a base-completion unit supported at one extension infinite place is the corresponding local-degree power supported at the place below it. -/
 theorem norm_infinitePlaceIdele_infinitePlaceBaseUnitExtension
     (W : InfinitePlace L)
     (x :
@@ -124,15 +115,15 @@ theorem norm_infinitePlaceIdele_infinitePlaceBaseUnitExtension
       · rw [infinitePlaceIdele_infiniteComponent_same]
         let : W.1.LiesOver v.1 := ⟨rfl⟩
         let : Algebra v.Completion W.Completion :=
-          InfinitePlace.Completion.algebraOfLiesOver v W
+          AbsoluteValue.Completion.algebraOfLiesOver v.1 W.1
         have hmap :
             algebraMap v.Completion W.Completion =
-              InfinitePlace.Completion.absMap v W :=
-          InfinitePlace.Completion.algebraMap_eq_of_liesOver v W
+              AbsoluteValue.Completion.map v.1 W.1 :=
+          AbsoluteValue.Completion.algebraMap_eq_of_liesOver v.1 W.1
         change
           LocalFieldTheory.normUnits v.Completion W.Completion
               (Units.map
-                (InfinitePlace.Completion.absMap v W).toMonoidHom
+                (AbsoluteValue.Completion.map v.1 W.1).toMonoidHom
                 x) =
             x ^ Module.finrank v.Completion W.Completion
         rw [← hmap]
@@ -203,9 +194,7 @@ theorem norm_infinitePlaceIdele_infinitePlaceBaseUnitExtension
     intro U _
     rw [infinitePlaceIdele_finiteComponent, map_one]
 
-/-- If the chosen infinite place is unramified over the base, the
-completed extension has degree one, so the norm of the extended
-one-place idele is exactly the original one-place idele. -/
+/-- If the chosen infinite place is unramified over the base, the completed extension has degree one, so the norm of the extended one-place idele is exactly the original one-place idele. -/
 theorem norm_infinitePlaceIdele_infinitePlaceBaseUnitExtension_of_isUnramified
     (W : InfinitePlace L)
     (hW : W.IsUnramified K)
@@ -220,14 +209,11 @@ theorem norm_infinitePlaceIdele_infinitePlaceBaseUnitExtension_of_isUnramified
   let v := _root_.infinitePlaceBelow (K := K) W
   let : W.1.LiesOver v.1 := ⟨rfl⟩
   let : Algebra v.Completion W.Completion :=
-    InfinitePlace.Completion.algebraOfLiesOver v W
+    AbsoluteValue.Completion.algebraOfLiesOver v.1 W.1
   have hDegree :
-      Module.finrank v.Completion W.Completion = 1 := by
-    have h : @Module.finrank v.Completion W.Completion _ _
-        (NumberField.LiesOver.completionMap v W).toAlgebra.toModule = 1 :=
-      InfinitePlace.IsUnramified.finrank_eq_one v hW
-    rw [← InfinitePlace.Completion.algebraOfLiesOver_eq_toAlgebra] at h
-    exact h
+      Module.finrank v.Completion W.Completion = 1 :=
+    InfinitePlace.IsUnramified.finrank_eq_one
+      v hW
   rw [
     norm_infinitePlaceIdele_infinitePlaceBaseUnitExtension,
     show infinitePlaceCompletionDegree
@@ -235,9 +221,7 @@ theorem norm_infinitePlaceIdele_infinitePlaceBaseUnitExtension_of_isUnramified
       simpa only [infinitePlaceCompletionDegree, v] using hDegree,
     pow_one]
 
-/-- A real infinite place upstairs is unramified over every lower
-number field, so the one-place norm of an extended base unit is
-unchanged. -/
+/-- A real infinite place upstairs is unramified over every lower number field, so the one-place norm of an extended base unit is unchanged. -/
 theorem norm_infinitePlaceIdele_infinitePlaceBaseUnitExtension_of_isReal
     (W : InfinitePlace L)
     (hWReal : W.IsReal)
@@ -254,8 +238,7 @@ theorem norm_infinitePlaceIdele_infinitePlaceBaseUnitExtension_of_isReal
       (K := K) (L := L) W
   exact InfinitePlace.isUnramified_iff.mpr (Or.inl hWReal)
 
-/-- The degree-one one-place norm equality descends verbatim to the
-actual idele class groups. -/
+/-- The degree-one one-place norm equality descends verbatim to the actual idele class groups. -/
 theorem ideleClassNorm_infinitePlaceIdeleClass_infinitePlaceBaseUnitExtension_of_isUnramified
     (W : InfinitePlace L)
     (hW : W.IsUnramified K)
@@ -273,8 +256,7 @@ theorem ideleClassNorm_infinitePlaceIdeleClass_infinitePlaceBaseUnitExtension_of
     norm_infinitePlaceIdele_infinitePlaceBaseUnitExtension_of_isUnramified
       (K := K) (L := L) W hW x]
 
-/-- Idele-class form of the one-place norm equality at a real place
-upstairs. -/
+/-- Idele-class form of the one-place norm equality at a real place upstairs. -/
 theorem ideleClassNorm_infinitePlaceIdeleClass_infinitePlaceBaseUnitExtension_of_isReal
     (W : InfinitePlace L)
     (hWReal : W.IsReal)
@@ -291,8 +273,7 @@ theorem ideleClassNorm_infinitePlaceIdeleClass_infinitePlaceBaseUnitExtension_of
       (K := K) (L := L) W
   exact InfinitePlace.isUnramified_iff.mpr (Or.inl hWReal)
 
-/-- At a real place upstairs, the idele-class norm of the one-place
-negative-one class is the one-place negative-one class below. -/
+/-- At a real place upstairs, the idele-class norm of the one-place negative-one class is the one-place negative-one class below. -/
 theorem ideleClassNorm_infinitePlaceIdeleClass_neg_one_of_isReal
     (W : InfinitePlace L)
     (hWReal : W.IsReal) :

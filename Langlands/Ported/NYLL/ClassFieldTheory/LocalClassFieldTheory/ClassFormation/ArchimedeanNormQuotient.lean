@@ -20,9 +20,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.AbsoluteValue.Th
 /-!
 # The real/complex norm quotient
 
-At a ramified infinite place the local extension is `ℂ/ℝ`.  Its norm
-subgroup consists exactly of the positive real units, so the sign map
-identifies the norm quotient with `ℤˣ`, a group of order two.
+At a ramified infinite place the local extension is `ℂ/ℝ`.  Its norm subgroup consists exactly of the positive real units, so the sign map identifies the norm quotient with `ℤˣ`, a group of order two.
 -/
 
 
@@ -51,8 +49,7 @@ variable
     [Field L] [NumberField L] [Algebra K L]
     [FiniteDimensional K L] [IsGalois K L]
 
-/-- An infinite place above another one, written in the absolute-value
-extension format used by the algebraic-localization API. -/
+/-- An infinite place above another one, written in the absolute-value extension format used by the algebraic-localization API. -/
 def infinitePlaceAbsoluteValueExtension
     (v : InfinitePlace K) (w : InfinitePlace L)
     (hw : w.comap (algebraMap K L) = v) :
@@ -61,26 +58,21 @@ def infinitePlaceAbsoluteValueExtension
     congrArg
       (fun q : InfinitePlace K => q.1 x) hw⟩
 
-/-- The underlying absolute-value completion of a real infinite place
-is the real numbers. -/
+/-- The underlying absolute-value completion of a real infinite place is the real numbers. -/
 def absoluteCompletionRingEquivReal
     (v : InfinitePlace K) (hv : v.IsReal) :
     v.1.Completion ≃+* ℝ :=
-  (InfinitePlace.Completion.equiv v).symm.trans
-    (InfinitePlace.Completion.ringEquivRealOfIsReal hv)
+  InfinitePlace.Completion.ringEquivRealOfIsReal hv
 
-/-- The underlying absolute-value completion of a complex infinite
-place is the complex numbers. -/
+/-- The underlying absolute-value completion of a complex infinite place is the complex numbers. -/
 def absoluteCompletionRingEquivComplex
     (v : InfinitePlace K) (hv : v.IsComplex) :
     v.1.Completion ≃+* ℂ :=
-  (InfinitePlace.Completion.equiv v).symm.trans
-    (InfinitePlace.Completion.ringEquivComplexOfIsComplex hv)
+  InfinitePlace.Completion.ringEquivComplexOfIsComplex hv
 
 omit [NumberField K] [NumberField L] [FiniteDimensional K L]
     [IsGalois K L] in
-/-- For an infinite place, the absolute-value decomposition
-group is the ordinary Galois stabilizer of that place. -/
+/-- For an infinite place, the absolute-value decomposition group is the ordinary Galois stabilizer of that place. -/
 theorem absoluteValueDecompositionGroup_eq_infinitePlaceStabilizer
     (w : InfinitePlace L) :
     absoluteValueDecompositionGroup K w.1 =
@@ -126,8 +118,7 @@ theorem ringEquiv_compat_symm
   have hx := DFunLike.congr_fun he (eK.symm x)
   simpa using hx.symm
 
-/-- A compatible pair of field equivalences induces a map of norm
-quotients. -/
+/-- A compatible pair of field equivalences induces a map of norm quotients. -/
 def normQuotientMapOfRingEquiv
     {K : Type u} {L : Type v} {K' : Type w} {L' : Type z}
     [Field K] [Field L] [Field K'] [Field L']
@@ -151,8 +142,7 @@ def normQuotientMapOfRingEquiv
       exact mk_normUnits_eq_one K' L'
         (Units.mapEquiv eL.toMulEquiv y))
 
-/-- Transporting a norm class through compatible field equivalences agrees
-with transporting its representative unit. -/
+/-- Transporting a norm class through compatible field equivalences agrees with transporting its representative unit. -/
 @[simp]
 theorem normQuotientMapOfRingEquiv_normClass
     {K : Type u} {L : Type v} {K' : Type w} {L' : Type z}
@@ -169,8 +159,7 @@ theorem normQuotientMapOfRingEquiv_normClass
         (Units.mapEquiv eK.toMulEquiv x) :=
   normQuotientLift_normClass _ _ x
 
-/-- Norm quotients are invariant under compatible equivalences of the
-base and extension fields. -/
+/-- Norm quotients are invariant under compatible equivalences of the base and extension fields. -/
 def normQuotientEquivOfRingEquiv
     {K : Type u} {L : Type v} {K' : Type w} {L' : Type z}
     [Field K] [Field L] [Field K'] [Field L']
@@ -213,8 +202,7 @@ def normQuotientEquivOfRingEquiv
   map_mul' := fun x y =>
     map_mul (normQuotientMapOfRingEquiv eK eL he) x y
 
-/-- A one-element acting group has trivial degree-zero Herbrand
-cohomology. -/
+/-- A one-element acting group has trivial degree-zero Herbrand cohomology. -/
 theorem herbrandH0_card_eq_one_of_group_card_eq_one
     {G A : Type*}
     [Group G] [Fintype G]
@@ -238,18 +226,18 @@ theorem herbrandH0_card_eq_one_of_group_card_eq_one
         simp only [Finset.prod_singleton, one_smul])
   exact Nat.card_unique
 
-open NumberField.LiesOver in
-/-- At a complex place above a real place, the completion norm quotient
-is the concrete quotient for `ℂ/ℝ`. -/
+/-- At a complex place above a real place, the completion norm quotient is the concrete quotient for `ℂ/ℝ`. -/
 def infiniteCompletionNormQuotientEquivRealComplex
     (v : InfinitePlace K) (w : InfinitePlace L)
     (hw : w.comap (algebraMap K L) = v)
     (hv : v.IsReal) (hwc : w.IsComplex) :
     let _ : w.1.LiesOver v.1 :=
       ⟨congrArg (fun q : InfinitePlace K => q.1) hw⟩
+    let _ : Algebra v.Completion w.Completion :=
+      AbsoluteValue.Completion.algebraOfLiesOver v.1 w.1
     NormQuotient v.Completion w.Completion ≃*
       NormQuotient ℝ ℂ := by
-  intro placeLiesOver
+  intro placeLiesOver completionAlgebra
   have :
       NumberField.ComplexEmbedding.LiesOver
         (InfinitePlace.Completion.extensionEmbedding w)
@@ -271,9 +259,7 @@ def infiniteCompletionNormQuotientEquivRealComplex
           (InfinitePlace.Completion.extensionEmbedding w)
           (InfinitePlace.Completion.extensionEmbedding v)).symm)
 
-/-- The algebraic localization used in the local cohomology block is
-canonically the whole absolute-value completion, also at an infinite
-place. -/
+/-- The algebraic localization used in the local cohomology block is canonically the whole absolute-value completion, also at an infinite place. -/
 def localizedCompletionNormQuotientEquivAbsoluteCompletions
     (v : InfinitePlace K) (w : InfinitePlace L)
     (hw : w.comap (algebraMap K L) = v) :
@@ -306,9 +292,7 @@ def localizedCompletionNormQuotientEquivAbsoluteCompletions
         ext x
         exact eLAlg.commutes x)
 
-/-- Written using the underlying absolute-value completions, the norm
-quotient at a complex place above a real place is again the concrete
-quotient for `ℂ/ℝ`. -/
+/-- Written using the underlying absolute-value completions, the norm quotient at a complex place above a real place is again the concrete quotient for `ℂ/ℝ`. -/
 def absoluteCompletionNormQuotientEquivRealComplex
     (v : InfinitePlace K) (w : InfinitePlace L)
     (hw : w.comap (algebraMap K L) = v)
@@ -336,17 +320,15 @@ def absoluteCompletionNormQuotientEquivRealComplex
       w hv).over
   have hCompletionEmbedding (x : v.1.Completion) :
       InfinitePlace.Completion.extensionEmbedding w
-          (InfinitePlace.Completion.ofCompletion (AbsoluteValue.completionMap v.1 w.1
-            (infinitePlaceAbsoluteValueExtension v w hw).2 x)) =
-        InfinitePlace.Completion.extensionEmbedding v (InfinitePlace.Completion.ofCompletion x) := by
+          (AbsoluteValue.completionMap v.1 w.1
+            (infinitePlaceAbsoluteValueExtension v w hw).2 x) =
+        InfinitePlace.Completion.extensionEmbedding v x := by
     refine AbsoluteValue.Completion.induction_on x ?_ ?_
     · exact isClosed_eq
-        (((InfinitePlace.Completion.isometry_extensionEmbedding w).continuous.comp
-          (InfinitePlace.Completion.continuous_ofCompletion w)).comp
+        ((InfinitePlace.Completion.isometry_extensionEmbedding w).continuous.comp
           (AbsoluteValue.completionMap_isometry v.1 w.1
             (infinitePlaceAbsoluteValueExtension v w hw).2).continuous)
-        ((InfinitePlace.Completion.isometry_extensionEmbedding v).continuous.comp
-          (InfinitePlace.Completion.continuous_ofCompletion v))
+        (InfinitePlace.Completion.isometry_extensionEmbedding v).continuous
     · intro y
       have hy : (y : v.1.Completion) = algebraMap K v.1.Completion (WithAbs.equiv v.1 y) := by
         rw [← AbsoluteValue.toCompletion_eq_algebraMap, AbsoluteValue.toCompletion_apply,
@@ -363,8 +345,7 @@ def absoluteCompletionNormQuotientEquivRealComplex
   exact normQuotientEquivOfRingEquiv
     (absoluteCompletionRingEquivReal v hv) (absoluteCompletionRingEquivComplex w hwc) (by
       ext x
-      exact (InfinitePlace.Completion.extensionEmbeddingOfIsReal_apply hv
-          (InfinitePlace.Completion.ofCompletion x)).trans
+      exact (InfinitePlace.Completion.extensionEmbeddingOfIsReal_apply hv x).trans
         (hCompletionEmbedding x).symm)
 
 /-- The sign of a nonzero real number, regarded as an integral unit. -/
@@ -373,8 +354,7 @@ def realUnitsSign : ℝˣ →* ℤˣ :=
     ((SignType.castHom (α := ℤ)).comp
       (signHom (α := ℝ)))
 
-/-- Coercing `realUnitsSign x` to an integer recovers the usual sign of
-the underlying nonzero real number. -/
+/-- Coercing `realUnitsSign x` to an integer recovers the usual sign of the underlying nonzero real number. -/
 @[simp]
 theorem realUnitsSign_coe (x : ℝˣ) :
     ((realUnitsSign x : ℤˣ) : ℤ) =
@@ -407,8 +387,7 @@ theorem mem_realUnitsSign_ker_iff (x : ℝˣ) :
     apply Units.ext
     simp [realUnitsSign, sign_pos hx]
 
-/-- The sign homomorphism is continuous for the native topology on
-real units and the discrete topology on `ℤˣ`. -/
+/-- The sign homomorphism is continuous for the native topology on real units and the discrete topology on `ℤˣ`. -/
 @[fun_prop]
 theorem realUnitsSign_continuous :
     Continuous realUnitsSign := by
@@ -464,8 +443,7 @@ def realComplexNormQuotientEquivSign :
     realUnitsSign_surjective
     realUnitsSign_ker_eq_complexNormSubgroup
 
-/-- The real/complex norm quotient is finite via its equivalence with
-the integral sign group. -/
+/-- The real/complex norm quotient is finite via its equivalence with the integral sign group. -/
 noncomputable instance realComplexNormQuotientFinite :
     Finite (NormQuotient ℝ ℂ) :=
   Finite.of_equiv ℤˣ
@@ -488,9 +466,7 @@ variable
 omit [NumberField L] in
 omit [NumberField L] in
 open scoped Classical in
-/-- The degree-zero local Herbrand group at an infinite place has
-cardinality equal to the archimedean local degree: one at an
-unramified place and two at a ramified real-to-complex place. -/
+/-- The degree-zero local Herbrand group at an infinite place has cardinality equal to the archimedean local degree: one at an unramified place and two at a ramified real-to-complex place. -/
 theorem infinitePlaceLocalHerbrandH0_card_eq_localDegree
     (v : InfinitePlace K) (w : InfinitePlace L)
     (hw : w.comap (algebraMap K L) = v) :
@@ -558,9 +534,7 @@ theorem infinitePlaceLocalHerbrandH0_card_eq_localDegree
 
 omit [NumberField L] in
 open scoped Classical in
-/-- Complete archimedean local class-field axiom, in the exact form
-used in the relative-idele Herbrand quotient: Hilbert 90 gives
-`#H⁻¹ = 1`, while the norm quotient gives the local degree in `H⁰`. -/
+/-- Complete archimedean local class-field axiom, in the exact form used in the relative-idele Herbrand quotient: Hilbert 90 gives `#H⁻¹ = 1`, while the norm quotient gives the local degree in `H⁰`. -/
 theorem infinitePlaceLocalClassAxiom_cards
     (v : InfinitePlace K) (w : InfinitePlace L)
     (hw : w.comap (algebraMap K L) = v)
@@ -611,8 +585,7 @@ theorem infinitePlaceLocalClassAxiom_cards
         v w hw⟩
 
 omit [NumberField L] in
-/-- Finiteness of the archimedean degree-zero local Herbrand group,
-deduced from its explicit nonzero cardinality. -/
+/-- Finiteness of the archimedean degree-zero local Herbrand group, deduced from its explicit nonzero cardinality. -/
 theorem infinitePlaceLocalHerbrandH0Finite
     (v : InfinitePlace K) (w : InfinitePlace L)
     (hw : w.comap (algebraMap K L) = v) :
@@ -713,8 +686,7 @@ theorem infinitePlaceLocalHerbrandH0Finite
           (eCompletion.trans eRealComplex)).symm.toEquiv
 
 omit [NumberField K] [NumberField L] in
-/-- Finiteness of the archimedean degree-minus-one local Herbrand
-group. -/
+/-- Finiteness of the archimedean degree-minus-one local Herbrand group. -/
 theorem infinitePlaceLocalHerbrandHMinusOneFinite
     (v : InfinitePlace K) (w : InfinitePlace L)
     (hw : w.comap (algebraMap K L) = v)

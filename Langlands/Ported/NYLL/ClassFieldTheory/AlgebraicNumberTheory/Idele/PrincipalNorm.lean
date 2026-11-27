@@ -20,8 +20,7 @@ public import Mathlib.NumberTheory.NumberField.InfiniteAdeleRing
 /-!
 # The product formula for principal ideles
 
-This file proves that the absolute idele norm is trivial on the diagonal
-copy of `Kˣ`, and hence descends to the idele class group.
+This file proves that the absolute idele norm is trivial on the diagonal copy of `Kˣ`, and hence descends to the idele class group.
 -/
 
 
@@ -45,7 +44,7 @@ private theorem absoluteNorm_infinitePart_unitEmbedding (x : Kˣ) :
   simp only [Units.coe_prod, Units.val_pow_eq_pow_val,
     nnnormUnitHom_val]
   apply NNReal.eq
-  simp only [NNReal.coe_prod, NNReal.coe_pow, coe_nnnorm]
+  simp only [NNReal.coe_prod, NNReal.coe_pow, coe_nnNorm]
   change (∏ w : InfinitePlace K, ‖(algebraMap K (InfiniteAdeleRing K) (x : K)) w‖ ^ w.mult) = _
   rw [← InfiniteAdeleRing.norm_def]
   change ‖(algebraMap K (InfiniteAdeleRing K)) (x : K)‖ = |((Algebra.norm ℚ) (x : K) : ℝ)|
@@ -110,8 +109,7 @@ end InfiniteIdeleGroup
 
 namespace FiniteIdeleGroup
 
-/-- The finite idele norm is the absolute norm of its associated fractional
-ideal. -/
+/-- The finite idele norm is the absolute norm of its associated fractional ideal. -/
 theorem absoluteNorm_eq_fractionalIdealAbsoluteNorm
     (a : FiniteIdeleGroup K) :
     absoluteNorm a =
@@ -138,8 +136,7 @@ theorem finite_absoluteNorm_eq_archimedeanNorm_principalIdele
   exact (FiniteIdeleGroup.absoluteNorm_principalIdele x).trans
     (InfiniteIdeleGroup.archimedeanNorm_principalIdele x).symm
 
-/-- The number-field product formula in idelic form: every principal idele
-has global absolute norm one. -/
+/-- The number-field product formula in idelic form: every principal idele has global absolute norm one. -/
 @[simp]
 theorem absoluteNorm_principalIdele (x : Kˣ) :
     absoluteNorm (principalIdele K x) = 1 :=
@@ -170,8 +167,7 @@ theorem absoluteNorm_mk (a : IdeleGroup K) :
 abbrev normOneSubgroup : Subgroup (IdeleClassGroup K) :=
   NumberField.IdeleClassGroup.normOneSubgroup
 
-/-- Pulling the norm-one idele classes back to the idele group recovers
-exactly the norm-one ideles. -/
+/-- Pulling the norm-one idele classes back to the idele group recovers exactly the norm-one ideles. -/
 theorem comap_normOneSubgroup :
     Subgroup.comap
       (IdeleGroup.toStandardClass K)

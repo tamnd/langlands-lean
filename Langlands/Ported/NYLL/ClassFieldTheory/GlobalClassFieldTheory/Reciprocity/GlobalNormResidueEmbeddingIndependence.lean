@@ -196,17 +196,17 @@ theorem globalNormResidueMonoidHomOfEmbedding_eq (i j : L →ₐ[ℚ] Ω) :
         (congrArg s.symm (hs _)).symm.trans (s.symm_apply_apply _)
   let gi := numberFieldEmbeddedAbelianizedExtensionQuotientEquivGaloisGroup K L i
   let gj := numberFieldEmbeddedAbelianizedExtensionQuotientEquivGaloisGroup K L j
-  let e : Gal(L / K) ≃* Abelianization Gal(L / K) := Abelianization.equivOfComm
-  have hGaloisAbelian (z : Abelianization Pi.extensionQuotient) :
+  let e : Gal(L / K) ≃* Group.Abelianization Gal(L / K) := Group.Abelianization.equivOfComm
+  have hGaloisAbelian (z : Group.Abelianization Pi.extensionQuotient) :
       gj (Additive.ofMul (qT.abelianizationCongr (qC.abelianizationCongr z))) =
         gi (Additive.ofMul z) := by
     obtain ⟨q, rfl⟩ := QuotientGroup.mk_surjective z
     change Additive.ofMul (e.symm (qj.abelianizationCongr
-      (qT.abelianizationCongr (qC.abelianizationCongr (Abelianization.of q))))) =
-        Additive.ofMul (e.symm (qi.abelianizationCongr (Abelianization.of q)))
-    simp only [abelianizationCongr_of]
+      (qT.abelianizationCongr (qC.abelianizationCongr (Group.Abelianization.of q))))) =
+        Additive.ofMul (e.symm (qi.abelianizationCongr (Group.Abelianization.of q)))
+    simp only [Group.abelianizationCongr_of]
     exact congrArg
-      (fun r : Gal(L / K) => Additive.ofMul (e.symm (Abelianization.of r))) (hGalois q)
+      (fun r : Gal(L / K) => Additive.ofMul (e.symm (Group.Abelianization.of r))) (hGalois q)
   rw [globalNormResidueMonoidHomOfEmbedding_apply, globalNormResidueMonoidHomOfEmbedding_apply]
   apply Additive.toMul.injective
   change gi (Ri xi) = gj (Rj xj)

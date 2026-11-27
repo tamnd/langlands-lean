@@ -18,13 +18,9 @@ public import Langlands.Ported.NYLL.GaloisCohomology.Kummer.Concrete.Cyclotomic.
 /-!
 # Away-from-p factors of a rational cyclotomic principal idele
 
-For the cyclotomic level `p ^ k`, this file reindexes the actual chosen
-finite-place Artin characters over rational primes.  Away from `p`, the
-unramified formula makes the multiplicative support lie in the ordinary
-finite prime factorization support of the principal rational number.
+For the cyclotomic level `p ^ k`, this file reindexes the actual chosen finite-place Artin characters over rational primes.  Away from `p`, the unramified formula makes the multiplicative support lie in the ordinary finite prime factorization support of the principal rational number.
 
-The final theorem separates the genuine `p`-factor from the explicit
-away-from-`p` finite product.  The construction also applies to `k = 0`.
+The final theorem separates the genuine `p`-factor from the explicit away-from-`p` finite product.  The construction also applies to `k = 0`.
 -/
 
 
@@ -66,8 +62,7 @@ noncomputable local instance
       (KummerTheory.rationalCyclotomicLevel m) :=
   KummerTheory.rationalCyclotomicLevelIsAbelianGalois m
 
-/-- The cyclotomic coordinate of the principal idele's chosen Artin symbol
-at a rational height-one prime. -/
+/-- The cyclotomic coordinate of the principal idele's chosen Artin symbol at a rational height-one prime. -/
 noncomputable def rationalCyclotomicPrincipalHeightOneCharacter
     (p : Nat.Primes) (k : ℕ) (x : ℚˣ)
     (v : HeightOneSpectrum (𝓞 ℚ)) :
@@ -88,8 +83,7 @@ noncomputable def rationalCyclotomicPrincipalHeightOneCharacter
       (IdeleGroup.finiteComponent v
         (IdeleGroup.principalIdele ℚ x)))
 
-/-- The named height-one character is the cyclotomic coordinate of the
-chosen finite-place Artin symbol. -/
+/-- The named height-one character is the cyclotomic coordinate of the chosen finite-place Artin symbol. -/
 theorem rationalCyclotomicPrincipalHeightOneCharacter_spec
     (p : Nat.Primes) (k : ℕ) (x : ℚˣ)
     (v : HeightOneSpectrum (𝓞 ℚ)) :
@@ -112,9 +106,7 @@ theorem rationalCyclotomicPrincipalHeightOneCharacter_spec
   dsimp (config := { instances := true }) only
     [rationalCyclotomicPrincipalHeightOneCharacter, inferInstance]
 
-/-- The genuine chosen finite-place Artin character of the rational
-principal idele at the prime `q`, evaluated in the `p ^ k` cyclotomic
-coordinate. -/
+/-- The genuine chosen finite-place Artin character of the rational principal idele at the prime `q`, evaluated in the `p ^ k` cyclotomic coordinate. -/
 noncomputable def rationalCyclotomicPrincipalFinitePlaceCharacter
     (p : Nat.Primes) (k : ℕ) (x : ℚˣ) (q : Nat.Primes) :
     (ZMod (p.1 ^ k))ˣ :=
@@ -130,8 +122,7 @@ private theorem rationalCyclotomicPrincipalFinitePlaceCharacter_spec
           (R := 𝓞 ℚ)).symm q) := by
   rfl
 
-/-- The named rational-prime character is exactly the cyclotomic
-coordinate of the chosen finite-place Artin symbol. -/
+/-- The named rational-prime character is exactly the cyclotomic coordinate of the chosen finite-place Artin symbol. -/
 theorem
     rationalCyclotomicPrincipalFinitePlaceCharacter_chosenArtin_spec
     (p : Nat.Primes) (k : ℕ) (x : ℚˣ) (q : Nat.Primes) :
@@ -160,8 +151,7 @@ theorem
       ((Rat.HeightOneSpectrum.primesEquiv
         (R := 𝓞 ℚ)).symm q)
 
-/-- At every positive `p`-power level, the finite-place character at `p`
-is the direct reduction of the rational `p`-adic unit. -/
+/-- At every positive `p`-power level, the finite-place character at `p` is the direct reduction of the rational `p`-adic unit. -/
 theorem rationalCyclotomicPrincipalFinitePlaceCharacter_at_prime_succ_formula
     (p : Nat.Primes) (n : ℕ) (x : ℚˣ) :
     rationalCyclotomicPrincipalFinitePlaceCharacter p (n + 1) x p =
@@ -180,8 +170,7 @@ theorem rationalCyclotomicPrincipalFinitePlaceCharacter_at_prime_succ_formula
       rationalCyclotomicPrincipalPrimeResidueUnit] at hAction ⊢
   with_reducible exact hAction
 
-/-- A rational prime distinct from `p` does not divide any power
-`p ^ k`.  This includes the level-one case `k = 0`. -/
+/-- A rational prime distinct from `p` does not divide any power `p ^ k`.  This includes the level-one case `k = 0`. -/
 theorem rationalPrime_not_dvd_pow_of_ne
     (q p : Nat.Primes) (hqp : q ≠ p) (k : ℕ) :
     ¬ q.1 ∣ p.1 ^ k := by
@@ -190,8 +179,7 @@ theorem rationalPrime_not_dvd_pow_of_ne
   apply Subtype.ext
   exact Nat.prime_eq_prime_of_dvd_pow q.2 p.2 hdiv
 
-/-- Away from `p`, the chosen finite-place character is the inverse
-Frobenius power determined by the rational `q`-adic valuation. -/
+/-- Away from `p`, the chosen finite-place character is the inverse Frobenius power determined by the rational `q`-adic valuation. -/
 theorem rationalCyclotomicPrincipalFinitePlaceCharacter_of_ne
     (p q : Nat.Primes) (hqp : q ≠ p)
     (k : ℕ) (x : ℚˣ) :
@@ -217,8 +205,7 @@ theorem rationalCyclotomicPrincipalFinitePlaceCharacter_of_ne
       ⟨p.1 ^ k, pow_pos p.2.pos k⟩ q
       (rationalPrime_not_dvd_pow_of_ne q p hqp k) x
 
-/-- Outside the finite rational prime-factorization support, the
-`q`-adic valuation of the nonzero rational number is zero. -/
+/-- Outside the finite rational prime-factorization support, the `q`-adic valuation of the nonzero rational number is zero. -/
 theorem
     padicValRat_eq_zero_of_not_mem_rationalPrimeFactorizationPrimeSupport
     (x : ℚˣ) (p q : Nat.Primes)
@@ -276,12 +263,11 @@ theorem
       ¬ q.1 ∣ (x : ℚ).den :=
     Nat.not_dvd_of_pos_of_lt hdenPos hdenLt
   rw [padicValRat_def, padicValInt,
-    padicValNat.eq_zero_of_not_dvd hqNum,
-    padicValNat.eq_zero_of_not_dvd hqDen]
+    multiplicity_eq_zero_of_not_dvd hqNum,
+    multiplicity_eq_zero_of_not_dvd hqDen]
   norm_num
 
-/-- A chosen finite-place Artin character outside the rational
-prime-factorization support is genuinely trivial. -/
+/-- A chosen finite-place Artin character outside the rational prime-factorization support is genuinely trivial. -/
 @[simp]
 theorem
     rationalCyclotomicPrincipalFinitePlaceCharacter_eq_one_of_not_mem_support
@@ -300,9 +286,7 @@ theorem
       x p q hq]
   simp only [neg_zero, zpow_zero]
 
-/-- The actual rational principal finite-place characters have finite
-multiplicative support, contained in the ordinary rational prime
-factorization support. -/
+/-- The actual rational principal finite-place characters have finite multiplicative support, contained in the ordinary rational prime factorization support. -/
 theorem
     rationalCyclotomicPrincipalFinitePlaceCharacters_hasFiniteMulSupport
     (p : Nat.Primes) (k : ℕ) (x : ℚˣ) :
@@ -317,9 +301,7 @@ theorem
     (rationalCyclotomicPrincipalFinitePlaceCharacter_eq_one_of_not_mem_support
       p k x q hqSupport)
 
-/-- The off-`p` finprod of the genuine chosen Artin characters is the
-explicit finite product over the erased rational prime-factorization
-support. -/
+/-- The off-`p` finprod of the genuine chosen Artin characters is the explicit finite product over the erased rational prime-factorization support. -/
 theorem
     rationalCyclotomicPrincipalAwayFinitePlaceCharacter_finprod_eq_factorizationProduct
     (p : Nat.Primes) (k : ℕ) (x : ℚˣ) :
@@ -379,8 +361,7 @@ theorem
       exact rationalCyclotomicPrincipalFinitePlaceCharacter_of_ne
         p q.1 (Finset.ne_of_mem_erase q.2) k x
 
-/-- The direct rational `p`-unit character times the explicit inverse
-away-from-`p` factorization product is the reduced rational sign. -/
+/-- The direct rational `p`-unit character times the explicit inverse away-from-`p` factorization product is the reduced rational sign. -/
 theorem
     rationalPrimeUnitCharacter_mul_principalAwayFactorizationProduct_eq_sign
     (p : Nat.Primes) (k : ℕ) (x : ℚˣ) :
@@ -473,9 +454,7 @@ private theorem
       (rationalCyclotomicPrincipalHeightOneCharacterFinprod_eq_finprod
         p k x).symm
 
-/-- Reindexing by `Rat.HeightOneSpectrum.primesEquiv` and separating the
-distinguished prime identifies the height-one finprod with its genuine
-`p`-factor times the off-`p` prime finprod. -/
+/-- Reindexing by `Rat.HeightOneSpectrum.primesEquiv` and separating the distinguished prime identifies the height-one finprod with its genuine `p`-factor times the off-`p` prime finprod. -/
 theorem
     rationalCyclotomicPrincipalFinitePlaceCharacter_prime_mul_away_finprod
     (p : Nat.Primes) (k : ℕ) (x : ℚˣ) :
@@ -503,9 +482,7 @@ theorem
       p k x).trans
       (rationalCyclotomicPrincipalHeightOneCharacterFinprod_spec p k x)
 
-/-- Exact source for the final principal-product calculation: the
-height-one chosen Artin finprod is the genuine `p`-factor times the
-explicit away-from-`p` rational factorization product. -/
+/-- Exact source for the final principal-product calculation: the height-one chosen Artin finprod is the genuine `p`-factor times the explicit away-from-`p` rational factorization product. -/
 theorem
     rationalCyclotomicPrincipalFinitePlaceCharacter_prime_mul_factorizationProduct
     (p : Nat.Primes) (k : ℕ) (x : ℚˣ) :

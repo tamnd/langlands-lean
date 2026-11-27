@@ -16,12 +16,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finit
 /-!
 # Restriction naturality in a finite Galois tower
 
-The fixed-separable-closure form of finite local reciprocity naturality is
-transported here to an arbitrary tower `K ⊂ E ⊂ L`.  The two extensions are
-realized compatibly in the chosen separable closure by first embedding `L`
-and then restricting that embedding to `E`.  Abstract norm--residue
-naturality then becomes the actual restriction homomorphism
-`Gal(L/K) → Gal(E/K)`.
+The fixed-separable-closure form of finite local reciprocity naturality is transported here to an arbitrary tower `K ⊂ E ⊂ L`.  The two extensions are realized compatibly in the chosen separable closure by first embedding `L` and then restricting that embedding to `E`.  Abstract norm--residue naturality then becomes the actual restriction homomorphism `Gal(L/K) → Gal(E/K)`.
 -/
 
 
@@ -140,9 +135,9 @@ private theorem towerRestrict_abstractAbelianization
     [FiniteDimensional K E] [FiniteDimensional K L]
     [IsGalois K E] [IsGalois K L]
     (iL : L →ₐ[K] SeparableClosure K)
-    (z : Abelianization
+    (z : Group.Abelianization
       (finiteGaloisAbstractExtensionOfEmbedding K L iL).extensionQuotient) :
-    Abelianization.map (AlgEquiv.restrictNormalHom E)
+    Group.Abelianization.map (AlgEquiv.restrictNormalHom E)
         ((finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding
           K L iL).abelianizationCongr z) =
       (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding
@@ -166,21 +161,20 @@ private theorem towerRestrict_abstractAbelianization
   let : (extensionSubgroup B EL.field EL.below).Normal := EL.normal
   obtain ⟨q, rfl⟩ := QuotientGroup.mk_surjective z
   obtain ⟨sigma, rfl⟩ := QuotientGroup.mk_surjective q
-  change Abelianization.map (AlgEquiv.restrictNormalHom E)
-      (qL.abelianizationCongr (Abelianization.of (QuotientGroup.mk sigma))) =
+  change Group.Abelianization.map (AlgEquiv.restrictNormalHom E)
+      (qL.abelianizationCongr (Group.Abelianization.of (QuotientGroup.mk sigma))) =
     qE.abelianizationCongr
       (normResidueNaturalityAbelianizedRestriction
         B B EE.field EL.field EE.below EL.below le_rfl
         (towerEmbeddedAbstractExtension_field_le K E L iL)
-        (Abelianization.of (QuotientGroup.mk sigma)))
-  rw [abelianizationCongr_of, Abelianization.map_of,
+        (Group.Abelianization.of (QuotientGroup.mk sigma)))
+  rw [Group.abelianizationCongr_of, Group.Abelianization.map_of,
     normResidueNaturalityAbelianizedRestriction_of_mk]
-  exact (congrArg Abelianization.of
+  exact (congrArg Group.Abelianization.of
     (towerRestrict_abstractQuotient_mk K E L iL sigma)).trans
-      (abelianizationCongr_of qE _).symm
+      (Group.abelianizationCongr_of qE _).symm
 
-/-- Norm–residue symbols commute with abelianized restriction in a finite
-Galois tower with compatible embeddings. -/
+/-- Norm–residue symbols commute with abelianized restriction in a finite Galois tower with compatible embeddings. -/
 theorem concreteNormResidueSymbol_restrict_tower
     (K : Type u₁) (E : Type u₂) (L : Type u₃)
     [Field K] [Field E] [Field L]
@@ -193,7 +187,7 @@ theorem concreteNormResidueSymbol_restrict_tower
     (v : ValuationData D (intrinsicAbsoluteUnits K))
     (hcf : SatisfiesClassFieldAxiom (intrinsicAbsoluteUnits K))
     (a : Kˣ) :
-    Abelianization.map (AlgEquiv.restrictNormalHom E)
+    Group.Abelianization.map (AlgEquiv.restrictNormalHom E)
         (concreteNormResidueSymbolOfEmbedding K L iL D v hcf a) =
       concreteNormResidueSymbolOfEmbedding K E (towerLowerEmbedding K E L iL) D v hcf a := by
   let B := intrinsicAbstractBase K
@@ -281,7 +275,7 @@ theorem concreteNormResidueSymbol_restrict_tower
       K L iL D v hcf a,
     concreteNormResidueSymbolOfEmbedding_eq_abstract
       K E (towerLowerEmbedding K E L iL) D v hcf a]
-  change Abelianization.map (AlgEquiv.restrictNormalHom E)
+  change Group.Abelianization.map (AlgEquiv.restrictNormalHom E)
       (qL.abelianizationCongr (Additive.toMul zL)) =
     qE.abelianizationCongr (Additive.toMul zE)
   exact (towerRestrict_abstractAbelianization K E L iL (Additive.toMul zL)).trans
@@ -297,7 +291,7 @@ theorem localArtinMonoidHom_restrict_tower
     [FiniteDimensional K E] [FiniteDimensional K L]
     [IsGalois K E] [IsGalois K L]
     (a : Kˣ) :
-    Abelianization.map (AlgEquiv.restrictNormalHom E) (localArtinMonoidHom K L a) =
+    Group.Abelianization.map (AlgEquiv.restrictNormalHom E) (localArtinMonoidHom K L a) =
       localArtinMonoidHom K E a := by
   let iL := AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L
   rw [localArtinMonoidHom_eq_of_embedding K L iL,
@@ -306,8 +300,7 @@ theorem localArtinMonoidHom_restrict_tower
     (localResidueDatum K) (localHenselianValuation K)
     (separableClosureUnits_isClassFormation K) a
 
-/-- In an abelian tower, the same restriction is an equality of actual
-automorphisms. -/
+/-- In an abelian tower, the same restriction is an equality of actual automorphisms. -/
 theorem concreteNormResidueAutomorphism_restrict_tower
     (K : Type u₁) (E : Type u₂) (L : Type u₃)
     [Field K] [Field E] [Field L]
@@ -321,25 +314,24 @@ theorem concreteNormResidueAutomorphism_restrict_tower
     (hcf : SatisfiesClassFieldAxiom (intrinsicAbsoluteUnits K))
     (a : Kˣ) :
     AlgEquiv.restrictNormalHom E
-        ((Abelianization.equivOfComm (H := Gal(L / K))).symm
+        ((Group.Abelianization.equivOfComm (H := Gal(L / K))).symm
           (concreteNormResidueSymbolOfEmbedding K L iL D v hcf a)) =
-      (Abelianization.equivOfComm (H := Gal(E / K))).symm
+      (Group.Abelianization.equivOfComm (H := Gal(E / K))).symm
         (concreteNormResidueSymbolOfEmbedding K E (towerLowerEmbedding K E L iL) D v hcf a) := by
   let z := concreteNormResidueSymbolOfEmbedding K L iL D v hcf a
-  let s := (Abelianization.equivOfComm (H := Gal(L / K))).symm z
-  let e := Abelianization.equivOfComm (H := Gal(E / K))
+  let s := (Group.Abelianization.equivOfComm (H := Gal(L / K))).symm z
+  let e := Group.Abelianization.equivOfComm (H := Gal(E / K))
   let y := concreteNormResidueSymbolOfEmbedding K E (towerLowerEmbedding K E L iL) D v hcf a
-  have hs : Abelianization.of s = z :=
-    (Abelianization.equivOfComm (H := Gal(L / K))).apply_symm_apply z
+  have hs : Group.Abelianization.of s = z :=
+    (Group.Abelianization.equivOfComm (H := Gal(L / K))).apply_symm_apply z
   apply e.injective
-  change Abelianization.of (AlgEquiv.restrictNormalHom E s) = e (e.symm y)
-  exact (Abelianization.map_of (AlgEquiv.restrictNormalHom E) s).symm.trans
-    ((congrArg (Abelianization.map (AlgEquiv.restrictNormalHom E)) hs).trans
+  change Group.Abelianization.of (AlgEquiv.restrictNormalHom E s) = e (e.symm y)
+  exact (Group.Abelianization.map_of (AlgEquiv.restrictNormalHom E) s).symm.trans
+    ((congrArg (Group.Abelianization.map (AlgEquiv.restrictNormalHom E)) hs).trans
       ((concreteNormResidueSymbol_restrict_tower K E L iL D v hcf a).trans
         (e.apply_symm_apply y).symm))
 
-/-- Pointwise restriction naturality for the canonical local Artin
-automorphism in an arbitrary finite abelian tower. -/
+/-- Pointwise restriction naturality for the canonical local Artin automorphism in an arbitrary finite abelian tower. -/
 theorem localArtinAutomorphism_restrict_tower
     (K : Type u₁) (E : Type u₂) (L : Type u₃)
     [Field K] [Field E] [Field L]
@@ -351,9 +343,9 @@ theorem localArtinAutomorphism_restrict_tower
     [IsAbelianGalois K E] [IsAbelianGalois K L]
     (a : Kˣ) :
     AlgEquiv.restrictNormalHom E
-        ((Abelianization.equivOfComm (H := Gal(L / K))).symm
+        ((Group.Abelianization.equivOfComm (H := Gal(L / K))).symm
           (localArtinMonoidHom K L a)) =
-      (Abelianization.equivOfComm (H := Gal(E / K))).symm
+      (Group.Abelianization.equivOfComm (H := Gal(E / K))).symm
         (localArtinMonoidHom K E a) := by
   let iL := AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L
   rw [localArtinMonoidHom_eq_of_embedding K L iL,
@@ -366,8 +358,7 @@ theorem localArtinAutomorphism_restrict_tower
         (localHenselianValuation K)
         (separableClosureUnits_isClassFormation K) a
 
-/-- The actual finite abelian local Artin maps commute with the genuine
-restriction homomorphism in every finite abelian tower `K ⊂ E ⊂ L`. -/
+/-- The actual finite abelian local Artin maps commute with the genuine restriction homomorphism in every finite abelian tower `K ⊂ E ⊂ L`. -/
 theorem abelianLocalArtinMonoidHom_restrict_tower
     (K : Type u₁) (E : Type u₂) (L : Type u₃)
     [Field K] [Field E] [Field L]
@@ -384,9 +375,7 @@ theorem abelianLocalArtinMonoidHom_restrict_tower
   intro a
   exact localArtinAutomorphism_restrict_tower K E L a
 
-/-- When `L` is regarded as an `M`-algebra through the inverse of a
-`K`-algebra equivalence, restriction from `L` to `M` is conjugation by that
-equivalence. -/
+/-- When `L` is regarded as an `M`-algebra through the inverse of a `K`-algebra equivalence, restriction from `L` to `M` is conjugation by that equivalence. -/
 theorem restrictNormalHom_eq_autCongr
     (K : Type u₁) (L : Type u₂) (M : Type u₃)
     [Field K] [Field L] [Field M]
@@ -415,8 +404,7 @@ theorem restrictNormalHom_eq_autCongr
     _ = e.symm ((AlgEquiv.autCongr e sigma) x) := by
       simp [AlgEquiv.autCongr_apply]
 
-/-- The finite Artin map is transported by the actual conjugation of
-automorphisms for any (K)-algebra equivalence of finite Galois extensions. -/
+/-- The finite Artin map is transported by the actual conjugation of automorphisms for any (K)-algebra equivalence of finite Galois extensions. -/
 theorem localArtinMonoidHom_autCongr
     (K : Type u₁) (L : Type u₂) (M : Type u₃)
     [Field K] [Field L] [Field M] [Algebra K L] [Algebra K M]
@@ -430,19 +418,17 @@ theorem localArtinMonoidHom_autCongr
     apply RingHom.ext
     intro x
     exact (e.symm.commutes x).symm)
-  have h (z : Abelianization Gal(L/K)) :
+  have h (z : Group.Abelianization Gal(L/K)) :
       (AlgEquiv.autCongr e).abelianizationCongr z =
-        Abelianization.map (AlgEquiv.restrictNormalHom M) z := by
+        Group.Abelianization.map (AlgEquiv.restrictNormalHom M) z := by
     rw [restrictNormalHom_eq_autCongr K L M e]
     refine QuotientGroup.induction_on z fun σ => ?_
-    exact (abelianizationCongr_of (AlgEquiv.autCongr e) σ).trans
-      (Abelianization.map_of (AlgEquiv.autCongr e).toMonoidHom σ).symm
+    exact (Group.abelianizationCongr_of (AlgEquiv.autCongr e) σ).trans
+      (Group.Abelianization.map_of (AlgEquiv.autCongr e).toMonoidHom σ).symm
   rw [h]
   exact localArtinMonoidHom_restrict_tower K M L a
 
-/-- Finite local Artin maps are natural under a `K`-algebra equivalence of
-finite abelian extensions.  The Galois groups are identified by conjugating
-automorphisms with that equivalence. -/
+/-- Finite local Artin maps are natural under a `K`-algebra equivalence of finite abelian extensions.  The Galois groups are identified by conjugating automorphisms with that equivalence. -/
 theorem abelianLocalArtinMonoidHom_autCongr
     (K : Type u₁) (L : Type u₂) (M : Type u₃)
     [Field K] [Field L] [Field M]
@@ -470,8 +456,7 @@ namespace ClassFieldTheory
 
 universe u₁ u₂ u₃
 
-/-- Restriction of the canonical Artin map at the upper level is exactly the
-canonical Artin map at the lower level of a finite abelian tower. -/
+/-- Restriction of the canonical Artin map at the upper level is exactly the canonical Artin map at the lower level of a finite abelian tower. -/
 theorem finiteAbelianLocalArtinMap_restrict_tower
     (K : Type u₁) (E : Type u₂) (L : Type u₃)
     [Field K] [Field E] [Field L]

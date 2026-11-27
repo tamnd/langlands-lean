@@ -453,7 +453,7 @@ theorem hasSum_integral_unitCube_heckeTheta (hχ : ∀ u : (𝓞 K)ˣ, infinityW
       rw [Equiv.trans_apply, coe_unitsEquivFiber, heckeTerm_unitsEquiv hχ _ _ hy.le]
     have hsG : Summable fun q : torsion K × (Fin (rank K) → ℤ) => G q.2 := by
       refine (((unitsEquiv K).trans (unitsEquivFiber I)).summable_iff.2
-        (hsum.subtype (orbitOf a ⁻¹' {I}))).congr fun q => ?_
+        (hsum.comp_injective Subtype.coe_injective)).congr fun q => ?_
       exact hval q
     calc ∑' β : (orbitOf a ⁻¹' {I}), g β
         = ∑' q : torsion K × (Fin (rank K) → ℤ),

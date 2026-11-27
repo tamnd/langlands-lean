@@ -22,21 +22,11 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele
 /-!
 # Compatibility of the global Artin map with global reciprocity
 
-For a finite abelian extension of number fields, the preliminary global
-Artin map is the product of the chosen local Artin maps.  The finite-place
-and infinite-place compatibility theorems identify every one-place factor
-with the canonical global norm-residue map.
+For a finite abelian extension of number fields, the preliminary global Artin map is the product of the chosen local Artin maps.  The finite-place and infinite-place compatibility theorems identify every one-place factor with the canonical global norm-residue map.
 
-Only finitely many finite local Artin factors of an idele are nontrivial.
-The finite-support approximation theorem replaces an arbitrary idele by
-the product of those one-place ideles modulo an ordinary idèle norm.
-It follows that the preliminary global Artin map is exactly the pullback
-of the canonical norm-residue map along `I_K → C_K`.
+Only finitely many finite local Artin factors of an idele are nontrivial. The finite-support approximation theorem replaces an arbitrary idele by the product of those one-place ideles modulo an ordinary idèle norm. It follows that the preliminary global Artin map is exactly the pullback of the canonical norm-residue map along `I_K → C_K`.
 
-In particular, the local product is trivial on every principal idele.
-The global Artin map therefore descends to the idele class group, where
-it is the canonical surjective reciprocity homomorphism and has the
-genuine idele-class norm range as its kernel.
+In particular, the local product is trivial on every principal idele. The global Artin map therefore descends to the idele class group, where it is the canonical surjective reciprocity homomorphism and has the genuine idele-class norm range as its kernel.
 -/
 
 
@@ -60,8 +50,7 @@ variable
     [Field L] [NumberField L] [Algebra K L]
     [FiniteDimensional K L] [IsAbelianGalois K L]
 
-/-- The canonical Artin map on the standard principal quotient gives the
-product of the actual local Artin factors on every idèle. -/
+/-- The canonical Artin map on the standard principal quotient gives the product of the actual local Artin factors on every idèle. -/
 theorem standardNumberFieldArtin_comp_toStandardClass_eq_globalArtin :
     (standardNumberFieldArtinContinuousMonoidHom K L).toMonoidHom.comp
         (IdeleGroup.toStandardClass K) = globalArtinMonoidHom (K := K) (L := L) := by
@@ -72,7 +61,7 @@ theorem standardNumberFieldArtin_comp_toStandardClass_eq_globalArtin :
   let a₀ := artinFiniteSupportApproximation (K := K) (L := L) a
   let n := standardNumberFieldNormResidueEquivOfEmbedding K L
     (AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L)
-  let e : Gal(L/K) ≃* Abelianization Gal(L/K) := Abelianization.equivOfComm
+  let e : Gal(L/K) ≃* Group.Abelianization Gal(L/K) := Group.Abelianization.equivOfComm
   have hc := globalNormClassFromIdele_eq_artinFiniteSupportApproximation (K := K) (L := L) a
   have hApprox : f (p a) = f (p a₀) := congrArg (fun c => e.symm (n c)) hc
   change f (p a) = globalArtinMonoidHom (K := K) (L := L) a
@@ -100,10 +89,7 @@ theorem standardNumberFieldArtin_comp_toStandardClass_eq_globalArtin :
     _ = _ := (globalArtinMonoidHom_eq_artinFiniteSupportApproximation
       (K := K) (L := L) a).symm
 
-/-- The chosen local Artin product is trivial on every principal
-idele.  This is the global Artin product formula with the geometric
-Frobenius normalization used by the local maps.
-The inverse arithmetic normalization is exposed in `ArithmeticNormalization`. -/
+/-- The chosen local Artin product is trivial on every principal idele.  This is the global Artin product formula with the geometric Frobenius normalization used by the local maps. The inverse arithmetic normalization is exposed in `ArithmeticNormalization`. -/
 @[simp]
 theorem globalArtinMonoidHom_principalIdele
     (x : Kˣ) :
@@ -119,9 +105,7 @@ theorem globalArtinMonoidHom_principalIdele
     (IdeleGroup.toStandardClass K (IdeleGroup.principalIdele K x)) = 1
   rw [IdeleGroup.toStandardClass_principalIdele, map_one]
 
-/-- Expanded form of the global product formula: the product of all
-chosen infinite local symbols and the finite-support product of all
-chosen finite local symbols of a principal idele is one. -/
+/-- Expanded form of the global product formula: the product of all chosen infinite local symbols and the finite-support product of all chosen finite local symbols of a principal idele is one. -/
 theorem chosenLocalArtin_product_principalIdele
     (x : Kˣ) :
     (∏ v : InfinitePlace K,
@@ -140,8 +124,7 @@ theorem chosenLocalArtin_product_principalIdele
     globalArtinMonoidHom_principalIdele
       (K := K) (L := L) x
 
-/-- Evaluation of the descended Artin homomorphism on an idele
-representative recovers the chosen-local-factor product. -/
+/-- Evaluation of the descended Artin homomorphism on an idele representative recovers the chosen-local-factor product. -/
 theorem globalNormResidueMonoidHom_mk
     (a : IdeleGroup K) :
     globalNormResidueMonoidHom K L

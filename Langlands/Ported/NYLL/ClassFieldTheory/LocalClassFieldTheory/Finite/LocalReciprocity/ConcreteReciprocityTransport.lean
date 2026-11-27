@@ -18,14 +18,9 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finit
 /-!
 # Finite local reciprocity: transport of abstract reciprocity to a field extension
 
-This file contains the final comparison step in the proof of the local
-reciprocity law.  Once the actual absolute-Galois datum, henselian valuation,
-and class-field axiom have been constructed, the abstract reciprocity theorem is transported
-through the concrete finite Galois realization in a separable closure and
-through the actual field norm.
+This file contains the final comparison step in the proof of the local reciprocity law.  Once the actual absolute-Galois datum, henselian valuation, and class-field axiom have been constructed, the abstract reciprocity theorem is transported through the concrete finite Galois realization in a separable closure and through the actual field norm.
 
-The coefficient module remains `(SeparableClosure K)ˣ`; this is essential in
-imperfect positive characteristic.
+The coefficient module remains `(SeparableClosure K)ˣ`; this is essential in imperfect positive characteristic.
 -/
 
 @[expose] public section
@@ -56,8 +51,7 @@ noncomputable local instance intrinsicAbsoluteGaloisT2 : T2Space G :=
 
 /-! ## Transport relative to an explicit embedding -/
 
-/-- The finite abstract extension object determined by an explicit
-embedding of `L` into the fixed separable closure. -/
+/-- The finite abstract extension object determined by an explicit embedding of `L` into the fixed separable closure. -/
 def finiteGaloisAbstractExtensionOfEmbedding
     (i : L →ₐ[K] SeparableClosure K) : FiniteGaloisSubextension B where
   field := finiteGaloisClosedFixingSubgroupOfEmbedding K L i
@@ -67,14 +61,12 @@ def finiteGaloisAbstractExtensionOfEmbedding
   finite := baseFixingExtensionQuotient_finite K (SeparableClosure K)
     (finiteGaloisFieldRangeOfEmbedding K L i)
 
-/-- The concrete realization of `L/K` as the finite Galois extension object
-to which the abstract reciprocity theorem is applied. -/
+/-- The concrete realization of `L/K` as the finite Galois extension object to which the abstract reciprocity theorem is applied. -/
 def finiteGaloisAbstractExtension : FiniteGaloisSubextension B :=
   finiteGaloisAbstractExtensionOfEmbedding K L
     (AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L)
 
-/-- The finite abstract norm class represented by a base-field unit in an
-explicit separable-closure realization. -/
+/-- The finite abstract norm class represented by a base-field unit in an explicit separable-closure realization. -/
 def embeddedBaseNormClass
     (i : L →ₐ[K] SeparableClosure K) (a : Kˣ) :
     let E := finiteGaloisAbstractExtensionOfEmbedding K L i
@@ -83,13 +75,12 @@ def embeddedBaseNormClass
   exact @finiteNormClass _ _ _ A B E.field E.below E.finite
     (baseUnitsEquivGaloisAmbientFixed K (SeparableClosure K) (Additive.ofMul a))
 
-/-- The additive reciprocity equivalence transported through an explicit
-realization of `L/K` in the separable closure. -/
+/-- The additive reciprocity equivalence transported through an explicit realization of `L/K` in the separable closure. -/
 def concreteReciprocityAddEquivOfEmbedding
     (i : L →ₐ[K] SeparableClosure K)
     (D : DegreeData G) (v : ValuationData D A)
     (hcf : SatisfiesClassFieldAxiom A) :
-    Additive (Abelianization Gal(L / K)) ≃+
+    Additive (Group.Abelianization Gal(L / K)) ≃+
       Additive (NormQuotient K L) :=
   (MulEquiv.toAdditive
       ((finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L
@@ -99,62 +90,56 @@ def concreteReciprocityAddEquivOfEmbedding
         (finiteNormQuotientEquivEmbeddedNormQuotient
           K (SeparableClosure K) L i))
 
-/-- Multiplicative form of reciprocity transported through an explicit
-embedding. -/
+/-- Multiplicative form of reciprocity transported through an explicit embedding. -/
 def concreteReciprocityEquivOfEmbedding
     (i : L →ₐ[K] SeparableClosure K)
     (D : DegreeData G) (v : ValuationData D A)
     (hcf : SatisfiesClassFieldAxiom A) :
-    Abelianization Gal(L / K) ≃* NormQuotient K L := by
-  let e : Additive (Abelianization Gal(L / K)) ≃+
+    Group.Abelianization Gal(L / K) ≃* NormQuotient K L := by
+  let e : Additive (Group.Abelianization Gal(L / K)) ≃+
       Additive (NormQuotient K L) :=
     concreteReciprocityAddEquivOfEmbedding K L i D v hcf
-  let em : Multiplicative (Additive (Abelianization Gal(L / K))) ≃*
+  let em : Multiplicative (Additive (Group.Abelianization Gal(L / K))) ≃*
       Multiplicative (Additive (NormQuotient K L)) :=
     @AddEquiv.toMultiplicative
-      (Additive (Abelianization Gal(L / K)))
+      (Additive (Group.Abelianization Gal(L / K)))
       (Additive (NormQuotient K L)) inferInstance inferInstance e
   exact (MulEquiv.multiplicativeAdditive
-      (Abelianization Gal(L / K))).symm.trans
+      (Group.Abelianization Gal(L / K))).symm.trans
     (em.trans
         (MulEquiv.multiplicativeAdditive (NormQuotient K L)))
 
-/-- Norm-residue symbol obtained from an explicit separable-closure
-realization. -/
+/-- Norm-residue symbol obtained from an explicit separable-closure realization. -/
 def concreteNormResidueSymbolOfEmbedding
     (i : L →ₐ[K] SeparableClosure K)
     (D : DegreeData G) (v : ValuationData D A)
     (hcf : SatisfiesClassFieldAxiom A) :
-    Kˣ →* Abelianization Gal(L / K) :=
+    Kˣ →* Group.Abelianization Gal(L / K) :=
   (concreteReciprocityEquivOfEmbedding K L i D v hcf).symm.toMonoidHom.comp
     (normClass K L)
 
-/-- The additive form of the concrete reciprocity isomorphism.  The inputs
-are the three genuine structures constructed in the preceding part of the
-proof, not additional reciprocity hypotheses. -/
+/-- The additive form of the concrete reciprocity isomorphism.  The inputs are the three genuine structures constructed in the preceding part of the proof, not additional reciprocity hypotheses. -/
 def concreteReciprocityAddEquiv
     (D : DegreeData G) (v : ValuationData D A)
     (hcf : SatisfiesClassFieldAxiom A) :
-    Additive (Abelianization Gal(L / K)) ≃+
+    Additive (Group.Abelianization Gal(L / K)) ≃+
       Additive (NormQuotient K L) :=
   concreteReciprocityAddEquivOfEmbedding K L
     (AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L) D v hcf
 
-/-- The public multiplicative form of the transported reciprocity
-isomorphism `G(L/K)ᵃᵇ ≃ Kˣ/N_{L/K}Lˣ`. -/
+/-- The public multiplicative form of the transported reciprocity isomorphism `G(L/K)ᵃᵇ ≃ Kˣ/N_{L/K}Lˣ`. -/
 def concreteReciprocityEquiv
     (D : DegreeData G) (v : ValuationData D A)
     (hcf : SatisfiesClassFieldAxiom A) :
-    Abelianization Gal(L / K) ≃* NormQuotient K L :=
+    Group.Abelianization Gal(L / K) ≃* NormQuotient K L :=
   concreteReciprocityEquivOfEmbedding K L
     (AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L) D v hcf
 
-/-- The local norm-residue symbol obtained by inverting reciprocity and
-precomposing with the quotient map on `Kˣ`. -/
+/-- The local norm-residue symbol obtained by inverting reciprocity and precomposing with the quotient map on `Kˣ`. -/
 def concreteNormResidueSymbol
     (D : DegreeData G) (v : ValuationData D A)
     (hcf : SatisfiesClassFieldAxiom A) :
-    Kˣ →* Abelianization Gal(L / K) :=
+    Kˣ →* Group.Abelianization Gal(L / K) :=
   concreteNormResidueSymbolOfEmbedding K L
     (AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L) D v hcf
 
@@ -166,8 +151,7 @@ theorem concreteNormResidueSymbol_surjective
   (concreteReciprocityEquiv K L D v hcf).symm.surjective.comp
     (QuotientGroup.mk'_surjective (localNormSubgroup K L))
 
-/-- The kernel of the local norm-residue symbol is exactly the field norm
-subgroup. -/
+/-- The kernel of the local norm-residue symbol is exactly the field norm subgroup. -/
 theorem concreteNormResidueSymbol_ker
     (D : DegreeData G) (v : ValuationData D A)
     (hcf : SatisfiesClassFieldAxiom A) :

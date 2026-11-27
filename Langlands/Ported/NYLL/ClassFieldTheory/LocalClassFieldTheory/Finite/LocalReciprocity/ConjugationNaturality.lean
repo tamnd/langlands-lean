@@ -14,10 +14,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.LocalClassFieldTheory.Finit
 /-!
 # Conjugation naturality of finite local reciprocity
 
-Two realizations of a finite Galois extension inside the fixed separable
-closure are related by conjugation. This module transports that conjugation
-to the actual Galois group, records the algebraic norm-residue square, and
-bundles the resulting map on the topological abelianization continuously.
+Two realizations of a finite Galois extension inside the fixed separable closure are related by conjugation. This module transports that conjugation to the actual Galois group, records the algebraic norm-residue square, and bundles the resulting map on the topological abelianization continuously.
 -/
 
 
@@ -34,21 +31,19 @@ open LocalFieldTheory
 variable (K L : Type) [Field K] [Field L] [Algebra K L]
   [FiniteDimensional K L] [IsGalois K L]
 
-/-- Conjugation between two separable-closure realizations, transported to
-the abelianization of the actual relative Galois group. -/
+/-- Conjugation between two separable-closure realizations, transported to the abelianization of the actual relative Galois group. -/
 noncomputable def abelianizedGaloisConjugationOfEmbeddings
     (i j : L →ₐ[K] SeparableClosure K) :
-    Abelianization (Gal(L / K)) ≃* Abelianization (Gal(L / K)) :=
+    Group.Abelianization (Gal(L / K)) ≃* Group.Abelianization (Gal(L / K)) :=
   (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L i).abelianizationCongr.symm.trans
     ((finiteGaloisConjugationOfEmbeddings K L i j).abelianizationCongr.trans
       (finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding K L j).abelianizationCongr)
 
-/-- After both realizations are identified with the actual extension, the
-transported conjugation is the identity on the abelianization. -/
+/-- After both realizations are identified with the actual extension, the transported conjugation is the identity on the abelianization. -/
 theorem abelianizedGaloisConjugationOfEmbeddings_eq_refl
     (i j : L →ₐ[K] SeparableClosure K) :
     abelianizedGaloisConjugationOfEmbeddings K L i j =
-      MulEquiv.refl (Abelianization (Gal(L / K))) := by
+      MulEquiv.refl (Group.Abelianization (Gal(L / K))) := by
   apply MulEquiv.ext
   intro z
   change
@@ -65,8 +60,7 @@ theorem abelianizedGaloisConjugationOfEmbeddings_eq_refl
       ((finiteGaloisAbstractQuotientEquivGaloisGroupOfEmbedding
         K L i).abelianizationCongr.apply_symm_apply z)
 
-/-- Algebraic conjugation naturality for the norm-residue symbols computed
-from two explicit realizations of the same finite Galois extension. -/
+/-- Algebraic conjugation naturality for the norm-residue symbols computed from two explicit realizations of the same finite Galois extension. -/
 theorem concreteNormResidueSymbolOfEmbedding_conjugation
     (i j : L →ₐ[K] SeparableClosure K)
     (D : ClassFormation.DegreeData (Gal(SeparableClosure K/K)))
@@ -88,8 +82,7 @@ section LocalAlgebraic
 variable [ValuativeRel K] [TopologicalSpace K]
   [IsNonarchimedeanLocalField K]
 
-/-- Field-facing algebraic form of the second naturality diagram for the
-canonical local class formation. -/
+/-- Field-facing algebraic form of the second naturality diagram for the canonical local class formation. -/
 theorem localArtinMonoidHom_conjugation
     (i j : L →ₐ[K] SeparableClosure K) :
     (abelianizedGaloisConjugationOfEmbeddings K L i j).toMonoidHom.comp
@@ -105,8 +98,7 @@ theorem localArtinMonoidHom_conjugation
 end LocalAlgebraic
 
 
-/-- The conjugation of two realizations, bundled continuously on the
-topological abelianization of the finite Krull Galois group. -/
+/-- The conjugation of two realizations, bundled continuously on the topological abelianization of the finite Krull Galois group. -/
 noncomputable def topologicalAbelianizationConjugationOfEmbeddings
     (i j : L →ₐ[K] SeparableClosure K) :
     TopologicalAbelianization (Gal(L / K)) ≃ₜ*
@@ -123,8 +115,7 @@ noncomputable def topologicalAbelianizationConjugationOfEmbeddings
       continuous_toFun := continuous_of_discreteTopology
       continuous_invFun := continuous_of_discreteTopology }
 
-/-- Forgetting topology identifies the bundled conjugation with the
-algebraic conjugation through the finite abelianization comparison. -/
+/-- Forgetting topology identifies the bundled conjugation with the algebraic conjugation through the finite abelianization comparison. -/
 theorem topologicalAbelianizationConjugationOfEmbeddings_toMonoidHom
     (i j : L →ₐ[K] SeparableClosure K) :
     (topologicalAbelianization_finite_equiv K L).symm.toMonoidHom.comp
@@ -139,8 +130,7 @@ section LocalContinuous
 variable [ValuativeRel K] [TopologicalSpace K]
   [IsNonarchimedeanLocalField K]
 
-/-- The continuous local Artin map is equivariant for conjugation between
-two realizations of the finite Galois extension. -/
+/-- The continuous local Artin map is equivariant for conjugation between two realizations of the finite Galois extension. -/
 theorem localArtinMap_conjugation
     (i j : L →ₐ[K] SeparableClosure K) :
     (ContinuousMonoidHom.toContinuousMonoidHom

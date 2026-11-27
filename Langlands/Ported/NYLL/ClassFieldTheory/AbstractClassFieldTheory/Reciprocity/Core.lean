@@ -23,12 +23,7 @@ public import Langlands.Ported.NYLL.GaloisCohomology.Cyclic.TateComparison
 /-!
 # Abstract reciprocity, the unramified cohomology consequence
 
-The class field axiom implies the unit-cohomology axiom for every finite unramified
-extension.  The proof follows: degree minus one is reduced to
-the corresponding assertion for `A_L`, after correcting a primitive by an
-element of `A_K` with the same valuation; in degree zero, valuation induces
-a surjection from `A_K / N A_L` to `Z / [L : K] Z`, and equality of the two
-orders makes this map injective.
+The class field axiom implies the unit-cohomology axiom for every finite unramified extension.  The proof follows: degree minus one is reduced to the corresponding assertion for `A_L`, after correcting a primitive by an element of `A_K` with the same valuation; in degree zero, valuation induces a surjection from `A_K / N A_L` to `Z / [L : K] Z`, and equality of the two orders makes this map injective.
 -/
 
 @[expose] public section
@@ -415,10 +410,7 @@ private theorem classFieldAxiom_unramifiedUnits_hZero
       _ = u.1.1 := rfl
   exact (IntegralGroupCohomology.Universe.isZero_tateZero_iff_exact U g hg).mpr hExact
 
-/-- **the unramified cohomology consequence.**  The class field axiom implies the unit-cohomology
-axiom: for every
-finite unramified Galois extension `L / K`, both
-`H⁰(G(L/K), U_L)` and `H⁻¹(G(L/K), U_L)` vanish. -/
+/-- **the unramified cohomology consequence.**  The class field axiom implies the unit-cohomology axiom: for every finite unramified Galois extension `L / K`, both `H⁰(G(L/K), U_L)` and `H⁻¹(G(L/K), U_L)` vanish. -/
 theorem classFieldAxiom_implies_unramifiedUnitCohomology
     (v : ValuationData D A) (hcf : SatisfiesClassFieldAxiom A) :
     SatisfiesUnramifiedUnitCohomology D v := by
@@ -436,19 +428,13 @@ end ValuationData
 /-!
 # Abstract reciprocity, the abstract reciprocity theorem: the two exact rows
 
-The proof of the abstract reciprocity theorem starts with a finite Galois tower
-`L | M | K`.  This file constructs the two rows of that diagram on the
-actual finite Galois groups and finite norm quotients:
+The proof of the abstract reciprocity theorem starts with a finite Galois tower `L | M | K`.  This file constructs the two rows of that diagram on the actual finite Galois groups and finite norm quotients:
 
 `1 → G(L/M) → G(L/K) → G(M/K) → 1`,
 
-`A_M / N_{L/M} A_L → A_K / N_{L/K} A_L
-    → A_K / N_{M/K} A_M → 0`.
+`A_M / N_{L/M} A_L → A_K / N_{L/K} A_L → A_K / N_{M/K} A_M → 0`.
 
-It also records the canonical factorization of an additive reciprocity map
-through the abelianization.  No exactness or bijectivity statement is taken
-as an input; both rows are proved directly from quotient membership and norm
-transitivity.
+It also records the canonical factorization of an additive reciprocity map through the abelianization.  No exactness or bijectivity statement is taken as an input; both rows are proved directly from quotient membership and norm transitivity.
 -/
 
 noncomputable section
@@ -473,9 +459,7 @@ def abstractReciprocityRestriction
   intro k hk
   exact hLM hk
 
-/--
-Establishes the identity `abstractReciprocityRestriction K M L hLM hMK (QuotientGroup.mk k) =
-QuotientGroup.mk k`.
+/-- Establishes the identity `abstractReciprocityRestriction K M L hLM hMK (QuotientGroup.mk k) = QuotientGroup.mk k`.
 -/
 @[simp]
 theorem abstractReciprocityRestriction_mk
@@ -506,8 +490,7 @@ theorem abstractReciprocityRestriction_surjective
   intro k
   exact ⟨QuotientGroup.mk k, rfl⟩
 
-/-- With equal base fields, norm--conjugation naturality's Galois-side restriction is
-the restriction in the reciprocity reduction exact row's exact row. -/
+/-- With equal base fields, norm--conjugation naturality's Galois-side restriction is the restriction in the reciprocity reduction exact row's exact row. -/
 theorem finiteReciprocityNaturalityRestriction_sameBase_eq_restriction
     {G : Type*} [Group G] [TopologicalSpace G]
     (K M L : ClosedSubgroup G)
@@ -524,8 +507,7 @@ theorem finiteReciprocityNaturalityRestriction_sameBase_eq_restriction
   intro k
   rfl
 
-/-- Finiteness of `L | K` implies finiteness of the quotient `G(M/K)`.
-This is derived from the actual surjective restriction map. -/
+/-- Finiteness of `L | K` implies finiteness of the quotient `G(M/K)`. This is derived from the actual surjective restriction map. -/
 theorem abstractReciprocity_intermediateQuotient_finite
     {G : Type*} [Group G] [TopologicalSpace G]
     (K M L : ClosedSubgroup G)
@@ -540,8 +522,7 @@ theorem abstractReciprocity_intermediateQuotient_finite
   Finite.of_surjective (abstractReciprocityRestriction K M L hLM hMK)
     (abstractReciprocityRestriction_surjective K M L hLM hMK)
 
-/-- The inclusion `G(L/M) → G(L/K)` in the upper row.
-Normality of `L | M` is derived from normality of `L | K`. -/
+/-- The inclusion `G(L/M) → G(L/K)` in the upper row. Normality of `L | M` is derived from normality of `L | K`. -/
 def abstractReciprocityInclusion
     {G : Type*} [Group G] [TopologicalSpace G]
     (K M L : ClosedSubgroup G)
@@ -556,9 +537,7 @@ def abstractReciprocityInclusion
   intro sharedOwner1
   exact transferNormNaturalityIntermediateInclusion K M L hLM hMK
 
-/--
-On quotient representatives, the abstract reciprocity inclusion is induced by inclusion of the
-intermediate subgroup.
+/-- On quotient representatives, the abstract reciprocity inclusion is induced by inclusion of the intermediate subgroup.
 -/
 @[simp]
 theorem abstractReciprocityInclusion_mk
@@ -576,8 +555,7 @@ theorem abstractReciprocityInclusion_mk
   intro sharedOwner1
   rfl
 
-/-- The upper row is exact at `G(L/K)`: the image of `G(L/M)` is exactly
-the kernel of restriction to `G(M/K)`. -/
+/-- The upper row is exact at `G(L/K)`: the image of `G(L/M)` is exactly the kernel of restriction to `G(M/K)`. -/
 theorem abstractReciprocity_galois_exact
     {G : Type*} [Group G] [TopologicalSpace G]
     (K M L : ClosedSubgroup G)
@@ -650,8 +628,7 @@ theorem abstractReciprocity_lowerExtension_finite
     ((Subgroup.inclusion hMK m)⁻¹ * Subgroup.inclusion hMK n)).1 hmem
   simpa using hG
 
-/-- Norm transitivity identifies the norm image from `L` with a subgroup
-of the norm image from `M`. -/
+/-- Norm transitivity identifies the norm image from `L` with a subgroup of the norm image from `M`. -/
 theorem abstractReciprocity_finiteNormSubgroup_le
     (A : Rep.{v} ℤ G) (K M L : ClosedSubgroup G)
     (hLM : L.toSubgroup ≤ M.toSubgroup)
@@ -695,9 +672,7 @@ def abstractReciprocityNormMap
   intro sharedOwner1 sharedOwner2
   exact finiteReciprocityNaturalityNormMap A K M L L (hLM.trans hMK) hLM hMK le_rfl
 
-/--
-The abstract reciprocity norm map sends a finite norm class to the class of the corresponding
-relative norm.
+/-- The abstract reciprocity norm map sends a finite norm class to the class of the corresponding relative norm.
 -/
 @[simp]
 theorem abstractReciprocityNormMap_finiteNormClass
@@ -722,8 +697,7 @@ theorem abstractReciprocityNormMap_finiteNormClass
   exact finiteReciprocityNaturalityNormMap_finiteNormClass A K M L L
     (hLM.trans hMK) hLM hMK le_rfl a
 
-/-- The quotient projection
-`A_K/N_{L/K}A_L → A_K/N_{M/K}A_M` in the lower row. -/
+/-- The quotient projection `A_K/N_{L/K}A_L → A_K/N_{M/K}A_M` in the lower row. -/
 def abstractReciprocityNormProjection
     (A : Rep.{v} ℤ G) (K M L : ClosedSubgroup G)
     (hLM : L.toSubgroup ≤ M.toSubgroup)
@@ -746,9 +720,7 @@ def abstractReciprocityNormProjection
   exact (finiteNormClass_eq_zero_iff A K M hMK a).2
     (abstractReciprocity_finiteNormSubgroup_le A K M L hLM hMK ha)
 
-/--
-The abstract reciprocity norm projection preserves the representative while passing to the
-intermediate norm quotient.
+/-- The abstract reciprocity norm projection preserves the representative while passing to the intermediate norm quotient.
 -/
 @[simp]
 theorem abstractReciprocityNormProjection_finiteNormClass
@@ -772,8 +744,7 @@ theorem abstractReciprocityNormProjection_finiteNormClass
   simp [abstractReciprocityNormProjection]
   rfl
 
-/-- When the two base fields in norm--conjugation naturality coincide, its norm map is
-the ordinary projection between the two actual finite norm quotients. -/
+/-- When the two base fields in norm--conjugation naturality coincide, its norm map is the ordinary projection between the two actual finite norm quotients. -/
 theorem finiteReciprocityNaturalityNormMap_sameBase_eq_normProjection
     (A : Rep.{v} ℤ G) (K M L : ClosedSubgroup G)
     (hLM : L.toSubgroup ≤ M.toSubgroup)
@@ -865,36 +836,31 @@ theorem abstractReciprocity_normQuotient_exact
       abstractReciprocityNormProjection_finiteNormClass]
     exact (finiteNormClass_eq_zero_iff A K M hMK _).2 ⟨b, rfl⟩
 
-/-- An additive homomorphism from a (possibly noncommutative) Galois group
-to an additive commutative group factors canonically through its
-abelianization.  This is the factor map used in the first reduction once the finite reciprocity
-equivalence supplies the reciprocity homomorphism. -/
+/-- An additive homomorphism from a (possibly noncommutative) Galois group to an additive commutative group factors canonically through its abelianization.  This is the factor map used in the first reduction once the finite reciprocity equivalence supplies the reciprocity homomorphism. -/
 def abstractReciprocityAbelianizationFactor
     {Q : Type*} {B : Type*} [Group Q] [AddCommGroup B]
-    (f : Additive Q →+ B) : Additive (Abelianization Q) →+ B := by
+    (f : Additive Q →+ B) : Additive (Group.Abelianization Q) →+ B := by
   let fMul : Q →* Multiplicative B :=
     { toFun := fun q => Multiplicative.ofAdd (f (Additive.ofMul q))
       map_one' := f.map_zero
       map_mul' := f.map_add }
-  let fAb : Abelianization Q →* Multiplicative B :=
-    Abelianization.lift fMul
+  let fAb : Group.Abelianization Q →* Multiplicative B :=
+    Group.Abelianization.lift fMul
   exact
     { toFun := fun q => Multiplicative.toAdd (fAb q.toMul)
       map_zero' := fAb.map_one
       map_add' := fAb.map_mul }
 
-/--
-Establishes the identity `abstractReciprocityAbelianizationFactor f (Additive.ofMul
-(Abelianization.of q)) = f (Additive.ofMul q)`.
+/-- Establishes the identity `abstractReciprocityAbelianizationFactor f (Additive.ofMul (Group.Abelianization.of q)) = f (Additive.ofMul q)`.
 -/
 @[simp]
 theorem abstractReciprocityAbelianizationFactor_of
     {Q : Type*} {B : Type*} [Group Q] [AddCommGroup B]
     (f : Additive Q →+ B) (q : Q) :
     abstractReciprocityAbelianizationFactor f
-        (Additive.ofMul (Abelianization.of q)) =
+        (Additive.ofMul (Group.Abelianization.of q)) =
       f (Additive.ofMul q) := by
-  exact Abelianization.lift_apply_of
+  exact Group.Abelianization.lift_apply_of
     ({ toFun := fun q => Multiplicative.ofAdd (f (Additive.ofMul q))
        map_one' := f.map_zero
        map_mul' := f.map_add } : Q →* Multiplicative B) q
@@ -908,14 +874,12 @@ def abstractReciprocityAbelianizedRestriction
     [hLnormal :
       (extensionSubgroup K L (hLM.trans hMK)).Normal]
     [hMnormal : (extensionSubgroup K M hMK).Normal] :
-    Abelianization
+    Group.Abelianization
         (K.toSubgroup ⧸ extensionSubgroup K L (hLM.trans hMK)) →*
-      Abelianization (K.toSubgroup ⧸ extensionSubgroup K M hMK) :=
-  Abelianization.map (abstractReciprocityRestriction K M L hLM hMK)
+      Group.Abelianization (K.toSubgroup ⧸ extensionSubgroup K M hMK) :=
+  Group.Abelianization.map (abstractReciprocityRestriction K M L hLM hMK)
 
-/-- The identity `N_{M/K} ∘ i = [M:K]` used in the Sylow argument of the
-first reduction.  Here `i` is the actual inclusion of finite norm
-quotients constructed in transfer--norm naturality. -/
+/-- The identity `N_{M/K} ∘ i = [M:K]` used in the Sylow argument of the first reduction.  Here `i` is the actual inclusion of finite norm quotients constructed in transfer--norm naturality. -/
 theorem abstractReciprocity_normMap_comp_normQuotientInclusion
     (A : Rep.{v} ℤ G) (K M L : ClosedSubgroup G)
     (hLM : L.toSubgroup ≤ M.toSubgroup)
@@ -952,10 +916,7 @@ theorem abstractReciprocity_normMap_comp_normQuotientInclusion
     exact relativeNorm_fixedFieldInclusion A E a
   rw [hnorm, finiteNormClass_nsmul]
 
-/-- In the cyclic case, the class-field axiom upgrades surjectivity of the actual
-reciprocity-shaped homomorphism to bijectivity.  The converse is formal;
-the forward implication uses the equality of the two actual finite orders,
-not an assumed cardinality certificate. -/
+/-- In the cyclic case, the class-field axiom upgrades surjectivity of the actual reciprocity-shaped homomorphism to bijectivity.  The converse is formal; the forward implication uses the equality of the two actual finite orders, not an assumed cardinality certificate. -/
 theorem abstractReciprocity_cyclic_surjective_iff_bijective
     (A : Rep.{v} ℤ G) (hcf : SatisfiesClassFieldAxiom A)
     (K L : ClosedSubgroup G)
@@ -985,10 +946,7 @@ theorem abstractReciprocity_cyclic_surjective_iff_bijective
       A hcf E hnormal g hg⟩
   · exact fun hr => hr.2
 
-/-- In a cyclic tower, the first norm map in the lower exact row is
-injective.  This is the order calculation in the third reduction:
-the three norm quotients have orders `[L:M]`, `[L:K]`, and `[M:K]`, and
-the tower law cancels the last factor. -/
+/-- In a cyclic tower, the first norm map in the lower exact row is injective.  This is the order calculation in the third reduction: the three norm quotients have orders `[L:M]`, `[L:K]`, and `[M:K]`, and the tower law cancels the last factor. -/
 theorem abstractReciprocity_cyclicTower_normMap_injective
     (A : Rep.{v} ℤ G) (hcf : SatisfiesClassFieldAxiom A)
     (K M L : ClosedSubgroup G)
@@ -1124,8 +1082,7 @@ theorem abstractReciprocity_cyclicTower_normMap_injective
   apply hRangeBijective.1
   exact Subtype.ext hxy
 
-/-- An elementary profinite-integer step:
-if `n z = k` in `ℤ̂`, with `0 ≤ k < n`, then `k = 0`. -/
+/-- An elementary profinite-integer step: if `n z = k` in `ℤ̂`, with `0 ≤ k < n`, then `k = 0`. -/
 theorem abstractReciprocity_zHat_nsmul_eq_natCast_forces_zero
     (n k : ℕ) (hn : 0 < n) (hk : k < n) (z : ZHat)
     (h : n • z =
@@ -1145,10 +1102,7 @@ theorem abstractReciprocity_zHat_nsmul_eq_natCast_forces_zero
   exact Nat.eq_zero_of_dvd_of_lt
     ((ZMod.natCast_eq_zero_iff k n).1 hkmod) hk
 
-/-- In a finite totally ramified extension, the normalized valuation of an
-element from the lower field is multiplied by the extension degree after
-inclusion into the upper field.  This is the valuation identity used for
-`M/M⁰`. -/
+/-- In a finite totally ramified extension, the normalized valuation of an element from the lower field is multiplied by the extension degree after inclusion into the upper field.  This is the valuation identity used for `M/M⁰`. -/
 theorem abstractReciprocity_valuationAt_fixedFieldInclusion_of_totallyRamified
     {D : DegreeData G} {A : Rep.{v} ℤ G} (v : ValuationData D A)
     (E : FiniteAbstractFieldExtension G)
@@ -1212,9 +1166,7 @@ theorem abstractReciprocity_valuationAt_fixedFieldInclusion_of_totallyRamified
       congrArg Subtype.val
         (map_nsmul (v.valuationAt E.base) (E.degree : ℕ) x)
 
-/-- The exact `k = 0` valuation endpoint of the totally ramified argument.  Here `K = M⁰`, `L = M`,
-and `x` is the element constructed in
-the fixed subgroup. -/
+/-- The exact `k = 0` valuation endpoint of the totally ramified argument.  Here `K = M⁰`, `L = M`, and `x` is the element constructed in the fixed subgroup. -/
 theorem abstractReciprocity_totallyRamified_valuation_forces_exponent_zero
     {D : DegreeData G} {A : Rep.{v} ℤ G} (v : ValuationData D A)
     (E : FiniteAbstractFieldExtension G)

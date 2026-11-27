@@ -22,26 +22,15 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.Valuation.Henselian.Core
 /-!
 # Arithmetic Frobenius on the unramified cyclotomic extension
 
-Let `K` be a complete discretely valued field with finite residue field
-`k = F_q`, let `ζ` be a primitive `n`-th root of unity, and suppose that `n`
-is prime to the residue characteristic.  the unramified cyclotomic theorem states that
-`K(ζ) / K` is unramified of degree the order of `q` modulo `n`, identifies
-its Galois group with the residue Galois group and arithmetic Frobenius, and
-proves `O_{K(ζ)} = O_K[ζ]`.
+Let `K` be a complete discretely valued field with finite residue field `k = F_q`, let `ζ` be a primitive `n`-th root of unity, and suppose that `n` is prime to the residue characteristic.  the unramified cyclotomic theorem states that `K(ζ) / K` is unramified of degree the order of `q` modulo `n`, identifies its Galois group with the residue Galois group and arithmetic Frobenius, and proves `O_{K(ζ)} = O_K[ζ]`.
 
 The proof follows the arithmetic construction directly and uses no comparison certificate:
 
-* the exact least-positive-exponent characterization of the order of `q`
-  modulo `n`;
-* the cyclotomic polynomial as the primitive separable integral model in the
-  the unramified base-change theorem Hensel core, giving unramifiedness and the degree formula;
-* the canonical reduction homomorphism from field automorphisms to residue
-  automorphisms, with injectivity from uniqueness of simple Hensel lifts and
-  surjectivity from the genuine Galois cardinalities;
-* arithmetic Frobenius, its formula `ζ ↦ ζ^q`, and generation of the Galois
-  group;
-* the reverse integral-ring inclusion by residue generation, ramification
-  index one, and Nakayama, yielding `O_{K(ζ)} = O_K[ζ]`.
+* the exact least-positive-exponent characterization of the order of `q` modulo `n`;
+* the cyclotomic polynomial as the primitive separable integral model in the the unramified base-change theorem Hensel core, giving unramifiedness and the degree formula;
+* the canonical reduction homomorphism from field automorphisms to residue automorphisms, with injectivity from uniqueness of simple Hensel lifts and surjectivity from the genuine Galois cardinalities;
+* arithmetic Frobenius, its formula `ζ ↦ ζ^q`, and generation of the Galois group;
+* the reverse integral-ring inclusion by residue generation, ramification index one, and Nakayama, yielding `O_{K(ζ)} = O_K[ζ]`.
 -/
 
 @[expose] public section
@@ -56,8 +45,7 @@ namespace Valuations
 open Polynomial ZMod
 
 
-/-- The integer `f` in the unramified cyclotomic theorem: the multiplicative order of the
-residue cardinality `q` modulo `n`. -/
+/-- The integer `f` in the unramified cyclotomic theorem: the multiplicative order of the residue cardinality `q` modulo `n`. -/
 def padicCyclotomicUnramifiedResidueDegree (n q : ℕ) (hqn : q.Coprime n) : ℕ :=
   orderOf (ZMod.unitOfCoprime q hqn)
 
@@ -87,8 +75,7 @@ theorem padicCyclotomicUnramifiedResidueDegree_le_of_modEq_one
     ← Nat.cast_pow, ← Nat.cast_one, ZMod.natCast_eq_natCast_iff]
   exact hqm
 
-/-- Literal least-positive-natural-number formulation of the degree in
-the unramified cyclotomic theorem(i). -/
+/-- Literal least-positive-natural-number formulation of the degree in the unramified cyclotomic theorem(i). -/
 theorem padicCyclotomicUnramifiedResidueDegree_isLeast
     (n q : ℕ) (hqn : q.Coprime n) :
     0 < padicCyclotomicUnramifiedResidueDegree n q hqn ∧
@@ -102,8 +89,7 @@ theorem padicCyclotomicUnramifiedResidueDegree_isLeast
         padicCyclotomicUnramifiedResidueDegree_le_of_modEq_one n q hqn hm hqm⟩
 
 
-/-- A root of unity is integral over any coefficient ring acting on its
-ambient field.  This is the element-level source for the unramified cyclotomic theorem(iii). -/
+/-- A root of unity is integral over any coefficient ring acting on its ambient field.  This is the element-level source for the unramified cyclotomic theorem(iii). -/
 theorem padicCyclotomicUnramified_primitiveRoot_isIntegral
     {R : Type u} {L : Type v} [CommRing R] [Field L] [Algebra R L]
     {n : ℕ} {ζ : L} (hn : 0 < n) (hζ : IsPrimitiveRoot ζ n) :
@@ -112,8 +98,7 @@ theorem padicCyclotomicUnramified_primitiveRoot_isIntegral
   rw [hζ.pow_eq_one]
   exact isIntegral_one
 
-/-- Turn a literal equality with the integral closure into the standard
-`IsIntegralClosure` instance. -/
+/-- Turn a literal equality with the integral closure into the standard `IsIntegralClosure` instance. -/
 theorem padicCyclotomicUnramified_isIntegralClosure_of_subring_eq
     {K L : Type*} [Field K] [Field L] [Algebra K L]
     (V : Subring K) (W : Subring L) [Algebra V L]
@@ -134,10 +119,7 @@ theorem padicCyclotomicUnramified_isIntegralClosure_of_subring_eq
     rw [← h]
     exact y.property
 
-/-- Two simple roots over a local domain which have the same residue class
-are equal.  This is the uniqueness half of Hensel's lemma, in the small
-generality needed for the residue-action comparisons below and in the
-generic unramified support lemma for the unramified cyclotomic theorem. -/
+/-- Two simple roots over a local domain which have the same residue class are equal.  This is the uniqueness half of Hensel's lemma, in the small generality needed for the residue-action comparisons below and in the generic unramified support lemma for the unramified cyclotomic theorem. -/
 theorem padicCyclotomicUnramified_eq_of_roots_of_residue_eq_of_derivative_isUnit
     {R : Type*} [CommRing R] [IsDomain R] [IsLocalRing R]
     {f : R[X]} {a b : R}
@@ -187,9 +169,7 @@ section CanonicalResidueAction
 variable {K : Type u} {L : Type v} [Field K] [Field L] [Algebra K L]
 variable [FiniteDimensional K L]
 
-/-- Restriction of a `K`-automorphism to the target valuation ring.  The
-target ring is the integral closure of the Henselian base valuation ring, so
-this restriction is canonical. -/
+/-- Restriction of a `K`-automorphism to the target valuation ring.  The target ring is the integral closure of the Henselian base valuation ring, so this restriction is canonical. -/
 noncomputable def padicCyclotomicUnramified_galIntegerRingEquiv
     (vK : LubinTate.Valuations.ExponentialValuation K)
     (vL : LubinTate.Valuations.ExponentialValuation L)
@@ -266,8 +246,7 @@ abbrev padicCyclotomicUnramifiedResidueField {F : Type*} [Field F]
     unramifiedValuationRingValuationRingMap_isLocalHom vK vL hExt
   exact (IsLocalRing.ResidueField.map i).toAlgebra
 
-/-- Finite-dimensionality of the residue extension, transported to the
-module structure induced by `padicCyclotomicUnramifiedResidueAlgebra`. -/
+/-- Finite-dimensionality of the residue extension, transported to the module structure induced by `padicCyclotomicUnramifiedResidueAlgebra`. -/
 theorem padicCyclotomicUnramified_residueFiniteDimensional
     (vK : LubinTate.Valuations.ExponentialValuation K)
     (vL : LubinTate.Valuations.ExponentialValuation L)
@@ -306,8 +285,7 @@ theorem padicCyclotomicUnramified_residueFiniteDimensional
   exact hfinite
 
 omit [FiniteDimensional K L] in
-/-- The residue degree uses the quotient-induced module structure;
-this identifies it with the finrank for `padicCyclotomicUnramifiedResidueAlgebra`. -/
+/-- The residue degree uses the quotient-induced module structure; this identifies it with the finrank for `padicCyclotomicUnramifiedResidueAlgebra`. -/
 theorem padicCyclotomicUnramified_exponentialResidueDegree_eq_finrank
     (vK : LubinTate.Valuations.ExponentialValuation K)
     (vL : LubinTate.Valuations.ExponentialValuation L)
@@ -342,8 +320,7 @@ theorem padicCyclotomicUnramified_exponentialResidueDegree_eq_finrank
     @Module.finrank k ell _ _ algebraModule
   rw [hmodule]
 
-/-- A ring equivalence of a local extension which fixes the base ring induces
-an algebra equivalence of residue fields. -/
+/-- A ring equivalence of a local extension which fixes the base ring induces an algebra equivalence of residue fields. -/
 theorem padicCyclotomicUnramified_residueMapEquiv_commutes
     {R S : Type*} [CommRing R] [IsLocalRing R]
     [CommRing S] [IsLocalRing S]
@@ -474,8 +451,7 @@ noncomputable def padicCyclotomicUnramified_galToResidueGal
 
 end CanonicalResidueAction
 
-/-- A field generated by a primitive root of unity is normal; together with
-separability this gives the Galois input used in the unramified cyclotomic theorem(ii). -/
+/-- A field generated by a primitive root of unity is normal; together with separability this gives the Galois input used in the unramified cyclotomic theorem(ii). -/
 theorem padicCyclotomicUnramified_isGalois_of_primitiveRoot_adjoin_eq_top
     {K : Type u} {L : Type v} [Field K] [Field L] [Algebra K L]
     [Algebra.IsSeparable K L]
@@ -518,10 +494,7 @@ theorem padicCyclotomicUnramified_order_pos (hpn : p.Coprime n) : 0 < n := by
 
 /-- Finite-field degree calculation underlying the unramified cyclotomic theorem(i).
 
-If `k` has cardinality `p^r` and `ζ` is a primitive `n`-th root in an
-extension field, then the simple residue extension `k(ζ)` has degree equal
-to the order of `p^r` modulo `n`.  This is the irreducible-factor calculation
-used after reducing the cyclotomic polynomial. -/
+If `k` has cardinality `p^r` and `ζ` is a primitive `n`-th root in an extension field, then the simple residue extension `k(ζ)` has degree equal to the order of `p^r` modulo `n`.  This is the irreducible-factor calculation used after reducing the cyclotomic polynomial. -/
 theorem padicCyclotomicUnramified_residue_adjoin_finrank
     (hk : Fintype.card k = p ^ r) (hpn : p.Coprime n)
     {ζ : Ω} (hζ : IsPrimitiveRoot ζ n) :
@@ -540,8 +513,7 @@ theorem padicCyclotomicUnramified_residue_adjoin_finrank
       (p := p) (f := r) hk hpn hdiv (minpoly.irreducible hζint)
 
 omit hp in
-/-- Arithmetic Frobenius on a finite residue extension acts by the `q`-th
-power, with `q = p^r`.  This is the action asserted in the unramified cyclotomic theorem(ii). -/
+/-- Arithmetic Frobenius on a finite residue extension acts by the `q`-th power, with `q = p^r`.  This is the action asserted in the unramified cyclotomic theorem(ii). -/
 theorem padicCyclotomicUnramified_residue_frobenius_apply
     {ell : Type v} [Field ell] [Algebra k ell]
     [Algebra.IsAlgebraic k ell]
@@ -550,9 +522,7 @@ theorem padicCyclotomicUnramified_residue_frobenius_apply
   change x ^ Fintype.card k = x ^ (p ^ r)
   rw [hk]
 
-/-- For the residue cyclotomic field `k(ζ)`, arithmetic Frobenius generates
-the full Galois group, and the number of powers needed is the least `f` from
-the unramified cyclotomic theorem(i). -/
+/-- For the residue cyclotomic field `k(ζ)`, arithmetic Frobenius generates the full Galois group, and the number of powers needed is the least `f` from the unramified cyclotomic theorem(i). -/
 theorem padicCyclotomicUnramified_residue_adjoin_galois_generated_by_frobenius
     (hk : Fintype.card k = p ^ r) (hpn : p.Coprime n)
     {ζ : Ω} (hζ : IsPrimitiveRoot ζ n) :
@@ -602,11 +572,7 @@ variable [FiniteDimensional K L]
 
 /-- the unramified cyclotomic theorem(i), local Hensel step.
 
-For a Henselian exponential valuation with finite residue field of cardinality
-`p^r`, adjoining a primitive `n`-th root of unity, with `p` prime to `n`, is a
-finite unramified extension in the literal sense of the finite unramified-extension definition.  The
-primitive integral model used here is the cyclotomic polynomial itself; its
-reduction is separable because `n` is nonzero in the residue field. -/
+For a Henselian exponential valuation with finite residue field of cardinality `p^r`, adjoining a primitive `n`-th root of unity, with `p` prime to `n`, is a finite unramified extension in the literal sense of the finite unramified-extension definition.  The primitive integral model used here is the cyclotomic polynomial itself; its reduction is separable because `n` is nonzero in the residue field. -/
 theorem padicCyclotomicUnramified_finiteUnramifiedExtension
     (vK : LubinTate.Valuations.ExponentialValuation K)
     (vL : LubinTate.Valuations.ExponentialValuation L)
@@ -672,10 +638,7 @@ theorem padicCyclotomicUnramified_finiteUnramifiedExtension
 
 /-- the unramified cyclotomic theorem(i), degree calculation upstairs.
 
-The integral minimal polynomial of `ζ` has irreducible reduction by the
-Hensel step of the factor-lifting criterion.  That reduction is an irreducible factor of
-the `n`-th cyclotomic polynomial over the finite residue field, so all of its
-irreducible factors have degree `ord_n(p^r)`. -/
+The integral minimal polynomial of `ζ` has irreducible reduction by the Hensel step of the factor-lifting criterion.  That reduction is an irreducible factor of the `n`-th cyclotomic polynomial over the finite residue field, so all of its irreducible factors have degree `ord_n(p^r)`. -/
 theorem padicCyclotomicUnramified_finrank_eq_residueDegree
     (vK : LubinTate.Valuations.ExponentialValuation K)
     (hhens : ValuationTheory.DiscreteValuationField.HenselianValuationByFactorization
@@ -779,11 +742,7 @@ theorem padicCyclotomicUnramified_finrank_eq_residueDegree
     Polynomial.natDegree_of_dvd_cyclotomic_of_irreducible
       (p := p) (f := r) hk hpn hqDvd hqIrreducible
 
-/-- The canonical reduction homomorphism on Galois groups is injective for
-the prime-to-residue-characteristic cyclotomic extension.  If two
-automorphisms have the same residue action, their images of `ζ` are simple
-roots of the cyclotomic polynomial with the same residue, hence are equal by
-Hensel uniqueness; `ζ` generates the field. -/
+/-- The canonical reduction homomorphism on Galois groups is injective for the prime-to-residue-characteristic cyclotomic extension.  If two automorphisms have the same residue action, their images of `ζ` are simple roots of the cyclotomic polynomial with the same residue, hence are equal by Hensel uniqueness; `ζ` generates the field. -/
 theorem padicCyclotomicUnramified_galToResidueGal_injective
     (vK : LubinTate.Valuations.ExponentialValuation K)
     (vL : LubinTate.Valuations.ExponentialValuation L)
@@ -934,10 +893,7 @@ theorem padicCyclotomicUnramified_galToResidueGal_injective
     (fun x y _ _ hx hy ↦ by
       rw [map_mul, map_mul, hx, hy]) hx
 
-/-- the unramified cyclotomic theorem(ii), canonical Galois comparison: the reduction
-homomorphism is bijective.  Injectivity is the Hensel-uniqueness argument
-above; surjectivity follows by comparing the two genuine Galois group
-cardinalities with the equal field and residue degrees from part (i). -/
+/-- the unramified cyclotomic theorem(ii), canonical Galois comparison: the reduction homomorphism is bijective.  Injectivity is the Hensel-uniqueness argument above; surjectivity follows by comparing the two genuine Galois group cardinalities with the equal field and residue degrees from part (i). -/
 theorem padicCyclotomicUnramified_galToResidueGal_bijective
     (vK : LubinTate.Valuations.ExponentialValuation K)
     (vL : LubinTate.Valuations.ExponentialValuation L)
@@ -987,8 +943,7 @@ theorem padicCyclotomicUnramified_galToResidueGal_bijective
   exact hUnramified.2.trans
     (padicCyclotomicUnramified_exponentialResidueDegree_eq_finrank vK vL hExt)
 
-/-- the unramified cyclotomic theorem(ii): the canonical multiplicative equivalence obtained
-from reduction of valuation-ring automorphisms. -/
+/-- the unramified cyclotomic theorem(ii): the canonical multiplicative equivalence obtained from reduction of valuation-ring automorphisms. -/
 noncomputable def padicCyclotomicUnramified_galEquivResidueGal
     (vK : LubinTate.Valuations.ExponentialValuation K)
     (vL : LubinTate.Valuations.ExponentialValuation L)
@@ -1011,8 +966,7 @@ noncomputable def padicCyclotomicUnramified_galEquivResidueGal
     (padicCyclotomicUnramified_galToResidueGal_bijective
       vK vL hExt hhens hk hpn hζ hζgen)
 
-/-- The arithmetic Frobenius in `Gal(K(ζ)/K)`, defined canonically as the
-inverse image of finite-field Frobenius under the reduction equivalence. -/
+/-- The arithmetic Frobenius in `Gal(K(ζ)/K)`, defined canonically as the inverse image of finite-field Frobenius under the reduction equivalence. -/
 noncomputable def padicCyclotomicUnramifiedArithmeticFrobenius
     (vK : LubinTate.Valuations.ExponentialValuation K)
     (vL : LubinTate.Valuations.ExponentialValuation L)
@@ -1066,10 +1020,7 @@ theorem padicCyclotomicUnramified_galEquivResidueGal_arithmeticFrobenius
         (padicCyclotomicUnramifiedResidueField vL) := by
   simp [padicCyclotomicUnramifiedArithmeticFrobenius]
 
-/-- the unramified cyclotomic theorem(ii): arithmetic Frobenius sends the chosen primitive
-root to its `q = p^r` power.  Both sides are simple cyclotomic roots and their
-residues agree by construction of Frobenius, so Hensel uniqueness identifies
-them upstairs. -/
+/-- the unramified cyclotomic theorem(ii): arithmetic Frobenius sends the chosen primitive root to its `q = p^r` power.  Both sides are simple cyclotomic roots and their residues agree by construction of Frobenius, so Hensel uniqueness identifies them upstairs. -/
 theorem padicCyclotomicUnramifiedArithmeticFrobenius_apply_primitiveRoot
     (vK : LubinTate.Valuations.ExponentialValuation K)
     (vL : LubinTate.Valuations.ExponentialValuation L)
@@ -1213,8 +1164,7 @@ theorem padicCyclotomicUnramifiedArithmeticFrobenius_apply_primitiveRoot
   have hval := congrArg Subtype.val hbc
   simpa [b, c, a, φ] using hval
 
-/-- the unramified cyclotomic theorem(ii): arithmetic Frobenius generates the whole Galois
-group, with exponents bounded by the degree `f = ord_n(p^r)`. -/
+/-- the unramified cyclotomic theorem(ii): arithmetic Frobenius generates the whole Galois group, with exponents bounded by the degree `f = ord_n(p^r)`. -/
 theorem padicCyclotomicUnramifiedArithmeticFrobenius_generates
     (vK : LubinTate.Valuations.ExponentialValuation K)
     (vL : LubinTate.Valuations.ExponentialValuation L)
@@ -1277,11 +1227,7 @@ theorem padicCyclotomicUnramifiedArithmeticFrobenius_generates
 
 /-- the unramified cyclotomic theorem(iii), valuation-ring generation by the specified root.
 
-The residue of `ζ` is again primitive of order `n`; its residue-field degree
-equals the full residue degree by part (i).  Thus it generates the residue
-extension.  Since the extension is unramified, the source maximal ideal maps
-onto the target maximal ideal, and Nakayama applied to the finite integral
-closure proves `O_L = O_K[ζ]`. -/
+The residue of `ζ` is again primitive of order `n`; its residue-field degree equals the full residue degree by part (i).  Thus it generates the residue extension.  Since the extension is unramified, the source maximal ideal maps onto the target maximal ideal, and Nakayama applied to the finite integral closure proves `O_L = O_K[ζ]`. -/
 theorem padicCyclotomicUnramified_valuationSubring_adjoin_eq_top
     (vK : LubinTate.Valuations.ExponentialValuation K)
     (vL : LubinTate.Valuations.ExponentialValuation L)
@@ -1599,18 +1545,17 @@ theorem padicCyclotomicUnramified_valuationSubring_adjoin_eq_top
       Submodule.add_mem_sup hzA hdiffSmul
     have hsum_eq : z + (b - z) = b := by ring
     simpa [hsum_eq] using hsum
-  have hjac : IsLocalRing.maximalIdeal V ≤ Ideal.jacobson (⊥ : Ideal V) :=
-    (IsLocalRing.jacobson_eq_maximalIdeal ⊥ bot_ne_top).ge
+  have hjac : IsLocalRing.maximalIdeal V ≤ Ring.jacobson V :=
+    (IsLocalRing.ringJacobson_eq_maximalIdeal V).ge
   have hle : (⊤ : Submodule V W) ≤ A.toSubmodule :=
-    Submodule.le_of_le_smul_of_le_jacobson_bot
+    Submodule.le_of_le_smul_of_le_jacobson
       (I := IsLocalRing.maximalIdeal V) (N := A.toSubmodule)
       (N' := (⊤ : Submodule V W)) Module.Finite.fg_top hjac htop
   have hA : A.toSubmodule = ⊤ := le_antisymm le_top hle
   refine ⟨a, rfl, ?_⟩
   exact Algebra.toSubmodule_eq_top.mp hA
 
-/-- Finite-dimensional core of the complete the unramified cyclotomic theorem endpoint.
-The public endpoint below derives finite-dimensionality from `L = K(ζ)`. -/
+/-- Finite-dimensional core of the complete the unramified cyclotomic theorem endpoint. The public endpoint below derives finite-dimensionality from `L = K(ζ)`. -/
 private theorem padicCyclotomicUnramified_of_finiteDimensional
     (vK : LubinTate.Valuations.ExponentialValuation K)
     (vL : LubinTate.Valuations.ExponentialValuation L)
@@ -1673,9 +1618,7 @@ section LocalCyclotomicEndpoint
 
 variable {K : Type u} {L : Type v} [Field K] [Field L] [Algebra K L]
 
-/-- A field generated by one integral element is finite-dimensional.  This
-removes the redundant finite-dimensionality assumption from the literal
-the unramified cyclotomic theorem endpoint. -/
+/-- A field generated by one integral element is finite-dimensional.  This removes the redundant finite-dimensionality assumption from the literal the unramified cyclotomic theorem endpoint. -/
 theorem padicCyclotomicUnramified_finiteDimensional_of_primitiveRoot_adjoin_eq_top
     {n : ℕ} {ζ : L} (hn : 0 < n) (hζ : IsPrimitiveRoot ζ n)
     (hζgen : Algebra.adjoin K ({ζ} : Set L) = ⊤) :
@@ -1700,11 +1643,7 @@ theorem padicCyclotomicUnramified_finiteDimensional_of_primitiveRoot_adjoin_eq_t
 
 /-- Complete arithmetic-Frobenius endpoint for the unramified cyclotomic extension.
 
-For the extension generated by a primitive prime-to-`p` root of unity, this
-packages: finite unramifiedness and the least-exponent degree formula; the
-canonical Galois/residue-Galois comparison and its arithmetic Frobenius
-generator; and `O_L = O_K[ζ]` for the specified `ζ`.  No separate
-finite-dimensionality hypothesis is needed: it follows from `L = K(ζ)`. -/
+For the extension generated by a primitive prime-to-`p` root of unity, this packages: finite unramifiedness and the least-exponent degree formula; the canonical Galois/residue-Galois comparison and its arithmetic Frobenius generator; and `O_L = O_K[ζ]` for the specified `ζ`.  No separate finite-dimensionality hypothesis is needed: it follows from `L = K(ζ)`. -/
 theorem padicCyclotomicUnramified
     (vK : LubinTate.Valuations.ExponentialValuation K)
     (vL : LubinTate.Valuations.ExponentialValuation L)
@@ -1758,10 +1697,7 @@ section IntegralInclusion
 variable {R : Type u} {L : Type v}
 variable [CommRing R] [Field L] [Algebra R L]
 
-/-- The easy inclusion in the unramified cyclotomic theorem(iii): every root of unity is
-integral, hence the algebra generated by a primitive root lies in the integral
-closure.  The reverse inclusion for the local cyclotomic setting is proved by
-`padicCyclotomicUnramified_valuationSubring_adjoin_eq_top` above. -/
+/-- The easy inclusion in the unramified cyclotomic theorem(iii): every root of unity is integral, hence the algebra generated by a primitive root lies in the integral closure.  The reverse inclusion for the local cyclotomic setting is proved by `padicCyclotomicUnramified_valuationSubring_adjoin_eq_top` above. -/
 theorem padicCyclotomicUnramified_adjoin_le_integralClosure
     {n : ℕ} {ζ : L} (hn : 0 < n) (hζ : IsPrimitiveRoot ζ n) :
     Algebra.adjoin R ({ζ} : Set L) ≤ integralClosure R L := by

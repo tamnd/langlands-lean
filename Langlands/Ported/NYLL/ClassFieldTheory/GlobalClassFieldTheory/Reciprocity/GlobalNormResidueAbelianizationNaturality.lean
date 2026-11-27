@@ -16,10 +16,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.GlobalClassFieldTheory.Reci
 /-!
 # Naturality of finite-Galois global reciprocity in abelianizations
 
-For a finite tower `K ⊆ M ⊆ N` with `N / K` Galois, this file proves
-that ordinary idèle-class norm from `M` to `K` corresponds to restriction
-from `Gal(N / M)` to `Gal(N / K)`, after passing both Galois groups to their
-abelianizations.  The intermediate extension `M / K` is not assumed Galois.
+For a finite tower `K ⊆ M ⊆ N` with `N / K` Galois, this file proves that ordinary idèle-class norm from `M` to `K` corresponds to restriction from `Gal(N / M)` to `Gal(N / K)`, after passing both Galois groups to their abelianizations.  The intermediate extension `M / K` is not assumed Galois.
 -/
 
 @[expose] public section
@@ -67,8 +64,7 @@ variable
     [Algebra K M] [Algebra M N] [Algebra K N]
     [IsScalarTower K M N]
 
-/-- The two base fixing subgroups obtained from one embedding of the common
-top field are nested in the direction dictated by `K ⊆ M`. -/
+/-- The two base fixing subgroups obtained from one embedding of the common top field are nested in the direction dictated by `K ⊆ M`. -/
 theorem numberFieldEmbeddedBaseSubgroup_le_of_commonTop
     (j : N →ₐ[ℚ] SeparableClosure ℚ) :
     (numberFieldEmbeddedBaseSubgroup M N j).toSubgroup ≤
@@ -86,9 +82,7 @@ theorem numberFieldEmbeddedBaseSubgroup_le_of_commonTop
       j (algebraMap K N y)
   rw [IsScalarTower.algebraMap_apply K M N]
 
-/-- In a common finite Galois overfield, the quotient between the two base
-fixing subgroups is finite even when the intermediate extension is not
-Galois. -/
+/-- In a common finite Galois overfield, the quotient between the two base fixing subgroups is finite even when the intermediate extension is not Galois. -/
 theorem
     numberFieldEmbeddedBaseChangeExtensionQuotient_finite_of_commonTop
     [FiniteDimensional K N] [IsGalois K N]
@@ -121,23 +115,20 @@ theorem
     Subgroup.finiteIndex_of_le hle
   exact Subgroup.finite_quotient_of_finiteIndex
 
-/-- The abelianized quotient of an explicitly embedded finite Galois tower
-is the abelianization of its actual Galois group. -/
+/-- The abelianized quotient of an explicitly embedded finite Galois tower is the abelianization of its actual Galois group. -/
 noncomputable def
     numberFieldEmbeddedAbelianizedExtensionQuotientEquivGaloisAbelianization
     [FiniteDimensional K N] [IsGalois K N]
     (j : N →ₐ[ℚ] SeparableClosure ℚ) :
     Additive
-        (Abelianization
+        (Group.Abelianization
           (numberFieldEmbeddedFiniteGaloisSubextension K N j).extensionQuotient) ≃+
-      Additive (Abelianization Gal(N / K)) :=
+      Additive (Group.Abelianization Gal(N / K)) :=
   MulEquiv.toAdditive
     (MulEquiv.abelianizationCongr
       (numberFieldEmbeddedExtensionQuotientEquivGaloisGroup K N j))
 
-/-- The abstract norm-residue symbol followed by the actual Galois
-abelianization comparison, with the public finite norm quotient's additive
-structure fixed at this boundary. -/
+/-- The abstract norm-residue symbol followed by the actual Galois abelianization comparison, with the public finite norm quotient's additive structure fixed at this boundary. -/
 noncomputable def
     numberFieldEmbeddedAbstractNormResidueGaloisAbelianizationEquiv
     [FiniteDimensional K N] [IsGalois K N]
@@ -152,7 +143,7 @@ noncomputable def
         (numberFieldEmbeddedBaseSubgroup K N j)
         (numberFieldEmbeddedTopSubgroup K N j)
         (numberFieldEmbeddedTopSubgroup_le_baseSubgroup K N j) ≃+
-      Additive (Abelianization Gal(N / K)) := by
+      Additive (Group.Abelianization Gal(N / K)) := by
   let _ : Finite _ :=
     (numberFieldEmbeddedFiniteAbstractField K N j).finite
   let _ :
@@ -177,9 +168,9 @@ noncomputable def
         (numberFieldEmbeddedTopSubgroup K N j)
         (numberFieldEmbeddedTopSubgroup_le_baseSubgroup K N j))
       (Additive
-        (Abelianization
+        (Group.Abelianization
           (numberFieldEmbeddedFiniteGaloisSubextension K N j).extensionQuotient))
-      (Additive (Abelianization Gal(N / K)))
+      (Additive (Group.Abelianization Gal(N / K)))
       inferInstance inferInstance inferInstance
       ((numberFieldCyclotomicDegreeData ℚ).normResidueSymbol
         (ideleClassRepresentation ℚ)
@@ -221,12 +212,11 @@ private theorem
   simp only [numberFieldEmbeddedAbstractNormResidueGaloisAbelianizationEquiv, AddEquiv.trans_apply,
     numberFieldCyclotomicNormResidueSymbol_rat]
 
-/-- The finite-Galois norm-residue map built from an explicitly supplied
-embedding of the top field, with target the actual Galois abelianization. -/
+/-- The finite-Galois norm-residue map built from an explicitly supplied embedding of the top field, with target the actual Galois abelianization. -/
 noncomputable def globalNormResidueAbelianizationMonoidHomOfEmbedding
     [FiniteDimensional K N] [IsGalois K N]
     (j : N →ₐ[ℚ] SeparableClosure ℚ) :
-    IdeleClassGroup K →* Abelianization Gal(N / K) := by
+    IdeleClassGroup K →* Group.Abelianization Gal(N / K) := by
   let hRelativeFinite : Finite
       ((numberFieldEmbeddedBaseSubgroup K N j).toSubgroup ⧸
         extensionSubgroup
@@ -236,7 +226,7 @@ noncomputable def globalNormResidueAbelianizationMonoidHomOfEmbedding
     numberFieldEmbeddedExtensionQuotient_finite K N j
   let e :
       (IdeleClassGroup K ⧸ (_root_.ideleClassNorm K N).range) ≃*
-        Abelianization Gal(N / K) :=
+        Group.Abelianization Gal(N / K) :=
     AddEquiv.toMultiplicative
       ((numberFieldEmbeddedFiniteNormQuotientEquivIdeleClassNormQuotient
           K N j).symm.trans
@@ -245,8 +235,7 @@ noncomputable def globalNormResidueAbelianizationMonoidHomOfEmbedding
   exact e.toMonoidHom.comp
     (QuotientGroup.mk' (_root_.ideleClassNorm K N).range)
 
-/-- Evaluation of the explicitly embedded abelianized norm-residue map on
-an ordinary idèle class. -/
+/-- Evaluation of the explicitly embedded abelianized norm-residue map on an ordinary idèle class. -/
 @[simp]
 theorem globalNormResidueAbelianizationMonoidHomOfEmbedding_apply
     [FiniteDimensional K N] [IsGalois K N]
@@ -339,8 +328,7 @@ theorem globalNormResidueAbelianizationMonoidHomOfEmbedding_apply
         (numberFieldEmbeddedAbstractNormResidueGaloisAbelianizationEquiv_apply
           K N j (hRelativeFinite := hRelativeFinite) x)
 
-/-- The standard finite-Galois norm-residue map is the explicit construction
-for the standard chosen embedding of the common top field. -/
+/-- The standard finite-Galois norm-residue map is the explicit construction for the standard chosen embedding of the common top field. -/
 theorem
     globalNormResidueAbelianizationMonoidHom_eq_ofEmbedding_standard
     [FiniteDimensional K N] [IsGalois K N] :
@@ -378,9 +366,7 @@ theorem
       cases hSubextension
       rfl).trans hEmbedded.symm)
 
-/-- In one common top-field embedding, the abstract relative norm between
-the two base fixing subgroups is the ordinary idèle-class norm.  No
-normality of the intermediate extension `M / K` is used. -/
+/-- In one common top-field embedding, the abstract relative norm between the two base fixing subgroups is the ordinary idèle-class norm.  No normality of the intermediate extension `M / K` is used. -/
 theorem
     numberFieldEmbeddedIdeleClassEquivAmbientFixed_relativeNorm_of_commonTop
     [FiniteDimensional K N] [IsGalois K N]
@@ -489,9 +475,7 @@ theorem
       exact (ideleClassCongr_ideleClassNorm
         (K := K) (K' := F) (L := M) (L' := E) eK eM hcompat c).symm
 
-/-- The canonical quotient-to-Galois comparisons for one common top-field
-embedding intertwine abstract restriction with restriction on actual Galois
-groups, after abelianization. -/
+/-- The canonical quotient-to-Galois comparisons for one common top-field embedding intertwine abstract restriction with restriction on actual Galois groups, after abelianization. -/
 theorem
     numberFieldEmbeddedAbelianizedExtensionQuotientEquivGaloisAbelianization_restriction
     [FiniteDimensional K N] [IsGalois K N]
@@ -502,7 +486,7 @@ theorem
       FiniteDimensional.right K M N
     let _ : IsGalois M N :=
       IsGalois.tower_top_of_isGalois K M N
-    ∀ z : Abelianization
+    ∀ z : Group.Abelianization
         (numberFieldEmbeddedFiniteGaloisSubextension M N j).extensionQuotient,
     let H := numberFieldEmbeddedBaseSubgroup K N j
     let H' := numberFieldEmbeddedBaseSubgroup M N j
@@ -515,7 +499,7 @@ theorem
       numberFieldEmbeddedExtensionSubgroup_normal K N j
     letI _ : (extensionSubgroup H' J hJH').Normal :=
       numberFieldEmbeddedExtensionSubgroup_normal M N j
-    Abelianization.map
+    Group.Abelianization.map
         (AlgEquiv.restrictScalarsHom K : Gal(N / M) →* Gal(N / K))
         (Additive.toMul
           (numberFieldEmbeddedAbelianizedExtensionQuotientEquivGaloisAbelianization
@@ -551,16 +535,16 @@ theorem
   obtain ⟨sigma, rfl⟩ :=
     (numberFieldEmbeddedFiniteGaloisSubextension M N j).extensionQuotientMk_surjective q
   change
-    Abelianization.map restrictActual
+    Group.Abelianization.map restrictActual
         (qUpperRaw.abelianizationCongr
-          (Abelianization.of (QuotientGroup.mk sigma))) =
+          (Group.Abelianization.of (QuotientGroup.mk sigma))) =
       qLowerRaw.abelianizationCongr
         (normResidueNaturalityAbelianizedRestriction
           H H' J J hJH hJH' hH'H le_rfl
-          (Abelianization.of (QuotientGroup.mk sigma)))
+          (Group.Abelianization.of (QuotientGroup.mk sigma)))
   rw [normResidueNaturalityAbelianizedRestriction_of_mk,
-    abelianizationCongr_of, abelianizationCongr_of,
-    Abelianization.map_of]
+    Group.abelianizationCongr_of, Group.abelianizationCongr_of,
+    Group.Abelianization.map_of]
   have hraw :
       restrictActual (qUpperRaw (QuotientGroup.mk sigma)) =
         qLowerRaw
@@ -587,12 +571,9 @@ theorem
         exact
           (ambientEmbeddedExtensionQuotientEquivGaloisGroup_mk_apply
             ℚ K N j eLower (Subgroup.inclusion hH'H sigma) x).symm
-  exact congrArg Abelianization.of hraw
+  exact congrArg Group.Abelianization.of hraw
 
-/-- For one embedding of a common finite Galois overfield, the
-abelianization-valued global norm-residue maps commute with ordinary
-idèle-class norm and restriction.  The intermediate extension need not be
-Galois. -/
+/-- For one embedding of a common finite Galois overfield, the abelianization-valued global norm-residue maps commute with ordinary idèle-class norm and restriction.  The intermediate extension need not be Galois. -/
 theorem
     globalNormResidueAbelianizationMonoidHomOfEmbedding_norm_restriction
     [FiniteDimensional K N] [IsGalois K N]
@@ -603,7 +584,7 @@ theorem
       FiniteDimensional.right K M N
     let _ : IsGalois M N :=
       IsGalois.tower_top_of_isGalois K M N
-    (Abelianization.map
+    (Group.Abelianization.map
         (AlgEquiv.restrictScalarsHom K : Gal(N / M) →* Gal(N / K))).comp
         (globalNormResidueAbelianizationMonoidHomOfEmbedding M N j) =
       (globalNormResidueAbelianizationMonoidHomOfEmbedding K N j).comp
@@ -703,9 +684,9 @@ theorem
     numberFieldEmbeddedIdeleClassEquivAmbientFixed_relativeNorm_of_commonTop
       K M N j c
   calc
-    Abelianization.map restrictActual
+    Group.Abelianization.map restrictActual
         (globalNormResidueAbelianizationMonoidHomOfEmbedding M N j c) =
-      Abelianization.map restrictActual
+      Group.Abelianization.map restrictActual
         (Additive.toMul
           (numberFieldEmbeddedAbelianizedExtensionQuotientEquivGaloisAbelianization
             M N j
@@ -766,9 +747,7 @@ theorem
         ← numberFieldCyclotomicNormResidueSymbol_rat]
       rfl
 
-/-- Global norm-residue naturality in Galois abelianizations for a finite
-tower with a common Galois top field.  No Galois hypothesis is imposed on
-the intermediate extension. -/
+/-- Global norm-residue naturality in Galois abelianizations for a finite tower with a common Galois top field.  No Galois hypothesis is imposed on the intermediate extension. -/
 theorem globalNormResidueAbelianizationMonoidHom_norm_restriction
     [FiniteDimensional K N] [IsGalois K N] :
     let _ : FiniteDimensional K M :=
@@ -777,7 +756,7 @@ theorem globalNormResidueAbelianizationMonoidHom_norm_restriction
       FiniteDimensional.right K M N
     let _ : IsGalois M N :=
       IsGalois.tower_top_of_isGalois K M N
-    (Abelianization.map
+    (Group.Abelianization.map
         (AlgEquiv.restrictScalarsHom K : Gal(N / M) →* Gal(N / K))).comp
         (globalNormResidueAbelianizationMonoidHom M N) =
       (globalNormResidueAbelianizationMonoidHom K N).comp
@@ -789,8 +768,7 @@ theorem globalNormResidueAbelianizationMonoidHom_norm_restriction
     globalNormResidueAbelianizationMonoidHomOfEmbedding_norm_restriction
       K M N (numberFieldSeparableClosureEmbedding N)
 
-/-- The ordinary finite Artin norm square for a common abelian top field.
-The vertical map is restriction of scalars on actual automorphisms. -/
+/-- The ordinary finite Artin norm square for a common abelian top field. The vertical map is restriction of scalars on actual automorphisms. -/
 theorem globalNormResidueMonoidHom_norm_restriction_commonTop
     [FiniteDimensional K N] [IsAbelianGalois K N] [IsAbelianGalois M N] :
     let _ : FiniteDimensional K M := FiniteDimensional.left K M N
@@ -800,8 +778,8 @@ theorem globalNormResidueMonoidHom_norm_restriction_commonTop
       (globalNormResidueMonoidHom K N).comp (_root_.ideleClassNorm K M) := by
   intro hKM hMN
   let f : Gal(N / M) →* Gal(N / K) := AlgEquiv.restrictScalarsHom K
-  let eK : Gal(N / K) ≃* Abelianization (Gal(N / K)) := Abelianization.equivOfComm
-  let eM : Gal(N / M) ≃* Abelianization (Gal(N / M)) := Abelianization.equivOfComm
+  let eK : Gal(N / K) ≃* Group.Abelianization (Gal(N / K)) := Group.Abelianization.equivOfComm
+  let eM : Gal(N / M) ≃* Group.Abelianization (Gal(N / M)) := Group.Abelianization.equivOfComm
   apply MonoidHom.ext
   intro c
   apply eK.injective
@@ -817,12 +795,12 @@ theorem globalNormResidueMonoidHom_norm_restriction_commonTop
     exact DFunLike.congr_fun (globalNormResidueAbelianizationMonoidHom_abelianSpecialization K N)
       (_root_.ideleClassNorm K M c)
   have h := DFunLike.congr_fun (globalNormResidueAbelianizationMonoidHom_norm_restriction K M N) c
-  change Abelianization.map f (globalNormResidueAbelianizationMonoidHom M N c) =
+  change Group.Abelianization.map f (globalNormResidueAbelianizationMonoidHom M N c) =
     globalNormResidueAbelianizationMonoidHom K N (_root_.ideleClassNorm K M c) at h
   rw [hM, hK] at h
   change eK (f (globalNormResidueMonoidHom M N c)) =
     eK (globalNormResidueMonoidHom K N (_root_.ideleClassNorm K M c))
-  exact (Abelianization.map_of f (globalNormResidueMonoidHom M N c)).symm.trans h
+  exact (Group.Abelianization.map_of f (globalNormResidueMonoidHom M N c)).symm.trans h
 
 end CommonTop
 

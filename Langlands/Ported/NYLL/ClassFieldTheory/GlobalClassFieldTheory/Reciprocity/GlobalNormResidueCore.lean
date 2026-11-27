@@ -23,14 +23,11 @@ public import Langlands.Ported.NYLL.GaloisCohomology.Cyclic.NormKernelVanishing
 /-!
 # The global norm-residue symbol for finite Galois extensions
 
-For an arbitrary finite Galois extension of number fields, the global
-norm-residue quotient is the abelianization of the genuine Galois group:
+For an arbitrary finite Galois extension of number fields, the global norm-residue quotient is the abelianization of the genuine Galois group:
 
 `C_K / N_{L/K} C_L ≃ Gal(L / K)ᵃᵇ`.
 
-The abelian specialization in `GlobalNormResidue` identifies this target
-further with `Gal(L / K)`.  This file retains the abelianization and therefore
-states global reciprocity at its full finite-Galois generality.
+The abelian specialization in `GlobalNormResidue` identifies this target further with `Gal(L / K)`.  This file retains the abelianization and therefore states global reciprocity at its full finite-Galois generality.
 -/
 
 
@@ -56,15 +53,14 @@ variable
     [FiniteDimensional K L] [IsGalois K L]
 
 
-/-- The abelianization of the compatible abstract extension quotient is the
-abelianization of the actual Galois group. -/
+/-- The abelianization of the compatible abstract extension quotient is the abelianization of the actual Galois group. -/
 noncomputable def
     numberFieldTowerAbelianizedExtensionQuotientEquivGaloisAbelianization :
     Additive
-        (Abelianization
+        (Group.Abelianization
           (ClassFormation.FiniteGaloisSubextension.extensionQuotient
             (numberFieldTowerFiniteGaloisSubextension K L))) ≃+
-      Additive (Abelianization (Gal(L / K))) :=
+      Additive (Group.Abelianization (Gal(L / K))) :=
   MulEquiv.toAdditive
     (MulEquiv.abelianizationCongr
       (numberFieldTowerExtensionQuotientEquivGaloisGroup K L))
@@ -75,14 +71,13 @@ private theorem numberFieldTowerAbelianizationCongr_of
         (numberFieldTowerFiniteGaloisSubextension K L)) :
     MulEquiv.abelianizationCongr
         (numberFieldTowerExtensionQuotientEquivGaloisGroup K L)
-        (Abelianization.of q) =
-      Abelianization.of
+        (Group.Abelianization.of q) =
+      Group.Abelianization.of
         (numberFieldTowerExtensionQuotientEquivGaloisGroup K L q) :=
-  abelianizationCongr_of
+  Group.abelianizationCongr_of
     (numberFieldTowerExtensionQuotientEquivGaloisGroup K L) q
 
-/-- The comparison on abelianizations sends the class of an abstract
-automorphism to the class of its actual restriction to `L`. -/
+/-- The comparison on abelianizations sends the class of an abstract automorphism to the class of its actual restriction to `L`. -/
 @[simp]
 theorem
     numberFieldTowerAbelianizedExtensionQuotientEquivGaloisAbelianization_of
@@ -90,24 +85,22 @@ theorem
       ClassFormation.FiniteGaloisSubextension.extensionQuotient
         (numberFieldTowerFiniteGaloisSubextension K L)) :
     numberFieldTowerAbelianizedExtensionQuotientEquivGaloisAbelianization
-        K L (Additive.ofMul (Abelianization.of q)) =
+        K L (Additive.ofMul (Group.Abelianization.of q)) =
       Additive.ofMul
-        (Abelianization.of
+        (Group.Abelianization.of
           (numberFieldTowerExtensionQuotientEquivGaloisGroup K L q)) := by
   exact
     congrArg Additive.ofMul
       (numberFieldTowerAbelianizationCongr_of K L q)
 
-/-- The abstract norm-residue symbol followed by the concrete Galois
-comparison.  This declaration boundary keeps the dependent quotient indices
-and their instance packages from being reconstructed at each evaluation. -/
+/-- The abstract norm-residue symbol followed by the concrete Galois comparison.  This declaration boundary keeps the dependent quotient indices and their instance packages from being reconstructed at each evaluation. -/
 noncomputable def
     numberFieldTowerAbstractNormResidueGaloisAbelianizationEquiv :
     FiniteNormQuotient (ideleClassRepresentation ℚ)
           (numberFieldTowerBaseSubgroup K L)
           (numberFieldTowerTopSubgroup L)
           (numberFieldTowerTopSubgroup_le_baseSubgroup K L) ≃+
-      Additive (Abelianization (Gal(L / K))) := by
+      Additive (Group.Abelianization (Gal(L / K))) := by
   let _ : Finite _ :=
     (numberFieldTowerReciprocityFiniteAbstractField K L).finite
   let _ :
@@ -134,10 +127,10 @@ noncomputable def
         (numberFieldTowerTopSubgroup L)
         (numberFieldTowerTopSubgroup_le_baseSubgroup K L))
       (Additive
-        (Abelianization
+        (Group.Abelianization
           (ClassFormation.FiniteGaloisSubextension.extensionQuotient
             (numberFieldTowerFiniteGaloisSubextension K L))))
-      (Additive (Abelianization (Gal(L / K))))
+      (Additive (Group.Abelianization (Gal(L / K))))
       inferInstance inferInstance inferInstance
       ((numberFieldCyclotomicDegreeData ℚ).normResidueSymbol
         (ideleClassRepresentation ℚ)
@@ -148,15 +141,14 @@ noncomputable def
       (numberFieldTowerAbelianizedExtensionQuotientEquivGaloisAbelianization
         K L)
 
-/-- The actual global norm-residue equivalence for a finite Galois
-number-field extension:
+/-- The actual global norm-residue equivalence for a finite Galois number-field extension:
 
 `C_K / N_{L/K} C_L ≃ Gal(L / K)ᵃᵇ`. -/
 noncomputable def globalNormResidueAbelianizationEquiv :
     Additive
         (IdeleClassGroup K ⧸
           (_root_.ideleClassNorm K L).range) ≃+
-      Additive (Abelianization (Gal(L / K))) :=
+      Additive (Group.Abelianization (Gal(L / K))) :=
   MulEquiv.toAdditive (standardNumberFieldNormResidueEquivOfEmbedding K L
     (AlgebraicNumberTheory.separableEmbeddingIntoSeparableClosure K L))
 
@@ -239,9 +231,7 @@ theorem globalNormResidueAbelianizationEquiv_finiteNormClass
   exact (globalNormResidueAbelianizationEquiv_transport_apply K L x).trans
     (numberFieldTowerAbstractNormResidueGaloisAbelianizationEquiv_apply K L x)
 
-/-- On the genuine finite-reciprocity class of an abstract extension
-automorphism, the finite-Galois norm-residue equivalence gives the class of
-the corresponding actual automorphism in the Galois abelianization. -/
+/-- On the genuine finite-reciprocity class of an abstract extension automorphism, the finite-Galois norm-residue equivalence gives the class of the corresponding actual automorphism in the Galois abelianization. -/
 @[simp]
 theorem globalNormResidueAbelianizationEquiv_finiteReciprocityHom
     (q :
@@ -271,7 +261,7 @@ theorem globalNormResidueAbelianizationEquiv_finiteReciprocityHom
               (numberFieldTowerFiniteGaloisSubextension K L).finite)
             (Additive.ofMul q))) =
       Additive.ofMul
-        (Abelianization.of
+        (Group.Abelianization.of
           (numberFieldTowerExtensionQuotientEquivGaloisGroup K L q)) := by
   intro hBaseFinite hExtensionNormal hRelativeFinite
   let x :=
@@ -295,7 +285,7 @@ theorem globalNormResidueAbelianizationEquiv_finiteReciprocityHom
           (ideleClassRepresentation_satisfiesClassFieldAxiom ℚ)
           (numberFieldTowerReciprocityFiniteAbstractField K L)
           (numberFieldTowerFiniteGaloisSubextension K L) x =
-        Additive.ofMul (Abelianization.of q) :=
+        Additive.ofMul (Group.Abelianization.of q) :=
     rationalCyclotomicDegreeData.normResidueSymbol_finiteReciprocityHom
       (ideleClassRepresentation ℚ)
       rationalCyclotomicIdeleClassValuationData
@@ -313,23 +303,20 @@ theorem globalNormResidueAbelianizationEquiv_finiteReciprocityHom
           (numberFieldTowerAbelianizedExtensionQuotientEquivGaloisAbelianization_of
             K L q)))
 
-/-- The inverse global reciprocity equivalence for an arbitrary finite Galois
-extension. -/
+/-- The inverse global reciprocity equivalence for an arbitrary finite Galois extension. -/
 noncomputable def globalReciprocityAbelianizationEquiv :
-    Additive (Abelianization (Gal(L / K))) ≃+
+    Additive (Group.Abelianization (Gal(L / K))) ≃+
       Additive
         (IdeleClassGroup K ⧸
           (_root_.ideleClassNorm K L).range) :=
   (globalNormResidueAbelianizationEquiv K L).symm
 
-/-- The genuine global norm-residue homomorphism with target the
-abelianization of the actual Galois group. -/
+/-- The genuine global norm-residue homomorphism with target the abelianization of the actual Galois group. -/
 noncomputable abbrev globalNormResidueAbelianizationMonoidHom :
-    IdeleClassGroup K →* Abelianization (Gal(L / K)) :=
+    IdeleClassGroup K →* Group.Abelianization (Gal(L / K)) :=
   standardNumberFieldArtin K L
 
-/-- Evaluation of the finite-Galois global norm-residue homomorphism is the
-global equivalence applied to the genuine norm quotient class. -/
+/-- Evaluation of the finite-Galois global norm-residue homomorphism is the global equivalence applied to the genuine norm quotient class. -/
 @[simp]
 theorem globalNormResidueAbelianizationMonoidHom_apply
     (c : IdeleClassGroup K) :
@@ -390,8 +377,7 @@ theorem globalNormResidueAbelianizationMonoidHom_finiteNormClass
     _ = _ := congrArg Additive.toMul
       (globalNormResidueAbelianizationEquiv_finiteNormClass K L x)
 
-/-- An idele class has trivial finite-Galois norm-residue symbol exactly when
-it is an actual idele-class norm from `L`. -/
+/-- An idele class has trivial finite-Galois norm-residue symbol exactly when it is an actual idele-class norm from `L`. -/
 @[simp]
 theorem globalNormResidueAbelianizationMonoidHom_eq_one_iff
     (c : IdeleClassGroup K) :
@@ -400,24 +386,21 @@ theorem globalNormResidueAbelianizationMonoidHom_eq_one_iff
   change c ∈ (standardNumberFieldArtin K L).ker ↔ _
   rw [standardNumberFieldArtin_ker]
 
-/-- The finite-Galois global norm-residue homomorphism is surjective onto the
-actual Galois abelianization. -/
+/-- The finite-Galois global norm-residue homomorphism is surjective onto the actual Galois abelianization. -/
 theorem globalNormResidueAbelianizationMonoidHom_surjective :
     Function.Surjective (globalNormResidueAbelianizationMonoidHom K L) :=
   standardNumberFieldArtin_surjective K L
 
 /-- The finite-Galois global norm-residue symbol viewed on the idele group.
 
-This is the genuine idele-class symbol pulled back along
-`I_K → C_K`; in particular it is not a separately chosen map. -/
+This is the genuine idele-class symbol pulled back along `I_K → C_K`; in particular it is not a separately chosen map. -/
 noncomputable def globalNormResidueAbelianizationIdeleMonoidHom :
     IdeleGroup K →*
-      Abelianization (Gal(L / K)) :=
+      Group.Abelianization (Gal(L / K)) :=
   (globalNormResidueAbelianizationMonoidHom K L).comp
     (IdeleGroup.toStandardClass K)
 
-/-- Evaluation of the finite-Galois norm-residue symbol on an idele is
-evaluation of the class symbol on its genuine idele class. -/
+/-- Evaluation of the finite-Galois norm-residue symbol on an idele is evaluation of the class symbol on its genuine idele class. -/
 @[simp]
 theorem globalNormResidueAbelianizationIdeleMonoidHom_apply
     (a : IdeleGroup K) :
@@ -426,8 +409,7 @@ theorem globalNormResidueAbelianizationIdeleMonoidHom_apply
         (IdeleGroup.toStandardClass K a) :=
   rfl
 
-/-- The finite-Galois norm-residue symbol on ideles is trivial on every
-principal idele. -/
+/-- The finite-Galois norm-residue symbol on ideles is trivial on every principal idele. -/
 @[simp]
 theorem globalNormResidueAbelianizationIdeleMonoidHom_principalIdele
     (x : Kˣ) :
@@ -454,16 +436,14 @@ theorem globalNormResidueAbelianizationIdeleMonoidHom_principalIdele
         hclass
     _ = 1 := map_one _
 
-/-- The finite-Galois norm-residue symbol remains surjective when viewed
-on ideles. -/
+/-- The finite-Galois norm-residue symbol remains surjective when viewed on ideles. -/
 theorem globalNormResidueAbelianizationIdeleMonoidHom_surjective :
     Function.Surjective
       (globalNormResidueAbelianizationIdeleMonoidHom K L) :=
   (globalNormResidueAbelianizationMonoidHom_surjective K L).comp
     (IdeleGroup.toStandardClass_surjective K)
 
-/-- An idele has trivial finite-Galois norm-residue symbol exactly when
-its idele class is an actual norm from `L`. -/
+/-- An idele has trivial finite-Galois norm-residue symbol exactly when its idele class is an actual norm from `L`. -/
 @[simp]
 theorem globalNormResidueAbelianizationIdeleMonoidHom_eq_one_iff
     (a : IdeleGroup K) :
@@ -475,8 +455,7 @@ theorem globalNormResidueAbelianizationIdeleMonoidHom_eq_one_iff
       globalNormResidueAbelianizationMonoidHom_eq_one_iff K L
         (IdeleGroup.toStandardClass K a)
 
-/-- The kernel of the idele-level finite-Galois norm-residue symbol is the
-full inverse image of the genuine idele-class norm range. -/
+/-- The kernel of the idele-level finite-Galois norm-residue symbol is the full inverse image of the genuine idele-class norm range. -/
 @[simp]
 theorem globalNormResidueAbelianizationIdeleMonoidHom_ker :
     (globalNormResidueAbelianizationIdeleMonoidHom K L).ker =
@@ -491,8 +470,7 @@ theorem globalNormResidueAbelianizationIdeleMonoidHom_ker :
     globalNormResidueAbelianizationIdeleMonoidHom_eq_one_iff
       K L a
 
-/-- The kernel of the finite-Galois norm-residue homomorphism is exactly the
-range of the ordinary idele-class norm. -/
+/-- The kernel of the finite-Galois norm-residue homomorphism is exactly the range of the ordinary idele-class norm. -/
 @[simp]
 theorem globalNormResidueAbelianizationMonoidHom_ker :
     (globalNormResidueAbelianizationMonoidHom K L).ker =
@@ -505,11 +483,10 @@ theorem globalNormResidueAbelianizationMonoidHom_ker :
     globalNormResidueAbelianizationMonoidHom_eq_one_iff
       K L c
 
-/-- The index of the actual norm subgroup is the order of the
-abelianization of the genuine finite Galois group. -/
+/-- The index of the actual norm subgroup is the order of the abelianization of the genuine finite Galois group. -/
 theorem ideleClassNorm_index_eq_galoisAbelianization_card :
     (_root_.ideleClassNorm K L).range.index =
-      Nat.card (Abelianization (Gal(L / K))) := by
+      Nat.card (Group.Abelianization (Gal(L / K))) := by
   calc
     (_root_.ideleClassNorm K L).range.index =
         Nat.card
@@ -526,12 +503,12 @@ theorem ideleClassNorm_index_eq_galoisAbelianization_card :
     _ =
         Nat.card
           (Additive
-            (Abelianization (Gal(L / K)))) :=
+            (Group.Abelianization (Gal(L / K)))) :=
       Nat.card_congr
         (globalNormResidueAbelianizationEquiv K L).toEquiv
     _ =
         Nat.card
-          (Abelianization (Gal(L / K))) :=
+          (Group.Abelianization (Gal(L / K))) :=
       Nat.card_congr Additive.toMul
 
 end Reciprocity

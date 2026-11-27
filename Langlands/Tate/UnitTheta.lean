@@ -399,10 +399,9 @@ theorem unitTheta_inv (a : (FractionalIdeal (𝓞 K)⁰ K)ˣ) {y : ℝ} (hy : 0 
   rw [unitTheta, unitTheta]
   simp_rw [dedekindTheta_unitScale_inv a hy]
   rw [integral_const_mul]
-  congr 1
-  exact setIntegral_comp_neg_of_periodic
+  exact congrArg (HMul.hMul _) (setIntegral_comp_neg_of_periodic
     (G := fun c => dedekindTheta K (dualUnit K a) (unitScale K y c))
-    fun c k => dedekindTheta_unitScale_add_int _ y c k
+    fun c k => dedekindTheta_unitScale_add_int _ y c k)
 
 /-- The pair $(\Theta_{\mathfrak{a}}, \Theta_{\mathfrak{a}^\vee})$ as a `WeakFEPair`, with weight $n/2$, root number $(N(\mathfrak{a}) \sqrt{|d_K|})^{-1}$ and constant terms $1$. -/
 noncomputable def unitThetaFEPair (a : (FractionalIdeal (𝓞 K)⁰ K)ˣ) : WeakFEPair ℂ where

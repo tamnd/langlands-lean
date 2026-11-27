@@ -30,10 +30,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NonarchimedeanL
 /-!
 # Topological finite local reciprocity
 
-This module upgrades the algebraic finite local reciprocity isomorphism to a
-homeomorphic group isomorphism.  The key input is that the norm subgroup of a
-finite Galois extension is open.  Consequently its quotient is discrete, as
-is the topological abelianization of the finite Krull Galois group.
+This module upgrades the algebraic finite local reciprocity isomorphism to a homeomorphic group isomorphism.  The key input is that the norm subgroup of a finite Galois extension is open.  Consequently its quotient is discrete, as is the topological abelianization of the finite Krull Galois group.
 -/
 
 
@@ -160,11 +157,11 @@ private theorem localNormSubgroup_isOpen_of_compatibleLocalField
     apply Nat.finite_of_card_ne_zero
     rw [IsGalois.card_aut_eq_finrank K L]
     exact Nat.ne_of_gt Module.finrank_pos
-  let : Finite (Abelianization (Gal(L / K))) :=
-    Finite.of_surjective Abelianization.of QuotientGroup.mk_surjective
+  let : Finite (Group.Abelianization (Gal(L / K))) :=
+    Finite.of_surjective Group.Abelianization.of QuotientGroup.mk_surjective
   let : Finite (NormQuotient K L) :=
     Finite.of_equiv
-      (Abelianization (Gal(L / K)))
+      (Group.Abelianization (Gal(L / K)))
       (abelianizationEquivNormQuotient K L).toEquiv
   let : Finite (Kˣ ⧸ localNormSubgroup K L) := by
     change Finite (NormQuotient K L)
@@ -227,8 +224,7 @@ private theorem localNormSubgroup_isOpen_of_compatibleLocalField
   rw [hintersection] at hx
   exact hx.1
 
-/-- The norm subgroup of a finite Galois extension of a nonarchimedean local
-field is open in the native topology of the base-field unit group. -/
+/-- The norm subgroup of a finite Galois extension of a nonarchimedean local field is open in the native topology of the base-field unit group. -/
 theorem localNormSubgroup_isOpen
     (K : Type u) (L : Type v) [Field K] [Field L] [Algebra K L]
     [FiniteDimensional K L] [IsGalois K L]
@@ -246,8 +242,7 @@ theorem localNormSubgroup_isOpen
   let : IsIntegralClosure 𝒪[L] 𝒪[K] L := localCompleteDVF_integerRing_isIntegralClosure K L
   exact localNormSubgroup_isOpen_of_compatibleLocalField K L
 
-/-- A finite separable extension has open norm image. The norm image of its
-finite normal closure is an open subgroup contained in it. -/
+/-- A finite separable extension has open norm image. The norm image of its finite normal closure is an open subgroup contained in it. -/
 theorem localNormSubgroup_isOpen_of_isSeparable
     (K : Type u) (L : Type v) [Field K] [Field L] [Algebra K L]
     [FiniteDimensional K L] [Algebra.IsSeparable K L]
@@ -286,12 +281,11 @@ theorem commutator_topologicalClosure_eq
   · exact Subgroup.topologicalClosure_minimal _ le_rfl (isClosed_discrete _)
   · exact Subgroup.le_topologicalClosure _
 
-/-- For a finite-dimensional Galois extension, algebraic and topological
-abelianization agree as multiplicative groups. -/
+/-- For a finite-dimensional Galois extension, algebraic and topological abelianization agree as multiplicative groups. -/
 noncomputable def topologicalAbelianization_finite_equiv
     (K L : Type*) [Field K] [Field L] [Algebra K L]
     [FiniteDimensional K L] [IsGalois K L] :
-    Abelianization (Gal(L / K)) ≃* TopologicalAbelianization (Gal(L / K)) := by
+    Group.Abelianization (Gal(L / K)) ≃* TopologicalAbelianization (Gal(L / K)) := by
   let h : Subgroup.topologicalClosure (commutator (Gal(L / K))) =
       commutator (Gal(L / K)) :=
     commutator_topologicalClosure_eq (Gal(L / K))
@@ -305,8 +299,7 @@ variable (K : Type u) (L : Type v) [Field K] [Field L] [Algebra K L]
   [ValuativeRel K] [TopologicalSpace K] [IsNonarchimedeanLocalField K]
   [FiniteDimensional K L] [IsGalois K L]
 
-/-- Finite local reciprocity as a homeomorphic group isomorphism from the
-norm quotient to the topological abelianization of the Krull Galois group. -/
+/-- Finite local reciprocity as a homeomorphic group isomorphism from the norm quotient to the topological abelianization of the Krull Galois group. -/
 noncomputable def localReciprocityEquiv :
     NormQuotient K L ≃ₜ* TopologicalAbelianization (Gal(L / K)) := by
   letI : DiscreteTopology (NormQuotient K L) := normQuotient_discrete K L
@@ -320,16 +313,14 @@ noncomputable def localReciprocityEquiv :
       continuous_toFun := continuous_of_discreteTopology
       continuous_invFun := continuous_of_discreteTopology }
 
-/-- The underlying multiplicative equivalence is the algebraic reciprocity
-isomorphism followed by the finite abelianization comparison. -/
+/-- The underlying multiplicative equivalence is the algebraic reciprocity isomorphism followed by the finite abelianization comparison. -/
 theorem localReciprocityEquiv_toMulEquiv :
     (localReciprocityEquiv K L).toMulEquiv =
       (abelianizationEquivNormQuotient K L).symm.trans
         (topologicalAbelianization_finite_equiv K L) := by
   rfl
 
-/-- The quotient map to the norm quotient, bundled as a continuous
-homomorphism for the native quotient topology. -/
+/-- The quotient map to the norm quotient, bundled as a continuous homomorphism for the native quotient topology. -/
 noncomputable def normClassContinuous :
     Kˣ →ₜ* NormQuotient K L :=
   { normClass K L with
@@ -341,8 +332,7 @@ noncomputable def localArtinMap :
   (ContinuousMonoidHom.toContinuousMonoidHom (localReciprocityEquiv K L)).comp
     (normClassContinuous K L)
 
-/-- Forgetting the topology and comparing finite abelianizations recovers the
-algebraic local Artin homomorphism. -/
+/-- Forgetting the topology and comparing finite abelianizations recovers the algebraic local Artin homomorphism. -/
 theorem localArtinMap_toMonoidHom :
     (topologicalAbelianization_finite_equiv K L).symm.toMonoidHom.comp
         (localArtinMap K L).toMonoidHom =
@@ -363,9 +353,7 @@ theorem localArtinMap_toMonoidHom :
     rfl]
   exact (topologicalAbelianization_finite_equiv K L).symm_apply_apply _
 
-/-- The continuous local Artin map is canonical: after forgetting topology,
-it agrees with the reciprocity symbol computed from any realization of the
-extension in the fixed separable closure. -/
+/-- The continuous local Artin map is canonical: after forgetting topology, it agrees with the reciprocity symbol computed from any realization of the extension in the fixed separable closure. -/
 theorem localArtinMap_embedding_independent
     (i : L →ₐ[K] SeparableClosure K) :
     (topologicalAbelianization_finite_equiv K L).symm.toMonoidHom.comp
@@ -383,8 +371,7 @@ theorem localArtinMap_surjective :
   (localReciprocityEquiv K L).surjective.comp
     (QuotientGroup.mk'_surjective (localNormSubgroup K L))
 
-/-- The kernel of the continuous finite local Artin map is the norm
-subgroup. -/
+/-- The kernel of the continuous finite local Artin map is the norm subgroup. -/
 theorem localArtinMap_ker :
     (localArtinMap K L).toMonoidHom.ker = localNormSubgroup K L := by
   ext x
@@ -396,16 +383,14 @@ theorem localArtinMap_ker :
   rw [(localReciprocityEquiv K L).apply_eq_iff_eq]
   exact normClass_eq_one_iff_mem K L x
 
-/-- The canonical first-isomorphism equivalence induced by the continuous
-local Artin map. -/
+/-- The canonical first-isomorphism equivalence induced by the continuous local Artin map. -/
 noncomputable def localArtinMap_quotientKerEquiv :
     Kˣ ⧸ (localArtinMap K L).toMonoidHom.ker ≃*
       TopologicalAbelianization (Gal(L / K)) :=
   QuotientGroup.quotientKerEquivOfSurjective
     (localArtinMap K L).toMonoidHom (localArtinMap_surjective K L)
 
-/-- The first-isomorphism equivalence sends the class of a field unit to its
-image under the local Artin map. -/
+/-- The first-isomorphism equivalence sends the class of a field unit to its image under the local Artin map. -/
 @[simp]
 theorem localArtinMap_quotientKerEquiv_mk (x : Kˣ) :
     localArtinMap_quotientKerEquiv K L (QuotientGroup.mk x) =

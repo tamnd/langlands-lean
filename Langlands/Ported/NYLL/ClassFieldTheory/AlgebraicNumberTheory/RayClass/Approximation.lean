@@ -14,10 +14,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.RayCl
 /-!
 # Multiplicative weak approximation for ideles
 
-This file extracts the simultaneous approximation statement needed for ray
-class groups. At finitely many
-finite places one may prescribe an arbitrary open multiplicative coset and
-move a given idele into all of those cosets by a single principal idele.
+This file extracts the simultaneous approximation statement needed for ray class groups. At finitely many finite places one may prescribe an arbitrary open multiplicative coset and move a given idele into all of those cosets by a single principal idele.
 -/
 
 
@@ -34,9 +31,7 @@ variable {K : Type*} [Field K] [NumberField K]
 
 namespace IdeleGroup
 
-/-- The full modulus whose finite part has exponent one exactly at the places
-of a finite set and whose infinite part is empty.  It lets the ray-class
-approximation space serve as an arbitrary finite-place approximation space. -/
+/-- The full modulus whose finite part has exponent one exactly at the places of a finite set and whose infinite part is empty.  It lets the ray-class approximation space serve as an arbitrary finite-place approximation space. -/
 noncomputable def modulusOfFinset
     (S : Finset (HeightOneSpectrum (𝓞 K))) :
     RayClass.Modulus K := by
@@ -65,9 +60,7 @@ theorem modulusOfFinset_support
   ext v
   simp [modulusOfFinset, RayClass.Modulus.ofFinite]
 
-/-- The product of the prescribed finite local cosets and harmless
-nonzero cosets at the infinite places.  The latter ensure that the global
-approximating element is nonzero. -/
+/-- The product of the prescribed finite local cosets and harmless nonzero cosets at the infinite places.  The latter ensure that the global approximating element is nonzero. -/
 def openLocalCosetTarget
     (m : RayClass.Modulus K) (a : IdeleGroup K)
     (U : ∀ v : ↥m.finitePart.support,
@@ -95,8 +88,7 @@ theorem isOpen_openLocalCosetTarget
           (ContinuousMulEquiv.piUnits (IdeleGroup.infinitePart a) w) ⊤)
       exact RayClass.isOpen_unitRatioSet _ _ isOpen_univ
 
-/-- The given idele supplies a point in the product of the prescribed
-local cosets. -/
+/-- The given idele supplies a point in the product of the prescribed local cosets. -/
 def openLocalCosetTargetPoint
     (m : RayClass.Modulus K) (a : IdeleGroup K) :
     (i : RayClass.ApproximationPlace m) →
@@ -105,8 +97,7 @@ def openLocalCosetTargetPoint
   | Sum.inr w =>
       (ContinuousMulEquiv.piUnits (IdeleGroup.infinitePart a) w : w.Completion)
 
-/-- The target product used for multiplicative weak approximation is
-nonempty. -/
+/-- The target product used for multiplicative weak approximation is nonempty. -/
 theorem openLocalCosetTargetPoint_mem
     (m : RayClass.Modulus K) (a : IdeleGroup K)
     (U : ∀ v : ↥m.finitePart.support,
@@ -122,10 +113,7 @@ theorem openLocalCosetTargetPoint_mem
 
 /-- Multiplicative weak approximation at finitely many finite places.
 
-For arbitrary open subgroups `U_v ≤ K_vˣ` and an idele `a`, a single
-global element `x ∈ Kˣ` makes every local quotient `a_v / x` lie in
-`U_v`.  This is the precise approximation input in the proof of
-the cyclic prime-power norm argument, and it is also used in roots-of-unity descent. -/
+For arbitrary open subgroups `U_v ≤ K_vˣ` and an idele `a`, a single global element `x ∈ Kˣ` makes every local quotient `a_v / x` lie in `U_v`.  This is the precise approximation input in the proof of the cyclic prime-power norm argument, and it is also used in roots-of-unity descent. -/
 theorem exists_principal_quotient_mem_openLocalSubgroups
     (m : RayClass.Modulus K) (a : IdeleGroup K)
     (U : ∀ v : ↥m.finitePart.support,
@@ -159,7 +147,6 @@ theorem exists_principal_quotient_mem_openLocalSubgroups
     intro hxzero
     apply Units.ne_zero y₀
     rw [hy₀x, hxzero, WithAbs.toAbs_zero, AbsoluteValue.Completion.coe_zero]
-    rfl
   let xu : Kˣ := Units.mk0 x hx0
   refine ⟨xu, ?_⟩
   intro v
@@ -208,8 +195,7 @@ theorem exists_principal_quotient_mem_openLocalSubgroups_finset
   have hv : v.1 ∈ m.finitePart.support := hm.symm ▸ v.2
   exact hx ⟨v.1, hv⟩
 
-/-- The product of prescribed open multiplicative cosets at every
-archimedean place and at the finite places in a modulus. -/
+/-- The product of prescribed open multiplicative cosets at every archimedean place and at the finite places in a modulus. -/
 def openAllLocalCosetTarget
     (m : RayClass.Modulus K) (a : IdeleGroup K)
     (U : ∀ v : ↥m.finitePart.support,
@@ -246,8 +232,7 @@ theorem isOpen_openAllLocalCosetTarget
           (IdeleGroup.infiniteComponent w a) (V w))
       exact RayClass.isOpen_unitRatioSet _ _ (hV w)
 
-/-- The given idele supplies a point in the simultaneous all-place
-multiplicative target. -/
+/-- The given idele supplies a point in the simultaneous all-place multiplicative target. -/
 theorem openLocalCosetTargetPoint_mem_all
     (m : RayClass.Modulus K) (a : IdeleGroup K)
     (U : ∀ v : ↥m.finitePart.support,
@@ -264,12 +249,9 @@ theorem openLocalCosetTargetPoint_mem_all
   | inr w =>
       exact RayClass.val_mem_unitRatioSet _ _
 
-/-- Multiplicative weak approximation simultaneously at all
-archimedean places and at the finite support of a modulus.
+/-- Multiplicative weak approximation simultaneously at all archimedean places and at the finite support of a modulus.
 
-For prescribed open subgroups `U_v ≤ K_vˣ` and
-`V_w ≤ K_wˣ`, one global `x ∈ Kˣ` makes every quotient
-`a_v / x` lie in the corresponding subgroup. -/
+For prescribed open subgroups `U_v ≤ K_vˣ` and `V_w ≤ K_wˣ`, one global `x ∈ Kˣ` makes every quotient `a_v / x` lie in the corresponding subgroup. -/
 theorem exists_principal_quotient_mem_openAllLocalSubgroups
     (m : RayClass.Modulus K) (a : IdeleGroup K)
     (U : ∀ v : ↥m.finitePart.support,
@@ -315,7 +297,6 @@ theorem exists_principal_quotient_mem_openAllLocalSubgroups
     intro hxzero
     apply Units.ne_zero y₀
     rw [hy₀x, hxzero, WithAbs.toAbs_zero, AbsoluteValue.Completion.coe_zero]
-    rfl
   let xu : Kˣ := Units.mk0 x hx0
   refine ⟨xu, ?_, ?_⟩
   · intro v
@@ -362,8 +343,7 @@ theorem exists_principal_quotient_mem_openAllLocalSubgroups
     rw [hprincipal]
     exact hy
 
-/-- Finset-indexed simultaneous finite-and-infinite multiplicative weak
-approximation. -/
+/-- Finset-indexed simultaneous finite-and-infinite multiplicative weak approximation. -/
 theorem exists_principal_quotient_mem_openAllLocalSubgroups_finset
     (S : Finset (HeightOneSpectrum (𝓞 K)))
     (a : IdeleGroup K)
@@ -440,8 +420,7 @@ theorem finiteIdeleOfFinset_apply_notMem
     (1 : (v.adicCompletion K)ˣ)
   exact dite_eq_right hv
 
-/-- The idele whose prescribed finite components are `a` and whose other
-finite and all infinite components are `1`. -/
+/-- The idele whose prescribed finite components are `a` and whose other finite and all infinite components are `1`. -/
 def ideleOfFiniteLocalFamily
     (S : Finset (HeightOneSpectrum (𝓞 K)))
     (a : ∀ v : ↥S, (v.1.adicCompletion K)ˣ) :
@@ -458,8 +437,7 @@ theorem ideleOfFiniteLocalFamily_finiteComponent
     (IdeleGroup.finiteCoordinates_ofComponents 1 (finiteIdeleOfFinset S a))).trans
       (finiteIdeleOfFinset_apply_mem S a v)
 
-/-- The diagonal map from `Kˣ` to a finite product of local multiplicative
-quotients. -/
+/-- The diagonal map from `Kˣ` to a finite product of local multiplicative quotients. -/
 def principalLocalQuotientMap
     (S : Finset (HeightOneSpectrum (𝓞 K)))
     (U : ∀ v : ↥S, Subgroup (v.1.adicCompletion K)ˣ) :
@@ -477,8 +455,7 @@ theorem principalLocalQuotientMap_apply
       QuotientGroup.mk' (U v) ((IdeleGroup.finiteCoordinates (principalIdele K x)) v.1) :=
   rfl
 
-/-- Multiplicative weak approximation is equivalently surjectivity of the
-diagonal map to every finite product of quotients by open local subgroups. -/
+/-- Multiplicative weak approximation is equivalently surjectivity of the diagonal map to every finite product of quotients by open local subgroups. -/
 theorem principalLocalQuotientMap_surjective
     (S : Finset (HeightOneSpectrum (𝓞 K)))
     (U : ∀ v : ↥S, Subgroup (v.1.adicCompletion K)ˣ)

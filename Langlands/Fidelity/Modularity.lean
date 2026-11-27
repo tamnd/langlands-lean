@@ -82,7 +82,7 @@ theorem satoTate_full (E : WeierstrassCurve ℚ) [E.IsElliptic] :
     ext p
     simp only [satoTateAngle, Set.mem_Icc, Real.arccos_nonneg, Real.arccos_le_pi, and_true]
   have hfin : Finite {p : ℕ // p.Prime ∧ p ≤ x} :=
-    (Set.finite_Iic x).subset (fun p hp => hp.2) |>.to_subtype
+    ((Set.finite_Iic x).subset (t := {p : ℕ | p.Prime ∧ p ≤ x}) fun p hp => hp.2).to_subtype
   have hpos : 0 < Nat.card {p : ℕ // p.Prime ∧ p ≤ x} :=
     have : Nonempty {p : ℕ // p.Prime ∧ p ≤ x} := ⟨⟨2, Nat.prime_two, hx⟩⟩
     Nat.card_pos

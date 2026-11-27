@@ -289,7 +289,7 @@ theorem IsAffineStable.sum_eq_zero_of_min (hY : IsAffineStable K Y) {n : ℤ} (h
     rw [← sum_ballQuot_add hgO hw y]
     simp only [add_assoc]
   have hπi : valuation K π⁻¹ = uniformizer K ^ (-1 : ℤ) := by
-    rw [map_inv₀, hπ, zpow_neg_one]
+    rw [map_inv₀, hπ, _root_.zpow_neg_one]
   have hTS : ∀ y, y ∉ piBall K n → T y = 0 := by
     intro y hy
     refine Finset.sum_eq_zero fun q _ => hS _ fun h => hy ?_

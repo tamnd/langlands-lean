@@ -459,6 +459,7 @@ theorem exists_mem_strip : ∃ s : ℂ, ‖(χ (unif K) : ℂ) * (residueCard K 
       inv_mul_cancel₀ hr0.ne', one_mul]
     exact inv_lt_one_of_one_lt₀ hh
 
+set_option maxHeartbeats 800000 in
 /-- **The Gauss integral does not vanish.** Let $\chi$ be a smooth character of conductor exponent $a \ge 1$ and let $\psi$ be continuous of conductor exponent $n$. Then $G(\chi, \psi) = \int_{\varpi^{-n-a} \mathcal{O}_K^\times} \psi(y) \chi^{-1}(y) \, dy \ne 0$. The proof applies the functional equation twice, to $\varphi = \mathbf{1}_{1 + \mathfrak{p}^a}$ for $\chi$ and to $\hat{\varphi}$ for $\chi^{-1}$. By Fourier inversion, $\hat{\hat{\varphi}}(x) = c \varphi(-x)$ with $c \ne 0$, so $\varepsilon(1 - s, \chi^{-1}, \psi) \varepsilon(s, \chi, \psi) = c \chi(-1) \ne 0$. -/
 theorem gaussInt_ne_zero (hχs : IsSmoothChar K χ) {a : ℕ} (hχ : IsRamifiedConductor χ a)
     {ψ : AddChar K ℂ} (hψc : Continuous ψ) {n : ℤ} (hψ : IsConductor ψ n) :
@@ -488,9 +489,9 @@ theorem gaussInt_ne_zero (hχs : IsSmoothChar K χ) {a : ℕ} (hχ : IsRamifiedC
     refine HasCompactSupport.intro (isCompact_ordBall (-n - a)) fun x hx => ?_
     rw [hφ, fourier_ballIndicator μ hψ, Set.indicator_of_notMem hx, mul_zero]
   have hsi : ‖((χ⁻¹ (unif K) : ℂˣ) : ℂ) * (residueCard K : ℂ) ^ (-(1 - s))‖ < 1 := by
-    rwa [inv_apply_coe]
+    simpa only [inv_apply_coe] using hs'
   have hsi' : ‖((χ⁻¹ (unif K) : ℂˣ) : ℂ)⁻¹ * (residueCard K : ℂ) ^ (-(1 - (1 - s)))‖ < 1 := by
-    rwa [inv_apply_coe, inv_inv, sub_sub_cancel]
+    simpa only [inv_apply_coe, inv_inv, sub_sub_cancel] using hs
   have h2 := localFunctionalEquation_of_isLocallyConstant μ (isSmoothChar_inv χ hχs) hχ.inv hψc hψ
     hloc hcs hsi hsi'
   rw [h1, mul_zero] at h2

@@ -19,9 +19,7 @@ public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.RayCl
 /-!
 # Positive archimedean section of the idele norm
 
-This module constructs an idele supported at one infinite place whose absolute
-norm is a prescribed inverse.  Its finite components are trivial and all of
-its infinite components lie in the standard positive subgroups.
+This module constructs an idele supported at one infinite place whose absolute norm is a prescribed inverse.  Its finite components are trivial and all of its infinite components lie in the standard positive subgroups.
 -/
 
 
@@ -40,8 +38,7 @@ namespace IdeleGroup
 
 variable {K : Type u} [Field K] [NumberField K]
 
-/-- A positive real unit placed in an archimedean completion.  At a complex
-place it is first regarded as a complex unit. -/
+/-- A positive real unit placed in an archimedean completion.  At a complex place it is first regarded as a complex unit. -/
 noncomputable def positiveArchimedeanLocalComponent
     (v : InfinitePlace K) :
     ℝ≥0ˣ →* v.Completionˣ := by
@@ -144,7 +141,7 @@ private theorem positiveArchimedeanLocalComponent_nnnorm
           ((r : ℝ≥0ˣ) : ℝ) := by
       simpa [e] using congrArg Units.val hcomponent
     apply NNReal.eq
-    simp only [coe_nnnorm]
+    simp only [coe_nnNorm]
     calc
       ‖((positiveArchimedeanLocalComponent v r :
           v.Completionˣ) : v.Completion)‖ =
@@ -186,7 +183,7 @@ private theorem positiveArchimedeanLocalComponent_nnnorm
           (((r : ℝ≥0ˣ) : ℝ) : ℂ) := by
       simpa [e] using congrArg Units.val hcomponent
     apply NNReal.eq
-    simp only [coe_nnnorm]
+    simp only [coe_nnNorm]
     calc
       ‖((positiveArchimedeanLocalComponent v r :
           v.Completionˣ) : v.Completion)‖ =
@@ -238,8 +235,7 @@ private theorem positiveArchimedeanLocalComponent_mem_positive
   exact NNReal.coe_pos.mpr
     (pos_iff_ne_zero.mpr r.ne_zero)
 
-/-- The positive root needed to compensate for the multiplicity of the
-chosen infinite place. -/
+/-- The positive root needed to compensate for the multiplicity of the chosen infinite place. -/
 noncomputable def positiveArchimedeanRoot :
     ℝ≥0ˣ →* ℝ≥0ˣ :=
   Units.map
@@ -256,9 +252,7 @@ noncomputable def positiveArchimedeanRootContinuous :
         (NNReal.rpowMonoidHom
           (((w₀ (K := K)).mult : ℝ)⁻¹))
 
-/-- The positive archimedean idele over a number field.  Its finite part is
-one, and its sole nontrivial infinite component has been normalized so that
-the total archimedean norm is the input. -/
+/-- The positive archimedean idele over a number field.  Its finite part is one, and its sole nontrivial infinite component has been normalized so that the total archimedean norm is the input. -/
 noncomputable def positiveArchimedeanSection
     (K : Type u) [Field K] [NumberField K] :
     ℝ≥0ˣ →* IdeleGroup K :=
@@ -342,8 +336,7 @@ theorem positiveArchimedeanSection_finiteComponent
             (positiveArchimedeanRoot (K := K) r))) = 1
   rw [IdeleGroup.infinitePlaceIdele_finiteComponent]
 
-/-- Every infinite component of the positive archimedean idele lies in the
-standard positive subgroup. -/
+/-- Every infinite component of the positive archimedean idele lies in the standard positive subgroup. -/
 theorem positiveArchimedeanSection_infiniteComponent_mem_positive
     (r : ℝ≥0ˣ) (v : InfinitePlace K) :
     IdeleGroup.infiniteComponent v
@@ -418,8 +411,7 @@ theorem positiveArchimedeanSection_absoluteNorm
     IdeleGroup.finiteCoordinates_infinitePlaceIdele _ _
   rw [IdeleGroup.absoluteNorm_apply, hinfinite, hfinite, map_one, one_mul]
 
-/-- Multiplying an idele by its positive archimedean correction produces an
-idele of absolute norm one. -/
+/-- Multiplying an idele by its positive archimedean correction produces an idele of absolute norm one. -/
 noncomputable def positiveArchimedeanNormOneCorrection
     (K : Type u) [Field K] [NumberField K]
     (a : IdeleGroup K) :
@@ -441,8 +433,7 @@ theorem positiveArchimedeanNormOneCorrection_coe
       a * positiveArchimedeanSection K (IdeleGroup.absoluteNorm a) :=
   rfl
 
-/-- Every idele is its norm-one correction multiplied by the inverse of the
-positive archimedean section. -/
+/-- Every idele is its norm-one correction multiplied by the inverse of the positive archimedean section. -/
 theorem eq_positiveArchimedeanNormOneCorrection_mul_section_inv
     (a : IdeleGroup K) :
     a =

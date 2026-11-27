@@ -17,14 +17,11 @@ public import Langlands.Ported.NYLL.GaloisCohomology.Cyclic.NormKernelVanishing
 /-!
 # The global norm-residue symbol for finite Galois extensions
 
-For an arbitrary finite Galois extension of number fields, the global
-norm-residue quotient is the abelianization of the genuine Galois group:
+For an arbitrary finite Galois extension of number fields, the global norm-residue quotient is the abelianization of the genuine Galois group:
 
 `C_K / N_{L/K} C_L ≃ Gal(L / K)ᵃᵇ`.
 
-The abelian specialization in `GlobalNormResidue` identifies this target
-further with `Gal(L / K)`.  This file retains the abelianization and therefore
-states global reciprocity at its full finite-Galois generality.
+The abelian specialization in `GlobalNormResidue` identifies this target further with `Gal(L / K)`.  This file retains the abelianization and therefore states global reciprocity at its full finite-Galois generality.
 -/
 
 
@@ -59,22 +56,20 @@ private theorem
         (IdeleClassGroup F ⧸
           (_root_.ideleClassNorm F E).range)) :
     MulEquiv.toAdditive
-          (Abelianization.equivOfComm :
+          (Group.Abelianization.equivOfComm :
             Gal(E / F) ≃*
-              Abelianization (Gal(E / F))).symm
+              Group.Abelianization (Gal(E / F))).symm
         (globalNormResidueAbelianizationEquiv F E q) =
       globalNormResidueEquiv F E q :=
   rfl
 
-/-- For an abelian extension, composing the finite-Galois equivalence with
-the canonical equivalence from the Galois abelianization recovers the usual
-global norm-residue equivalence. -/
+/-- For an abelian extension, composing the finite-Galois equivalence with the canonical equivalence from the Galois abelianization recovers the usual global norm-residue equivalence. -/
 theorem globalNormResidueAbelianizationEquiv_abelianSpecialization :
     (globalNormResidueAbelianizationEquiv F E).trans
         (MulEquiv.toAdditive
-          (Abelianization.equivOfComm :
+          (Group.Abelianization.equivOfComm :
             Gal(E / F) ≃*
-              Abelianization (Gal(E / F))).symm) =
+              Group.Abelianization (Gal(E / F))).symm) =
       globalNormResidueEquiv F E := by
   apply AddEquiv.ext
   intro q
@@ -82,22 +77,20 @@ theorem globalNormResidueAbelianizationEquiv_abelianSpecialization :
     globalNormResidueAbelianizationEquiv_abelianSpecialization_apply
       F E q
 
-/-- In the canonical direction used by the global reciprocity isomorphism,
-the finite-Galois construction likewise specializes to the ordinary
-abelian reciprocity equivalence. -/
+/-- In the canonical direction used by the global reciprocity isomorphism, the finite-Galois construction likewise specializes to the ordinary abelian reciprocity equivalence. -/
 theorem globalReciprocityAbelianizationEquiv_abelianSpecialization :
     (MulEquiv.toAdditive
-        (Abelianization.equivOfComm :
+        (Group.Abelianization.equivOfComm :
           Gal(E / F) ≃*
-            Abelianization (Gal(E / F)))).trans
+            Group.Abelianization (Gal(E / F)))).trans
       (globalReciprocityAbelianizationEquiv F E) =
         globalReciprocityEquiv F E := by
   change
     ((globalNormResidueAbelianizationEquiv F E).trans
       (MulEquiv.toAdditive
-        (Abelianization.equivOfComm :
+        (Group.Abelianization.equivOfComm :
           Gal(E / F) ≃*
-            Abelianization (Gal(E / F))).symm)).symm =
+            Group.Abelianization (Gal(E / F))).symm)).symm =
       (globalNormResidueEquiv F E).symm
   exact
     congrArg AddEquiv.symm
@@ -106,9 +99,9 @@ theorem globalReciprocityAbelianizationEquiv_abelianSpecialization :
 private theorem
     globalNormResidueAbelianizationMonoidHom_abelianSpecialization_apply
     (c : IdeleClassGroup F) :
-    (Abelianization.equivOfComm :
+    (Group.Abelianization.equivOfComm :
         Gal(E / F) ≃*
-          Abelianization (Gal(E / F))).symm
+          Group.Abelianization (Gal(E / F))).symm
         (globalNormResidueAbelianizationMonoidHom F E c) =
       globalNormResidueMonoidHom F E c := by
   simpa only [
@@ -125,14 +118,12 @@ private theorem
             (QuotientGroup.mk'
               (_root_.ideleClassNorm F E).range c)))
 
-/-- The finite-Galois norm-residue homomorphism specializes to the ordinary
-abelian global Artin homomorphism after the canonical target
-identification. -/
+/-- The finite-Galois norm-residue homomorphism specializes to the ordinary abelian global Artin homomorphism after the canonical target identification. -/
 theorem
     globalNormResidueAbelianizationMonoidHom_abelianSpecialization :
-    (Abelianization.equivOfComm :
+    (Group.Abelianization.equivOfComm :
         Gal(E / F) ≃*
-          Abelianization (Gal(E / F))).symm.toMonoidHom.comp
+          Group.Abelianization (Gal(E / F))).symm.toMonoidHom.comp
         (globalNormResidueAbelianizationMonoidHom F E) =
       globalNormResidueMonoidHom F E := by
   apply MonoidHom.ext
@@ -141,14 +132,12 @@ theorem
     globalNormResidueAbelianizationMonoidHom_abelianSpecialization_apply
       F E c
 
-/-- The idele-level finite-Galois symbol has the same abelian
-specialization, after pulling both class symbols back along
-`I_F → C_F`. -/
+/-- The idele-level finite-Galois symbol has the same abelian specialization, after pulling both class symbols back along `I_F → C_F`. -/
 theorem
     globalNormResidueAbelianizationIdeleMonoidHom_abelianSpecialization :
-    (Abelianization.equivOfComm :
+    (Group.Abelianization.equivOfComm :
         Gal(E / F) ≃*
-          Abelianization (Gal(E / F))).symm.toMonoidHom.comp
+          Group.Abelianization (Gal(E / F))).symm.toMonoidHom.comp
         (globalNormResidueAbelianizationIdeleMonoidHom F E) =
       (globalNormResidueMonoidHom F E).comp
         (IdeleGroup.toStandardClass F) := by

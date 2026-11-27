@@ -22,11 +22,7 @@ public import Langlands.Ported.NYLL.ValuedFieldTheory.LocalField.NormUnits
 /-!
 # Norm quotients for unramified local extensions
 
-For a finite unramified Galois extension, the field-norm subgroup is exactly
-the subgroup of elements whose normalized valuation is divisible by the
-extension degree. The inclusion is the normalized norm formula; the reverse
-inclusion follows from finite local reciprocity because the norm quotient and
-the valuation quotient have the same finite cardinality.
+For a finite unramified Galois extension, the field-norm subgroup is exactly the subgroup of elements whose normalized valuation is divisible by the extension degree. The inclusion is the normalized norm formula; the reverse inclusion follows from finite local reciprocity because the norm quotient and the valuation quotient have the same finite cardinality.
 -/
 
 
@@ -105,19 +101,19 @@ theorem normQuotientToUnramifiedNormQuotient_surjective :
 
 /-- Cyclicity identifies the unramified Galois group with its abelianization. -/
 noncomputable def galoisGroupEquivAbelianizationOfUnramifiedValuation :
-    Gal(L / K) ≃* Abelianization (Gal(L / K)) := by
+    Gal(L / K) ≃* Group.Abelianization (Gal(L / K)) := by
   letI : IsCyclic (Gal(L / K)) :=
     isCyclic_galoisGroup_of_unramifiedValuation K L
   letI : CommGroup (Gal(L / K)) :=
     IsCyclic.commGroup (α := Gal(L / K))
-  exact Abelianization.equivOfComm (H := Gal(L / K))
+  exact Group.Abelianization.equivOfComm (H := Gal(L / K))
 
 /-- The cyclic Galois-group equivalence is the canonical map to the abelianization. -/
 @[simp]
 theorem galoisGroupEquivAbelianizationOfUnramifiedValuation_apply
     (σ : Gal(L/K)) :
     galoisGroupEquivAbelianizationOfUnramifiedValuation K L σ =
-      Abelianization.of σ :=
+      Group.Abelianization.of σ :=
   rfl
 
 private theorem normQuotient_card_eq_finrank :
@@ -144,10 +140,10 @@ private theorem normQuotient_card_eq_finrank :
     Nat.card (NormQuotient K L) =
         Nat.card (NormQuotient (Shrink.{0} K) (Shrink.{0} L)) :=
       Nat.card_congr eQ.toEquiv
-    _ = Nat.card (Abelianization (Gal(Shrink.{0} L / Shrink.{0} K))) :=
+    _ = Nat.card (Group.Abelianization (Gal(Shrink.{0} L / Shrink.{0} K))) :=
       Nat.card_congr
         (abelianizationEquivNormQuotient (Shrink.{0} K) (Shrink.{0} L)).symm.toEquiv
-    _ = Nat.card (Abelianization (Gal(L / K))) :=
+    _ = Nat.card (Group.Abelianization (Gal(L / K))) :=
       Nat.card_congr (HasseArf.shrinkGalMulEquiv K L).abelianizationCongr.toEquiv
     _ = Nat.card (Gal(L / K)) :=
       (Nat.card_congr

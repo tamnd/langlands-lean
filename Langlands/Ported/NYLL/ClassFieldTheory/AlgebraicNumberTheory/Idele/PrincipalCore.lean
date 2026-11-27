@@ -7,15 +7,13 @@ Authors: Naganori Yamaguchi (assisted by OpenAI Codex)
 
 module
 
-public import Langlands.Ported.NYLL.Compat.AbsoluteValueCompletion
 public import Mathlib.NumberTheory.NumberField.AdeleRing
 public import Langlands.Ported.NYLL.ClassFieldTheory.AlgebraicNumberTheory.Idele.Basic
 
 /-!
 # Principal ideles and the idele class group
 
-Principal idèles and the class projection are defined on the standard
-idele group of adele units.
+Principal idèles and the class projection are defined on the standard idele group of adele units.
 -/
 
 @[expose] public section
@@ -45,8 +43,7 @@ abbrev principalIdele : Kˣ →* IdeleGroup K :=
 
 variable {K}
 
-/-- The finite component of a principal idele is the image of the
-underlying field element in the corresponding completion. -/
+/-- The finite component of a principal idele is the image of the underlying field element in the corresponding completion. -/
 @[simp]
 theorem finiteComponent_principalIdele
     (x : Kˣ) (v : HeightOneSpectrum (𝓞 K)) :
@@ -54,14 +51,15 @@ theorem finiteComponent_principalIdele
       (v.adicCompletion K)ˣ) : v.adicCompletion K) = (x : K) :=
   rfl
 
-/-- The infinite component of a principal idele is the image of the
-underlying field element in the corresponding completion. -/
+/-- The infinite component of a principal idele is the image of the underlying field element in the corresponding completion. -/
 @[simp]
 theorem infiniteComponent_principalIdele
     (x : Kˣ) (w : InfinitePlace K) :
     ((infiniteComponent w (principalIdele K x) :
       w.Completionˣ) : w.Completion) = (x : K) := by
-  rfl
+  change algebraMap K w.Completion (x : K) = (x : K)
+  rw [AbsoluteValue.Completion.algebraMap_def, WithAbs.algebraMap_right_apply,
+    Algebra.algebraMap_self_apply]
 
 variable (K)
 
@@ -75,8 +73,7 @@ theorem principalIdele_injective :
 abbrev principalSubgroup : Subgroup (IdeleGroup K) :=
   NumberField.IdeleGroup.principalSubgroup (𝓞 K) K
 
-/-- The multiplicative group `Kˣ`, identified with the subgroup of principal
-ideles. -/
+/-- The multiplicative group `Kˣ`, identified with the subgroup of principal ideles. -/
 def principalEquiv : Kˣ ≃* principalSubgroup K :=
   MonoidHom.ofInjective (principalIdele_injective K)
 
