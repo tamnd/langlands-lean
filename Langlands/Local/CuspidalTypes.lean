@@ -609,6 +609,8 @@ end Langlands
 
 namespace Langlands.LocalGL2
 
+universe u v
+
 open LocalGL1 ValuativeRel Matrix
 
 section CuspidalInduction
