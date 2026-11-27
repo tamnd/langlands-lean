@@ -151,6 +151,7 @@ import Langlands.Local.LanglandsFamilyPairsEps
 import Langlands.Local.BreuilMezardSym
 import Langlands.Padic.LogTeich
 import Langlands.Padic.Semistable2
+import Langlands.Fidelity.LocalLanglandsFull
 
 /-!
 # The Langlands program in Lean
