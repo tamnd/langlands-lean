@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Say in the docstring of LocalLanglandsGLFull that the epsilon factor is chosen with the family and is not fixed in dimension 2 or more, after the round trip check F5.
+
 ## v0.1.47 (2026-11-27)
 
 ### Added
