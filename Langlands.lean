@@ -167,6 +167,7 @@ import Langlands.Galois.PseudoCharacter
 import Langlands.Bridge.EichlerShimuraHigher
 import Langlands.Modular.StrongApprox
 import Langlands.Local.AdmissiblePairs
+import Langlands.Local.MinimalPairs
 
 /-!
 # The Langlands program in Lean

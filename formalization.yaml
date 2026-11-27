@@ -2578,6 +2578,42 @@ status:
       kind: theorem
       status: proved
       note: 'Twisting respects isomorphism of admissible pairs'
+    - name: Langlands.LocalGL2.ramIdx_eq_one_or_two
+      kind: theorem
+      status: proved
+      note: 'The ramification index of a quadratic extension is 1 or 2'
+    - name: Langlands.LocalGL2.isUnramifiedExt_or_isTotallyRamifiedExt
+      kind: theorem
+      status: proved
+      note: 'A quadratic extension is unramified or totally ramified'
+    - name: Langlands.LocalGL2.exists_inclUnits_mul
+      kind: theorem
+      status: proved
+      note: 'For E/F totally ramified and m >= 1, U^{2m}_E = U^m_F U^{2m+1}_E'
+    - name: Langlands.LocalGL2.exists_normUnits_eq
+      kind: theorem
+      status: proved
+      note: 'The norm of a quadratic extension maps U^k_E onto a neighbourhood U^M_F of 1'
+    - name: Langlands.LocalGL2.IsAdmissible.exists_isMinimal_twistChar
+      kind: theorem
+      status: proved
+      note: 'Each admissible character is the twist of a minimal admissible character'
+    - name: Langlands.LocalGL2.IsMinimal.odd_level
+      kind: theorem
+      status: proved
+      note: 'For E/F tame and totally ramified, a minimal admissible character has odd level'
+    - name: Langlands.LocalGL2.AdmissiblePair.exists_isMinimal_iso_twist
+      kind: theorem
+      status: proved
+      note: 'Each admissible pair is isomorphic to the twist of a minimal pair'
+    - name: Langlands.LocalGL2.isLevel_twistChar_of_ne
+      kind: theorem
+      status: proved
+      note: 'If the levels of xi and chi_E differ, the twist has the larger level'
+    - name: Langlands.LocalGL2.isLevel_comp_normUnits_of_ramified
+      kind: theorem
+      status: proved
+      note: 'For E/F tame and totally ramified, the level of chi composed with the norm is twice the level of chi'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
