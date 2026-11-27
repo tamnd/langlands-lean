@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.36 (2026-11-27)
+
 ### Added
 
 - Add Langlands/Groups/ChevalleyRoots.lean: root elements for all roots, coroot elements, the torus action and the adjoint root datum of a root system.
