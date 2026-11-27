@@ -1674,6 +1674,34 @@ status:
       kind: theorem
       status: proved
       note: The adjoint torus normalizes the elementary adjoint Chevalley group.
+    - name: Langlands.Tate.periodicCoeff_unit_mul_infinityWeight
+      kind: theorem
+      status: proved
+      note: The periodic coefficient of a ramified character satisfies the unit condition.
+    - name: Langlands.Tate.ramifiedPartial_sub
+      kind: theorem
+      status: proved
+      note: The functional equation of the completed partial Hecke sum of a ramified character, with the Gauss sum.
+    - name: Langlands.Tate.ramifiedClassCompleted_eq_conj
+      kind: theorem
+      status: proved
+      note: The functional equation of one class sum of a ramified character.
+    - name: Langlands.Tate.norm_ramifiedRootNumber
+      kind: theorem
+      status: proved
+      note: The root number (-i)^(sum n) tau(chi)/sqrt(N f) has absolute value 1.
+    - name: Langlands.Tate.entireFunctionalEquation_ramified
+      kind: theorem
+      status: proved
+      note: The entire functional equation for a ramified Hecke character of a general number field with n_w >= 0 and one shift.
+    - name: Langlands.Tate.heckeFunctionalEquation_of_parallel
+      kind: theorem
+      status: proved
+      note: The conclusion of HeckeFunctionalEquationAt for each Hecke character with one shift and one sign at the complex places.
+    - name: Langlands.Tate.heckeFunctionalEquation_of_subsingleton
+      kind: theorem
+      status: proved
+      note: The conclusion of HeckeFunctionalEquationAt for each Hecke character of a field with one infinite place.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
