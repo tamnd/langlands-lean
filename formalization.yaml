@@ -2654,6 +2654,70 @@ status:
       kind: theorem
       status: proved
       note: 'Frobenius reciprocity for the induced Weil-Deligne representation'
+    - name: Langlands.LocalGL2.ArtinConjCompat
+      kind: statement
+      status: known
+      note: 'known: the local Artin map of L is compatible with conjugation by W_F (Serre, Local fields, Ch. XI §3)'
+    - name: Langlands.LocalGL2.ArtinNormCompat
+      kind: statement
+      status: known
+      note: 'known: the inclusion W_L into W_F corresponds to the norm N_{L/F} (Serre, Local fields, Ch. XI §3)'
+    - name: Langlands.LocalGL2.ArtinTransferCompat
+      kind: statement
+      status: known
+      note: 'known: the transfer W_F to W_L^ab corresponds to the inclusion of F^x in L^x (Serre, Local fields, Ch. XI §3)'
+    - name: Langlands.LocalGL2.charW
+      kind: definition
+      status: proved
+      note: 'The character xi_W = xi composed with the inverse Artin map of L, as a character of W_L'
+    - name: Langlands.LocalGL2.tameParam
+      kind: definition
+      status: proved
+      note: 'The tame parameter sigma(L, xi) = Ind xi_W with N = 0'
+    - name: Langlands.LocalGL2.twistWD
+      kind: definition
+      status: proved
+      note: 'The twist of a Weil-Deligne representation by a smooth character of W_F'
+    - name: Langlands.LocalGL2.quadChar
+      kind: definition
+      status: proved
+      note: 'The quadratic character kappa_{L/F} = sign composed with the Artin map of F'
+    - name: Langlands.LocalGL2.eq_or_eq_conjChar_of_repIso
+      kind: theorem
+      status: proved
+      note: 'For an index 2 subgroup, Ind phi iso Ind phi'' gives phi'' = phi or phi'' = phi^s'
+    - name: Langlands.LocalGL2.eq_of_algEquiv
+      kind: theorem
+      status: proved
+      note: 'Two F-isomorphic quadratic subfields of the algebraic closure are equal'
+    - name: Langlands.LocalGL2.isSmoothChar_twistChar
+      kind: theorem
+      status: proved
+      note: 'The twist of a smooth character by chi composed with the norm is smooth'
+    - name: Langlands.LocalGL2.quadChar_eq_one_iff
+      kind: theorem
+      status: proved
+      note: 'kappa_{L/F}(a) = 1 if and only if a is a norm from L'
+    - name: Langlands.LocalGL2.isIrreducible_tameParam
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: ArtinConjCompat. sigma(L, xi) is irreducible for an admissible character xi'
+    - name: Langlands.LocalGL2.tameParam_iso
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: ArtinConjCompat. sigma(L, xi) is constant on the F-conjugacy class of xi'
+    - name: Langlands.LocalGL2.tameParam_twist
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: ArtinNormCompat. sigma(L, xi tensor chi_L) is the twist of sigma(L, xi) by chi'
+    - name: Langlands.LocalGL2.det_tameParam
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: ArtinTransferCompat. det sigma(L, xi) corresponds to kappa_{L/F} times xi restricted to F^x'
+    - name: Langlands.LocalGL2.exists_algEquiv_of_tameParam_iso
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: ArtinConjCompat. sigma(L, xi) iso sigma(L, xi'') gives xi = xi'' composed with an F-automorphism of L'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
