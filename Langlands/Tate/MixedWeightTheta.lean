@@ -146,7 +146,18 @@ open scoped Classical
 
 variable {K : Type*} [Field K] [NumberField K]
 
-set_option maxHeartbeats 4000000 in
+/-- The Fourier transform on $\mathbb{R}$ with the character written as a product: $\int_{\mathbb{R}} e^{-2 \pi i r s} h(r) \, dr = \mathcal{F} h(s)$. -/
+theorem integral_exp_mul_smul_real (h : ℝ → ℂ) (s : ℝ) :
+    ∫ r : ℝ, cexp (↑(-2 * Real.pi * r * s) * I) • h r = 𝓕 h s := by
+  rw [Real.fourier_eq']
+  refine integral_congr_ae (Filter.Eventually.of_forall fun r => ?_)
+  simp only [RCLike.inner_apply, conj_trivial, mul_assoc, mul_comm s r]
+
+/-- The Fourier transform on $\mathbb{C}$ with the real inner product: $\int_{\mathbb{C}} e^{-2 \pi i \langle z, s \rangle} h(z) \, dz = \mathcal{F} h(s)$. -/
+theorem integral_exp_inner_smul_complex (h : ℂ → ℂ) (s : ℂ) :
+    ∫ z : ℂ, cexp (↑(-2 * Real.pi * ⟪z, s⟫) * I) • h z = 𝓕 h s :=
+  (Real.fourier_eq' h s).symm
+
 /-- **The Fourier transform of a product function on the mixed space.** Let $f_v : \mathbb{R} \to \mathbb{C}$ for the real places $v$ and $g_w : \mathbb{C} \to \mathbb{C}$ for the complex places $w$. Then the Fourier transform of $x \mapsto \prod_v f_v(x_v) \prod_w g_w(x_w)$ on the euclidean mixed space is $\xi \mapsto \prod_v \mathcal{F} f_v(\xi_v) \prod_w \mathcal{F} g_w(\xi_w)$. No integrability is necessary: if one factor is not integrable, both sides are $0$ by the conventions of the Bochner integral. -/
 theorem fourier_mixed_prod (f : {w : InfinitePlace K // IsReal w} → ℝ → ℂ)
     (g : {w : InfinitePlace K // IsComplex w} → ℂ → ℂ) (ξ : euclidean.mixedSpace K) :
@@ -181,12 +192,7 @@ theorem fourier_mixed_prod (f : {w : InfinitePlace K // IsReal w} → ℝ → �
       (fun v (r : ℝ) => cexp (↑(-2 * Real.pi * r * ξ'.1 v) * I) • f v r),
     integral_fintype_prod_volume_eq_prod
       (fun w (z : ℂ) => cexp (↑(-2 * Real.pi * ⟪z, ξ'.2 w⟫) * I) • g w z)]
-  simp only [Real.fourier_eq']
-  congr 1
-  refine Finset.prod_congr rfl fun v _ => ?_
-  congr 1 with r
-  rw [real_inner_eq_re_inner, RCLike.inner_apply, conj_trivial]
-  simp only [RCLike.re_to_real, mul_assoc, mul_comm r]
+  simp only [integral_exp_mul_smul_real, integral_exp_inner_smul_complex]
 
 variable (p : {w : InfinitePlace K // IsReal w} → ℕ) (k : {w : InfinitePlace K // IsComplex w} → ℕ)
 
