@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Add Langlands/Local/BreuilMezardLattices.lean: the Brauer-Nesbitt theorem for the Serre weight multiplicities, the trivial representation, and the coefficient fields for the Breuil-Mezard statement.
+
 ## v0.1.42 (2026-11-27)
 
 ### Added

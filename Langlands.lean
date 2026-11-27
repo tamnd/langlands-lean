@@ -145,6 +145,7 @@ import Langlands.Padic.Semistable
 import Langlands.Local.BreuilMezardTypes
 import Langlands.Groups.SplitReductive
 import Langlands.Local.LanglandsFamilyPairs
+import Langlands.Local.BreuilMezardLattices
 
 /-!
 # The Langlands program in Lean
