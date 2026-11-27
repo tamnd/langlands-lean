@@ -154,6 +154,7 @@ import Langlands.Padic.Semistable2
 import Langlands.Fidelity.LocalLanglandsFull
 import Langlands.Statements.BreuilMezardFull
 import Langlands.Fidelity.GlobalGL
+import Langlands.Modular.Hecke
 
 /-!
 # The Langlands program in Lean
