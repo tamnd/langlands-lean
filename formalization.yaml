@@ -2898,6 +2898,34 @@ status:
       kind: theorem
       status: proved-mod
       note: 'proved-mod: the intertwining of Lambda lies in J_alpha. The compact induction of a cuspidal type is irreducible'
+    - name: Langlands.LocalGL2.adjointMap
+      kind: definition
+      status: proved
+      note: 'The adjoint map a_alpha(X) = alpha X - X alpha on M_2(F)'
+    - name: Langlands.LocalGL2.adjointMap_eq_zero_iff
+      kind: theorem
+      status: proved
+      note: 'For alpha not in F, the kernel of a_alpha is F[alpha]'
+    - name: Langlands.LocalGL2.IsAdapted.adjointMap_mem_radPow_iff
+      kind: theorem
+      status: proved
+      note: 'Exactness of BH 13.4: a_alpha X lies in P^j if and only if X lies in E + P^{j+n}'
+    - name: Langlands.LocalGL2.mem_radPow_of_forall_psi_trace
+      kind: theorem
+      status: proved
+      note: 'Trace duality on M_2(F): if psi(tr(YX)) = 1 for X in P^k, then Y lies in P^{1-k}'
+    - name: Langlands.LocalGL2.intertwines_psiAlpha_iff
+      kind: theorem
+      status: proved
+      note: 'For g in the normalizer of A, g intertwines psi_alpha if and only if g lies in J_alpha'
+    - name: Langlands.LocalGL2.intertwines_cuspType_iff
+      kind: theorem
+      status: proved
+      note: 'For g in the normalizer of A, g intertwines a cuspidal type if and only if g lies in J_alpha'
+    - name: Langlands.LocalGL2.mem_jGroup_of_intertwines_cuspType
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: the hypothesis that each element that intertwines psi_alpha normalizes A (BH 15.1). The intertwining of a cuspidal type lies in J_alpha'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
