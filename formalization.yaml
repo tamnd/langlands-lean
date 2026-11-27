@@ -1626,6 +1626,30 @@ status:
       kind: theorem
       status: proved
       note: For a field k, e(k[[x]]) = 1.
+    - name: Langlands.Padic.bdrPlusMap_comp
+      kind: theorem
+      status: proved
+      note: B_dR^+ is a functor of the ring R.
+    - name: Langlands.Padic.fontaineTheta_comp_wittMap
+      kind: theorem
+      status: proved
+      note: Fontaine's theta map commutes with the maps of Witt vectors of the tilt.
+    - name: Langlands.Padic.bdrAction
+      kind: definition
+      status: proved
+      note: A group that acts on R by ring automorphisms acts on B_dR.
+    - name: Langlands.Padic.IsDeRham
+      kind: definition
+      status: proved
+      note: A representation is de Rham if its B_dR invariants have full rank over the invariant ring.
+    - name: Langlands.Padic.hodgeTateWeights
+      kind: definition
+      status: proved
+      note: The jumps of the filtration on the de Rham invariants.
+    - name: Langlands.Padic.isAdmissible_trivial
+      kind: theorem
+      status: proved
+      note: The trivial one-dimensional representation is admissible.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

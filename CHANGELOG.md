@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The functoriality of B_dR^+ and B_dR, the group action on them, de Rham representations and the Hodge-Tate filtration.
+
 - The Hilbert-Samuel function and multiplicity of a noetherian local ring, with the artinian and discrete valuation cases.
 
 - Hecke's functional equation for unramified characters of a general number field with one shift and any signs at the complex places.
