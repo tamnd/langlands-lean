@@ -2950,6 +2950,58 @@ status:
       kind: theorem
       status: proved
       note: 'The same result for ramified E, odd n and the Iwahori order, with no minimality hypothesis.'
+    - name: Langlands.LocalLanglandsGL2Odd
+      kind: statement
+      status: known
+      note: 'known: the local Langlands correspondence for GL(2) over a nonarchimedean local field of odd residue characteristic (Kutzko 1980; Bushnell and Henniart 2006, Chapter 8)'
+    - name: Langlands.LocalGL2.TamePair
+      kind: definition
+      status: proved
+      note: 'A tame pair: a quadratic separable L inside the algebraic closure of K with an admissible character xi'
+    - name: Langlands.LocalGL2.tameParam_isDual
+      kind: theorem
+      status: proved
+      note: 'sigma(L, xi^{-1}) is the dual of sigma(L, xi)'
+    - name: Langlands.LocalGL2.ArtinCompat
+      kind: statement
+      status: known
+      note: 'known: the three compatibilities of the local Artin map for each quadratic separable L (Serre, Local fields, Ch. XI; Neukirch, Ch. IV and V)'
+    - name: Langlands.LocalGL2.TameParametrizationGL2
+      kind: statement
+      status: known
+      note: 'known: for p odd, tame pairs parametrize the supercuspidal classes of GL(2, K), compatibly with central characters, twists and contragredients (Bushnell and Henniart, 19 and 20.2)'
+    - name: Langlands.LocalGL2.GaloisTameParametrization
+      kind: statement
+      status: known
+      note: 'known: for p odd, each irreducible 2-dimensional Weil-Deligne representation is some sigma(L, xi), and sigma determines L (Bushnell and Henniart, 34.1)'
+    - name: Langlands.LocalGL2.Rectifier
+      kind: statement
+      status: known
+      note: 'known: the existence of the rectifier Delta_xi with Delta_xi restricted to K^x equal to kappa_{L/K}, compatible with twists and inverses (Bushnell and Henniart, 34.4)'
+    - name: Langlands.LocalGL2.SupercuspidalLFactor
+      kind: statement
+      status: known
+      note: 'known: the Godement-Jacquet L-factor of a supercuspidal representation of GL(2) is 1 (Godement and Jacquet, LNM 260)'
+    - name: Langlands.LocalGL2.NonSupercuspidalLLC
+      kind: statement
+      status: known
+      note: 'known: the correspondence for the non-supercuspidal representations of GL(2) (Jacquet and Langlands, LNM 114; Bushnell and Henniart, Chapter 2 and 33). This input is coarse and is to be reduced'
+    - name: Langlands.LocalGL2.GL2OddInputs
+      kind: definition
+      status: proved
+      note: 'The six inputs of the reduction of LocalLanglandsGL2Odd'
+    - name: Langlands.LocalGL2.mk_param_eq_iff
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: ArtinConjCompat and GaloisTameParametrization. Two tame parameters are isomorphic exactly when the tame pairs are isomorphic'
+    - name: Langlands.LocalGL2.exists_isLanglandsMap_two
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: GL2OddInputs. A Langlands map in rank 2 that sends pi_{Delta xi} to sigma(L, xi) on the supercuspidal classes'
+    - name: Langlands.localLanglandsGL2_odd_of_inputs
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: GL2OddInputs. The six inputs imply LocalLanglandsGL2Odd'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

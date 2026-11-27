@@ -6,6 +6,7 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The reduction of the local Langlands correspondence for GL(2), p odd, to six named inputs: the Artin map compatibilities, the two tame parametrizations, the rectifier, the supercuspidal L-factor and the non-supercuspidal part.
 - The intertwining of a cuspidal type is J_alpha (BH 15.1), with the normalizer step proved.
 - The intertwining of a simple stratum: the adjoint map, the exactness of BH 13.4, and the intertwining of psi_alpha and of a cuspidal type inside the normalizer.
 - The groups E^x U^m_A are compact modulo the centre, so the compact induction of a cuspidal type is irreducible when its intertwining is J_alpha.
