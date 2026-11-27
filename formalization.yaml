@@ -2066,6 +2066,30 @@ status:
       kind: def
       status: proved
       note: the direct sum of two Weil-Deligne representations
+    - name: Langlands.isIrreducible_serreWeightRep_glFpTo
+      kind: theorem
+      status: proved
+      note: the Serre weight Sym^a k^2 tensor det^b is an irreducible representation of GL2(F_p) for a < p
+    - name: Langlands.isIrreducible_serreWeightRep_slFpTo
+      kind: theorem
+      status: proved
+      note: the Serre weight Sym^a k^2 is an irreducible representation of SL2(F_p) for a < p
+    - name: Langlands.serreMultiplicity_congr
+      kind: theorem
+      status: proved
+      note: the Serre weight multiplicities of a representation over the fraction field of a DVR depend only on its isomorphism class
+    - name: Langlands.typeMultiplicityOf
+      kind: def
+      status: proved
+      note: the multiplicity n_ab(lambda, tau) for a type representation over any field
+    - name: Langlands.typeMultiplicity_eq_typeMultiplicityOf
+      kind: theorem
+      status: proved
+      note: the multiplicity over C is the multiplicity of the base change
+    - name: Langlands.typeMultiplicityOf_integer_congr
+      kind: theorem
+      status: proved
+      note: Brauer-Nesbitt for type multiplicities over a finite extension of Q_p and its ring of integers
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

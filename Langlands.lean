@@ -148,6 +148,7 @@ import Langlands.Local.LanglandsFamilyPairs
 import Langlands.Local.BreuilMezardLattices
 import Langlands.Groups.LGroup
 import Langlands.Local.LanglandsFamilyPairsEps
+import Langlands.Local.BreuilMezardSym
 
 /-!
 # The Langlands program in Lean
