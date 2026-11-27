@@ -2474,6 +2474,42 @@ status:
       kind: theorem
       status: proved
       note: 'The adelic lift is an injective linear map on modular forms of level Gamma0(N)'
+    - name: Langlands.Galois.isPseudoCharTwo_trace_det
+      kind: theorem
+      status: proved
+      note: 'The trace and the determinant of a representation of dimension 2 form a pseudo-character'
+    - name: Langlands.Galois.IsPseudoCharTwo.of_tendsto
+      kind: theorem
+      status: proved
+      note: 'A pointwise limit of pseudo-characters of dimension 2 is a pseudo-character'
+    - name: Langlands.Galois.IsPseudoCharTwo.eq_of_eqOn_dense
+      kind: theorem
+      status: proved
+      note: 'Two continuous pseudo-characters that agree on a dense set are equal'
+    - name: Langlands.Bridge.exists_approx_weightTwo
+      kind: theorem
+      status: proved
+      note: 'For each n, the weight 2 representations give functions that satisfy the pseudo-character identities modulo l^n and match f at Frobenius elements'
+    - name: Langlands.Bridge.WeightTwoCongruence
+      kind: statement
+      status: known
+      note: 'known: the congruence of Shimura and Hida between the Hecke eigenvalues of weight k and the Hecke algebra of weight 2'
+    - name: Langlands.Bridge.CoefficientField
+      kind: statement
+      status: known
+      note: 'known: the Hecke eigenvalues of f lie in a finite extension of Q_l (Shimura)'
+    - name: Langlands.Bridge.FrobeniusDense
+      kind: statement
+      status: known
+      note: 'known: the Chebotarev density theorem for G_Q'
+    - name: Langlands.Bridge.PseudoCharTwoRepresentation
+      kind: statement
+      status: known
+      note: 'known: a continuous pseudo-character of dimension 2 is the trace of a semisimple representation (Taylor, Chenevier)'
+    - name: Langlands.Bridge.eichlerShimuraDeligne_of_congruence
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: EichlerShimuraDeligne for each weight k >= 2, from the weight 2 case and the four statements above'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
