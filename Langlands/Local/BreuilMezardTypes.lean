@@ -478,7 +478,7 @@ def WDIso.HasZeroMonodromy {m : ℕ} (x : WDIso K m) : Prop :=
 end InertialType
 
 /-- Irreducibility is invariant under isomorphism. -/
-theorem SmoothRep.IsIrreducible.of_iso {G : Type*} [Group G] [TopologicalSpace G]
+theorem SmoothRep.Iso.isIrreducible {G : Type*} [Group G] [TopologicalSpace G]
     {σ σ' : SmoothRep G} (h : σ.Iso σ') (hσ : σ.IsIrreducible) :
     σ'.IsIrreducible := by
   obtain ⟨e, he⟩ := h
@@ -552,7 +552,7 @@ theorem IsHenniartType.of_iso {rec : IrrSmooth (GL (Fin 2) K) ≃ WDIso K 2} {τ
     (h : σ.Iso σ') (hσ : IsHenniartType rec τ σ) : IsHenniartType rec τ σ' := by
   obtain ⟨e, -⟩ := id h
   have := hσ.2.1
-  refine ⟨hσ.1.of_iso h, e.finiteDimensional, fun π hπ => ?_⟩
+  refine ⟨h.isIrreducible hσ.1, e.finiteDimensional, fun π hπ => ?_⟩
   rw [← hσ.2.2 π hπ]
   exact ⟨HasTypeHom.of_iso h.symm, HasTypeHom.of_iso h⟩
 
@@ -562,7 +562,7 @@ theorem IsHenniartCrysType.of_iso {rec : IrrSmooth (GL (Fin 2) K) ≃ WDIso K 2}
     IsHenniartCrysType rec τ σ' := by
   obtain ⟨e, -⟩ := id h
   have := hσ.2.1
-  refine ⟨hσ.1.of_iso h, e.finiteDimensional, fun π hπ => ?_⟩
+  refine ⟨h.isIrreducible hσ.1, e.finiteDimensional, fun π hπ => ?_⟩
   rw [← hσ.2.2 π hπ]
   exact ⟨HasTypeHom.of_iso h.symm, HasTypeHom.of_iso h⟩
 
