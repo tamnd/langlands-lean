@@ -140,6 +140,7 @@ import Langlands.Groups.ChevalleyRoots
 import Langlands.Tate.HeckeShiftRamifiedAssembly
 import Langlands.Padic.Crystalline
 import Langlands.Padic.DeRhamNonzero
+import Langlands.Groups.ChevalleySteinberg
 
 /-!
 # The Langlands program in Lean
