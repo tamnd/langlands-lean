@@ -1806,6 +1806,30 @@ status:
       kind: theorem
       status: proved
       note: the multiplicity of the special fiber is its Hilbert-Samuel multiplicity
+    - name: Langlands.Groups.ChevalleyRoots.closure_rootElement
+      kind: theorem
+      status: proved
+      note: the root elements generate the elementary adjoint Chevalley group
+    - name: Langlands.Groups.ChevalleyRoots.corootElement_eq_torusElement
+      kind: theorem
+      status: proved
+      note: the coroot element h_i(c) is the torus element of the coroot character
+    - name: Langlands.Groups.ChevalleyRoots.corootElement_mul_units
+      kind: theorem
+      status: proved
+      note: the coroot elements are multiplicative
+    - name: Langlands.Groups.ChevalleyRoots.torusElement_mul_rootElement_mul_inv
+      kind: theorem
+      status: proved
+      note: the torus acts on the root elements by the root character
+    - name: Langlands.Groups.ChevalleyRoots.commute_rootElement_of_weightSpace_eq_bot
+      kind: theorem
+      status: proved
+      note: root elements commute when the weight space of the sum is zero
+    - name: Langlands.Groups.ChevalleyRoots.lgroupDatum_split_adjoint
+      kind: theorem
+      status: proved
+      note: the L-group datum of the adjoint root datum is the simply connected dual
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

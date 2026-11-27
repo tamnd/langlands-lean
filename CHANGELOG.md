@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Add Langlands/Groups/ChevalleyRoots.lean: root elements for all roots, coroot elements, the torus action and the adjoint root datum of a root system.
+
 - Add Langlands/Deformation/Framed.lean: framed deformation functors, universal framed deformation rings, the quotients by sets of points and the multiplicity of the special fiber.
 
 ## v0.1.35 (2026-11-27)
