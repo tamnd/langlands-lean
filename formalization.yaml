@@ -2822,6 +2822,42 @@ status:
       kind: theorem
       status: proved
       note: 'If the intertwining of Lambda is J, each Lambda-isotypic vector of c-Ind is a multiple of the basic function (the main step of BH 11.4)'
+    - name: Langlands.LocalGL2.unramBasis
+      kind: definition
+      status: proved
+      note: 'The basis (1, u) of an unramified quadratic E over F'
+    - name: Langlands.LocalGL2.isAdapted_unramBasis
+      kind: theorem
+      status: proved
+      note: 'For unramified E, the basis (1, u) is adapted to the maximal order'
+    - name: Langlands.LocalGL2.isSimpleStratum_unramBasis
+      kind: theorem
+      status: proved
+      note: 'For unramified E, an element of valuation -n not in F gives a simple stratum for the maximal order'
+    - name: Langlands.LocalGL2.mem_ordBall_of_forall_psi_trace
+      kind: theorem
+      status: proved
+      note: 'Trace duality, injectivity: if psi(Tr(alpha y)) = 1 on p_E^m, then alpha lies in p_E^{-m} (p odd)'
+    - name: Langlands.LocalGL2.traceChar
+      kind: definition
+      status: proved
+      note: 'The character y to psi(Tr_{E/F}(alpha y)) of p_E^m'
+    - name: Langlands.LocalGL2.exists_eq_psi_trace
+      kind: theorem
+      status: proved
+      note: 'Trace duality: each character of p_E^m trivial on p_E^N is psi(Tr(alpha .)) for some alpha in p_E^{1-N} (p odd)'
+    - name: Langlands.LocalGL2.IsAdmissible.exists_alpha
+      kind: theorem
+      status: proved
+      note: 'An admissible character of level n at least 1 is given by psi(Tr(alpha y)) on U_E^{[n/2]+1} for some alpha of valuation -n (p odd)'
+    - name: Langlands.LocalGL2.IsMinimal.exists_isSimpleStratum_unram
+      kind: theorem
+      status: proved
+      note: 'An unramified minimal pair of positive level gives a simple stratum for the maximal order (p odd)'
+    - name: Langlands.LocalGL2.IsMinimal.exists_isSimpleStratum_ram
+      kind: theorem
+      status: proved
+      note: 'A totally ramified minimal pair gives a simple stratum for the Iwahori order (p odd)'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
