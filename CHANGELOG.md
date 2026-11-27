@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Add Langlands/Local/BreuilMezardTypes.lean: inertial types, Henniart types by their defining property, Jordan-Holder multiplicities of reductions of lattices, sigma(lambda, tau) and n_ab(lambda, tau).
+
 - Add Langlands/Padic/Semistable.lean: epsilon is not one, the behaviour of log[epsilon] under ring maps, the Galois action and the Frobenius, and the Kummer cocycle on the tilt.
 
 ## v0.1.39 (2026-11-27)
