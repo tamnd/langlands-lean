@@ -2434,6 +2434,46 @@ status:
       kind: theorem
       status: proved-mod
       note: 'proved-mod: the curve 37a1 is modular, from the three hypotheses of the FLT bridge'
+    - name: Langlands.Modular.toFinGL_mem_K0_iff
+      kind: theorem
+      status: proved
+      note: 'A rational matrix lies in K0(N) at the finite places with positive determinant if and only if it comes from Gamma0(N)'
+    - name: Langlands.Modular.exists_rat_mul_integralUnit
+      kind: theorem
+      status: proved
+      note: 'Each finite idele is a positive rational number times an integral unit (class number one)'
+    - name: Langlands.Modular.exists_toFinGL_inv_mul_mem_K0
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: GL2(Af) = GL2(Q) K0(N), from SL2StrongApprox'
+    - name: Langlands.Modular.exists_isDecomp
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: the decomposition GL2(A) = GL2(Q) GL2+(R) K0(N), from SL2StrongApprox'
+    - name: Langlands.Modular.principal_mul_mul_K0_iff
+      kind: theorem
+      status: proved
+      note: 'Two elements of GL2+(R) give the same double coset if and only if they differ by Gamma0(N)'
+    - name: Langlands.Modular.adelicLift_apply
+      kind: theorem
+      status: proved
+      note: 'The adelic lift of a modular form is well defined on the decomposition'
+    - name: Langlands.Modular.eq_adelicLift
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: uniqueness of the adelic lift, from SL2StrongApprox'
+    - name: Langlands.Modular.adelicLift_principal_mul
+      kind: theorem
+      status: proved
+      note: 'The adelic lift is left invariant under GL2(Q)'
+    - name: Langlands.Modular.adelicLift_mul_K0
+      kind: theorem
+      status: proved
+      note: 'The adelic lift is right invariant under K0(N)'
+    - name: Langlands.Modular.adelicLiftLinear_injective
+      kind: theorem
+      status: proved
+      note: 'The adelic lift is an injective linear map on modular forms of level Gamma0(N)'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

@@ -4,11 +4,15 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Certified instances for lab experiment E5: the curves 11a1, 14a1, 15a1, 17a1 and 37a1 are semistable, and they are modular under ModularitySemistableQ or the hypotheses of the FLT bridge.
+- The adelic dictionary for GL(2) over Q: the adelic lift of a modular form on Gamma0(N), its invariance and injectivity, and the decomposition of GL2(A), proved-mod strong approximation for SL(2).
+
 ## v0.4.1 (2026-11-27)
 
 ### Added
 
-- Certified instances for lab experiment E5: the curves 11a1, 14a1, 15a1, 17a1 and 37a1 are semistable, and they are modular under ModularitySemistableQ or the hypotheses of the FLT bridge.
 - The Sturm bound for modular forms and cusp forms of weight k for Gamma0(N), and for any arithmetic group with period 1, in Langlands/Modular/Sturm.lean.
 
 ## v0.4.0 (2026-11-27)
