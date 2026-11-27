@@ -185,7 +185,7 @@ theorem hasSum_integral_unitCube_shiftCoeffTheta (hB : ∀ α, ‖f α‖ ≤ B)
       rw [Equiv.trans_apply, coe_unitsEquivFiber, shiftCoeffTerm_unitsEquiv hf _ _ hy]
     have hsG : Summable fun q : torsion K × (Fin (rank K) → ℤ) => G q.2 := by
       refine (((unitsEquiv K).trans (unitsEquivFiber I)).summable_iff.2
-        (hsum.subtype (orbitOf a ⁻¹' {I}))).congr fun q => ?_
+        (hsum.comp_injective Subtype.coe_injective)).congr fun q => ?_
       exact hval q
     calc ∑' β : (orbitOf a ⁻¹' {I}), g β
         = ∑' q : torsion K × (Fin (rank K) → ℤ),

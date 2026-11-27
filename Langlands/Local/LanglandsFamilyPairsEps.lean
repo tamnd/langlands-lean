@@ -320,7 +320,7 @@ theorem IsZetaGenerator.unique {Z : Set (ℂ → ℂ)} {L L' : ℂ → ℂ} (hL 
   have h2 : P ∣ P' := key hP0' hP0 hP' hP hR'
   obtain ⟨u, hu⟩ := associated_of_dvd_dvd h2 h1
   obtain ⟨r, -, hr⟩ := Polynomial.isUnit_iff.1 u.isUnit
-  have hc := congrArg (fun p => Polynomial.coeff p 0) hu
+  have hc := congrArg (fun p : Polynomial ℂ => p.coeff 0) hu
   simp only [Polynomial.mul_coeff_zero, hP0, hP0', ← hr, Polynomial.coeff_C_zero, one_mul] at hc
   rw [← hr, hc, map_one, mul_one] at hu
   funext s
@@ -472,7 +472,7 @@ theorem exists_zeta_eq_of_lt (χ : Kˣ →* ℂˣ) (hχ : IsSmoothChar K χ) {φ
   rw [add_comm]
   congr 1
   · refine Finset.sum_congr rfl fun j _ => ?_
-    rw [mul_zpow, zpow_add₀ hX, zpow_neg, zpow_natCast, zpow_natCast]
+    rw [mul_zpow, zpow_add₀ hX, _root_.zpow_neg, zpow_natCast, zpow_natCast]
     field_simp
   · ring
 
