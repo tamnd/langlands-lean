@@ -149,6 +149,8 @@ import Langlands.Local.BreuilMezardLattices
 import Langlands.Groups.LGroup
 import Langlands.Local.LanglandsFamilyPairsEps
 import Langlands.Local.BreuilMezardSym
+import Langlands.Padic.LogTeich
+import Langlands.Padic.Semistable2
 
 /-!
 # The Langlands program in Lean

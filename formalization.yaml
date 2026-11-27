@@ -2090,6 +2090,38 @@ status:
       kind: theorem
       status: proved
       note: Brauer-Nesbitt for type multiplicities over a finite extension of Q_p and its ring of integers
+    - name: Langlands.Padic.logTeich_mul
+      kind: theorem
+      status: proved
+      note: log[ab] = log[a] + log[b] in A_cris
+    - name: Langlands.Padic.acrisFrob_logTeich_eq
+      kind: theorem
+      status: proved
+      note: the Frobenius of A_cris sends t = log[epsilon] to p t
+    - name: Langlands.Padic.kummerLog_mul
+      kind: theorem
+      status: proved
+      note: the logarithms of the Kummer elements form a cocycle
+    - name: Langlands.Padic.bstN_bstFrob
+      kind: theorem
+      status: proved
+      note: the monodromy operator N of B_st satisfies N phi = p phi N
+    - name: Langlands.Padic.smul_uBst
+      kind: theorem
+      status: proved
+      note: the Galois group acts on u in B_st by the Kummer cocycle
+    - name: Langlands.Padic.IsSemistableQp
+      kind: def
+      status: proved
+      note: a p-adic representation of G_Qp is semistable when it is B_st admissible
+    - name: Langlands.Padic.IsPotentiallySemistableQp
+      kind: def
+      status: proved
+      note: a p-adic representation of G_Qp is potentially semistable when its restriction to G_L is semistable for a finite extension L
+    - name: Langlands.Padic.IsSemistableQp.isPotentiallySemistableQp
+      kind: theorem
+      status: proved
+      note: semistable representations are potentially semistable
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
