@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.35 (2026-11-27)
+
 ### Added
 
 - Add Langlands.Tate.heckeFunctionalEquation_of_unramified_general, the Hecke functional equation for each character unramified at the finite places, with any shifts and signs.
