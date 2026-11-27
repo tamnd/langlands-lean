@@ -2510,6 +2510,30 @@ status:
       kind: theorem
       status: proved-mod
       note: 'proved-mod: EichlerShimuraDeligne for each weight k >= 2, from the weight 2 case and the four statements above'
+    - name: Langlands.Modular.exists_rat_sub_isIntegralAdele
+      kind: theorem
+      status: proved
+      note: 'Each finite adele is a rational number plus an integral adele'
+    - name: Langlands.Modular.exists_toFinGL_inv_mul_mem_K0_one
+      kind: theorem
+      status: proved
+      note: 'SL2(Af) = SL2(Q) SL2 of the integral adeles'
+    - name: Langlands.Modular.sl2StrongApprox
+      kind: theorem
+      status: proved
+      note: 'Strong approximation for SL(2) at the finite places, at level K0(N)'
+    - name: Langlands.Modular.exists_toFinGL_inv_mul_mem_K0'
+      kind: theorem
+      status: proved
+      note: 'GL2(Af) = GL2(Q) K0(N)'
+    - name: Langlands.Modular.exists_isDecomp'
+      kind: theorem
+      status: proved
+      note: 'The decomposition GL2(A) = GL2(Q) GL2+(R) K0(N), with no hypothesis'
+    - name: Langlands.Modular.eq_adelicLift'
+      kind: theorem
+      status: proved
+      note: 'Uniqueness of the adelic lift, with no hypothesis'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

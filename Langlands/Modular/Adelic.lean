@@ -36,7 +36,7 @@ Lemma 1.2.6 is a computation with the valuations: a rational number that is inte
 
 ## What is left
 
-* Strong approximation `SL2StrongApprox N` is a hypothesis. Mathlib does not yet prove the density of $\mathbb{Q}$ in $\mathbb{A}_f$ or of $SL_2(\mathbb{Q})$ in $SL_2(\mathbb{A}_f)$. All results that do not need the existence of a decomposition are unconditional.
+* Strong approximation `SL2StrongApprox N` is a hypothesis in this file. `Langlands/Modular/StrongApprox.lean` proves it as `Langlands.Modular.sl2StrongApprox`, and gives the versions with no hypothesis `exists_isDecomp'` and `eq_adelicLift'`.
 * The nebentypus character, the central character, the action of $K_\infty$, the growth conditions and the image of the lift (Sections 1.4 and 1.5) are not formalized.
 * The Hecke operators $T_p$ as double coset operators and Theorem 1.6.8 are not formalized.
 
