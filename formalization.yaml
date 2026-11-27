@@ -2346,6 +2346,26 @@ status:
       kind: theorem
       status: proved
       note: 'The description of the newspace by the vanishing of the two trace maps for each prime p dividing N.'
+    - name: Langlands.Modular.eq_zero_of_coeff_eq_zero_levelOne
+      kind: theorem
+      status: proved
+      note: 'The Sturm bound in level one: a form of weight k whose coefficients a_n vanish for n at most k/12 is zero.'
+    - name: Langlands.Modular.eq_zero_of_coeff_eq_zero
+      kind: theorem
+      status: proved
+      note: 'The Sturm bound for an arithmetic group with period 1, by the norm to level one.'
+    - name: Langlands.Modular.eq_zero_of_coeff_eq_zero_Gamma0
+      kind: theorem
+      status: proved
+      note: 'The Sturm bound for Gamma0(N): a form of weight k whose coefficients a_n vanish for n at most k [SL_2(Z) : Gamma0(N)] / 12 is zero.'
+    - name: Langlands.Modular.eq_of_coeff_eq_Gamma0
+      kind: theorem
+      status: proved
+      note: 'Two modular forms for Gamma0(N) of the same weight are equal when their coefficients agree up to the Sturm bound.'
+    - name: Langlands.Modular.eq_of_qCoeff_eq_Gamma0
+      kind: theorem
+      status: proved
+      note: 'Two cusp forms for Gamma0(N) of the same weight are equal when their q-coefficients agree up to the Sturm bound.'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
