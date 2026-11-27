@@ -169,6 +169,7 @@ import Langlands.Modular.StrongApprox
 import Langlands.Local.AdmissiblePairs
 import Langlands.Local.MinimalPairs
 import Langlands.Local.WeilInduction
+import Langlands.Local.TameGalois
 
 /-!
 # The Langlands program in Lean
