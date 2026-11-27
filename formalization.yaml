@@ -2238,6 +2238,34 @@ status:
       kind: theorem
       status: proved
       note: 'a normalized Hecke eigenform satisfies the bad field of IsNormalizedEigenform'
+    - name: Langlands.Modular.cuspHeckeT_add
+      kind: theorem
+      status: proved
+      note: 'the Hecke operator on cusp forms is additive'
+    - name: Langlands.Modular.cuspHeckeT_smul
+      kind: theorem
+      status: proved
+      note: 'the Hecke operator on cusp forms commutes with scalars'
+    - name: Langlands.Modular.heckeSeq
+      kind: definition
+      status: proved
+      note: 'the Hecke operator T_n on coefficient sequences, as a sum over the divisors of n prime to N'
+    - name: Langlands.Modular.IsHeckeEigenSeq.mul
+      kind: theorem
+      status: proved
+      note: 'the coefficients of a normalized Hecke eigensequence are multiplicative'
+    - name: Langlands.Modular.IsHeckeEigenSeq.heckeSeq_eq
+      kind: theorem
+      status: proved
+      note: 'T_n of a normalized Hecke eigensequence is a_n times the sequence'
+    - name: Langlands.Modular.IsNormalizedHeckeEigenform.mul
+      kind: theorem
+      status: proved
+      note: 'a_mn = a_m a_n for coprime m and n for a normalized Hecke eigenform'
+    - name: Langlands.Modular.IsNormalizedHeckeEigenform.toIsNormalizedEigenform
+      kind: theorem
+      status: proved
+      note: 'a normalized Hecke eigenform satisfies all the fields of IsNormalizedEigenform'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
