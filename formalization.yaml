@@ -1854,6 +1854,34 @@ status:
       kind: theorem
       status: proved
       note: Hecke's theorem, the statement HeckeFunctionalEquation, for all number fields and all Hecke characters
+    - name: Langlands.Padic.nontrivial_bdr_padicComplexInt
+      kind: theorem
+      status: proved
+      note: the ring B_dR of the integers of C_p is not zero
+    - name: Langlands.Padic.isDeRhamQp_trivial
+      kind: theorem
+      status: proved
+      note: the trivial representation of the Galois group of Q_p is de Rham
+    - name: Langlands.Padic.locFrob_mem_acrisZero
+      kind: theorem
+      status: proved
+      note: the Frobenius maps A_cris^0 into itself
+    - name: Langlands.Padic.bcrisPlusFrob_smul
+      kind: theorem
+      status: proved
+      note: the Frobenius of B_cris^+ commutes with the Galois action
+    - name: Langlands.Padic.logTeich
+      kind: definition
+      status: proved
+      note: the element t = log[ε] of A_cris
+    - name: Langlands.Padic.IsCrystallineQp
+      kind: definition
+      status: proved
+      note: a representation of the Galois group of Q_p is crystalline if it is B_cris-admissible
+    - name: Langlands.Padic.monodromy_mul
+      kind: theorem
+      status: proved
+      note: the monodromy operator N on B_st is a derivation
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
