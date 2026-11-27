@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Fidelity checks F2 to F4 for RamanujanGL, FunctorialityGL and ReciprocityGL in Langlands/Fidelity/GlobalGL.lean.
+
 ## v0.1.49 (2026-11-27)
 
 ### Added
