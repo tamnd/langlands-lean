@@ -160,6 +160,7 @@ import Langlands.Bridge.AnthropicFLT
 import Langlands.Bridge.AnthropicES
 import Langlands.Modular.HeckeTn
 import Langlands.Modular.OldSpace
+import Langlands.Modular.Sturm
 
 /-!
 # The Langlands program in Lean
