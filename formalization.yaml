@@ -1986,6 +1986,22 @@ status:
       kind: statement
       status: known
       note: the local Langlands correspondence for GL_n with the L-factors and epsilon factors of pairs
+    - name: Langlands.serreMultiplicityIndependent
+      kind: theorem
+      status: proved
+      note: Brauer-Nesbitt: the Serre weight multiplicities of a reduction do not depend on the stable lattice
+    - name: Langlands.jhMultiplicity_eq_add_of_exact
+      kind: theorem
+      status: proved
+      note: the Jordan-Holder multiplicity is additive on short exact sequences
+    - name: Langlands.reductionMultiplicity_trivial_of_ne_zero
+      kind: theorem
+      status: proved
+      note: the reduction of the trivial representation has no Serre weight Sym^a with a not zero
+    - name: Langlands.serreMultiplicityIndependent_integer
+      kind: theorem
+      status: proved
+      note: Brauer-Nesbitt for the ring of integers of a finite extension of Q_p
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
