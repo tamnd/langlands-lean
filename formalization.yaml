@@ -2202,6 +2202,42 @@ status:
       kind: theorem
       status: proved
       note: 'F4: an isomorphism from the algebraic closure of Q_l to C exists'
+    - name: Langlands.Modular.heckeT
+      kind: definition
+      status: proved
+      note: 'the Hecke operator T_p (U_p when p divides N) on modular forms for Gamma0(N), as the trace of the translate by diag(1,p)'
+    - name: Langlands.Modular.cuspHeckeT
+      kind: definition
+      status: proved
+      note: 'the same Hecke operator on cusp forms'
+    - name: Langlands.Modular.heckeT_apply_of_not_dvd
+      kind: theorem
+      status: proved
+      note: 'the coset formula for T_p when p does not divide N'
+    - name: Langlands.Modular.coeff_heckeT
+      kind: theorem
+      status: proved
+      note: 'the q-expansion formula a_m(T_p f) = a_mp + p^(k-1) a_(m/p), with the second term only when p does not divide N'
+    - name: Langlands.Modular.heckeT_comm
+      kind: theorem
+      status: proved
+      note: 'T_p and T_q commute for distinct primes p and q'
+    - name: Langlands.Modular.eigenvalue_eq_qCoeff
+      kind: theorem
+      status: proved
+      note: 'the T_p eigenvalue of a normalized eigenvector is a_p'
+    - name: Langlands.Modular.qCoeff_pow_succ_succ_of_not_dvd
+      kind: theorem
+      status: proved
+      note: 'the recursion a_(p^(r+2)) = a_p a_(p^(r+1)) - p^(k-1) a_(p^r) for an eigenvector'
+    - name: Langlands.Modular.IsNormalizedHeckeEigenform.good
+      kind: theorem
+      status: proved
+      note: 'a normalized Hecke eigenform satisfies the good field of IsNormalizedEigenform'
+    - name: Langlands.Modular.IsNormalizedHeckeEigenform.bad
+      kind: theorem
+      status: proved
+      note: 'a normalized Hecke eigenform satisfies the bad field of IsNormalizedEigenform'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

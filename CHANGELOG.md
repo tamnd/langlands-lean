@@ -10,6 +10,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The Hecke operators T_p and U_p on modular and cusp forms for Gamma0(N), with the q-expansion formula, commutativity and the recursion for eigenform coefficients, in Langlands/Modular/Hecke.lean.
+
 - Fidelity checks F2 to F4 for RamanujanGL, FunctorialityGL and ReciprocityGL in Langlands/Fidelity/GlobalGL.lean.
 
 ## v0.1.49 (2026-11-27)
