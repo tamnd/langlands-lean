@@ -291,6 +291,7 @@ theorem smul_algebraMap_algebraMap (g : M) (x : Acris R p) :
   rw [smul_algebraMap_bcris, bcrisPlus_smul_def, bcrisPlusMap_algebraMap]
   rfl
 
+set_option synthInstance.maxHeartbeats 200000 in
 /-- The image in $B_{cris}(R)$ of a function $k$ with $k(g h) = g k(h) + k(g)$ satisfies the same relation. -/
 theorem algebraMap_cocycle (k : M → Acris R p) (hm : ∀ g h, k (g * h) = g • k h + k g)
     (g h : M) :
@@ -298,7 +299,7 @@ theorem algebraMap_cocycle (k : M → Acris R p) (hm : ∀ g h, k (g * h) = g �
       g • algebraMap (BcrisPlus R p) (Bcris M hε)
           (algebraMap (Acris R p) (BcrisPlus R p) (k h)) +
       algebraMap (BcrisPlus R p) (Bcris M hε) (algebraMap (Acris R p) (BcrisPlus R p) (k g)) := by
-  rw [smul_algebraMap_algebraMap, ← map_add, ← map_add, hm]
+  rw [smul_algebraMap_algebraMap, ← RingHom.map_add, ← RingHom.map_add, hm]
 
 variable (hε) in
 /-- The image in $B_{cris}(R)$ of a cocycle $k : M \to A_{cris}(R)$. -/

@@ -140,7 +140,7 @@ theorem mem_of_natDegree_le {U : Submodule k k[X]} {a : ℕ} (ha : a < p) (hXa :
       have hh : (f - c • g).natDegree ≤ n := by
         rw [natDegree_le_iff_coeff_eq_zero]
         intro N hN
-        rw [coeff_sub, coeff_smul, smul_eq_mul]
+        rw [coeff_sub, Polynomial.coeff_smul, smul_eq_mul]
         rcases (Nat.succ_le_of_lt hN).eq_or_lt with h | h
         · rw [← h, div_mul_cancel₀ _ hgc, sub_self]
         · rw [coeff_eq_zero_of_natDegree_lt (hf.trans_lt h),

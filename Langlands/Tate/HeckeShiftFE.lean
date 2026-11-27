@@ -230,7 +230,7 @@ theorem hasSum_integral_unitCube_shiftHeckeTheta
       rw [Equiv.trans_apply, coe_unitsEquivFiber, shiftHeckeTerm_unitsEquiv hχ _ _ hy]
     have hsG : Summable fun q : torsion K × (Fin (rank K) → ℤ) => G q.2 := by
       refine (((unitsEquiv K).trans (unitsEquivFiber I)).summable_iff.2
-        (hsum.subtype (orbitOf a ⁻¹' {I}))).congr fun q => ?_
+        (hsum.comp_injective Subtype.coe_injective)).congr fun q => ?_
       exact hval q
     calc ∑' β : (orbitOf a ⁻¹' {I}), g β
         = ∑' q : torsion K × (Fin (rank K) → ℤ),
@@ -410,8 +410,9 @@ theorem shiftHeckeCubeDualTheta_eq_conj
       torusConst θ * conj (shiftHeckeTheta K ε p k θ (dualUnit K a)
         (unitScale K (heckeScale K * y) (heckeShift K - c))) := fun c => by
     rw [shiftHeckeDualTheta_eq a (unitScale_pos hy _)]
-    congr 3
-    exact funext fun w => mult_sq_mul_unitScale_neg y c w
+    rw [show (fun w => (mult w : ℝ) ^ 2 * unitScale K y (-c) w) =
+        unitScale K (heckeScale K * y) (heckeShift K - c) from
+      funext fun w => mult_sq_mul_unitScale_neg y c w]
   rw [shiftHeckeCubeDualTheta, shiftHeckeCubeTheta]
   simp_rw [e]
   rw [integral_const_mul, integral_conj, integral_unitCube_sub
