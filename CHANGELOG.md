@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Add Langlands/Groups/LGroup.lean: pinned automorphisms of Chevalley groups, the L-group of a quasi-split group with adjoint dual group, and the L-group of the unitary group U(n).
+
 ## v0.1.43 (2026-11-27)
 
 ### Added
