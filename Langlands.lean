@@ -172,6 +172,7 @@ import Langlands.Local.WeilInduction
 import Langlands.Local.TameGalois
 import Langlands.Local.ChainOrders
 import Langlands.Local.CuspidalTypes
+import Langlands.Local.AdaptedUnramified
 
 /-!
 # The Langlands program in Lean
