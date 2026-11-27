@@ -51,9 +51,8 @@ Let $K$ be a nonarchimedean local field with residue field of size $q$. The loca
 
 ## What is still open
 
-* The ε-factor condition `IsRSEpsilonFactor` for $GL_1$ itself. The pairs of the functional equation are Tate's pairs by `mem_rsFEPairs_one`, but the Laurent form needs Tate's functional equation for all Schwartz-Bruhat functions and the meromorphic continuation of the zeta integrals.
 * The convergence of the zeta integrals of Jacquet, Piatetski-Shapiro and Shalika for $\mathrm{Re}(s)$ large, and the existence of $L(s, \pi \times \pi')$ and $\varepsilon(s, \pi \times \pi', \psi)$ for $n \ge 2$.
-* The uniqueness of the generator in `IsZetaGenerator` and the uniqueness of the Galois ε-factor.
+* The uniqueness of the Galois ε-factor. The ε-factor condition for $GL_1$ and the uniqueness of the generator in `IsZetaGenerator` are proved in `Langlands.Local.LanglandsFamilyPairsEps`.
 * The factors of pairs for non-generic representations.
 
 ## References
