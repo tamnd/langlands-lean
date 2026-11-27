@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Hecke's functional equation for ramified characters of a general number field with one shift and one sign, and for every character of a field with one infinite place.
+
 ## v0.1.33 (2026-11-27)
 
 ### Added
