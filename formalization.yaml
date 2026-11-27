@@ -2266,6 +2266,18 @@ status:
       kind: theorem
       status: proved
       note: 'a normalized Hecke eigenform satisfies all the fields of IsNormalizedEigenform'
+    - name: Langlands.Ported.AnthropicFLT.ModularityOfSemistableModel
+      kind: statement
+      status: known
+      note: 'the statement of WeierstrassCurve.modularity_of_semistableModel of anthropics/fermats-last-theorem at commit 6e837e7, ported verbatim as a Prop'
+    - name: Langlands.Bridge.isModular_of_isSemistable
+      kind: theorem
+      status: proved
+      note: 'the ported theorem and SemistableIntegralModel give modularity of each semistable elliptic curve over Q in the source sense'
+    - name: Langlands.Bridge.modularitySemistableQ_of_anthropicFLT
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: ModularitySemistableQ from the ported theorem, SemistableIntegralModel and FullCoefficientsOfModular'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
