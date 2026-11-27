@@ -521,10 +521,10 @@ theorem latticeMultiplicity_eq_of_isStableLattice {L L' : Submodule O V}
     (map_ne_zero_iff _ (IsFractionRing.injective O C)).2 hirr.ne_zero
   have := hL.1
   have := hL'.1
-  have hfg : L.FG := Submodule.IsLattice.fg (A := C)
-  have hfg' : L'.FG := Submodule.IsLattice.fg (A := C)
-  obtain ⟨m, hm⟩ := exists_pow_smul_le hfg (Submodule.IsLattice.span_eq_top (M := L'))
-  obtain ⟨m', hm'⟩ := exists_pow_smul_le hfg' (Submodule.IsLattice.span_eq_top (M := L))
+  have hfg : L.FG := Submodule.IsLattice.fg (A := C) L
+  have hfg' : L'.FG := Submodule.IsLattice.fg (A := C) L'
+  obtain ⟨m, hm⟩ := exists_pow_smul_le hfg (Submodule.IsFullLattice.span_eq_top (A := C) (M := L'))
+  obtain ⟨m', hm'⟩ := exists_pow_smul_le hfg' (Submodule.IsFullLattice.span_eq_top (A := C) (M := L))
   have hinf := hL.2.inf hL'.2
   rw [latticeMultiplicity_eq_of_pow_smul_le hϖ hϖ₀ hL.2 hinf hfg inf_le_left m
       (le_inf Submodule.smul_le_right hm) W,
@@ -671,7 +671,7 @@ theorem algebraMap_mem_integer {x : ℚ_[p]} (hx : x ∈ 𝒪[ℚ_[p]]) :
   have h₁ : x ≤ᵥ 1 := by
     rw [Valuation.vle_iff_le (valuation ℚ_[p]), map_one]
     exact hx
-  have h₂ := (ValuativeExtension.vle_iff_vle (B := E) x 1).2 h₁
+  have h₂ := (ValuativeExtension.vle_iff_vle (B := E) (a := x) (b := 1)).2 h₁
   rw [map_one, Valuation.vle_iff_le (valuation E), map_one] at h₂
   exact h₂
 

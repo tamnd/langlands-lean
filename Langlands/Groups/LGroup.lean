@@ -731,12 +731,12 @@ def antiDiag : Matrix (Fin n) (Fin n) R := of fun a c => if c = a.rev then sign 
 /-- Left multiplication by $J$: $(J A)_{ac} = \varepsilon_a A_{n-1-a, c}$. -/
 theorem antiDiag_mul_apply (A : Matrix (Fin n) (Fin n) R) (a c : Fin n) :
     (antiDiag n R * A) a c = sign a * A a.rev c := by
-  simp [antiDiag, mul_apply, ite_mul]
+  simp [antiDiag, Matrix.mul_apply, ite_mul]
 
 /-- Right multiplication by $J^T$: $(A J^T)_{ac} = A_{a, n-1-c} \varepsilon_c$. -/
 theorem mul_antiDiag_transpose_apply (A : Matrix (Fin n) (Fin n) R) (a c : Fin n) :
     (A * (antiDiag n R)ᵀ) a c = A a c.rev * sign c := by
-  simp [antiDiag, mul_apply, mul_ite]
+  simp [antiDiag, Matrix.mul_apply, mul_ite]
 
 /-- The matrix $J$ is orthogonal: $J J^T = 1$. -/
 theorem antiDiag_mul_transpose : antiDiag n R * (antiDiag n R)ᵀ = 1 := by
@@ -923,7 +923,7 @@ theorem theta_rootElement (p : glIndex n) (t : R) :
   refine Units.ext ?_
   ext a c
   rw [theta_apply, rootElement_inv, coe_rootElement, coe_rootElement]
-  simp only [transvection, Matrix.add_apply, one_apply, single_apply, outerIndex_fst,
+  simp only [transvection, Matrix.add_apply, Matrix.one_apply, single_apply, outerIndex_fst,
     outerIndex_snd]
   by_cases h : p.1.2.rev = a ∧ p.1.1.rev = c
   · obtain ⟨rfl, rfl⟩ := h
