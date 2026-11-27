@@ -2122,6 +2122,26 @@ status:
       kind: theorem
       status: proved
       note: semistable representations are potentially semistable
+    - name: Langlands.Fidelity.localLanglandsGLFull_one
+      kind: theorem
+      status: proved
+      note: F2 for LocalLanglandsGLFull: the full local Langlands statement holds for n = 1
+    - name: Langlands.Fidelity.isWDEpsilon_galEps
+      kind: theorem
+      status: proved
+      note: the Galois epsilon factor built from Tate's epsilon and the Frobenius determinants satisfies IsWDEpsilon
+    - name: Langlands.Fidelity.not_unique_epsilon_one
+      kind: theorem
+      status: proved
+      note: F3 for LocalLanglandsGLFull: the IsWDEpsilon conditions do not fix the epsilon factor in dimension 2
+    - name: Langlands.Fidelity.recFamily_unique
+      kind: theorem
+      status: proved
+      note: for n = 1 the conditions of IsLanglandsFamily fix rec
+    - name: Langlands.Fidelity.nonempty_irrSmooth_one
+      kind: theorem
+      status: proved
+      note: F4 check: the type of irreducible smooth representations of GL_1 is nonempty
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
