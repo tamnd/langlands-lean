@@ -6,6 +6,7 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The groups E^x U^m_A are compact modulo the centre, so the compact induction of a cuspidal type is irreducible when its intertwining is J_alpha.
 - The irreducibility criterion for compact induction (BH 11.4): c-Ind_J^G Lambda is irreducible when the intertwining of Lambda is J.
 - The adapted basis of an unramified quadratic E, trace duality for p odd, and the simple stratum of a minimal pair.
 - Cuspidal types of GL(2, F): the groups E^x U^m_A, the type characters of a simple stratum, compact induction and the main step of the irreducibility criterion.
