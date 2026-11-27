@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Add Langlands/Local/BreuilMezardSym.lean: the irreducibility of the Serre weights Sym^a for a < p, and the type multiplicities over a general field with Brauer-Nesbitt.
+
 ## v0.1.45 (2026-11-27)
 
 ### Added
