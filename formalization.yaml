@@ -1918,6 +1918,30 @@ status:
       kind: theorem
       status: proved
       note: the Kummer elements satisfy the cocycle relation
+    - name: Langlands.jhMultiplicity_eq
+      kind: theorem
+      status: proved
+      note: the Jordan-Holder multiplicity does not depend on the composition series
+    - name: Langlands.reductionMultiplicity_trivial
+      kind: theorem
+      status: proved
+      note: the trivial representation has the Serre weight Sym^0 with multiplicity one in its reduction
+    - name: Langlands.serreMultiplicity_eq
+      kind: theorem
+      status: proved
+      note: under lattice independence the Serre weight multiplicity is the multiplicity of each stable lattice
+    - name: Langlands.IsHenniartType.of_iso
+      kind: theorem
+      status: proved
+      note: the property of being a Henniart type is invariant under isomorphism
+    - name: Langlands.sigmaLambdaTau
+      kind: definition
+      status: proved
+      note: the representation sigma(lambda, tau) of GL_2 of the integers
+    - name: Langlands.typeMultiplicity
+      kind: definition
+      status: proved
+      note: the multiplicity n_ab(lambda, tau) of a Serre weight in the reduction of sigma(lambda, tau)
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

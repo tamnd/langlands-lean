@@ -142,6 +142,7 @@ import Langlands.Padic.Crystalline
 import Langlands.Padic.DeRhamNonzero
 import Langlands.Groups.ChevalleySteinberg
 import Langlands.Padic.Semistable
+import Langlands.Local.BreuilMezardTypes
 
 /-!
 # The Langlands program in Lean
