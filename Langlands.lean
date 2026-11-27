@@ -143,6 +143,7 @@ import Langlands.Padic.DeRhamNonzero
 import Langlands.Groups.ChevalleySteinberg
 import Langlands.Padic.Semistable
 import Langlands.Local.BreuilMezardTypes
+import Langlands.Groups.SplitReductive
 
 /-!
 # The Langlands program in Lean
