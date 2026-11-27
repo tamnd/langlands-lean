@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.45 (2026-11-27)
+
 ### Added
 
 - Add Langlands/Local/LanglandsFamilyPairsEps.lean: the epsilon factor of pairs for GL_1 x GL_1, the link of the Tate epsilon condition to the concrete epsilon factor, additivity on direct sums, and the uniqueness of the zeta generator.
