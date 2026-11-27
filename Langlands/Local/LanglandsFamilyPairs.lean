@@ -492,7 +492,7 @@ theorem IsLanglandsFamilyPairs.isLanglandsFamily [MeasurableSpace K] {art : Kˣ 
     (h : IsLanglandsFamilyPairs K art ε n rec) : IsLanglandsFamily K art n rec :=
   h.toIsLanglandsFamily
 
-/-- **The local Langlands correspondence for $GL_n$ with the factors of pairs** (Harris and Taylor, Henniart, Scholze), existence part. For each nonarchimedean local field $K$ and each local Artin map, there is a Galois ε-factor with the properties of `IsWDEpsilon`, and a family $(\mathrm{rec}_m)_{m \le n}$ with the conditions of `IsLanglandsFamilyPairs` for this ε-factor. The conditions on pairs are stated only for generic representations. -/
+/-- **The local Langlands correspondence for $GL_n$ with the factors of pairs** (Harris and Taylor, Henniart, Scholze), existence part. For each nonarchimedean local field $K$ and each local Artin map, there is a Galois ε-factor with the properties of `IsWDEpsilon`, and a family $(\mathrm{rec}_m)_{m \le n}$ with the conditions of `IsLanglandsFamilyPairs` for this ε-factor. The conditions on pairs are stated only for generic representations. The ε-factor is chosen together with the family, and the conditions of `IsWDEpsilon` do not fix it in dimension 2 or more (`Langlands.Fidelity.not_unique_epsilon_one`), because inductivity in degree zero is not part of them. The statement does not say that the family is unique. -/
 def LocalLanglandsGLFull (n : ℕ) : Prop :=
   ∀ (K : Type u) [Field K] [ValuativeRel K] [TopologicalSpace K] [IsNonarchimedeanLocalField K]
     (art : Kˣ ≃ₜ* WeilGroup.Ab K), IsLocalArtinMap K art →
