@@ -174,6 +174,7 @@ import Langlands.Local.ChainOrders
 import Langlands.Local.CuspidalTypes
 import Langlands.Local.AdaptedUnramified
 import Langlands.Local.CIndIrreducible
+import Langlands.Local.JGroupCompact
 
 /-!
 # The Langlands program in Lean

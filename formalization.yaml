@@ -2878,6 +2878,26 @@ status:
       kind: theorem
       status: proved
       note: 'BH 11.4: if J is open and compact modulo the centre and the intertwining of Lambda is J, then c-Ind_J^G Lambda is irreducible'
+    - name: Langlands.isCompactModCenter_of_isCompact
+      kind: theorem
+      status: proved
+      note: 'J is compact modulo the centre when a compact subgroup K and the centre generate a subgroup of finite index'
+    - name: Langlands.LocalGL2.isCompact_unitsFilt_subgroupOf
+      kind: theorem
+      status: proved
+      note: 'U^k_A meet J is compact'
+    - name: Langlands.LocalGL2.finiteIndex_jGroup
+      kind: theorem
+      status: proved
+      note: 'F^x (U^0_A meet J) has finite index in E^x U^m_A'
+    - name: Langlands.LocalGL2.isCompactModCenter_jGroup_center
+      kind: theorem
+      status: proved
+      note: 'E^x U^m_A is compact modulo the centre of GL(2, F)'
+    - name: Langlands.LocalGL2.isIrreducible_cuspInd
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: the intertwining of Lambda lies in J_alpha. The compact induction of a cuspidal type is irreducible'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
