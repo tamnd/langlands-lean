@@ -132,6 +132,7 @@ import Langlands.Padic.DeRham
 import Langlands.Groups.Chevalley
 import Langlands.Tate.HeckeGeneralRamified
 import Langlands.Padic.DeRhamQp
+import Langlands.Ring.HilbertSamuelPoly
 
 /-!
 # The Langlands program in Lean
