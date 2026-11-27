@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Admissible pairs of Bushnell and Henniart for GL(2): admissible characters of tame quadratic extensions, Hilbert 90, regularity, twists, levels, and the equivalence of pairs.
+
 ## v0.5.0 (2026-11-27)
 
 ### Added
