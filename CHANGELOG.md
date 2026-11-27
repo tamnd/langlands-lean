@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.2.0 (2026-11-27)
+
 ### Fixed
 
 - BreuilMezardTypes.lean: rename SmoothRep.IsIrreducible.of_iso to SmoothRep.Iso.isIrreducible. The old name is also declared in Smooth/Classification.lean, and the main build failed on the duplicate.
