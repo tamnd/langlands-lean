@@ -182,6 +182,10 @@ status:
       kind: statement
       status: known
       note: A shape only. The deformation rings, the multiplicities and the inertial types are fields of a structure, because Mathlib does not have them. The shape is satisfiable for trivial reasons and does not count as the statement.
+    - name: Langlands.BreuilMezardGL2QpFull
+      kind: statement
+      status: known
+      note: 'The Breuil-Mezard conjecture for GL_2(Q_p) with real pieces. The left side is the Hilbert-Samuel multiplicity of the special fiber of the quotient of a universal framed deformation ring by the potentially semistable points with Hodge-Tate weights lambda and inertial type tau. The right side uses the Serre weight multiplicities typeMultiplicityOf for every E-model of a Henniart type sigma(tau). The inertial type of a lift is a parameter wd, because D_pst and the Weil-Deligne representation of Fontaine are not in the library. The statement is faithful when wd is WD(D_pst(rho)) on inertia. Kisin proved the conjecture for p > 2 in most cases.'
     - name: Langlands.ArtinConjecture
       kind: statement
       status: open
@@ -553,7 +557,7 @@ status:
     - name: Langlands.Tate.classCharLambda_one_sub
       kind: theorem
       status: proved
-      note: Hecke's theorem for class group characters: for psi other than 1, the entire continuation of xi(u, psi) satisfies the functional equation at all u. This covers the Hecke characters that are unramified everywhere and trivial at infinity. The link from HeckeCharacter is open.
+      note: 'Hecke''s theorem for class group characters: for psi other than 1, the entire continuation of xi(u, psi) satisfies the functional equation at all u. This covers the Hecke characters that are unramified everywhere and trivial at infinity. The link from HeckeCharacter is open.'
     - name: Langlands.Tate.IsClassType.apply_eq_classChar
       kind: theorem
       status: proved
@@ -597,7 +601,7 @@ status:
     - name: Langlands.Groups.QuasiSplitDatum.dual_dual
       kind: theorem
       status: proved
-      note: The combinatorial L-group datum: the dual of a based root datum with an action of a group that keeps the base, and the dual of the dual is the original datum.
+      note: 'The combinatorial L-group datum: the dual of a based root datum with an action of a group that keeps the base, and the dual of the dual is the original datum.'
     - name: Langlands.Groups.QuasiSplitDatum.dual_split_sl2
       kind: theorem
       status: proved
@@ -605,7 +609,7 @@ status:
     - name: Langlands.Tate.heckeFunctionalEquation_of_twist
       kind: theorem
       status: proved
-      note: The shift of the theorem of Hecke: if it holds for chi, then it holds for the twist chi |.|^s_0, with sigma + Re s_0, Lambda(s + s_0) and the root number times D^(Re s_0 - s_0).
+      note: 'The shift of the theorem of Hecke: if it holds for chi, then it holds for the twist chi |.|^s_0, with sigma + Re s_0, Lambda(s + s_0) and the root number times D^(Re s_0 - s_0).'
     - name: Langlands.Tate.IsClassType.heckeFunctionalEquation_twist
       kind: theorem
       status: proved
@@ -633,7 +637,7 @@ status:
     - name: Langlands.SmoothRep.ind
       kind: definition
       status: proved
-      note: Smooth induction from a subgroup H to G: the functions with f(hg) = sigma(h) f(g) that are right invariant under an open subgroup.
+      note: 'Smooth induction from a subgroup H to G: the functions with f(hg) = sigma(h) f(g) that are right invariant under an open subgroup.'
     - name: Langlands.SmoothRep.frobenius
       kind: definition
       status: proved
@@ -645,7 +649,7 @@ status:
     - name: Langlands.SmoothRep.jacquetEquiv
       kind: definition
       status: proved
-      note: The universal property of the Jacquet module: Hom_M(V_N, tau) is the space of M-maps from V to tau that are invariant under N.
+      note: 'The universal property of the Jacquet module: Hom_M(V_N, tau) is the space of M-maps from V to tau that are invariant under N.'
     - name: Langlands.principalSeriesInd
       kind: definition
       status: proved
@@ -721,7 +725,7 @@ status:
     - name: Langlands.LocalGL1.exists_iso_charRep
       kind: theorem
       status: proved
-      note: Schur's lemma: an irreducible admissible smooth representation of a commutative group is a character.
+      note: 'Schur''s lemma: an irreducible admissible smooth representation of a commutative group is a character.'
     - name: Langlands.LocalGL1.rec1
       kind: definition
       status: proved
@@ -737,7 +741,7 @@ status:
     - name: Langlands.LocalGL1.GL1LFactor
       kind: definition
       status: proved
-      note: The L-factor condition for GL_1: Tate's local theory in Godement-Jacquet form. It is not proved yet.
+      note: 'The L-factor condition for GL_1: Tate''s local theory in Godement-Jacquet form. It is not proved yet.'
     - name: Langlands.LocalGL1.localLanglandsGL_one_of_gl1LFactor
       kind: theorem
       status: proved
@@ -773,7 +777,7 @@ status:
     - name: Langlands.SmoothRep.mem_jacquetKer_iff
       kind: theorem
       status: proved
-      note: Jacquet's lemma: v lies in V(N) if and only if its average over some compact open subgroup of N is 0.
+      note: 'Jacquet''s lemma: v lies in V(N) if and only if its average over some compact open subgroup of N is 0.'
     - name: Langlands.SmoothRep.jacquetMap_injective
       kind: theorem
       status: proved
@@ -805,7 +809,7 @@ status:
     - name: Langlands.LocalGL1.localLanglandsGL_one
       kind: theorem
       status: proved
-      note: LocalLanglandsGL 1 with no hypothesis: the local Langlands correspondence for GL(1), with the standard L-factors matched by Tate's local computation.
+      note: 'LocalLanglandsGL 1 with no hypothesis: the local Langlands correspondence for GL(1), with the standard L-factors matched by Tate''s local computation.'
     - name: Langlands.LocalGL1.gl1LFactorNontrivial
       kind: theorem
       status: proved
@@ -889,7 +893,7 @@ status:
     - name: Langlands.SmoothRep.jacquetFrobenius
       kind: definition
       status: proved
-      note: Frobenius reciprocity for the principal series: Hom_G(pi, Ind_B^G alpha) is equivalent to Hom_T(pi_N, alpha).
+      note: 'Frobenius reciprocity for the principal series: Hom_G(pi, Ind_B^G alpha) is equivalent to Hom_T(pi_N, alpha).'
     - name: Langlands.principalSeriesInd_sub_jacquet_nontrivial
       kind: theorem
       status: proved
@@ -961,7 +965,7 @@ status:
     - name: Langlands.Shapes.IsLocalLanglandsMap
       kind: definition
       status: proved
-      note: The conditions of Borel on the map to the L-parameters that the interface can express: finite and nonempty packets, and the tempered and discrete conditions.
+      note: 'The conditions of Borel on the map to the L-parameters that the interface can express: finite and nonempty packets, and the tempered and discrete conditions.'
     - name: Langlands.Shapes.LocalLanglands
       kind: statement
       status: open
@@ -1145,7 +1149,7 @@ status:
     - name: Langlands.normPrincipalSeries_isIrreducible_iff
       kind: theorem
       status: proved
-      note: The irreducibility criterion for the principal series of GL(2): irreducible if and only if chi_1 chi_2^-1 is not |.|^(plus or minus 1).
+      note: 'The irreducibility criterion for the principal series of GL(2): irreducible if and only if chi_1 chi_2^-1 is not |.|^(plus or minus 1).'
     - name: Langlands.selfDetLine
       kind: definition
       status: proved
@@ -1221,7 +1225,7 @@ status:
     - name: Langlands.Tate.fourier_gaussWeight
       kind: theorem
       status: proved
-      note: Hecke's lemma: the Fourier transform of conj(z)^k exp(-pi t |z|^2).
+      note: 'Hecke''s lemma: the Fourier transform of conj(z)^k exp(-pi t |z|^2).'
     - name: Langlands.Tate.weightTheta_eq
       kind: theorem
       status: proved
@@ -1265,7 +1269,7 @@ status:
     - name: Langlands.SmoothRep.jacquetN_isAdmissible
       kind: theorem
       status: proved
-      note: Jacquet's lemma: the Jacquet module of an admissible representation is admissible.
+      note: 'Jacquet''s lemma: the Jacquet module of an admissible representation is admissible.'
     - name: Langlands.SmoothRep.finiteDimensional_jacquetN
       kind: theorem
       status: proved
@@ -1305,7 +1309,7 @@ status:
     - name: Langlands.Tate.idealChar_mul_infChar_eq
       kind: theorem
       status: proved
-      note: Reciprocity: the ideal character times the infinite type depends only on the class modulo the conductor.
+      note: 'Reciprocity: the ideal character times the infinite type depends only on the class modulo the conductor.'
     - name: Langlands.Tate.infChar_unit_eq_one
       kind: theorem
       status: proved
@@ -1725,7 +1729,7 @@ status:
     - name: Langlands.IsHilbertSerrePair.exists_fwdDiff_iter_eq_zero
       kind: theorem
       status: proved
-      note: The Hilbert-Serre theorem for a pair of filtrations: a finite difference of the length function is eventually zero.
+      note: 'The Hilbert-Serre theorem for a pair of filtrations: a finite difference of the length function is eventually zero.'
     - name: Langlands.exists_hilbertSamuelPoly
       kind: theorem
       status: proved
@@ -1989,7 +1993,7 @@ status:
     - name: Langlands.serreMultiplicityIndependent
       kind: theorem
       status: proved
-      note: Brauer-Nesbitt: the Serre weight multiplicities of a reduction do not depend on the stable lattice
+      note: 'Brauer-Nesbitt: the Serre weight multiplicities of a reduction do not depend on the stable lattice'
     - name: Langlands.jhMultiplicity_eq_add_of_exact
       kind: theorem
       status: proved
@@ -2125,7 +2129,7 @@ status:
     - name: Langlands.Fidelity.localLanglandsGLFull_one
       kind: theorem
       status: proved
-      note: F2 for LocalLanglandsGLFull: the full local Langlands statement holds for n = 1
+      note: 'F2 for LocalLanglandsGLFull: the full local Langlands statement holds for n = 1'
     - name: Langlands.Fidelity.isWDEpsilon_galEps
       kind: theorem
       status: proved
@@ -2133,7 +2137,7 @@ status:
     - name: Langlands.Fidelity.not_unique_epsilon_one
       kind: theorem
       status: proved
-      note: F3 for LocalLanglandsGLFull: the IsWDEpsilon conditions do not fix the epsilon factor in dimension 2
+      note: 'F3 for LocalLanglandsGLFull: the IsWDEpsilon conditions do not fix the epsilon factor in dimension 2'
     - name: Langlands.Fidelity.recFamily_unique
       kind: theorem
       status: proved
@@ -2141,7 +2145,19 @@ status:
     - name: Langlands.Fidelity.nonempty_irrSmooth_one
       kind: theorem
       status: proved
-      note: F4 check: the type of irreducible smooth representations of GL_1 is nonempty
+      note: 'F4 check: the type of irreducible smooth representations of GL_1 is nonempty'
+    - name: Langlands.typeMultiplicityOf_coeffRed_trivial
+      kind: theorem
+      status: proved
+      note: 'fidelity F4 for BreuilMezardGL2QpFull: n_00((1,0), trivial type) = 1 over each coefficient field'
+    - name: Langlands.typeMultiplicityOf_one_zero_trivial_of_ne_zero
+      kind: theorem
+      status: proved
+      note: 'n_ab((1,0), trivial type) = 0 for a not zero'
+    - name: Langlands.BreuilMezardFullFor.exists_mu
+      kind: theorem
+      status: proved
+      note: 'if the Breuil-Mezard statement holds, a delta input gives the multiplicity mu_ab'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
