@@ -1778,6 +1778,34 @@ status:
       kind: theorem
       status: proved
       note: the conclusion of HeckeFunctionalEquationAt for each unramified Hecke character
+    - name: Langlands.IsUniversalFramedDeformationRing.existsUnique_of_complete
+      kind: theorem
+      status: proved
+      note: the universal property of a framed deformation ring holds for all complete coefficient algebras
+    - name: Langlands.IsUniversalFramedDeformationRing.corepresentableBy
+      kind: theorem
+      status: proved
+      note: a universal framed deformation ring corepresents the framed deformation functor
+    - name: Langlands.IsUniversalFramedDeformationRing.existsUnique_iso
+      kind: theorem
+      status: proved
+      note: the universal framed deformation ring is unique up to unique isomorphism
+    - name: Langlands.framedLifts_eq_framedLift
+      kind: theorem
+      status: proved
+      note: the framed lifts agree with FramedLift for two-dimensional representations of the Galois group of Q_p
+    - name: Langlands.isReduced_pointQuotient
+      kind: theorem
+      status: proved
+      note: the quotient by the points in P is reduced
+    - name: Langlands.isSMulRegular_pointQuotient
+      kind: theorem
+      status: proved
+      note: the quotient by the points in P has no torsion for the uniformizer
+    - name: Langlands.specialFiberMultiplicity_eq
+      kind: theorem
+      status: proved
+      note: the multiplicity of the special fiber is its Hilbert-Samuel multiplicity
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
