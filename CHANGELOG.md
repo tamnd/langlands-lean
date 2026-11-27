@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Add Langlands/Padic/Semistable.lean: epsilon is not one, the behaviour of log[epsilon] under ring maps, the Galois action and the Frobenius, and the Kummer cocycle on the tilt.
+
 ## v0.1.39 (2026-11-27)
 
 ### Added

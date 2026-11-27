@@ -141,6 +141,7 @@ import Langlands.Tate.HeckeShiftRamifiedAssembly
 import Langlands.Padic.Crystalline
 import Langlands.Padic.DeRhamNonzero
 import Langlands.Groups.ChevalleySteinberg
+import Langlands.Padic.Semistable
 
 /-!
 # The Langlands program in Lean
