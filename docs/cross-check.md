@@ -151,7 +151,7 @@ The points of comparison:
 
 The riemann-lean result implies `HeckeFunctionalEquationAt K` for every number field $K$, after the work in the list above. The largest parts are the reduction to unitary characters, the proof of $\lvert W \rvert = 1$, and meromorphy. The root numbers are equal. The riemann-lean result is weaker in scope (unitary characters only). It is stronger in content, because it gives the root number as an explicit expression and gives the continuation as a function.
 
-The project proves `HeckeFunctionalEquationAt ℚ` in `Langlands/Hecke/Rational.lean`. It does not yet prove the statement for a general $K$. A bridge in the cross-check package would not change this. Langlands does not import that package (05.6), so a bridge there is a test of meaning and not a proof of the project.
+The project proves `HeckeFunctionalEquationAt ℚ` in `Langlands/Hecke/Rational.lean`. It proves the statement for every number field $K$ as `Langlands.heckeFunctionalEquation` in `Langlands/Tate/HeckeShiftRamifiedAssembly.lean`. A bridge in the cross-check package would not change this. Langlands does not import that package (05.6), so a bridge there is a test of meaning and not a proof of the project.
 
 ## Why the cross-check package is not built
 

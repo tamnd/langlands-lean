@@ -137,6 +137,7 @@ import Langlands.Tate.HeckeRamifiedSign
 import Langlands.Tate.HeckeShift
 import Langlands.Deformation.Framed
 import Langlands.Groups.ChevalleyRoots
+import Langlands.Tate.HeckeShiftRamifiedAssembly
 
 /-!
 # The Langlands program in Lean

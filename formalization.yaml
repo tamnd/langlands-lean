@@ -513,7 +513,7 @@ status:
     - name: Langlands.Tate.heckeFunctionalEquationAt_one
       kind: theorem
       status: proved
-      note: The conclusion of HeckeFunctionalEquationAt K for the trivial Hecke character, with sigma = 0, W = 1 and s_0 = 0. The case of a general Hecke character is open.
+      note: The conclusion of HeckeFunctionalEquationAt K for the trivial Hecke character, with sigma = 0, W = 1 and s_0 = 0. The general case is Langlands.heckeFunctionalEquation.
     - name: Langlands.Tate.isArchimedeanParameter_of_normPower
       kind: theorem
       status: proved
@@ -529,7 +529,7 @@ status:
     - name: Langlands.Tate.heckeFunctionalEquationAt_normPower
       kind: theorem
       status: proved
-      note: The conclusion of HeckeFunctionalEquationAt K for the Hecke characters x -> |x|^s_0, with sigma = Re s_0 and W = |d_K|^(sigma - s_0). This is the full polar case. The case of a general Hecke character is open.
+      note: The conclusion of HeckeFunctionalEquationAt K for the Hecke characters x -> |x|^s_0, with sigma = Re s_0 and W = |d_K|^(sigma - s_0). This is the full polar case. The general case is Langlands.heckeFunctionalEquation.
     - name: Langlands.Tate.classCharXi_eq
       kind: theorem
       status: proved
@@ -1830,6 +1830,30 @@ status:
       kind: theorem
       status: proved
       note: the L-group datum of the adjoint root datum is the simply connected dual
+    - name: Langlands.Tate.shiftCoeffDualTheta_eq
+      kind: theorem
+      status: proved
+      note: the transformation law of the theta series with the periodic coefficient and the torus factor
+    - name: Langlands.Tate.shiftRamifiedPartial_sub
+      kind: theorem
+      status: proved
+      note: the functional equation of the ramified partial sum with different shifts
+    - name: Langlands.Tate.entireFunctionalEquation_ramified_shift
+      kind: theorem
+      status: proved
+      note: the entire functional equation for the ramified characters with any shifts
+    - name: Langlands.Tate.re_eq_of_isArchimedeanParameter_general
+      kind: theorem
+      status: proved
+      note: for each Hecke character the real parts of the shifts are equal
+    - name: Langlands.Tate.heckeFunctionalEquation_general
+      kind: theorem
+      status: proved
+      note: the conclusion of HeckeFunctionalEquationAt for each Hecke character of each number field
+    - name: Langlands.heckeFunctionalEquation
+      kind: theorem
+      status: proved
+      note: Hecke's theorem, the statement HeckeFunctionalEquation, for all number fields and all Hecke characters
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
