@@ -10,6 +10,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The weight 2 case of EichlerShimuraDeligne from the Eichler-Shimura theorem of anthropics/fermats-last-theorem, proved-mod four named hypotheses, in Langlands/Bridge/AnthropicES.lean.
+
 - Multiplicativity of the coefficients of a normalized Hecke eigenform, T_n on coefficient sequences and linearity of T_p, in Langlands/Modular/HeckeMul.lean.
 - The bridge from WeierstrassCurve.modularity_of_semistableModel of anthropics/fermats-last-theorem to ModularitySemistableQ, proved-mod two named hypotheses, in Langlands/Bridge/AnthropicFLT.lean.
 - The Hecke operators T_p and U_p on modular and cusp forms for Gamma0(N), with the q-expansion formula, commutativity and the recursion for eigenform coefficients, in Langlands/Modular/Hecke.lean.

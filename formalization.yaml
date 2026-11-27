@@ -2278,6 +2278,22 @@ status:
       kind: theorem
       status: proved-mod
       note: 'proved-mod: ModularitySemistableQ from the ported theorem, SemistableIntegralModel and FullCoefficientsOfModular'
+    - name: Langlands.Ported.AnthropicES.EigenformGaloisRep
+      kind: statement
+      status: known
+      note: 'The port of CuspForm.IsEigenformWith.exists_galoisRepAdic_charpoly_frobenius_eq_and_isUnramifiedAt of anthropics/fermats-last-theorem at 6e837e7: a weight 2 eigenform for Gamma1(M) with a character has an adic Galois representation with the Hecke characteristic polynomial at Frobenius.'
+    - name: Langlands.Bridge.eichlerShimuraWeightTwo_of_eichlerShimuraDeligne
+      kind: theorem
+      status: proved
+      note: 'EichlerShimuraDeligne gives its weight 2 case.'
+    - name: Langlands.Bridge.isEigenformWith_of_isNormalizedEigenformWithCharacter
+      kind: theorem
+      status: proved
+      note: 'Our normalized eigenforms with character are eigenforms in the sense of the port, in each weight.'
+    - name: Langlands.Bridge.eichlerShimuraWeightTwo_of_anthropic
+      kind: theorem
+      status: proved-mod
+      note: 'EichlerShimuraDeligne in weight 2 from the port theorem, proved-mod four named hypotheses: integral coefficient models, base change of adic representations to the algebraic closure, and the comparison of Frobenius elements and inertia groups.'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

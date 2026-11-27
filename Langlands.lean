@@ -157,6 +157,7 @@ import Langlands.Fidelity.GlobalGL
 import Langlands.Modular.Hecke
 import Langlands.Modular.HeckeMul
 import Langlands.Bridge.AnthropicFLT
+import Langlands.Bridge.AnthropicES
 
 /-!
 # The Langlands program in Lean
