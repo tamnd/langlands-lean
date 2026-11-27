@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Changed
+
+- The docstrings of RamanujanGL, FunctorialityGL and ReciprocityGL now state the facts found by the F5 round trip. The statements are not changed.
+
 ### Added
 
 - Fidelity checks F2 to F4 for RamanujanGL, FunctorialityGL and ReciprocityGL in Langlands/Fidelity/GlobalGL.lean.

@@ -166,6 +166,8 @@ end NumberFieldGL
 * The map is injective.
 * Each representation with finite image is in the image.
 
+The target classes are irreducible, so the statement also says that the Galois representation of each algebraic cuspidal $\pi$ is irreducible. This is an open conjecture even for regular algebraic $\pi$. The statement uses the arithmetic Frobenius, so $\Phi(\pi)$ is the contragredient of the representation in the usual normalization with the geometric Frobenius. The two forms are equivalent. Injectivity follows from the matching condition, because the classes on the automorphic side are the classes of Hecke eigensystems at almost all places.
+
 The automorphic side is the set of classes of cuspidal Hecke eigenforms that contain an algebraic form in the sense of Clozel, stated with the eigenvalues of the Capelli operators at the infinite places. The conjecture says more: the image of $\Phi$ is the set of the classes of geometric representations, that is, the representations that are de Rham at the places over $\ell$. Mathlib has no $p$-adic Hodge theory, so this statement keeps only the representations with finite image, which are geometric. Without the condition to be de Rham, a bijection with all the representations that are unramified almost everywhere is false already for $n = 1$. The module docstring explains this, and why the statement is neither trivially true nor trivially false. For $n = 1$ it is the theorem of Weil and Serre on algebraic Hecke characters. The statement does not include the compatibility with the local correspondence at the ramified places and at the places over $\ell$. -/
 def ReciprocityGL (n : ℕ) (K : Type u) [Field K] [NumberField K] : Prop :=
   0 < n → ∀ (ℓ : ℕ) [Fact ℓ.Prime] (ι : PadicAlgCl ℓ ≃+* ℂ),
