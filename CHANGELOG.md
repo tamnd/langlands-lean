@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Add Langlands/Padic/LogTeich.lean and Langlands/Padic/Semistable2.lean: the logarithm of Teichmuller elements, phi(t) = p t, B_st with its Galois action, Frobenius and monodromy, and the semistable and potentially semistable representations.
+
 ## v0.1.46 (2026-11-27)
 
 ### Added
