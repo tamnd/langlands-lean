@@ -138,6 +138,8 @@ import Langlands.Tate.HeckeShift
 import Langlands.Deformation.Framed
 import Langlands.Groups.ChevalleyRoots
 import Langlands.Tate.HeckeShiftRamifiedAssembly
+import Langlands.Padic.Crystalline
+import Langlands.Padic.DeRhamNonzero
 
 /-!
 # The Langlands program in Lean
