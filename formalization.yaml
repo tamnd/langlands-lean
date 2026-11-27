@@ -2534,6 +2534,50 @@ status:
       kind: theorem
       status: proved
       note: 'Uniqueness of the adelic lift, with no hypothesis'
+    - name: Langlands.LocalGL2.exists_eq_div_galConj
+      kind: theorem
+      status: proved
+      note: 'Hilbert 90 for a quadratic extension: an element of norm 1 is y over its conjugate'
+    - name: Langlands.LocalGL2.exists_eq_comp_normUnits_iff
+      kind: theorem
+      status: proved
+      note: 'A character of E factors through the norm if and only if it is invariant under the Galois conjugation'
+    - name: Langlands.LocalGL2.isSmoothChar_iff_exists_unitFilt_le
+      kind: theorem
+      status: proved
+      note: 'A character is smooth if and only if it is trivial on some unit group U^n'
+    - name: Langlands.LocalGL2.IsAdmissible
+      kind: definition
+      status: proved
+      note: 'Admissible characters of a tame quadratic extension (Bushnell-Henniart, Section 18)'
+    - name: Langlands.LocalGL2.IsAdmissible.twist
+      kind: theorem
+      status: proved
+      note: 'The twist of an admissible character by a smooth character of F through the norm is admissible'
+    - name: Langlands.LocalGL2.IsAdmissible.comp_galConjUnits_ne
+      kind: theorem
+      status: proved
+      note: 'An admissible character is regular: it is not invariant under the Galois conjugation'
+    - name: Langlands.LocalGL2.IsAdmissible.isLevel_level_of_ramified
+      kind: theorem
+      status: proved
+      note: 'For E/F totally ramified, an admissible character has a level, and the level is at least 1'
+    - name: Langlands.LocalGL2.AdmissiblePair
+      kind: definition
+      status: proved
+      note: 'Admissible pairs (E, xi) of Bushnell-Henniart'
+    - name: Langlands.LocalGL2.AdmissiblePair.iso_equivalence
+      kind: theorem
+      status: proved
+      note: 'Isomorphism of admissible pairs is an equivalence relation'
+    - name: Langlands.LocalGL2.AdmissiblePair.iso_conj
+      kind: theorem
+      status: proved
+      note: 'An admissible pair is isomorphic to its Galois conjugate'
+    - name: Langlands.LocalGL2.AdmissiblePair.Iso.twist
+      kind: theorem
+      status: proved
+      note: 'Twisting respects isomorphism of admissible pairs'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
