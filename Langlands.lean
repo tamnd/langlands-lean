@@ -170,6 +170,7 @@ import Langlands.Local.AdmissiblePairs
 import Langlands.Local.MinimalPairs
 import Langlands.Local.WeilInduction
 import Langlands.Local.TameGalois
+import Langlands.Local.ChainOrders
 
 /-!
 # The Langlands program in Lean
