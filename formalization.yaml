@@ -2770,6 +2770,58 @@ status:
       kind: theorem
       status: proved
       note: 'An element of E of valuation -n not in F gives a simple stratum for an adapted basis'
+    - name: Langlands.LocalGL2.jGroup
+      kind: definition
+      status: proved
+      note: 'The group E^x U^m_A in GL(2, F) for an adapted embedding of E'
+    - name: Langlands.LocalGL2.jGroup_le_normalizer
+      kind: theorem
+      status: proved
+      note: 'E^x U^m_A lies in the normalizer of the chain order'
+    - name: Langlands.LocalGL2.psiAlpha_embGL_eq
+      kind: theorem
+      status: proved
+      note: 'psi_alpha and xi agree on E^x meet U^{[n/2]+1}_A for a compatible pair'
+    - name: Langlands.LocalGL2.typeChar
+      kind: definition
+      status: proved
+      note: 'The character Lambda(yu) = xi(y) psi_alpha(u) of E^x U^{[n/2]+1}_A'
+    - name: Langlands.LocalGL2.existsUnique_isTypeChar_iff
+      kind: theorem
+      status: proved
+      note: 'A unique type character on E^x U^{[n/2]+1}_A exists if and only if xi is compatible with psi_alpha'
+    - name: Langlands.LocalGL2.cuspTypes
+      kind: definition
+      status: proved
+      note: 'The cuspidal type characters on J_alpha = E^x U^{[(n+1)/2]}_A'
+    - name: Langlands.LocalGL2.existsUnique_mem_cuspTypes_iff
+      kind: theorem
+      status: proved
+      note: 'For odd n, a unique cuspidal type exists if and only if xi is compatible with psi_alpha'
+    - name: Langlands.LocalGL2.cuspInd
+      kind: definition
+      status: proved
+      note: 'The compact induction c-Ind_{J_alpha}^G Lambda of a cuspidal type'
+    - name: Langlands.cIndSpace
+      kind: definition
+      status: proved
+      note: 'The space of compactly induced functions from an open subgroup J and a character Lambda'
+    - name: Langlands.SmoothRep.cInd
+      kind: definition
+      status: proved
+      note: 'Compact induction c-Ind_J^G Lambda as a smooth representation'
+    - name: Langlands.nontrivial_cInd
+      kind: theorem
+      status: proved
+      note: 'c-Ind_J^G Lambda is not zero for open J and smooth Lambda'
+    - name: Langlands.IsBiEquivariant.intertwines
+      kind: theorem
+      status: proved
+      note: 'A bi-equivariant function is supported on the elements that intertwine Lambda (BH 11.1)'
+    - name: Langlands.eq_smul_cIndBasic_of_isotypic
+      kind: theorem
+      status: proved
+      note: 'If the intertwining of Lambda is J, each Lambda-isotypic vector of c-Ind is a multiple of the basic function (the main step of BH 11.4)'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
