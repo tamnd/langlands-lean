@@ -4,11 +4,14 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Cuspidal types of GL(2, F): the groups E^x U^m_A, the type characters of a simple stratum, compact induction and the main step of the irreducibility criterion.
+
 ## v0.5.1 (2026-11-27)
 
 ### Added
 
-- Cuspidal types of GL(2, F): the groups E^x U^m_A, the type characters of a simple stratum, compact induction and the main step of the irreducibility criterion.
 - Chain orders of M_2(F), their radicals, unit filtrations and normalizers, adapted embeddings of a quadratic E, and simple strata.
 - The tame parameter sigma(L, xi) for a quadratic L: irreducibility, conjugacy and twist behaviour, determinant and injectivity for fixed L.
 - Induction from W_L to W_K for a quadratic extension L/K: the index of W_L, the induced representation of dimension 2, the Mackey criterion, its determinant, twists, and Frobenius reciprocity.
