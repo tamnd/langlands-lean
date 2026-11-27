@@ -6,6 +6,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The elementary adjoint Chevalley group in characteristic zero from the Geck construction, with root elements, Weyl elements and the adjoint torus.
+
 - The functoriality of B_dR^+ and B_dR, the group action on them, de Rham representations and the Hodge-Tate filtration.
 
 - The Hilbert-Samuel function and multiplicity of a noetherian local ring, with the artinian and discrete valuation cases.
