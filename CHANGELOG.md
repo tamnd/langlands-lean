@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Add Langlands/Groups/SplitReductive.lean: split tori of root data, the adjoint Chevalley group with its torus and root subgroups, GL_n checked against its root datum, and the L-group of a torus.
+
 ## v0.1.40 (2026-11-27)
 
 ### Added
