@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.5.1 (2026-11-27)
+
 ### Added
 
 - Chain orders of M_2(F), their radicals, unit filtrations and normalizers, adapted embeddings of a quadratic E, and simple strata.
