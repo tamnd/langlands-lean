@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.40 (2026-11-27)
+
 ### Added
 
 - Add Langlands/Local/BreuilMezardTypes.lean: inertial types, Henniart types by their defining property, Jordan-Holder multiplicities of reductions of lattices, sigma(lambda, tau) and n_ab(lambda, tau).
