@@ -179,6 +179,7 @@ import Langlands.Local.StrataIntertwining
 import Langlands.Local.IntertwiningNormalizer
 import Langlands.Local.GL2Reduction
 import Langlands.Local.GL2NonSupercuspidal
+import Langlands.Local.GL2TameTypes
 
 /-!
 # The Langlands program in Lean
