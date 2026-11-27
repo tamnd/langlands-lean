@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Add Langlands/Statements/BreuilMezardFull.lean: the Breuil-Mezard statement BreuilMezardGL2QpFull with real deformation rings, potentially semistable lifts and type multiplicities, and its first fidelity checks. Quote the notes in formalization.yaml that contain a colon, so that the file is valid YAML.
+
 ## v0.1.48 (2026-11-27)
 
 ### Added
