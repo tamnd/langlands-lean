@@ -14,6 +14,7 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The stability of the oldspace under T_n for n prime to the level, the commutation of T_n with the inclusions and the level raising maps, and the newspace as the joint kernel of the trace maps, in Langlands/Modular/OldSpace.lean.
 - The weight 2 case of EichlerShimuraDeligne from the Eichler-Shimura theorem of anthropics/fermats-last-theorem, proved-mod four named hypotheses, in Langlands/Bridge/AnthropicES.lean.
 - T_n on cusp forms for Gamma0(N) with commutativity and the coefficient formula, the level raising maps B_d with their q-expansions, and the oldspace, in Langlands/Modular/HeckeTn.lean.
 - Multiplicativity of the coefficients of a normalized Hecke eigenform, T_n on coefficient sequences and linearity of T_p, in Langlands/Modular/HeckeMul.lean.

@@ -159,6 +159,7 @@ import Langlands.Modular.HeckeMul
 import Langlands.Bridge.AnthropicFLT
 import Langlands.Bridge.AnthropicES
 import Langlands.Modular.HeckeTn
+import Langlands.Modular.OldSpace
 
 /-!
 # The Langlands program in Lean

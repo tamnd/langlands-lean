@@ -2326,6 +2326,26 @@ status:
       kind: def
       status: proved
       note: 'The oldspace of level N, the span of the images of the maps B_d from levels M with dM dividing N and M less than N.'
+    - name: Langlands.Modular.heckeTn_cuspRestrict
+      kind: theorem
+      status: proved
+      note: 'T_n commutes with the inclusion of level L into level N, for n prime to N.'
+    - name: Langlands.Modular.heckeTn_levelRaise
+      kind: theorem
+      status: proved
+      note: 'T_n commutes with the level raising map B_d, for n prime to dM.'
+    - name: Langlands.Modular.heckeTn_mem_oldSpace
+      kind: theorem
+      status: proved
+      note: 'The oldspace of level N is stable under T_n for n prime to N.'
+    - name: Langlands.Modular.newSpace
+      kind: def
+      status: proved
+      note: 'The newspace of level N, the joint kernel of the trace maps to the levels N/p and of the trace maps composed with the inverse of B_p.'
+    - name: Langlands.Modular.mem_newSpace_iff
+      kind: theorem
+      status: proved
+      note: 'The description of the newspace by the vanishing of the two trace maps for each prime p dividing N.'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
