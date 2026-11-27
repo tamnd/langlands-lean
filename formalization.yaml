@@ -2366,6 +2366,74 @@ status:
       kind: theorem
       status: proved
       note: 'Two cusp forms for Gamma0(N) of the same weight are equal when their q-coefficients agree up to the Sturm bound.'
+    - name: Langlands.Modular.not_hasAdditiveReduction_minimal
+      kind: theorem
+      status: proved
+      note: 'An integral model with unit discriminant or unit c4 has a minimal model without additive reduction'
+    - name: Langlands.Modular.isSemistable_map_of_isCoprime
+      kind: theorem
+      status: proved
+      note: 'An integral Weierstrass curve with c4 and the discriminant coprime is semistable over Q'
+    - name: Langlands.Modular.isSemistable_E11a1
+      kind: theorem
+      status: proved
+      note: 'The curve 11a1 is semistable'
+    - name: Langlands.Modular.modular_E11a1_of_semistable
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: the curve 11a1 is modular, from ModularitySemistableQ'
+    - name: Langlands.Modular.modular_E11a1_of_anthropicFLT
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: the curve 11a1 is modular, from the three hypotheses of the FLT bridge'
+    - name: Langlands.Modular.isSemistable_E14a1
+      kind: theorem
+      status: proved
+      note: 'The curve 14a1 is semistable'
+    - name: Langlands.Modular.modular_E14a1_of_semistable
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: the curve 14a1 is modular, from ModularitySemistableQ'
+    - name: Langlands.Modular.modular_E14a1_of_anthropicFLT
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: the curve 14a1 is modular, from the three hypotheses of the FLT bridge'
+    - name: Langlands.Modular.isSemistable_E15a1
+      kind: theorem
+      status: proved
+      note: 'The curve 15a1 is semistable'
+    - name: Langlands.Modular.modular_E15a1_of_semistable
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: the curve 15a1 is modular, from ModularitySemistableQ'
+    - name: Langlands.Modular.modular_E15a1_of_anthropicFLT
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: the curve 15a1 is modular, from the three hypotheses of the FLT bridge'
+    - name: Langlands.Modular.isSemistable_E17a1
+      kind: theorem
+      status: proved
+      note: 'The curve 17a1 is semistable'
+    - name: Langlands.Modular.modular_E17a1_of_semistable
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: the curve 17a1 is modular, from ModularitySemistableQ'
+    - name: Langlands.Modular.modular_E17a1_of_anthropicFLT
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: the curve 17a1 is modular, from the three hypotheses of the FLT bridge'
+    - name: Langlands.Modular.isSemistable_E37a1
+      kind: theorem
+      status: proved
+      note: 'The curve 37a1 is semistable'
+    - name: Langlands.Modular.modular_E37a1_of_semistable
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: the curve 37a1 is modular, from ModularitySemistableQ'
+    - name: Langlands.Modular.modular_E37a1_of_anthropicFLT
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: the curve 37a1 is modular, from the three hypotheses of the FLT bridge'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
