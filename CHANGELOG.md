@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.5.0 (2026-11-27)
+
 ### Added
 
 - Strong approximation for SL(2) over Q at level K0(N), so the decomposition of GL2(A) and the uniqueness of the adelic lift hold with no hypothesis.
