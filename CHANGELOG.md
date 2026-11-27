@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.34 (2026-11-27)
+
 ### Added
 
 - Hecke's functional equation for each Hecke character of a number field with one shift at all infinite places.
