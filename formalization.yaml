@@ -2926,6 +2926,30 @@ status:
       kind: theorem
       status: proved-mod
       note: 'proved-mod: the hypothesis that each element that intertwines psi_alpha normalizes A (BH 15.1). The intertwining of a cuspidal type lies in J_alpha'
+    - name: Langlands.LocalGL2.exists_normalizer_mul_diag_mul
+      kind: theorem
+      status: proved
+      note: 'Every g in GL_2(F) is a times diag(1,d) times b with a, b in the normalizer of A and ord d at least 0.'
+    - name: Langlands.LocalGL2.mem_normalizer_of_intertwines_psiAlpha
+      kind: theorem
+      status: proved
+      note: 'BH 15.1 outside the normalizer: for minimal alpha and n at least 1, every g that intertwines psi_alpha is in the normalizer of A.'
+    - name: Langlands.LocalGL2.intertwines_psiAlpha_iff_mem_jGroup
+      kind: theorem
+      status: proved
+      note: 'g intertwines psi_alpha if and only if g is in J_alpha.'
+    - name: Langlands.LocalGL2.intertwines_cuspType_iff_mem_jGroup
+      kind: theorem
+      status: proved
+      note: 'g intertwines a cuspidal type if and only if g is in J_alpha.'
+    - name: Langlands.LocalGL2.mem_jGroup_of_intertwines_cuspType_of_isMinimalElt
+      kind: theorem
+      status: proved
+      note: 'The intertwining of a cuspidal type is J_alpha, for minimal alpha, with no extra hypothesis.'
+    - name: Langlands.LocalGL2.mem_jGroup_of_intertwines_cuspType_ramBasis
+      kind: theorem
+      status: proved
+      note: 'The same result for ramified E, odd n and the Iwahori order, with no minimality hypothesis.'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
