@@ -3078,6 +3078,62 @@ status:
       kind: theorem
       status: proved-mod
       note: 'proved-mod: localLanglandsGL2_odd from the five inputs and NonSupercuspidalInputs.'
+    - name: Langlands.iso_twist_cInd
+      kind: theorem
+      status: proved
+      note: 'The twist of c-Ind_J Lambda by theta is c-Ind_J of Lambda times theta restricted to J.'
+    - name: Langlands.LocalGL2.IsMinimal.isMinimalElt_unram
+      kind: theorem
+      status: proved
+      note: 'For an unramified minimal pair, each alpha for xi is a minimal element.'
+    - name: Langlands.LocalGL2.TameDatum.isIrreducible
+      kind: theorem
+      status: proved
+      note: 'The representation of a cuspidal type datum is irreducible.'
+    - name: Langlands.LocalGL2.TameDatum.hasCentralChar
+      kind: theorem
+      status: proved
+      note: 'The representation of a datum has central character xi restricted to K^x.'
+    - name: Langlands.LocalGL2.TameDatum.iso_twist
+      kind: theorem
+      status: proved
+      note: 'Twisting the representation of a datum by chi composed with det gives the representation of the twisted datum.'
+    - name: Langlands.LocalGL2.nonempty_tameDatum_of_isMinimal
+      kind: theorem
+      status: proved
+      note: 'Each minimal xi of odd level has a cuspidal type datum, for p odd and a level-one psi.'
+    - name: Langlands.LocalGL2.covered_of_odd_level
+      kind: theorem
+      status: proved
+      note: 'Each pair whose minimal part has odd level is covered by a datum, for p odd and a level-one psi.'
+    - name: Langlands.LocalGL2.CIndSupercuspidal
+      kind: def
+      status: known
+      note: 'known: BH 11.4 and 10.1. Compact induction from an open subgroup that is compact modulo the centre, of a character whose intertwining is J, is admissible and supercuspidal.'
+    - name: Langlands.LocalGL2.TypeRepInjective
+      kind: def
+      status: known
+      note: 'known: BH 15.6 and 20.2. Isomorphic datum representations come from isomorphic pairs.'
+    - name: Langlands.LocalGL2.TypeRepIndependent
+      kind: def
+      status: known
+      note: 'known: BH section 19. The datum representation does not depend on the choices of psi, alpha, the basis and the factorization.'
+    - name: Langlands.LocalGL2.TypeRepContragredient
+      kind: def
+      status: known
+      note: 'known: BH 19.4. The contragredient of the representation of a pair is the representation of the inverse pair.'
+    - name: Langlands.LocalGL2.UncoveredParametrization
+      kind: def
+      status: known
+      note: 'known: BH 15.5, 15.8, 19.1, 19.3 and 20.2. The pairs of level zero and of even level give the remaining supercuspidal representations.'
+    - name: Langlands.LocalGL2.tameParametrizationGL2_of_inputs
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: TameParametrizationGL2 from the five inputs of TameTypeInputs.'
+    - name: Langlands.LocalGL2.gl2OddInputs_of_tameTypeInputs
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: the input tame of GL2OddInputs from TameTypeInputs.'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
