@@ -2158,6 +2158,50 @@ status:
       kind: theorem
       status: proved
       note: 'if the Breuil-Mezard statement holds, a delta input gives the multiplicity mu_ab'
+    - name: Langlands.Fidelity.GlobalGL.ramanujanGL_one_constOne
+      kind: theorem
+      status: proved
+      note: 'F2 and F4 for RamanujanGL at n = 1 with the constant cusp form 1'
+    - name: Langlands.Fidelity.GlobalGL.not_ramanujanGLOfZero_one
+      kind: theorem
+      status: proved
+      note: 'F3: without phi ne 0 the Ramanujan statement is false for n = 1'
+    - name: Langlands.Fidelity.GlobalGL.not_ramanujanGLWithoutCuspidal_two
+      kind: theorem
+      status: proved
+      note: 'F3: without the cuspidal condition the Ramanujan statement is false for n = 2'
+    - name: Langlands.Fidelity.GlobalGL.sqrt_mem_satake_constOne_two
+      kind: theorem
+      status: proved
+      note: 'the constant 1 on GL2 has the Satake parameter q_v^(1/2)'
+    - name: Langlands.Fidelity.GlobalGL.exists_invariant_probabilityMeasure_of_ramanujanGL_two
+      kind: theorem
+      status: proved
+      note: 'F4: RamanujanGL 2 K gives an invariant probability measure on the adelic quotient'
+    - name: Langlands.Fidelity.GlobalGL.functorialityGL_one
+      kind: theorem
+      status: proved
+      note: 'F2 for FunctorialityGL with the trivial representation'
+    - name: Langlands.Fidelity.GlobalGL.functorialityGLAnySet
+      kind: theorem
+      status: proved
+      note: 'F3: without finiteness of S the functoriality statement is trivial'
+    - name: Langlands.Fidelity.GlobalGL.not_isobaricOne_hasSatakeAt_two
+      kind: theorem
+      status: proved
+      note: 'F4: HasSatakeAt is a real constraint'
+    - name: Langlands.Fidelity.GlobalGL.reciprocity_map_cuspEigenformOne
+      kind: theorem
+      status: proved
+      note: 'F2 for ReciprocityGL at n = 1 with the constant form 1'
+    - name: Langlands.Fidelity.GlobalGL.not_reciprocityGLAllDim_zero
+      kind: theorem
+      status: proved
+      note: 'F3: without 0 lt n the reciprocity statement is false at n = 0'
+    - name: Langlands.Fidelity.GlobalGL.nonempty_padicAlgCl_ringEquiv_complex
+      kind: theorem
+      status: proved
+      note: 'F4: an isomorphism from the algebraic closure of Q_l to C exists'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
