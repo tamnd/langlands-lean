@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.4.1 (2026-11-27)
+
 ### Added
 
 - The Sturm bound for modular forms and cusp forms of weight k for Gamma0(N), and for any arithmetic group with period 1, in Langlands/Modular/Sturm.lean.
