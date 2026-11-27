@@ -6,6 +6,7 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Strong approximation for SL(2) over Q at level K0(N), so the decomposition of GL2(A) and the uniqueness of the adelic lift hold with no hypothesis.
 - Certified instances for lab experiment E5: the curves 11a1, 14a1, 15a1, 17a1 and 37a1 are semistable, and they are modular under ModularitySemistableQ or the hypotheses of the FLT bridge.
 - The adelic dictionary for GL(2) over Q: the adelic lift of a modular form on Gamma0(N), its invariance and injectivity, and the decomposition of GL2(A), proved-mod strong approximation for SL(2).
 - Pseudo-characters of dimension 2, and EichlerShimuraDeligne for each weight k >= 2 by congruences to weight 2, proved-mod the weight 2 case and four published theorems.
