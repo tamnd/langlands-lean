@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.37 (2026-11-27)
+
 ### Added
 
 - Prove Langlands.heckeFunctionalEquation, Hecke's theorem for each Hecke character of each number field.
