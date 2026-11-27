@@ -2042,6 +2042,30 @@ status:
       kind: theorem
       status: proved
       note: the Galois action of the L-group of U(n) on the simple root elements matches the dual root datum
+    - name: Langlands.LocalGL1.isTateEpsilon_tateEpsilon
+      kind: theorem
+      status: proved
+      note: the concrete Tate epsilon factor satisfies the Tate epsilon condition
+    - name: Langlands.LocalGL1.isTateEpsilon_wdEpsilon
+      kind: theorem
+      status: proved
+      note: the Weil-Deligne epsilon factor in dimension one satisfies the Tate epsilon condition
+    - name: Langlands.LocalGL1.isRSEpsilonFactor_one
+      kind: theorem
+      status: proved
+      note: for GL_1 x GL_1 the Tate epsilon factor of the product character is the Rankin-Selberg epsilon factor
+    - name: Langlands.IsZetaGenerator.unique
+      kind: theorem
+      status: proved
+      note: the generator of the zeta integrals is unique
+    - name: Langlands.IsWDEpsilonAdditive
+      kind: def
+      status: proved
+      note: the epsilon condition with additivity on direct sums of Weil-Deligne representations
+    - name: Langlands.WeilDeligneRep.directSum
+      kind: def
+      status: proved
+      note: the direct sum of two Weil-Deligne representations
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
