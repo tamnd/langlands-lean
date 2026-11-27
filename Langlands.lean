@@ -168,6 +168,7 @@ import Langlands.Bridge.EichlerShimuraHigher
 import Langlands.Modular.StrongApprox
 import Langlands.Local.AdmissiblePairs
 import Langlands.Local.MinimalPairs
+import Langlands.Local.WeilInduction
 
 /-!
 # The Langlands program in Lean

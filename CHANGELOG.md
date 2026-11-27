@@ -6,6 +6,7 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Induction from W_L to W_K for a quadratic extension L/K: the index of W_L, the induced representation of dimension 2, the Mackey criterion, its determinant, twists, and Frobenius reciprocity.
 - Minimal admissible pairs for GL(2): the ramification of a quadratic extension, each admissible pair is a twist of a minimal pair, and a minimal ramified pair has odd level.
 - Admissible pairs of Bushnell and Henniart for GL(2): admissible characters of tame quadratic extensions, Hilbert 90, regularity, twists, levels, and the equivalence of pairs.
 

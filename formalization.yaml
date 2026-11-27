@@ -2614,6 +2614,46 @@ status:
       kind: theorem
       status: proved
       note: 'For E/F tame and totally ramified, the level of chi composed with the norm is twice the level of chi'
+    - name: Langlands.LocalGL2.index_restrictSubgroup
+      kind: theorem
+      status: proved
+      note: 'The Weil group W_L of a finite separable extension L/K has index [L:K] in W_K'
+    - name: Langlands.LocalGL2.ind
+      kind: definition
+      status: proved
+      note: 'The representation of dimension 2 induced from a character of a subgroup of index 2'
+    - name: Langlands.LocalGL2.isIrreducibleRep_ind_iff
+      kind: theorem
+      status: proved
+      note: 'The induced representation is irreducible if and only if the character is not invariant under conjugation (Mackey)'
+    - name: Langlands.LocalGL2.repIso_ind_conjChar
+      kind: theorem
+      status: proved
+      note: 'The representations induced from a character and from its conjugate are isomorphic'
+    - name: Langlands.LocalGL2.repIso_ind_mul_restrict
+      kind: theorem
+      status: proved
+      note: 'Induction commutes with the twist by a character of the big group'
+    - name: Langlands.LocalGL2.det_ind_eq_signChar_mul_transfer
+      kind: theorem
+      status: proved
+      note: 'The determinant of the induced representation is the sign character times the transfer of the character'
+    - name: Langlands.LocalGL2.repIso_ind_of_eigenvector
+      kind: theorem
+      status: proved
+      note: 'Frobenius reciprocity, easy direction: a representation that contains a regular character of H is induced from it'
+    - name: Langlands.LocalGL2.indWD
+      kind: definition
+      status: proved
+      note: 'The induced Weil-Deligne representation Ind_{W_L}^{W_K} phi with N = 0'
+    - name: Langlands.LocalGL2.isIrreducible_indWD
+      kind: theorem
+      status: proved
+      note: 'The induced Weil-Deligne representation is irreducible when the character is regular'
+    - name: Langlands.LocalGL2.iso_indWD_of_eigenvector
+      kind: theorem
+      status: proved
+      note: 'Frobenius reciprocity for the induced Weil-Deligne representation'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
