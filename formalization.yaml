@@ -2858,6 +2858,26 @@ status:
       kind: theorem
       status: proved
       note: 'A totally ramified minimal pair gives a simple stratum for the Iwahori order (p odd)'
+    - name: Langlands.IsCompactModCenter
+      kind: definition
+      status: proved
+      note: 'J is compact modulo the centre: for each open subgroup U of J, (Z meet J)U has finite index in J'
+    - name: Langlands.cInd.ρ_center
+      kind: theorem
+      status: proved
+      note: 'A central element of J acts on c-Ind_J^G Lambda by Lambda'
+    - name: Langlands.exists_isotypic_mem
+      kind: theorem
+      status: proved
+      note: 'A nonzero stable subspace of c-Ind_J^G Lambda contains a nonzero Lambda-isotypic vector'
+    - name: Langlands.span_translate_cIndBasic
+      kind: theorem
+      status: proved
+      note: 'The G-translates of the basic function span c-Ind_J^G Lambda'
+    - name: Langlands.isIrreducible_cInd
+      kind: theorem
+      status: proved
+      note: 'BH 11.4: if J is open and compact modulo the centre and the intertwining of Lambda is J, then c-Ind_J^G Lambda is irreducible'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
