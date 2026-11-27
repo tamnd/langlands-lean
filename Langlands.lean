@@ -162,6 +162,7 @@ import Langlands.Modular.HeckeTn
 import Langlands.Modular.OldSpace
 import Langlands.Modular.Sturm
 import Langlands.Modular.E5Instances
+import Langlands.Modular.Adelic
 
 /-!
 # The Langlands program in Lean
