@@ -207,12 +207,12 @@ theorem exists_pivot (A : ChainOrder) (g : GL (Fin 2) F) :
   have hH1 : (h : Matrix (Fin 2) (Fin 2) F) ∉ radPow F A 1 := by
     intro h1
     have := (zpow_mul_mem_iff A k 1 _).1 h1
-    rw [hh, Units.val_mul, ← mul_assoc, ← Units.val_mul, ← zpow_add, add_neg_cancel, zpow_zero,
+    rw [hh, Units.val_mul, ← mul_assoc, ← Units.val_mul, ← _root_.zpow_add, add_neg_cancel, zpow_zero,
       Units.val_one, one_mul] at this
     have := hkmax _ this
     omega
   have hg : g = piGL F A ^ k * h * 1 := by
-    rw [mul_one, hh, ← mul_assoc, ← zpow_add, add_neg_cancel, zpow_zero, one_mul]
+    rw [mul_one, hh, ← mul_assoc, ← _root_.zpow_add, add_neg_cancel, zpow_zero, one_mul]
   have hPk : piGL F A ^ k ∈ normalizer F A := (normalizer F A).zpow_mem (piGL_mem_normalizer A) k
   obtain ⟨i, j, hij⟩ : ∃ i j, (h : Matrix (Fin 2) (Fin 2) F) i j ∉ ordBall F (A.bd 1 i j) := by
     by_contra hc
