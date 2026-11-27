@@ -177,6 +177,7 @@ import Langlands.Local.CIndIrreducible
 import Langlands.Local.JGroupCompact
 import Langlands.Local.StrataIntertwining
 import Langlands.Local.IntertwiningNormalizer
+import Langlands.Local.GL2Reduction
 
 /-!
 # The Langlands program in Lean
