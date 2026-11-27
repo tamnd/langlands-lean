@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.38 (2026-11-27)
+
 ### Added
 
 - Add Langlands/Padic/DeRhamNonzero.lean and Langlands/Padic/Crystalline.lean: B_dR of O_Cp is not zero, A_cris with its Frobenius and Galois action, t = log[ε], B_cris, IsCrystallineQp and the monodromy operator on B_st.
