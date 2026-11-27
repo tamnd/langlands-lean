@@ -175,6 +175,7 @@ import Langlands.Local.CuspidalTypes
 import Langlands.Local.AdaptedUnramified
 import Langlands.Local.CIndIrreducible
 import Langlands.Local.JGroupCompact
+import Langlands.Local.StrataIntertwining
 
 /-!
 # The Langlands program in Lean

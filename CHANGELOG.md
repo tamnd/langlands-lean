@@ -6,6 +6,7 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- The intertwining of a simple stratum: the adjoint map, the exactness of BH 13.4, and the intertwining of psi_alpha and of a cuspidal type inside the normalizer.
 - The groups E^x U^m_A are compact modulo the centre, so the compact induction of a cuspidal type is irreducible when its intertwining is J_alpha.
 - The irreducibility criterion for compact induction (BH 11.4): c-Ind_J^G Lambda is irreducible when the intertwining of Lambda is J.
 - The adapted basis of an unramified quadratic E, trace duality for p odd, and the simple stratum of a minimal pair.
