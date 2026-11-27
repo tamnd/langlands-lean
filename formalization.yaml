@@ -2294,6 +2294,38 @@ status:
       kind: theorem
       status: proved-mod
       note: 'EichlerShimuraDeligne in weight 2 from the port theorem, proved-mod four named hypotheses: integral coefficient models, base change of adic representations to the algebraic closure, and the comparison of Frobenius elements and inertia groups.'
+    - name: Langlands.Modular.heckeTn
+      kind: def
+      status: proved
+      note: 'T_n on cusp forms for Gamma0(N), from the T_p by the prime power recursion and products over coprime factors.'
+    - name: Langlands.Modular.heckeTn_comm
+      kind: theorem
+      status: proved
+      note: 'The operators T_m and T_n commute.'
+    - name: Langlands.Modular.heckeTn_mul
+      kind: theorem
+      status: proved
+      note: 'T_mn = T_m T_n for coprime m and n.'
+    - name: Langlands.Modular.qCoeff_heckeTn_apply
+      kind: theorem
+      status: proved
+      note: 'The coefficient formula a_m(T_n f) as a sum over the divisors d of n prime to N and dividing m of d^(k-1) a_(mn/d^2)(f).'
+    - name: Langlands.Modular.IsNormalizedHeckeEigenform.heckeTn_eq
+      kind: theorem
+      status: proved
+      note: 'A normalized Hecke eigenform satisfies T_n f = a_n(f) f.'
+    - name: Langlands.Modular.levelRaise
+      kind: def
+      status: proved
+      note: 'The level raising map B_d from cusp forms of level M to level dM, f(z) to f(dz).'
+    - name: Langlands.Modular.qCoeff_levelRaise
+      kind: theorem
+      status: proved
+      note: 'The coefficient m of B_d f is a_(m/d)(f) if d divides m, and 0 otherwise.'
+    - name: Langlands.Modular.oldSpace
+      kind: def
+      status: proved
+      note: 'The oldspace of level N, the span of the images of the maps B_d from levels M with dM dividing N and M less than N.'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
