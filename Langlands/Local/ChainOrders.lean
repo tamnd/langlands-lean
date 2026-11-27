@@ -505,11 +505,11 @@ theorem zpow_mul_mem_iff (A : ChainOrder) (k : ℤ) :
   | zero => intro n X; simp
   | succ k ih =>
     intro n X
-    rw [zpow_add_one, Units.val_mul, mul_assoc, val_piGL, piMat_mul_mem_iff A n X, ih,
+    rw [_root_.zpow_add_one, Units.val_mul, mul_assoc, val_piGL, piMat_mul_mem_iff A n X, ih,
       show n + 1 + (k : ℤ) = n + (k + 1) by ring]
   | pred k ih =>
     intro n X
-    rw [zpow_sub_one, Units.val_mul, mul_assoc, inv_piGL_mul_mem_iff A n X, ih,
+    rw [_root_.zpow_sub_one, Units.val_mul, mul_assoc, inv_piGL_mul_mem_iff A n X, ih,
       show n - 1 + -(k : ℤ) = n + (-k - 1) by ring]
 
 /-- Right multiplication by $\Pi_{\mathfrak{A}}^k$ maps $\mathfrak{P}^n_{\mathfrak{A}}$ onto $\mathfrak{P}^{n+k}_{\mathfrak{A}}$. -/
@@ -520,11 +520,11 @@ theorem mul_zpow_mem_iff (A : ChainOrder) (k : ℤ) :
   | zero => intro n X; simp
   | succ k ih =>
     intro n X
-    rw [zpow_add_one, Units.val_mul, ← mul_assoc, val_piGL, ih n X, mul_piMat_mem_iff,
+    rw [_root_.zpow_add_one, Units.val_mul, ← mul_assoc, val_piGL, ih n X, mul_piMat_mem_iff,
       show n + (k : ℤ) + 1 = n + (k + 1) by ring]
   | pred k ih =>
     intro n X
-    rw [zpow_sub_one, Units.val_mul, ← mul_assoc, ih n X, mul_inv_piGL_mem_iff,
+    rw [_root_.zpow_sub_one, Units.val_mul, ← mul_assoc, ih n X, mul_inv_piGL_mem_iff,
       show n + -(k : ℤ) - 1 = n + (-k - 1) by ring]
 
 end Pi
@@ -749,7 +749,7 @@ theorem mem_normalizer_iff (A : ChainOrder) (g : GL (Fin 2) F) :
     have hH1 : (h : Matrix (Fin 2) (Fin 2) F) ∉ radPow F A 1 := by
       intro h1
       have := (zpow_mul_mem_iff A k 1 _).1 h1
-      rw [hh, Units.val_mul, ← mul_assoc, ← Units.val_mul, ← zpow_add, add_neg_cancel, zpow_zero,
+      rw [hh, Units.val_mul, ← mul_assoc, ← Units.val_mul, ← _root_.zpow_add, add_neg_cancel, zpow_zero,
         Units.val_one, one_mul] at this
       have := hkmax _ this
       omega
@@ -771,7 +771,7 @@ theorem mem_normalizer_iff (A : ChainOrder) (g : GL (Fin 2) F) :
     refine ⟨k, h, mem_unitsFilt_zero.2 ⟨hH, ?_⟩, ?_⟩
     · rw [Matrix.coe_units_inv]
       exact inv_mem_order hH hd hd0
-    · rw [hh, ← mul_assoc, ← zpow_add, add_neg_cancel, zpow_zero, one_mul]
+    · rw [hh, ← mul_assoc, ← _root_.zpow_add, add_neg_cancel, zpow_zero, one_mul]
   · rintro ⟨k, u, hu, rfl⟩
     exact (normalizer F A).mul_mem ((normalizer F A).zpow_mem (piGL_mem_normalizer A) k)
       (unitsFilt_le_normalizer A hu)
@@ -822,7 +822,7 @@ theorem mem_radPow_iff_zpow_mul (A : ChainOrder) (n : ℤ) (X : Matrix (Fin 2) (
     refine ⟨((piGL F A ^ (-n) : GL (Fin 2) F) : Matrix (Fin 2) (Fin 2) F) * X, ?_, ?_⟩
     · have := (zpow_mul_mem_iff A (-n) n X).1 hX
       rwa [add_neg_cancel] at this
-    · rw [← mul_assoc, ← Units.val_mul, ← zpow_add, add_neg_cancel, zpow_zero, Units.val_one,
+    · rw [← mul_assoc, ← Units.val_mul, ← _root_.zpow_add, add_neg_cancel, zpow_zero, Units.val_one,
         one_mul]
   · rintro ⟨Y, hY, rfl⟩
     have := (zpow_mul_mem_iff A n 0 Y).1 hY
@@ -837,7 +837,7 @@ theorem mem_radPow_iff_mul_zpow (A : ChainOrder) (n : ℤ) (X : Matrix (Fin 2) (
     refine ⟨X * ((piGL F A ^ (-n) : GL (Fin 2) F) : Matrix (Fin 2) (Fin 2) F), ?_, ?_⟩
     · have := (mul_zpow_mem_iff A (-n) n X).1 hX
       rwa [add_neg_cancel] at this
-    · rw [mul_assoc, ← Units.val_mul, ← zpow_add, neg_add_cancel, zpow_zero, Units.val_one,
+    · rw [mul_assoc, ← Units.val_mul, ← _root_.zpow_add, neg_add_cancel, zpow_zero, Units.val_one,
         mul_one]
   · rintro ⟨Y, hY, rfl⟩
     have := (mul_zpow_mem_iff A n 0 Y).1 hY
