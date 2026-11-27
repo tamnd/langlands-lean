@@ -178,6 +178,7 @@ import Langlands.Local.JGroupCompact
 import Langlands.Local.StrataIntertwining
 import Langlands.Local.IntertwiningNormalizer
 import Langlands.Local.GL2Reduction
+import Langlands.Local.GL2NonSupercuspidal
 
 /-!
 # The Langlands program in Lean
