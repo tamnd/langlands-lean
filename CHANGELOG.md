@@ -4,6 +4,10 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+### Added
+
+- Add Langlands/Groups/ChevalleySteinberg.lean: the root space decomposition of the Geck algebra, the commutation of root elements and the simplest Chevalley commutator formula.
+
 ## v0.1.38 (2026-11-27)
 
 ### Added

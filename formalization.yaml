@@ -1882,6 +1882,26 @@ status:
       kind: theorem
       status: proved
       note: the monodromy operator N on B_st is a derivation
+    - name: Langlands.Groups.ChevalleySteinberg.iSupIndep_weightSpace
+      kind: theorem
+      status: proved
+      note: the weight spaces of the Geck algebra are independent
+    - name: Langlands.Groups.ChevalleySteinberg.weightSpace_root
+      kind: theorem
+      status: proved
+      note: the weight space of a root is the line of its root vector
+    - name: Langlands.Groups.ChevalleySteinberg.weightSpace_eq_bot
+      kind: theorem
+      status: proved
+      note: the weight space of a nonzero weight that is not a root is zero
+    - name: Langlands.Groups.ChevalleySteinberg.commute_rootElement
+      kind: theorem
+      status: proved
+      note: root elements commute when the sum of the roots is not a root and not zero
+    - name: Langlands.Groups.ChevalleySteinberg.commutator_rootElement
+      kind: theorem
+      status: proved
+      note: the Chevalley commutator formula when only alpha plus beta is a root in the alpha string
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
