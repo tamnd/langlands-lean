@@ -1702,6 +1702,26 @@ status:
       kind: theorem
       status: proved
       note: The conclusion of HeckeFunctionalEquationAt for each Hecke character of a field with one infinite place.
+    - name: Langlands.Padic.bdrQpAlgebra
+      kind: definition
+      status: proved
+      note: B_dR^+(R) and B_dR(R) are Q_p-algebras for a p-adically complete R.
+    - name: Langlands.Padic.galoisIntAction
+      kind: definition
+      status: proved
+      note: The absolute Galois group of Q_p acts on the ring of integers of C_p.
+    - name: Langlands.Padic.isAdicComplete_padicComplexInt
+      kind: theorem
+      status: proved
+      note: The ring of integers of C_p is p-adically complete.
+    - name: Langlands.Padic.IsDeRhamQp
+      kind: definition
+      status: proved
+      note: A finite-dimensional representation of the absolute Galois group of Q_p is de Rham.
+    - name: Langlands.Padic.isDeRhamQp_trivial_of_nontrivial
+      kind: theorem
+      status: proved
+      note: The trivial representation is de Rham if B_dR(O_Cp) is not zero.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
