@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.42 (2026-11-27)
+
 ### Added
 
 - Add Langlands/Local/LanglandsFamilyPairs.lean: tensor products of Weil-Deligne representations, Whittaker models, the Rankin-Selberg zeta integrals, the L-factors and epsilon factors of pairs, IsLanglandsFamilyPairs and LocalLanglandsGLFull.
