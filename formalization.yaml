@@ -3002,6 +3002,82 @@ status:
       kind: theorem
       status: proved-mod
       note: 'proved-mod: GL2OddInputs. The six inputs imply LocalLanglandsGL2Odd'
+    - name: Langlands.LocalGL2.exists_iso_wdModel
+      kind: theorem
+      status: proved
+      note: 'Each 2-dimensional Weil-Deligne representation that is not irreducible is isomorphic to a model (phi1 + phi2, N), with N nonzero only in the Steinberg case.'
+    - name: Langlands.LocalGL2.iso_wdModel_iff
+      kind: theorem
+      status: proved
+      note: 'Two models are isomorphic exactly when the characters agree, or are swapped outside the Steinberg case.'
+    - name: Langlands.LocalGL2.isDual_wdModel
+      kind: theorem
+      status: proved
+      note: 'The dual of a model is a model.'
+    - name: Langlands.LocalGL2.isTwist_wdModel
+      kind: theorem
+      status: proved
+      note: 'The twist of a model by a character is a model.'
+    - name: Langlands.LocalGL2.det_wdModel
+      kind: theorem
+      status: proved
+      note: 'The determinant of a model is phi1 phi2.'
+    - name: Langlands.LocalGL2.lFactor_wdModel
+      kind: theorem
+      status: proved
+      note: 'The L-factor of a model.'
+    - name: Langlands.LocalGL2.hasCentralChar_of_hasHom
+      kind: theorem
+      status: proved
+      note: 'A subrepresentation of Ind(chi1, chi2) has central character chi1 chi2.'
+    - name: Langlands.LocalGL2.hasHom_twist
+      kind: theorem
+      status: proved
+      note: 'Twisting a subrepresentation of a principal series.'
+    - name: Langlands.LocalGL2.PSSubExists
+      kind: def
+      status: known
+      note: 'known: BH Ch. 2 section 9, Jacquet-Langlands LNM 114 section 3. Each Ind(chi1, chi2) has an irreducible subrepresentation.'
+    - name: Langlands.LocalGL2.PSSubUnique
+      kind: def
+      status: known
+      note: 'known: BH Ch. 2 section 9. The irreducible subrepresentation of Ind(chi1, chi2) is unique.'
+    - name: Langlands.LocalGL2.PSSubRigid
+      kind: def
+      status: known
+      note: 'known: BH Ch. 2 section 9. The pair (chi1, chi2) is fixed by the subrepresentation, up to the swap outside the Steinberg case.'
+    - name: Langlands.LocalGL2.PSSubSwap
+      kind: def
+      status: known
+      note: 'known: BH Ch. 2 section 9. Outside the Steinberg case, Ind(chi1, chi2) and Ind(chi2, chi1) have the same subrepresentation.'
+    - name: Langlands.LocalGL2.NonSupercuspidalExhaustion
+      kind: def
+      status: known
+      note: 'known: BH Ch. 2 sections 9 and 10. Each irreducible representation that is not supercuspidal is a subrepresentation of a principal series.'
+    - name: Langlands.LocalGL2.PSSubNotSupercuspidal
+      kind: def
+      status: known
+      note: 'known: BH Ch. 2 sections 9 and 10. A subrepresentation of a principal series is not supercuspidal.'
+    - name: Langlands.LocalGL2.PSSubContragredient
+      kind: def
+      status: known
+      note: 'known: BH Ch. 2 section 9. The contragredient of the subrepresentation of Ind(chi1, chi2) is the subrepresentation of Ind(chi2^-1, chi1^-1).'
+    - name: Langlands.LocalGL2.PSSubLFactor
+      kind: def
+      status: known
+      note: 'known: BH section 26, Godement-Jacquet LNM 260 Thm 3.3. The Godement-Jacquet L-factor of a subrepresentation of a principal series.'
+    - name: Langlands.LocalGL2.nsEquiv
+      kind: def
+      status: proved
+      note: 'The explicit bijection between the non-supercuspidal irreducible representations of GL(2, K) and the reducible 2-dimensional Weil-Deligne representations.'
+    - name: Langlands.LocalGL2.nonSupercuspidalLLC_of_inputs
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: NonSupercuspidalLLC from the eight inputs of NonSupercuspidalInputs.'
+    - name: Langlands.localLanglandsGL2_odd_of_fineInputs
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: localLanglandsGL2_odd from the five inputs and NonSupercuspidalInputs.'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
