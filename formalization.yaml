@@ -1754,6 +1754,30 @@ status:
       kind: theorem
       status: proved
       note: The conclusion of HeckeFunctionalEquationAt for each Hecke character of a number field with one shift at all infinite places.
+    - name: Langlands.Tate.shiftHeckeTheta_unitScale
+      kind: theorem
+      status: proved
+      note: the transformation law of the theta series twisted by a torus character
+    - name: Langlands.Tate.shiftCompletedPartialHecke_sub
+      kind: theorem
+      status: proved
+      note: the functional equation of the completed class sum with different shifts
+    - name: Langlands.Tate.re_eq_of_isArchimedeanParameter
+      kind: theorem
+      status: proved
+      note: for an unramified character the real parts of the shifts are equal
+    - name: Langlands.Tate.shiftMeanZero_of_not_const
+      kind: theorem
+      status: proved
+      note: the zero term has mean value zero when the shifts are not constant
+    - name: Langlands.Tate.entireFunctionalEquation_unramified_shift
+      kind: theorem
+      status: proved
+      note: the entire functional equation for the unramified characters with any shifts
+    - name: Langlands.Tate.heckeFunctionalEquation_of_unramified_general
+      kind: theorem
+      status: proved
+      note: the conclusion of HeckeFunctionalEquationAt for each unramified Hecke character
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

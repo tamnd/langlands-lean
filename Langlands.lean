@@ -134,6 +134,7 @@ import Langlands.Tate.HeckeGeneralRamified
 import Langlands.Padic.DeRhamQp
 import Langlands.Ring.HilbertSamuelPoly
 import Langlands.Tate.HeckeRamifiedSign
+import Langlands.Tate.HeckeShift
 
 /-!
 # The Langlands program in Lean
