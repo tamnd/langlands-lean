@@ -4,6 +4,8 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ## Unreleased
 
+## v0.1.33 (2026-11-27)
+
 ### Added
 
 - The elementary adjoint Chevalley group in characteristic zero from the Geck construction, with root elements, Weyl elements and the adjoint torus.
