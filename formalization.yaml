@@ -1738,6 +1738,22 @@ status:
       kind: theorem
       status: proved
       note: For a noetherian local ring, the Hilbert-Samuel limit exists and e(R) >= 1.
+    - name: Langlands.Tate.signCoeffTheta_periodicCoeff_eq
+      kind: theorem
+      status: proved
+      note: The transformation law of the signed theta series with the periodic coefficient of a ramified character.
+    - name: Langlands.Tate.signRamifiedClassCompleted_eq_conj
+      kind: theorem
+      status: proved
+      note: The functional equation of one class sum of a ramified character with any signs.
+    - name: Langlands.Tate.entireFunctionalEquation_ramified_sign
+      kind: theorem
+      status: proved
+      note: The entire functional equation for a ramified Hecke character with any signs at the complex places.
+    - name: Langlands.Tate.heckeFunctionalEquation_of_const_shift
+      kind: theorem
+      status: proved
+      note: The conclusion of HeckeFunctionalEquationAt for each Hecke character of a number field with one shift at all infinite places.
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved

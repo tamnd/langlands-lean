@@ -133,6 +133,7 @@ import Langlands.Groups.Chevalley
 import Langlands.Tate.HeckeGeneralRamified
 import Langlands.Padic.DeRhamQp
 import Langlands.Ring.HilbertSamuelPoly
+import Langlands.Tate.HeckeRamifiedSign
 
 /-!
 # The Langlands program in Lean
