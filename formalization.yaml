@@ -3170,6 +3170,22 @@ status:
       kind: theorem
       status: proved
       note: 'Each non-archimedean local field has an additive character of level one.'
+    - name: Langlands.exists_monoidHom_extend
+      kind: theorem
+      status: proved
+      note: 'A character of a subgroup of an abelian group with values in C^x extends to the whole group.'
+    - name: Langlands.isAdmissible_cInd_of_isAdmissible_ind
+      kind: theorem
+      status: proved
+      note: 'If c-Ind_J Lambda is irreducible and maps nonzero to an admissible induced representation, it is admissible.'
+    - name: Langlands.LocalGL2.isAdmissible_cInd_of_intertwining
+      kind: theorem
+      status: proved
+      note: 'BH 11.4: c-Ind_J Lambda is admissible when J is open and compact modulo the centre, Lambda has open kernel and the intertwining of Lambda is J.'
+    - name: Langlands.LocalGL2.cIndSupercuspidal
+      kind: theorem
+      status: proved
+      note: 'CIndSupercuspidal holds with no input. Compact induction of a cuspidal type is admissible and supercuspidal.'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
