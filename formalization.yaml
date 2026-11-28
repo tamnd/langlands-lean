@@ -3206,6 +3206,54 @@ status:
       kind: theorem
       status: proved-mod
       note: 'proved-mod: SupercuspidalLFactor from SupercuspidalZetaLaurent.'
+    - name: Langlands.LocalGL2.psSubExists
+      kind: theorem
+      status: proved
+      note: 'PSSubExists: each principal series has an irreducible subrepresentation.'
+    - name: Langlands.LocalGL2.psSubUnique
+      kind: theorem
+      status: proved
+      note: 'PSSubUnique: the irreducible subrepresentation of a principal series is unique up to isomorphism (socle argument).'
+    - name: Langlands.LocalGL2.psSubRigid
+      kind: theorem
+      status: proved
+      note: 'PSSubRigid: the pair of characters is fixed by the subrepresentation, up to the swap outside the Steinberg case.'
+    - name: Langlands.LocalGL2.psSubSwap
+      kind: theorem
+      status: proved
+      note: 'PSSubSwap: outside the Steinberg case, Ind(chi1, chi2) and Ind(chi2, chi1) have the same subrepresentation.'
+    - name: Langlands.LocalGL2.psExhaustion
+      kind: theorem
+      status: proved
+      note: 'NonSupercuspidalExhaustion: each irreducible representation that is not supercuspidal is a subrepresentation of a principal series.'
+    - name: Langlands.LocalGL2.PSSupercuspidalJacquet
+      kind: def
+      status: known
+      note: 'known: BH Ch. 2 section 10, Jacquet-Langlands LNM 114 section 2. A supercuspidal irreducible representation has Jacquet module 0.'
+    - name: Langlands.LocalGL2.PSContragredientIso
+      kind: def
+      status: known
+      note: 'known: BH Ch. 1 section 3.5, Ch. 2 section 9. The contragredient of Ind(chi1, chi2) is Ind(chi1^-1, chi2^-1).'
+    - name: Langlands.LocalGL2.SmoothDualExtends
+      kind: def
+      status: known
+      note: 'known: BH Ch. 1 section 2.10. A smooth linear form on a subrepresentation extends to a smooth linear form.'
+    - name: Langlands.LocalGL2.PSLFactorIrreducible
+      kind: def
+      status: known
+      note: 'known: BH section 26, Godement-Jacquet LNM 260 Thm 3.3. The L-factor of an irreducible principal series.'
+    - name: Langlands.LocalGL2.PSLFactorDetChar
+      kind: def
+      status: known
+      note: 'known: BH section 26, Godement-Jacquet LNM 260. The L-factor of a character composed with det.'
+    - name: Langlands.LocalGL2.PSLFactorSteinberg
+      kind: def
+      status: known
+      note: 'known: BH section 26, Godement-Jacquet LNM 260. The L-factor of a twist of the Steinberg representation.'
+    - name: Langlands.LocalGL2.nonSupercuspidalInputs_of_psInputProps
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: NonSupercuspidalInputs from the six Props of PSInputProps.'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
