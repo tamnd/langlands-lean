@@ -186,6 +186,7 @@ import Langlands.Local.SupercuspidalLFactor
 import Langlands.Local.GL2PrincipalSeriesInputs
 import Langlands.Local.GaloisTameParam
 import Langlands.Local.TypeContragredient
+import Langlands.Local.WeilGroupFacts
 
 /-!
 # The Langlands program in Lean

@@ -3120,8 +3120,8 @@ status:
       note: 'known: BH section 19. The datum representation does not depend on the choices of psi, alpha, the basis and the factorization.'
     - name: Langlands.LocalGL2.TypeRepContragredient
       kind: def
-      status: known
-      note: 'known: BH 19.4. The contragredient of the representation of a pair is the representation of the inverse pair.'
+      status: proved
+      note: 'proved as typeRepContragredient: BH 19.4. The contragredient of the representation of a pair is the representation of the inverse pair.'
     - name: Langlands.LocalGL2.UncoveredParametrization
       kind: def
       status: known
@@ -3286,6 +3286,22 @@ status:
       kind: theorem
       status: proved
       note: 'Contragredient of a compact induction from an open subgroup compact modulo the centre, for a general group'
+    - name: Langlands.LocalGL2.normFactorU1_holds
+      kind: theorem
+      status: proved
+      note: 'A conjugation-invariant character of U^1_L factors through the norm, p odd'
+    - name: Langlands.LocalGL2.uniqueUnramifiedQuad_holds
+      kind: theorem
+      status: proved
+      note: 'There is only one unramified quadratic extension in the algebraic closure'
+    - name: Langlands.LocalGL2.inertiaUnramified_holds
+      kind: theorem
+      status: proved
+      note: 'If the inertia group lies in W_L, then L/K is unramified'
+    - name: Langlands.LocalGL2.galoisTameParametrization_of_openInputs
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: GaloisTameOpenInputs (ArtinConjCompat, WildInertiaProP, TameInertiaProcyclic, OpenIndexTwoQuad, WildArtinUnits)'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
