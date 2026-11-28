@@ -6,6 +6,7 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Reduce `TypeRepIndependent` to the single Prop `TypeCharUnitsAgree` and prove it for data with the same psi and chi (`TypeIndependent`).
 - Prove `SmoothDualExtends` and `PSSupercuspidalJacquet`, so the non-supercuspidal inputs depend on four Props (`PSInputPropsProof`).
 - Prove three Weil group facts and reduce the Galois tame parametrization to five inputs (`WeilGroupFacts`).
 - Prove `TypeRepContragredient`, Bushnell and Henniart 19.4 (`TypeContragredient`).

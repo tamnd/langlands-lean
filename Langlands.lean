@@ -188,6 +188,7 @@ import Langlands.Local.GaloisTameParam
 import Langlands.Local.TypeContragredient
 import Langlands.Local.WeilGroupFacts
 import Langlands.Local.PSInputPropsProof
+import Langlands.Local.TypeIndependent
 
 /-!
 # The Langlands program in Lean
