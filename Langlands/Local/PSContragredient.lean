@@ -1127,6 +1127,7 @@ theorem pcInt_eta {φ : GL (Fin 2) K → ℂ} (hφ : PcIsDelta K φ) :
   rw [h1, h2, mul_inv_cancel_left₀ hq]
   ring
 
+set_option maxHeartbeats 400000 in
 variable (K) in
 /-- The subgroup of the elements $g$ of $GL_2(K)$ with $\Lambda(R_g \varphi) = \Lambda(\varphi)$ for each $\varphi$ of modulus type. -/
 def pcInvSubgroup : Subgroup (GL (Fin 2) K) where
@@ -1143,6 +1144,8 @@ def pcInvSubgroup : Subgroup (GL (Fin 2) K) where
     show pcInt K (fun x => φ (x * 1)) = _
     simp only [mul_one]
   inv_mem' {a} ha := by
+    change ∀ φ, PcIsDelta K φ → pcInt K (fun x => φ (x * a)) = pcInt K φ at ha
+    change ∀ φ, PcIsDelta K φ → pcInt K (fun x => φ (x * a⁻¹)) = pcInt K φ
     intro φ hφ
     have h1 : pcInt K (fun x => φ (x * a * a⁻¹)) = pcInt K (fun x => φ (x * a⁻¹)) :=
       ha _ (pcIsDelta_right hφ a⁻¹)
