@@ -360,7 +360,7 @@ theorem exists_mem_radPow_of_mem_normalizer {g : GL (Fin 2) F} (hg : g ∈ norma
   · have := (zpow_mul_mem_iff A k 0 _).1 (mem_order.1 hu.1)
     rwa [zero_add, ← Units.val_mul] at this
   · have := (mul_zpow_mem_iff A (-k) 0 _).1 (mem_order.1 hu.2.1)
-    rwa [zero_add, ← Units.val_mul, zpow_neg, ← _root_.mul_inv_rev] at this
+    rwa [zero_add, ← Units.val_mul, _root_.zpow_neg, ← _root_.mul_inv_rev] at this
 
 /-- Conjugation by an element of $\mathfrak{K}_{\mathfrak{A}}$ preserves $\mathfrak{P}^k_{\mathfrak{A}}$. -/
 theorem conj_mem_radPow_of_mem_normalizer {g : GL (Fin 2) F} (hg : g ∈ normalizer F A) {k : ℤ}
