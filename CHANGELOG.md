@@ -6,6 +6,7 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Reduce `TypeRepInjective` to two Props and prove the field step for the maximal order (`TypeNormalizerIso`).
 - Prove that intertwining type characters have the same chain order and level (`TypeIntertwining`).
 - Reduce `TypeRepInjective` to the single Prop `TypeIntertwiningIso` and prove the Mackey step (`TypeInjective`).
 - Prove `PSContragredientIso` with the invariant pairing on the principal series (`PSContragredient`).
