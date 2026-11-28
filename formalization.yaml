@@ -3244,8 +3244,8 @@ status:
       note: 'known: BH section 26, Godement-Jacquet LNM 260 Thm 3.3. The L-factor of an irreducible principal series.'
     - name: Langlands.LocalGL2.PSLFactorDetChar
       kind: def
-      status: known
-      note: 'known: BH section 26, Godement-Jacquet LNM 260. The L-factor of a character composed with det.'
+      status: proved
+      note: 'proved as psLFactorDetChar_holds: BH section 26, Godement-Jacquet LNM 260. The L-factor of a character composed with det.'
     - name: Langlands.LocalGL2.PSLFactorSteinberg
       kind: def
       status: known
@@ -3414,6 +3414,18 @@ status:
       kind: def
       status: open
       note: 'open: data of one field and one basis that intertwine by an element of the normalizer have conjugate characters'
+    - name: Langlands.LocalGL2.nonSupercuspidalInputs_of_lFactor
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: PSLFactorIrreducible and PSLFactorSteinberg'
+    - name: Langlands.LocalGL2.pl_good_det
+      kind: theorem
+      status: proved
+      note: 'The zeta integral of a character of det is a Laurent polynomial times L(s,chi)L(s,chi|.|)'
+    - name: Langlands.LocalGL2.pl_integral_box
+      kind: theorem
+      status: proved
+      note: 'For unramified chi, the integral of the indicator of O_K^4 is a nonzero constant times L(s,chi)L(s,chi|.|)'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
