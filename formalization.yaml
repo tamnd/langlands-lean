@@ -3116,8 +3116,8 @@ status:
       note: 'known: BH 15.6 and 20.2. Isomorphic datum representations come from isomorphic pairs.'
     - name: Langlands.LocalGL2.TypeRepIndependent
       kind: def
-      status: known
-      note: 'known: BH section 19. The datum representation does not depend on the choices of psi, alpha, the basis and the factorization.'
+      status: proved
+      note: 'proved as typeRepIndependent: BH section 19. The datum representation does not depend on the choices of psi, alpha, the basis and the factorization.'
     - name: Langlands.LocalGL2.TypeRepContragredient
       kind: def
       status: proved
@@ -3336,8 +3336,20 @@ status:
       note: 'Transport of a datum along a K-isomorphism of fields gives an isomorphic representation'
     - name: Langlands.LocalGL2.TypeCharUnitsAgree
       kind: def
-      status: open
-      note: 'open: the type characters of two data for one pair agree on U^m_A when psi or the factorization changes'
+      status: proved
+      note: 'proved as typeCharUnitsAgree: the type characters of two data for one pair agree on U^m_A when psi or the factorization changes'
+    - name: Langlands.LocalGL2.typeRepIndependent
+      kind: theorem
+      status: proved
+      note: 'BH section 19 and 15.6: the representation of a datum does not depend on the choices'
+    - name: Langlands.LocalGL2.typeCharUnitsAgree
+      kind: theorem
+      status: proved
+      note: 'The type characters of two data for one pair agree on U^m_A, by a descent from U^(2j) to U^j'
+    - name: Langlands.LocalGL2.unitsFilt_le_of_commutator_mem
+      kind: theorem
+      status: proved
+      note: 'A subgroup that contains L^x, the commutators and a deep unit group contains U^m_A, p odd'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
