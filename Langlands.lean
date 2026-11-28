@@ -194,6 +194,7 @@ import Langlands.Local.PSContragredient
 import Langlands.Local.TypeInjective
 import Langlands.Local.TypeIntertwining
 import Langlands.Local.TypeNormalizerIso
+import Langlands.Local.PSLFactor
 
 /-!
 # The Langlands program in Lean
