@@ -6,6 +6,7 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Prove `SmoothDualExtends` and `PSSupercuspidalJacquet`, so the non-supercuspidal inputs depend on four Props (`PSInputPropsProof`).
 - Prove three Weil group facts and reduce the Galois tame parametrization to five inputs (`WeilGroupFacts`).
 - Prove `TypeRepContragredient`, Bushnell and Henniart 19.4 (`TypeContragredient`).
 - Reduce the Galois side of the tame parametrization to seven named facts on the Weil group (`GaloisTameParam`).

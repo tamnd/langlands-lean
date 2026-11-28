@@ -3228,16 +3228,16 @@ status:
       note: 'NonSupercuspidalExhaustion: each irreducible representation that is not supercuspidal is a subrepresentation of a principal series.'
     - name: Langlands.LocalGL2.PSSupercuspidalJacquet
       kind: def
-      status: known
-      note: 'known: BH Ch. 2 section 10, Jacquet-Langlands LNM 114 section 2. A supercuspidal irreducible representation has Jacquet module 0.'
+      status: proved
+      note: 'proved as psSupercuspidalJacquet_holds: BH Ch. 2 section 10, Jacquet-Langlands LNM 114 section 2. A supercuspidal irreducible representation has Jacquet module 0.'
     - name: Langlands.LocalGL2.PSContragredientIso
       kind: def
       status: known
       note: 'known: BH Ch. 1 section 3.5, Ch. 2 section 9. The contragredient of Ind(chi1, chi2) is Ind(chi1^-1, chi2^-1).'
     - name: Langlands.LocalGL2.SmoothDualExtends
       kind: def
-      status: known
-      note: 'known: BH Ch. 1 section 2.10. A smooth linear form on a subrepresentation extends to a smooth linear form.'
+      status: proved
+      note: 'proved as smoothDualExtends_holds: BH Ch. 1 section 2.10. A smooth linear form on a subrepresentation extends to a smooth linear form.'
     - name: Langlands.LocalGL2.PSLFactorIrreducible
       kind: def
       status: known
@@ -3302,6 +3302,22 @@ status:
       kind: theorem
       status: proved-mod
       note: 'proved-mod: GaloisTameOpenInputs (ArtinConjCompat, WildInertiaProP, TameInertiaProcyclic, OpenIndexTwoQuad, WildArtinUnits)'
+    - name: Langlands.LocalGL2.smoothDualExtends_holds
+      kind: theorem
+      status: proved
+      note: 'A smooth linear form on a subrepresentation extends to a smooth linear form, by averaging over a compact open subgroup'
+    - name: Langlands.LocalGL2.psSupercuspidalJacquet_holds
+      kind: theorem
+      status: proved
+      note: 'A supercuspidal representation is not a subrepresentation of a principal series'
+    - name: Langlands.LocalGL2.psSubNotSupercuspidal_holds
+      kind: theorem
+      status: proved
+      note: 'PSSubNotSupercuspidal with no input'
+    - name: Langlands.LocalGL2.nonSupercuspidalInputs_of_contragredient_lFactor
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: PSContragredientIso, PSLFactorIrreducible, PSLFactorDetChar and PSLFactorSteinberg'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
