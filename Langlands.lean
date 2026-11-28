@@ -190,6 +190,7 @@ import Langlands.Local.WeilGroupFacts
 import Langlands.Local.PSInputPropsProof
 import Langlands.Local.TypeIndependent
 import Langlands.Local.TypeCharAgree
+import Langlands.Local.PSContragredient
 
 /-!
 # The Langlands program in Lean
