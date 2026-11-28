@@ -191,6 +191,7 @@ import Langlands.Local.PSInputPropsProof
 import Langlands.Local.TypeIndependent
 import Langlands.Local.TypeCharAgree
 import Langlands.Local.PSContragredient
+import Langlands.Local.TypeInjective
 
 /-!
 # The Langlands program in Lean

@@ -6,6 +6,7 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Reduce `TypeRepInjective` to the single Prop `TypeIntertwiningIso` and prove the Mackey step (`TypeInjective`).
 - Prove `PSContragredientIso` with the invariant pairing on the principal series (`PSContragredient`).
 - Prove `TypeRepIndependent` with no input (`TypeCharAgree`).
 - Reduce `TypeRepIndependent` to the single Prop `TypeCharUnitsAgree` and prove it for data with the same psi and chi (`TypeIndependent`).
