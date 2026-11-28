@@ -3254,6 +3254,26 @@ status:
       kind: theorem
       status: proved-mod
       note: 'proved-mod: NonSupercuspidalInputs from the six Props of PSInputProps.'
+    - name: Langlands.LocalGL2.galoisTameParametrization_of_inputs
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: GaloisTameInputs (seven Weil group facts and ArtinConjCompat); Serre, Local Fields, IV and XV; Bushnell and Henniart 34 to 44'
+    - name: Langlands.LocalGL2.exists_tamePair_of_isIrreducible
+      kind: theorem
+      status: proved
+      note: 'Each irreducible 2-dimensional Weil-Deligne representation comes from a tame pair, p odd'
+    - name: Langlands.LocalGL2.eq_of_tameParam_iso
+      kind: theorem
+      status: proved
+      note: 'Tame pairs with isomorphic induced representations are conjugate'
+    - name: Langlands.LocalGL2.index_lineStab
+      kind: theorem
+      status: proved
+      note: 'The stabilizer of a line in an irreducible 2-dimensional representation has index 2'
+    - name: Langlands.LocalGL2.exists_common_eigen_of_isPGroup
+      kind: theorem
+      status: proved
+      note: 'A p-group in GL_2(C) with p odd has a common eigenvector'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
