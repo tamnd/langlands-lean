@@ -130,6 +130,7 @@ theorem psExists_compact_open_le {H : Subgroup (GL (Fin 2) K)}
     rw [Subgroup.coe_inf]
     exact (isCompact_congruence _ _).inter_left (Subgroup.isClosed_of_isOpen H hH)⟩
 
+set_option maxHeartbeats 400000 in
 variable (K) in
 /-- **Smooth linear forms extend** along injective maps of smooth representations of $GL_2(K)$. This is `Langlands.LocalGL2.SmoothDualExtends`. Let $\lambda$ be a smooth linear form on $\sigma$, fixed by a compact open subgroup $U$. Take a left inverse $g$ of $f$ and put $L = \lambda \circ g$. The average $\lambda'(v) = \int_U L(\pi(u)^{-1} v) \, du$ is fixed by $U$, and $\lambda'(f(w)) = \lambda(w)$ because $\lambda$ is fixed by $U$. -/
 theorem smoothDualExtends_holds : SmoothDualExtends K := by
@@ -141,7 +142,7 @@ theorem smoothDualExtends_holds : SmoothDualExtends K := by
   refine ⟨psAvgForm π hUc (l ∘ₗ g), Subgroup.isOpen_mono (H₁ := U) (fun u hu => ?_) hUo, ?_⟩
   · rw [mem_vecStabilizer]
     refine LinearMap.ext fun v => ?_
-    rw [Representation.dual_apply]
+    rw [Representation.dual_apply, Module.Dual.transpose_apply, LinearMap.comp_apply]
     exact psAvgForm_ρ π hUc _ (U.inv_mem hu) v
   · refine LinearMap.ext fun w => psAvgForm_eq_of_forall π hUc _ fun u hu => ?_
     rw [LinearMap.comp_apply, ← hfg, ← LinearMap.comp_apply g f, hg, LinearMap.id_apply,
@@ -237,6 +238,7 @@ theorem psEvalOne_borel {π : SmoothRep (GL (Fin 2) K)} {α₁ α₂ : Kˣ →* 
   rw [psEvalOne_ρ, ← mul_one (b : GL (Fin 2) K), principalSeriesInd_mul_left]
   rfl
 
+set_option maxHeartbeats 400000 in
 variable (K) in
 /-- **Supercuspidal representations have zero Jacquet module.** This is `Langlands.LocalGL2.PSSupercuspidalJacquet`. If $\pi_N \neq 0$, then Frobenius reciprocity gives an injective map $\Phi$ from $\pi$ to a principal series, and $\mu(v) = \Phi(v)(1)$ satisfies $\mu(\pi(b) v) = \chi(b) \mu(v)$ for $b \in B$. Take $v$ with $\mu(v) \neq 0$ and a small congruence subgroup $U$, and let $\lambda$ be the average of $\mu$ over $U$. The Iwahori factorization of $U$ gives $\lambda(\pi(t^k) v) = \chi(t)^k \mu(v) \neq 0$ for $t = \mathrm{diag}(\varpi, 1)$ and each $k \ge 0$. These elements $t^k$ are not in $C Z$ for a compact set $C$. -/
 theorem psSupercuspidalJacquet_holds : PSSupercuspidalJacquet K := by
@@ -274,7 +276,7 @@ theorem psSupercuspidalJacquet_holds : PSSupercuspidalJacquet K := by
     refine Subgroup.isOpen_mono (H₁ := U) (fun u hu => ?_) (isOpen_congruence _ _ _)
     rw [mem_vecStabilizer]
     refine LinearMap.ext fun w => ?_
-    rw [Representation.dual_apply]
+    rw [Representation.dual_apply, Module.Dual.transpose_apply, LinearMap.comp_apply]
     exact psAvgForm_ρ π.1 hUc _ (U.inv_mem hu) w
   obtain ⟨C, hC, hCs⟩ := hsc v ⟨l, hl⟩
   refine psNot_forall_diag_mem hC fun k => hCs _ ?_
