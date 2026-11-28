@@ -6,6 +6,7 @@ All changes that a user can see are in this file. The format follows Keep a Chan
 
 ### Added
 
+- Five of the eight principal-series inputs are proved, and the other three are reduced to six smaller named inputs.
 - The L-factor of a supercuspidal representation of GL(2) is 1, from one named input on zeta integrals.
 - Compact induction of a character whose intertwining is J is admissible (BH 11.4), so CIndSupercuspidal is proved with no input.
 - The supercuspidality of an admissible c-Ind of a cuspidal type, its admissibility from one named input, and an additive character of level one.

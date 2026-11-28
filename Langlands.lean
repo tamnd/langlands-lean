@@ -183,6 +183,7 @@ import Langlands.Local.GL2TameTypes
 import Langlands.Local.CIndSupercuspidal
 import Langlands.Local.CIndAdmissible
 import Langlands.Local.SupercuspidalLFactor
+import Langlands.Local.GL2PrincipalSeriesInputs
 
 /-!
 # The Langlands program in Lean
