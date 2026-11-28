@@ -3274,6 +3274,18 @@ status:
       kind: theorem
       status: proved
       note: 'A p-group in GL_2(C) with p odd has a common eigenvector'
+    - name: Langlands.LocalGL2.typeRepContragredient
+      kind: theorem
+      status: proved
+      note: 'Bushnell and Henniart 19.4: the contragredient of a type representation is the type representation of the inverse datum'
+    - name: Langlands.LocalGL2.contragredient_cInd_iso_GL2
+      kind: theorem
+      status: proved
+      note: 'The contragredient of c-Ind_J Lambda is c-Ind_J Lambda inverse for a cuspidal type'
+    - name: Langlands.LocalGL2.contragredient_cInd_iso
+      kind: theorem
+      status: proved
+      note: 'Contragredient of a compact induction from an open subgroup compact modulo the centre, for a general group'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
