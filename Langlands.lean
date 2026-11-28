@@ -192,6 +192,7 @@ import Langlands.Local.TypeIndependent
 import Langlands.Local.TypeCharAgree
 import Langlands.Local.PSContragredient
 import Langlands.Local.TypeInjective
+import Langlands.Local.TypeIntertwining
 
 /-!
 # The Langlands program in Lean

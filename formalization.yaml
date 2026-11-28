@@ -3378,6 +3378,22 @@ status:
       kind: def
       status: open
       note: 'open: BH 15.7 and 20.2. If an element intertwines the type characters of two data, the pairs are K-isomorphic.'
+    - name: Langlands.LocalGL2.typeRepInjective_of_typeIntertwiningNormalizerIso
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: TypeIntertwiningNormalizerIso (same order, same level, g in the normalizer)'
+    - name: Langlands.LocalGL2.TameDatum.A_eq_and_level_eq_of_intertwinesWith
+      kind: theorem
+      status: proved
+      note: 'BH 15.7 first step: intertwining type characters have the same chain order and level, and the element lies in the normalizer'
+    - name: Langlands.LocalGL2.TameDatum.false_of_maximal_iwahori
+      kind: theorem
+      status: proved
+      note: 'No element intertwines a type on the maximal order with a type on the Iwahori order'
+    - name: Langlands.LocalGL2.TypeIntertwiningNormalizerIso
+      kind: def
+      status: open
+      note: 'open: intertwining type characters on one order and level, by an element of the normalizer, give K-isomorphic pairs'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
