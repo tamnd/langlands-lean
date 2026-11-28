@@ -3232,8 +3232,8 @@ status:
       note: 'proved as psSupercuspidalJacquet_holds: BH Ch. 2 section 10, Jacquet-Langlands LNM 114 section 2. A supercuspidal irreducible representation has Jacquet module 0.'
     - name: Langlands.LocalGL2.PSContragredientIso
       kind: def
-      status: known
-      note: 'known: BH Ch. 1 section 3.5, Ch. 2 section 9. The contragredient of Ind(chi1, chi2) is Ind(chi1^-1, chi2^-1).'
+      status: proved
+      note: 'proved as psContragredientIso_holds: BH Ch. 1 section 3.5, Ch. 2 section 9. The contragredient of Ind(chi1, chi2) is Ind(chi1^-1, chi2^-1).'
     - name: Langlands.LocalGL2.SmoothDualExtends
       kind: def
       status: proved
@@ -3350,6 +3350,18 @@ status:
       kind: theorem
       status: proved
       note: 'A subgroup that contains L^x, the commutators and a deep unit group contains U^m_A, p odd'
+    - name: Langlands.LocalGL2.psContragredientIso_holds
+      kind: theorem
+      status: proved
+      note: 'The contragredient of a principal series is the principal series of the inverse characters, by the invariant pairing over GL_2(O)'
+    - name: Langlands.LocalGL2.pcIntInvariant_holds
+      kind: theorem
+      status: proved
+      note: 'The integral over GL_2(O) of a function with the modulus property is right invariant under GL_2(K)'
+    - name: Langlands.LocalGL2.pcIso_contragredient_of_pairing
+      kind: theorem
+      status: proved
+      note: 'A nondegenerate invariant pairing of admissible representations identifies one with the contragredient of the other'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
