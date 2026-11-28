@@ -3186,6 +3186,26 @@ status:
       kind: theorem
       status: proved
       note: 'CIndSupercuspidal holds with no input. Compact induction of a cuspidal type is admissible and supercuspidal.'
+    - name: Langlands.SmoothRep.isSupercuspidal_of_iso
+      kind: theorem
+      status: proved
+      note: 'An isomorphism preserves supercuspidality.'
+    - name: Langlands.LocalGL2.exists_gjZeta_eq_const
+      kind: theorem
+      status: proved
+      note: 'For each smooth representation of GL_2(K) and each vector v there is a Schwartz-Bruhat function whose zeta integral is a positive constant times l(v).'
+    - name: Langlands.LocalGL2.isGJLFactor_one_of_zeta
+      kind: theorem
+      status: proved
+      note: 'If all zeta integrals are Laurent polynomials in q^-s, then L(s, pi) = 1.'
+    - name: Langlands.LocalGL2.SupercuspidalZetaLaurent
+      kind: def
+      status: known
+      note: 'known: Godement-Jacquet LNM 260 Thm 3.3 and Prop 4.4, BH 24.2. The zeta integrals of a supercuspidal representation of GL_2(K) are Laurent polynomials in q^-s.'
+    - name: Langlands.LocalGL2.supercuspidalLFactor_of_zetaLaurent
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: SupercuspidalLFactor from SupercuspidalZetaLaurent.'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
