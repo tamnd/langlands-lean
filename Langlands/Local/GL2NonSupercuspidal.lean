@@ -66,7 +66,7 @@ namespace LocalGL2
 section Diagonal
 
 /-- The diagonal matrix $\mathrm{diag}(a, b)$ as an element of $GL_2(\mathbb{C})$. -/
-def diagGL (a b : ℂˣ) : GL (Fin 2) ℂ where
+def nsDiagGL (a b : ℂˣ) : GL (Fin 2) ℂ where
   val := diagonal ![(a : ℂ), b]
   inv := diagonal ![((a⁻¹ : ℂˣ) : ℂ), ((b⁻¹ : ℂˣ) : ℂ)]
   val_inv := by
@@ -81,12 +81,12 @@ def diagGL (a b : ℂˣ) : GL (Fin 2) ℂ where
     fin_cases i <;> simp
 
 /-- The matrix of $\mathrm{diag}(a, b)$. -/
-theorem val_diagGL (a b : ℂˣ) : ((diagGL a b : GL (Fin 2) ℂ) : Matrix (Fin 2) (Fin 2) ℂ) =
+theorem val_nsDiagGL (a b : ℂˣ) : ((nsDiagGL a b : GL (Fin 2) ℂ) : Matrix (Fin 2) (Fin 2) ℂ) =
     diagonal ![(a : ℂ), b] :=
   rfl
 
 /-- The matrix of $\mathrm{diag}(a, b)^{-1}$. -/
-theorem val_diagGL_inv (a b : ℂˣ) : (((diagGL a b)⁻¹ : GL (Fin 2) ℂ) : Matrix (Fin 2) (Fin 2) ℂ) =
+theorem val_nsDiagGL_inv (a b : ℂˣ) : (((nsDiagGL a b)⁻¹ : GL (Fin 2) ℂ) : Matrix (Fin 2) (Fin 2) ℂ) =
     diagonal ![((a⁻¹ : ℂˣ) : ℂ), ((b⁻¹ : ℂˣ) : ℂ)] :=
   rfl
 
@@ -94,16 +94,16 @@ variable {G : Type*} [Group G]
 
 /-- The homomorphism $g \mapsto \mathrm{diag}(\varphi_1(g), \varphi_2(g))$ given by two characters. -/
 def diagHom (φ₁ φ₂ : G →* ℂˣ) : G →* GL (Fin 2) ℂ where
-  toFun g := diagGL (φ₁ g) (φ₂ g)
+  toFun g := nsDiagGL (φ₁ g) (φ₂ g)
   map_one' := by
     apply Units.ext
-    rw [val_diagGL, Units.val_one, ← diagonal_one]
+    rw [val_nsDiagGL, Units.val_one, ← diagonal_one]
     congr 1
     funext i
     fin_cases i <;> simp
   map_mul' a b := by
     apply Units.ext
-    rw [Units.val_mul, val_diagGL, val_diagGL, val_diagGL, diagonal_mul_diagonal]
+    rw [Units.val_mul, val_nsDiagGL, val_nsDiagGL, val_nsDiagGL, diagonal_mul_diagonal]
     congr 1
     funext i
     fin_cases i <;> simp
@@ -484,7 +484,7 @@ theorem eq_smul_single_of_isNilpotent {N : Matrix (Fin 2) (Fin 2) ℂ} (h10 : N 
   fin_cases i <;> fin_cases j <;> simp [ha, hd, h10]
 
 /-- The matrix $\begin{pmatrix} 1 & -t \\ 0 & 1 \end{pmatrix}$ in $GL_2(\mathbb{C})$. -/
-def upperGL (t : ℂ) : GL (Fin 2) ℂ where
+def nsUpperGL (t : ℂ) : GL (Fin 2) ℂ where
   val := !![1, -t; 0, 1]
   inv := !![1, t; 0, 1]
   val_inv := by
@@ -495,7 +495,7 @@ def upperGL (t : ℂ) : GL (Fin 2) ℂ where
     fin_cases i <;> fin_cases j <;> simp [Matrix.mul_apply, Fin.sum_univ_two]
 
 /-- The matrix $\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$ in $GL_2(\mathbb{C})$. -/
-def swapGL : GL (Fin 2) ℂ where
+def nsSwapGL : GL (Fin 2) ℂ where
   val := !![0, 1; 1, 0]
   inv := !![0, 1; 1, 0]
   val_inv := by
@@ -544,7 +544,7 @@ theorem exists_iso_diag (ρ : WeilDeligneRep K 2)
   set M₀ := (ρ.r w₀ : Matrix (Fin 2) (Fin 2) ℂ) with hM₀
   set t := M₀ 0 1 / (M₀ 1 1 - M₀ 0 0) with ht
   have hsub : M₀ 1 1 - M₀ 0 0 ≠ 0 := sub_ne_zero.2 (Ne.symm hw₀)
-  set ρ' := conjBy ρ (upperGL t) with hρ'
+  set ρ' := conjBy ρ (nsUpperGL t) with hρ'
   have hval : ∀ w, (ρ'.r w : Matrix (Fin 2) (Fin 2) ℂ) =
       !![(ρ.r w : Matrix (Fin 2) (Fin 2) ℂ) 0 0, (ρ.r w : Matrix (Fin 2) (Fin 2) ℂ) 0 0 * t +
         (ρ.r w : Matrix (Fin 2) (Fin 2) ℂ) 0 1 - t * (ρ.r w : Matrix (Fin 2) (Fin 2) ℂ) 1 1;
@@ -613,7 +613,7 @@ theorem exists_iso_wdModel_of_diag (ρ : WeilDeligneRep K 2)
     rw [zero_smul] at hN
     by_cases hS : IsStW K α δ
     · have hS' : ¬IsStW K δ α := fun h => not_isStW_and K α δ ⟨hS, h⟩
-      refine ⟨δ, α, hδ, hα, swapGL, fun w => ?_, ?_⟩
+      refine ⟨δ, α, hδ, hα, nsSwapGL, fun w => ?_, ?_⟩
       · apply Units.ext
         rw [Units.val_mul, Units.val_mul, hrd]
         change diagonal ![(δ w : ℂ), α w] = !![0, 1; 1, 0] * _ * !![0, 1; 1, 0]
@@ -635,7 +635,7 @@ theorem exists_iso_wdModel_of_diag (ρ : WeilDeligneRep K 2)
       have hδ0 : (δ w : ℂ) ≠ 0 := Units.ne_zero _
       field_simp at h
       linear_combination h
-    refine ⟨α, δ, hα, hδ, diagGL 1 (Units.mk0 n hn), fun w => ?_, ?_⟩
+    refine ⟨α, δ, hα, hδ, nsDiagGL 1 (Units.mk0 n hn), fun w => ?_, ?_⟩
     · apply Units.ext
       rw [Units.val_mul, Units.val_mul, hrd]
       change diagonal ![(α w : ℂ), δ w] = diagonal ![((1 : ℂˣ) : ℂ), (Units.mk0 n hn : ℂ)] * _ *
@@ -679,7 +679,7 @@ theorem char_eq_of_mul_eq {φ ψ : WeilGroup K →* ℂˣ} {c : ℂ} (hc : c ≠
 theorem iso_wdModel_swap (φ₁ φ₂ : WeilGroup K →* ℂˣ) (h₁ h₂) (hφ : ¬IsStW K φ₁ φ₂)
     (hψ : ¬IsStW K φ₂ φ₁) : (wdModel K φ₁ φ₂ h₁ h₂).Iso (wdModel K φ₂ φ₁ h₂ h₁) := by
   classical
-  refine ⟨swapGL, fun w => ?_, ?_⟩
+  refine ⟨nsSwapGL, fun w => ?_, ?_⟩
   · apply Units.ext
     rw [Units.val_mul, Units.val_mul]
     change diagonal ![(φ₂ w : ℂ), φ₁ w] = !![0, 1; 1, 0] * diagonal ![(φ₁ w : ℂ), φ₂ w] *
