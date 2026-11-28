@@ -1147,8 +1147,7 @@ def pcInvSubgroup : Subgroup (GL (Fin 2) K) where
     change ∀ φ, PcIsDelta K φ → pcInt K (fun x => φ (x * a)) = pcInt K φ at ha
     change ∀ φ, PcIsDelta K φ → pcInt K (fun x => φ (x * a⁻¹)) = pcInt K φ
     intro φ hφ
-    have h1 : pcInt K (fun x => φ (x * a * a⁻¹)) = pcInt K (fun x => φ (x * a⁻¹)) :=
-      ha _ (pcIsDelta_right hφ a⁻¹)
+    have h1 := ha (fun y => φ (y * a⁻¹)) (pcIsDelta_right hφ a⁻¹)
     simp only [mul_inv_cancel_right] at h1
     exact h1.symm
 
