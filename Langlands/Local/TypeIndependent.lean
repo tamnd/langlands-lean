@@ -34,9 +34,9 @@ This file works toward `Langlands.LocalGL2.TypeRepIndependent K` (Bushnell and H
 
 A $K$-isomorphism $j : L \cong L'$ with $\xi = \xi' \circ j$ moves a datum for $(L', \xi')$ to a datum for $(L, \xi)$ with the basis $j^{-1} v$. The matrices of multiplication do not change, so the groups $J_\alpha$ and the characters $\Lambda$ are the same, and the representations are equal. For two data of one pair, the chain orders are equal, because $e(\mathfrak{A}) = e(L/K)$. The levels are equal, because each $\xi_0$ is minimal and $\xi_0' = \xi_0 \otimes (\chi \chi'^{-1})_L$. A change of basis by $g \in GL_2(K)$ conjugates $\mathfrak{A}$, $J_\alpha$ and $\Lambda$, so `Langlands.LocalGL2.cInd_conj_iso` moves both data to one basis. Then $J_\alpha = L^\times U^m_{\mathfrak{A}}$ is the same group for both data. On $L^\times$ both characters equal $\xi$, since $\det \circ \iota = N_{L/K}$. So the characters are equal if they agree on $U^m_{\mathfrak{A}}$. If $\psi$ and $\chi$ are the same, then $\xi_0 = \xi_0'$, and the compatibility of $\alpha$ and $\alpha'$ with $\xi_0$ on $U^{[n/2]+1}_L$ gives $\psi(\mathrm{tr}((\alpha' - \alpha) y)) = 1$ for $y \in \mathfrak{p}^{[n/2]+1}_L$. Trace duality, for $p \ne 2$, gives $\alpha' - \alpha \in \mathfrak{p}^{-[n/2]}_L$, and then $\psi_{\alpha'} = \psi_\alpha$ on $U^m_{\mathfrak{A}}$, because $n$ is odd.
 
-## Still open
+## The general case
 
-The statement `Langlands.LocalGL2.TypeCharUnitsAgree K` in general, that is, for data with a different character $\psi$ or a different factorization $\xi = \xi_0 \otimes \chi_L$. For a different $\psi$, the element $\alpha$ changes by a unit of $K$. For a different $\chi$, the character $\Lambda$ changes by $(\chi' \chi^{-1}) \circ \det$ on $U^m_{\mathfrak{A}}$ and $\alpha$ changes by an element of $K$.
+The statement `Langlands.LocalGL2.TypeCharUnitsAgree K` in general is proved in `Langlands.Local.TypeCharAgree`, so `TypeRepIndependent` holds with no input.
 
 ## References
 
