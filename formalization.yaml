@@ -3394,6 +3394,26 @@ status:
       kind: def
       status: open
       note: 'open: intertwining type characters on one order and level, by an element of the normalizer, give K-isomorphic pairs'
+    - name: Langlands.LocalGL2.typeRepInjective_of_ramifiedField_of_sameBasisIso
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: TypeNormalizerRamifiedField and TypeNormalizerSameBasisIso'
+    - name: Langlands.LocalGL2.TameDatum.eq_of_maximal
+      kind: theorem
+      status: proved
+      note: 'Two data on the maximal order have the same unramified field'
+    - name: Langlands.LocalGL2.TameDatum.eq_of_intertwinesWith_of_mem_J
+      kind: theorem
+      status: proved
+      note: 'An intertwining element in J for data of one field with one basis gives equal characters'
+    - name: Langlands.LocalGL2.TypeNormalizerRamifiedField
+      kind: def
+      status: open
+      note: 'open: data on the Iwahori order that intertwine by an element of the normalizer have K-isomorphic fields'
+    - name: Langlands.LocalGL2.TypeNormalizerSameBasisIso
+      kind: def
+      status: open
+      note: 'open: data of one field and one basis that intertwine by an element of the normalizer have conjugate characters'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
