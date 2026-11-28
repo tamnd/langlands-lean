@@ -3318,6 +3318,26 @@ status:
       kind: theorem
       status: proved-mod
       note: 'proved-mod: PSContragredientIso, PSLFactorIrreducible, PSLFactorDetChar and PSLFactorSteinberg'
+    - name: Langlands.LocalGL2.typeRepIndependent_of_typeCharUnitsAgree
+      kind: theorem
+      status: proved-mod
+      note: 'proved-mod: TypeCharUnitsAgree (the case of a different psi or a different factorization of xi); BH 15.6 and section 19'
+    - name: Langlands.LocalGL2.TameDatum.rep_iso_of_ψ_eq_of_χ_eq
+      kind: theorem
+      status: proved
+      note: 'Data with the same psi and chi give isomorphic representations: alpha, the adapted basis and the chain order do not matter'
+    - name: Langlands.LocalGL2.cInd_conj_iso
+      kind: theorem
+      status: proved
+      note: 'Compact induction of a conjugate type is isomorphic'
+    - name: Langlands.LocalGL2.TameDatum.transport_rep_iso
+      kind: theorem
+      status: proved
+      note: 'Transport of a datum along a K-isomorphism of fields gives an isomorphic representation'
+    - name: Langlands.LocalGL2.TypeCharUnitsAgree
+      kind: def
+      status: open
+      note: 'open: the type characters of two data for one pair agree on U^m_A when psi or the factorization changes'
     - name: Langlands.Bridge.localExistence
       kind: theorem
       status: proved
